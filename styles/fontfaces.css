@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "logo-font";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/slackey.woff") format("woff"),
+         url("../fonts/slackey.ttf") format("truetype");
+}
+@font-face {
+    font-family: "default-font";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/geo.woff") format("woff"),
+         url("../fonts/geo.ttf") format("truetype");
+}
