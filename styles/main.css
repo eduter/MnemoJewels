@@ -14,7 +14,10 @@ body {
     font-size : 32px;
     width : 10em;
     height : 15em;
-    background-color : rgb(30,30,30);
+    background-color : #2d7fd3;
+    background-image: url("../backgrounds/bg.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
     font-family : default-font;
     color : rgb(200,200,100);
 }
@@ -39,17 +42,27 @@ body {
 #splash-screen .continue {
     cursor : pointer;
     font-size : 0.75em;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
 }
 .logo {
     font-family : logo-font;
-    margin : 0;
+    margin-top: 0.1em;
+    margin-bottom : 0.7em;
     text-align : center;
-    color : rgb(70,120,20);
-    font-size : 1.5em;
+    color : #f1c101;
+    font-size : 1.7em;
     line-height : 0.9em;
-    text-shadow : 0.03em  0.03em  0.03em rgb(255,255,0),
-                 -0.03em -0.03em  0.03em rgb(255,255,0),
-                  0.10em  0.15em  0.15em rgb(0,0,0);
+    font-weight: normal;
+    
+    text-shadow: -1px -1px 1px #b69202,
+                  1px 1px 1px #b69202,
+                 -4px -4px 0px #000,
+                  3px -4px 0px #000,
+                  3px 3px 0px #000,
+                 -4px 3px 0px #000,
+                  5px 5px 7px #000,
+                 -3px 5px 7px #000;
 }
 
 .no-textshadow .logo {
@@ -59,7 +72,11 @@ body {
 
 /* Main menu styles */
 #main-menu {
-    padding-top : 1em;
+    padding-top : 0.5em;
+}
+
+#play-menu {
+    padding-top : 0.5em;
 }
 
 ul.menu {
@@ -70,37 +87,55 @@ ul.menu {
 }
 
 ul.menu li {
-    margin : 0.8em 0;
+    margin : 0.6em 0;
 }
 
 button {
-    font-family : logo-font, sans-serif;
-    font-size : 0.6em;
-    height : 1.5em;
-    width : 10em;
-    color : rgb(100,120,0);
-    border : 0.1em solid rgb(255,255,0);
-    border-radius : 0.5em;
-    -webkit-box-shadow : 0.2em 0.2em 0.3em rgb(0,0,0);
-    -moz-box-shadow : 0.2em 0.2em 0.3em rgb(0,0,0);
-    box-shadow : 0.2em 0.2em 0.3em rgb(0,0,0);
-}
-
-ul.menu li button {
-    background : rgb(10,20,0);
+    background : none;
+    border: none;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    background-size: 170px 39px;
+    width: 176px;
+    height: 45px;
+    border : 0.15em solid black;
+    border-radius : 0.7em;
 }
 
 button.back {
-    background : rgb(20,10,0);
+    background-image : url("../svg/jewel_red.svg");
+}
+
+ul.menu li button.bt_blue {
+    background-image: url("../svg/jewel_blue.svg");
+}
+
+ul.menu li button.bt_green {
+    background-image: url("../svg/jewel_green.svg");
+}
+
+ul.menu li button.bt_yellow {
+    background-image: url("../svg/jewel_yellow.svg");
+}
+
+ul.menu li button.bt_red {
+    background-image: url("../svg/jewel_red.svg");
+}
+
+ul.menu li button.bt_purple {
+    background-image: url("../svg/jewel_purple.svg");
+}
+
+ul.menu li button.bt_orange {
+    background-image: url("../svg/jewel_orange.svg");
 }
 
 ul.menu li button:hover {
-    background : rgb(30,40,0);
 }
 
 ul.menu li button:active {
-    color : rgb(255,255,0);
-    background : rgb(30,40,0);
+    color : #3d3d3d;
+    border : 0.15em solid #3d3d3d;
 }
 
 /* Install screen for iOS devices */
