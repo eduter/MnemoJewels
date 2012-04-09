@@ -1,9 +1,9 @@
 mj.modules.game = (function() {
     var dom = mj.dom;
     var $ = dom.$;
-    var board;
-    var display;
-    var cards;
+    var board = null;
+    var display = null;
+    var cards = null;
     var history = [];
     var currentScreen = null;
     
@@ -60,11 +60,11 @@ mj.modules.game = (function() {
         // handle navigation button clicks
         dom.bind('body', 'click', function(e) {
             if (e.target.nodeName.toLowerCase() === 'button') {
-              if (e.target.className == 'back') {
-                back();
-              } else if (e.target.className = 'nav') {
-                navigateTo(e.target.getAttribute('name'));
-              }
+                if (dom.hasClass(e.target, 'back')) {
+                    back();
+                } else if (dom.hasClass(e.target, 'nav')) {
+                    navigateTo(e.target.getAttribute('name'));
+                }
             }
         });
     }
