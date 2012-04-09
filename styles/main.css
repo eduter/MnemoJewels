@@ -114,3 +114,10 @@ ul.menu li button:active {
     display : inline-block;
     padding : 0 0.5em;
 }
+
+/* temporary lame representation of the board */
+
+table#board td {
+    border: solid yellow 1px;
+    height: 30px;
+}
