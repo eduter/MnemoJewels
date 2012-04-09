@@ -153,6 +153,8 @@ ul.menu li button:active {
 /* temporary lame representation of the board */
 
 table#board td {
-    border: solid yellow 1px;
+    border: solid black 1px;
+    background: white;
+    color: black;
     height: 30px;
 }
