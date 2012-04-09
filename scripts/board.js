@@ -1,15 +1,18 @@
-jewel.board = (function() {
-    var fmSettings = jewel.settings;
+mj.modules.board = (function() {
+    var fmSettings = mj.settings;
+    var game;
+    var Jewel;
+    var Pair;
     var faJewels;
     var faAvailableGroupIds;
     
-    jewel.Jewel = function(piPairId, piGroupId, psText) {
+    mj.classes.Jewel = function(piPairId, piGroupId, psText) {
         this.fiPairId = piPairId;
         this.fiGroupId = piGroupId;
         this.fsText = psText;
     }
     
-    jewel.Pair = function(piPairId, psFront, psBack) {
+    mj.classes.Pair = function(piPairId, psFront, psBack) {
         this.fiPairId = piPairId;
         this.fsFront = psFront;
         this.fsBack = psBack;
@@ -27,6 +30,12 @@ jewel.board = (function() {
         }
     }
     
+    function setup() {
+        game = mj.modules.game;
+        Jewel = mj.classes.Jewel;
+        Pair = mj.classes.Pair;
+    }
+    
     function rand(piMax) {
         return (Math.floor(Math.random() * piMax));
     }
@@ -37,8 +46,8 @@ jewel.board = (function() {
         var miGroupId = getNextGroupId();
         
         for (var i in paPairs) {
-            maFrontJewels.push(new jewel.Jewel(paPairs[i].fiPairId, miGroupId, paPairs[i].fsFront));
-            maBackJewels.push(new jewel.Jewel(paPairs[i].fiPairId, miGroupId, paPairs[i].fsBack));
+            maFrontJewels.push(new Jewel(paPairs[i].fiPairId, miGroupId, paPairs[i].fsFront));
+            maBackJewels.push(new Jewel(paPairs[i].fiPairId, miGroupId, paPairs[i].fsBack));
         }
         for (var i in maFrontJewels) {
             faJewels.push([
@@ -68,7 +77,7 @@ jewel.board = (function() {
     function initialize() {
         faJewels = [];
         faAvailableGroupIds = [1, 2, 3, 4, 5, 6];
-        addGroup(jewel.game.getNextGroup(fmSettings.DEFAULT_GROUP_SIZE, getPairsInUse()));
+        addGroup(game.getNextGroup(fmSettings.DEFAULT_GROUP_SIZE, getPairsInUse()));
     }
     
     function getPairsInUse() {
@@ -79,29 +88,10 @@ jewel.board = (function() {
         return maPairIds;
     }
     
-    // creates a copy of the jewel board
-    function getBoard() {
-        var copy = [],
-            x;
-        for (x = 0; x < cols; x++) {
-            copy[x] = jewels[x].slice(0);
-        }
-        return copy;
-    }
-    
-    function print() {
-        var str = "";
-        for (var y = 0; y < rows; y++) {
-            for (var x = 0; x < cols; x++) {
-                str += getJewel(x, y) + " ";
-            }
-            str += "\r\n";
-        }
-        console.log(str);
-    }
-    
     return {
+        setup : setup,
         initialize : initialize,
+        selectJewel : selectJewel,
         getJewels : getJewels
     };
     

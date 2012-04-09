@@ -1,4 +1,6 @@
-jewel.cards = (function() {
+mj.modules.cards = (function() {
+    
+    var Pair;
     
     var faPairs = [
         ['dog', 'cão'],
@@ -25,6 +27,10 @@ jewel.cards = (function() {
         ['chair', 'cadeira']
     ];
     
+    function setup() {
+        Pair = mj.classes.Pair;
+    }
+    
     function rand(piMax) {
         return (Math.floor(Math.random() * piMax));
     }
@@ -34,7 +40,7 @@ jewel.cards = (function() {
         
         while (maPairs.length < piSize) {
             var miPairId = rand(faPairs.length);
-            var moPair = new jewel.Pair(miPairId, faPairs[miPairId][0], faPairs[miPairId][1]);
+            var moPair = new Pair(miPairId, faPairs[miPairId][0], faPairs[miPairId][1]);
             var mbUsable = true;
             
             for (var i in maPairs) {
@@ -59,7 +65,7 @@ jewel.cards = (function() {
     }
     
     function pairsConflict(poPair, poAnotherPairId) {
-        var moAnotherPair = new jewel.Pair(poAnotherPairId, faPairs[poAnotherPairId][0], faPairs[poAnotherPairId][1]);
+        var moAnotherPair = new Pair(poAnotherPairId, faPairs[poAnotherPairId][0], faPairs[poAnotherPairId][1]);
         return (poPair.conflictsWith(moAnotherPair));
     }
     
@@ -72,6 +78,7 @@ jewel.cards = (function() {
     }
     
     return {
+        setup : setup,
         getNextGroup : getNextGroup,
         rescheduleMatch : rescheduleMatch,
         rescheduleMismatch : rescheduleMismatch

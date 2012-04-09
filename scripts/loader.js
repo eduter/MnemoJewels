@@ -1,4 +1,6 @@
-var jewel = {
+var mj = {
+    modules : {},
+    classes : {},
     screens : {},
     settings : {
         NUM_ROWS : 10,
@@ -19,10 +21,7 @@ window.addEventListener('load', function() {
             load : [
                 "scripts/lib/sizzle.js",
                 "scripts/dom.js",
-                "scripts/board.js",
                 "scripts/game.js",
-                "scripts/cards.js",
-                "scripts/display.js",
                 "scripts/screen.game_classic.js"
             ]
         },{
@@ -30,11 +29,11 @@ window.addEventListener('load', function() {
             yep : "scripts/screen.splash.js",
             nope : "scripts/screen.install.js",
             complete : function() {
-                jewel.game.setup();
+                mj.modules.game.setup();
                 if (Modernizr.standalone) {
-                    jewel.game.navigateTo("splash-screen");
+                    mj.modules.game.navigateTo("splash-screen");
                 } else {
-                    jewel.game.navigateTo("install-screen");
+                    mj.modules.game.navigateTo("install-screen");
                 }
             }
         }
@@ -45,8 +44,17 @@ window.addEventListener('load', function() {
         Modernizr.load([
         {
             load : [
-                "scripts/board.js"
-            ]
+                "scripts/board.js",
+                "scripts/cards.js",
+                "scripts/display.js"
+            ],
+            complete : function() {
+                for (var i in mj.modules) {
+                    if (mj.modules[i].setup) {
+                        mj.modules[i].setup();
+                    }
+                }
+            }
         }
         ]);
     }

@@ -1,18 +1,22 @@
-jewel.display = (function() {
-    var $ = jewel.dom.$;
+mj.modules.display = (function() {
+    var $ = mj.dom.$;
     var foBoard = null;
-    var NUM_ROWS = jewel.settings.NUM_ROWS;
+    var NUM_ROWS = mj.settings.NUM_ROWS;
+    
+    function setup() {
+        board = mj.modules.board;
+    }
     
     function getBoardElem() {
-      if (foBoard == null) {
-          foBoard = $('#board')[0];
-      }
-      return foBoard;
+        if (foBoard == null) {
+            foBoard = $('#board')[0];
+        }
+        return foBoard;
     }
     
     function redraw(paJewels) {
         var moBoard = getBoardElem();
-        console.dir(moBoard);
+        console.dir(mj);
         
         for (var i = 0; i < NUM_ROWS; i++) {
             for (var j = 0; j < 2; j++) {

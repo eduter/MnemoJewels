@@ -1,9 +1,10 @@
-jewel.screens['splash-screen'] = (function() {
-    var game = jewel.game;
-    var dom = jewel.dom;
+mj.screens['splash-screen'] = (function() {
+    var dom = mj.dom;
+    var game;
     var firstRun = true;
     
     function setup() {
+        game = mj.modules.game;
         dom.bind('#splash-screen', 'click', function() {
             game.navigateTo('main-menu');
         });

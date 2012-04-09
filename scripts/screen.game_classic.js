@@ -1,9 +1,10 @@
-jewel.screens['game_classic'] = (function() {
-    var game = jewel.game;
-    var dom = jewel.dom;
+mj.screens['game_classic'] = (function() {
+    var dom = mj.dom;
+    var game;
     var firstRun = true;
     
     function setup() {
+        game = mj.modules.game;
     }
     
     function run() {

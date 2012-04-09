@@ -1,14 +1,16 @@
-jewel.game = (function() {
-    var dom = jewel.dom;
-    var board = jewel.board;
+mj.modules.game = (function() {
+    var dom = mj.dom;
     var $ = dom.$;
+    var board;
+    var display;
+    var cards;
     var history = [];
     var currentScreen = null;
     
     function showScreen(screenId) {
         // run the screen module setup, if any
-        if (jewel.screens[screenId] && jewel.screens[screenId].run) {
-            jewel.screens[screenId].run();
+        if (mj.screens[screenId] && mj.screens[screenId].run) {
+            mj.screens[screenId].run();
         }
         // display new screen
         dom.addClass(getScreen(screenId), 'active');
@@ -38,6 +40,10 @@ jewel.game = (function() {
     }
     
     function setup() {
+        board = mj.modules.board;
+        display = mj.modules.display;
+        cards = mj.modules.cards;
+        
         // disable native touchmove behavior to prevent overscroll
         dom.bind(document, 'touchmove', function(event) {
             event.preventDefault();
@@ -65,11 +71,11 @@ jewel.game = (function() {
     
     function startGame() {
         board.initialize();
-        jewel.display.redraw(board.getJewels());
+        display.redraw(board.getJewels());
     }
     
     function getNextGroup(piSize, paPairsInUse) {
-        return jewel.cards.getNextGroup(piSize, paPairsInUse);
+        return cards.getNextGroup(piSize, paPairsInUse);
     }
     
     // expose public methods
