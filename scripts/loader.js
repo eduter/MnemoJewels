@@ -22,7 +22,8 @@ window.addEventListener('load', function() {
                 "scripts/lib/sizzle.js",
                 "scripts/dom.js",
                 "scripts/game.js",
-                "scripts/screen.game_classic.js"
+                "scripts/screen.game_classic.js",
+                "scripts/screen.settings.js"
             ]
         },{
             test : Modernizr.standalone,
@@ -46,7 +47,8 @@ window.addEventListener('load', function() {
             load : [
                 "scripts/board.js",
                 "scripts/cards.js",
-                "scripts/display.js"
+                "scripts/display.js",
+                "scripts/parser.js"
             ],
             complete : function() {
                 for (var i in mj.modules) {
