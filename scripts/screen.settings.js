@@ -11,7 +11,7 @@ mj.screens['settings'] = (function() {
         if (firstRun) {
             setup();
             firstRun = false;
-            parser.parseXML();
+            parser.parse();
         } 
     }
     
