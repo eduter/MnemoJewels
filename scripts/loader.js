@@ -44,6 +44,7 @@ window.addEventListener('load', function() {
         Modernizr.load([
         {
             load : [
+                "scripts/classes.js",
                 "scripts/board.js",
                 "scripts/cards.js",
                 "scripts/display.js"

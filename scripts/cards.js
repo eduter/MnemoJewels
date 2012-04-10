@@ -1,6 +1,6 @@
 mj.modules.cards = (function() {
     
-    var Pair;
+    var Pair = null;
     
     var faPairs = [
         ['dog', 'cão'],

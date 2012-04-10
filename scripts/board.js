@@ -1,39 +1,13 @@
 mj.modules.board = (function() {
     var fmSettings = mj.settings;
-    var game;
-    var Jewel;
-    var Pair;
-    var faJewels;
-    var faAvailableGroupIds;
-    
-    mj.classes.Jewel = function(piPairId, piGroupId, psText) {
-        this.fiPairId = piPairId;
-        this.fiGroupId = piGroupId;
-        this.fsText = psText;
-    }
-    
-    mj.classes.Pair = function(piPairId, psFront, psBack) {
-        this.fiPairId = piPairId;
-        this.fsFront = psFront;
-        this.fsBack = psBack;
-        
-        this.conflictsWith = function(poOtherPair) {
-            if (poOtherPair.fiPairId == this.fiPairId) {
-                return true;
-            } else if (poOtherPair.fsFront == this.fsFront) {
-                return true;
-            } else if (poOtherPair.fsBack == this.fsBack) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
+    var game = null;
+    var Jewel = null;
+    var faJewels = [];
+    var faAvailableGroupIds = [];
     
     function setup() {
         game = mj.modules.game;
         Jewel = mj.classes.Jewel;
-        Pair = mj.classes.Pair;
     }
     
     function rand(piMax) {
@@ -64,7 +38,7 @@ mj.modules.board = (function() {
     function selectJewel(piRow, piCol) {
         // TODO
         /*
-         * verifica se a jóia existe
+         * verifica se a jÃ³ia existe
          * 
          */
     }
