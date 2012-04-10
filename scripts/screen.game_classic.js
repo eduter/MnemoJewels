@@ -1,10 +1,13 @@
 mj.screens['game_classic'] = (function() {
-    var dom = mj.dom;
-    var game;
+    var game = null;
+    var input = null;
     var firstRun = true;
     
     function setup() {
         game = mj.modules.game;
+        input = mj.modules.input;
+        input.initialize();
+        input.bind('selectJewel', game.selectJewel);
     }
     
     function run() {

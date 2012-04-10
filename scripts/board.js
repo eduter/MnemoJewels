@@ -1,43 +1,40 @@
 mj.modules.board = (function() {
     var fmSettings = mj.settings;
-    var game;
-    var Jewel;
-    var Pair;
-    var faJewels;
-    var faAvailableGroupIds;
-    
-    mj.classes.Jewel = function(piPairId, piGroupId, psText) {
-        this.fiPairId = piPairId;
-        this.fiGroupId = piGroupId;
-        this.fsText = psText;
-    }
-    
-    mj.classes.Pair = function(piPairId, psFront, psBack) {
-        this.fiPairId = piPairId;
-        this.fsFront = psFront;
-        this.fsBack = psBack;
-        
-        this.conflictsWith = function(poOtherPair) {
-            if (poOtherPair.fiPairId == this.fiPairId) {
-                return true;
-            } else if (poOtherPair.fsFront == this.fsFront) {
-                return true;
-            } else if (poOtherPair.fsBack == this.fsBack) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
+    var game = null;
+    var Jewel = null;
+    var faJewels = [[],[]]; // array of 2 columns, each containing Jewel objects 
+    var faAvailableGroupIds = [];
+    var fmGroupCreationTime = {};
+    var fmSelectedJewel = null;
+    var fiLastSelectionTime = null;
     
     function setup() {
         game = mj.modules.game;
         Jewel = mj.classes.Jewel;
-        Pair = mj.classes.Pair;
+    }
+    
+    function initialize() {
+        faJewels = [[],[]];
+        faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        addGroup(game.getNextGroup(fmSettings.DEFAULT_GROUP_SIZE, []));
+        addGroup(game.getNextGroup(fmSettings.DEFAULT_GROUP_SIZE, getPairsInUse()));
+        fiLastSelectionTime = now();
+    }
+    
+    function getPairsInUse() {
+        var maPairIds = [];
+        for (var i in faJewels[0]) {
+            maPairIds.push(faJewels[0][i].fiPairId);
+        }
+        return maPairIds;
     }
     
     function rand(piMax) {
         return (Math.floor(Math.random() * piMax));
+    }
+    
+    function now() {
+        return Date.now();
     }
     
     function addGroup(paPairs) {
@@ -45,15 +42,15 @@ mj.modules.board = (function() {
         var maBackJewels = [];
         var miGroupId = getNextGroupId();
         
+        fmGroupCreationTime[miGroupId] = now();
+        
         for (var i in paPairs) {
             maFrontJewels.push(new Jewel(paPairs[i].fiPairId, miGroupId, paPairs[i].fsFront));
             maBackJewels.push(new Jewel(paPairs[i].fiPairId, miGroupId, paPairs[i].fsBack));
         }
         for (var i in maFrontJewels) {
-            faJewels.push([
-                maFrontJewels[i],
-                maBackJewels.splice(rand(maBackJewels.length), 1)[0]
-            ]);
+            faJewels[0].push(maFrontJewels[i]);
+            faJewels[1].push(maBackJewels.splice(rand(maBackJewels.length), 1)[0]);
         }
     }
     
@@ -62,30 +59,108 @@ mj.modules.board = (function() {
     }
     
     function selectJewel(piRow, piCol) {
-        // TODO
-        /*
-         * verifica se a jóia existe
-         * 
-         */
+        var miSelectionTime = now();
+        
+        if (piRow < faJewels[0].length) {
+            if (fmSelectedJewel == null) {
+                fmSelectedJewel = { row: piRow, col: piCol };
+            } else {
+                if (piCol == fmSelectedJewel.col) {
+                    fmSelectedJewel.row = piRow;
+                } else {
+                    // actually trying to match a pair
+                    var miPrevSelectedId = faJewels[fmSelectedJewel.col][fmSelectedJewel.row].fiPairId;
+                    var miNewSelectedId = faJewels[piCol][piRow].fiPairId;
+                    
+                    if (miNewSelectedId == miPrevSelectedId) {
+                        match(miNewSelectedId, miSelectionTime);
+                    } else {
+                        mismatch(miNewSelectedId, miPrevSelectedId, miSelectionTime);
+                    }
+                    fmSelectedJewel = null;
+                }
+            }
+        } else {
+            fmSelectedJewel = null;
+        }
+        game.redraw(getJewels(), fmSelectedJewel);
+    }
+    
+    function match(piPairId, piSelectionTime) {
+        var miGroupId = getGroup(piPairId);
+        var maPairsInGroup = getPairsInGroup(miGroupId);
+        var miThinkingTime = piSelectionTime -  Math.max(fiLastSelectionTime, fmGroupCreationTime[miGroupId]);
+        
+        removePair(piPairId);
+        fiLastSelectionTime = piSelectionTime;
+        game.rescheduleMatch(piPairId, maPairsInGroup, miThinkingTime);
+    }
+    
+    function mismatch(piPairId1, piPairId2, piSelectionTime) {
+        var miGroup1 = getGroup(piPairId1);
+        var miGroup2 = getGroup(piPairId2);
+        var miThinkingTime = piSelectionTime - Math.max(
+                fiLastSelectionTime,
+                Math.min(fmGroupCreationTime[miGroup1] , fmGroupCreationTime[miGroup2])
+        );
+        var maPairsInGroup = getPairsInGroup(miGroup1);
+        
+        removeGroup(miGroup1);
+        if (miGroup1 != miGroup2) {
+            maPairsInGroup = maPairsInGroup.concat(getPairsInGroup(miGroup2));
+            removeGroup(miGroup2);
+        }
+        addGroup(game.getNextGroup(maPairsInGroup.length + 1));
+        
+        fiLastSelectionTime = piSelectionTime;
+        game.rescheduleMismatch([piPairId1, piPairId2], maPairsInGroup, miThinkingTime);
+    }
+    
+    function getGroup(piPairId) {
+        for (var i in faJewels[0]) {
+            if (faJewels[0][i].fiPairId == piPairId) {
+                return faJewels[0][i].fiGroupId;
+            }
+        }
+    }
+    
+    function getPairsInGroup(piGroupId) {
+        var maPairs = [];
+        
+        for (var i in faJewels[0]) {
+            var moJewel = faJewels[0][i];
+            if (moJewel.fiGroupId == piGroupId) {
+                maPairs.push(moJewel.fiPairId);
+            }
+        }
+        return maPairs;
+    }
+    
+    function removePair(piPairId) {
+        for (var j in faJewels) {
+            for (var i in faJewels[j]) {
+                if (faJewels[j][i].fiPairId == piPairId) {
+                    faJewels[j].splice(i, 1);
+                    break;
+                }
+            }
+        }
+    }
+    
+    function removeGroup(piGroupId) {
+        for (var j in faJewels) {
+            for (var i = faJewels[j].length; i > 0; i--) {
+                if (faJewels[j][i - 1].fiGroupId == piGroupId) {
+                    faJewels[j].splice(i - 1, 1);
+                }
+            }
+        }
+        faAvailableGroupIds.push(piGroupId);
     }
     
     function getJewels() {
         // FIXME: should return a copy
         return faJewels;
-    }
-    
-    function initialize() {
-        faJewels = [];
-        faAvailableGroupIds = [1, 2, 3, 4, 5, 6];
-        addGroup(game.getNextGroup(fmSettings.DEFAULT_GROUP_SIZE, getPairsInUse()));
-    }
-    
-    function getPairsInUse() {
-        var maPairIds = [];
-        for (var i in faJewels) {
-            maPairIds.push(faJewels[i][0].fiPairId);
-        }
-        return maPairIds;
     }
     
     return {
@@ -94,5 +169,4 @@ mj.modules.board = (function() {
         selectJewel : selectJewel,
         getJewels : getJewels
     };
-    
 })();

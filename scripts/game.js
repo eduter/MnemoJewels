@@ -78,11 +78,31 @@ mj.modules.game = (function() {
         return cards.getNextGroup(piSize, paPairsInUse);
     }
     
+    function selectJewel(piRow, piCol) {
+        board.selectJewel(piRow, piCol);
+    }
+    
+    function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
+        cards.rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime);
+    }
+    
+    function rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime) {
+        cards.rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime);
+    }
+    
+    function redraw(paJewels, pmSelectedJewel) {
+        display.redraw(paJewels, pmSelectedJewel);
+    }
+    
     // expose public methods
     return {
         setup : setup,
         navigateTo : navigateTo,
         getNextGroup : getNextGroup,
-        startGame : startGame
+        startGame : startGame,
+        selectJewel : selectJewel,
+        rescheduleMatch : rescheduleMatch,
+        rescheduleMismatch : rescheduleMismatch,
+        redraw : redraw
     };
 })();

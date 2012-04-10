@@ -1,6 +1,6 @@
 mj.modules.cards = (function() {
     
-    var Pair;
+    var Pair = null;
     
     var faPairs = [
         ['dog', 'cão'],
@@ -71,10 +71,24 @@ mj.modules.cards = (function() {
     
     function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
         // TODO
+        console.group('TODO: rescheduleMatch');
+        console.dir({
+            'piPairId': piPairId,
+            'paPairsInGroup': paPairsInGroup,
+            'piThinkingTime': piThinkingTime
+        });
+        console.groupEnd();
     }
     
     function rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime) {
         // TODO
+        console.group('TODO: rescheduleMismatch');
+        console.dir({
+            'paMismatchedPairs': paMismatchedPairs,
+            'paPairsInGroup': paPairsInGroup,
+            'piThinkingTime': piThinkingTime
+        });
+        console.groupEnd();
     }
     
     return {
