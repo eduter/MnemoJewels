@@ -5,7 +5,11 @@ var mj = {
     settings : {
         NUM_ROWS : 10,
         DEFAULT_GROUP_SIZE : 3,
-        TIME_FOR_NEXT_GROUP : 5000
+        TIME_FOR_NEXT_GROUP : 5000,
+        controls : {
+            CLICK : 'selectJewel',
+            TOUCH : 'selectJewel'
+        }
     }
 };
 
@@ -47,7 +51,8 @@ window.addEventListener('load', function() {
                 "scripts/classes.js",
                 "scripts/board.js",
                 "scripts/cards.js",
-                "scripts/display.js"
+                "scripts/display.js",
+                "scripts/input.js"
             ],
             complete : function() {
                 for (var i in mj.modules) {

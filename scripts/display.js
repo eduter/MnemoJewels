@@ -1,10 +1,10 @@
 mj.modules.display = (function() {
-    var $ = mj.dom.$;
+    var dom = mj.dom;
+    var $ = dom.$;
     var foBoard = null;
     var NUM_ROWS = mj.settings.NUM_ROWS;
     
     function setup() {
-        board = mj.modules.board;
     }
     
     function getBoardElem() {
@@ -14,9 +14,8 @@ mj.modules.display = (function() {
         return foBoard;
     }
     
-    function redraw(paJewels) {
+    function redraw(paJewels, pmSelectedJewel) {
         var moBoard = getBoardElem();
-        console.dir(mj);
         
         for (var i = 0; i < NUM_ROWS; i++) {
             for (var j = 0; j < 2; j++) {
@@ -25,12 +24,15 @@ mj.modules.display = (function() {
                 moCell.innerHTML = '';
             }
         }
-        for (var i in paJewels) {
-            for (var j in paJewels[i]) {
-                var moJewel = paJewels[i][j];
+        for (var j in paJewels) {
+            for (var i in paJewels[j]) {
+                var moJewel = paJewels[j][i];
                 var moCell = moBoard.rows[NUM_ROWS - i - 1].cells[j];
                 moCell.className = 'group' + moJewel.fiGroupId;
                 moCell.innerHTML = moJewel.fsText;
+                if (pmSelectedJewel && pmSelectedJewel.row == i && pmSelectedJewel.col == j) {
+                    dom.addClass(moCell, 'selected');
+                }
             }
         }
     }
