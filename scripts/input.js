@@ -3,6 +3,7 @@ mj.modules.input = (function() {
     var $ = dom.$;
     var settings = mj.settings;
     var inputHandlers = null;
+    var fmLastStart = null;
     
     function initialize() {
         var board = $('#board')[0];
@@ -10,16 +11,16 @@ mj.modules.input = (function() {
         inputHandlers = {};
         
         dom.bind(board, 'mousedown', function(event) {
-            handleClick(event, "CLICK", event);
+            handleClick(event, "CLICK", true, event);
         });
         dom.bind(board, 'mouseup', function(event) {
-            handleClick(event, 'CLICK', event);
+            handleClick(event, 'CLICK', false, event);
         });
         dom.bind(board, 'touchstart', function(event) {
-            handleClick(event, 'TOUCH', event.targetTouches[0]);
+            handleClick(event, 'TOUCH', true, event.targetTouches[0]);
         });
         dom.bind(board, 'touchend', function(event) {
-            handleClick(event, 'TOUCH', event.targetTouches[0]);
+            handleClick(event, 'TOUCH', false, event.targetTouches[0]);
         });
     }
     
@@ -41,7 +42,7 @@ mj.modules.input = (function() {
         }
     }
     
-    function handleClick(event, control, click) {
+    function handleClick(event, control, pbStart, click) {
         // is any action bound to this input control?
         var action = settings.controls[control];
         if (!action) {
@@ -51,6 +52,12 @@ mj.modules.input = (function() {
         var moTarget = (control == 'TOUCH' ? event.targetTouches[0].target : event.target);
         var miCol = moTarget.cellIndex;
         var miRow = settings.NUM_ROWS - moTarget.parentNode.rowIndex - 1;
+        
+        if (pbStart) {
+            fmLastStart = {row: miRow, col: miCol};
+        } else if (fmLastStart && fmLastStart.row == miRow && fmLastStart.col == miCol) {
+            return;
+        }
         
         trigger(action, miRow, miCol);
         /*
