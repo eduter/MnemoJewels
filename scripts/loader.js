@@ -25,7 +25,7 @@ window.addEventListener('load', function() {
             load : [
                 "scripts/lib/sizzle.js",
                 "scripts/dom.js",
-                "scripts/game.js",
+                "scripts/main.js",
                 "scripts/screen.game_classic.js",
                 "scripts/screen.settings.js"
             ]
@@ -34,11 +34,11 @@ window.addEventListener('load', function() {
             yep : "scripts/screen.splash.js",
             nope : "scripts/screen.install.js",
             complete : function() {
-                mj.modules.game.setup();
+                mj.modules.main.setup();
                 if (Modernizr.standalone) {
-                    mj.modules.game.navigateTo("splash-screen");
+                    mj.modules.main.navigateTo("splash-screen");
                 } else {
-                    mj.modules.game.navigateTo("install-screen");
+                    mj.modules.main.navigateTo("install-screen");
                 }
             }
         }
@@ -50,6 +50,7 @@ window.addEventListener('load', function() {
         {
             load : [
                 "scripts/classes.js",
+                "scripts/game.js",
                 "scripts/board.js",
                 "scripts/cards.js",
                 "scripts/display.js",
