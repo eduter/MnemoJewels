@@ -1,12 +1,12 @@
 mj.screens['splash-screen'] = (function() {
     var dom = mj.dom;
-    var game;
+    var main;
     var firstRun = true;
     
     function setup() {
-        game = mj.modules.game;
+        main = mj.modules.main;
         dom.bind('#splash-screen', 'click', function() {
-            game.navigateTo('main-menu');
+            main.navigateTo('main-menu');
         });
     }
     
