@@ -7,18 +7,36 @@ mj.modules.board = (function() {
     var fmGroupCreationTime = {};
     var fmSelectedJewel = null;
     var fiLastSelectionTime = null;
+    var fsGameMode = null;
+    var fiTimer = null;
+    var fiEndGameTimer = null;
+    var fiClears = null;
     
     function setup() {
         game = mj.modules.game;
         Jewel = mj.classes.Jewel;
     }
     
-    function initialize() {
+    function initialize(psMode) {
+        fsGameMode = psMode;
         faJewels = [[],[]];
         faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        addGroup(game.getNextGroup(fmSettings.DEFAULT_GROUP_SIZE, []));
-        addGroup(game.getNextGroup(fmSettings.DEFAULT_GROUP_SIZE, getPairsInUse()));
         fiLastSelectionTime = now();
+        fmSelectedJewel = null;
+        fiClears = 0;
+        addDefaultGroup();
+        fiTimer = window.setInterval(addDefaultGroup, fmSettings.TIME_FOR_NEXT_GROUP);
+        if (psMode == '5-minutes') {
+            fiEndGameTimer = window.setTimeout(function(){ gameOver(true); }, 5*60000);
+        }
+    }
+    
+    function addDefaultGroup() {
+        addGroup(game.getNextGroup(fmSettings.DEFAULT_GROUP_SIZE, getPairsInUse()));
+    }
+    
+    function getNumPairs() {
+        return faJewels[0].length;
     }
     
     function getPairsInUse() {
@@ -49,9 +67,22 @@ mj.modules.board = (function() {
             maBackJewels.push(new Jewel(paPairs[i].fiPairId, miGroupId, paPairs[i].fsBack));
         }
         for (var i in maFrontJewels) {
-            faJewels[0].push(maFrontJewels[i]);
-            faJewels[1].push(maBackJewels.splice(rand(maBackJewels.length), 1)[0]);
+            if (getNumPairs() < fmSettings.NUM_ROWS) {
+                faJewels[0].push(maFrontJewels[i]);
+                faJewels[1].push(maBackJewels.splice(rand(maBackJewels.length), 1)[0]);
+            } else {
+                gameOver(false);
+                return;
+            }
         }
+    }
+    
+    function gameOver(pbWin) {
+        window.clearInterval(fiTimer);
+        if (fiEndGameTimer != null) {
+            window.clearTimeout(fiEndGameTimer);
+        }
+        game.gameOver(pbWin);
     }
     
     function getNextGroupId() {
@@ -83,7 +114,6 @@ mj.modules.board = (function() {
         } else {
             fmSelectedJewel = null;
         }
-        game.redraw(getJewels(), fmSelectedJewel);
     }
     
     function match(piPairId, piSelectionTime) {
@@ -94,6 +124,20 @@ mj.modules.board = (function() {
         removePair(piPairId);
         fiLastSelectionTime = piSelectionTime;
         game.rescheduleMatch(piPairId, maPairsInGroup, miThinkingTime);
+        if (maPairsInGroup.length == 1) {
+            faAvailableGroupIds.push(miGroupId);
+        }
+        
+        if (getNumPairs() == 0) {
+            fiClears++;
+            if (fsGameMode == '10-clears' && fiClears == 10) {
+                gameOver(true);
+                return;
+            }
+            window.clearInterval(fiTimer);
+            addDefaultGroup();
+            fiTimer = window.setInterval(addDefaultGroup, fmSettings.TIME_FOR_NEXT_GROUP);
+        }
     }
     
     function mismatch(piPairId1, piPairId2, piSelectionTime) {
@@ -163,10 +207,15 @@ mj.modules.board = (function() {
         return faJewels;
     }
     
+    function getSelectedJewel() {
+        return fmSelectedJewel;
+    }
+    
     return {
         setup : setup,
         initialize : initialize,
         selectJewel : selectJewel,
-        getJewels : getJewels
+        getJewels : getJewels,
+        getSelectedJewel : getSelectedJewel
     };
 })();

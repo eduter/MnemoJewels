@@ -3,6 +3,7 @@ mj.modules.main = (function() {
     var $ = dom.$;
     var history = [];
     var currentScreen = null;
+    var fbFirstRun = true;
     
     function showScreen(screenId) {
         // run the screen module setup, if any
@@ -37,33 +38,37 @@ mj.modules.main = (function() {
     }
     
     function setup() {
-        board = mj.modules.board;
-        display = mj.modules.display;
-        cards = mj.modules.cards;
-        
-        // disable native touchmove behavior to prevent overscroll
-        dom.bind(document, 'touchmove', function(event) {
-            event.preventDefault();
-        });
-        
-        // hide the address bar on Android devices
-        if (/Android/.test(navigator.userAgent)) {
-            $('html')[0].style.height = '200%';
-            setTimeout(function() {
-                window.scrollTo(0, 1);
-            }, 0);
-        }
-        
-        // handle navigation button clicks
-        dom.bind('body', 'click', function(e) {
-            if (e.target.nodeName.toLowerCase() === 'button') {
-                if (dom.hasClass(e.target, 'back')) {
-                    back();
-                } else if (dom.hasClass(e.target, 'nav')) {
-                    navigateTo(e.target.getAttribute('name'));
-                }
+        if (fbFirstRun) {
+            board = mj.modules.board;
+            display = mj.modules.display;
+            cards = mj.modules.cards;
+            
+            // disable native touchmove behavior to prevent overscroll
+            dom.bind(document, 'touchmove', function(event) {
+                event.preventDefault();
+            });
+            
+            // hide the address bar on Android devices
+            if (/Android/.test(navigator.userAgent)) {
+                $('html')[0].style.height = '200%';
+                setTimeout(function() {
+                    window.scrollTo(0, 1);
+                }, 0);
             }
-        });
+            
+            // handle navigation button clicks
+            dom.bind('body', 'click', function(e) {
+                if (e.target.nodeName.toLowerCase() === 'button') {
+                    if (dom.hasClass(e.target, 'back')) {
+                        back();
+                    } else if (dom.hasClass(e.target, 'nav')) {
+                        navigateTo(e.target.getAttribute('name'));
+                    }
+                }
+            });
+            
+            fbFirstRun = false;
+        }
     }
     
     // expose public methods

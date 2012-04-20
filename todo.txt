@@ -1,0 +1,58 @@
+[\] minimum requirements
+    [X] when getting a pair wrong, replace the group for a group with one extra pair
+    [X] adding groups from time to time
+    [\] testing for game end conditions
+        [X] board full
+        [X] timeout
+        [X] number of clears
+        [ ] running out of scheduled cards
+    [\] visual feedback
+        [X] to show selected bricks
+        [ ] when u get a pair right
+        [ ] when u get a pair wrong
+    [ ] using Web SQL Database to store the cards
+        /*
+          flashcards
+              id
+              sFront
+              sBack
+              dLastRep
+              dNextRep
+              fEasiness
+              
+              grade
+              acq_reps
+              ret_reps
+              lapses
+              acq_reps_since_lapse
+              ret_reps_since_lapse
+              unseen
+              scheduled_interval
+              actual_interval
+              new_interval
+              noise
+              thinking_time
+        */
+    [ ] some basic scheduling
+[\] full version
+    [X] ignore attempts of matching 2 bricks from the same column
+    [ ] make "dragging" work on touchscreens
+    [ ] multiple game modes
+        // classic: play until the screen gets filled
+        // review: play only until you're done with the flashcards scheduled for today or before
+        // 5 min: try to make as many points as possible in 5 minutes
+        // 10 clear: clear the screen 10 times in the least amount of time possible
+    [ ] improve scheduling
+    [ ] keep scores and store records and statistics
+    [ ] config screen
+    [ ] allowing the user to import decks
+    [ ] gay it up
+        [ ] use a canvas element
+        [ ] background images
+            /*
+              Terragen?
+                http://www.planetside.co.uk/content/view/21/36/
+              
+              look for royalty free image banks
+            */
+    [ ] make it an app (not sure of what that means)

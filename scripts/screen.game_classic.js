@@ -15,7 +15,7 @@ mj.screens['game_classic'] = (function() {
             setup();
             firstRun = false;
         }
-        game.startGame();
+        game.startGame('classic');
     }
     
     return {

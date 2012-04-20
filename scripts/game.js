@@ -2,6 +2,7 @@ mj.modules.game = (function() {
     var board = null;
     var display = null;
     var cards = null;
+    var fiRedrawInterval = null;
     
     function setup() {
         board = mj.modules.board;
@@ -9,9 +10,24 @@ mj.modules.game = (function() {
         cards = mj.modules.cards;
     }
     
-    function startGame() {
-        board.initialize();
+    function startGame(psMode) {
+        board.initialize(psMode);
+        fiRedrawInterval = window.setInterval(
+            function(){
+                display.redraw(board.getJewels(), board.getSelectedJewel());
+            },
+            1000/30
+        );
+    }
+    
+    function gameOver(pbWin) {
+        window.clearInterval(fiRedrawInterval);
         display.redraw(board.getJewels());
+        if (pbWin) {
+            alert('Well Done!');
+        } else {
+            alert('Game Over!');
+        }
     }
     
     function getNextGroup(piSize, paPairsInUse) {
@@ -39,6 +55,7 @@ mj.modules.game = (function() {
         setup : setup,
         getNextGroup : getNextGroup,
         startGame : startGame,
+        gameOver : gameOver,
         selectJewel : selectJewel,
         rescheduleMatch : rescheduleMatch,
         rescheduleMismatch : rescheduleMismatch,
