@@ -30,8 +30,8 @@ mj.modules.game = (function() {
         }
     }
     
-    function getNextGroup(piSize, paPairsInUse) {
-        return cards.getNextGroup(piSize, paPairsInUse);
+    function createNewGroup(piSize, paPairsInUse, pcCallback) {
+        return cards.createNewGroup(piSize, paPairsInUse, pcCallback);
     }
     
     function selectJewel(piRow, piCol) {
@@ -53,7 +53,7 @@ mj.modules.game = (function() {
     // expose public methods
     return {
         setup : setup,
-        getNextGroup : getNextGroup,
+        createNewGroup : createNewGroup,
         startGame : startGame,
         gameOver : gameOver,
         selectJewel : selectJewel,

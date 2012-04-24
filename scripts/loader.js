@@ -48,6 +48,7 @@ window.addEventListener('load', function() {
         {
             load : [
                 "scripts/classes.js",
+                "scripts/database.js",
                 "scripts/game.js",
                 "scripts/board.js",
                 "scripts/cards.js",

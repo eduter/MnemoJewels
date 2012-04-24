@@ -1,33 +1,10 @@
 mj.modules.cards = (function() {
     
+    var db = null;
     var Pair = null;
     
-    var faPairs = [
-        ['dog', 'cão'],
-        ['cat', 'gato'],
-        ['duck', 'pato'],
-        ['duck', 'abaixar-se'],
-        ['red', 'vermelho'],
-        ['pump', 'bomba'],
-        ['bomb', 'bomba'],
-        ['white', 'branco'],
-        ['blue', 'azul'],
-        ['green', 'verde'],
-        ['house', 'casa'],
-        ['table', 'mesa'],
-        ['table', 'tabela'],
-        ['chicken', 'galinha'],
-        ['horse', 'cavalo'],
-        ['cow', 'vaca'],
-        ['bed', 'cama'],
-        ['bad', 'ruim, mau'],
-        ['which', 'qual'],
-        ['witch', 'bruxo(a)'],
-        ['with', 'com'],
-        ['chair', 'cadeira']
-    ];
-    
     function setup() {
+        db = mj.modules.database;
         Pair = mj.classes.Pair;
     }
     
@@ -35,38 +12,35 @@ mj.modules.cards = (function() {
         return (Math.floor(Math.random() * piMax));
     }
     
-    function getNextGroup(piSize, paPairsInUse) {
-        var maPairs = [];
-        
-        while (maPairs.length < piSize) {
-            var miPairId = rand(faPairs.length);
-            var moPair = new Pair(miPairId, faPairs[miPairId][0], faPairs[miPairId][1]);
-            var mbUsable = true;
+    function createNewGroup(piSize, paPairsInUse, pcCallback) {
+        db.loadNextCards(piSize * 10, function(paNextCards) {
+            var maPairs = [];
             
-            for (var i in maPairs) {
-                if (moPair.conflictsWith(maPairs[i])) {
-                    mbUsable = false;
-                    break;
-                }
-            }
-            if (mbUsable) {
-                for (var i in paPairsInUse) {
-                    if (pairsConflict(moPair, paPairsInUse[i])) {
+            while (maPairs.length < piSize) {
+                var mmCard = paNextCards.shift();
+                var moPair = new Pair(mmCard['id'], mmCard['sFront'], mmCard['sBack']);
+                var mbUsable = true;
+                
+                for (var i in maPairs) {
+                    if (moPair.conflictsWith(maPairs[i])) {
                         mbUsable = false;
                         break;
                     }
                 }
                 if (mbUsable) {
-                    maPairs.push(moPair);
+                    for (var i in paPairsInUse) {
+                        if (moPair.conflictsWith(paPairsInUse[i])) {
+                            mbUsable = false;
+                            break;
+                        }
+                    }
+                    if (mbUsable) {
+                        maPairs.push(moPair);
+                    }
                 }
             }
-        }
-        return maPairs;
-    }
-    
-    function pairsConflict(poPair, poAnotherPairId) {
-        var moAnotherPair = new Pair(poAnotherPairId, faPairs[poAnotherPairId][0], faPairs[poAnotherPairId][1]);
-        return (poPair.conflictsWith(moAnotherPair));
+            pcCallback(maPairs);
+        });
     }
     
     function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
@@ -147,7 +121,7 @@ mj.modules.cards = (function() {
     
     return {
         setup : setup,
-        getNextGroup : getNextGroup,
+        createNewGroup : createNewGroup,
         rescheduleMatch : rescheduleMatch,
         rescheduleMismatch : rescheduleMismatch
     };

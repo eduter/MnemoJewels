@@ -10,29 +10,38 @@
         [X] to show selected bricks
         [ ] when u get a pair right
         [ ] when u get a pair wrong
-    [ ] using Web SQL Database to store the cards
-        /*
-          flashcards
-              id
-              sFront
-              sBack
-              dLastRep
-              dNextRep
-              fEasiness
-              
-              grade
-              acq_reps
-              ret_reps
-              lapses
-              acq_reps_since_lapse
-              ret_reps_since_lapse
-              unseen
-              scheduled_interval
-              actual_interval
-              new_interval
-              noise
-              thinking_time
-        */
+    [\] DB
+        [X] creating the database module
+        [X] storing the cards in the db
+        [ ] including all fields necessary to the scheduling
+            /*
+              mistakes
+                  id
+                  iRemainingReps
+              cards_mistakes
+                  idMistake
+                  idCard
+              cards
+                  id
+                  sFront
+                  sBack
+                  dLastRep
+                  dNextRep
+                  fEasiness
+                  
+                  grade
+                  acq_reps
+                  ret_reps
+                  lapses
+                  acq_reps_since_lapse
+                  ret_reps_since_lapse
+                  unseen
+                  scheduled_interval
+                  actual_interval
+                  new_interval
+                  noise
+                  thinking_time
+            */
     [ ] some basic scheduling
 [\] full version
     [X] ignore attempts of matching 2 bricks from the same column
