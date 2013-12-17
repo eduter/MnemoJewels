@@ -29,7 +29,7 @@ mj.modules.display = (function() {
                 var moJewel = paJewels[j][i];
                 var moCell = moBoard.rows[NUM_ROWS - i - 1].cells[j];
                 moCell.className = 'group' + moJewel.fiGroupId;
-                moCell.innerHTML = moJewel.fsText;
+                moCell.innerHTML = moJewel.getText();
                 if (pmSelectedJewel && pmSelectedJewel.row == i && pmSelectedJewel.col == j) {
                     dom.addClass(moCell, 'selected');
                 }

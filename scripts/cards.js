@@ -2,6 +2,13 @@ mj.modules.cards = (function() {
     
     var db = null;
     var Pair = null;
+
+    var Time = {
+        SECOND:             1000,
+        MINUTE:        60 * 1000,
+        HOUR:     60 * 60 * 1000,
+        DAY: 24 * 60 * 60 * 1000
+    };
     
     function setup() {
         db = mj.modules.database;
@@ -18,7 +25,7 @@ mj.modules.cards = (function() {
             
             while (maPairs.length < piSize) {
                 var mmCard = paNextCards.shift();
-                var moPair = new Pair(mmCard['id'], mmCard['sFront'], mmCard['sBack']);
+                var moPair = new Pair(mmCard['id'], mmCard['sFront'], mmCard['sBack'], mmCard['dLastRep'], mmCard['dNextRep'], mmCard['fEasiness']);
                 var mbUsable = true;
                 
                 for (var i in maPairs) {
@@ -36,6 +43,7 @@ mj.modules.cards = (function() {
                     }
                     if (mbUsable) {
                         maPairs.push(moPair);
+                        console.log(new Date(moPair.fdNextRep));
                     }
                 }
             }
@@ -44,24 +52,65 @@ mj.modules.cards = (function() {
     }
     
     function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
-        // TODO
-        console.group('TODO: rescheduleMatch');
+        console.group('rescheduleMatch');
         console.dir({
             'piPairId': piPairId,
             'paPairsInGroup': paPairsInGroup,
             'piThinkingTime': piThinkingTime
         });
+        if (paPairsInGroup.length > 1) {
+            var moPair;
+            var now = Date.now();
+
+            for (var i = 0; i < paPairsInGroup.length; i++) {
+                if (paPairsInGroup[i].fiPairId == piPairId) {
+                    moPair = paPairsInGroup[i];
+                    break;
+                }
+            }
+            if (moPair.fdLastRep) {
+                var scheduledInterval = moPair.fdNextRep - moPair.fdLastRep;
+                var actualInterval = now - moPair.fdLastRep;
+                var multiplier = moPair.ffEasiness * (paPairsInGroup.length - 1) / 2;
+                moPair.fdNextRep = Math.floor(moPair.fdLastRep + Math.max(multiplier * actualInterval, scheduledInterval));
+                console.dir({
+                    scheduledInterval: scheduledInterval,
+                    actualInterval: actualInterval,
+                    multiplier: multiplier,
+                    fdLastRep: new Date(moPair.fdLastRep),
+                    fdNextRep: new Date(moPair.fdNextRep)
+                });
+                // moPair.ffEasiness = ? // TODO
+            } else {
+                moPair.fdNextRep = now + (paPairsInGroup.length * 1000 / piThinkingTime * Time.DAY);
+            }
+            console.log('fdNextRep: ' + new Date(moPair.fdNextRep));
+            moPair.fdLastRep = now;
+            db.updateCard(moPair);
+        }
         console.groupEnd();
     }
     
     function rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime) {
-        // TODO
-        console.group('TODO: rescheduleMismatch');
+        console.group('rescheduleMismatch');
         console.dir({
             'paMismatchedPairs': paMismatchedPairs,
             'paPairsInGroup': paPairsInGroup,
             'piThinkingTime': piThinkingTime
         });
+        var now = Date.now();
+        var nextRep = now + 2 * Time.MINUTE;
+        for (var m = 0; m < paMismatchedPairs.length - 1; m++) {
+            for (var g = 0; g < paPairsInGroup.length - 1; g++) {
+                if (paPairsInGroup[g].fiPairId == paMismatchedPairs[m]) {
+                    var moPair = paPairsInGroup[g];
+                    moPair.fdNextRep = nextRep;
+                    moPair.fdLastRep = now;
+                    db.updateCard(moPair);
+                    break;
+                }
+            }
+        }
         console.groupEnd();
     }
     

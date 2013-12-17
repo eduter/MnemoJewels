@@ -66,8 +66,8 @@ mj.modules.board = (function() {
         for (var i in paPairs) {
             var moPair = paPairs[i];
             fmPairsInUse[moPair.fiPairId] = moPair;
-            maFrontJewels.push(new Jewel(moPair.fiPairId, miGroupId, moPair.fsFront));
-            maBackJewels.push(new Jewel(moPair.fiPairId, miGroupId, moPair.fsBack));
+            maFrontJewels.push(new Jewel(miGroupId, moPair, true));
+            maBackJewels.push(new Jewel(miGroupId, moPair, false));
         }
         for (var i in maFrontJewels) {
             if (getNumPairs() < fmSettings.NUM_ROWS) {
@@ -103,8 +103,8 @@ mj.modules.board = (function() {
                     fmSelectedJewel.row = piRow;
                 } else {
                     // actually trying to match a pair
-                    var miPrevSelectedId = faJewels[fmSelectedJewel.col][fmSelectedJewel.row].fiPairId;
-                    var miNewSelectedId = faJewels[piCol][piRow].fiPairId;
+                    var miPrevSelectedId = faJewels[fmSelectedJewel.col][fmSelectedJewel.row].foPair.fiPairId;
+                    var miNewSelectedId = faJewels[piCol][piRow].foPair.fiPairId;
                     
                     if (miNewSelectedId == miPrevSelectedId) {
                         match(miNewSelectedId, miSelectionTime);
@@ -165,7 +165,7 @@ mj.modules.board = (function() {
     
     function getGroup(piPairId) {
         for (var i in faJewels[0]) {
-            if (faJewels[0][i].fiPairId == piPairId) {
+            if (faJewels[0][i].foPair.fiPairId == piPairId) {
                 return faJewels[0][i].fiGroupId;
             }
         }
@@ -177,7 +177,7 @@ mj.modules.board = (function() {
         for (var i in faJewels[0]) {
             var moJewel = faJewels[0][i];
             if (moJewel.fiGroupId == piGroupId) {
-                maPairs.push(moJewel.fiPairId);
+                maPairs.push(moJewel.foPair);
             }
         }
         return maPairs;
@@ -186,7 +186,7 @@ mj.modules.board = (function() {
     function removePair(piPairId) {
         for (var j in faJewels) {
             for (var i in faJewels[j]) {
-                if (faJewels[j][i].fiPairId == piPairId) {
+                if (faJewels[j][i].foPair.fiPairId == piPairId) {
                     faJewels[j].splice(i, 1);
                     break;
                 }
@@ -199,10 +199,10 @@ mj.modules.board = (function() {
         for (var j in faJewels) {
             for (var i = faJewels[j].length; i > 0; i--) {
                 if (faJewels[j][i - 1].fiGroupId == piGroupId) {
-                    faJewels[j].splice(i - 1, 1);
                     if (j == 0) {
-                        delete fmPairsInUse[faJewels[j][i - 1].fiPairId];
+                        delete fmPairsInUse[faJewels[j][i - 1].foPair.fiPairId];
                     }
+                    faJewels[j].splice(i - 1, 1);
                 }
             }
         }

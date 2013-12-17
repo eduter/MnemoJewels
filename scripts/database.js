@@ -96,19 +96,36 @@ mj.modules.database = (function() {
             });
         });
     }
-    
+
+    function dateToStr(date) {
+        if (date) {
+            return new Date(date).toISOString();
+        } else if (date === null) {
+            return 'null';
+        } else {
+            return typeof date;
+        }
+    }
+
     function loadNextCards(piHowMany, pcCallback) {
         foDb.transaction(function (tx) {
+            var now = Date.now();
+            var query = 'SELECT c.*, 1 as ord FROM cards c WHERE dNextRep <= ? ' +
+                'UNION ' +
+                'SELECT c.*, 2 as ord FROM cards c WHERE dNextRep IS NULL ' +
+                'UNION ' +
+                'SELECT c.*, 3 as ord FROM cards c WHERE dNextRep > ? ' +
+                'ORDER BY ord, dNextRep, id ' +
+                'LIMIT ?';
             tx.executeSql(
-                'SELECT * ' +
-                'FROM cards ' +
-                'ORDER BY dNextRep, id ' +
-                'LIMIT ?',
-                [piHowMany],
+                query,
+                [now, now, piHowMany],
                 function (tx, results) {
                     var maCards = [];
                     if (results.rows && results.rows.length) {
                         for (var i = 0; i < results.rows.length; i++) {
+                            //var r = results.rows.item(i);
+                            //console.log(r.id + ' ' + r.sFront + ' ' + dateToStr(r.dLastRep) + ' ' + dateToStr(r.dNextRep));
                             maCards.push(results.rows.item(i));
                         }
                     }
@@ -117,9 +134,23 @@ mj.modules.database = (function() {
             );
         });
     }
-    
+
+    function updateCard(poPair) {
+        foDb.transaction(function (tx) {
+            tx.executeSql('\
+                UPDATE cards SET \
+                    dLastRep = ?, \
+                    dNextRep = ?, \
+                    fEasiness = ? \
+                WHERE id = ?',
+                [poPair.fdLastRep, poPair.fdNextRep, poPair.ffEasiness, poPair.fiPairId]
+            );
+        });
+    }
+
     return {
         setup : setup,
-        loadNextCards : loadNextCards
+        loadNextCards : loadNextCards,
+        updateCard: updateCard
     };
 })();
