@@ -1,0 +1,8 @@
+.settings
+.project
+.checkstyle
+.idea
+
+syntax: glob
+*.bak
+/MnemoJewels.iml
