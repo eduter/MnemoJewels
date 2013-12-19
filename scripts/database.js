@@ -1,58 +1,70 @@
 mj.modules.database = (function() {
     
     var foDb = null;
-    var fmTestCards = {
-        'och' : 'and',
-        'det' : 'it / that',
-        'som' : 'that / which / who',
-        'på' : 'on',
-        'av' : 'of / by',
-        'för' : 'for',
-        'med' : 'with',
-        'till' : 'to / till',
-        'de' : 'they, those',
-        'inte' : 'not',
-        'om' : 'about / concerning',
-        'men' : 'but',
-        'från' : 'from',
-        'så' : 'so / such',
-        'kan' : 'can',
-        'man' : 'one / man',
-        'när' : 'when / whenever',
-        'år' : 'year / years',
-        'under' : 'under / during',
-        'också' : 'also',
-        'efter' : 'after',
-        'eller' : 'or',
-        'nu' : 'now',
-        'vid' : 'with / at',
-        'mot' : 'towards / against',
-        'skulle' : 'should',
-        'kommer' : 'comes',
-        'vara' : 'to be',
-        'alla' : 'all',
-        'andra' : 'other / second',
-        'mycket' : 'much',
-        'än' : 'than',
-        'då' : 'then',
-        'sedan' : 'since',
-        'över' : 'over',
-        'bara' : 'just / only',
-        'även' : 'also',
-        'vad' : 'what',
-        'få' : 'get / manage',
-        'två' : '2',
-        'vill' : 'will / want',
-        'ha' : 'have',
-        'många' : 'many',
-        'hur' : 'how',
-        'mer' : 'more',
-        'Sverige' : 'Sweden',
-        'kronor' : 'monetary unit',
-        'detta' : 'this',
-        'nya' : 'new',
-        'procent' : 'percent'
-    };
+    var faTestCards = [
+        ['och', 'and'],
+        ['det', 'it'],
+        ['det', 'that'],
+        ['som', 'that'],
+        ['som', 'which'],
+        ['som', 'who'],
+        ['på', 'on'],
+        ['för', 'for'],
+        ['med', 'with'],
+        ['till', 'to'],
+        ['till', 'till'],
+        ['de', 'those'],
+        ['de', 'they'],
+        ['inte', 'not'],
+        ['om', 'about'],
+        ['om', 'if'],
+        ['men', 'but'],
+        ['från', 'from'],
+        ['så', 'so'],
+        ['så', 'such'],
+        ['kan', 'can'],
+        ['man', 'man'],
+        ['man', 'one'],
+        ['när', 'whenever'],
+        ['när', 'when'],
+        ['år', 'year'],
+        ['under', 'under'],
+        ['under', 'during'],
+        ['också', 'also'],
+        ['efter', 'after'],
+        ['eller', 'or'],
+        ['nu', 'now'],
+        ['vid', 'at'],
+        ['vid', 'with'],
+        ['mot', 'towards'],
+        ['mot', 'against'],
+        ['skulle', 'should'],
+        ['kommer', 'comes'],
+        ['vara', 'to be'],
+        ['alla', 'all'],
+        ['andra', 'second'],
+        ['andra', 'other'],
+        ['mycket', 'much'],
+        ['än', 'than'],
+        ['då', 'then'],
+        ['sedan', 'since'],
+        ['över', 'over'],
+        ['bara', 'just'],
+        ['bara', 'only'],
+        ['även', 'also'],
+        ['vad', 'what'],
+        ['få', 'get'],
+        ['få', 'have to'],
+        ['två', '2'],
+        ['vill', 'want'],
+        ['ha', 'have'],
+        ['många', 'many'],
+        ['hur', 'how'],
+        ['mer', 'more'],
+        ['detta', 'this'],
+        ['nya', 'new'],
+        ['procent', 'percent']
+    ];
     
     function setup() {
         foDb = openDatabase('mj', '1.0', 'MnemoJewels', 2 * 1024 * 1024);
@@ -86,10 +98,11 @@ mj.modules.database = (function() {
             tx.executeSql('SELECT COUNT(*) AS count FROM cards', [], function (tx, results) {
                 var mbEmpty = (results.rows.item(0).count == 0);
                 if (mbEmpty) {
-                    for (var msFront in fmTestCards) {
+                    for (var i = 0; i < faTestCards.length; i++) {
+                        var card = faTestCards[i];
                         tx.executeSql(
                             'INSERT INTO cards (sFront, sBack, fEasiness) VALUES (?, ?, 2.5)',
-                            [msFront, fmTestCards[msFront]]
+                            [card[0], card[1]]
                         );
                     }
                 }
@@ -125,7 +138,7 @@ mj.modules.database = (function() {
                     if (results.rows && results.rows.length) {
                         for (var i = 0; i < results.rows.length; i++) {
                             //var r = results.rows.item(i);
-                            //console.log(r.id + ' ' + r.sFront + ' ' + dateToStr(r.dLastRep) + ' ' + dateToStr(r.dNextRep));
+                            //console.log(r.id + '\t' + dateToStr(r.dLastRep) + '\t' + dateToStr(r.dNextRep) + '\t' + r.sFront);
                             maCards.push(results.rows.item(i));
                         }
                     }
