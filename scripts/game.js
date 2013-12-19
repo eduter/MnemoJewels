@@ -3,6 +3,7 @@ mj.modules.game = (function() {
     var display = null;
     var cards = null;
     var fiRedrawInterval = null;
+    var ffScopeSize = 10;
     
     function setup() {
         board = mj.modules.board;
@@ -39,10 +40,12 @@ mj.modules.game = (function() {
     }
     
     function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
+        ffScopeSize *= (paPairsInGroup.length - 1) / 100 + 1;
         cards.rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime);
     }
     
     function rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime) {
+        ffScopeSize *= 0.9;
         cards.rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime);
     }
     
@@ -50,6 +53,10 @@ mj.modules.game = (function() {
         display.redraw(paJewels, pmSelectedJewel);
     }
     
+    function getScopeSize() {
+        return Math.round(ffScopeSize);
+    }
+
     // expose public methods
     return {
         setup : setup,
@@ -59,6 +66,7 @@ mj.modules.game = (function() {
         selectJewel : selectJewel,
         rescheduleMatch : rescheduleMatch,
         rescheduleMismatch : rescheduleMismatch,
-        redraw : redraw
+        redraw : redraw,
+        getScopeSize : getScopeSize
     };
 })();

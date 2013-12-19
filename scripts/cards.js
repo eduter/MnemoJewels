@@ -1,5 +1,6 @@
 mj.modules.cards = (function() {
-    
+
+    var game = null;
     var db = null;
     var Pair = null;
 
@@ -11,6 +12,7 @@ mj.modules.cards = (function() {
     };
     
     function setup() {
+        game = mj.modules.game;
         db = mj.modules.database;
         Pair = mj.classes.Pair;
     }
@@ -20,7 +22,7 @@ mj.modules.cards = (function() {
     }
     
     function createNewGroup(piSize, paPairsInUse, pcCallback) {
-        db.loadNextCards(piSize * 10, function(paNextCards) {
+        db.loadNextCards(piSize * game.getScopeSize(), function(paNextCards) {
             var maPairs = [];
             
             while (maPairs.length < piSize) {
@@ -43,7 +45,6 @@ mj.modules.cards = (function() {
                     }
                     if (mbUsable) {
                         maPairs.push(moPair);
-                        console.log(new Date(moPair.fdNextRep));
                     }
                 }
             }
