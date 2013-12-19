@@ -68,11 +68,11 @@ mj.modules.database = (function() {
     
     function setup() {
         foDb = openDatabase('mj', '1.0', 'MnemoJewels', 2 * 1024 * 1024);
+        create();
+    }
+
+    function create() {
         foDb.transaction(function (tx) {
-//            tx.executeSql('DROP TABLE IF EXISTS cards');
-//            tx.executeSql('DROP TABLE IF EXISTS mistakes');
-//            tx.executeSql('DROP TABLE IF EXISTS cards_mistakes');
-            
             tx.executeSql('CREATE TABLE IF NOT EXISTS cards ('
                          +    'id INTEGER PRIMARY KEY AUTOINCREMENT,'
                          +    'sFront TEXT,'
@@ -93,7 +93,7 @@ mj.modules.database = (function() {
                          +')'
             );
         });
-        
+
         foDb.transaction(function (tx) {
             tx.executeSql('SELECT COUNT(*) AS count FROM cards', [], function (tx, results) {
                 var mbEmpty = (results.rows.item(0).count == 0);
@@ -107,6 +107,14 @@ mj.modules.database = (function() {
                     }
                 }
             });
+        });
+    }
+
+    function destroy() {
+        foDb.transaction(function (tx) {
+            tx.executeSql('DROP TABLE IF EXISTS cards');
+            tx.executeSql('DROP TABLE IF EXISTS mistakes');
+            tx.executeSql('DROP TABLE IF EXISTS cards_mistakes');
         });
     }
 
@@ -163,6 +171,8 @@ mj.modules.database = (function() {
 
     return {
         setup : setup,
+        create: create,
+        destroy: destroy,
         loadNextCards : loadNextCards,
         updateCard: updateCard
     };
