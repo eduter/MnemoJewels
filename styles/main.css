@@ -14,10 +14,10 @@ body {
     font-size : 32px;
     width : 10em;
     height : 15em;
-    background-color : #2d7fd3;
+    background-color : #C5CADF;
     background-image: url("../backgrounds/bg.png");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     font-family : default-font;
     color : rgb(200,200,100);
 }
@@ -98,36 +98,43 @@ button {
     background-size: 170px 39px;
     width: 176px;
     height: 45px;
-    border : 0.15em solid black;
+    border: solid 2px rgba(0, 0, 0, 0.5);
     border-radius : 0.7em;
 }
 
 button.back {
     background-image : url("../svg/jewel_red.svg");
+    background-color: red;
 }
 
 ul.menu li button.bt_blue {
     background-image: url("../svg/jewel_blue.svg");
+    background-color: blue;
 }
 
 ul.menu li button.bt_green {
     background-image: url("../svg/jewel_green.svg");
+    background-color: green;
 }
 
 ul.menu li button.bt_yellow {
     background-image: url("../svg/jewel_yellow.svg");
+    background-color: yellow;
 }
 
 ul.menu li button.bt_red {
     background-image: url("../svg/jewel_red.svg");
+    background-color: red;
 }
 
 ul.menu li button.bt_purple {
     background-image: url("../svg/jewel_purple.svg");
+    background-color: purple;
 }
 
 ul.menu li button.bt_orange {
     background-image: url("../svg/jewel_orange.svg");
+    background-color: orange;
 }
 
 ul.menu li button:hover {
@@ -160,14 +167,16 @@ table#board {
 }
 
 table#board td {
-    border: solid 1px rgba(0, 0, 0, 0.5);
+    border: solid 2px rgba(0, 0, 0, 0.5);
     background: rgba(0, 0, 0, 0.5);
     height: 35px;
     width: 50%;
+    border-radius: 10px;
+    padding-left: 5px;
 }
 
 table#board td.selected {
-    border: solid 1px white;
+    border: solid 2px rgba(255, 255, 255, 0.7);
 }
 
 table#board td.group1 {
@@ -180,6 +189,7 @@ table#board td.group2 {
 
 table#board td.group3 {
     background: orange;
+    color: navy;
 }
 
 table#board td.group4 {
@@ -192,6 +202,7 @@ table#board td.group5 {
 
 table#board td.group6 {
     background: yellow;
+    color: navy;
 }
 
 table#board td.group7 {
