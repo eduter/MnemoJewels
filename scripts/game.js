@@ -1,4 +1,5 @@
 mj.modules.game = (function() {
+    var main = null;
     var board = null;
     var display = null;
     var cards = null;
@@ -6,6 +7,7 @@ mj.modules.game = (function() {
     var ffScopeSize = 10;
     
     function setup() {
+        main = mj.modules.main;
         board = mj.modules.board;
         display = mj.modules.display;
         cards = mj.modules.cards;
@@ -29,6 +31,7 @@ mj.modules.game = (function() {
         } else {
             alert('Game Over!');
         }
+        main.navigateTo('main-menu');
     }
     
     function createNewGroup(piSize, paPairsInUse, pcCallback) {
