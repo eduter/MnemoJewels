@@ -20,36 +20,79 @@ mj.modules.cards = (function() {
     function rand(piMax) {
         return (Math.floor(Math.random() * piMax));
     }
-    
-    function createNewGroup(piSize, paPairsInUse, pcCallback) {
-        db.loadNextCards(piSize * game.getScopeSize(), function(paNextCards) {
-            var maPairs = [];
-            
-            while (maPairs.length < piSize) {
-                var mmCard = paNextCards.shift();
-                var moPair = new Pair(mmCard['id'], mmCard['sFront'], mmCard['sBack'], mmCard['dLastRep'], mmCard['dNextRep'], mmCard['fEasiness']);
-                var mbUsable = true;
-                
-                for (var i in maPairs) {
-                    if (moPair.conflictsWith(maPairs[i])) {
-                        mbUsable = false;
-                        break;
-                    }
-                }
-                if (mbUsable) {
-                    for (var i in paPairsInUse) {
-                        if (moPair.conflictsWith(paPairsInUse[i])) {
-                            mbUsable = false;
-                            break;
-                        }
-                    }
-                    if (mbUsable) {
-                        maPairs.push(moPair);
-                    }
-                }
+
+    function conflicts(poPair, paPairsInUse) {
+        for (var i = 0; i < paPairsInUse.length; i++) {
+            if (poPair.conflictsWith(paPairsInUse[i])) {
+                return true;
             }
-            pcCallback(maPairs);
+        }
+        return false;
+    }
+
+    function choosePairsForGroup(piSize, paPairsInUse, paNextCards) {
+        var group = [];
+        var pairsByDistance = [];
+        var i, pair, distance;
+
+        while (group.length == 0 && paNextCards.length > 0) {
+            pair = new Pair(paNextCards.shift());
+            if (!conflicts(pair, paPairsInUse)) {
+                group.push(pair);
+            }
+        }
+
+        for (i = 0; i < paNextCards.length; i++) {
+            pair = new Pair(paNextCards[i]);
+            if (!conflicts(pair, paPairsInUse) && !conflicts(pair, group)) {
+                distance = Math.min(levenshtein(pair.fsFront, group[0].fsFront), levenshtein(pair.fsBack, group[0].fsFront));
+                pairsByDistance[distance] = pairsByDistance[distance] || [];
+                pairsByDistance[distance].push(pair);
+            }
+        }
+
+        for (distance = 1; distance < pairsByDistance.length; distance++) {
+            if (pairsByDistance[distance]) {
+                for (i = 0; i < pairsByDistance[distance].length; i++) {
+                    pair = pairsByDistance[distance][i];
+                    if (!conflicts(pair, group)) {
+                        group.push(pair);
+                        if (group.length == piSize) break;
+                    }
+                }
+                if (group.length == piSize) break;
+            }
+        }
+
+        console.dir({
+            pairsByDistance: pairsByDistance,
+            group: group,
+            paPairsInUse: paPairsInUse
         });
+
+        return group;
+    }
+
+    function loadCards(piSize, paPairsInUse, pcCallback, cardsToLoad) {
+        db.loadNextCards(cardsToLoad, function(paNextCards) {
+            var cardsLoaded = paNextCards.length;
+            var group = choosePairsForGroup(piSize, paPairsInUse, paNextCards);
+            if (group.length == piSize) {
+                pcCallback(group);
+                console.groupEnd();
+            } else if (cardsLoaded < cardsToLoad) {
+                alert('There are not enough cards. Try importing a few more.');
+                // TODO: handle this situation properly
+            } else {
+                loadCards(piSize, paPairsInUse, pcCallback, cardsToLoad * 2);
+            }
+        });
+    }
+
+    function createNewGroup(piSize, paPairsInUse, pcCallback) {
+        console.group("createNewGroup(" + piSize + ")");
+        var cardsToLoad = piSize * game.getScopeSize();
+        loadCards(piSize, paPairsInUse, pcCallback, cardsToLoad);
     }
     
     function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
@@ -62,6 +105,7 @@ mj.modules.cards = (function() {
         if (paPairsInGroup.length > 1) {
             var moPair;
             var now = Date.now();
+            var minInterval = (paPairsInGroup.length * 1000 / piThinkingTime * Time.DAY);
 
             for (var i = 0; i < paPairsInGroup.length; i++) {
                 if (paPairsInGroup[i].fiPairId == piPairId) {
@@ -73,7 +117,8 @@ mj.modules.cards = (function() {
                 var scheduledInterval = moPair.fdNextRep - moPair.fdLastRep;
                 var actualInterval = now - moPair.fdLastRep;
                 var multiplier = moPair.ffEasiness * (paPairsInGroup.length - 1) / 2;
-                moPair.fdNextRep = Math.floor(moPair.fdLastRep + Math.max(multiplier * actualInterval, scheduledInterval));
+                var nextInterval = Math.max(minInterval, multiplier * actualInterval, scheduledInterval * 1.1);
+                moPair.fdNextRep = Math.floor(moPair.fdLastRep + nextInterval);
                 console.dir({
                     scheduledInterval: scheduledInterval,
                     actualInterval: actualInterval,
@@ -83,7 +128,7 @@ mj.modules.cards = (function() {
                 });
                 // moPair.ffEasiness = ? // TODO
             } else {
-                moPair.fdNextRep = now + (paPairsInGroup.length * 1000 / piThinkingTime * Time.DAY);
+                moPair.fdNextRep = Math.floor(now + minInterval);
             }
             console.log('fdNextRep: ' + new Date(moPair.fdNextRep));
             moPair.fdLastRep = now;
@@ -101,8 +146,8 @@ mj.modules.cards = (function() {
         });
         var now = Date.now();
         var nextRep = now + 2 * Time.MINUTE;
-        for (var m = 0; m < paMismatchedPairs.length - 1; m++) {
-            for (var g = 0; g < paPairsInGroup.length - 1; g++) {
+        for (var m = 0; m < paMismatchedPairs.length; m++) {
+            for (var g = 0; g < paPairsInGroup.length; g++) {
                 if (paPairsInGroup[g].fiPairId == paMismatchedPairs[m]) {
                     var moPair = paPairsInGroup[g];
                     moPair.fdNextRep = nextRep;
@@ -137,9 +182,7 @@ mj.modules.cards = (function() {
         }
         var v0 = new Array(s1_len + 1);
         var v1 = new Array(s1_len + 1);
-        var s1_idx = 0,
-            s2_idx = 0,
-            cost = 0;
+        var s1_idx, s2_idx, cost = 0;
         for (s1_idx = 0; s1_idx < s1_len + 1; s1_idx++) {
             v0[s1_idx] = s1_idx;
         }

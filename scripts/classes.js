@@ -13,13 +13,22 @@ mj.classes.Jewel = function(piGroupId, poPair, pbIsFront) {
     }
 };
 
-mj.classes.Pair = function(piPairId, psFront, psBack, pdLastRep, pdNextRep, pfEasiness) {
-    this.fiPairId = piPairId;
-    this.fsFront = psFront;
-    this.fsBack = psBack;
-    this.fdLastRep = pdLastRep;
-    this.fdNextRep = pdNextRep;
-    this.ffEasiness = pfEasiness;
+mj.classes.Pair = function(pxIdOrRow, psFront, psBack, pdLastRep, pdNextRep, pfEasiness) {
+    if (arguments.length == 1) {
+        this.fiPairId = pxIdOrRow['id'];
+        this.fsFront = pxIdOrRow['sFront'];
+        this.fsBack = pxIdOrRow['sBack'];
+        this.fdLastRep = pxIdOrRow['dLastRep'];
+        this.fdNextRep = pxIdOrRow['dNextRep'];
+        this.ffEasiness = pxIdOrRow['fEasiness'];
+    } else {
+        this.fiPairId = pxIdOrRow;
+        this.fsFront = psFront;
+        this.fsBack = psBack;
+        this.fdLastRep = pdLastRep;
+        this.fdNextRep = pdNextRep;
+        this.ffEasiness = pfEasiness;
+    }
 
     this.conflictsWith = function(poOtherPair) {
         if (poOtherPair.fiPairId == this.fiPairId) {

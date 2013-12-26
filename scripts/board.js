@@ -45,7 +45,11 @@ mj.modules.board = (function() {
     }
     
     function getPairsInUse() {
-        return fmPairsInUse;
+        var maPairsInUse = [];
+        for (var id in fmPairsInUse) {
+            maPairsInUse.push(fmPairsInUse[id]);
+        }
+        return maPairsInUse;
     }
     
     function rand(piMax) {

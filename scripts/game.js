@@ -57,7 +57,7 @@ mj.modules.game = (function() {
     }
     
     function getScopeSize() {
-        return Math.round(ffScopeSize);
+        return Math.max(1, Math.round(ffScopeSize));
     }
 
     // expose public methods
