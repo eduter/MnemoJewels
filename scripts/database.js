@@ -1,72 +1,10 @@
 mj.modules.database = (function() {
     
     var foDb = null;
-    var faTestCards = [
-        ['och', 'and'],
-        ['det', 'it'],
-        ['det', 'that'],
-        ['som', 'that'],
-        ['som', 'which'],
-        ['som', 'who'],
-        ['på', 'on'],
-        ['för', 'for'],
-        ['med', 'with'],
-        ['till', 'to'],
-        ['till', 'till'],
-        ['de', 'those'],
-        ['de', 'they'],
-        ['inte', 'not'],
-        ['om', 'about'],
-        ['om', 'if'],
-        ['men', 'but'],
-        ['från', 'from'],
-        ['så', 'so'],
-        ['så', 'such'],
-        ['kan', 'can'],
-        ['man', 'man'],
-        ['man', 'one'],
-        ['när', 'whenever'],
-        ['när', 'when'],
-        ['år', 'year'],
-        ['under', 'under'],
-        ['under', 'during'],
-        ['också', 'also'],
-        ['efter', 'after'],
-        ['eller', 'or'],
-        ['nu', 'now'],
-        ['vid', 'at'],
-        ['vid', 'with'],
-        ['mot', 'towards'],
-        ['mot', 'against'],
-        ['skulle', 'should'],
-        ['kommer', 'comes'],
-        ['vara', 'to be'],
-        ['alla', 'all'],
-        ['andra', 'second'],
-        ['andra', 'other'],
-        ['mycket', 'much'],
-        ['än', 'than'],
-        ['då', 'then'],
-        ['sedan', 'since'],
-        ['över', 'over'],
-        ['bara', 'just'],
-        ['bara', 'only'],
-        ['även', 'also'],
-        ['vad', 'what'],
-        ['få', 'get'],
-        ['få', 'have to'],
-        ['två', '2'],
-        ['vill', 'want'],
-        ['ha', 'have'],
-        ['många', 'many'],
-        ['hur', 'how'],
-        ['mer', 'more'],
-        ['detta', 'this'],
-        ['nya', 'new'],
-        ['procent', 'percent']
-    ];
+    var faTestCards = null;
     
     function setup() {
+        faTestCards = mj.modules.testWords;
         foDb = openDatabase('mj', '1.0', 'MnemoJewels', 2 * 1024 * 1024);
         create();
     }
@@ -144,11 +82,13 @@ mj.modules.database = (function() {
                 function (tx, results) {
                     var maCards = [];
                     if (results.rows && results.rows.length) {
+                        console.group("loadNextCards(" + piHowMany + ")");
                         for (var i = 0; i < results.rows.length; i++) {
-                            //var r = results.rows.item(i);
-                            //console.log(r.id + '\t' + dateToStr(r.dLastRep) + '\t' + dateToStr(r.dNextRep) + '\t' + r.sFront);
+                            var r = results.rows.item(i);
+                            console.log(r.id + '\t' + dateToStr(r.dLastRep) + '\t' + dateToStr(r.dNextRep) + '\t' + r.sFront + '\t' + r.sBack);
                             maCards.push(results.rows.item(i));
                         }
+                        console.groupEnd();
                     }
                     pcCallback(maCards);
                 }
@@ -166,6 +106,7 @@ mj.modules.database = (function() {
                 WHERE id = ?',
                 [poPair.fdLastRep, poPair.fdNextRep, poPair.ffEasiness, poPair.fiPairId]
             );
+            console.log("updateCard: " + poPair.fiPairId + '\t' + dateToStr(poPair.fdLastRep) + '\t' + dateToStr(poPair.fdNextRep) + '\t' + poPair.fsFront + '\t' + poPair.fsBack);
         });
     }
 

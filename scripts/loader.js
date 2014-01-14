@@ -5,7 +5,7 @@ var mj = {
     settings : {
         NUM_ROWS : 10,
         DEFAULT_GROUP_SIZE : 3,
-        TIME_FOR_NEXT_GROUP : 5000,
+        TIME_FOR_NEXT_GROUP : 7000,
         controls : {
             CLICK : 'selectJewel',
             TOUCH : 'selectJewel'
@@ -56,7 +56,8 @@ window.addEventListener('load', function() {
                 "scripts/input.js",
                 "scripts/parser.js",
                 "scripts/screen.game_classic.js",
-                "scripts/screen.settings.js"
+                "scripts/screen.settings.js",
+                "data/testWords.js"
             ],
             complete : function() {
                 for (var i in mj.modules) {
@@ -64,6 +65,11 @@ window.addEventListener('load', function() {
                         mj.modules[i].setup();
                     }
                 }
+                // Turns off debugging info
+                var noop = function(){}; window.console = {log: noop, dir: noop, error: noop, group: noop, groupEnd: noop};
+
+                //mj.modules.main.navigateTo('game_classic'); // TODO remove this line
+                //mj.modules.database.loadNextCards(62, function(){})
             }
         }
         ]);
