@@ -3,6 +3,7 @@ mj.modules.display = (function() {
     var $ = dom.$;
     var foBoard = null;
     var NUM_ROWS = mj.settings.NUM_ROWS;
+    var stats = null;
     
     function setup() {
     }
@@ -14,6 +15,13 @@ mj.modules.display = (function() {
         return foBoard;
     }
     
+    function getStatsElem() {
+        if (stats == null) {
+            stats = $('#stats')[0];
+        }
+        return stats;
+    }
+
     function redraw(paJewels, pmSelectedJewel) {
         var moBoard = getBoardElem();
         
@@ -35,6 +43,7 @@ mj.modules.display = (function() {
                 }
             }
         }
+        getStatsElem().innerHTML = mj.modules.game.getStats();
     }
     
     return {

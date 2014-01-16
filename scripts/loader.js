@@ -55,6 +55,7 @@ window.addEventListener('load', function() {
                 "scripts/display.js",
                 "scripts/input.js",
                 "scripts/parser.js",
+                "scripts/debug.js",
                 "scripts/screen.game_classic.js",
                 "scripts/screen.settings.js",
                 "data/testWords.js"

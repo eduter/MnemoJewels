@@ -228,3 +228,7 @@ table#board td.group11 {
 table#board td.group12 {
     background: #880;
 }
+
+#stats {
+    font-size: 0.5em;
+}
