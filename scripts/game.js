@@ -3,10 +3,13 @@ mj.modules.game = (function() {
     var board = null;
     var display = null;
     var cards = null;
+    var settings = mj.settings;
     var fiRedrawInterval = null;
     var ffScopeSize = 10;
     var TimeMeter = null;
-    
+
+    var intervalBetweenGroups;
+
     function setup() {
         main = mj.modules.main;
         board = mj.modules.board;
@@ -16,6 +19,7 @@ mj.modules.game = (function() {
     }
     
     function startGame(psMode) {
+        intervalBetweenGroups = settings.INTERVAL_BETWEEN_GROUPS;
         board.initialize(psMode);
         fiRedrawInterval = window.setInterval(
             function(){
@@ -62,7 +66,13 @@ mj.modules.game = (function() {
         cards.rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime);
         TimeMeter.stop('MI');
     }
-    
+
+    function handleBoardCleared() {
+        intervalBetweenGroups *= settings.INTERVAL_REDUCTION_FACTOR;
+        console.log("new interval: " + intervalBetweenGroups);
+    }
+
+
     function redraw(paJewels, pmSelectedJewel) {
         display.redraw(paJewels, pmSelectedJewel);
     }
@@ -80,8 +90,10 @@ mj.modules.game = (function() {
         selectJewel : selectJewel,
         rescheduleMatch : rescheduleMatch,
         rescheduleMismatch : rescheduleMismatch,
+        handleBoardCleared: handleBoardCleared,
         redraw : redraw,
         getScopeSize : getScopeSize,
+        getIntervalBetweenGroups : function(){ return intervalBetweenGroups; },
         getStats : function() {
             return TimeMeter.getStats('MA') + ' ' + TimeMeter.getStats('MI') + ' ' + TimeMeter.getStats('CG');
         }

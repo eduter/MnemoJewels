@@ -5,7 +5,8 @@ var mj = {
     settings : {
         NUM_ROWS : 10,
         DEFAULT_GROUP_SIZE : 3,
-        TIME_FOR_NEXT_GROUP : 7000,
+        INTERVAL_BETWEEN_GROUPS : 7000,
+        INTERVAL_REDUCTION_FACTOR : 0.9,
         controls : {
             CLICK : 'selectJewel',
             TOUCH : 'selectJewel'
@@ -68,9 +69,6 @@ window.addEventListener('load', function() {
                 }
                 // Turns off debugging info
                 var noop = function(){}; window.console = {log: noop, dir: noop, error: noop, group: noop, groupEnd: noop};
-
-                //mj.modules.main.navigateTo('game_classic'); // TODO remove this line
-                //mj.modules.database.loadNextCards(62, function(){})
             }
         }
         ]);

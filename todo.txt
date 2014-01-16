@@ -1,12 +1,13 @@
 [X] measure time it takes for scheduleMatch, scheduleMismatch and createNewGroup
 [X] prevent collisions such as (det, it) + (som, that) when there is a card (det, that)
 [X] remove unused tables
-[ ] increase game speed every time the player clears the screen
+[X] increase game speed every time the player clears the screen
 [ ] provide feedback in case of mismatch
 [ ] limit new cards and mistakes to one per group
 [ ] (epic) keep scores
 [ ] update cards on DB according to a file
 [ ] refactor Pair class
+[ ] refactor game and board - i don't even remember what were supposed to be their responsibilities anymore
 [ ] create a build script
 [\] keeping all words in an array to avoid querying the DB all the time?
 [ ] creating a new group before it is needed

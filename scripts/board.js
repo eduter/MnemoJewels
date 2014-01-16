@@ -26,7 +26,7 @@ mj.modules.board = (function() {
         fmSelectedJewel = null;
         fiClears = 0;
         addDefaultGroup();
-        fiTimer = window.setInterval(addDefaultGroup, fmSettings.TIME_FOR_NEXT_GROUP);
+        setInterval();
         if (psMode == '5-minutes') {
             fiEndGameTimer = window.setTimeout(function(){ gameOver(true); }, 5*60000);
         }
@@ -85,7 +85,7 @@ mj.modules.board = (function() {
     }
     
     function gameOver(pbWin) {
-        window.clearInterval(fiTimer);
+        clearInterval()
         if (fiEndGameTimer != null) {
             window.clearTimeout(fiEndGameTimer);
         }
@@ -122,7 +122,7 @@ mj.modules.board = (function() {
             fmSelectedJewel = null;
         }
     }
-    
+
     function match(piPairId, piSelectionTime) {
         var miGroupId = getGroup(piPairId);
         var maPairsInGroup = getPairsInGroup(miGroupId);
@@ -141,12 +141,21 @@ mj.modules.board = (function() {
                 gameOver(true);
                 return;
             }
-            window.clearInterval(fiTimer);
+            clearInterval();
+            game.handleBoardCleared();
             addDefaultGroup();
-            fiTimer = window.setInterval(addDefaultGroup, fmSettings.TIME_FOR_NEXT_GROUP);
+            setInterval();
         }
     }
+
+    function setInterval() {
+        fiTimer = window.setInterval(addDefaultGroup, game.getIntervalBetweenGroups());
+    }
     
+    function clearInterval() {
+        window.clearInterval(fiTimer);
+    }
+
     function mismatch(piPairId1, piPairId2, piSelectionTime) {
         var miGroup1 = getGroup(piPairId1);
         var miGroup2 = getGroup(piPairId2);
