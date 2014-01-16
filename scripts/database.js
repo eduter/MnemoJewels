@@ -69,16 +69,20 @@ mj.modules.database = (function() {
     function loadNextCards(piHowMany, pcCallback) {
         foDb.transaction(function (tx) {
             var now = Date.now();
+            var parameters = [now, now];
             var query = 'SELECT c.*, 1 as ord FROM cards c WHERE dNextRep <= ? ' +
                 'UNION ' +
                 'SELECT c.*, 2 as ord FROM cards c WHERE dNextRep IS NULL ' +
                 'UNION ' +
                 'SELECT c.*, 3 as ord FROM cards c WHERE dNextRep > ? ' +
-                'ORDER BY ord, dNextRep, id ' +
-                'LIMIT ?';
+                'ORDER BY ord, dNextRep, id';
+            if (piHowMany > 0) {
+                parameters.push(piHowMany);
+                query += ' LIMIT ?';
+            }
             tx.executeSql(
                 query,
-                [now, now, piHowMany],
+                parameters,
                 function (tx, results) {
                     var maCards = [];
                     if (results.rows && results.rows.length) {

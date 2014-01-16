@@ -3,6 +3,8 @@ mj.modules.cards = (function() {
     var game = null;
     var db = null;
     var Pair = null;
+    var allCards = null;
+    var wordMappings = null;
 
     var Time = {
         SECOND:             1000,
@@ -15,6 +17,22 @@ mj.modules.cards = (function() {
         game = mj.modules.game;
         db = mj.modules.database;
         Pair = mj.classes.Pair;
+
+        allCards = {};
+        wordMappings = {};
+        db.loadNextCards(0, function(cards){
+            for (var i = 0; i < cards.length; i++) {
+                var pair = new Pair(cards[i]);
+                allCards[pair.fiPairId] = pair;
+                if (wordMappings[pair.fsFront]) {
+                    if (wordMappings[pair.fsFront].indexOf(pair.fsBack) == -1) {
+                        wordMappings[pair.fsFront].push(pair.fsBack);
+                    }
+                } else {
+                    wordMappings[pair.fsFront] = [pair.fsBack];
+                }
+            }
+        });
     }
     
     function rand(piMax) {
@@ -23,11 +41,18 @@ mj.modules.cards = (function() {
 
     function conflicts(poPair, paPairsInUse) {
         for (var i = 0; i < paPairsInUse.length; i++) {
-            if (poPair.conflictsWith(paPairsInUse[i])) {
+            if (cardsConflict(poPair, paPairsInUse[i])) {
                 return true;
             }
         }
         return false;
+    }
+
+    function cardsConflict(card1, card2) {
+        return card1.fsFront == card2.fsFront
+            || card1.fsBack == card2.fsBack
+            || wordMappings[card1.fsFront].indexOf(card2.fsBack) >= 0
+            || wordMappings[card2.fsFront].indexOf(card1.fsBack) >= 0
     }
 
     function choosePairsForGroup(piSize, paPairsInUse, paNextCards) {
@@ -211,7 +236,7 @@ mj.modules.cards = (function() {
         }
         return v0[s1_len];
     }
-    
+
     return {
         setup : setup,
         createNewGroup : createNewGroup,

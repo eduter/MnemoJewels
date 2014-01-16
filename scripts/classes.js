@@ -29,16 +29,4 @@ mj.classes.Pair = function(pxIdOrRow, psFront, psBack, pdLastRep, pdNextRep, pfE
         this.fdNextRep = pdNextRep;
         this.ffEasiness = pfEasiness;
     }
-
-    this.conflictsWith = function(poOtherPair) {
-        if (poOtherPair.fiPairId == this.fiPairId) {
-            return true;
-        } else if (poOtherPair.fsFront == this.fsFront) {
-            return true;
-        } else if (poOtherPair.fsBack == this.fsBack) {
-            return true;
-        } else {
-            return false;
-        }
-    };
 };
