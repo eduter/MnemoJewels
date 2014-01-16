@@ -1,6 +1,6 @@
 [X] measure time it takes for scheduleMatch, scheduleMismatch and createNewGroup
 [X] prevent collisions such as (det, it) + (som, that) when there is a card (det, that)
-[ ] remove unused tables
+[X] remove unused tables
 [ ] increase game speed every time the player clears the screen
 [ ] provide feedback in case of mismatch
 [ ] limit new cards and mistakes to one per group

@@ -20,16 +20,6 @@ mj.modules.database = (function() {
                          +    'fEasiness REAL'
                          +')'
             );
-            tx.executeSql('CREATE TABLE IF NOT EXISTS mistakes ('
-                         +    'id INTEGER PRIMARY KEY AUTOINCREMENT,'
-                         +    'iRemainingReps INTEGER'
-                         +')'
-            );
-            tx.executeSql('CREATE TABLE IF NOT EXISTS cards_mistakes ('
-                         +    'idMistake INTEGER,'
-                         +    'idCard INTEGER'
-                         +')'
-            );
         });
 
         foDb.transaction(function (tx) {
@@ -51,8 +41,6 @@ mj.modules.database = (function() {
     function destroy() {
         foDb.transaction(function (tx) {
             tx.executeSql('DROP TABLE IF EXISTS cards');
-            tx.executeSql('DROP TABLE IF EXISTS mistakes');
-            tx.executeSql('DROP TABLE IF EXISTS cards_mistakes');
         });
     }
 
