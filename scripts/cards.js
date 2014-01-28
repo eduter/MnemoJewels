@@ -13,6 +13,13 @@ mj.modules.cards = (function() {
         DAY: 24 * 60 * 60 * 1000
     };
     
+    var States = {
+        NEW:      1,
+        LEARNING: 2,
+        KNOWN:    3,
+        LAPSE:    4
+    };
+
     function setup() {
         game = mj.modules.game;
         db = mj.modules.database;
@@ -157,6 +164,13 @@ mj.modules.cards = (function() {
             }
             console.log('fdNextRep: ' + new Date(moPair.fdNextRep));
             moPair.fdLastRep = now;
+
+            if (moPair.fiState == States.NEW) {
+                moPair.fiState = States.LEARNING;
+            } else {
+                moPair.fiState = States.KNOWN;
+            }
+
             db.updateCard(moPair);
         }
         console.groupEnd();
@@ -177,6 +191,13 @@ mj.modules.cards = (function() {
                     var moPair = paPairsInGroup[g];
                     moPair.fdNextRep = nextRep;
                     moPair.fdLastRep = now;
+
+                    if (moPair.fiState == States.NEW || moPair.fiState == States.LEARNING) {
+                        moPair.fiState = States.NEW;
+                    } else {
+                        moPair.fiState = States.LAPSE;
+                    }
+
                     db.updateCard(moPair);
                     break;
                 }
