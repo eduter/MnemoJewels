@@ -17,24 +17,28 @@ mj.modules.database = (function() {
                          +    'sBack TEXT,'
                          +    'dLastRep,'
                          +    'dNextRep,'
+                         +    'iState,'
                          +    'fEasiness REAL'
                          +')'
             );
-        });
-
-        foDb.transaction(function (tx) {
             tx.executeSql('SELECT COUNT(*) AS count FROM cards', [], function (tx, results) {
                 var mbEmpty = (results.rows.item(0).count == 0);
                 if (mbEmpty) {
                     for (var i = 0; i < faTestCards.length; i++) {
                         var card = faTestCards[i];
                         tx.executeSql(
-                            'INSERT INTO cards (sFront, sBack, fEasiness) VALUES (?, ?, 2.5)',
+                            'INSERT INTO cards (sFront, sBack, fEasiness, iState) VALUES (?, ?, 2.5, 1)',
                             [card[0], card[1]]
                         );
                     }
                 }
             });
+        });
+        foDb.transaction(function (tx) {
+            tx.executeSql('ALTER TABLE cards ADD COLUMN iState');
+            tx.executeSql('UPDATE cards SET iState = 1 WHERE dLastRep IS NULL');
+            tx.executeSql('UPDATE cards SET iState = 2 WHERE dNextRep - dLastRep = 120000');
+            tx.executeSql('UPDATE cards SET iState = 3 WHERE iState IS NULL');
         });
     }
 
@@ -77,7 +81,7 @@ mj.modules.database = (function() {
                         console.group("loadNextCards(" + piHowMany + ")");
                         for (var i = 0; i < results.rows.length; i++) {
                             var r = results.rows.item(i);
-                            console.log(r.id + '\t' + dateToStr(r.dLastRep) + '\t' + dateToStr(r.dNextRep) + '\t' + r.sFront + '\t' + r.sBack);
+                            console.log(r.id + '\t' + dateToStr(r.dLastRep) + '\t' + dateToStr(r.dNextRep) + '\t' + r.iState + '\t' + r.sFront + '\t' + r.sBack);
                             maCards.push(results.rows.item(i));
                         }
                         console.groupEnd();
@@ -94,11 +98,12 @@ mj.modules.database = (function() {
                 UPDATE cards SET \
                     dLastRep = ?, \
                     dNextRep = ?, \
+                    iState = ?, \
                     fEasiness = ? \
                 WHERE id = ?',
-                [poPair.fdLastRep, poPair.fdNextRep, poPair.ffEasiness, poPair.fiPairId]
+                [poPair.fdLastRep, poPair.fdNextRep, poPair.fiState, poPair.ffEasiness, poPair.fiPairId]
             );
-            console.log("updateCard: " + poPair.fiPairId + '\t' + dateToStr(poPair.fdLastRep) + '\t' + dateToStr(poPair.fdNextRep) + '\t' + poPair.fsFront + '\t' + poPair.fsBack);
+            console.log("updateCard: " + poPair.fiPairId + '\t' + dateToStr(poPair.fdLastRep) + '\t' + dateToStr(poPair.fdNextRep) + '\t' + poPair.fiState + '\t' + poPair.fsFront + '\t' + poPair.fsBack);
         });
     }
 

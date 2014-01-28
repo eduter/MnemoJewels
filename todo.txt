@@ -3,6 +3,13 @@
 [X] remove unused tables
 [X] increase game speed every time the player clears the screen
 [ ] provide feedback in case of mismatch
+[X] define states and workflow
+    1 new      2 1  // dLastRep IS NULL
+    2 learning 3 1  // dNextRep - dLastRep = 120000
+    3 known    3 4  // else
+    4 lapse    3 4
+[X] create state column
+[ ] implement workflow
 [ ] limit new cards and mistakes to one per group
 [ ] (epic) keep scores
 [ ] update cards on DB according to a file
