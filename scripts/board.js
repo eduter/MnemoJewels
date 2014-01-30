@@ -89,10 +89,11 @@ mj.modules.board = (function() {
                 return;
             }
         }
+        game.updateGameSpeed(getNumPairs() - paPairs.length, getNumPairs());
     }
     
     function gameOver(pbWin) {
-        clearInterval()
+        clearInterval();
         if (fiEndGameTimer != null) {
             window.clearTimeout(fiEndGameTimer);
         }
@@ -141,7 +142,9 @@ mj.modules.board = (function() {
         if (maPairsInGroup.length == 1) {
             faAvailableGroupIds.push(miGroupId);
         }
-        
+
+        game.updateGameSpeed(getNumPairs() + 1, getNumPairs());
+
         if (getNumPairs() == 0) {
             fiClears++;
             if (fsGameMode == '10-clears' && fiClears == 10) {
@@ -156,7 +159,12 @@ mj.modules.board = (function() {
     }
 
     function setInterval() {
-        fiTimer = window.setInterval(addDefaultGroup, game.getIntervalBetweenGroups());
+        function f() {
+            addDefaultGroup();
+            fiTimer = window.setTimeout(f, game.getIntervalBetweenGroups());
+        }
+
+        fiTimer = window.setTimeout(f, game.getIntervalBetweenGroups());
     }
     
     function clearInterval() {

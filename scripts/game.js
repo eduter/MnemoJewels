@@ -68,10 +68,19 @@ mj.modules.game = (function() {
     }
 
     function handleBoardCleared() {
-        intervalBetweenGroups *= settings.INTERVAL_REDUCTION_FACTOR;
-        console.log("new interval: " + intervalBetweenGroups);
+        // TODO: keep or remove this?
     }
 
+    function updateGameSpeed(numRowsBefore, numRowsAfter) {
+        var i = numRowsBefore;
+        var increment = (numRowsAfter > numRowsBefore ? 1 : -1);
+        var factor = (numRowsAfter > numRowsBefore ? 0.03 : 0.01);
+        do {
+            i += increment;
+            intervalBetweenGroups *= 1 + (i - 4) * factor;
+        } while (i == numRowsAfter);
+        intervalBetweenGroups = Math.max(Math.min(intervalBetweenGroups, 10000), 3000);
+    }
 
     function redraw(paJewels, pmSelectedJewel) {
         display.redraw(paJewels, pmSelectedJewel);
@@ -94,8 +103,9 @@ mj.modules.game = (function() {
         redraw : redraw,
         getScopeSize : getScopeSize,
         getIntervalBetweenGroups : function(){ return intervalBetweenGroups; },
+        updateGameSpeed: updateGameSpeed,
         getStats : function() {
-            return TimeMeter.getStats('MA') + ' ' + TimeMeter.getStats('MI') + ' ' + TimeMeter.getStats('CG');
+            return TimeMeter.getStats('MA') + ' ' + TimeMeter.getStats('MI') + ' ' + TimeMeter.getStats('CG') + ' p: ' + Math.round(intervalBetweenGroups / 100) / 10;
         }
     };
 })();
