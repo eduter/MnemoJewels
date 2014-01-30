@@ -64,9 +64,10 @@ mj.modules.cards = (function() {
 
     function choosePairsForGroup(piSize, paPairsInUse, paNextCards) {
         var group = [];
-        var pairsByDistance = [];
-        var i, pair, distance;
+        var pairsByPriority = [];
+        var i, pair, priority;
 
+        // First card from a group is chosen according to the schedule
         while (group.length == 0 && paNextCards.length > 0) {
             pair = new Pair(paNextCards.shift());
             if (!conflicts(pair, paPairsInUse)) {
@@ -74,19 +75,25 @@ mj.modules.cards = (function() {
             }
         }
 
+        // Remaining cards are prioritized according to state and Levenshtein distance to the 1st card
         for (i = 0; i < paNextCards.length; i++) {
             pair = new Pair(paNextCards[i]);
             if (!conflicts(pair, paPairsInUse) && !conflicts(pair, group)) {
-                distance = Math.min(levenshtein(pair.fsFront, group[0].fsFront), levenshtein(pair.fsBack, group[0].fsFront));
-                pairsByDistance[distance] = pairsByDistance[distance] || [];
-                pairsByDistance[distance].push(pair);
+                priority = Math.min(levenshtein(pair.fsFront, group[0].fsFront), levenshtein(pair.fsBack, group[0].fsFront));
+                switch (pair.fiState) {
+                    case States.LAPSE:    priority += 100; break;
+                    case States.NEW:      priority += 200; break;
+                }
+                pairsByPriority[priority] = pairsByPriority[priority] || [];
+                pairsByPriority[priority].push(pair);
             }
         }
 
-        for (distance = 1; distance < pairsByDistance.length; distance++) {
-            if (pairsByDistance[distance]) {
-                for (i = 0; i < pairsByDistance[distance].length; i++) {
-                    pair = pairsByDistance[distance][i];
+        // Take the cards with highest priority (smaller value)
+        for (priority = 1; priority < pairsByPriority.length; priority++) {
+            if (pairsByPriority[priority]) {
+                for (i = 0; i < pairsByPriority[priority].length; i++) {
+                    pair = pairsByPriority[priority][i];
                     if (!conflicts(pair, group)) {
                         group.push(pair);
                         if (group.length == piSize) break;
@@ -97,7 +104,7 @@ mj.modules.cards = (function() {
         }
 
         console.dir({
-            pairsByDistance: pairsByDistance,
+            pairsByPriority: pairsByPriority,
             group: group,
             paPairsInUse: paPairsInUse
         });

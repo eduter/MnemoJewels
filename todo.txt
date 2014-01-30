@@ -9,7 +9,10 @@
     4 lapse    3 4
 [X] create state column
 [X] implement workflow
-[ ] limit new cards and lapses to one per group
+[X] limit new cards and lapses to one per group
+[ ] board.addDefaultGroup - Use a flag to prevent adding 2 groups in a row
+[ ] adapt speed - maybe something like this: When numRows change => period *= 1 + (numRows - 5) * 0.02
+[ ] show simple statistics about states
 [ ] possibility to pause the game
 [ ] provide feedback in case of mismatch
 [ ] (epic) keep scores
