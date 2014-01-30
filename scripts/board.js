@@ -12,6 +12,7 @@ mj.modules.board = (function() {
     var fiTimer = null;
     var fiEndGameTimer = null;
     var fiClears = null;
+    var waitingForDefaultGroup = false;
     
     function setup() {
         game = mj.modules.game;
@@ -37,7 +38,13 @@ mj.modules.board = (function() {
     }
     
     function addDefaultGroup() {
-        createNewGroup(fmSettings.DEFAULT_GROUP_SIZE);
+        if (!waitingForDefaultGroup) {
+            waitingForDefaultGroup = true;
+            game.createNewGroup(fmSettings.DEFAULT_GROUP_SIZE, getPairsInUse(), function(){
+                addGroup.apply(this, arguments);
+                waitingForDefaultGroup = false;
+            });
+        }
     }
     
     function getNumPairs() {
