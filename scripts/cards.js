@@ -42,10 +42,6 @@ mj.modules.cards = (function() {
         });
     }
     
-    function rand(piMax) {
-        return (Math.floor(Math.random() * piMax));
-    }
-
     function conflicts(poPair, paPairsInUse) {
         for (var i = 0; i < paPairsInUse.length; i++) {
             if (cardsConflict(poPair, paPairsInUse[i])) {
