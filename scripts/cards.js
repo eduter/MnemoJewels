@@ -5,6 +5,7 @@ mj.modules.cards = (function() {
     var Pair = null;
     var allCards = null;
     var wordMappings = null;
+    var TimeMeter = null;
 
     var Time = {
         SECOND:             1000,
@@ -24,10 +25,11 @@ mj.modules.cards = (function() {
         game = mj.modules.game;
         db = mj.modules.database;
         Pair = mj.classes.Pair;
+        TimeMeter = mj.modules.debug.TimeMeter;
 
         allCards = {};
         wordMappings = {};
-        db.loadNextCards(0, function(cards){
+        db.loadAllCards(function(cards){
             for (var i = 0; i < cards.length; i++) {
                 var pair = new Pair(cards[i]);
                 allCards[pair.fiPairId] = pair;
@@ -38,6 +40,7 @@ mj.modules.cards = (function() {
                 } else {
                     wordMappings[pair.fsFront] = [pair.fsBack];
                 }
+                //console.log(pair.toString());
             }
         });
     }
@@ -65,7 +68,7 @@ mj.modules.cards = (function() {
 
         // First card from a group is chosen according to the schedule
         while (group.length == 0 && paNextCards.length > 0) {
-            pair = new Pair(paNextCards.shift());
+            pair = allCards[paNextCards.shift()];
             if (!conflicts(pair, paPairsInUse)) {
                 group.push(pair);
             }
@@ -73,7 +76,7 @@ mj.modules.cards = (function() {
 
         // Remaining cards are prioritized according to state and Levenshtein distance to the 1st card
         for (i = 0; i < paNextCards.length; i++) {
-            pair = new Pair(paNextCards[i]);
+            pair = allCards[paNextCards[i]];
             if (!conflicts(pair, paPairsInUse) && !conflicts(pair, group)) {
                 priority = Math.min(levenshtein(pair.fsFront, group[0].fsFront), levenshtein(pair.fsBack, group[0].fsFront));
                 switch (pair.fiState) {
@@ -111,7 +114,9 @@ mj.modules.cards = (function() {
     function loadCards(piSize, paPairsInUse, pcCallback, cardsToLoad) {
         db.loadNextCards(cardsToLoad, function(paNextCards) {
             var cardsLoaded = paNextCards.length;
+            TimeMeter.start('CP');
             var group = choosePairsForGroup(piSize, paPairsInUse, paNextCards);
+            TimeMeter.stop('CP');
             if (group.length == piSize) {
                 pcCallback(group);
                 console.groupEnd();
@@ -125,7 +130,6 @@ mj.modules.cards = (function() {
     }
 
     function createNewGroup(piSize, paPairsInUse, pcCallback) {
-        console.group("createNewGroup(" + piSize + ")");
         var cardsToLoad = piSize * game.getScopeSize();
         loadCards(piSize, paPairsInUse, pcCallback, cardsToLoad);
     }
@@ -138,16 +142,10 @@ mj.modules.cards = (function() {
             'piThinkingTime': piThinkingTime
         });
         if (paPairsInGroup.length > 1) {
-            var moPair;
+            var moPair = allCards[piPairId];
             var now = Date.now();
             var minInterval = (paPairsInGroup.length * 1000 / piThinkingTime * Time.DAY);
 
-            for (var i = 0; i < paPairsInGroup.length; i++) {
-                if (paPairsInGroup[i].fiPairId == piPairId) {
-                    moPair = paPairsInGroup[i];
-                    break;
-                }
-            }
             if (moPair.fdLastRep) {
                 var scheduledInterval = moPair.fdNextRep - moPair.fdLastRep;
                 var actualInterval = now - moPair.fdLastRep;
@@ -189,22 +187,15 @@ mj.modules.cards = (function() {
         var now = Date.now();
         var nextRep = now + 2 * Time.MINUTE;
         for (var m = 0; m < paMismatchedPairs.length; m++) {
-            for (var g = 0; g < paPairsInGroup.length; g++) {
-                if (paPairsInGroup[g].fiPairId == paMismatchedPairs[m]) {
-                    var moPair = paPairsInGroup[g];
-                    moPair.fdNextRep = nextRep;
-                    moPair.fdLastRep = now;
-
-                    if (moPair.fiState == States.NEW || moPair.fiState == States.LEARNING) {
-                        moPair.fiState = States.NEW;
-                    } else {
-                        moPair.fiState = States.LAPSE;
-                    }
-
-                    db.updateCard(moPair);
-                    break;
-                }
+            var moPair = allCards[paMismatchedPairs[m]];
+            moPair.fdNextRep = nextRep;
+            moPair.fdLastRep = now;
+            if (moPair.fiState == States.NEW || moPair.fiState == States.LEARNING) {
+                moPair.fiState = States.NEW;
+            } else {
+                moPair.fiState = States.LAPSE;
             }
+            db.updateCard(moPair);
         }
         console.groupEnd();
     }

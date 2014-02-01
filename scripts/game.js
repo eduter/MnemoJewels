@@ -105,7 +105,11 @@ mj.modules.game = (function() {
         getIntervalBetweenGroups : function(){ return intervalBetweenGroups; },
         updateGameSpeed: updateGameSpeed,
         getStats : function() {
-            return TimeMeter.getStats('MA') + ' ' + TimeMeter.getStats('MI') + ' ' + TimeMeter.getStats('CG') + ' p: ' + Math.round(intervalBetweenGroups / 100) / 10;
+            return TimeMeter.getStats('DB')
+                  + ' ' + TimeMeter.getStats('FE')
+                  + ' ' + TimeMeter.getStats('CP')
+                  + ' p: ' + Math.round(intervalBetweenGroups / 100) / 10
+                  + ' s: ' + getScopeSize();
         }
     };
 })();

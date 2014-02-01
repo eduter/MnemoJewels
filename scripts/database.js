@@ -2,9 +2,11 @@ mj.modules.database = (function() {
     
     var foDb = null;
     var faTestCards = null;
+    var TimeMeter = null;
     
     function setup() {
         faTestCards = mj.modules.testWords;
+        TimeMeter = mj.modules.debug.TimeMeter;
         foDb = openDatabase('mj', '1.0', 'MnemoJewels', 2 * 1024 * 1024);
         create();
     }
@@ -48,46 +50,48 @@ mj.modules.database = (function() {
         });
     }
 
-    function dateToStr(date) {
-        if (date) {
-            return new Date(date).toISOString();
-        } else if (date === null) {
-            return 'null';
-        } else {
-            return typeof date;
-        }
+    function loadAllCards(pcCallback) {
+        foDb.transaction(function (tx) {
+            tx.executeSql('SELECT * FROM cards', [], function (tx, results) {
+                var maCards = [];
+                if (results.rows && results.rows.length) {
+                    for (var i = 0; i < results.rows.length; i++) {
+                        maCards.push(results.rows.item(i));
+                    }
+                }
+                pcCallback(maCards);
+            });
+        });
     }
 
     function loadNextCards(piHowMany, pcCallback) {
         foDb.transaction(function (tx) {
             var now = Date.now();
-            var parameters = [now, now];
-            var query = 'SELECT c.*, 1 as ord FROM cards c WHERE dNextRep <= ? ' +
+            var parameters = [now, now, piHowMany];
+            var query = 'SELECT id, dNextRep, 1 as ord FROM cards c WHERE dNextRep <= ? ' +
                 'UNION ' +
-                'SELECT c.*, 2 as ord FROM cards c WHERE dNextRep IS NULL ' +
+                'SELECT id, dNextRep, 2 as ord FROM cards c WHERE dNextRep IS NULL ' +
                 'UNION ' +
-                'SELECT c.*, 3 as ord FROM cards c WHERE dNextRep > ? ' +
-                'ORDER BY ord, dNextRep, id';
-            if (piHowMany > 0) {
-                parameters.push(piHowMany);
-                query += ' LIMIT ?';
-            }
+                'SELECT id, dNextRep, 3 as ord FROM cards c WHERE dNextRep > ? ' +
+                'ORDER BY ord, dNextRep, id ' +
+                'LIMIT ?';
+            TimeMeter.start('DB'); // started DB part
             tx.executeSql(
                 query,
                 parameters,
                 function (tx, results) {
+                    TimeMeter.stop('DB'); // finished DB part
+                    TimeMeter.start('FE'); // started fetching part
                     var maCards = [];
                     if (results.rows && results.rows.length) {
-                        console.group("loadNextCards(" + piHowMany + ")");
                         for (var i = 0; i < results.rows.length; i++) {
-                            var r = results.rows.item(i);
-                            console.log(r.id + '\t' + dateToStr(r.dLastRep) + '\t' + dateToStr(r.dNextRep) + '\t' + r.iState + '\t' + r.sFront + '\t' + r.sBack);
-                            maCards.push(results.rows.item(i));
+                            maCards.push(results.rows.item(i)['id']);
                         }
-                        console.groupEnd();
                     }
+                    TimeMeter.stop('FE'); // finished fetching part
                     pcCallback(maCards);
-                }
+                },
+                console.error
             );
         });
     }
@@ -103,7 +107,7 @@ mj.modules.database = (function() {
                 WHERE id = ?',
                 [poPair.fdLastRep, poPair.fdNextRep, poPair.fiState, poPair.ffEasiness, poPair.fiPairId]
             );
-            console.log("updateCard: " + poPair.fiPairId + '\t' + dateToStr(poPair.fdLastRep) + '\t' + dateToStr(poPair.fdNextRep) + '\t' + poPair.fiState + '\t' + poPair.fsFront + '\t' + poPair.fsBack);
+            console.log("updateCard: " + poPair.toString());
         });
     }
 
@@ -111,6 +115,7 @@ mj.modules.database = (function() {
         setup : setup,
         create: create,
         destroy: destroy,
+        loadAllCards : loadAllCards,
         loadNextCards : loadNextCards,
         updateCard: updateCard
     };
