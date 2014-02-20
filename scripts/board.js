@@ -1,7 +1,6 @@
 mj.modules.board = (function() {
     var fmSettings = mj.settings;
-    var game = null;
-    var Jewel = null;
+    var dom, game, Jewel, overlay;
     var faJewels = [[],[]]; // array of 2 columns, each containing Jewel objects 
     var fmPairsInUse = {};
     var faAvailableGroupIds = [];
@@ -13,10 +12,12 @@ mj.modules.board = (function() {
     var fiEndGameTimer = null;
     var fiClears = null;
     var waitingForDefaultGroup = false;
-    
+
     function setup() {
+        dom = mj.dom;
         game = mj.modules.game;
         Jewel = mj.classes.Jewel;
+        overlay = dom.$('#overlay')[0];
     }
     
     function initialize(psMode) {
@@ -179,8 +180,11 @@ mj.modules.board = (function() {
         var maPairsInGroup = getPairsInGroup(miGroup);
         var miThinkingTime = piSelectionTime - Math.max(fiLastSelectionTime, fmGroupCreationTime[miGroup]);
 
+        dom.addClass(overlay, 'visible');
+        setTimeout(function(){ dom.removeClass(overlay, 'visible') }, fmSettings.MISMATCH_PENALTY_TIME);
+
         removeGroup(miGroup);
-        createNewGroup(maPairsInGroup.length + 1);
+        createNewGroup(maPairsInGroup.length);
         
         fiLastSelectionTime = piSelectionTime;
         game.rescheduleMismatch([piPairId1, piPairId2], maPairsInGroup, miThinkingTime);

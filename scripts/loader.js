@@ -6,6 +6,7 @@ var mj = {
         NUM_ROWS : 10,
         DEFAULT_GROUP_SIZE : 3,
         INTERVAL_BETWEEN_GROUPS : 7000,
+        MISMATCH_PENALTY_TIME: 1500,
         INTERVAL_REDUCTION_FACTOR : 0.9,
         controls : {
             CLICK : 'selectJewel',
