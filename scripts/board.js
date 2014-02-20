@@ -110,18 +110,21 @@ mj.modules.board = (function() {
         if (piRow < faJewels[0].length) {
             if (fmSelectedJewel == null) {
                 fmSelectedJewel = { row: piRow, col: piCol };
+            } else if (piCol == fmSelectedJewel.col) {
+                fmSelectedJewel.row = piRow;
             } else {
-                if (piCol == fmSelectedJewel.col) {
-                    fmSelectedJewel.row = piRow;
-                } else {
+                var prevSelectedJewel = faJewels[fmSelectedJewel.col][fmSelectedJewel.row];
+                var newSelectedJewel = faJewels[piCol][piRow];
+
+                if (prevSelectedJewel.fiGroupId == newSelectedJewel.fiGroupId) {
                     // actually trying to match a pair
-                    var miPrevSelectedId = faJewels[fmSelectedJewel.col][fmSelectedJewel.row].foPair.fiPairId;
-                    var miNewSelectedId = faJewels[piCol][piRow].foPair.fiPairId;
-                    
+                    var miPrevSelectedId = prevSelectedJewel.foPair.fiPairId;
+                    var miNewSelectedId = newSelectedJewel.foPair.fiPairId;
+
                     if (miNewSelectedId == miPrevSelectedId) {
-                        match(miNewSelectedId, miSelectionTime);
+                      match(miNewSelectedId, miSelectionTime);
                     } else {
-                        mismatch(miNewSelectedId, miPrevSelectedId, miSelectionTime);
+                      mismatch(miNewSelectedId, miPrevSelectedId, miSelectionTime);
                     }
                     fmSelectedJewel = null;
                 }
@@ -172,19 +175,11 @@ mj.modules.board = (function() {
     }
 
     function mismatch(piPairId1, piPairId2, piSelectionTime) {
-        var miGroup1 = getGroup(piPairId1);
-        var miGroup2 = getGroup(piPairId2);
-        var miThinkingTime = piSelectionTime - Math.max(
-                fiLastSelectionTime,
-                Math.min(fmGroupCreationTime[miGroup1] , fmGroupCreationTime[miGroup2])
-        );
-        var maPairsInGroup = getPairsInGroup(miGroup1);
-        
-        removeGroup(miGroup1);
-        if (miGroup1 != miGroup2) {
-            maPairsInGroup = maPairsInGroup.concat(getPairsInGroup(miGroup2));
-            removeGroup(miGroup2);
-        }
+        var miGroup = getGroup(piPairId1);
+        var maPairsInGroup = getPairsInGroup(miGroup);
+        var miThinkingTime = piSelectionTime - Math.max(fiLastSelectionTime, fmGroupCreationTime[miGroup]);
+
+        removeGroup(miGroup);
         createNewGroup(maPairsInGroup.length + 1);
         
         fiLastSelectionTime = piSelectionTime;
