@@ -9,10 +9,21 @@ mj.screens['settings'] = (function() {
         dom = mj.dom;
         $ = dom.$;
 
-        // handle navigation button clicks
         dom.bind('#clear', 'click', function() {
-            db.destroy();
-            db.create();
+            if (confirm('Are you REALLY sure you want to destroy the DB?')) {
+                db.destroy();
+                db.create();
+            }
+        });
+
+        dom.bind('#showStats', 'click', function() {
+            mj.modules.cards.getStatesStats(function(stats){
+                var output = '';
+                for (var i = 0; i < stats.length; i++) {
+                    output += stats[i].state + ': ' + stats[i].count + '<br/>';
+                }
+                dom.$('#output')[0].innerHTML = output;
+            });
         });
     }
     

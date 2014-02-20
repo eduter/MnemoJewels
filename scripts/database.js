@@ -111,12 +111,27 @@ mj.modules.database = (function() {
         });
     }
 
+    function getStatesStats(callback) {
+        foDb.transaction(function (tx) {
+            tx.executeSql('SELECT iState, count(*) AS count FROM cards GROUP BY iState', [], function (tx, results) {
+                var stats = {};
+                if (results.rows && results.rows.length) {
+                    for (var i = 0; i < results.rows.length; i++) {
+                        stats[results.rows.item(i)['iState']] = results.rows.item(i)['count'];
+                    }
+                }
+                callback(stats);
+            }, console.error);
+        });
+    }
+
     return {
         setup : setup,
         create: create,
         destroy: destroy,
         loadAllCards : loadAllCards,
         loadNextCards : loadNextCards,
+        getStatesStats: getStatesStats,
         updateCard: updateCard
     };
 })();

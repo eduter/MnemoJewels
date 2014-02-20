@@ -252,10 +252,21 @@ mj.modules.cards = (function() {
         return v0[s1_len];
     }
 
+    function getStatesStats(callback) {
+        db.getStatesStats(function(statsByCode){
+            var stats = [];
+            for (var s in States) {
+                stats.push({state: s, count: statsByCode[States[s]]});
+            }
+            callback(stats);
+        });
+    }
+
     return {
         setup : setup,
         createNewGroup : createNewGroup,
         rescheduleMatch : rescheduleMatch,
-        rescheduleMismatch : rescheduleMismatch
+        rescheduleMismatch : rescheduleMismatch,
+        getStatesStats : getStatesStats
     };
 })();
