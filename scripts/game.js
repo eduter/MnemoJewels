@@ -7,6 +7,11 @@ mj.modules.game = (function() {
     var fiRedrawInterval = null;
     var ffScopeSize = 10;
     var TimeMeter = null;
+    var averageThinkingTimes = [
+        settings.INITIAL_INTERVAL / 6,
+        settings.INITIAL_INTERVAL / 3,
+        settings.INITIAL_INTERVAL / 2
+    ];
 
     var intervalBetweenGroups;
 
@@ -19,7 +24,7 @@ mj.modules.game = (function() {
     }
     
     function startGame(psMode) {
-        intervalBetweenGroups = settings.INTERVAL_BETWEEN_GROUPS;
+        intervalBetweenGroups = getIntervalBetweenGroups(settings.DEFAULT_GROUP_SIZE);
         board.initialize(psMode);
         fiRedrawInterval = window.setInterval(
             function(){
@@ -56,6 +61,10 @@ mj.modules.game = (function() {
     function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
         TimeMeter.start('MA');
         ffScopeSize *= (paPairsInGroup.length - 1) / 100 + 1;
+
+        var pairsLeft = paPairsInGroup.length - 1;
+        averageThinkingTimes[pairsLeft] = 0.6 * averageThinkingTimes[pairsLeft] + 0.4 * piThinkingTime;
+
         cards.rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime);
         TimeMeter.stop('MA');
     }
@@ -71,23 +80,25 @@ mj.modules.game = (function() {
         // TODO: keep or remove this?
     }
 
-    function updateGameSpeed(numRowsBefore, numRowsAfter) {
-        var i = numRowsBefore;
-        var increment = (numRowsAfter > numRowsBefore ? 1 : -1);
-        var factor = (numRowsAfter > numRowsBefore ? 0.03 : 0.01);
-        do {
-            i += increment;
-            intervalBetweenGroups *= 1 + (i - 4) * factor;
-        } while (i == numRowsAfter);
-        intervalBetweenGroups = Math.max(Math.min(intervalBetweenGroups, 10000), 3000);
-    }
-
     function redraw(paJewels, pmSelectedJewel) {
         display.redraw(paJewels, pmSelectedJewel);
     }
     
     function getScopeSize() {
         return Math.max(1, Math.round(ffScopeSize));
+    }
+
+    function getIntervalBetweenGroups(numPairs){
+        if (numPairs > 2) {
+            intervalBetweenGroups = (numPairs - 2) * getAverageThinkingTime();
+        } else {
+            intervalBetweenGroups = settings.MIN_INTERVAL;
+        }
+        return intervalBetweenGroups;
+    }
+
+    function getAverageThinkingTime() {
+        return (averageThinkingTimes[0] + averageThinkingTimes[1] + averageThinkingTimes[2]) / 3;
     }
 
     // expose public methods
@@ -102,8 +113,7 @@ mj.modules.game = (function() {
         handleBoardCleared: handleBoardCleared,
         redraw : redraw,
         getScopeSize : getScopeSize,
-        getIntervalBetweenGroups : function(){ return intervalBetweenGroups; },
-        updateGameSpeed: updateGameSpeed,
+        getIntervalBetweenGroups : getIntervalBetweenGroups,
         getStats : function() {
             return TimeMeter.getStats('DB')
                   + ' ' + TimeMeter.getStats('FE')
