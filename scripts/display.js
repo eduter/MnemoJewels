@@ -23,6 +23,7 @@ mj.modules.display = (function() {
     }
 
     function redraw(paJewels, pmSelectedJewel) {
+        mj.modules.debug.TimeMeter.start('D');
         var moBoard = getBoardElem();
         
         for (var i = 0; i < NUM_ROWS; i++) {
@@ -44,6 +45,7 @@ mj.modules.display = (function() {
             }
         }
         getStatsElem().innerHTML = mj.modules.game.getStats();
+        mj.modules.debug.TimeMeter.stop('D');
     }
     
     return {

@@ -118,6 +118,7 @@ mj.modules.game = (function() {
             return TimeMeter.getStats('DB')
                   + ' ' + TimeMeter.getStats('FE')
                   + ' ' + TimeMeter.getStats('CP')
+                  + ' ' + TimeMeter.getStats('D')
                   + ' p: ' + Math.round(intervalBetweenGroups / 100) / 10
                   + ' s: ' + getScopeSize();
         }
