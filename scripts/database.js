@@ -24,15 +24,9 @@ mj.modules.database = (function() {
                          +')'
             );
             tx.executeSql('SELECT COUNT(*) AS count FROM cards', [], function (tx, results) {
-                var mbEmpty = (results.rows.item(0).count == 0);
-                if (mbEmpty) {
-                    for (var i = 0; i < faTestCards.length; i++) {
-                        var card = faTestCards[i];
-                        tx.executeSql(
-                            'INSERT INTO cards (sFront, sBack, fEasiness, iState) VALUES (?, ?, 2.5, 1)',
-                            [card[0], card[1]]
-                        );
-                    }
+                var isDbEmpty = (results.rows.item(0).count == 0);
+                if (isDbEmpty) {
+                    _insertWords(tx, faTestCards);
                 }
             });
         });
@@ -41,6 +35,29 @@ mj.modules.database = (function() {
             tx.executeSql('UPDATE cards SET iState = 1 WHERE dLastRep IS NULL');
             tx.executeSql('UPDATE cards SET iState = 2 WHERE dNextRep - dLastRep = 120000');
             tx.executeSql('UPDATE cards SET iState = 3 WHERE iState IS NULL');
+        });
+    }
+
+    function insertWords(words) {
+        foDb.transaction(function(tx){ _insertWords(tx, words) });
+    }
+
+    function _insertWords(tx, words) {
+        for (var i = 0; i < words.length; i++) {
+            insertWord(tx, words[i][0], words[i][1]);
+        }
+    }
+
+    function insertWord(tx, front, back) {
+        tx.executeSql(
+            'INSERT INTO cards (sFront, sBack, fEasiness, iState) VALUES (?, ?, 2.5, 1)',
+            [front, back]
+        );
+    }
+
+    function removeCards(ids) {
+        foDb.transaction(function (tx) {
+            tx.executeSql('DELETE FROM cards WHERE id IN (' + ids.join(', ') + ')');
         });
     }
 
@@ -132,6 +149,8 @@ mj.modules.database = (function() {
         loadAllCards : loadAllCards,
         loadNextCards : loadNextCards,
         getStatesStats: getStatesStats,
-        updateCard: updateCard
+        updateCard: updateCard,
+        insertWords: insertWords,
+        removeCards: removeCards
     };
 })();

@@ -28,23 +28,64 @@ mj.modules.cards = (function() {
         TimeMeter = mj.modules.debug.TimeMeter;
 
         allCards = {};
-        wordMappings = {};
         db.loadAllCards(function(cards){
             for (var i = 0; i < cards.length; i++) {
                 var pair = new Pair(cards[i]);
                 allCards[pair.fiPairId] = pair;
-                if (wordMappings[pair.fsFront]) {
-                    if (wordMappings[pair.fsFront].indexOf(pair.fsBack) == -1) {
-                        wordMappings[pair.fsFront].push(pair.fsBack);
-                    }
-                } else {
-                    wordMappings[pair.fsFront] = [pair.fsBack];
-                }
-                //console.log(pair.toString());
             }
+            wordMappings = toWordMap(cards, 'sFront', 'sBack');
         });
     }
-    
+
+    function toWordMap(words, frontKey, backKey) {
+        var map = {};
+
+        for (var i = 0; i < words.length; i++) {
+            var front = words[i][frontKey];
+            var back = words[i][backKey];
+            if (map[front]) {
+                if (map[front].indexOf(back) == -1) {
+                    map[front].push(back);
+                }
+            } else {
+                map[front] = [back];
+            }
+        }
+        return map;
+    }
+
+    function inWordMap(map, front, back) {
+        return (map[front] && map[front].indexOf(back) >= 0);
+    }
+
+    function diff(wordList) {
+        var map = toWordMap(wordList, 0, 1);
+        var add = [];
+        var remove = [];
+
+        for (var i = 0; i < wordList.length; i++) {
+            if (!inWordMap(wordMappings, wordList[i][0], wordList[i][1])) {
+                add.push(wordList[i]);
+            }
+        }
+
+        for (var id in allCards) {
+            if (!inWordMap(map, allCards[id].fsFront, allCards[id].fsBack)) {
+                remove.push(id);
+            }
+        }
+
+        return { add: add, remove: remove };
+    }
+
+    function addCards(words) {
+        db.insertWords(words);
+    }
+
+    function removeCards(ids) {
+        db.removeCards(ids);
+    }
+
     function conflicts(poPair, paPairsInUse) {
         for (var i = 0; i < paPairsInUse.length; i++) {
             if (cardsConflict(poPair, paPairsInUse[i])) {
@@ -267,6 +308,9 @@ mj.modules.cards = (function() {
         createNewGroup : createNewGroup,
         rescheduleMatch : rescheduleMatch,
         rescheduleMismatch : rescheduleMismatch,
-        getStatesStats : getStatesStats
+        getStatesStats : getStatesStats,
+        diff: diff,
+        addCards: addCards,
+        removeCards: removeCards
     };
 })();
