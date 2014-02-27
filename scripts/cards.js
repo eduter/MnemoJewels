@@ -6,6 +6,7 @@ mj.modules.cards = (function() {
     var allCards = null;
     var wordMappings = null;
     var TimeMeter = null;
+    var totalCards = null;
 
     var Time = {
         SECOND:             1000,
@@ -29,7 +30,8 @@ mj.modules.cards = (function() {
 
         allCards = {};
         db.loadAllCards(function(cards){
-            for (var i = 0; i < cards.length; i++) {
+            totalCards = cards.length;
+            for (var i = 0; i < totalCards; i++) {
                 var pair = new Pair(cards[i]);
                 allCards[pair.fiPairId] = pair;
             }
@@ -303,12 +305,17 @@ mj.modules.cards = (function() {
         });
     }
 
+    function getTotalCards() {
+        return totalCards;
+    }
+
     return {
-        setup : setup,
-        createNewGroup : createNewGroup,
-        rescheduleMatch : rescheduleMatch,
-        rescheduleMismatch : rescheduleMismatch,
-        getStatesStats : getStatesStats,
+        setup: setup,
+        createNewGroup: createNewGroup,
+        rescheduleMatch: rescheduleMatch,
+        rescheduleMismatch: rescheduleMismatch,
+        getStatesStats: getStatesStats,
+        getTotalCards: getTotalCards,
         diff: diff,
         addCards: addCards,
         removeCards: removeCards
