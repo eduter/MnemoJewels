@@ -5,7 +5,7 @@ mj.modules.game = (function() {
     var cards = null;
     var settings = mj.settings;
     var fiRedrawInterval = null;
-    var ffScopeSize = 10;
+    var increment, ffScopeSize;
     var TimeMeter = null;
     var averageThinkingTimes = [
         settings.INITIAL_INTERVAL / 6,
@@ -24,6 +24,9 @@ mj.modules.game = (function() {
     }
     
     function startGame(psMode) {
+        var t = cards.getTotalCards();
+        ffScopeSize = saturate(30, 0.1 * t, 100);
+        increment = saturate(3, (t - ffScopeSize) / (5 * 60 * 1000 / getAverageThinkingTime()), 10);
         intervalBetweenGroups = getIntervalBetweenGroups(settings.DEFAULT_GROUP_SIZE);
         board.initialize(psMode);
         fiRedrawInterval = window.setInterval(
@@ -60,7 +63,7 @@ mj.modules.game = (function() {
     
     function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
         TimeMeter.start('MA');
-        ffScopeSize *= (paPairsInGroup.length - 1) / 100 + 1;
+        ffScopeSize += increment;
 
         var pairsLeft = paPairsInGroup.length - 1;
         averageThinkingTimes[pairsLeft] = 0.6 * averageThinkingTimes[pairsLeft] + 0.4 * piThinkingTime;
@@ -71,7 +74,7 @@ mj.modules.game = (function() {
     
     function rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime) {
         TimeMeter.start('MI');
-        ffScopeSize *= 0.9;
+        ffScopeSize -= Math.max(5, 0.1 * ffScopeSize);
         cards.rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime);
         TimeMeter.stop('MI');
     }
@@ -85,7 +88,11 @@ mj.modules.game = (function() {
     }
     
     function getScopeSize() {
-        return Math.max(1, Math.round(ffScopeSize));
+        return saturate(3, Math.round(ffScopeSize), cards.getTotalCards());
+    }
+
+    function saturate(min, value, max) {
+        return Math.max(min, Math.min(max, value));
     }
 
     function getIntervalBetweenGroups(numPairs){
