@@ -33,7 +33,7 @@ mj.modules.game = (function() {
             function(){
                 display.redraw(board.getJewels(), board.getSelectedJewel());
             },
-            1000/30
+            1000/6
         );
     }
     
