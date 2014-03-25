@@ -1,5 +1,7 @@
 mj.modules.cards = (function() {
 
+    var MAX_CANDIDATES = 30;
+
     var game = null;
     var db = null;
     var Pair = null;
@@ -7,6 +9,8 @@ mj.modules.cards = (function() {
     var wordMappings = null;
     var TimeMeter = null;
     var totalCards = null;
+    var indexes = {};
+    var learnIterator, reviewIterator, alternativesIterator;
 
     var Time = {
         SECOND:             1000,
@@ -14,13 +18,59 @@ mj.modules.cards = (function() {
         HOUR:     60 * 60 * 1000,
         DAY: 24 * 60 * 60 * 1000
     };
-    
+
     var States = {
         NEW:      1,
         LEARNING: 2,
         KNOWN:    3,
         LAPSE:    4
     };
+
+    var cmpFuncs = {};
+
+    function Iterator(priorities) {
+        var state, card;
+
+        this.reset = function() {
+            state = 0;
+            card = -1;
+        };
+
+        this.hasNext = function() {
+            if (card < indexes[priorities[state]].length - 1) {
+                return true;
+            }
+            for (var i = state + 1; i < priorities.length; i++) {
+                if (indexes[priorities[i]].length > 0) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        this.next = function () {
+            var n = null;
+
+            if (this.hasNext()) {
+                do {
+                    if (card < indexes[priorities[state]].length - 1) {
+                        card++;
+                    } else {
+                        state++;
+                        card = 0;
+                    }
+                    n = indexes[priorities[state]][card];
+                } while (n == null);
+            }
+            return n;
+        };
+
+        this.toString = function () {
+            return 'state: ' + state + ' card: ' + card + ' priorities: [' + priorities.join(', ') + ']';
+        };
+
+        this.reset();
+    }
 
     function setup() {
         game = mj.modules.game;
@@ -29,13 +79,35 @@ mj.modules.cards = (function() {
         TimeMeter = mj.modules.debug.TimeMeter;
 
         allCards = {};
+
+        for (var s in States) {
+            indexes[States[s]] = [];
+        }
+
+        cmpFuncs[States.NEW] = cmpId;
+        cmpFuncs[States.LEARNING] = cmpRelativeScheduling;
+        cmpFuncs[States.KNOWN] = cmpRelativeScheduling;
+        cmpFuncs[States.LAPSE] = cmpNextRep;
+
+        learnIterator = new Iterator([States.LAPSE, States.LEARNING, States.NEW, States.KNOWN]);
+        reviewIterator = new Iterator([States.LAPSE, States.LEARNING, States.KNOWN, States.NEW]);
+        alternativesIterator = new Iterator([States.KNOWN, States.LEARNING, States.LAPSE, States.NEW]);
+
         db.loadAllCards(function(cards){
             totalCards = cards.length;
             for (var i = 0; i < totalCards; i++) {
                 var pair = new Pair(cards[i]);
                 allCards[pair.fiPairId] = pair;
+                indexes[pair.fiState].push(pair);
+            }
+            for (var s in States) {
+                var state = States[s];
+                indexes[state].sort(cmpFuncs[state]);
             }
             wordMappings = toWordMap(cards, 'sFront', 'sBack');
+
+
+            debugReview(); // TODO
         });
     }
 
@@ -104,88 +176,108 @@ mj.modules.cards = (function() {
             || wordMappings[card2.fsFront].indexOf(card1.fsBack) >= 0
     }
 
-    function choosePairsForGroup(piSize, paPairsInUse, paNextCards) {
-        var group = [];
-        var pairsByPriority = [];
-        var i, pair, priority;
+    function createNewGroup(groupSize, pairsInUse, callback) {
+        console.group('createNewGroup');
+        var firstCard = chooseFirst(pairsInUse);
+        TimeMeter.start('CA');
+        var alternatives = chooseAlternatives(groupSize, firstCard, pairsInUse);
+        TimeMeter.stop('CA');
+        var group = [firstCard].concat(alternatives);
 
-        // First card from a group is chosen according to the schedule
-        while (group.length == 0 && paNextCards.length > 0) {
-            pair = allCards[paNextCards.shift()];
-            if (!conflicts(pair, paPairsInUse)) {
-                group.push(pair);
+        for (var i = 0; i < group.length; i++) {
+            removeFromIndex(group[i]);
+            console.log(group[i].toString());
+        }
+        console.groupEnd();
+        callback(group);
+    }
+
+    function chooseFirst(pairsInUse) {
+        var learning = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
+        var i = (learning < mj.settings.MAX_LEARNING ? learnIterator : reviewIterator);
+
+        console.log('learning: ' + learning + '   using ' + (learning < mj.settings.MAX_LEARNING ? 'learnIterator' : 'reviewIterator'));
+
+        i.reset();
+        while (i.hasNext()) {
+            var pair = i.next();
+            if (!conflicts(pair, pairsInUse)) {
+                return pair;
             }
         }
+        return null;
+    }
 
-        // Remaining cards are prioritized according to state and Levenshtein distance to the 1st card
-        for (i = 0; i < paNextCards.length; i++) {
-            pair = allCards[paNextCards[i]];
-            if (!conflicts(pair, paPairsInUse) && !conflicts(pair, group)) {
-                priority = Math.min(levenshtein(pair.fsFront, group[0].fsFront), levenshtein(pair.fsBack, group[0].fsFront));
-                switch (pair.fiState) {
-                    case States.LAPSE:    priority += 100; break;
-                    case States.NEW:      priority += 200; break;
-                }
-                pairsByPriority[priority] = pairsByPriority[priority] || [];
-                pairsByPriority[priority].push(pair);
-            }
-        }
+    function chooseAlternatives(groupSize, firstCard, pairsInUse) {
+        var i = alternativesIterator;
+        var otherPairs = pairsInUse.concat(firstCard);
+        var alternatives = [];
+        var candidates = [];
+        var count = 0;
 
-        // Take the cards with highest priority (smaller value)
-        for (priority = 1; priority < pairsByPriority.length; priority++) {
-            if (pairsByPriority[priority]) {
-                for (i = 0; i < pairsByPriority[priority].length; i++) {
-                    pair = pairsByPriority[priority][i];
-                    if (!conflicts(pair, group)) {
-                        group.push(pair);
-                        if (group.length == piSize) break;
+        // Process all cards inside the scope and create an array of candidates sorted by distance
+        i.reset();
+        while (i.hasNext() && count < game.getScopeSize()) {
+            var pair = i.next();
+            if (!conflicts(pair, otherPairs)) {
+                pair.distance = Math.min(levenshtein(pair.fsFront, firstCard.fsFront), levenshtein(pair.fsBack, firstCard.fsFront));
+                var rank = Math.abs(candidates.find(pair, cmpDistance));
+                if (rank < MAX_CANDIDATES) {
+                    while (candidates[rank] && candidates[rank].distance == pair.distance) rank++;
+                    candidates.splice(rank, 0, pair);
+                    if (candidates.length > MAX_CANDIDATES) {
+                        candidates.pop().distance = undefined; // cleanup
                     }
+                } else {
+                    pair.distance = undefined; // cleanup
                 }
-                if (group.length == piSize) break;
             }
+            count++;
         }
 
-        console.dir({
-            pairsByPriority: pairsByPriority,
-            group: group,
-            paPairsInUse: paPairsInUse
-        });
+        // cleanup
+        for (var a = 0; a < candidates.length; a++) {
+            candidates[a].distance = undefined;
+        }
 
-        return group;
-    }
-
-    function loadCards(piSize, paPairsInUse, pcCallback, cardsToLoad) {
-        db.loadNextCards(cardsToLoad, function(paNextCards) {
-            var cardsLoaded = paNextCards.length;
-            TimeMeter.start('CP');
-            var group = choosePairsForGroup(piSize, paPairsInUse, paNextCards);
-            TimeMeter.stop('CP');
-            if (group.length == piSize) {
-                pcCallback(group);
-                console.groupEnd();
-            } else if (cardsLoaded < cardsToLoad) {
-                alert('There are not enough cards. Try importing a few more.');
-                // TODO: handle this situation properly
-            } else {
-                loadCards(piSize, paPairsInUse, pcCallback, cardsToLoad * 2);
+        // Choose the first non-conflicting cards
+        var c = 0;
+        while (alternatives.length < groupSize - 1) {
+            if (!conflicts(candidates[c], alternatives)) {
+                alternatives.push(candidates[c]);
             }
-        });
+            c++;
+        }
+        return alternatives;
     }
 
-    function createNewGroup(piSize, paPairsInUse, pcCallback) {
-        var cardsToLoad = game.getScopeSize();
-        loadCards(piSize, paPairsInUse, pcCallback, cardsToLoad);
+    function cmpDistance(c1, c2) {
+        return normalizeCmp(c1.distance - c2.distance);
     }
-    
+
+    function addToIndex(pair) {
+        var index = indexes[pair.fiState];
+        var position = - index.find(pair, cmpFuncs[pair.fiState]);
+        index.splice(position, 0, pair);
+    }
+
+    function removeFromIndex(pair) {
+        var index = indexes[pair.fiState];
+        var position = index.find(pair, cmpFuncs[pair.fiState]);
+        index.splice(position, 1);
+    }
+
     function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
         console.group('rescheduleMatch');
-        console.dir({
-            'piPairId': piPairId,
-            'paPairsInGroup': paPairsInGroup,
-            'piThinkingTime': piThinkingTime
-        });
+
+        for (var i = 0; i < paPairsInGroup.length; i++) {
+            var match = (paPairsInGroup[i].fiPairId == piPairId);
+            console.log((match ? 'v ' : '  ') + paPairsInGroup[i].toString());
+        }
+
+        var moPair = allCards[piPairId]; // TODO: fix this
+
         if (paPairsInGroup.length > 1) {
-            var moPair = allCards[piPairId];
             var now = Date.now();
             var minInterval = (paPairsInGroup.length * 1000 / piThinkingTime * Time.DAY);
 
@@ -194,20 +286,11 @@ mj.modules.cards = (function() {
                 var actualInterval = now - moPair.fdLastRep;
                 var multiplier = moPair.ffEasiness * (paPairsInGroup.length - 1) / 2;
                 var nextInterval = Math.max(minInterval, multiplier * actualInterval, scheduledInterval * 1.1);
-                moPair.fdNextRep = Math.floor(moPair.fdLastRep + nextInterval);
-                console.dir({
-                    scheduledInterval: scheduledInterval,
-                    actualInterval: actualInterval,
-                    multiplier: multiplier,
-                    fdLastRep: new Date(moPair.fdLastRep),
-                    fdNextRep: new Date(moPair.fdNextRep)
-                });
+                moPair.setSchedule(now, Math.floor(now + nextInterval));
                 // moPair.ffEasiness = ? // TODO
             } else {
-                moPair.fdNextRep = Math.floor(now + minInterval);
+                moPair.setSchedule(now, Math.floor(now + minInterval));
             }
-            console.log('fdNextRep: ' + new Date(moPair.fdNextRep));
-            moPair.fdLastRep = now;
 
             if (moPair.fiState == States.NEW) {
                 moPair.fiState = States.LEARNING;
@@ -217,22 +300,40 @@ mj.modules.cards = (function() {
 
             db.updateCard(moPair);
         }
+        addToIndex(moPair);
         console.groupEnd();
     }
-    
+
+    function debugReview() {
+        // TODO: add back to index the cards which are on the board when game is over
+        var learning = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
+        var i = reviewIterator;
+        var l = 0;
+
+        console.group('debugReview (learning = ' + learning + ')');
+        i.reset();
+        while (i.hasNext() && l < learning) {
+            var pair = i.next();
+            console.log(pair.toString());
+            l++;
+        }
+        console.groupEnd();
+    }
+
     function rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime) {
         console.group('rescheduleMismatch');
-        console.dir({
-            'paMismatchedPairs': paMismatchedPairs,
-            'paPairsInGroup': paPairsInGroup,
-            'piThinkingTime': piThinkingTime
-        });
+
+        for (var j = 0; j < paPairsInGroup.length; j++) {
+            var mismatch = (paMismatchedPairs.indexOf(paPairsInGroup[j].fiPairId) > -1);
+            console.log((mismatch ? 'X ' : '  ') + paPairsInGroup[j].toString());
+        }
+
         var now = Date.now();
         var nextRep = now + 2 * Time.MINUTE;
         for (var m = 0; m < paMismatchedPairs.length; m++) {
             var moPair = allCards[paMismatchedPairs[m]];
-            moPair.fdNextRep = nextRep;
-            moPair.fdLastRep = now;
+
+            moPair.setSchedule(now, nextRep);
             if (moPair.fiState == States.NEW || moPair.fiState == States.LEARNING) {
                 moPair.fiState = States.NEW;
             } else {
@@ -240,9 +341,72 @@ mj.modules.cards = (function() {
             }
             db.updateCard(moPair);
         }
+        for (var i = 0; i < paPairsInGroup.length; i++) {
+            addToIndex(paPairsInGroup[i]);
+        }
         console.groupEnd();
     }
-    
+
+    function getStatesStats(callback) {
+        db.getStatesStats(function(statsByCode){
+            var stats = [];
+            for (var s in States) {
+                stats.push({state: s, count: statsByCode[States[s]]});
+            }
+            callback(stats);
+        });
+    }
+
+    function getTotalCards() {
+        return totalCards;
+    }
+
+    // Cannot be used for comparing non-scheduled cards
+    function cmpRelativeScheduling(c1, c2) {
+        return normalizeCmp(c2.relativeScheduling - c1.relativeScheduling) || cmpId(c1, c2);
+    }
+
+    function cmpNextRep(c1, c2) {
+        return normalizeCmp(c1.fdNextRep - c2.fdNextRep) || cmpId(c1, c2);
+    }
+
+    function cmpId(c1, c2) {
+        return normalizeCmp(c1.fiPairId - c2.fiPairId);
+    }
+
+    function normalizeCmp(value) {
+        if (value < 0) return -1;
+        else if (value > 0) return 1;
+        else return 0;
+    }
+
+    /**
+     * Performs a binary search.
+     *
+     * @param {*} searchElement The item to search for
+     * @param {function} cmpFunc compare function
+     * @return {Number} The index of the element, if found, or the complement of where it would be
+     */
+    Array.prototype.find = function(searchElement, cmpFunc) {
+        var currentIndex, currentElement, cmpRes;
+        var minIndex = 0;
+        var maxIndex = this.length - 1;
+
+        while (minIndex <= maxIndex) {
+            currentIndex = (minIndex + maxIndex) / 2 | 0;
+            currentElement = this[currentIndex];
+            cmpRes = cmpFunc(currentElement, searchElement);
+            if (cmpRes < 0) {
+                minIndex = currentIndex + 1;
+            } else if (cmpRes > 0) {
+                maxIndex = currentIndex - 1;
+            } else {
+                return currentIndex;
+            }
+        }
+        return ~maxIndex;
+    };
+
     // http://kevin.vanzonneveld.net
     // +            original by: Carlos R. L. Rodrigues (http://www.jsfromhell.com)
     // +            bugfixed by: Onno Marsman
@@ -295,20 +459,6 @@ mj.modules.cards = (function() {
         return v0[s1_len];
     }
 
-    function getStatesStats(callback) {
-        db.getStatesStats(function(statsByCode){
-            var stats = [];
-            for (var s in States) {
-                stats.push({state: s, count: statsByCode[States[s]]});
-            }
-            callback(stats);
-        });
-    }
-
-    function getTotalCards() {
-        return totalCards;
-    }
-
     return {
         setup: setup,
         createNewGroup: createNewGroup,
@@ -318,6 +468,7 @@ mj.modules.cards = (function() {
         getTotalCards: getTotalCards,
         diff: diff,
         addCards: addCards,
+        debugReview: debugReview,
         removeCards: removeCards
     };
 })();

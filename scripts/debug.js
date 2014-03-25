@@ -63,11 +63,25 @@ mj.modules.debug = (function() {
         return bytes;
     }
 
+    function testCreateGroup() {
+        for (var i = 0; i < 300; i++) {
+            console.log('GROUP ' + i);
+            mj.modules.cards.createNewGroup(3, [], function (cards) {
+                while (cards.length) {
+                    var pair = cards[0];
+                    mj.modules.cards.rescheduleMatch(pair.fiPairId, cards, 1000);
+                    cards.shift();
+                }
+            });
+        }
+    }
+
     return {
         TimeMeter: TimeMeter,
         getStats : function() {
-            return TimeMeter.getStats('MA') + ' ' + TimeMeter.getStats('MI') + ' ' + TimeMeter.getStats('CG');
+            return TimeMeter.getStats('CG') + ' ' + TimeMeter.getStats('CA') + ' ' + TimeMeter.getStats('D');
         },
+        testCreateGroup: testCreateGroup,
         roughSizeOfObject: roughSizeOfObject
     };
 })();

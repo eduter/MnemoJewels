@@ -12,6 +12,7 @@ mj.modules.board = (function() {
     var fiEndGameTimer = null;
     var fiClears = null;
     var waitingForDefaultGroup = false;
+    var gameRunning = false;
 
     function setup() {
         dom = mj.dom;
@@ -22,6 +23,7 @@ mj.modules.board = (function() {
     
     function initialize(psMode) {
         fsGameMode = psMode;
+        gameRunning = true;
         faJewels = [[],[]];
         faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         fiLastSelectionTime = now();
@@ -72,16 +74,17 @@ mj.modules.board = (function() {
         var maFrontJewels = [];
         var maBackJewels = [];
         var miGroupId = getNextGroupId();
+        var i;
         
         fmGroupCreationTime[miGroupId] = now();
         
-        for (var i in paPairs) {
+        for (i = 0; i < paPairs.length; i++) {
             var moPair = paPairs[i];
             fmPairsInUse[moPair.fiPairId] = moPair;
             maFrontJewels.push(new Jewel(miGroupId, moPair, true));
             maBackJewels.push(new Jewel(miGroupId, moPair, false));
         }
-        for (var i in maFrontJewels) {
+        for (i = 0; i < maFrontJewels.length; i++) {
             if (getNumPairs() < fmSettings.NUM_ROWS) {
                 faJewels[0].push(maFrontJewels[i]);
                 faJewels[1].push(maBackJewels.splice(rand(maBackJewels.length), 1)[0]);
@@ -93,6 +96,7 @@ mj.modules.board = (function() {
     }
     
     function gameOver(pbWin) {
+        gameRunning = false;
         clearInterval();
         if (fiEndGameTimer != null) {
             window.clearTimeout(fiEndGameTimer);
@@ -138,7 +142,7 @@ mj.modules.board = (function() {
         var miGroupId = getGroup(piPairId);
         var maPairsInGroup = getPairsInGroup(miGroupId);
         var miThinkingTime = piSelectionTime -  Math.max(fiLastSelectionTime, fmGroupCreationTime[miGroupId]);
-        
+
         removePair(piPairId);
         fiLastSelectionTime = piSelectionTime;
         game.rescheduleMatch(piPairId, maPairsInGroup, miThinkingTime);
@@ -160,14 +164,21 @@ mj.modules.board = (function() {
     }
 
     function setInterval() {
+
         function f() {
             addDefaultGroup();
-            fiTimer = window.setTimeout(f, game.getIntervalBetweenGroups(getNumPairs()));
+            scheduleNextGroup(f);
         }
 
-        fiTimer = window.setTimeout(f, game.getIntervalBetweenGroups(getNumPairs()));
+        scheduleNextGroup(f);
     }
-    
+
+    function scheduleNextGroup(f) {
+        if (gameRunning) {
+            fiTimer = window.setTimeout(f, game.getIntervalBetweenGroups(getNumPairs()));
+        }
+    }
+
     function clearInterval() {
         window.clearInterval(fiTimer);
     }
@@ -188,17 +199,18 @@ mj.modules.board = (function() {
     }
     
     function getGroup(piPairId) {
-        for (var i in faJewels[0]) {
+        for (var i = 0; i < faJewels[0].length; i++) {
             if (faJewels[0][i].foPair.fiPairId == piPairId) {
                 return faJewels[0][i].fiGroupId;
             }
         }
+        return null;
     }
     
     function getPairsInGroup(piGroupId) {
         var maPairs = [];
-        
-        for (var i in faJewels[0]) {
+
+        for (var i = 0; i < faJewels[0].length; i++) {
             var moJewel = faJewels[0][i];
             if (moJewel.fiGroupId == piGroupId) {
                 maPairs.push(moJewel.foPair);
@@ -208,8 +220,8 @@ mj.modules.board = (function() {
     }
     
     function removePair(piPairId) {
-        for (var j in faJewels) {
-            for (var i in faJewels[j]) {
+        for (var j = 0; j < faJewels.length; j++) {
+            for (var i = 0; i < faJewels[j].length; i++) {
                 if (faJewels[j][i].foPair.fiPairId == piPairId) {
                     faJewels[j].splice(i, 1);
                     break;
@@ -220,7 +232,7 @@ mj.modules.board = (function() {
     }
     
     function removeGroup(piGroupId) {
-        for (var j in faJewels) {
+        for (var j = 0; j < faJewels.length; j++) {
             for (var i = faJewels[j].length; i > 0; i--) {
                 if (faJewels[j][i - 1].fiGroupId == piGroupId) {
                     if (j == 0) {

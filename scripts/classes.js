@@ -19,18 +19,16 @@
             this.fiPairId = pxIdOrRow['id'];
             this.fsFront = pxIdOrRow['sFront'];
             this.fsBack = pxIdOrRow['sBack'];
-            this.fdLastRep = pxIdOrRow['dLastRep'];
-            this.fdNextRep = pxIdOrRow['dNextRep'];
             this.ffEasiness = pxIdOrRow['fEasiness'];
             this.fiState = pxIdOrRow['iState'];
+            this.setSchedule(pxIdOrRow['dLastRep'], pxIdOrRow['dNextRep']);
         } else {
             this.fiPairId = pxIdOrRow;
             this.fsFront = psFront;
             this.fsBack = psBack;
-            this.fdLastRep = pdLastRep;
-            this.fdNextRep = pdNextRep;
             this.ffEasiness = pfEasiness;
             this.fiState = piState;
+            this.setSchedule(pdLastRep, pdNextRep);
         }
     }
 
@@ -44,12 +42,27 @@
         }
     }
 
-    function pad(s, length) {
-        return s + '                                                                                      '.substr(0, Math.max(0, length - s.length));
+    function pad(v, length) {
+        var padding = '                                                                                               ';
+        if (typeof v == 'string') {
+            return (v + padding).substr(0, length);
+        } else {
+            return (padding + v).substr(-length);
+        }
     }
 
+    Pair.prototype.setSchedule = function(lastRep, nextRep) {
+        this.fdLastRep = lastRep;
+        this.fdNextRep = nextRep;
+        if (lastRep && nextRep) {
+            this.relativeScheduling = (Date.now() - nextRep) / (nextRep - lastRep);
+        } else {
+            this.relativeScheduling = null;
+        }
+    };
+
     Pair.prototype.toString = function() {
-        return this.fiPairId
+        return pad(this.fiPairId, 4)
             + '  ' + dateToStr(this.fdLastRep)
             + '  ' + dateToStr(this.fdNextRep)
             + '  ' + this.fiState

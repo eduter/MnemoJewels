@@ -9,6 +9,7 @@ var mj = {
         MIN_INTERVAL : 2000,
         MISMATCH_PENALTY_TIME: 1500,
         INTERVAL_REDUCTION_FACTOR : 0.9,
+        MAX_LEARNING: 20,
         controls : {
             CLICK : 'selectJewel',
             TOUCH : 'selectJewel'

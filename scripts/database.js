@@ -81,39 +81,8 @@ mj.modules.database = (function() {
         });
     }
 
-    function loadNextCards(piHowMany, pcCallback) {
-        foDb.transaction(function (tx) {
-            var now = Date.now();
-            var parameters = [now, now, piHowMany];
-            var query = 'SELECT id, dNextRep, 1 as ord FROM cards c WHERE dNextRep <= ? ' +
-                'UNION ' +
-                'SELECT id, dNextRep, 2 as ord FROM cards c WHERE dNextRep IS NULL ' +
-                'UNION ' +
-                'SELECT id, dNextRep, 3 as ord FROM cards c WHERE dNextRep > ? ' +
-                'ORDER BY ord, dNextRep, id ' +
-                'LIMIT ?';
-            TimeMeter.start('DB'); // started DB part
-            tx.executeSql(
-                query,
-                parameters,
-                function (tx, results) {
-                    TimeMeter.stop('DB'); // finished DB part
-                    TimeMeter.start('FE'); // started fetching part
-                    var maCards = [];
-                    if (results.rows && results.rows.length) {
-                        for (var i = 0; i < results.rows.length; i++) {
-                            maCards.push(results.rows.item(i)['id']);
-                        }
-                    }
-                    TimeMeter.stop('FE'); // finished fetching part
-                    pcCallback(maCards);
-                },
-                console.error
-            );
-        });
-    }
-
     function updateCard(poPair) {
+        console.log("U " + poPair.toString());
         foDb.transaction(function (tx) {
             tx.executeSql('\
                 UPDATE cards SET \
@@ -124,7 +93,6 @@ mj.modules.database = (function() {
                 WHERE id = ?',
                 [poPair.fdLastRep, poPair.fdNextRep, poPair.fiState, poPair.ffEasiness, poPair.fiPairId]
             );
-            console.log("updateCard: " + poPair.toString());
         });
     }
 
@@ -147,7 +115,6 @@ mj.modules.database = (function() {
         create: create,
         destroy: destroy,
         loadAllCards : loadAllCards,
-        loadNextCards : loadNextCards,
         getStatesStats: getStatesStats,
         updateCard: updateCard,
         insertWords: insertWords,

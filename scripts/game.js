@@ -46,6 +46,8 @@ mj.modules.game = (function() {
             alert('Game Over!');
         }
         main.navigateTo('main-menu');
+
+        cards.debugReview(); // TODO
     }
     
     function createNewGroup(piSize, paPairsInUse, pcCallback) {
@@ -122,10 +124,7 @@ mj.modules.game = (function() {
         getScopeSize : getScopeSize,
         getIntervalBetweenGroups : getIntervalBetweenGroups,
         getStats : function() {
-            return TimeMeter.getStats('DB')
-                  + ' ' + TimeMeter.getStats('FE')
-                  + ' ' + TimeMeter.getStats('CP')
-                  + ' ' + TimeMeter.getStats('D')
+            return mj.modules.debug.getStats()
                   + ' p: ' + Math.round(intervalBetweenGroups / 100) / 10
                   + ' s: ' + getScopeSize();
         }

@@ -5,9 +5,6 @@ mj.modules.display = (function() {
     var NUM_ROWS = mj.settings.NUM_ROWS;
     var stats = null;
     
-    function setup() {
-    }
-    
     function getBoardElem() {
         if (foBoard == null) {
             foBoard = $('#board')[0];
@@ -25,18 +22,19 @@ mj.modules.display = (function() {
     function redraw(paJewels, pmSelectedJewel) {
         mj.modules.debug.TimeMeter.start('D');
         var moBoard = getBoardElem();
+        var i, j, moCell;
         
-        for (var i = 0; i < NUM_ROWS; i++) {
-            for (var j = 0; j < 2; j++) {
-                var moCell = moBoard.rows[i].cells[j];
+        for (i = 0; i < NUM_ROWS; i++) {
+            for (j = 0; j < 2; j++) {
+                moCell = moBoard.rows[i].cells[j];
                 moCell.className = '';
                 moCell.innerHTML = '';
             }
         }
-        for (var j in paJewels) {
-            for (var i in paJewels[j]) {
+        for (j = 0; j < paJewels.length; j++) {
+            for (i = 0; i < paJewels[0].length; i++) {
                 var moJewel = paJewels[j][i];
-                var moCell = moBoard.rows[NUM_ROWS - i - 1].cells[j];
+                moCell = moBoard.rows[NUM_ROWS - i - 1].cells[j];
                 moCell.className = 'group' + moJewel.fiGroupId;
                 moCell.innerHTML = moJewel.getText();
                 if (pmSelectedJewel && pmSelectedJewel.row == i && pmSelectedJewel.col == j) {
