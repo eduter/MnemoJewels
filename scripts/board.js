@@ -84,9 +84,9 @@ mj.modules.board = (function() {
             maFrontJewels.push(new Jewel(miGroupId, moPair, true));
             maBackJewels.push(new Jewel(miGroupId, moPair, false));
         }
-        for (i = 0; i < maFrontJewels.length; i++) {
+        while (maFrontJewels.length) {
             if (getNumPairs() < fmSettings.NUM_ROWS) {
-                faJewels[0].push(maFrontJewels[i]);
+                faJewels[0].push(maFrontJewels.splice(rand(maFrontJewels.length), 1)[0]);
                 faJewels[1].push(maBackJewels.splice(rand(maBackJewels.length), 1)[0]);
             } else {
                 gameOver(false);
