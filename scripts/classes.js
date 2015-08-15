@@ -30,6 +30,7 @@
             this.fiState = piState;
             this.setSchedule(pdLastRep, pdNextRep);
         }
+        this.suspendedUntil = null;
     }
 
     function dateToStr(date) {
@@ -68,6 +69,22 @@
             + '  ' + this.fiState
             + '  ' + pad(this.fsFront, 15)
             + '  ' + pad(this.fsBack, 15);
+    };
+
+    /**
+     * Checks whether this pair is currently suspended.
+     * @returns {boolean}
+     */
+    Pair.prototype.isSuspended = function() {
+        return (this.suspendedUntil != null&& this.suspendedUntil > Date.now());
+    };
+
+    /**
+     * Suspends this pair until the specified time.
+     * @param {number} endSuspension - Timestamp of when the suspension is over
+     */
+    Pair.prototype.suspend = function(endSuspension) {
+        this.suspendedUntil = endSuspension;
     };
 
     mj.classes = {

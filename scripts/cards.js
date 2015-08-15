@@ -201,7 +201,7 @@ mj.modules.cards = (function() {
         i.reset();
         while (i.hasNext()) {
             var pair = i.next();
-            if (!conflicts(pair, pairsInUse)) {
+            if (!pair.isSuspended() && !conflicts(pair, pairsInUse)) {
                 return pair;
             }
         }
@@ -219,7 +219,7 @@ mj.modules.cards = (function() {
         i.reset();
         while (i.hasNext() && count < game.getScopeSize()) {
             var pair = i.next();
-            if (!conflicts(pair, otherPairs)) {
+            if (!pair.isSuspended() && !conflicts(pair, otherPairs)) {
                 pair.distance = Math.min(levenshtein(pair.fsFront, firstCard.fsFront), levenshtein(pair.fsBack, firstCard.fsFront));
                 var rank = Math.abs(candidates.find(pair, cmpDistance));
                 if (rank < MAX_CANDIDATES) {
@@ -276,9 +276,9 @@ mj.modules.cards = (function() {
         }
 
         var moPair = allCards[piPairId]; // TODO: fix this
+        var now = Date.now();
 
         if (paPairsInGroup.length > 1) {
-            var now = Date.now();
             var minInterval = (paPairsInGroup.length * 1000 / piThinkingTime * Time.DAY);
 
             if (moPair.fdLastRep) {
@@ -300,6 +300,7 @@ mj.modules.cards = (function() {
 
             db.updateCard(moPair);
         }
+        moPair.suspend(now + paPairsInGroup.length * 30 * Time.SECOND);
         addToIndex(moPair);
         console.groupEnd();
     }
@@ -342,6 +343,7 @@ mj.modules.cards = (function() {
             db.updateCard(moPair);
         }
         for (var i = 0; i < paPairsInGroup.length; i++) {
+            paPairsInGroup[i].suspend(now + 15 * Time.SECOND);
             addToIndex(paPairsInGroup[i]);
         }
         console.groupEnd();
