@@ -88,12 +88,13 @@ mj.modules.main = (function() {
      * Triggers an event and notifies all handlers attached to it.
      *
      * @param {string} eventName - name of the event to be triggered
-     * @param {*} [eventData] - data to be forwarded to the event handlers
+     * @param {*} [eventData] - an "immutable" copy of this is passed to the event handlers
      */
     function trigger(eventName, eventData) {
         if (eventHandlers[eventName]) {
+            var serializedData = JSON.stringify(eventData);
             for (var i = 0; i < eventHandlers[eventName].length; i++) {
-                eventHandlers[eventName][i].call(null, eventData);
+                eventHandlers[eventName][i].call(null, JSON.parse(serializedData));
             }
         }
     }

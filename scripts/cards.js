@@ -275,8 +275,14 @@ mj.modules.cards = (function() {
     function rescheduleMatch(eventData) {
         console.group('rescheduleMatch');
         var pairsInGroup = eventData.pairsInGroup;
+        var groupSize = pairsInGroup.length;
 
-        for (var i = 0; i < pairsInGroup.length; i++) {
+        // Replace the data objects by the actual Pair instances
+        for (var p = 0; p < groupSize; p++) {
+            pairsInGroup[p] = allCards[pairsInGroup[p].fiPairId];
+        }
+
+        for (var i = 0; i < groupSize; i++) {
             var match = (pairsInGroup[i].fiPairId == eventData.pairId);
             console.log((match ? 'v ' : '  ') + pairsInGroup[i].toString());
         }
@@ -284,13 +290,13 @@ mj.modules.cards = (function() {
         var moPair = allCards[eventData.pairId]; // TODO: fix this
         var now = Date.now();
 
-        if (pairsInGroup.length > 1) {
-            var minInterval = (pairsInGroup.length * 1000 / eventData.thinkingTime * Time.DAY);
+        if (groupSize > 1) {
+            var minInterval = (groupSize * 1000 / eventData.thinkingTime * Time.DAY);
 
             if (moPair.fdLastRep) {
                 var scheduledInterval = moPair.fdNextRep - moPair.fdLastRep;
                 var actualInterval = now - moPair.fdLastRep;
-                var multiplier = moPair.ffEasiness * (pairsInGroup.length - 1) / 2;
+                var multiplier = moPair.ffEasiness * (groupSize - 1) / 2;
                 var nextInterval = Math.max(minInterval, multiplier * actualInterval, scheduledInterval * 1.1);
                 moPair.setSchedule(now, Math.floor(now + nextInterval));
                 // moPair.ffEasiness = ? // TODO
@@ -306,7 +312,7 @@ mj.modules.cards = (function() {
 
             db.updateCard(moPair);
         }
-        moPair.suspend(now + pairsInGroup.length * 30 * Time.SECOND);
+        moPair.suspend(now + groupSize * 30 * Time.SECOND);
         addToIndex(moPair);
         console.groupEnd();
     }
@@ -331,6 +337,11 @@ mj.modules.cards = (function() {
         console.group('rescheduleMismatch');
         var mismatchedPairs = eventData.mismatchedPairs;
         var pairsInGroup = eventData.pairsInGroup;
+
+        // Replace the data objects by the actual Pair instances
+        for (var p = 0; p < pairsInGroup.length; p++) {
+            pairsInGroup[p] = allCards[pairsInGroup[p].fiPairId];
+        }
 
         for (var j = 0; j < pairsInGroup.length; j++) {
             var mismatch = (mismatchedPairs.indexOf(pairsInGroup[j].fiPairId) > -1);
