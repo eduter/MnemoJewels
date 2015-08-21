@@ -2,6 +2,7 @@ mj.modules.cards = (function() {
 
     var MAX_CANDIDATES = 30;
 
+    var main = null;
     var game = null;
     var db = null;
     var Pair = null;
@@ -73,6 +74,7 @@ mj.modules.cards = (function() {
     }
 
     function setup() {
+        main = mj.modules.main;
         game = mj.modules.game;
         db = mj.modules.database;
         Pair = mj.classes.Pair;
@@ -109,6 +111,9 @@ mj.modules.cards = (function() {
 
             debugReview(); // TODO
         });
+
+        main.bind('match', rescheduleMatch);
+        main.bind('mismatch', rescheduleMismatch);
     }
 
     function toWordMap(words, frontKey, backKey) {
@@ -267,24 +272,25 @@ mj.modules.cards = (function() {
         index.splice(position, 1);
     }
 
-    function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
+    function rescheduleMatch(eventData) {
         console.group('rescheduleMatch');
+        var pairsInGroup = eventData.pairsInGroup;
 
-        for (var i = 0; i < paPairsInGroup.length; i++) {
-            var match = (paPairsInGroup[i].fiPairId == piPairId);
-            console.log((match ? 'v ' : '  ') + paPairsInGroup[i].toString());
+        for (var i = 0; i < pairsInGroup.length; i++) {
+            var match = (pairsInGroup[i].fiPairId == eventData.pairId);
+            console.log((match ? 'v ' : '  ') + pairsInGroup[i].toString());
         }
 
-        var moPair = allCards[piPairId]; // TODO: fix this
+        var moPair = allCards[eventData.pairId]; // TODO: fix this
         var now = Date.now();
 
-        if (paPairsInGroup.length > 1) {
-            var minInterval = (paPairsInGroup.length * 1000 / piThinkingTime * Time.DAY);
+        if (pairsInGroup.length > 1) {
+            var minInterval = (pairsInGroup.length * 1000 / eventData.thinkingTime * Time.DAY);
 
             if (moPair.fdLastRep) {
                 var scheduledInterval = moPair.fdNextRep - moPair.fdLastRep;
                 var actualInterval = now - moPair.fdLastRep;
-                var multiplier = moPair.ffEasiness * (paPairsInGroup.length - 1) / 2;
+                var multiplier = moPair.ffEasiness * (pairsInGroup.length - 1) / 2;
                 var nextInterval = Math.max(minInterval, multiplier * actualInterval, scheduledInterval * 1.1);
                 moPair.setSchedule(now, Math.floor(now + nextInterval));
                 // moPair.ffEasiness = ? // TODO
@@ -300,7 +306,7 @@ mj.modules.cards = (function() {
 
             db.updateCard(moPair);
         }
-        moPair.suspend(now + paPairsInGroup.length * 30 * Time.SECOND);
+        moPair.suspend(now + pairsInGroup.length * 30 * Time.SECOND);
         addToIndex(moPair);
         console.groupEnd();
     }
@@ -321,18 +327,20 @@ mj.modules.cards = (function() {
         console.groupEnd();
     }
 
-    function rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime) {
+    function rescheduleMismatch(eventData) {
         console.group('rescheduleMismatch');
+        var mismatchedPairs = eventData.mismatchedPairs;
+        var pairsInGroup = eventData.pairsInGroup;
 
-        for (var j = 0; j < paPairsInGroup.length; j++) {
-            var mismatch = (paMismatchedPairs.indexOf(paPairsInGroup[j].fiPairId) > -1);
-            console.log((mismatch ? 'X ' : '  ') + paPairsInGroup[j].toString());
+        for (var j = 0; j < pairsInGroup.length; j++) {
+            var mismatch = (mismatchedPairs.indexOf(pairsInGroup[j].fiPairId) > -1);
+            console.log((mismatch ? 'X ' : '  ') + pairsInGroup[j].toString());
         }
 
         var now = Date.now();
         var nextRep = now + 2 * Time.MINUTE;
-        for (var m = 0; m < paMismatchedPairs.length; m++) {
-            var moPair = allCards[paMismatchedPairs[m]];
+        for (var m = 0; m < mismatchedPairs.length; m++) {
+            var moPair = allCards[mismatchedPairs[m]];
 
             moPair.setSchedule(now, nextRep);
             if (moPair.fiState == States.NEW || moPair.fiState == States.LEARNING) {
@@ -342,9 +350,9 @@ mj.modules.cards = (function() {
             }
             db.updateCard(moPair);
         }
-        for (var i = 0; i < paPairsInGroup.length; i++) {
-            paPairsInGroup[i].suspend(now + 15 * Time.SECOND);
-            addToIndex(paPairsInGroup[i]);
+        for (var i = 0; i < pairsInGroup.length; i++) {
+            pairsInGroup[i].suspend(now + 15 * Time.SECOND);
+            addToIndex(pairsInGroup[i]);
         }
         console.groupEnd();
     }
@@ -464,8 +472,6 @@ mj.modules.cards = (function() {
     return {
         setup: setup,
         createNewGroup: createNewGroup,
-        rescheduleMatch: rescheduleMatch,
-        rescheduleMismatch: rescheduleMismatch,
         getStatesStats: getStatesStats,
         getTotalCards: getTotalCards,
         diff: diff,

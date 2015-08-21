@@ -145,7 +145,11 @@ mj.modules.board = (function() {
 
         removePair(piPairId);
         fiLastSelectionTime = piSelectionTime;
-        game.rescheduleMatch(piPairId, maPairsInGroup, miThinkingTime);
+        mj.modules.main.trigger('match', {
+            pairId: piPairId,
+            pairsInGroup: maPairsInGroup,
+            thinkingTime: miThinkingTime
+        });
         if (maPairsInGroup.length == 1) {
             faAvailableGroupIds.push(miGroupId);
         }
@@ -195,7 +199,11 @@ mj.modules.board = (function() {
         createNewGroup(maPairsInGroup.length);
         
         fiLastSelectionTime = piSelectionTime;
-        game.rescheduleMismatch([piPairId1, piPairId2], maPairsInGroup, miThinkingTime);
+        mj.modules.main.trigger('mismatch', {
+            mismatchedPairs: [piPairId1, piPairId2],
+            pairsInGroup: maPairsInGroup,
+            thinkingTime: miThinkingTime
+        });
     }
     
     function getGroup(piPairId) {

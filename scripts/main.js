@@ -4,7 +4,13 @@ mj.modules.main = (function() {
     var history = [];
     var currentScreen = null;
     var fbFirstRun = true;
-    
+
+    /**
+     * Event handlers indexed by event name.
+     * @type {Object.<string, Array.<function>>}
+     */
+    var eventHandlers = {};
+
     function showScreen(screenId) {
         // run the screen module setup, if any
         if (mj.screens[screenId] && mj.screens[screenId].run) {
@@ -39,10 +45,6 @@ mj.modules.main = (function() {
     
     function setup() {
         if (fbFirstRun) {
-            board = mj.modules.board;
-            display = mj.modules.display;
-            cards = mj.modules.cards;
-            
             // disable native touchmove behavior to prevent overscroll
             dom.bind(document, 'touchmove', function(event) {
                 event.preventDefault();
@@ -70,10 +72,37 @@ mj.modules.main = (function() {
             fbFirstRun = false;
         }
     }
+
+    /**
+     * Attach an event handler to an event.
+     *
+     * @param {string} eventName - name of the event the event handler will be attached to
+     * @param {function} eventHandler - function to be called when the event is triggered
+     */
+    function bind(eventName, eventHandler) {
+        eventHandlers[eventName] = eventHandlers[eventName] || [];
+        eventHandlers[eventName].push(eventHandler);
+    }
+
+    /**
+     * Triggers an event and notifies all handlers attached to it.
+     *
+     * @param {string} eventName - name of the event to be triggered
+     * @param {*} [eventData] - data to be forwarded to the event handlers
+     */
+    function trigger(eventName, eventData) {
+        if (eventHandlers[eventName]) {
+            for (var i = 0; i < eventHandlers[eventName].length; i++) {
+                eventHandlers[eventName][i].call(null, eventData);
+            }
+        }
+    }
     
     // expose public methods
     return {
         setup : setup,
-        navigateTo : navigateTo
+        navigateTo : navigateTo,
+        bind : bind,
+        trigger : trigger
     };
 })();

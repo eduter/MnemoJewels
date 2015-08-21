@@ -64,16 +64,17 @@ mj.modules.debug = (function() {
     }
 
     function testCreateGroup() {
-        for (var i = 0; i < 300; i++) {
-            console.log('GROUP ' + i);
-            mj.modules.cards.createNewGroup(3, [], function (cards) {
-                while (cards.length) {
-                    var pair = cards[0];
-                    mj.modules.cards.rescheduleMatch(pair.fiPairId, cards, 1000);
-                    cards.shift();
-                }
-            });
-        }
+        // TODO: adapt this
+//        for (var i = 0; i < 300; i++) {
+//            console.log('GROUP ' + i);
+//            mj.modules.cards.createNewGroup(3, [], function (cards) {
+//                while (cards.length) {
+//                    var pair = cards[0];
+//                    mj.modules.cards.rescheduleMatch(pair.fiPairId, cards, 1000);
+//                    cards.shift();
+//                }
+//            });
+//        }
     }
 
     return {

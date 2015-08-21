@@ -21,6 +21,8 @@ mj.modules.game = (function() {
         display = mj.modules.display;
         cards = mj.modules.cards;
         TimeMeter = mj.modules.debug.TimeMeter;
+        main.bind('match', onMatch);
+        main.bind('mismatch', onMismatch);
     }
     
     function startGame(psMode) {
@@ -63,22 +65,14 @@ mj.modules.game = (function() {
         board.selectJewel(piRow, piCol);
     }
     
-    function rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime) {
-        TimeMeter.start('MA');
+    function onMatch(eventData) {
+        var pairsLeft = eventData.pairsInGroup.length - 1;
         ffScopeSize += increment;
-
-        var pairsLeft = paPairsInGroup.length - 1;
-        averageThinkingTimes[pairsLeft] = 0.6 * averageThinkingTimes[pairsLeft] + 0.4 * piThinkingTime;
-
-        cards.rescheduleMatch(piPairId, paPairsInGroup, piThinkingTime);
-        TimeMeter.stop('MA');
+        averageThinkingTimes[pairsLeft] = 0.6 * averageThinkingTimes[pairsLeft] + 0.4 * eventData.thinkingTime;
     }
     
-    function rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime) {
-        TimeMeter.start('MI');
+    function onMismatch() {
         ffScopeSize -= Math.max(5, 0.1 * ffScopeSize);
-        cards.rescheduleMismatch(paMismatchedPairs, paPairsInGroup, piThinkingTime);
-        TimeMeter.stop('MI');
     }
 
     function handleBoardCleared() {
@@ -117,8 +111,6 @@ mj.modules.game = (function() {
         startGame : startGame,
         gameOver : gameOver,
         selectJewel : selectJewel,
-        rescheduleMatch : rescheduleMatch,
-        rescheduleMismatch : rescheduleMismatch,
         handleBoardCleared: handleBoardCleared,
         redraw : redraw,
         getScopeSize : getScopeSize,
