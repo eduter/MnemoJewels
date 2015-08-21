@@ -54,9 +54,11 @@ mj.modules.debug = (function() {
                 bytes += 8;
             } else if (typeof value === 'object' && objectList.indexOf(value) === -1) {
                 objectList.push(value);
-                for (i in value) {
-                    stack.push(i);
-                    stack.push(value[i]);
+                for (var i in value) {
+                    if (value.hasOwnProperty(i)) {
+                        stack.push(i);
+                        stack.push(value[i]);
+                    }
                 }
             }
         }

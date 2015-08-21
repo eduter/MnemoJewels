@@ -57,7 +57,9 @@ mj.modules.board = (function() {
     function getPairsInUse() {
         var maPairsInUse = [];
         for (var id in fmPairsInUse) {
-            maPairsInUse.push(fmPairsInUse[id]);
+            if (fmPairsInUse.hasOwnProperty(id)) {
+                maPairsInUse.push(fmPairsInUse[id]);
+            }
         }
         return maPairsInUse;
     }

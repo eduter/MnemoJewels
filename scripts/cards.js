@@ -83,7 +83,9 @@ mj.modules.cards = (function() {
         allCards = {};
 
         for (var s in States) {
-            indexes[States[s]] = [];
+            if (States.hasOwnProperty(s)) {
+                indexes[States[s]] = [];
+            }
         }
 
         cmpFuncs[States.NEW] = cmpId;
@@ -149,8 +151,10 @@ mj.modules.cards = (function() {
         }
 
         for (var id in allCards) {
-            if (!inWordMap(map, allCards[id].fsFront, allCards[id].fsBack)) {
-                remove.push(id);
+            if (allCards.hasOwnProperty(id)) {
+                if (!inWordMap(map, allCards[id].fsFront, allCards[id].fsBack)) {
+                    remove.push(id);
+                }
             }
         }
 

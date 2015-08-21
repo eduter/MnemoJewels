@@ -66,8 +66,10 @@ window.addEventListener('load', function() {
             ],
             complete : function() {
                 for (var i in mj.modules) {
-                    if (mj.modules[i].setup) {
-                        mj.modules[i].setup();
+                    if (mj.modules.hasOwnProperty(i)) {
+                        if (mj.modules[i].setup) {
+                            mj.modules[i].setup();
+                        }
                     }
                 }
                 // Turns off debugging info
