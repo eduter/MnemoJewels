@@ -60,7 +60,7 @@ window.addEventListener('load', function() {
                 "scripts/input.js",
                 "scripts/parser.js",
                 "scripts/debug.js",
-                "scripts/screen.game_classic.js",
+                "scripts/screen.game.js",
                 "scripts/screen.settings.js",
                 "data/testWords.js"
             ],

@@ -7,10 +7,7 @@ mj.modules.board = (function() {
     var fmGroupCreationTime = {};
     var fmSelectedJewel = null;
     var fiLastSelectionTime = null;
-    var fsGameMode = null;
     var fiTimer = null;
-    var fiEndGameTimer = null;
-    var fiClears = null;
     var waitingForDefaultGroup = false;
     var gameRunning = false;
 
@@ -21,19 +18,14 @@ mj.modules.board = (function() {
         overlay = dom.$('#overlay')[0];
     }
     
-    function initialize(psMode) {
-        fsGameMode = psMode;
+    function initialize() {
         gameRunning = true;
         faJewels = [[],[]];
         faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         fiLastSelectionTime = now();
         fmSelectedJewel = null;
-        fiClears = 0;
         addDefaultGroup();
         setInterval();
-        if (psMode == '5-minutes') {
-            fiEndGameTimer = window.setTimeout(function(){ gameOver(true); }, 5*60000);
-        }
     }
     
     function createNewGroup(piSize) {
@@ -91,19 +83,16 @@ mj.modules.board = (function() {
                 faJewels[0].push(maFrontJewels.splice(rand(maFrontJewels.length), 1)[0]);
                 faJewels[1].push(maBackJewels.splice(rand(maBackJewels.length), 1)[0]);
             } else {
-                gameOver(false);
+                gameOver();
                 return;
             }
         }
     }
     
-    function gameOver(pbWin) {
+    function gameOver() {
         gameRunning = false;
         clearInterval();
-        if (fiEndGameTimer != null) {
-            window.clearTimeout(fiEndGameTimer);
-        }
-        game.gameOver(pbWin);
+        game.gameOver();
     }
     
     function getNextGroupId() {
@@ -157,11 +146,6 @@ mj.modules.board = (function() {
         }
 
         if (getNumPairs() == 0) {
-            fiClears++;
-            if (fsGameMode == '10-clears' && fiClears == 10) {
-                gameOver(true);
-                return;
-            }
             clearInterval();
             game.handleBoardCleared();
             addDefaultGroup();

@@ -25,12 +25,12 @@ mj.modules.game = (function() {
         main.bind('mismatch', onMismatch);
     }
     
-    function startGame(psMode) {
+    function startGame() {
         var t = cards.getTotalCards();
         ffScopeSize = saturate(30, 0.1 * t, 100);
         increment = saturate(3, (t - ffScopeSize) / (5 * 60 * 1000 / getAverageThinkingTime()), 10);
         intervalBetweenGroups = getIntervalBetweenGroups(settings.DEFAULT_GROUP_SIZE);
-        board.initialize(psMode);
+        board.initialize();
         fiRedrawInterval = window.setInterval(
             function(){
                 display.redraw(board.getJewels(), board.getSelectedJewel());
@@ -39,14 +39,10 @@ mj.modules.game = (function() {
         );
     }
     
-    function gameOver(pbWin) {
+    function gameOver() {
         window.clearInterval(fiRedrawInterval);
         display.redraw(board.getJewels());
-        if (pbWin) {
-            alert('Well Done!');
-        } else {
-            alert('Game Over!');
-        }
+        alert('Game Over!');
         main.navigateTo('main-menu');
 
         cards.debugReview(); // TODO

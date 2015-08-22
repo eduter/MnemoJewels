@@ -7,7 +7,7 @@ body {
     -webkit-user-select : none;
 }
 
-#game {
+#top-container {
     position : absolute;
     left : 0;
     top : 0;
@@ -22,7 +22,7 @@ body {
     color : rgb(200,200,100);
 }
 
-#game .screen {
+#top-container .screen {
     position : absolute;
     width : 100%;
     height : 100%;
@@ -30,7 +30,7 @@ body {
     z-index : 10;
 }
 
-#game .screen.active {
+#top-container .screen.active {
     display : block;
 }
 

@@ -1,4 +1,4 @@
-mj.screens['game_classic'] = (function() {
+mj.screens['game'] = (function() {
     var game = null;
     var input = null;
     var firstRun = true;
@@ -15,7 +15,7 @@ mj.screens['game_classic'] = (function() {
             setup();
             firstRun = false;
         }
-        game.startGame('classic');
+        game.startGame();
     }
     
     return {
