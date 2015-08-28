@@ -56,6 +56,7 @@ window.addEventListener('load', function() {
                 "scripts/game.js",
                 "scripts/board.js",
                 "scripts/cards.js",
+                "scripts/score.js",
                 "scripts/display.js",
                 "scripts/input.js",
                 "scripts/parser.js",
@@ -73,7 +74,7 @@ window.addEventListener('load', function() {
                     }
                 }
                 // Turns off debugging info
-                var noop = function(){}; window.console = {log: noop, dir: noop, error: noop, group: noop, groupEnd: noop};
+                //var noop = function(){}; window.console = {log: noop, dir: noop, error: noop, group: noop, groupEnd: noop};
             }
         }
         ]);

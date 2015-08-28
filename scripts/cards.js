@@ -492,6 +492,7 @@ mj.modules.cards = (function() {
         diff: diff,
         addCards: addCards,
         debugReview: debugReview,
-        removeCards: removeCards
+        removeCards: removeCards,
+        States: States
     };
 })();

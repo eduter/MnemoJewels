@@ -92,7 +92,7 @@ mj.modules.main = (function() {
      */
     function trigger(eventName, eventData) {
         if (eventHandlers[eventName]) {
-            var serializedData = JSON.stringify(eventData);
+            var serializedData = (eventData === undefined ? 'null' : JSON.stringify(eventData));
             for (var i = 0; i < eventHandlers[eventName].length; i++) {
                 eventHandlers[eventName][i].call(null, JSON.parse(serializedData));
             }

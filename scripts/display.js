@@ -4,6 +4,16 @@ mj.modules.display = (function() {
     var foBoard = null;
     var NUM_ROWS = mj.settings.NUM_ROWS;
     var stats = null;
+
+    function setup() {
+        // TODO: display this in the game screen
+        mj.modules.main.bind('scoreBonus', function (eventData) {
+            console.log('Bonus ' + JSON.stringify(eventData));
+        });
+        mj.modules.main.bind('levelUp', function (eventData) {
+            console.log('Level Up ' + JSON.stringify(eventData));
+        });
+    }
     
     function getBoardElem() {
         if (foBoard == null) {
@@ -42,11 +52,12 @@ mj.modules.display = (function() {
                 }
             }
         }
-        getStatsElem().innerHTML = mj.modules.game.getStats();
+        getStatsElem().innerHTML = 'LEVEL: ' + mj.modules.score.getLevel() + ' SCORE: ' + mj.modules.score.getScore() + '<br>' + mj.modules.game.getStats();
         mj.modules.debug.TimeMeter.stop('D');
     }
     
     return {
-        redraw : redraw
+        setup: setup,
+        redraw: redraw
     };
 })();

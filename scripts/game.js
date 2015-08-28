@@ -37,6 +37,7 @@ mj.modules.game = (function() {
             },
             1000/6
         );
+        main.trigger('gameStart');
     }
     
     function gameOver() {
@@ -44,6 +45,7 @@ mj.modules.game = (function() {
         display.redraw(board.getJewels());
         alert('Game Over!');
         main.navigateTo('main-menu');
+        main.trigger('gameOver');
 
         cards.debugReview(); // TODO
     }
