@@ -1,10 +1,7 @@
 mj.modules.score = (function() {
 
-    var POINTS_PER_LEVEL = 2000;
-
     var main;
     var States;
-    var level = 1;
     var score = 0;
     var consecutiveMatches = 0;
 
@@ -17,7 +14,6 @@ mj.modules.score = (function() {
     }
 
     function onGameStart() {
-        level = 1;
         score = 0;
         consecutiveMatches = 0;
     }
@@ -35,22 +31,28 @@ mj.modules.score = (function() {
         }
 
         // points for the match itself
+        var pointsEarned = 0;
         switch (card.fiState) {
-            case States.LAPSE   : score += 10; break;
-            case States.KNOWN   : score += 35; break;
-            case States.NEW     : score += 60; break;
-            case States.LEARNING: score += 70; break;
+            case States.LAPSE   : pointsEarned = 10; break;
+            case States.KNOWN   : pointsEarned = 35; break;
+            case States.NEW     : pointsEarned = 60; break;
+            case States.LEARNING: pointsEarned = 70; break;
+            default: throw "Unknown card state (" + card.fiState + ")";
         }
         if (card.fiState == States.KNOWN) {
             // depending on the relative scheduling, score varies between 15 and 55
-            var schedulingScore;
             if (card.relativeScheduling < 0) {
-                schedulingScore = Math.max(-20, 40 * card.relativeScheduling); // -0.5 -> -20
+                pointsEarned += Math.max(-20, 40 * card.relativeScheduling); // -0.5 -> -20
             } else {
-                schedulingScore = Math.min(20, 20 * card.relativeScheduling); // 1 -> +20
+                pointsEarned += Math.min(20, 20 * card.relativeScheduling); // 1 -> +20
             }
-            score += Math.round(schedulingScore);
+            pointsEarned = Math.round(pointsEarned);
         }
+        score += pointsEarned;
+        main.trigger('scoreUp', {
+            points: pointsEarned,
+            reason: 'match'
+        });
 
         // TODO: implement bonus for speed
 
@@ -60,18 +62,12 @@ mj.modules.score = (function() {
             var bonusFactor = consecutiveMatches / 1000;
             var bonusPoints = Math.round(bonusFactor * score);
             score += bonusPoints;
-            main.trigger('scoreBonus', {
-                name: consecutiveMatches + ' streak',
-                bonus: '+' + (bonusFactor * 100) + '%',
-                points: bonusPoints
+            main.trigger('scoreUp', {
+                points: bonusPoints,
+                reason: 'streakBonus',
+                streakLength: consecutiveMatches,
+                bonus: '+' + (bonusFactor * 100) + '%'
             });
-        }
-
-        // updates level
-        var updatedLevel = Math.min(10, Math.floor(score / POINTS_PER_LEVEL) + 1);
-        if (updatedLevel > level) {
-            level = updatedLevel;
-            main.trigger('levelUp', {level: level});
         }
     }
 
@@ -81,7 +77,6 @@ mj.modules.score = (function() {
 
     return {
         setup: setup,
-        getScore: function(){ return score },
-        getLevel: function(){ return level }
+        getScore: function(){ return score }
     };
 })();

@@ -7,8 +7,8 @@ mj.modules.display = (function() {
 
     function setup() {
         // TODO: display this in the game screen
-        mj.modules.main.bind('scoreBonus', function (eventData) {
-            console.log('Bonus ' + JSON.stringify(eventData));
+        mj.modules.main.bind('scoreUp', function (eventData) {
+            console.log('Score Up ' + JSON.stringify(eventData));
         });
         mj.modules.main.bind('levelUp', function (eventData) {
             console.log('Level Up ' + JSON.stringify(eventData));
@@ -52,7 +52,7 @@ mj.modules.display = (function() {
                 }
             }
         }
-        getStatsElem().innerHTML = 'LEVEL: ' + mj.modules.score.getLevel() + ' SCORE: ' + mj.modules.score.getScore() + '<br>' + mj.modules.game.getStats();
+        getStatsElem().innerHTML = 'LEVEL: ' + mj.modules.game.getLevel() + ' SCORE: ' + mj.modules.score.getScore() + '<br>' + mj.modules.game.getStats();
         mj.modules.debug.TimeMeter.stop('D');
     }
     

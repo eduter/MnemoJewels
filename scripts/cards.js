@@ -11,7 +11,7 @@ mj.modules.cards = (function() {
     var TimeMeter = null;
     var totalCards = null;
     var indexes = {};
-    var learnIterator, reviewIterator, alternativesIterator;
+    var iterators = {};
 
     var Time = {
         SECOND:             1000,
@@ -93,9 +93,11 @@ mj.modules.cards = (function() {
         cmpFuncs[States.KNOWN] = cmpRelativeScheduling;
         cmpFuncs[States.LAPSE] = cmpNextRep;
 
-        learnIterator = new Iterator([States.LAPSE, States.LEARNING, States.NEW, States.KNOWN]);
-        reviewIterator = new Iterator([States.LAPSE, States.LEARNING, States.KNOWN, States.NEW]);
-        alternativesIterator = new Iterator([States.KNOWN, States.LEARNING, States.LAPSE, States.NEW]);
+        iterators = {
+          learning    : new Iterator([States.LAPSE, States.NEW     , States.LEARNING, States.KNOWN]),
+          reviewing   : new Iterator([States.LAPSE, States.LEARNING, States.KNOWN   , States.NEW  ]),
+          alternatives: new Iterator([States.KNOWN, States.LEARNING, States.LAPSE   , States.NEW  ])
+        };
 
         db.loadAllCards(function(cards){
             totalCards = cards.length;
@@ -105,8 +107,10 @@ mj.modules.cards = (function() {
                 indexes[pair.fiState].push(pair);
             }
             for (var s in States) {
-                var state = States[s];
-                indexes[state].sort(cmpFuncs[state]);
+                if (States.hasOwnProperty(s)) {
+                    var state = States[s];
+                    indexes[state].sort(cmpFuncs[state]);
+                }
             }
             wordMappings = toWordMap(cards, 'sFront', 'sBack');
 
@@ -202,10 +206,17 @@ mj.modules.cards = (function() {
     }
 
     function chooseFirst(pairsInUse) {
-        var learning = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
-        var i = (learning < mj.settings.MAX_LEARNING ? learnIterator : reviewIterator);
+        var learningSetSize = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
+        var learningSetFullness = Math.min(1, learningSetSize / mj.settings.MAX_LEARNING);
+        var probabilityReview = (1 - game.getDifficulty()) * learningSetFullness;
+        var probabilityLearn = 1 - probabilityReview;
+        var weights = [probabilityReview, probabilityLearn];
+        var iteratorsIndex = ['reviewing', 'learning'];
+        var index = mj.modules.utils.weighedRandom(weights);
+        var iteratorName = iteratorsIndex[index];
+        var i = iterators[iteratorName];
 
-        console.log('learning: ' + learning + '   using ' + (learning < mj.settings.MAX_LEARNING ? 'learnIterator' : 'reviewIterator'));
+        console.log('learning: ' + learningSetSize + '   level: ' + game.getLevel() + '   iterator: ' + iteratorName + '   weights: ' + weights);
 
         i.reset();
         while (i.hasNext()) {
@@ -218,7 +229,7 @@ mj.modules.cards = (function() {
     }
 
     function chooseAlternatives(groupSize, firstCard, pairsInUse) {
-        var i = alternativesIterator;
+        var i = iterators.alternatives;
         var otherPairs = pairsInUse.concat(firstCard);
         var alternatives = [];
         var candidates = [];
@@ -324,7 +335,7 @@ mj.modules.cards = (function() {
     function debugReview() {
         // TODO: add back to index the cards which are on the board when game is over
         var learning = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
-        var i = reviewIterator;
+        var i = iterators.reviewing;
         var l = 0;
 
         console.group('debugReview (learning = ' + learning + ')');
@@ -376,7 +387,9 @@ mj.modules.cards = (function() {
         db.getStatesStats(function(statsByCode){
             var stats = [];
             for (var s in States) {
-                stats.push({state: s, count: statsByCode[States[s]]});
+                if (States.hasOwnProperty(s)) {
+                    stats.push({state: s, count: statsByCode[States[s]]});
+                }
             }
             callback(stats);
         });

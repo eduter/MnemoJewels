@@ -79,12 +79,40 @@ mj.modules.debug = (function() {
 //        }
     }
 
+    function testWeighedRandom() {
+        var weights = [1, 2, 7];
+        var iterations = 10000;
+        var acceptableError = 0.03;
+
+        var i;
+        var totalWeight = 0;
+        var results = [];
+        for (i = 0; i < weights.length; i++) {
+            totalWeight += weights[i];
+            results.push(0);
+        }
+        for (i = 0; i < iterations; i++) {
+            results[mj.modules.utils.weighedRandom(weights)]++;
+        }
+        for (var r = 0; r < results.length; r++) {
+            var proportion = results[r] / iterations;
+            var expectedProportion = weights[r] / totalWeight;
+            var diff = Math.abs(expectedProportion - proportion);
+            if (diff > acceptableError) {
+                console.error("x weighedRandom exceeded the acceptable error margin");
+                return;
+            }
+        }
+        console.log("+ weighedRandom is within the acceptable error margin");
+    }
+
     return {
         TimeMeter: TimeMeter,
         getStats : function() {
             return TimeMeter.getStats('CG') + ' ' + TimeMeter.getStats('CA') + ' ' + TimeMeter.getStats('D');
         },
         testCreateGroup: testCreateGroup,
+        testWeighedRandom: testWeighedRandom,
         roughSizeOfObject: roughSizeOfObject
     };
 })();

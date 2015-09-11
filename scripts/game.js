@@ -3,7 +3,13 @@ mj.modules.game = (function() {
     var board = null;
     var display = null;
     var cards = null;
+    var score = null;
     var settings = mj.settings;
+
+    var POINTS_PER_LEVEL = 2000;
+    var LAST_LEVEL = 10;
+
+    var level = 1;
     var fiRedrawInterval = null;
     var increment, ffScopeSize;
     var TimeMeter = null;
@@ -20,9 +26,11 @@ mj.modules.game = (function() {
         board = mj.modules.board;
         display = mj.modules.display;
         cards = mj.modules.cards;
+        score = mj.modules.score;
         TimeMeter = mj.modules.debug.TimeMeter;
         main.bind('match', onMatch);
         main.bind('mismatch', onMismatch);
+        main.bind('scoreUp', onScoreUp);
     }
     
     function startGame() {
@@ -30,6 +38,7 @@ mj.modules.game = (function() {
         ffScopeSize = saturate(30, 0.1 * t, 100);
         increment = saturate(3, (t - ffScopeSize) / (5 * 60 * 1000 / getAverageThinkingTime()), 10);
         intervalBetweenGroups = getIntervalBetweenGroups(settings.DEFAULT_GROUP_SIZE);
+        level = 1;
         board.initialize();
         fiRedrawInterval = window.setInterval(
             function(){
@@ -73,6 +82,17 @@ mj.modules.game = (function() {
         ffScopeSize -= Math.max(5, 0.1 * ffScopeSize);
     }
 
+    /**
+     * Updates the level.
+     */
+    function onScoreUp() {
+        var updatedLevel = Math.min(LAST_LEVEL, Math.floor(score.getScore() / POINTS_PER_LEVEL) + 1);
+        if (updatedLevel > level) {
+            level = updatedLevel;
+            main.trigger('levelUp', {level: level});
+        }
+    }
+
     function handleBoardCleared() {
         // TODO: keep or remove this?
     }
@@ -91,11 +111,29 @@ mj.modules.game = (function() {
 
     function getIntervalBetweenGroups(numPairs){
         if (numPairs > 2) {
-            intervalBetweenGroups = (numPairs - 2) * getAverageThinkingTime();
+            intervalBetweenGroups = Math.min((numPairs - 2) * getAverageThinkingTime(), getMaxInterval());
         } else {
             intervalBetweenGroups = settings.MIN_INTERVAL;
         }
         return intervalBetweenGroups;
+    }
+
+    /**
+     * Calculates the maximum interval between groups, based on game difficulty.
+     * @returns {number} - maximum interval in milliseconds
+     */
+    function getMaxInterval() {
+        var max = settings.MAX_INTERVAL;
+        var min = settings.MIN_INTERVAL;
+        return max - getDifficulty() * (max - min);
+    }
+
+    /**
+     * Calculates the difficulty of the game, based on the current level.
+     * @returns {number} a number between 0 (easiest) and 1 (hardest)
+     */
+    function getDifficulty() {
+        return Math.pow(level - 1, 2) / Math.pow(LAST_LEVEL - 1, 2);
     }
 
     function getAverageThinkingTime() {
@@ -112,6 +150,8 @@ mj.modules.game = (function() {
         handleBoardCleared: handleBoardCleared,
         redraw : redraw,
         getScopeSize : getScopeSize,
+        getLevel: function(){ return level },
+        getDifficulty: getDifficulty,
         getIntervalBetweenGroups : getIntervalBetweenGroups,
         getStats : function() {
             return mj.modules.debug.getStats()
