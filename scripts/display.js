@@ -45,7 +45,7 @@ mj.modules.display = (function() {
             for (i = 0; i < paJewels[0].length; i++) {
                 var moJewel = paJewels[j][i];
                 moCell = moBoard.rows[NUM_ROWS - i - 1].cells[j];
-                moCell.className = 'group' + moJewel.fiGroupId;
+                moCell.className = 'group' + moJewel.groupId;
                 moCell.innerHTML = moJewel.getText();
                 if (pmSelectedJewel && pmSelectedJewel.row == i && pmSelectedJewel.col == j) {
                     dom.addClass(moCell, 'selected');
