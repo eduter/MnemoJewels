@@ -8,30 +8,45 @@
 
     Jewel.prototype.getText = function() {
         if (this.fbIsFront) {
-            return this.foPair.fsFront;
+            return this.foPair.front;
         } else {
-            return this.foPair.fsBack;
+            return this.foPair.back;
         }
     };
 
-    function Pair(pxIdOrRow, psFront, psBack, pdLastRep, pdNextRep, pfEasiness, piState) {
-        if (arguments.length == 1) {
-            this.fiPairId = pxIdOrRow['id'];
-            this.fsFront = pxIdOrRow['sFront'];
-            this.fsBack = pxIdOrRow['sBack'];
-            this.ffEasiness = pxIdOrRow['fEasiness'];
-            this.fiState = pxIdOrRow['iState'];
-            this.setSchedule(pxIdOrRow['dLastRep'], pxIdOrRow['dNextRep']);
-        } else {
-            this.fiPairId = pxIdOrRow;
-            this.fsFront = psFront;
-            this.fsBack = psBack;
-            this.ffEasiness = pfEasiness;
-            this.fiState = piState;
-            this.setSchedule(pdLastRep, pdNextRep);
-        }
+    /**
+     * Card constructor.
+     *
+     * @param {int} id
+     * @param {string} front
+     * @param {string} back
+     * @param {timestamp} lastRep
+     * @param {timestamp} nextRep
+     * @param {float} easiness
+     * @param {int} state
+     * @constructor
+     */
+    function Card(id, front, back, lastRep, nextRep, easiness, state) {
+        this.id = id;
+        this.front = front;
+        this.back = back;
+        this.easiness = easiness;
+        this.state = state;
+        this.setSchedule(lastRep, nextRep);
         this.suspendedUntil = null;
     }
+
+    Card.fromDb = function(dbRow) {
+        return new Card(
+            dbRow['id'],
+            dbRow['sFront'],
+            dbRow['sBack'],
+            dbRow['dLastRep'],
+            dbRow['dNextRep'],
+            dbRow['fEasiness'],
+            dbRow['iState']
+        );
+    };
 
     function dateToStr(date) {
         if (date) {
@@ -52,9 +67,9 @@
         }
     }
 
-    Pair.prototype.setSchedule = function(lastRep, nextRep) {
-        this.fdLastRep = lastRep;
-        this.fdNextRep = nextRep;
+    Card.prototype.setSchedule = function(lastRep, nextRep) {
+        this.lastRep = lastRep;
+        this.nextRep = nextRep;
         if (lastRep && nextRep) {
             this.relativeScheduling = (Date.now() - nextRep) / (nextRep - lastRep);
         } else {
@@ -62,20 +77,20 @@
         }
     };
 
-    Pair.prototype.toString = function() {
-        return pad(this.fiPairId, 4)
-            + '  ' + dateToStr(this.fdLastRep)
-            + '  ' + dateToStr(this.fdNextRep)
-            + '  ' + this.fiState
-            + '  ' + pad(this.fsFront, 15)
-            + '  ' + pad(this.fsBack, 15);
+    Card.prototype.toString = function() {
+        return pad(this.id, 4)
+            + '  ' + dateToStr(this.lastRep)
+            + '  ' + dateToStr(this.nextRep)
+            + '  ' + this.state
+            + '  ' + pad(this.front, 15)
+            + '  ' + pad(this.back, 15);
     };
 
     /**
      * Checks whether this pair is currently suspended.
      * @returns {boolean}
      */
-    Pair.prototype.isSuspended = function() {
+    Card.prototype.isSuspended = function() {
         return (this.suspendedUntil != null&& this.suspendedUntil > Date.now());
     };
 
@@ -83,13 +98,13 @@
      * Suspends this pair until the specified time.
      * @param {number} endSuspension - Timestamp of when the suspension is over
      */
-    Pair.prototype.suspend = function(endSuspension) {
+    Card.prototype.suspend = function(endSuspension) {
         this.suspendedUntil = endSuspension;
     };
 
     mj.classes = {
         Jewel : Jewel,
-        Pair : Pair
+        Card : Card
     };
 })();
 

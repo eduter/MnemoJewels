@@ -72,7 +72,7 @@ mj.modules.debug = (function() {
 //            mj.modules.cards.createNewGroup(3, [], function (cards) {
 //                while (cards.length) {
 //                    var pair = cards[0];
-//                    mj.modules.cards.rescheduleMatch(pair.fiPairId, cards, 1000);
+//                    mj.modules.cards.rescheduleMatch(pair.id, cards, 1000);
 //                    cards.shift();
 //                }
 //            });

@@ -1,6 +1,6 @@
 mj.modules.board = (function() {
-    var fmSettings = mj.settings;
-    var dom, game, Jewel, overlay;
+    var settings = mj.settings;
+    var dom, game, cards, Jewel, overlay;
     var faJewels = [[],[]]; // array of 2 columns, each containing Jewel objects 
     var fmPairsInUse = {};
     var faAvailableGroupIds = [];
@@ -8,12 +8,12 @@ mj.modules.board = (function() {
     var fmSelectedJewel = null;
     var fiLastSelectionTime = null;
     var fiTimer = null;
-    var waitingForDefaultGroup = false;
     var gameRunning = false;
 
     function setup() {
         dom = mj.dom;
         game = mj.modules.game;
+        cards = mj.modules.cards;
         Jewel = mj.classes.Jewel;
         overlay = dom.$('#overlay')[0];
     }
@@ -27,19 +27,22 @@ mj.modules.board = (function() {
         addDefaultGroup();
         setInterval();
     }
-    
-    function createNewGroup(piSize) {
-        game.createNewGroup(piSize, getPairsInUse(), addGroup);
+
+    /**
+     * Adds a new group to the board.
+     *
+     * @param {int} groupSize - the number of cards the new group should have
+     */
+    function createNewGroup(groupSize) {
+        var newGroup = cards.createNewGroup(groupSize, getPairsInUse());
+        addGroup(newGroup);
     }
-    
+
+    /**
+     * Adds a new group to the board, containing the default number of cards.
+     */
     function addDefaultGroup() {
-        if (!waitingForDefaultGroup) {
-            waitingForDefaultGroup = true;
-            game.createNewGroup(fmSettings.DEFAULT_GROUP_SIZE, getPairsInUse(), function(){
-                addGroup.apply(this, arguments);
-                waitingForDefaultGroup = false;
-            });
-        }
+        createNewGroup(settings.DEFAULT_GROUP_SIZE);
     }
     
     function getNumPairs() {
@@ -63,25 +66,30 @@ mj.modules.board = (function() {
     function now() {
         return Date.now();
     }
-    
-    function addGroup(paPairs) {
-        var maFrontJewels = [];
-        var maBackJewels = [];
-        var miGroupId = getNextGroupId();
+
+    /**
+     * Adds a group of cards to the board.
+     *
+     * @param {Array.<Card>} cards
+     */
+    function addGroup(cards) {
+        var frontJewels = [];
+        var backJewels = [];
+        var groupId = getNextGroupId();
         var i;
         
-        fmGroupCreationTime[miGroupId] = now();
+        fmGroupCreationTime[groupId] = now();
         
-        for (i = 0; i < paPairs.length; i++) {
-            var moPair = paPairs[i];
-            fmPairsInUse[moPair.fiPairId] = moPair;
-            maFrontJewels.push(new Jewel(miGroupId, moPair, true));
-            maBackJewels.push(new Jewel(miGroupId, moPair, false));
+        for (i = 0; i < cards.length; i++) {
+            var card = cards[i];
+            fmPairsInUse[card.id] = card;
+            frontJewels.push(new Jewel(groupId, card, true));
+            backJewels.push(new Jewel(groupId, card, false));
         }
-        while (maFrontJewels.length) {
-            if (getNumPairs() < fmSettings.NUM_ROWS) {
-                faJewels[0].push(maFrontJewels.splice(rand(maFrontJewels.length), 1)[0]);
-                faJewels[1].push(maBackJewels.splice(rand(maBackJewels.length), 1)[0]);
+        while (frontJewels.length) {
+            if (getNumPairs() < settings.NUM_ROWS) {
+                faJewels[0].push(frontJewels.splice(rand(frontJewels.length), 1)[0]);
+                faJewels[1].push(backJewels.splice(rand(backJewels.length), 1)[0]);
             } else {
                 gameOver();
                 return;
@@ -113,8 +121,8 @@ mj.modules.board = (function() {
 
                 if (prevSelectedJewel.fiGroupId == newSelectedJewel.fiGroupId) {
                     // actually trying to match a pair
-                    var miPrevSelectedId = prevSelectedJewel.foPair.fiPairId;
-                    var miNewSelectedId = newSelectedJewel.foPair.fiPairId;
+                    var miPrevSelectedId = prevSelectedJewel.foPair.id;
+                    var miNewSelectedId = newSelectedJewel.foPair.id;
 
                     if (miNewSelectedId == miPrevSelectedId) {
                       match(miNewSelectedId, miSelectionTime);
@@ -129,28 +137,59 @@ mj.modules.board = (function() {
         }
     }
 
-    function match(piPairId, piSelectionTime) {
-        var miGroupId = getGroup(piPairId);
-        var maPairsInGroup = getPairsInGroup(miGroupId);
-        var miThinkingTime = piSelectionTime -  Math.max(fiLastSelectionTime, fmGroupCreationTime[miGroupId]);
+    /**
+     * Process a successful match between front and back of a card.
+     *
+     * @param {int} cardId
+     * @param {timestamp} selectionTime - time at which the match was made
+     */
+    function match(cardId, selectionTime) {
+        var groupId = getGroup(cardId);
+        var cardsInGroup = getCardsInGroup(groupId);
+        var thinkingTime = selectionTime -  Math.max(fiLastSelectionTime, fmGroupCreationTime[groupId]);
 
-        removePair(piPairId);
-        fiLastSelectionTime = piSelectionTime;
+        removePair(cardId);
+        fiLastSelectionTime = selectionTime;
         mj.modules.main.trigger('match', {
-            pairId: piPairId,
-            pairsInGroup: maPairsInGroup,
-            thinkingTime: miThinkingTime
+            cardId: cardId,
+            cardsInGroup: cardsInGroup,
+            thinkingTime: thinkingTime
         });
-        if (maPairsInGroup.length == 1) {
-            faAvailableGroupIds.push(miGroupId);
+        if (cardsInGroup.length == 1) {
+            faAvailableGroupIds.push(groupId);
         }
 
         if (getNumPairs() == 0) {
             clearInterval();
-            game.handleBoardCleared();
             addDefaultGroup();
             setInterval();
         }
+    }
+
+    /**
+     * Process a mismatch between front and back of two different cards.
+     *
+     * @param {int} cardId1
+     * @param {int} cardId2
+     * @param {timestamp} selectionTime - time at which the mismatch was made
+     */
+    function mismatch(cardId1, cardId2, selectionTime) {
+        var groupId = getGroup(cardId1);
+        var cardsInGroup = getCardsInGroup(groupId);
+        var thinkingTime = selectionTime - Math.max(fiLastSelectionTime, fmGroupCreationTime[groupId]);
+
+        dom.addClass(overlay, 'visible');
+        setTimeout(function(){ dom.removeClass(overlay, 'visible') }, settings.MISMATCH_PENALTY_TIME);
+
+        removeGroup(groupId);
+        createNewGroup(cardsInGroup.length);
+
+        fiLastSelectionTime = selectionTime;
+        mj.modules.main.trigger('mismatch', {
+            mismatchedCards: [cardId1, cardId2],
+            cardsInGroup: cardsInGroup,
+            thinkingTime: thinkingTime
+        });
     }
 
     function setInterval() {
@@ -173,35 +212,16 @@ mj.modules.board = (function() {
         window.clearInterval(fiTimer);
     }
 
-    function mismatch(piPairId1, piPairId2, piSelectionTime) {
-        var miGroup = getGroup(piPairId1);
-        var maPairsInGroup = getPairsInGroup(miGroup);
-        var miThinkingTime = piSelectionTime - Math.max(fiLastSelectionTime, fmGroupCreationTime[miGroup]);
-
-        dom.addClass(overlay, 'visible');
-        setTimeout(function(){ dom.removeClass(overlay, 'visible') }, fmSettings.MISMATCH_PENALTY_TIME);
-
-        removeGroup(miGroup);
-        createNewGroup(maPairsInGroup.length);
-        
-        fiLastSelectionTime = piSelectionTime;
-        mj.modules.main.trigger('mismatch', {
-            mismatchedPairs: [piPairId1, piPairId2],
-            pairsInGroup: maPairsInGroup,
-            thinkingTime: miThinkingTime
-        });
-    }
-    
     function getGroup(piPairId) {
         for (var i = 0; i < faJewels[0].length; i++) {
-            if (faJewels[0][i].foPair.fiPairId == piPairId) {
+            if (faJewels[0][i].foPair.id == piPairId) {
                 return faJewels[0][i].fiGroupId;
             }
         }
         return null;
     }
     
-    function getPairsInGroup(piGroupId) {
+    function getCardsInGroup(piGroupId) {
         var maPairs = [];
 
         for (var i = 0; i < faJewels[0].length; i++) {
@@ -216,7 +236,7 @@ mj.modules.board = (function() {
     function removePair(piPairId) {
         for (var j = 0; j < faJewels.length; j++) {
             for (var i = 0; i < faJewels[j].length; i++) {
-                if (faJewels[j][i].foPair.fiPairId == piPairId) {
+                if (faJewels[j][i].foPair.id == piPairId) {
                     faJewels[j].splice(i, 1);
                     break;
                 }
@@ -230,7 +250,7 @@ mj.modules.board = (function() {
             for (var i = faJewels[j].length; i > 0; i--) {
                 if (faJewels[j][i - 1].fiGroupId == piGroupId) {
                     if (j == 0) {
-                        delete fmPairsInUse[faJewels[j][i - 1].foPair.fiPairId];
+                        delete fmPairsInUse[faJewels[j][i - 1].foPair.id];
                     }
                     faJewels[j].splice(i - 1, 1);
                 }

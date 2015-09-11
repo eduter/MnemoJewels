@@ -58,22 +58,13 @@ mj.modules.game = (function() {
 
         cards.debugReview(); // TODO
     }
-    
-    function createNewGroup(piSize, paPairsInUse, pcCallback) {
-        TimeMeter.start('CG');
-        var callback = function() {
-          pcCallback.apply(null, arguments);
-          TimeMeter.stop('CG');
-        };
-        return cards.createNewGroup(piSize, paPairsInUse, callback);
-    }
-    
+
     function selectJewel(piRow, piCol) {
         board.selectJewel(piRow, piCol);
     }
     
     function onMatch(eventData) {
-        var pairsLeft = eventData.pairsInGroup.length - 1;
+        var pairsLeft = eventData.cardsInGroup.length - 1;
         ffScopeSize += increment;
         averageThinkingTimes[pairsLeft] = 0.6 * averageThinkingTimes[pairsLeft] + 0.4 * eventData.thinkingTime;
     }
@@ -91,10 +82,6 @@ mj.modules.game = (function() {
             level = updatedLevel;
             main.trigger('levelUp', {level: level});
         }
-    }
-
-    function handleBoardCleared() {
-        // TODO: keep or remove this?
     }
 
     function redraw(paJewels, pmSelectedJewel) {
@@ -143,11 +130,9 @@ mj.modules.game = (function() {
     // expose public methods
     return {
         setup : setup,
-        createNewGroup : createNewGroup,
         startGame : startGame,
         gameOver : gameOver,
         selectJewel : selectJewel,
-        handleBoardCleared: handleBoardCleared,
         redraw : redraw,
         getScopeSize : getScopeSize,
         getLevel: function(){ return level },

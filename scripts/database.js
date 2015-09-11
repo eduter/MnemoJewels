@@ -91,7 +91,7 @@ mj.modules.database = (function() {
                     iState = ?, \
                     fEasiness = ? \
                 WHERE id = ?',
-                [poPair.fdLastRep, poPair.fdNextRep, poPair.fiState, poPair.ffEasiness, poPair.fiPairId]
+                [poPair.lastRep, poPair.nextRep, poPair.state, poPair.easiness, poPair.id]
             );
         });
     }

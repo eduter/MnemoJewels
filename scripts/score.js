@@ -19,12 +19,12 @@ mj.modules.score = (function() {
     }
 
     function onMatch(eventData) {
-        var cardId = eventData.pairId;
-        var cards = eventData.pairsInGroup;
+        var cardId = eventData.cardId;
+        var cards = eventData.cardsInGroup;
         var card;
 
         for (var i = 0; i < cards.length; i++) {
-            if (cards[i].fiPairId == cardId) {
+            if (cards[i].id == cardId) {
                 card = cards[i];
                 break;
             }
@@ -32,14 +32,14 @@ mj.modules.score = (function() {
 
         // points for the match itself
         var pointsEarned = 0;
-        switch (card.fiState) {
+        switch (card.state) {
             case States.LAPSE   : pointsEarned = 10; break;
             case States.KNOWN   : pointsEarned = 35; break;
             case States.NEW     : pointsEarned = 60; break;
             case States.LEARNING: pointsEarned = 70; break;
-            default: throw "Unknown card state (" + card.fiState + ")";
+            default: throw "Unknown card state (" + card.state + ")";
         }
-        if (card.fiState == States.KNOWN) {
+        if (card.state == States.KNOWN) {
             // depending on the relative scheduling, score varies between 15 and 55
             if (card.relativeScheduling < 0) {
                 pointsEarned += Math.max(-20, 40 * card.relativeScheduling); // -0.5 -> -20

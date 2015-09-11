@@ -5,7 +5,7 @@ mj.modules.cards = (function() {
     var main = null;
     var game = null;
     var db = null;
-    var Pair = null;
+    var Card = null;
     var allCards = null;
     var wordMappings = null;
     var TimeMeter = null;
@@ -77,7 +77,7 @@ mj.modules.cards = (function() {
         main = mj.modules.main;
         game = mj.modules.game;
         db = mj.modules.database;
-        Pair = mj.classes.Pair;
+        Card = mj.classes.Card;
         TimeMeter = mj.modules.debug.TimeMeter;
 
         allCards = {};
@@ -102,9 +102,9 @@ mj.modules.cards = (function() {
         db.loadAllCards(function(cards){
             totalCards = cards.length;
             for (var i = 0; i < totalCards; i++) {
-                var pair = new Pair(cards[i]);
-                allCards[pair.fiPairId] = pair;
-                indexes[pair.fiState].push(pair);
+                var card = Card.fromDb(cards[i]);
+                allCards[card.id] = card;
+                indexes[card.state].push(card);
             }
             for (var s in States) {
                 if (States.hasOwnProperty(s)) {
@@ -156,7 +156,7 @@ mj.modules.cards = (function() {
 
         for (var id in allCards) {
             if (allCards.hasOwnProperty(id)) {
-                if (!inWordMap(map, allCards[id].fsFront, allCards[id].fsBack)) {
+                if (!inWordMap(map, allCards[id].front, allCards[id].back)) {
                     remove.push(id);
                 }
             }
@@ -173,27 +173,48 @@ mj.modules.cards = (function() {
         db.removeCards(ids);
     }
 
-    function conflicts(poPair, paPairsInUse) {
-        for (var i = 0; i < paPairsInUse.length; i++) {
-            if (cardsConflict(poPair, paPairsInUse[i])) {
+    /**
+     * Checks if a card conflicts with any card from a given array of cards.
+     *
+     * @param {Card} card
+     * @param {Array.<Card>} cards
+     * @returns {boolean}
+     */
+    function conflicts(card, cards) {
+        for (var i = 0; i < cards.length; i++) {
+            if (cardsConflict(card, cards[i])) {
                 return true;
             }
         }
         return false;
     }
 
+    /**
+     * Checks if two cards conflict with each other (i.e. can create ambiguity, if presented together).
+     *
+     * @param {Card} card1
+     * @param {Card} card2
+     * @returns {boolean}
+     */
     function cardsConflict(card1, card2) {
-        return card1.fsFront == card2.fsFront
-            || card1.fsBack == card2.fsBack
-            || wordMappings[card1.fsFront].indexOf(card2.fsBack) >= 0
-            || wordMappings[card2.fsFront].indexOf(card1.fsBack) >= 0
+        return card1.front == card2.front
+            || card1.back == card2.back
+            || wordMappings[card1.front].indexOf(card2.back) >= 0
+            || wordMappings[card2.front].indexOf(card1.back) >= 0
     }
 
-    function createNewGroup(groupSize, pairsInUse, callback) {
+    /**
+     * Creates a new group, containing cards chosen according to the current priorities.
+     *
+     * @param {int} groupSize - the number of cards the new group should have
+     * @param {Array.<Card>} cardsInUse - other cards in use (to avoid conflicts)
+     * @returns {Array.<Card>}
+     */
+    function createNewGroup(groupSize, cardsInUse) {
         console.group('createNewGroup');
-        var firstCard = chooseFirst(pairsInUse);
+        var firstCard = chooseFirst(cardsInUse);
         TimeMeter.start('CA');
-        var alternatives = chooseAlternatives(groupSize, firstCard, pairsInUse);
+        var alternatives = chooseAlternatives(groupSize, firstCard, cardsInUse);
         TimeMeter.stop('CA');
         var group = [firstCard].concat(alternatives);
 
@@ -202,7 +223,7 @@ mj.modules.cards = (function() {
             console.log(group[i].toString());
         }
         console.groupEnd();
-        callback(group);
+        return group;
     }
 
     function chooseFirst(pairsInUse) {
@@ -240,7 +261,7 @@ mj.modules.cards = (function() {
         while (i.hasNext() && count < game.getScopeSize()) {
             var pair = i.next();
             if (!pair.isSuspended() && !conflicts(pair, otherPairs)) {
-                pair.distance = Math.min(levenshtein(pair.fsFront, firstCard.fsFront), levenshtein(pair.fsBack, firstCard.fsFront));
+                pair.distance = Math.min(levenshtein(pair.front, firstCard.front), levenshtein(pair.back, firstCard.front));
                 var rank = Math.abs(candidates.find(pair, cmpDistance));
                 if (rank < MAX_CANDIDATES) {
                     while (candidates[rank] && candidates[rank].distance == pair.distance) rank++;
@@ -272,63 +293,63 @@ mj.modules.cards = (function() {
     }
 
     function cmpDistance(c1, c2) {
-        return normalizeCmp(c1.distance - c2.distance);
+        return (c1.distance - c2.distance);
     }
 
     function addToIndex(pair) {
-        var index = indexes[pair.fiState];
-        var position = - index.find(pair, cmpFuncs[pair.fiState]);
+        var index = indexes[pair.state];
+        var position = - index.find(pair, cmpFuncs[pair.state]);
         index.splice(position, 0, pair);
     }
 
     function removeFromIndex(pair) {
-        var index = indexes[pair.fiState];
-        var position = index.find(pair, cmpFuncs[pair.fiState]);
+        var index = indexes[pair.state];
+        var position = index.find(pair, cmpFuncs[pair.state]);
         index.splice(position, 1);
     }
 
     function rescheduleMatch(eventData) {
         console.group('rescheduleMatch');
-        var pairsInGroup = eventData.pairsInGroup;
-        var groupSize = pairsInGroup.length;
+        var cardsInGroup = eventData.cardsInGroup;
+        var groupSize = cardsInGroup.length;
 
-        // Replace the data objects by the actual Pair instances
+        // Replace the data objects by the actual Card instances
         for (var p = 0; p < groupSize; p++) {
-            pairsInGroup[p] = allCards[pairsInGroup[p].fiPairId];
+            cardsInGroup[p] = allCards[cardsInGroup[p].id];
         }
 
         for (var i = 0; i < groupSize; i++) {
-            var match = (pairsInGroup[i].fiPairId == eventData.pairId);
-            console.log((match ? 'v ' : '  ') + pairsInGroup[i].toString());
+            var match = (cardsInGroup[i].id == eventData.cardId);
+            console.log((match ? 'v ' : '  ') + cardsInGroup[i].toString());
         }
 
-        var moPair = allCards[eventData.pairId]; // TODO: fix this
+        var card = allCards[eventData.cardId]; // TODO: fix this
         var now = Date.now();
 
         if (groupSize > 1) {
             var minInterval = (groupSize * 1000 / eventData.thinkingTime * Time.DAY);
 
-            if (moPair.fdLastRep) {
-                var scheduledInterval = moPair.fdNextRep - moPair.fdLastRep;
-                var actualInterval = now - moPair.fdLastRep;
-                var multiplier = moPair.ffEasiness * (groupSize - 1) / 2;
+            if (card.lastRep) {
+                var scheduledInterval = card.nextRep - card.lastRep;
+                var actualInterval = now - card.lastRep;
+                var multiplier = card.easiness * (groupSize - 1) / 2;
                 var nextInterval = Math.max(minInterval, multiplier * actualInterval, scheduledInterval * 1.1);
-                moPair.setSchedule(now, Math.floor(now + nextInterval));
-                // moPair.ffEasiness = ? // TODO
+                card.setSchedule(now, Math.floor(now + nextInterval));
+                // card.easiness = ? // TODO
             } else {
-                moPair.setSchedule(now, Math.floor(now + minInterval));
+                card.setSchedule(now, Math.floor(now + minInterval));
             }
 
-            if (moPair.fiState == States.NEW) {
-                moPair.fiState = States.LEARNING;
+            if (card.state == States.NEW) {
+                card.state = States.LEARNING;
             } else {
-                moPair.fiState = States.KNOWN;
+                card.state = States.KNOWN;
             }
 
-            db.updateCard(moPair);
+            db.updateCard(card);
         }
-        moPair.suspend(now + groupSize * 30 * Time.SECOND);
-        addToIndex(moPair);
+        card.suspend(now + groupSize * 30 * Time.SECOND);
+        addToIndex(card);
         console.groupEnd();
     }
 
@@ -350,35 +371,35 @@ mj.modules.cards = (function() {
 
     function rescheduleMismatch(eventData) {
         console.group('rescheduleMismatch');
-        var mismatchedPairs = eventData.mismatchedPairs;
-        var pairsInGroup = eventData.pairsInGroup;
+        var mismatchedCards = eventData.mismatchedCards;
+        var cardsInGroup = eventData.cardsInGroup;
 
-        // Replace the data objects by the actual Pair instances
-        for (var p = 0; p < pairsInGroup.length; p++) {
-            pairsInGroup[p] = allCards[pairsInGroup[p].fiPairId];
+        // Replace the data objects by the actual Card instances
+        for (var p = 0; p < cardsInGroup.length; p++) {
+            cardsInGroup[p] = allCards[cardsInGroup[p].id];
         }
 
-        for (var j = 0; j < pairsInGroup.length; j++) {
-            var mismatch = (mismatchedPairs.indexOf(pairsInGroup[j].fiPairId) > -1);
-            console.log((mismatch ? 'X ' : '  ') + pairsInGroup[j].toString());
+        for (var j = 0; j < cardsInGroup.length; j++) {
+            var mismatch = (mismatchedCards.indexOf(cardsInGroup[j].id) > -1);
+            console.log((mismatch ? 'X ' : '  ') + cardsInGroup[j].toString());
         }
 
         var now = Date.now();
         var nextRep = now + 2 * Time.MINUTE;
-        for (var m = 0; m < mismatchedPairs.length; m++) {
-            var moPair = allCards[mismatchedPairs[m]];
+        for (var m = 0; m < mismatchedCards.length; m++) {
+            var card = allCards[mismatchedCards[m]];
 
-            moPair.setSchedule(now, nextRep);
-            if (moPair.fiState == States.NEW || moPair.fiState == States.LEARNING) {
-                moPair.fiState = States.NEW;
+            card.setSchedule(now, nextRep);
+            if (card.state == States.NEW || card.state == States.LEARNING) {
+                card.state = States.NEW;
             } else {
-                moPair.fiState = States.LAPSE;
+                card.state = States.LAPSE;
             }
-            db.updateCard(moPair);
+            db.updateCard(card);
         }
-        for (var i = 0; i < pairsInGroup.length; i++) {
-            pairsInGroup[i].suspend(now + 15 * Time.SECOND);
-            addToIndex(pairsInGroup[i]);
+        for (var i = 0; i < cardsInGroup.length; i++) {
+            cardsInGroup[i].suspend(now + 15 * Time.SECOND);
+            addToIndex(cardsInGroup[i]);
         }
         console.groupEnd();
     }
@@ -401,21 +422,15 @@ mj.modules.cards = (function() {
 
     // Cannot be used for comparing non-scheduled cards
     function cmpRelativeScheduling(c1, c2) {
-        return normalizeCmp(c2.relativeScheduling - c1.relativeScheduling) || cmpId(c1, c2);
+        return (c2.relativeScheduling - c1.relativeScheduling) || cmpId(c1, c2);
     }
 
     function cmpNextRep(c1, c2) {
-        return normalizeCmp(c1.fdNextRep - c2.fdNextRep) || cmpId(c1, c2);
+        return (c1.nextRep - c2.nextRep) || cmpId(c1, c2);
     }
 
     function cmpId(c1, c2) {
-        return normalizeCmp(c1.fiPairId - c2.fiPairId);
-    }
-
-    function normalizeCmp(value) {
-        if (value < 0) return -1;
-        else if (value > 0) return 1;
-        else return 0;
+        return (c1.id - c2.id);
     }
 
     /**
