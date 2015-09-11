@@ -294,7 +294,6 @@ mj.modules.testWords = [
 ["sluta","close"],
 ["sluta","wind up"],
 ["sluta","shut"],
-["sluta","make"],
 ["sluta","enter into"],
 ["precis","exact"],
 ["precis","precise"],
