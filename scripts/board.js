@@ -1,18 +1,28 @@
 mj.modules.board = (function() {
-    var settings = mj.settings;
-    var dom, game, cards, utils, Jewel, overlay;
+
+    // Aliases
+    var settings, dom, game, cards, utils, Jewel;
+
+    // TODO: this doesn't belong in this module
+    var overlay = null;
+
     var faJewels = [[],[]]; // array of 2 columns, each containing Jewel objects 
     var faAvailableGroupIds = [];
     var fmGroupCreationTime = {};
     var fmSelectedJewel = null;
     var fiLastSelectionTime = null;
-    var fiTimer = null;
-    var gameRunning = false;
+
+    /**
+     * ID of the interval for adding new groups.
+     * @type {number}
+     */
+    var intervalId = null;
 
     /**
      * Module setup.
      */
     function setup() {
+        settings = mj.settings;
         dom = mj.dom;
         game = mj.modules.game;
         cards = mj.modules.cards;
@@ -25,13 +35,12 @@ mj.modules.board = (function() {
      * Initializes the board for a new game.
      */
     function initialize() {
-        gameRunning = true;
         faJewels = [[],[]];
         faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         fiLastSelectionTime = now();
         fmSelectedJewel = null;
         addDefaultGroup();
-        setInterval();
+        startAddingGroups();
     }
 
     /**
@@ -106,8 +115,7 @@ mj.modules.board = (function() {
     }
     
     function gameOver() {
-        gameRunning = false;
-        clearInterval();
+        stopAddingGroups();
         game.gameOver();
     }
     
@@ -128,7 +136,7 @@ mj.modules.board = (function() {
                 var newSelectedJewel = faJewels[piCol][piRow];
 
                 if (prevSelectedJewel.groupId == newSelectedJewel.groupId) {
-                    // actually trying to match a pair
+                    // actually trying to match a card
                     var miPrevSelectedId = prevSelectedJewel.card.id;
                     var miNewSelectedId = newSelectedJewel.card.id;
 
@@ -168,9 +176,9 @@ mj.modules.board = (function() {
         }
 
         if (getNumCards() == 0) {
-            clearInterval();
+            stopAddingGroups();
             addDefaultGroup();
-            setInterval();
+            startAddingGroups();
         }
     }
 
@@ -200,24 +208,26 @@ mj.modules.board = (function() {
         });
     }
 
-    function setInterval() {
-
-        function f() {
-            addDefaultGroup();
-            scheduleNextGroup(f);
-        }
-
-        scheduleNextGroup(f);
+    /**
+     * Start periodically adding new groups.
+     */
+    function startAddingGroups() {
+        intervalId = utils.setDynamicInterval(addDefaultGroup, getIntervalBetweenGroups);
     }
 
-    function scheduleNextGroup(f) {
-        if (gameRunning) {
-            fiTimer = window.setTimeout(f, game.getIntervalBetweenGroups(getNumCards()));
-        }
+    /**
+     * Stop periodically adding new groups.
+     */
+    function stopAddingGroups() {
+        utils.clearInterval(intervalId);
     }
 
-    function clearInterval() {
-        window.clearInterval(fiTimer);
+    /**
+     * Calculates the time to wait to add a new group.
+     * @return {int} - milliseconds to wait
+     */
+    function getIntervalBetweenGroups() {
+        return game.getIntervalBetweenGroups(getNumCards());
     }
 
     /**

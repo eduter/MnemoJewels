@@ -71,8 +71,8 @@ mj.modules.debug = (function() {
 //            console.log('GROUP ' + i);
 //            mj.modules.cards.createNewGroup(3, [], function (cards) {
 //                while (cards.length) {
-//                    var pair = cards[0];
-//                    mj.modules.cards.rescheduleMatch(pair.id, cards, 1000);
+//                    var card = cards[0];
+//                    mj.modules.cards.rescheduleMatch(card.id, cards, 1000);
 //                    cards.shift();
 //                }
 //            });

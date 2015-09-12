@@ -64,9 +64,9 @@ mj.modules.game = (function() {
     }
     
     function onMatch(eventData) {
-        var pairsLeft = eventData.cardsInGroup.length - 1;
+        var remainingCards = eventData.cardsInGroup.length - 1;
         ffScopeSize += increment;
-        averageThinkingTimes[pairsLeft] = 0.6 * averageThinkingTimes[pairsLeft] + 0.4 * eventData.thinkingTime;
+        averageThinkingTimes[remainingCards] = 0.6 * averageThinkingTimes[remainingCards] + 0.4 * eventData.thinkingTime;
     }
     
     function onMismatch() {
@@ -96,9 +96,9 @@ mj.modules.game = (function() {
         return Math.max(min, Math.min(max, value));
     }
 
-    function getIntervalBetweenGroups(numPairs){
-        if (numPairs > 2) {
-            intervalBetweenGroups = Math.min((numPairs - 2) * getAverageThinkingTime(), getMaxInterval());
+    function getIntervalBetweenGroups(numCards){
+        if (numCards > 2) {
+            intervalBetweenGroups = Math.min((numCards - 2) * getAverageThinkingTime(), getMaxInterval());
         } else {
             intervalBetweenGroups = settings.MIN_INTERVAL;
         }

@@ -81,8 +81,8 @@ mj.modules.database = (function() {
         });
     }
 
-    function updateCard(poPair) {
-        console.log("U " + poPair.toString());
+    function updateCard(card) {
+        console.log("U " + card.toString());
         foDb.transaction(function (tx) {
             tx.executeSql('\
                 UPDATE cards SET \
@@ -91,7 +91,7 @@ mj.modules.database = (function() {
                     iState = ?, \
                     fEasiness = ? \
                 WHERE id = ?',
-                [poPair.lastRep, poPair.nextRep, poPair.state, poPair.easiness, poPair.id]
+                [card.lastRep, card.nextRep, card.state, card.easiness, card.id]
             );
         });
     }

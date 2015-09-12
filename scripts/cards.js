@@ -226,7 +226,7 @@ mj.modules.cards = (function() {
         return group;
     }
 
-    function chooseFirst(pairsInUse) {
+    function chooseFirst(cardsInUse) {
         var learningSetSize = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
         var learningSetFullness = Math.min(1, learningSetSize / mj.settings.MAX_LEARNING);
         var probabilityReview = (1 - game.getDifficulty()) * learningSetFullness;
@@ -241,17 +241,17 @@ mj.modules.cards = (function() {
 
         i.reset();
         while (i.hasNext()) {
-            var pair = i.next();
-            if (!pair.isSuspended() && !conflicts(pair, pairsInUse)) {
-                return pair;
+            var card = i.next();
+            if (!card.isSuspended() && !conflicts(card, cardsInUse)) {
+                return card;
             }
         }
         return null;
     }
 
-    function chooseAlternatives(groupSize, firstCard, pairsInUse) {
+    function chooseAlternatives(groupSize, firstCard, cardsInUse) {
         var i = iterators.alternatives;
-        var otherPairs = pairsInUse.concat(firstCard);
+        var otherCards = cardsInUse.concat(firstCard);
         var alternatives = [];
         var candidates = [];
         var count = 0;
@@ -259,18 +259,18 @@ mj.modules.cards = (function() {
         // Process all cards inside the scope and create an array of candidates sorted by distance
         i.reset();
         while (i.hasNext() && count < game.getScopeSize()) {
-            var pair = i.next();
-            if (!pair.isSuspended() && !conflicts(pair, otherPairs)) {
-                pair.distance = Math.min(levenshtein(pair.front, firstCard.front), levenshtein(pair.back, firstCard.front));
-                var rank = Math.abs(candidates.find(pair, cmpDistance));
+            var card = i.next();
+            if (!card.isSuspended() && !conflicts(card, otherCards)) {
+                card.distance = Math.min(levenshtein(card.front, firstCard.front), levenshtein(card.back, firstCard.front));
+                var rank = Math.abs(candidates.find(card, cmpDistance));
                 if (rank < MAX_CANDIDATES) {
-                    while (candidates[rank] && candidates[rank].distance == pair.distance) rank++;
-                    candidates.splice(rank, 0, pair);
+                    while (candidates[rank] && candidates[rank].distance == card.distance) rank++;
+                    candidates.splice(rank, 0, card);
                     if (candidates.length > MAX_CANDIDATES) {
                         candidates.pop().distance = undefined; // cleanup
                     }
                 } else {
-                    pair.distance = undefined; // cleanup
+                    card.distance = undefined; // cleanup
                 }
             }
             count++;
@@ -296,15 +296,15 @@ mj.modules.cards = (function() {
         return (c1.distance - c2.distance);
     }
 
-    function addToIndex(pair) {
-        var index = indexes[pair.state];
-        var position = - index.find(pair, cmpFuncs[pair.state]);
-        index.splice(position, 0, pair);
+    function addToIndex(card) {
+        var index = indexes[card.state];
+        var position = - index.find(card, cmpFuncs[card.state]);
+        index.splice(position, 0, card);
     }
 
-    function removeFromIndex(pair) {
-        var index = indexes[pair.state];
-        var position = index.find(pair, cmpFuncs[pair.state]);
+    function removeFromIndex(card) {
+        var index = indexes[card.state];
+        var position = index.find(card, cmpFuncs[card.state]);
         index.splice(position, 1);
     }
 
@@ -314,8 +314,8 @@ mj.modules.cards = (function() {
         var groupSize = cardsInGroup.length;
 
         // Replace the data objects by the actual Card instances
-        for (var p = 0; p < groupSize; p++) {
-            cardsInGroup[p] = allCards[cardsInGroup[p].id];
+        for (var c = 0; c < groupSize; c++) {
+            cardsInGroup[c] = allCards[cardsInGroup[c].id];
         }
 
         for (var i = 0; i < groupSize; i++) {
@@ -362,8 +362,8 @@ mj.modules.cards = (function() {
         console.group('debugReview (learning = ' + learning + ')');
         i.reset();
         while (i.hasNext() && l < learning) {
-            var pair = i.next();
-            console.log(pair.toString());
+            var card = i.next();
+            console.log(card.toString());
             l++;
         }
         console.groupEnd();

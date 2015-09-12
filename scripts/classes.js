@@ -95,7 +95,7 @@
     };
 
     /**
-     * Checks whether this pair is currently suspended.
+     * Checks whether this card is currently suspended.
      * @returns {boolean}
      */
     Card.prototype.isSuspended = function() {
@@ -103,7 +103,7 @@
     };
 
     /**
-     * Suspends this pair until the specified time.
+     * Suspends this card until the specified time.
      * @param {number} endSuspension - Timestamp of when the suspension is over
      */
     Card.prototype.suspend = function(endSuspension) {
