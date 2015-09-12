@@ -1,18 +1,14 @@
 mj.modules.game = (function() {
-    var main = null;
-    var board = null;
-    var display = null;
-    var cards = null;
-    var score = null;
+
+    // Aliases
     var settings = mj.settings;
+    var main, board, display, cards, score, TimeMeter;
 
     var POINTS_PER_LEVEL = 2000;
     var LAST_LEVEL = 10;
 
     var level = 1;
-    var fiRedrawInterval = null;
     var increment, ffScopeSize;
-    var TimeMeter = null;
     var averageThinkingTimes = [
         settings.INITIAL_INTERVAL / 6,
         settings.INITIAL_INTERVAL / 3,
@@ -40,17 +36,10 @@ mj.modules.game = (function() {
         intervalBetweenGroups = getIntervalBetweenGroups(settings.DEFAULT_GROUP_SIZE);
         level = 1;
         board.initialize();
-        fiRedrawInterval = window.setInterval(
-            function(){
-                display.redraw(board.getJewels(), board.getSelectedJewel());
-            },
-            1000/6
-        );
         main.trigger('gameStart');
     }
     
     function gameOver() {
-        window.clearInterval(fiRedrawInterval);
         display.redraw(board.getJewels());
         alert('Game Over!');
         main.navigateTo('main-menu');

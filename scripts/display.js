@@ -1,18 +1,42 @@
 mj.modules.display = (function() {
+
+    // Aliases
     var dom = mj.dom;
     var $ = dom.$;
+    var main, board;
+
     var foBoard = null;
     var NUM_ROWS = mj.settings.NUM_ROWS;
     var stats = null;
 
+    var redrawIntervalId;
+
     function setup() {
+        main = mj.modules.main;
+        board = mj.modules.board;
         // TODO: display this in the game screen
-        mj.modules.main.bind('scoreUp', function (eventData) {
+        main.bind('scoreUp', function (eventData) {
             console.log('Score Up ' + JSON.stringify(eventData));
         });
-        mj.modules.main.bind('levelUp', function (eventData) {
+        main.bind('levelUp', function (eventData) {
             console.log('Level Up ' + JSON.stringify(eventData));
         });
+
+        main.bind('gameStart', onGameStart);
+        main.bind('gameOver', onGameOver);
+    }
+
+    function onGameStart() {
+        redrawIntervalId = setInterval(
+            function(){
+                redraw(board.getJewels(), board.getSelectedJewel());
+            },
+            1000/6
+        );
+    }
+
+    function onGameOver() {
+        clearInterval(redrawIntervalId);
     }
     
     function getBoardElem() {
