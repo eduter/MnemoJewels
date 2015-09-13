@@ -11,9 +11,9 @@ body {
     position : absolute;
     left : 0;
     top : 0;
-    font-size : 32px;
-    width : 10em;
-    height : 15em;
+    font-size : 0;
+    width : 320em;
+    height : 480em;
     background-color : #C5CADF;
     background-image: url("../backgrounds/bg.jpg");
     background-repeat: no-repeat;
@@ -37,32 +37,33 @@ body {
 
 #splash-screen {
     text-align : center;
-    padding-top : 2.5em;
+}
+#splash-screen .logo {
+    padding-top: 0em;
 }
 #splash-screen .continue {
     cursor : pointer;
-    font-size : 0.75em;
+    font-size : 24em;
     font-weight: bold;
-    text-shadow: 2px 2px 3px black;
+    text-shadow: 0.05em 0.05em 0.1em black;
 }
 .logo {
     font-family : logo-font;
-    margin-top: 0.1em;
-    margin-bottom : 0.7em;
+    margin-top: 1em;
+    margin-bottom : 1em;
     text-align : center;
     color : #f1c101;
-    font-size : 1.7em;
-    line-height : 0.9em;
+    font-size : 54em;
+    line-height: 1em;
     font-weight: normal;
-    
-    text-shadow: -1px -1px 1px #b69202,
-                  1px 1px 1px #b69202,
-                 -4px -4px 0px #000,
-                  3px -4px 0px #000,
-                  3px 3px 0px #000,
-                 -4px 3px 0px #000,
-                  5px 5px 7px #000,
-                 -3px 5px 7px #000;
+    text-shadow: -0.02em -0.02em 0.02em #b69202,
+                  0.01em  0.01em 0.02em #b69202,
+                 -0.05em -0.05em 0      #000,
+                 -0.05em  0.05em 0      #000,
+                  0.05em -0.05em 0      #000,
+                  0.05em  0.05em 0      #000,
+                  0.05em  0.07em 0.06em #000,
+                 -0.05em  0.07em 0.06em #000;
 }
 
 .no-textshadow .logo {
@@ -72,11 +73,11 @@ body {
 
 /* Main menu styles */
 #main-menu {
-    padding-top : 0.5em;
+    padding-top : 16em;
 }
 
 #play-menu {
-    padding-top : 0.5em;
+    padding-top : 16em;
 }
 
 ul.menu {
@@ -87,23 +88,22 @@ ul.menu {
 }
 
 ul.menu li {
-    margin : 0.6em 0;
+    margin : 19em 0;
 }
 
 button {
-    background : none;
-    border: none;
-    font-size: 20px;
+    font-size: 20em;
     font-family: 'Russo One', sans-serif;
-    background-size: 170px 39px;
-    width: 176px;
-    height: 45px;
-    border: solid 2px rgba(0, 0, 0, 0.5);
-    border-radius : 0.7em;
+    background-size: 9em 2em;
+    background-position: center;
+    width: 9em;
+    height: 2em;
+    border: solid 0.1em rgba(0, 0, 0, 0.5);
+    border-radius : 0.5em;
 }
 
 button.back {
-    background-image : url("../svg/jewel_red.svg");
+    background-image: url("../svg/jewel_red.svg");
     background-color: red;
 }
 
@@ -147,14 +147,14 @@ ul.menu li button:active {
 
 /* Install screen for iOS devices */
 #install-screen  {
-    padding-top : 0.5em;
+    padding-top : 16em;
     text-align : center;
 }
 
 #install-screen span {
-    font-size : 0.75em;
+    font-size : 24em;
     display : inline-block;
-    padding : 0 0.5em;
+    padding : 0 16em;
 }
 
 /* temporary lame representation of the board */
@@ -162,17 +162,17 @@ ul.menu li button:active {
 table#board {
     width: 100%;
     position: absolute;
-    top: 50px;
-    font-size: 25px;
+    bottom: 0;
+    border-spacing: 2em;
 }
 
 #overlay {
   display: none;
   position: absolute;
-  top: 50px;
+  bottom: 0;
   z-index: 32000;
   width: 100%;
-  height: 430px;
+  height: 415em;
   background-color: #000;
   opacity: 0.5;
 }
@@ -182,16 +182,17 @@ table#board {
 }
 
 table#board td {
-    border: solid 2px rgba(0, 0, 0, 0.5);
+    border: solid 0.1em rgba(0, 0, 0, 0.5);
     background: rgba(0, 0, 0, 0.5);
-    height: 35px;
+    height: 1.3em;
+    font-size: 26em;
     width: 50%;
-    border-radius: 10px;
-    padding-left: 5px;
+    border-radius: 0.5em;
+    padding-left: 0.25em;
 }
 
 table#board td.selected {
-    border: solid 2px rgba(255, 255, 255, 0.7);
+    border: solid 0.1em rgba(255, 255, 255, 0.7);
 }
 
 table#board td.group1 {
@@ -245,5 +246,5 @@ table#board td.group12 {
 }
 
 #stats {
-    font-size: 0.5em;
+    font-size: 16em;
 }

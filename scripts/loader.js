@@ -19,7 +19,17 @@ var mj = {
 };
 
 window.addEventListener('load', function() {
-    
+    var body = document.getElementsByTagName('body')[0];
+    var topContainer = document.getElementById('top-container');
+
+    function resize() {
+        var height = window.innerHeight || document.documentElement.clientHeight || body.clientHeight;
+        topContainer.style.fontSize = (height / 480) + 'px';
+    }
+
+    resize();
+    window.onresize = resize;
+
     Modernizr.addTest("standalone", function() {
         return (window.navigator.standalone != false);
     });
