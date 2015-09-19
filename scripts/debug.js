@@ -38,6 +38,14 @@ mj.modules.debug = (function() {
 
     };
 
+    // If there's no deck stored, import and select the test deck
+    function prepareTestDeck() {
+        if (mj.modules.decks.getSelectedDeck() === null) {
+            var deck = mj.modules.decks.importDeck(testDeck);
+            mj.modules.decks.selectDeck(deck.id);
+        }
+    }
+
     function roughSizeOfObject(object) {
         var objectList = [];
         var stack = [object];
@@ -108,6 +116,7 @@ mj.modules.debug = (function() {
 
     return {
         TimeMeter: TimeMeter,
+        prepareTestDeck: prepareTestDeck,
         getStats : function() {
             return TimeMeter.getStats('CG') + ' ' + TimeMeter.getStats('CA') + ' ' + TimeMeter.getStats('D');
         },

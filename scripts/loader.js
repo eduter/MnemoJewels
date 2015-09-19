@@ -63,9 +63,10 @@ window.addEventListener('load', function() {
         {
             load : [
                 "scripts/classes.js",
-                "scripts/database.js",
+                "scripts/storage.js",
                 "scripts/game.js",
                 "scripts/board.js",
+                "scripts/decks.js",
                 "scripts/cards.js",
                 "scripts/score.js",
                 "scripts/display.js",
@@ -85,7 +86,10 @@ window.addEventListener('load', function() {
                         }
                     }
                 }
-                mj.modules.debug.testWeighedRandom();
+
+                mj.modules.debug.prepareTestDeck();
+
+                //mj.modules.debug.testWeighedRandom();
                 // Turns off debugging info
                 //var noop = function(){}; window.console = {log: noop, dir: noop, error: noop, group: noop, groupEnd: noop};
             }

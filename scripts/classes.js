@@ -28,32 +28,43 @@
      * @param {int} id
      * @param {string} front
      * @param {string} back
-     * @param {timestamp} lastRep
-     * @param {timestamp} nextRep
-     * @param {float} easiness
-     * @param {int} state
+     * @param {timestamp} [lastRep]
+     * @param {timestamp} [nextRep]
+     * @param {float} [easiness]
+     * @param {int} [state]
      * @constructor
      */
     function Card(id, front, back, lastRep, nextRep, easiness, state) {
         this.id = id;
         this.front = front;
         this.back = back;
-        this.easiness = easiness;
-        this.state = state;
-        this.setSchedule(lastRep, nextRep);
+        this.setSchedule(lastRep || null, nextRep || null);
+        this.easiness = easiness || 2.5;
+        this.state = state || 1;
         this.suspendedUntil = null;
     }
 
-    Card.fromDb = function(dbRow) {
+    Card.unserialize = function(id, cardData) {
         return new Card(
-            dbRow['id'],
-            dbRow['sFront'],
-            dbRow['sBack'],
-            dbRow['dLastRep'],
-            dbRow['dNextRep'],
-            dbRow['fEasiness'],
-            dbRow['iState']
+            id,
+            cardData['ft'],
+            cardData['bk'],
+            cardData['lr'],
+            cardData['nr'],
+            cardData['ea'],
+            cardData['st']
         );
+    };
+
+    Card.prototype.serialize = function() {
+        return {
+            ft: this.front,
+            bk: this.back,
+            ea: this.easiness,
+            st: this.state,
+            lr: this.lastRep,
+            nr: this.nextRep
+        };
     };
 
     function dateToStr(date) {

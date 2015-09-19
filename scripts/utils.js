@@ -86,11 +86,28 @@ mj.modules.utils = (function() {
         }
     }
 
+    /**
+     * Creates a copy of a value, so even if the copy is modified, the original remains unchanged.
+     * The copy contains the same data as the original, but it's not an instance of the same class and
+     * does not have any methods.
+     *
+     * @param {*} value
+     * @return {*}
+     */
+    function copyData(value) {
+        if (value === undefined) {
+            return undefined;
+        } else {
+            return JSON.parse(JSON.stringify(value));
+        }
+    }
+
     return {
         randomInt: randomInt,
         weighedRandom: weighedRandom,
         randomPop: randomPop,
         setDynamicInterval: setDynamicInterval,
-        clearInterval: clearInterval
+        clearInterval: clearInterval,
+        copyData: copyData
     };
 })();

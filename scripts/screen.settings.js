@@ -18,44 +18,45 @@ mj.screens['settings'] = (function() {
         });
 
         dom.bind('#synch', 'click', function() {
-            var diff = cards.diff(mj.modules.testWords);
-
-            if (diff.add.length || diff.remove.length) {
-                var msg = 'Are you sure you want to';
-
-                if (diff.add.length) {
-                    msg += ' add ' + diff.add.length + ' new card(s)';
-                }
-                if (diff.remove.length) {
-                    if (diff.add.length) {
-                        msg += ' and remove ' + diff.remove.length;
-                    } else {
-                        msg += ' remove ' + diff.remove.length + ' card(s)';
-                    }
-                }
-                msg += '?';
-
-                if (confirm(msg)) {
-                    cards.addCards(diff.add);
-                    cards.removeCards(diff.remove);
-                    setTimeout(function () {
-                        alert("Restart required...");
-                        location.reload();
-                    }, 1000);
-                }
-            } else {
-                alert('Already up to date');
-            }
+            // TODO
+            alert('TODO');
+//            var diff = cards.diff(mj.testWords);
+//
+//            if (diff.add.length || diff.remove.length) {
+//                var msg = 'Are you sure you want to';
+//
+//                if (diff.add.length) {
+//                    msg += ' add ' + diff.add.length + ' new card(s)';
+//                }
+//                if (diff.remove.length) {
+//                    if (diff.add.length) {
+//                        msg += ' and remove ' + diff.remove.length;
+//                    } else {
+//                        msg += ' remove ' + diff.remove.length + ' card(s)';
+//                    }
+//                }
+//                msg += '?';
+//
+//                if (confirm(msg)) {
+//                    cards.addCards(diff.add);
+//                    cards.removeCards(diff.remove);
+//                    setTimeout(function () {
+//                        alert("Restart required...");
+//                        location.reload();
+//                    }, 1000);
+//                }
+//            } else {
+//                alert('Already up to date');
+//            }
         });
 
         dom.bind('#showStats', 'click', function() {
-            mj.modules.cards.getStatesStats(function(stats){
-                var output = '';
-                for (var i = 0; i < stats.length; i++) {
-                    output += stats[i].state + ': ' + stats[i].count + '<br/>';
-                }
-                dom.$('#output')[0].innerHTML = output;
-            });
+            var stats = mj.modules.cards.getStatesStats();
+            var output = '';
+            for (var i = 0; i < stats.length; i++) {
+                output += stats[i].state + ': ' + stats[i].count + '<br/>';
+            }
+            dom.$('#output')[0].innerHTML = output;
         });
     }
     

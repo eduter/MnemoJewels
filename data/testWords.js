@@ -1,4 +1,4 @@
-mj.modules.testWords = [
+var testDeck = { displayName: 'Swedish / English', cards: [
 ["jag","I"],
 ["jag","ego"],
 ["det","that"],
@@ -1874,4 +1874,4 @@ mj.modules.testWords = [
 ["gäng", "gang"],
 ["rom", "rum"],
 ["skrivit", "written"]
-];
+]};

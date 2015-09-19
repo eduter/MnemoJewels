@@ -2,17 +2,48 @@ mj.modules.cards = (function() {
 
     var MAX_CANDIDATES = 30;
 
-    var main = null;
-    var game = null;
-    var db = null;
-    var Card = null;
+    // Aliases
+    var main, game, storage, decks, Card, TimeMeter;
+
+    /**
+     * Map of all cards from the selected deck, indexed by their IDs.
+     * @type {Object.<int, Card>}
+     */
     var allCards = null;
+
+    /**
+     * Index of all possible "back sides" for each "front side".
+     * @type {Object.<string, Array.<string>>}
+     */
     var wordMappings = null;
-    var TimeMeter = null;
-    var totalCards = null;
+
+    /**
+     * The deck currently loaded.
+     * @type {Deck}
+     */
+    var deck = null;
+
+    /**
+     * Indexes, per card state, of cards sorted by priority.
+     * @type {Object.<State, Array.<Card>>}
+     */
     var indexes = {};
+
+    /**
+     * Compare functions for sorting the indexes.
+     * @type {Object.<State, function>}
+     */
+    var cmpFuncs = {};
+
+    /**
+     * Map with all available iterators.
+     * @type {Object.<string, Iterator>}
+     */
     var iterators = {};
 
+    /**
+     * Number of milliseconds per unit of time.
+     */
     var Time = {
         SECOND:             1000,
         MINUTE:        60 * 1000,
@@ -20,15 +51,28 @@ mj.modules.cards = (function() {
         DAY: 24 * 60 * 60 * 1000
     };
 
+    /**
+     * Defines the state of a card, regarding the player's learning progress.
+     * @typedef {int} State
+     */
+
+    /**
+     * Enumeration of possible card states.
+     * @type {Object.<string, State>}
+     */
     var States = {
-        NEW:      1,
-        LEARNING: 2,
-        KNOWN:    3,
-        LAPSE:    4
+        NEW:      1, // not learned yet
+        LEARNING: 2, // successfully matched at least once, but never twice in a row
+        KNOWN:    3, // successfully matched at least twice in a row and last time
+        LAPSE:    4  // once known, but mismatched last time
     };
 
-    var cmpFuncs = {};
-
+    /**
+     * Class for iterating over all cards according to some predefined priority.
+     *
+     * @param {Array.<State>} priorities - defines the priority of cards according to their state
+     * @constructor
+     */
     function Iterator(priorities) {
         var state, card;
 
@@ -73,20 +117,18 @@ mj.modules.cards = (function() {
         this.reset();
     }
 
+    /**
+     * Initializes the module.
+     */
     function setup() {
         main = mj.modules.main;
         game = mj.modules.game;
-        db = mj.modules.database;
+        storage = mj.modules.storage;
+        decks = mj.modules.decks;
         Card = mj.classes.Card;
         TimeMeter = mj.modules.debug.TimeMeter;
 
-        allCards = {};
-
-        for (var s in States) {
-            if (States.hasOwnProperty(s)) {
-                indexes[States[s]] = [];
-            }
-        }
+        unloadDeck();
 
         cmpFuncs[States.NEW] = cmpId;
         cmpFuncs[States.LEARNING] = cmpRelativeScheduling;
@@ -99,27 +141,69 @@ mj.modules.cards = (function() {
           alternatives: new Iterator([States.KNOWN, States.LEARNING, States.LAPSE   , States.NEW  ])
         };
 
-        db.loadAllCards(function(cards){
-            totalCards = cards.length;
-            for (var i = 0; i < totalCards; i++) {
-                var card = Card.fromDb(cards[i]);
-                allCards[card.id] = card;
-                indexes[card.state].push(card);
-            }
-            for (var s in States) {
-                if (States.hasOwnProperty(s)) {
-                    var state = States[s];
-                    indexes[state].sort(cmpFuncs[state]);
-                }
-            }
-            wordMappings = toWordMap(cards, 'sFront', 'sBack');
+        var selectedDeck = decks.getSelectedDeck();
+        if (selectedDeck !== null) {
+            loadCards(selectedDeck);
+        }
 
-
-            debugReview(); // TODO
-        });
-
+        main.bind('deckSelected', function(eventData){loadCards(eventData.deck)});
         main.bind('match', rescheduleMatch);
         main.bind('mismatch', rescheduleMismatch);
+    }
+
+    /**
+     * Loads all cards from the specified deck.
+     * @param {Deck} deckToLoad
+     */
+    function loadCards(deckToLoad) {
+        unloadDeck();
+        deck = deckToLoad;
+        for (var cardId = 0; cardId < deck.size; cardId++) {
+            var card = storage.loadCard(deck.id, cardId);
+            allCards[card.id] = card;
+            indexes[card.state].push(card);
+        }
+        for (var s in States) {
+            if (States.hasOwnProperty(s)) {
+                var state = States[s];
+                indexes[state].sort(cmpFuncs[state]);
+            }
+        }
+        updateWordMappings();
+    }
+
+    /**
+     * Empty all indexes, making them ready to load a new deck.
+     */
+    function unloadDeck() {
+        deck = null;
+        allCards = {};
+        updateWordMappings();
+        for (var s in States) {
+            if (States.hasOwnProperty(s)) {
+                indexes[States[s]] = [];
+            }
+        }
+    }
+
+    /**
+     * Makes sure wordMappings is up to date with the content of allCards.
+     */
+    function updateWordMappings() {
+        wordMappings = {};
+        for (var cardId in allCards) {
+            if (allCards.hasOwnProperty(cardId)) {
+                var front = allCards[cardId].front;
+                var back = allCards[cardId].back;
+                if (front in wordMappings) {
+                    if (wordMappings[front].indexOf(back) == -1) {
+                        wordMappings[front].push(back);
+                    }
+                } else {
+                    wordMappings[front] = [back];
+                }
+            }
+        }
     }
 
     function toWordMap(words, frontKey, backKey) {
@@ -163,14 +247,6 @@ mj.modules.cards = (function() {
         }
 
         return { add: add, remove: remove };
-    }
-
-    function addCards(words) {
-        db.insertWords(words);
-    }
-
-    function removeCards(ids) {
-        db.removeCards(ids);
     }
 
     /**
@@ -346,7 +422,7 @@ mj.modules.cards = (function() {
                 card.state = States.KNOWN;
             }
 
-            db.updateCard(card);
+            storage.storeCard(deck.id, card);
         }
         card.suspend(now + groupSize * 30 * Time.SECOND);
         addToIndex(card);
@@ -395,7 +471,7 @@ mj.modules.cards = (function() {
             } else {
                 card.state = States.LAPSE;
             }
-            db.updateCard(card);
+            storage.storeCard(deck.id, card);
         }
         for (var i = 0; i < cardsInGroup.length; i++) {
             cardsInGroup[i].suspend(now + 15 * Time.SECOND);
@@ -404,20 +480,27 @@ mj.modules.cards = (function() {
         console.groupEnd();
     }
 
-    function getStatesStats(callback) {
-        db.getStatesStats(function(statsByCode){
-            var stats = [];
-            for (var s in States) {
-                if (States.hasOwnProperty(s)) {
-                    stats.push({state: s, count: statsByCode[States[s]]});
-                }
+    /**
+     * Returns some stats about the number of cards in each state.
+     * @return {Array.<{state: string, count: int}>}
+     */
+    function getStatesStats() {
+        var stats = [];
+        for (var stateName in States) {
+            if (States.hasOwnProperty(stateName)) {
+                var stateCode = States[stateName];
+                stats.push({state: stateName, count: indexes[stateCode].length});
             }
-            callback(stats);
-        });
+        }
+        return stats;
     }
 
+    /**
+     * Gets the number of cards currently loaded.
+     * @return {int}
+     */
     function getTotalCards() {
-        return totalCards;
+        return (deck ? deck.size : 0);
     }
 
     // Cannot be used for comparing non-scheduled cards
@@ -518,9 +601,7 @@ mj.modules.cards = (function() {
         getStatesStats: getStatesStats,
         getTotalCards: getTotalCards,
         diff: diff,
-        addCards: addCards,
         debugReview: debugReview,
-        removeCards: removeCards,
         States: States
     };
 })();
