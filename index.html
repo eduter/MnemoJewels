@@ -7,6 +7,7 @@
     <title>MnemoJewels</title>
     
     <link rel="stylesheet" href="styles/main.css" />
+    <link href="styles/donut-chart.css" rel="stylesheet"/>
     <link rel="stylesheet" href="styles/fontfaces.css"/>
     <link rel="stylesheet" href="styles/mobile.css"
           media="screen and (max-device-width: 768px) and (orientation: portrait),
@@ -41,10 +42,9 @@
         <div class="screen" id="main-menu">
             <h2 class="logo">Mnemo<br/>Jewels</h2>
             <ul class="menu">
-                <li><button class="nav bt_green" name="game">Play</button>
-                <li><button class="nav bt_blue" name="settings">Settings</button>
-                <li><button class="nav bt_yellow" name="about">About</button>
-                <li><button class="nav bt_red" name="exit-screen">Exit</button>
+                <li><button class="nav bt_red" name="game">Play</button>
+                <li><button class="nav bt_yellow" name="deck-stats">Show stats</button></li>
+                <li><button class="nav bt_blue" name="about">About</button>
             </ul>
         </div>
 
@@ -65,25 +65,29 @@
             </table>
         </div>
 
-        <div class="screen" id="settings">
+        <div class="screen" id="deck-stats">
             <h2 class="logo">Mnemo<br/>Jewels</h2>
+            <div class="screen-content">
+                <figure>
+                    <div id="stats-chart" class="donut-chart"></div>
+                    <figcaption class="small-text">
+                        <dl></dl>
+                    </figcaption>
+                </figure>
+            </div>
             <ul class="menu">
-                <li><button id="synch" class="bt_green">Synchronize</button></li>
-                <li><button id="clear" class="bt_blue">Recreate DB</button></li>
-                <li><button id="showStats" class="bt_purple">Show stats</button></li>
                 <li><button class="back">Back</button></li>
             </ul>
-            <div id="output"></div>
         </div>
 
         <div class="screen" id="about">
-            TO DO<br/>
-            <button class="back">Back</button>
-        </div>
-
-        <div class="screen" id="exit-screen">
-            <h2 class="logo">Mnemo<br/>Jewels</h2>
-            TO DO
+          <h2 class="logo">Mnemo<br/>Jewels</h2>
+          <p class="medium-text">
+            This is just a prototype, don't expect much of it.
+          </p>
+          <ul class="menu">
+            <li><button class="back">Back</button></li>
+          </ul>
         </div>
 
     </div>

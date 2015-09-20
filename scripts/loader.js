@@ -75,7 +75,8 @@ window.addEventListener('load', function() {
                 "scripts/utils.js",
                 "scripts/debug.js",
                 "scripts/screen.game.js",
-                "scripts/screen.settings.js",
+                "scripts/screen.deck-stats.js",
+                "scripts/lib/donut-chart.js",
                 "data/testWords.js"
             ],
             complete : function() {
@@ -90,8 +91,12 @@ window.addEventListener('load', function() {
                 mj.modules.debug.prepareTestDeck();
 
                 //mj.modules.debug.testWeighedRandom();
-                // Turns off debugging info
-                //var noop = function(){}; window.console = {log: noop, dir: noop, error: noop, group: noop, groupEnd: noop};
+
+                // Prevents logging of debug info, unless debug is on
+                if (!mj.modules.storage.load('debug')) {
+                    var noop = function(){};
+                    window.console = {log: noop, dir: noop, error: noop, group: noop, groupEnd: noop};
+                }
             }
         }
         ]);
