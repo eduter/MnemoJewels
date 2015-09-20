@@ -75,7 +75,8 @@ window.addEventListener('load', function() {
                 "scripts/utils.js",
                 "scripts/debug.js",
                 "scripts/screen.game.js",
-                "scripts/screen.settings.js",
+                "scripts/screen.deck-stats.js",
+                "scripts/lib/donut-chart.js",
                 "data/testWords.js"
             ],
             complete : function() {
