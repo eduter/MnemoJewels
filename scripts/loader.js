@@ -69,6 +69,7 @@ window.addEventListener('load', function() {
                 "scripts/decks.js",
                 "scripts/cards.js",
                 "scripts/score.js",
+                "scripts/time.js",
                 "scripts/display.js",
                 "scripts/input.js",
                 "scripts/parser.js",
@@ -76,6 +77,7 @@ window.addEventListener('load', function() {
                 "scripts/debug.js",
                 "scripts/screen.game.js",
                 "scripts/screen.deck-stats.js",
+                "scripts/screen.top-scores.js",
                 "scripts/lib/donut-chart.js",
                 "data/testWords.js"
             ],

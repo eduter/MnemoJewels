@@ -69,7 +69,7 @@
 
     function dateToStr(date) {
         if (date) {
-            return new Date(date).toISOString().replace(/\.[\dZ]+/, '').replace('T', ' ');
+            return mj.modules.time.formatDate(date);
         } else if (date === null) {
             return '               null';
         } else {
@@ -90,7 +90,7 @@
         this.lastRep = lastRep;
         this.nextRep = nextRep;
         if (lastRep && nextRep) {
-            this.relativeScheduling = (Date.now() - nextRep) / (nextRep - lastRep);
+            this.relativeScheduling = (mj.modules.time.now() - nextRep) / (nextRep - lastRep);
         } else {
             this.relativeScheduling = null;
         }
@@ -110,7 +110,7 @@
      * @returns {boolean}
      */
     Card.prototype.isSuspended = function() {
-        return (this.suspendedUntil != null&& this.suspendedUntil > Date.now());
+        return (this.suspendedUntil != null&& this.suspendedUntil > mj.modules.time.now());
     };
 
     /**
