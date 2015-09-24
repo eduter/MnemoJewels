@@ -3,7 +3,7 @@ mj.modules.cards = (function() {
     var MAX_CANDIDATES = 30;
 
     // Aliases
-    var main, game, storage, decks, Card, TimeMeter;
+    var main, game, storage, decks, time, Card, TimeMeter;
 
     /**
      * Map of all cards from the selected deck, indexed by their IDs.
@@ -131,6 +131,7 @@ mj.modules.cards = (function() {
         game = mj.modules.game;
         storage = mj.modules.storage;
         decks = mj.modules.decks;
+        time = mj.modules.time;
         Card = mj.classes.Card;
         TimeMeter = mj.modules.debug.TimeMeter;
 
@@ -432,7 +433,7 @@ mj.modules.cards = (function() {
         }
 
         var card = allCards[eventData.cardId]; // TODO: fix this
-        var now = Date.now();
+        var now = time.now();
 
         if (groupSize > 1) {
             var minInterval = (groupSize * 1000 / eventData.thinkingTime * Time.DAY);
@@ -493,7 +494,7 @@ mj.modules.cards = (function() {
             console.log((mismatch ? 'X ' : '  ') + cardsInGroup[j].toString());
         }
 
-        var now = Date.now();
+        var now = time.now();
         var nextRep = now + 2 * Time.MINUTE;
         for (var m = 0; m < mismatchedCards.length; m++) {
             card = allCards[mismatchedCards[m]];

@@ -7,11 +7,11 @@ mj.modules.debug = (function() {
         methods: [],
 
         start: function(name) {
-            this.running[name] = Date.now();
+            this.running[name] = mj.modules.time.now();
         },
 
         stop: function(name) {
-            var time = Date.now() - this.running[name];
+            var time = mj.modules.time.now() - this.running[name];
             this.running[name] = null;
             var method = this.getByName(name);
             method.total += time;

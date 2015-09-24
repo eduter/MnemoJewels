@@ -2,12 +2,23 @@ mj.modules.game = (function() {
 
     // Aliases
     var settings = mj.settings;
-    var main, board, display, cards, score, TimeMeter;
+    var main, board, display, cards, score, time, TimeMeter;
 
-    var POINTS_PER_LEVEL = 2000;
+    var POINTS_PER_LEVEL = 1000;
     var LAST_LEVEL = 10;
 
+    /**
+     * Timestamp of when the current game started.
+     * @type {timestamp}
+     */
+    var gameStart;
+
+    /**
+     * Current level.
+     * @type {int}
+     */
     var level = 1;
+
     var increment, ffScopeSize;
     var averageThinkingTimes = [
         settings.INITIAL_INTERVAL / 6,
@@ -23,6 +34,7 @@ mj.modules.game = (function() {
         display = mj.modules.display;
         cards = mj.modules.cards;
         score = mj.modules.score;
+        time = mj.modules.time;
         TimeMeter = mj.modules.debug.TimeMeter;
         main.bind('match', onMatch);
         main.bind('mismatch', onMismatch);
@@ -34,6 +46,7 @@ mj.modules.game = (function() {
         ffScopeSize = saturate(30, 0.1 * t, 100);
         increment = saturate(3, (t - ffScopeSize) / (5 * 60 * 1000 / getAverageThinkingTime()), 10);
         intervalBetweenGroups = getIntervalBetweenGroups(settings.DEFAULT_GROUP_SIZE);
+        gameStart = time.now();
         level = 1;
         board.initialize();
         main.trigger('gameStart');
@@ -43,7 +56,11 @@ mj.modules.game = (function() {
         display.redraw(board.getJewels());
         alert('Game Over!');
         main.navigateTo('main-menu');
-        main.trigger('gameOver');
+        main.trigger('gameOver', {
+            score: score.getScore(),
+            gameStart: gameStart,
+            gameEnd: time.now()
+        });
 
         cards.debugReview(); // TODO
     }

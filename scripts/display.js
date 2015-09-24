@@ -76,7 +76,7 @@ mj.modules.display = (function() {
                 }
             }
         }
-        getStatsElem().innerHTML = 'LEVEL: ' + mj.modules.game.getLevel() + ' SCORE: ' + mj.modules.score.getScore() + '<br>' + mj.modules.game.getStats();
+        getStatsElem().innerHTML = 'SCORE: ' + mj.modules.score.getScore() + '<br>' + mj.modules.game.getStats();
         mj.modules.debug.TimeMeter.stop('D');
     }
     

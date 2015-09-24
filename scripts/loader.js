@@ -69,6 +69,7 @@ window.addEventListener('load', function() {
                 "scripts/decks.js",
                 "scripts/cards.js",
                 "scripts/score.js",
+                "scripts/time.js",
                 "scripts/display.js",
                 "scripts/input.js",
                 "scripts/parser.js",

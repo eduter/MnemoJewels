@@ -1,7 +1,7 @@
 mj.modules.board = (function() {
 
     // Aliases
-    var settings, dom, game, cards, utils, Jewel;
+    var settings, dom, game, cards, time, utils, Jewel;
 
     // TODO: this doesn't belong in this module
     var overlay = null;
@@ -26,6 +26,7 @@ mj.modules.board = (function() {
         dom = mj.dom;
         game = mj.modules.game;
         cards = mj.modules.cards;
+        time = mj.modules.time;
         utils = mj.modules.utils;
         Jewel = mj.classes.Jewel;
         overlay = dom.$('#overlay')[0];
@@ -37,7 +38,7 @@ mj.modules.board = (function() {
     function initialize() {
         faJewels = [[],[]];
         faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        fiLastSelectionTime = now();
+        fiLastSelectionTime = time.now();
         fmSelectedJewel = null;
         addDefaultGroup();
         startAddingGroups();
@@ -68,10 +69,6 @@ mj.modules.board = (function() {
         return faJewels[0].length;
     }
 
-    function now() {
-        return Date.now();
-    }
-
     /**
      * Adds a group of cards to the board.
      *
@@ -83,7 +80,7 @@ mj.modules.board = (function() {
         var groupId = getNextGroupId();
         var i;
         
-        fmGroupCreationTime[groupId] = now();
+        fmGroupCreationTime[groupId] = time.now();
         
         for (i = 0; i < cards.length; i++) {
             var card = cards[i];
@@ -111,7 +108,7 @@ mj.modules.board = (function() {
     }
     
     function selectJewel(piRow, piCol) {
-        var miSelectionTime = now();
+        var miSelectionTime = time.now();
         
         if (piRow < faJewels[0].length) {
             if (fmSelectedJewel == null) {

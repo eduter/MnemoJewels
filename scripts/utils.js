@@ -56,7 +56,7 @@ mj.modules.utils = (function() {
      * @returns {int} interval ID to be used with clearInterval
      */
     function setDynamicInterval(callback, getDelay) {
-        var internalIntervalId = Date.now();
+        var internalIntervalId = mj.modules.time.now();
 
         function iteration() {
             callback();
