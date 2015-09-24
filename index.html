@@ -43,8 +43,9 @@
             <h2 class="logo">Mnemo<br/>Jewels</h2>
             <ul class="menu">
                 <li><button class="nav bt_red" name="game">Play</button>
-                <li><button class="nav bt_yellow" name="deck-stats">Show stats</button></li>
-                <li><button class="nav bt_blue" name="about">About</button>
+                <li><button class="nav bt_yellow" name="deck-stats">Learning Stats</button></li>
+                <li><button class="nav bt_blue" name="top-scores">Top Scores</button></li>
+                <li><button class="nav bt_green" name="about">About</button>
             </ul>
         </div>
 
@@ -66,8 +67,9 @@
         </div>
 
         <div class="screen" id="deck-stats">
-            <h2 class="logo">Mnemo<br/>Jewels</h2>
+            <h2 class="logo small">Mnemo<br/>Jewels</h2>
             <div class="screen-content">
+                <h3>Learning Stats</h3>
                 <figure>
                     <div id="stats-chart" class="donut-chart"></div>
                     <figcaption class="small-text">
@@ -80,14 +82,39 @@
             </ul>
         </div>
 
+        <div class="screen" id="top-scores">
+            <h2 class="logo small">Mnemo<br/>Jewels</h2>
+            <div class="screen-content">
+                <h3>Top Scores</h3>
+                <table>
+                    <thead>
+                      <td></td>
+                      <td>Score</td>
+                      <td>Duration</td>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <ul class="menu">
+                <li><button class="back">Back</button></li>
+            </ul>
+        </div>
+
         <div class="screen" id="about">
-          <h2 class="logo">Mnemo<br/>Jewels</h2>
-          <p class="medium-text">
-            This is just a prototype, don't expect much of it.
-          </p>
-          <ul class="menu">
-            <li><button class="back">Back</button></li>
-          </ul>
+            <h2 class="logo small">Mnemo<br/>Jewels</h2>
+            <div class="screen-content">
+                <h3>About</h3>
+                <p class="medium-text">
+                    MnemoJewels is an attempt to gamify the spaced repetition technique, for vocabulary acquisition.
+                </p>
+                <p class="medium-text">
+                    But this is just a prototype, so don't expect much from it
+                    and be aware that things may change significantly in the future.
+                </p>
+            </div>
+            <ul class="menu">
+                <li><button class="back">Back</button></li>
+            </ul>
         </div>
 
     </div>

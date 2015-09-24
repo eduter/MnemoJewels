@@ -1,7 +1,7 @@
 mj.modules.score = (function() {
 
     // Aliases
-    var main, storage, States;
+    var main, storage, utils, States;
 
     /**
      * Number of top scores to keep.
@@ -30,6 +30,7 @@ mj.modules.score = (function() {
     function setup() {
         main = mj.modules.main;
         storage = mj.modules.storage;
+        utils = mj.modules.utils;
         States = mj.modules.cards.States;
 
         topScores = mj.modules.storage.load('topScores') || [];
@@ -122,8 +123,18 @@ mj.modules.score = (function() {
         consecutiveMatches = 0;
     }
 
+    /**
+     * Gets a copy of the list of top scores.
+     * @return {Array.<{points: int, deckId: int, start: timestamp, end: timestamp}>}
+     */
+    function getTopScores() {
+        return utils.copyData(topScores);
+    }
+
     return {
         setup: setup,
-        getScore: function(){ return score }
+        getScore: function(){ return score },
+        getTopScores: getTopScores,
+        MAX_TOP_SCORES: MAX_TOP_SCORES
     };
 })();

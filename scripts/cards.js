@@ -3,7 +3,7 @@ mj.modules.cards = (function() {
     var MAX_CANDIDATES = 30;
 
     // Aliases
-    var main, game, storage, decks, time, Card, TimeMeter;
+    var main, game, storage, decks, time, Card, TimeUnits, TimeMeter;
 
     /**
      * Map of all cards from the selected deck, indexed by their IDs.
@@ -46,16 +46,6 @@ mj.modules.cards = (function() {
      * @type {Object.<string, Iterator>}
      */
     var iterators = {};
-
-    /**
-     * Number of milliseconds per unit of time.
-     */
-    var Time = {
-        SECOND:             1000,
-        MINUTE:        60 * 1000,
-        HOUR:     60 * 60 * 1000,
-        DAY: 24 * 60 * 60 * 1000
-    };
 
     /**
      * Defines the state of a card, regarding the player's learning progress.
@@ -132,6 +122,7 @@ mj.modules.cards = (function() {
         storage = mj.modules.storage;
         decks = mj.modules.decks;
         time = mj.modules.time;
+        TimeUnits = mj.modules.time.TimeUnits;
         Card = mj.classes.Card;
         TimeMeter = mj.modules.debug.TimeMeter;
 
@@ -436,7 +427,7 @@ mj.modules.cards = (function() {
         var now = time.now();
 
         if (groupSize > 1) {
-            var minInterval = (groupSize * 1000 / eventData.thinkingTime * Time.DAY);
+            var minInterval = (groupSize * 1000 / eventData.thinkingTime * TimeUnits.DAY);
 
             if (card.lastRep) {
                 var scheduledInterval = card.nextRep - card.lastRep;
@@ -457,7 +448,7 @@ mj.modules.cards = (function() {
 
             storage.storeCard(deck.id, card);
         }
-        card.suspend(now + groupSize * 30 * Time.SECOND);
+        card.suspend(now + groupSize * 30 * TimeUnits.SECOND);
         moveToIndex(card);
         console.groupEnd();
     }
@@ -495,7 +486,7 @@ mj.modules.cards = (function() {
         }
 
         var now = time.now();
-        var nextRep = now + 2 * Time.MINUTE;
+        var nextRep = now + 2 * TimeUnits.MINUTE;
         for (var m = 0; m < mismatchedCards.length; m++) {
             card = allCards[mismatchedCards[m]];
 
@@ -509,7 +500,7 @@ mj.modules.cards = (function() {
         }
         for (var i = 0; i < cardsInGroup.length; i++) {
             card = cardsInGroup[i];
-            card.suspend(now + 15 * Time.SECOND);
+            card.suspend(now + 15 * TimeUnits.SECOND);
             moveToIndex(card);
         }
         console.groupEnd();

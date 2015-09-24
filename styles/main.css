@@ -35,21 +35,31 @@ body {
 }
 
 .screen-content {
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 3em 3em 10em #000;
     border-radius: 5%;
+    height: 300em;
     padding: 5%;
     margin: 5%;
 }
 
+.screen-content h3 {
+    color: #f1c101;
+    text-align: center;
+    margin-top: 0;
+    font-size: 24em;
+    font-weight: bold;
+    text-shadow: 0.05em 0.05em 0.1em black;
+}
+
 .small-text {
-    font-size: 14em;
+    font-size: 12em;
     font-weight: bold;
     text-shadow: 0.05em 0.05em 0.1em black;
 }
 
 .medium-text {
-    font-size: 24em;
+    font-size: 20em;
     font-weight: bold;
     text-shadow: 0.05em 0.05em 0.1em black;
 }
@@ -89,15 +99,14 @@ body {
     filter : dropshadow(color=#000000,offX=3,offY=3);
 }
 
+.logo.small {
+    font-size: 20em;
+    text-align: left;
+    margin: 5%;
+}
+
 
 /* Main menu styles */
-#main-menu {
-    padding-top : 16em;
-}
-
-#play-menu {
-    padding-top : 16em;
-}
 
 ul.menu {
     text-align : center;
@@ -270,9 +279,8 @@ table#board td.group12 {
 
 /* Learning Stats Screen */
 
-#deck-stats .logo {
-    font-size: 30em;
-    margin-bottom: 0;
+#deck-stats figure, #deck-stats figcaption dl {
+    margin: 0;
 }
 
 #deck-stats .donut-chart {
@@ -281,10 +289,6 @@ table#board td.group12 {
 
 #deck-stats .donut-chart .wedge-value.too-small {
     display: none;
-}
-
-#deck-stats figcaption dl {
-    margin-bottom: -1em; /* hack to compensate for the mysterious space at the bottom of the dl */
 }
 
 #deck-stats figcaption dt {
@@ -305,9 +309,24 @@ table#board td.group12 {
     content: '';
 }
 
-/* About Screen */
 
-#about p {
+/* Top Scores Screen */
+
+#top-scores table {
+    width: 100%;
+}
+#top-scores thead td {
+    font-size: 20em;
+    font-weight: bold;
     text-align: center;
-    margin: 1em;
+}
+#top-scores tbody td {
+    font-size: 18em;
+    text-align: right;
+    padding: 0 1em 0 0;
+    font-family: Courier, monospace;
+    font-weight: bold;
+}
+#top-scores tbody tr:nth-child(odd) {
+    background-color: rgba(0,0,0,0.5);
 }
