@@ -30,6 +30,12 @@ mj.modules.cards = (function() {
     var indexes = {};
 
     /**
+     * Cards currently in use by the game.
+     * @type {Array.<Card>}
+     */
+    var cardsInGame = [];
+
+    /**
      * Compare functions for sorting the indexes.
      * @type {Object.<State, function>}
      */
@@ -149,6 +155,13 @@ mj.modules.cards = (function() {
         main.bind('deckSelected', function(eventData){loadCards(eventData.deck)});
         main.bind('match', rescheduleMatch);
         main.bind('mismatch', rescheduleMismatch);
+        main.bind('gameOver', reindexCardInGame);
+    }
+
+    function reindexCardInGame() {
+        while (cardsInGame.length > 0) {
+            moveToIndex(cardsInGame[0]);
+        }
     }
 
     /**
@@ -283,26 +296,25 @@ mj.modules.cards = (function() {
      * Creates a new group, containing cards chosen according to the current priorities.
      *
      * @param {int} groupSize - the number of cards the new group should have
-     * @param {Array.<Card>} cardsInUse - other cards in use (to avoid conflicts)
      * @returns {Array.<Card>}
      */
-    function createNewGroup(groupSize, cardsInUse) {
+    function createNewGroup(groupSize) {
         console.group('createNewGroup');
-        var firstCard = chooseFirst(cardsInUse);
+        var firstCard = chooseFirst();
         TimeMeter.start('CA');
-        var alternatives = chooseAlternatives(groupSize, firstCard, cardsInUse);
+        var alternatives = chooseAlternatives(groupSize, firstCard);
         TimeMeter.stop('CA');
         var group = [firstCard].concat(alternatives);
 
         for (var i = 0; i < group.length; i++) {
-            removeFromIndex(group[i]);
+            moveToGame(group[i]);
             console.log(group[i].toString());
         }
         console.groupEnd();
         return group;
     }
 
-    function chooseFirst(cardsInUse) {
+    function chooseFirst() {
         var learningSetSize = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
         var learningSetFullness = Math.min(1, learningSetSize / mj.settings.MAX_LEARNING);
         var probabilityReview = (1 - game.getDifficulty()) * learningSetFullness;
@@ -318,16 +330,16 @@ mj.modules.cards = (function() {
         i.reset();
         while (i.hasNext()) {
             var card = i.next();
-            if (!card.isSuspended() && !conflicts(card, cardsInUse)) {
+            if (!card.isSuspended() && !conflicts(card, cardsInGame)) {
                 return card;
             }
         }
         return null;
     }
 
-    function chooseAlternatives(groupSize, firstCard, cardsInUse) {
+    function chooseAlternatives(groupSize, firstCard) {
         var i = iterators.alternatives;
-        var otherCards = cardsInUse.concat(firstCard);
+        var otherCards = cardsInGame.concat(firstCard);
         var alternatives = [];
         var candidates = [];
         var count = 0;
@@ -372,16 +384,36 @@ mj.modules.cards = (function() {
         return (c1.distance - c2.distance);
     }
 
-    function addToIndex(card) {
+    /**
+     * Moves a card from the game back to the index.
+     * @param {Card} card
+     */
+    function moveToIndex(card) {
+        // add to index
         var index = indexes[card.state];
         var position = - index.find(card, cmpFuncs[card.state]);
         index.splice(position, 0, card);
+
+        // remove from game
+        for (var i = 0; i < cardsInGame.length; i++) {
+            if (cardsInGame[i].id == card.id) {
+                cardsInGame.splice(i, 1);
+            }
+        }
     }
 
-    function removeFromIndex(card) {
+    /**
+     * Moves a card from the index to the game.
+     * @param {Card} card
+     */
+    function moveToGame(card) {
+        // removes from the index
         var index = indexes[card.state];
         var position = index.find(card, cmpFuncs[card.state]);
         index.splice(position, 1);
+
+        // adds to the game
+        cardsInGame.push(card);
     }
 
     function rescheduleMatch(eventData) {
@@ -425,7 +457,7 @@ mj.modules.cards = (function() {
             storage.storeCard(deck.id, card);
         }
         card.suspend(now + groupSize * 30 * Time.SECOND);
-        addToIndex(card);
+        moveToIndex(card);
         console.groupEnd();
     }
 
@@ -449,6 +481,7 @@ mj.modules.cards = (function() {
         console.group('rescheduleMismatch');
         var mismatchedCards = eventData.mismatchedCards;
         var cardsInGroup = eventData.cardsInGroup;
+        var card;
 
         // Replace the data objects by the actual Card instances
         for (var p = 0; p < cardsInGroup.length; p++) {
@@ -463,7 +496,7 @@ mj.modules.cards = (function() {
         var now = Date.now();
         var nextRep = now + 2 * Time.MINUTE;
         for (var m = 0; m < mismatchedCards.length; m++) {
-            var card = allCards[mismatchedCards[m]];
+            card = allCards[mismatchedCards[m]];
 
             card.setSchedule(now, nextRep);
             if (card.state == States.NEW || card.state == States.LEARNING) {
@@ -474,8 +507,9 @@ mj.modules.cards = (function() {
             storage.storeCard(deck.id, card);
         }
         for (var i = 0; i < cardsInGroup.length; i++) {
-            cardsInGroup[i].suspend(now + 15 * Time.SECOND);
-            addToIndex(cardsInGroup[i]);
+            card = cardsInGroup[i];
+            card.suspend(now + 15 * Time.SECOND);
+            moveToIndex(card);
         }
         console.groupEnd();
     }

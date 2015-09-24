@@ -49,7 +49,7 @@ mj.modules.board = (function() {
      * @param {int} groupSize - the number of cards the new group should have
      */
     function addNewGroup(groupSize) {
-        var newGroup = cards.createNewGroup(groupSize, getCardsInUse());
+        var newGroup = cards.createNewGroup(groupSize);
         addGroup(newGroup);
     }
 
@@ -68,19 +68,6 @@ mj.modules.board = (function() {
         return faJewels[0].length;
     }
 
-    /**
-     * Gets the cards currently on the board.
-     * @returns {Array.<Card>}
-     */
-    function getCardsInUse() {
-        var cards = [];
-        var frontJewels = faJewels[0];
-        for (var i = 0; i < frontJewels.length; i++) {
-            cards.push(frontJewels[i].card);
-        }
-        return cards;
-    }
-    
     function now() {
         return Date.now();
     }
