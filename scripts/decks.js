@@ -13,7 +13,7 @@ mj.modules.decks = (function() {
 
     /**
      * Represents a deck of cards, with a display name and the number of cards it contains.
-     * @typedef {{id: int, displayName: string, size: int}} Deck
+     * @typedef {{id: int, displayName: string, languageFront: string, languageBack: string, size: int}} Deck
      */
 
     /**
@@ -68,7 +68,7 @@ mj.modules.decks = (function() {
      */
     function getSelectedDeck() {
         var deckIndex = findDeck(selectedDeck);
-        return (deckIndex === null ? null : decks[deckIndex]);
+        return (deckIndex === null ? null : utils.copyData(decks[deckIndex]));
     }
 
     /**
@@ -89,13 +89,15 @@ mj.modules.decks = (function() {
     /**
      * Creates and stores a new deck.
      *
-     * @param {{displayName: string, cards: Array.<Array.<string>>}} deckData
+     * @param {{displayName: string, languageFront: string, languageBack: string, cards: Array.<Array.<string>>}} deckData
      * @return {Deck} - the info about the imported deck
      */
     function importDeck(deckData) {
         var deck = {
             id: generateNewId(),
             displayName: deckData.displayName,
+            languageFront: deckData.languageFront,
+            languageBack: deckData.languageBack,
             size: deckData.cards.length
         };
 
@@ -151,10 +153,31 @@ mj.modules.decks = (function() {
         return maxId + 1;
     }
 
+    /**
+     * Updates the info (but not the cards) of the selected deck.
+     *
+     * @param {{displayName: string, languageFront: string, languageBack: string}} deckData - the new info to override the old
+     * @return {Deck} - the selected deck with its info updated
+     */
+    function updateSelectedDeckInfo(deckData) {
+        var deckIndex = findDeck(selectedDeck);
+        if (deckIndex === null) {
+            throw "No deck selected";
+        } else {
+            var deck = decks[deckIndex];
+            deck.displayName = deckData.displayName;
+            deck.languageFront = deckData.languageFront;
+            deck.languageBack = deckData.languageBack;
+            storage.store(StorageKeys.DECKS, decks);
+            return getSelectedDeck();
+        }
+    }
+
     return {
         setup: setup,
         selectDeck: selectDeck,
         getSelectedDeck: getSelectedDeck,
-        importDeck: importDeck
+        importDeck: importDeck,
+        updateSelectedDeckInfo: updateSelectedDeckInfo
     };
 })();

@@ -1,9 +1,5 @@
 body {
     margin : 0;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-text-size-adjust: none;
-    -webkit-user-select : none;
 }
 
 #top-container {
@@ -122,6 +118,7 @@ ul.menu li {
 button {
     font-size: 20em;
     font-family: 'Russo One', sans-serif;
+    background-image: url("../images/jewel.svg");
     background-size: 9em 2.03em;
     background-position: center;
     width: 9em;
@@ -131,37 +128,30 @@ button {
 }
 
 button.back {
-    background-image: url("../svg/jewel_red.svg");
     background-color: red;
 }
 
 ul.menu li button.bt_blue {
-    background-image: url("../svg/jewel_blue.svg");
     background-color: blue;
 }
 
 ul.menu li button.bt_green {
-    background-image: url("../svg/jewel_green.svg");
     background-color: green;
 }
 
 ul.menu li button.bt_yellow {
-    background-image: url("../svg/jewel_yellow.svg");
     background-color: yellow;
 }
 
 ul.menu li button.bt_red {
-    background-image: url("../svg/jewel_red.svg");
     background-color: red;
 }
 
 ul.menu li button.bt_purple {
-    background-image: url("../svg/jewel_purple.svg");
     background-color: purple;
 }
 
 ul.menu li button.bt_orange {
-    background-image: url("../svg/jewel_orange.svg");
     background-color: orange;
 }
 
@@ -173,17 +163,6 @@ ul.menu li button:active {
     border : 0.15em solid #3d3d3d;
 }
 
-/* Install screen for iOS devices */
-#install-screen  {
-    padding-top : 16em;
-    text-align : center;
-}
-
-#install-screen span {
-    font-size : 24em;
-    display : inline-block;
-    padding : 0 16em;
-}
 
 /* temporary lame representation of the board */
 
@@ -191,7 +170,7 @@ table#board {
     width: 100%;
     position: absolute;
     bottom: 0;
-    border-spacing: 2em;
+    border-spacing: 0;
 }
 
 #overlay {
@@ -211,12 +190,15 @@ table#board {
 
 table#board td {
     border: solid 0.1em rgba(0, 0, 0, 0.5);
-    background: rgba(0, 0, 0, 0.5);
+    background-image: url("../images/jewel.svg");
+    background-size: 100% 100%;
     height: 1.3em;
-    font-size: 26em;
+    font-size: 18em;
+    text-align: center;
+    color: #000;
     width: 50%;
     border-radius: 0.5em;
-    padding-left: 0.25em;
+    padding: 0.4em;
 }
 
 table#board td.selected {
@@ -224,53 +206,51 @@ table#board td.selected {
 }
 
 table#board td.group1 {
-    background: blue;
+    background-color: blue;
 }
 
 table#board td.group2 {
-    background: green;
+    background-color: green;
 }
 
 table#board td.group3 {
-    background: orange;
-    color: navy;
+    background-color: orange;
 }
 
 table#board td.group4 {
-    background: purple;
+    background-color: purple;
 }
 
 table#board td.group5 {
-    background: red;
+    background-color: red;
 }
 
 table#board td.group6 {
-    background: yellow;
-    color: navy;
+    background-color: yellow;
 }
 
 table#board td.group7 {
-    background: navy;
+    background-color: navy;
 }
 
 table#board td.group8 {
-    background: #093;
+    background-color: #093;
 }
 
 table#board td.group9 {
-    background: #750;
+    background-color: #750;
 }
 
 table#board td.group10 {
-    background: #505;
+    background-color: #505;
 }
 
 table#board td.group11 {
-    background: #500;
+    background-color: #500;
 }
 
 table#board td.group12 {
-    background: #880;
+    background-color: #880;
 }
 
 #stats {

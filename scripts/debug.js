@@ -7,11 +7,11 @@ mj.modules.debug = (function() {
         methods: [],
 
         start: function(name) {
-            this.running[name] = mj.modules.time.now();
+            this.running[name] = window.performance.now();
         },
 
         stop: function(name) {
-            var time = mj.modules.time.now() - this.running[name];
+            var time = window.performance.now() - this.running[name];
             this.running[name] = null;
             var method = this.getByName(name);
             method.total += time;
@@ -32,18 +32,75 @@ mj.modules.debug = (function() {
 
         getStats: function(name) {
             var method = this.getByName(name);
-            var average = method.calls > 0 ? Math.round(method.total / method.calls) : 0;
-            return name + ": " + average + "/" + method.max;
+            var average = method.calls > 0 ? Math.round(10 * method.total / method.calls) / 10 : 0;
+            var max = Math.round(10 * method.max) / 10;
+            return name + ": " + average + "/" + max;
+        },
+
+        getFullStats: function(name) {
+            var method = this.getByName(name);
+            var average = method.calls > 0 ? (method.total / method.calls) : 0;
+            return {
+                calls: method.calls,
+                total: Math.round(1000 * method.total) / 1000,
+                average: Math.round(1000 * average) / 1000,
+                max: Math.round(1000 * method.max) / 1000
+            };
         }
 
     };
 
     // If there's no deck stored, import and select the test deck
     function prepareTestDeck() {
-        if (mj.modules.decks.getSelectedDeck() === null) {
+        var selectedDeck = mj.modules.decks.getSelectedDeck();
+        if (selectedDeck === null) {
             var deck = mj.modules.decks.importDeck(testDeck);
             mj.modules.decks.selectDeck(deck.id);
+        } else if (selectedDeck.displayName == 'Swedish / English') {
+            // just to include info about languages for users of older versions
+            mj.modules.decks.updateSelectedDeckInfo(testDeck);
         }
+    }
+
+    function testChooseAlternative() {
+        var start = 1300;
+        var end = 1875;
+        var matches = 0;
+        var method1 = 'chooseAlternatives2';
+        var method2 = 'chooseAlternatives3';
+        for (var i = start; i < end; i++) {
+            var card = mj.modules.cards.getCard(i);
+            if (card.front.length > 6) {
+                TimeMeter.start(method1);
+                var result1 = formatAlternatives(mj.modules.cards[method1](3, card));
+                TimeMeter.stop(method1);
+                TimeMeter.start(method2);
+                var result2 = formatAlternatives(mj.modules.cards[method2](3, card));
+                TimeMeter.stop(method2);
+                if (result1 == result2) {
+                    matches++;
+                } else {
+                    var info = {card: formatCard(card)};
+                    info[method1] = result1;
+                    info[method2] = result2;
+                    console.dir(info);
+                }
+            }
+        }
+        console.log(method1 + ' and ' + method2 + ' matched ' + Math.round(100 * matches / (end - start)) + "% of the time");
+        console.log(method1 + ': ' + JSON.stringify(TimeMeter.getFullStats(method1)));
+        console.log(method2 + ': ' + JSON.stringify(TimeMeter.getFullStats(method2)));
+    }
+
+    function formatAlternatives(alternatives) {
+        var a = [];
+        for (var i = 0; i < alternatives.length; i++) {
+            a.push(formatCard(alternatives[i]));
+        }
+        return '[' + a.join(',') + ']';
+    }
+    function formatCard(card) {
+        return '(' + card.front + ',' + card.back + ')';
     }
 
     function roughSizeOfObject(object) {
@@ -122,6 +179,7 @@ mj.modules.debug = (function() {
         },
         testCreateGroup: testCreateGroup,
         testWeighedRandom: testWeighedRandom,
+//        testChooseAlternative: testChooseAlternative,
         roughSizeOfObject: roughSizeOfObject
     };
 })();

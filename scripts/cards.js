@@ -18,6 +18,12 @@ mj.modules.cards = (function() {
     var wordMappings = null;
 
     /**
+     * Maps cards' front side to a language-specific normalized version of themselves.
+     * @type {Object.<string, string>}
+     */
+    var normalizedFront = null;
+
+    /**
      * The deck currently loaded.
      * @type {Deck}
      */
@@ -61,6 +67,14 @@ mj.modules.cards = (function() {
         LEARNING: 2, // successfully matched at least once, but never twice in a row
         KNOWN:    3, // successfully matched at least twice in a row and last time
         LAPSE:    4  // once known, but mismatched last time
+    };
+
+    /**
+     * Language-specific functions to normalize words before they are compared.
+     * @type {Object.<string, function>}
+     */
+    var normalizationFunctions = {
+        sv: function(word){ return word.toLowerCase().replace(/[äå]/g, 'a').replace(/ö/g, 'o') }
     };
 
     /**
@@ -175,6 +189,7 @@ mj.modules.cards = (function() {
             }
         }
         updateWordMappings();
+        updateNormalizedFront();
     }
 
     /**
@@ -184,6 +199,7 @@ mj.modules.cards = (function() {
         deck = null;
         allCards = {};
         updateWordMappings();
+        updateNormalizedFront();
         for (var s in States) {
             if (States.hasOwnProperty(s)) {
                 indexes[States[s]] = [];
@@ -209,6 +225,32 @@ mj.modules.cards = (function() {
                 }
             }
         }
+    }
+
+    /**
+     * Makes sure normalizedFront is up to date with the content of allCards.
+     */
+    function updateNormalizedFront() {
+        normalizedFront = {};
+        for (var word in wordMappings) {
+            if (wordMappings.hasOwnProperty(word)) {
+                normalizedFront[word] = normalizeWord(word, deck.languageFront);
+            }
+        }
+    }
+
+    /**
+     * Applies the language-specific normalization function to a word.
+     *
+     * @param {string} word - the word to be normalized
+     * @param {string} language - the language code (e.g. 'en', 'sv')
+     * @return {string}
+     */
+    function normalizeWord(word, language) {
+        if (typeof(normalizationFunctions[language]) == 'function') {
+            return normalizationFunctions[language](word);
+        }
+        return word;
     }
 
     function toWordMap(words, frontKey, backKey) {
@@ -329,51 +371,106 @@ mj.modules.cards = (function() {
         return null;
     }
 
+    /**
+     * Given the first card of a group, choose the other cards to serve as alternatives.
+     *
+     * @param {int} groupSize
+     * @param {Card} firstCard
+     * @return {Array.<Card>} - an array with (groupSize - 1) cards
+     */
     function chooseAlternatives(groupSize, firstCard) {
-        var i = iterators.alternatives;
-        var otherCards = cardsInGame.concat(firstCard);
-        var alternatives = [];
-        var candidates = [];
-        var count = 0;
+        var candidatesPerDistance = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+        var card, distance;
 
-        // Process all cards inside the scope and create an array of candidates sorted by distance
+        // Process all cards inside the scope and classify them by distance
+        var accumulatedLength = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var cardsToGo = game.getScopeSize();
+        var otherCards = cardsInGame.concat(firstCard);
+        var i = iterators.alternatives;
         i.reset();
-        while (i.hasNext() && count < game.getScopeSize()) {
-            var card = i.next();
+        while (i.hasNext() && cardsToGo > 0) {
+            card = i.next();
             if (!card.isSuspended() && !conflicts(card, otherCards)) {
-                card.distance = Math.min(levenshtein(card.front, firstCard.front), levenshtein(card.back, firstCard.front));
-                var rank = Math.abs(candidates.find(card, cmpDistance));
-                if (rank < MAX_CANDIDATES) {
-                    while (candidates[rank] && candidates[rank].distance == card.distance) rank++;
-                    candidates.splice(rank, 0, card);
-                    if (candidates.length > MAX_CANDIDATES) {
-                        candidates.pop().distance = undefined; // cleanup
+                distance = Math.min(14, Math.round(3 * cardDistance(card, firstCard)));
+                if (accumulatedLength[distance] < MAX_CANDIDATES) {
+                    candidatesPerDistance[distance].push(card);
+                    for (var j = distance; j < accumulatedLength.length; j++) {
+                        accumulatedLength[j]++;
                     }
-                } else {
-                    card.distance = undefined; // cleanup
                 }
             }
-            count++;
+            cardsToGo--;
         }
 
-        // cleanup
-        for (var a = 0; a < candidates.length; a++) {
-            candidates[a].distance = undefined;
-        }
-
-        // Choose the first non-conflicting cards
-        var c = 0;
-        while (alternatives.length < groupSize - 1) {
-            if (!conflicts(candidates[c], alternatives)) {
-                alternatives.push(candidates[c]);
+        // Pick the best alternatives which don't conflict with each other
+        var alternatives = [];
+        for (distance = 0; distance < candidatesPerDistance.length && alternatives.length < groupSize - 1; distance++) {
+            if (candidatesPerDistance[distance] !== undefined) {
+                for (var c = 0; c < candidatesPerDistance[distance].length; c++) {
+                    card = candidatesPerDistance[distance][c];
+                    if (!conflicts(card, alternatives)) {
+                        alternatives.push(card);
+                        if (alternatives.length == groupSize - 1) {
+                            break;
+                        }
+                    }
+                }
             }
-            c++;
         }
         return alternatives;
     }
 
-    function cmpDistance(c1, c2) {
-        return (c1.distance - c2.distance);
+    /**
+     * Calculates the "distance" between a card and a candidate alternative for it (not symmetrical).
+     * Distance being a measure of dissimilarity. The smaller the distance, the bigger the likelihood that the player will mistake them.
+     *
+     * @param {Card} candidateCard
+     * @param {Card} card
+     * @return {number}
+     */
+    function cardDistance(candidateCard, card) {
+        var normalizedCardFront = normalizedFront[card.front];
+        var normalizedCandidateFront = normalizedFront[candidateCard.front];
+        var distanceFront = levenshtein(normalizedCardFront, normalizedCandidateFront);
+
+        distanceFront *= 1 - 0.10 * commonPrefixLength(normalizedCandidateFront, normalizedCardFront, 5);
+        distanceFront *= 1 - 0.05 * commonSuffixLength(normalizedCandidateFront, normalizedCardFront, 6);
+
+        var distance = Math.min(
+            distanceFront,
+            levenshtein(candidateCard.back, normalizedCardFront)
+        );
+        return Math.round(100 * distance) / 100;
+    }
+
+    /**
+     * Gets the length of the longest prefix common to two words.
+     *
+     * @param {string} word1
+     * @param {string} word2
+     * @param {int} maxLength
+     * @return {int}
+     */
+    function commonPrefixLength(word1, word2, maxLength) {
+        var end = Math.min(maxLength, word1.length, word2.length);
+        var i = 0;
+        while (i < end && word1[i] == word2[i]) i++;
+        return i;
+    }
+
+    /**
+     * Gets the length of the longest suffix common to two words.
+     *
+     * @param {string} word1
+     * @param {string} word2
+     * @param {int} maxLength
+     * @return {int}
+     */
+    function commonSuffixLength(word1, word2, maxLength) {
+        var end = Math.min(maxLength, word1.length, word2.length);
+        var i = 0;
+        while (i < end && word1.substr(-1 - i, 1) == word2.substr(-1 - i, 1)) i++;
+        return i;
     }
 
     /**
