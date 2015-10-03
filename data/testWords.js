@@ -1,4 +1,8 @@
-var testDeck = { displayName: 'Swedish / English', cards: [
+var testDeck = {
+    displayName: 'Swedish / English',
+    languageFront: 'sv',
+    languageBack: 'en',
+    cards: [
 ["jag","I"],
 ["jag","ego"],
 ["det","that"],
@@ -106,6 +110,7 @@ var testDeck = { displayName: 'Swedish / English', cards: [
 ["varför","why"],
 ["alla","everyone"],
 ["alla","all"],
+["alla","everybody"],
 ["från","from"],
 ["upp","up"],
 ["igen","back"],
@@ -141,7 +146,7 @@ var testDeck = { displayName: 'Swedish / English', cards: [
 ["vem","who"],
 ["mitt","my"],
 ["mitt","centre"],
-["hej","Hi"],
+["hej","hi"],
 ["aldrig","never"],
 ["kanske","maybe"],
 ["än","than"],
@@ -922,7 +927,7 @@ var testDeck = { displayName: 'Swedish / English', cards: [
 ["full", "whole"],
 ["full", "drunk"],
 ["kärlek", "love"],
-["sent", "Late"],
+["sent", "late"],
 ["jobba", "work"],
 ["någonsin", "ever"],
 ["hoppa", "jump"],
