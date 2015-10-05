@@ -23,6 +23,22 @@
     };
 
     /**
+     * Defines the state of a card, regarding the player's learning progress.
+     * @typedef {int} State
+     */
+
+    /**
+     * Enumeration of possible card states.
+     * @type {Object.<string, State>}
+     */
+    var States = {
+        NEW:      1, // not learned yet
+        LEARNING: 2, // successfully matched at least once, but never twice in a row
+        KNOWN:    3, // successfully matched at least twice in a row and last time
+        LAPSE:    4  // once known, but mismatched last time
+    };
+
+    /**
      * Card constructor.
      *
      * @param {int} id
@@ -32,9 +48,10 @@
      * @param {timestamp} [nextRep]
      * @param {float} [easiness]
      * @param {int} [state]
+     * @param {boolean} [isMismatched] - indicates if the last time it was presented, the user mismatched it
      * @constructor
      */
-    function Card(id, front, back, lastRep, nextRep, easiness, state) {
+    function Card(id, front, back, lastRep, nextRep, easiness, state, isMismatched) {
         this.id = id;
         this.front = front;
         this.back = back;
@@ -42,6 +59,7 @@
         this.easiness = easiness || 2.5;
         this.state = state || 1;
         this.suspendedUntil = null;
+        this.isMismatched = (isMismatched === undefined ? defaultIsMismatchedValue(this.state) : isMismatched);
     }
 
     Card.unserialize = function(id, cardData) {
@@ -52,12 +70,13 @@
             cardData['lr'],
             cardData['nr'],
             cardData['ea'],
-            cardData['st']
+            cardData['st'],
+            cardData['ms']
         );
     };
 
     Card.prototype.serialize = function() {
-        return {
+        var obj = {
             ft: this.front,
             bk: this.back,
             ea: this.easiness,
@@ -65,7 +84,20 @@
             lr: this.lastRep,
             nr: this.nextRep
         };
+        if (this.isMismatched != defaultIsMismatchedValue(this.state)) {
+            obj.ms = this.isMismatched;
+        }
+        return obj;
     };
+
+    /**
+     * Gets the default value for isMismatched for a given card state.
+     * @param {State} cardState
+     * @return {boolean}
+     */
+    function defaultIsMismatchedValue(cardState) {
+        return (cardState == States.LAPSE);
+    }
 
     function dateToStr(date) {
         if (date) {
@@ -96,11 +128,36 @@
         }
     };
 
+    /**
+     * Marks the card as matched and updates its state, if necessary.
+     */
+    Card.prototype.match = function() {
+        this.isMismatched = false;
+        if (this.state == States.NEW) {
+            this.state = States.LEARNING;
+        } else {
+            this.state = States.KNOWN;
+        }
+    };
+
+    /**
+     * Marks the card as mismatched and updates its state, if necessary.
+     */
+    Card.prototype.mismatch = function() {
+        this.isMismatched = true;
+        if (this.state == States.NEW || this.state == States.LEARNING) {
+            this.state = States.NEW;
+        } else {
+            this.state = States.LAPSE;
+        }
+    };
+
     Card.prototype.toString = function() {
         return pad(this.id, 4)
             + '  ' + dateToStr(this.lastRep)
             + '  ' + dateToStr(this.nextRep)
             + '  ' + this.state
+            + '  ' + (this.isMismatched ? 'T' : 'F')
             + '  ' + pad(this.front, 15)
             + '  ' + pad(this.back, 15);
     };
@@ -122,8 +179,9 @@
     };
 
     mj.classes = {
-        Jewel : Jewel,
-        Card : Card
+        Jewel: Jewel,
+        States: States,
+        Card: Card
     };
 })();
 

@@ -1,9 +1,19 @@
 mj.modules.cards = (function() {
 
+    // Aliases
+    var main, game, storage, decks, time, utils, Card, States, TimeUnits, TimeMeter;
+
+    /**
+     * Maximum number of cards to consider when choosing alternatives - for optimization purposes only, nothing to do with scope.
+     * @type {int}
+     */
     var MAX_CANDIDATES = 30;
 
-    // Aliases
-    var main, game, storage, decks, time, Card, TimeUnits, TimeMeter;
+    /**
+     * Maximum "acceptable" number of cards with isMismatched equal to true (not a hard limit).
+     * @type {int}
+     */
+    var ACCEPTABLE_MISMATCHES = 30;
 
     /**
      * Map of all cards from the selected deck, indexed by their IDs.
@@ -36,6 +46,12 @@ mj.modules.cards = (function() {
     var indexes = {};
 
     /**
+     * Number of mismatched cards currently present in the indexes.
+     * @type {int}
+     */
+    var mismatchCount = 0;
+
+    /**
      * Cards currently in use by the game.
      * @type {Array.<Card>}
      */
@@ -52,22 +68,6 @@ mj.modules.cards = (function() {
      * @type {Object.<string, Iterator>}
      */
     var iterators = {};
-
-    /**
-     * Defines the state of a card, regarding the player's learning progress.
-     * @typedef {int} State
-     */
-
-    /**
-     * Enumeration of possible card states.
-     * @type {Object.<string, State>}
-     */
-    var States = {
-        NEW:      1, // not learned yet
-        LEARNING: 2, // successfully matched at least once, but never twice in a row
-        KNOWN:    3, // successfully matched at least twice in a row and last time
-        LAPSE:    4  // once known, but mismatched last time
-    };
 
     /**
      * Language-specific functions to normalize words before they are compared.
@@ -136,8 +136,10 @@ mj.modules.cards = (function() {
         storage = mj.modules.storage;
         decks = mj.modules.decks;
         time = mj.modules.time;
+        utils = mj.modules.utils;
         TimeUnits = mj.modules.time.TimeUnits;
         Card = mj.classes.Card;
+        States = mj.classes.States;
         TimeMeter = mj.modules.debug.TimeMeter;
 
         unloadDeck();
@@ -181,6 +183,9 @@ mj.modules.cards = (function() {
             var card = storage.loadCard(deck.id, cardId);
             allCards[card.id] = card;
             indexes[card.state].push(card);
+            if (card.isMismatched) {
+                mismatchCount++;
+            }
         }
         for (var s in States) {
             if (States.hasOwnProperty(s)) {
@@ -198,6 +203,7 @@ mj.modules.cards = (function() {
     function unloadDeck() {
         deck = null;
         allCards = {};
+        mismatchCount = 0;
         updateWordMappings();
         updateNormalizedFront();
         for (var s in States) {
@@ -334,7 +340,7 @@ mj.modules.cards = (function() {
      */
     function createNewGroup(groupSize) {
         console.group('createNewGroup');
-        var firstCard = chooseFirst();
+        var firstCard = chooseFirstCard();
         TimeMeter.start('CA');
         var alternatives = chooseAlternatives(groupSize, firstCard);
         TimeMeter.stop('CA');
@@ -348,19 +354,12 @@ mj.modules.cards = (function() {
         return group;
     }
 
-    function chooseFirst() {
-        var learningSetSize = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
-        var learningSetFullness = Math.min(1, learningSetSize / mj.settings.MAX_LEARNING);
-        var probabilityReview = (1 - game.getDifficulty()) * learningSetFullness;
-        var probabilityLearn = 1 - probabilityReview;
-        var weights = [probabilityReview, probabilityLearn];
-        var iteratorsIndex = ['reviewing', 'learning'];
-        var index = mj.modules.utils.weighedRandom(weights);
-        var iteratorName = iteratorsIndex[index];
-        var i = iterators[iteratorName];
-
-        console.log('learning: ' + learningSetSize + '   level: ' + game.getLevel() + '   iterator: ' + iteratorName + '   weights: ' + weights);
-
+    /**
+     * Chooses the first card for a new group.
+     * @return {Card}
+     */
+    function chooseFirstCard() {
+        var i = chooseFirstCardIterator();
         i.reset();
         while (i.hasNext()) {
             var card = i.next();
@@ -368,7 +367,7 @@ mj.modules.cards = (function() {
                 return card;
             }
         }
-        return null;
+        throw "Impossible to create a group - no more cards available."
     }
 
     /**
@@ -386,7 +385,7 @@ mj.modules.cards = (function() {
         var accumulatedLength = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         var cardsToGo = game.getScopeSize();
         var otherCards = cardsInGame.concat(firstCard);
-        var i = iterators.alternatives;
+        var i = chooseAlternativesIterator();
         i.reset();
         while (i.hasNext() && cardsToGo > 0) {
             card = i.next();
@@ -418,6 +417,54 @@ mj.modules.cards = (function() {
             }
         }
         return alternatives;
+    }
+
+    /**
+     * Selects the iterator to be used for choosing the first card of a group.
+     * @return {Iterator}
+     */
+    function chooseFirstCardIterator() {
+        var pl = probabilityLearningFirstCard();
+        var probabilities = {
+            'learning': pl,
+            'reviewing': 1 - pl
+        };
+        return iterators[utils.weighedRandom(probabilities)];
+    }
+
+    /**
+     * Selects the iterator to be used for choosing alternatives.
+     * @return {Iterator}
+     */
+    function chooseAlternativesIterator() {
+        var pl = probabilityLearningAlternatives();
+        var probabilities = {
+            'learning': pl,
+            'alternatives': 1 - pl
+        };
+        return iterators[utils.weighedRandom(probabilities)];
+    }
+
+    /**
+     * Calculates the probability of selecting the 'learning' iterator for choosing the first card of a group.
+     * @return {number} a value in the interval [0, 1]
+     */
+    function probabilityLearningFirstCard() {
+        var learningSetSize = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
+        var learningSetFullness = Math.min(learningSetSize / mj.settings.MAX_LEARNING, 1);
+        return 1 - (1 - game.getDifficulty()) * learningSetFullness;
+    }
+
+    /**
+     * Calculates the probability of selecting the 'learning' iterator for choosing alternatives.
+     * @return {number} a value in the interval [0, 1]
+     */
+    function probabilityLearningAlternatives() {
+        // How full the board and the "set of mismatched cards" are
+        var b = Math.min(cardsInGame.length / 7, 1);
+        var m = Math.min(mismatchCount / ACCEPTABLE_MISMATCHES, 1);
+
+        return (1 - b) * (1 - 0.9 * m);
     }
 
     /**
@@ -483,6 +530,11 @@ mj.modules.cards = (function() {
         var position = - index.find(card, cmpFuncs[card.state]);
         index.splice(position, 0, card);
 
+        // updates mismatch counter
+        if (card.isMismatched) {
+            mismatchCount++;
+        }
+
         // remove from game
         for (var i = 0; i < cardsInGame.length; i++) {
             if (cardsInGame[i].id == card.id) {
@@ -500,6 +552,11 @@ mj.modules.cards = (function() {
         var index = indexes[card.state];
         var position = index.find(card, cmpFuncs[card.state]);
         index.splice(position, 1);
+
+        // updates mismatch counter
+        if (card.isMismatched) {
+            mismatchCount--;
+        }
 
         // adds to the game
         cardsInGame.push(card);
@@ -536,13 +593,7 @@ mj.modules.cards = (function() {
             } else {
                 card.setSchedule(now, Math.floor(now + minInterval));
             }
-
-            if (card.state == States.NEW) {
-                card.state = States.LEARNING;
-            } else {
-                card.state = States.KNOWN;
-            }
-
+            card.match();
             storage.storeCard(deck.id, card);
         }
         card.suspend(now + groupSize * 30 * TimeUnits.SECOND);
@@ -586,13 +637,8 @@ mj.modules.cards = (function() {
         var nextRep = now + 2 * TimeUnits.MINUTE;
         for (var m = 0; m < mismatchedCards.length; m++) {
             card = allCards[mismatchedCards[m]];
-
             card.setSchedule(now, nextRep);
-            if (card.state == States.NEW || card.state == States.LEARNING) {
-                card.state = States.NEW;
-            } else {
-                card.state = States.LAPSE;
-            }
+            card.mismatch();
             storage.storeCard(deck.id, card);
         }
         for (var i = 0; i < cardsInGroup.length; i++) {
@@ -725,6 +771,7 @@ mj.modules.cards = (function() {
         getTotalCards: getTotalCards,
         diff: diff,
         debugReview: debugReview,
-        States: States
+        probabilityLearningFirstCard: probabilityLearningFirstCard,
+        probabilityLearningAlternatives: probabilityLearningAlternatives
     };
 })();

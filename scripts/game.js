@@ -146,6 +146,8 @@ mj.modules.game = (function() {
         getIntervalBetweenGroups : getIntervalBetweenGroups,
         getStats : function() {
             return mj.modules.debug.getStats()
+                  + ' 1st: ' + Math.round(100 * mj.modules.cards.probabilityLearningFirstCard())
+                  + ' alt: ' + Math.round(100 * mj.modules.cards.probabilityLearningAlternatives())
                   + ' p: ' + Math.round(intervalBetweenGroups / 100) / 10
                   + ' s: ' + getScopeSize();
         }

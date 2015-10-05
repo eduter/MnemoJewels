@@ -18,22 +18,26 @@ mj.modules.utils = (function() {
 
     /**
      * Randomly selects one among a list of options with different weights.
-     * The probability of a choice being selected is proportional to its weight.
+     * The probability of an option being selected is proportional to its weight.
      *
-     * @param {Array.<number>} weights - a list of weights (one for each possible choice)
-     * @returns {int} - the index of the selected choice
+     * @param {Object.<string, number>|Array.<number>} options - a map with the weight for each option
+     * @returns {string|int} - the key/index of the selected option
      */
-    function weighedRandom(weights) {
-        var weightSum = 0;
-        for (var w = 0; w < weights.length; w++) {
-            weightSum += weights[w];
+    function weighedRandom(options) {
+        var option, weightSum = 0;
+        for (option in options) {
+            if (options.hasOwnProperty(option)) {
+                weightSum += options[option];
+            }
         }
         var randomNumber = Math.random();
         var accumulatedWeight = 0;
-        for (var i = 0; i < weights.length; i++) {
-            accumulatedWeight += weights[i] / weightSum;
-            if (randomNumber < accumulatedWeight) {
-                return i;
+        for (option in options) {
+            if (options.hasOwnProperty(option)) {
+                accumulatedWeight += options[option];
+                if (randomNumber < accumulatedWeight / weightSum) {
+                    return option;
+                }
             }
         }
     }
