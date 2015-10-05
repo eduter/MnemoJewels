@@ -31,7 +31,7 @@ mj.modules.score = (function() {
         main = mj.modules.main;
         storage = mj.modules.storage;
         utils = mj.modules.utils;
-        States = mj.modules.cards.States;
+        States = mj.classes.States;
 
         topScores = mj.modules.storage.load('topScores') || [];
 

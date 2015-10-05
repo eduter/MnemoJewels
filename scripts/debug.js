@@ -157,7 +157,12 @@ mj.modules.debug = (function() {
             results.push(0);
         }
         for (i = 0; i < iterations; i++) {
-            results[mj.modules.utils.weighedRandom(weights)]++;
+            var selectedOption = mj.modules.utils.weighedRandom(weights);
+            if (!(selectedOption in weights)) {
+                console.error("x '" + selectedOption + "' is not a valid option");
+                return;
+            }
+            results[selectedOption]++;
         }
         for (var r = 0; r < results.length; r++) {
             var proportion = results[r] / iterations;
@@ -175,7 +180,7 @@ mj.modules.debug = (function() {
         TimeMeter: TimeMeter,
         prepareTestDeck: prepareTestDeck,
         getStats : function() {
-            return TimeMeter.getStats('CG') + ' ' + TimeMeter.getStats('CA') + ' ' + TimeMeter.getStats('D');
+            return TimeMeter.getStats('CA') + ' ' + TimeMeter.getStats('D');
         },
         testCreateGroup: testCreateGroup,
         testWeighedRandom: testWeighedRandom,
