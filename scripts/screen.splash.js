@@ -1,10 +1,11 @@
 mj.screens['splash-screen'] = (function() {
     var dom = mj.dom;
-    var main;
+    var main = mj.modules.main;
     var firstRun = true;
     
     function setup() {
-        main = mj.modules.main;
+        var continueMessage = dom.$('#splash-screen .continue')[0];
+        dom.removeClass(continueMessage, 'hidden');
         dom.bind('#splash-screen', 'click', function() {
             main.navigateTo('main-menu');
         });

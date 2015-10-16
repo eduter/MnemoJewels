@@ -45,7 +45,11 @@ window.addEventListener('load', function() {
             ],
             complete : function() {
                 mj.modules.main.setup();
-                mj.modules.main.navigateTo("splash-screen");
+                var img = new Image();
+                img.onload = function(){
+                    mj.modules.main.navigateTo("splash-screen");
+                };
+                img.src = 'images/jewel.svg';
             }
         }
     ]);

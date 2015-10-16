@@ -60,6 +60,10 @@ body {
     text-shadow: 0.05em 0.05em 0.1em black;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 #splash-screen {
     text-align : center;
 }
