@@ -7,6 +7,26 @@ mj.modules.storage = (function() {
     var NAMESPACE = 'mj.';
 
     /**
+     * Migration functions. The N-th element migrates the storage model from version N to version N+1.
+     * @type {Array.<function>}
+     */
+    var migrations = [];
+
+    /**
+     * Initializes the module and updates the storage model.
+     */
+    function setup() {
+        var modelVersion = load('modelVersion') || 0;
+        console.log('storage model v' + modelVersion);
+        while (modelVersion < migrations.length) {
+            console.log('migrating to version ' + (modelVersion + 1) + '...');
+            migrations[modelVersion++]();
+            store('modelVersion', modelVersion);
+            console.log('successfully migrated to v' + modelVersion);
+        }
+    }
+
+    /**
      * Stores a value in the local storage.
      *
      * @param {string} key
@@ -62,6 +82,7 @@ mj.modules.storage = (function() {
     }
 
     return {
+        setup: setup,
         store: store,
         load: load,
         storeCard: storeCard,
