@@ -78,14 +78,7 @@ window.addEventListener('load', function() {
             "data/testWords.js"
         ],
         complete : function() {
-            for (var i in mj.modules) {
-                if (mj.modules.hasOwnProperty(i)) {
-                    if (mj.modules[i].setup) {
-                        mj.modules[i].setup();
-                    }
-                }
-            }
-
+            mj.modules.main.initializeAllModules();
             mj.modules.debug.prepareTestDeck();
 
             //mj.modules.debug.testWeighedRandom();

@@ -25,7 +25,7 @@ mj.modules.score = (function() {
      * List of all time top scores.
      * @type {Array.<{points: int, deckId: int, start: timestamp, end: timestamp}>}
      */
-    var topScores;
+    var topScores = [];
 
     function setup() {
         main = mj.modules.main;
@@ -33,8 +33,9 @@ mj.modules.score = (function() {
         utils = mj.modules.utils;
         States = mj.classes.States;
 
-        topScores = mj.modules.storage.load('topScores') || [];
-
+        main.bind('initialize-storage', function(){
+            topScores = mj.modules.storage.load('topScores') || [];
+        });
         main.bind('gameStart', onGameStart);
         main.bind('gameOver', updateTopScores);
         main.bind('match', onMatch);

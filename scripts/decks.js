@@ -37,12 +37,14 @@ mj.modules.decks = (function() {
         utils = mj.modules.utils;
         Card = mj.classes.Card;
 
-        decks = storage.load(StorageKeys.DECKS) || [];
+        main.bind('initialize-storage', function(){
+            decks = storage.load(StorageKeys.DECKS) || [];
 
-        var preselectedDeck = storage.load(StorageKeys.SELECTED_DECK);
-        if (preselectedDeck !== null) {
-            selectDeck(preselectedDeck);
-        }
+            var preselectedDeck = storage.load(StorageKeys.SELECTED_DECK);
+            if (preselectedDeck !== null) {
+                selectDeck(preselectedDeck);
+            }
+        });
     }
 
     /**
