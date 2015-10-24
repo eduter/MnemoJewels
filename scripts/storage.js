@@ -10,7 +10,23 @@ mj.modules.storage = (function() {
      * Migration functions. The N-th element migrates the storage model from version N to version N+1.
      * @type {Array.<function>}
      */
-    var migrations = [];
+    var migrations = [
+        function(){
+            var decks = load('decks') || [];
+            for (var deckId in decks) {
+                if (decks.hasOwnProperty(deckId)) {
+                    var deck = decks[deckId];
+                    if (deck.displayName == 'Swedish / English') {
+                        deck.uid = 'top-sv-en';
+                        deck.languageFront = 'sv';
+                        deck.languageBack = 'en';
+                    }
+                }
+            }
+            store('decks', decks);
+            store('topScores', load('topScores') || []);
+        }
+    ];
 
     /**
      * Initializes the module and updates the storage model.

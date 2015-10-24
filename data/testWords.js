@@ -1,4 +1,5 @@
 var testDeck = {
+    uid: 'top-sv-en',
     displayName: 'Swedish / English',
     languageFront: 'sv',
     languageBack: 'en',

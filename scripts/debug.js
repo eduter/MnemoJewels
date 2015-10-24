@@ -56,9 +56,6 @@ mj.modules.debug = (function() {
         if (selectedDeck === null) {
             var deck = mj.modules.decks.importDeck(testDeck);
             mj.modules.decks.selectDeck(deck.id);
-        } else if (selectedDeck.displayName == 'Swedish / English') {
-            // just to include info about languages for users of older versions
-            mj.modules.decks.updateSelectedDeckInfo(testDeck);
         }
     }
 

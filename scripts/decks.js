@@ -155,31 +155,10 @@ mj.modules.decks = (function() {
         return maxId + 1;
     }
 
-    /**
-     * Updates the info (but not the cards) of the selected deck.
-     *
-     * @param {{displayName: string, languageFront: string, languageBack: string}} deckData - the new info to override the old
-     * @return {Deck} - the selected deck with its info updated
-     */
-    function updateSelectedDeckInfo(deckData) {
-        var deckIndex = findDeck(selectedDeck);
-        if (deckIndex === null) {
-            throw "No deck selected";
-        } else {
-            var deck = decks[deckIndex];
-            deck.displayName = deckData.displayName;
-            deck.languageFront = deckData.languageFront;
-            deck.languageBack = deckData.languageBack;
-            storage.store(StorageKeys.DECKS, decks);
-            return getSelectedDeck();
-        }
-    }
-
     return {
         setup: setup,
         selectDeck: selectDeck,
         getSelectedDeck: getSelectedDeck,
-        importDeck: importDeck,
-        updateSelectedDeckInfo: updateSelectedDeckInfo
+        importDeck: importDeck
     };
 })();
