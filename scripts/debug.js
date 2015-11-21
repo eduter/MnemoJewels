@@ -127,20 +127,6 @@ mj.modules.debug = (function() {
         return bytes;
     }
 
-    function testCreateGroup() {
-        // TODO: adapt this
-//        for (var i = 0; i < 300; i++) {
-//            console.log('GROUP ' + i);
-//            mj.modules.cards.createNewGroup(3, [], function (cards) {
-//                while (cards.length) {
-//                    var card = cards[0];
-//                    mj.modules.cards.rescheduleMatch(card.id, cards, 1000);
-//                    cards.shift();
-//                }
-//            });
-//        }
-    }
-
     function testWeighedRandom() {
         var weights = [1, 2, 7];
         var iterations = 10000;
@@ -173,15 +159,108 @@ mj.modules.debug = (function() {
         console.log("+ weighedRandom is within the acceptable error margin");
     }
 
+    function testTransactions() {
+        var runTransaction = testTransaction(true);
+        var rollbackTransaction = testTransaction(false);
+
+        return runTransaction && rollbackTransaction;
+    }
+
+    function testTransaction(mustSucceed) {
+        var testResult = true;
+        var exceptionThrown = false;
+        var testCases = [
+            {initialValue: 'value1', newValue: 'value2'},
+            {initialValue: 1, newValue: 2},
+            {initialValue: true, newValue: false},
+            {initialValue: null, newValue: 'notNull'},
+            {initialValue: 'notNull', newValue: null}
+        ];
+
+        try {
+            var previousStorageLength = localStorage.length;
+
+            storeValues(testCases.map(function(value, index){
+                return {
+                    key: 'key' + index,
+                    value: value.initialValue
+                };
+            }));
+
+            mj.modules.storage.transaction(function(){
+                storeValues(testCases.map(function(value, index){
+                    return {
+                        key: 'key' + index,
+                        value: value.newValue
+                    };
+                }));
+                if (!mustSucceed) {
+                    var a = null;
+                    a['CRASH!'] = true;
+                }
+            });
+        } catch(e) {
+            exceptionThrown = true;
+        }
+
+        if (exceptionThrown == mustSucceed) {
+            console.log(exceptionThrown ? 'x Unexpected exception thrown' : 'x Expected exception was not thrown');
+            testResult = false;
+        }
+        for (var i = 0; i < testCases.length; i++) {
+            var key = 'key' + i;
+            var value = mj.modules.storage.load(key);
+            var expectedValue = (mustSucceed ? testCases[i].newValue : testCases[i].initialValue);
+
+            if (value !== expectedValue) {
+                if (mustSucceed) {
+                    console.log('x Failed to run transaction (' + value + ' != ' + expectedValue + ') - ' + key);
+                } else {
+                    console.log('x Failed to rollback an unsuccessful transaction (' + value + ' != ' + expectedValue + ') - ' + key);
+                }
+                testResult = false;
+                break;
+            }
+        }
+        for (i = 0; i < testCases.length; i++) {
+            mj.modules.storage.remove('key' + i);
+        }
+        if (localStorage.length !== previousStorageLength) {
+            console.log('x localStorage.length unexpectedly changed (' + previousStorageLength + ' -> ' + localStorage.length + ')');
+            testResult = false;
+        } else if (testResult) {
+            console.log(mustSucceed ? '+ Run transaction' : '+ Rollback an unsuccessful transaction');
+        }
+        return testResult;
+    }
+
+    function storeValues(keyValues) {
+        for (var i = 0; i < keyValues.length; i++) {
+            var key = keyValues[i].key;
+            var value = keyValues[i].value;
+
+            if (value === null) {
+                mj.modules.storage.remove(key);
+            } else {
+                mj.modules.storage.store(key, value);
+            }
+        }
+    }
+
+    function setup() {
+        if (location.hash == '#test') {
+            testTransactions();
+            testWeighedRandom();
+        }
+    }
     return {
+        setup: setup,
         TimeMeter: TimeMeter,
         prepareTestDeck: prepareTestDeck,
         getStats : function() {
             return TimeMeter.getStats('CA') + ' ' + TimeMeter.getStats('D');
         },
-        testCreateGroup: testCreateGroup,
-        testWeighedRandom: testWeighedRandom,
-//        testChooseAlternative: testChooseAlternative,
+        testChooseAlternative: testChooseAlternative,
         roughSizeOfObject: roughSizeOfObject
     };
 })();

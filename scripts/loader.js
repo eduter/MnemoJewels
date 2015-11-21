@@ -81,8 +81,6 @@ window.addEventListener('load', function() {
             mj.modules.main.initializeAllModules();
             mj.modules.debug.prepareTestDeck();
 
-            //mj.modules.debug.testWeighedRandom();
-
             // Prevents logging of debug info, unless debug is on
             if (!mj.modules.storage.load('debug')) {
                 var noop = function(){};
