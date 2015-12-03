@@ -5,11 +5,10 @@ var testDeck = {
     languageBack: 'en',
     cards: [
 ["jag","I"],
-["jag","ego"],
 ["det","that"],
 ["det","it"],
 ["du","you"],
-["inte","not"],
+["inte","not"], 
 ["att","to"],
 ["att","that"],
 ["en","one"],
