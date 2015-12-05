@@ -244,6 +244,45 @@ mj.modules.storage = (function() {
         return true;
     }
 
+    /**
+     * Imports data exported with the exportData method.
+     *
+     * @param {string} stringifiedData - the output of exportData
+     * @param {boolean} [clear=false] - if true, the whole localStorage is cleared before the import
+     */
+    function importData(stringifiedData, clear) {
+        var data = JSON.parse(stringifiedData);
+
+        if (clear) {
+            localStorage.clear();
+        }
+        for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+                localStorage.setItem(key, data[key]);
+            }
+        }
+    }
+
+    /**
+     * Exports the whole content of the storage.
+     *
+     * @param {boolean} [includeBackups=true] - whether the backups (during a transaction) should also be included
+     * @return {string} - a JSON representation of the whole content of the storage
+     */
+    function exportData(includeBackups) {
+        includeBackups = (includeBackups === undefined ? true : !!includeBackups);
+        var keys = Object.keys(localStorage).filter(function(key){
+            return startsWith(key, NAMESPACE) || (includeBackups && startsWith(key, BACKUP_PREFIX));
+        });
+        var data = {};
+
+        keys.sort();
+        keys.forEach(function(key){
+            data[key] = localStorage.getItem(key);
+        });
+        return JSON.stringify(data);
+    }
+
     return {
         setup: setup,
         store: store,
@@ -252,6 +291,8 @@ mj.modules.storage = (function() {
         storeCard: storeCard,
         loadCard: loadCard,
         removeCard: removeCard,
-        transaction: transaction
+        transaction: transaction,
+        importData: importData,
+        exportData: exportData
     };
 })();

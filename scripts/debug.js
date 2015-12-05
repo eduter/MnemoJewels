@@ -54,7 +54,7 @@ mj.modules.debug = (function() {
     function prepareTestDeck() {
         var selectedDeck = mj.modules.decks.getSelectedDeck();
         if (selectedDeck === null) {
-            var deck = mj.modules.decks.importDeck(testDeck);
+            var deck = mj.modules.decks.importDeck(mj.decks[0]);
             mj.modules.decks.selectDeck(deck.id);
         }
     }
@@ -247,10 +247,46 @@ mj.modules.debug = (function() {
         }
     }
 
+    function testDeckUpdate() {
+        var initialData    = "{\"mj.d0c0\":\"{\\\"ft\\\":\\\"jag\\\",\\\"bk\\\":\\\"I\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316580657,\\\"nr\\\":1449450464954}\",\"mj.d0c1\":\"{\\\"ft\\\":\\\"jag\\\",\\\"bk\\\":\\\"ego\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":1449316605637,\\\"nr\\\":1449316725637,\\\"ms\\\":true}\",\"mj.d0c2\":\"{\\\"ft\\\":\\\"det\\\",\\\"bk\\\":\\\"that\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316653255,\\\"nr\\\":1449385589425}\",\"mj.d0c3\":\"{\\\"ft\\\":\\\"det\\\",\\\"bk\\\":\\\"it\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c4\":\"{\\\"ft\\\":\\\"du\\\",\\\"bk\\\":\\\"you\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":1449316655499,\\\"nr\\\":1449316775499,\\\"ms\\\":true}\",\"mj.d0c5\":\"{\\\"ft\\\":\\\"inte\\\",\\\"bk\\\":\\\"not\\\",\\\"ea\\\":2.5,\\\"st\\\":4,\\\"lr\\\":1449316655499,\\\"nr\\\":1449316775499}\",\"mj.d0c6\":\"{\\\"ft\\\":\\\"att\\\",\\\"bk\\\":\\\"to\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c7\":\"{\\\"ft\\\":\\\"att\\\",\\\"bk\\\":\\\"that\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c8\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"one\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316684925,\\\"nr\\\":1449375380577}\",\"mj.d0c9\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"a\\\",\\\"ea\\\":2.5,\\\"st\\\":3,\\\"lr\\\":1449316632640,\\\"nr\\\":1449405124259}\",\"mj.decks\":\"[{\\\"uid\\\":\\\"top-sv-en\\\",\\\"version\\\":1,\\\"displayName\\\":\\\"Swedish / English\\\",\\\"languageFront\\\":\\\"sv\\\",\\\"languageBack\\\":\\\"en\\\",\\\"size\\\":10,\\\"id\\\":0}]\",\"mj.modelVersion\":\"1\",\"mj.selectedDeck\":\"0\",\"mj.topScores\":\"[]\"}";
+        var expectedResult = "{\"mj.d0c0\":\"{\\\"ft\\\":\\\"jag\\\",\\\"bk\\\":\\\"I\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316580657,\\\"nr\\\":1449450464954}\",\"mj.d0c1\":\"{\\\"ft\\\":\\\"jag\\\",\\\"bk\\\":\\\"ego\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":1449316605637,\\\"nr\\\":1449316725637,\\\"ms\\\":true}\",\"mj.d0c2\":\"{\\\"ft\\\":\\\"det\\\",\\\"bk\\\":\\\"that\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316653255,\\\"nr\\\":1449385589425}\",\"mj.d0c3\":\"{\\\"ft\\\":\\\"det\\\",\\\"bk\\\":\\\"it\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c4\":\"{\\\"ft\\\":\\\"du\\\",\\\"bk\\\":\\\"you\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":1449316655499,\\\"nr\\\":1449316775499,\\\"ms\\\":true}\",\"mj.d0c5\":\"{\\\"ft\\\":\\\"inte\\\",\\\"bk\\\":\\\"not\\\",\\\"ea\\\":2.5,\\\"st\\\":4,\\\"lr\\\":1449316655499,\\\"nr\\\":1449316775499}\",\"mj.d0c6\":\"{\\\"ft\\\":\\\"att\\\",\\\"bk\\\":\\\"to\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c7\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"one\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316684925,\\\"nr\\\":1449375380577}\",\"mj.d0c8\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"a\\\",\\\"ea\\\":2.5,\\\"st\\\":3,\\\"lr\\\":1449316632640,\\\"nr\\\":1449405124259}\",\"mj.d0c9\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"an\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.decks\":\"[{\\\"uid\\\":\\\"top-sv-en\\\",\\\"version\\\":2,\\\"displayName\\\":\\\"Swedish / English (US)\\\",\\\"languageFront\\\":\\\"sv\\\",\\\"languageBack\\\":\\\"en_US\\\",\\\"size\\\":10,\\\"id\\\":0}]\",\"mj.modelVersion\":\"1\",\"mj.selectedDeck\":\"0\",\"mj.topScores\":\"[]\"}";
+
+        mj.modules.storage.setup();
+        mj.modules.storage.importData(initialData, true);
+        mj.decks = [{
+            uid: 'top-sv-en',
+            version: 2,
+            displayName: 'Swedish / English (US)',
+            languageFront: 'sv',
+            languageBack: 'en_US',
+            cards: [
+                ["jag","I"],
+                ["jag","ego"],
+                ["det","that"],
+                ["det","it"],
+                ["du","you"],
+                ["inte","not"],
+                ["att","to"],
+                ["en","one"],
+                ["en","a"],
+                ["en","an"]
+            ]
+        }];
+        mj.modules.decks.setup();
+        mj.modules.main.bind('initialize-decks', function(){
+            if (mj.modules.storage.exportData() === expectedResult) {
+                console.log("+ Update decks");
+            } else {
+                console.log("x Update decks");
+            }
+        });
+    }
+
     function setup() {
         if (location.hash == '#test') {
             testTransactions();
             testWeighedRandom();
+            testDeckUpdate();
         }
     }
     return {

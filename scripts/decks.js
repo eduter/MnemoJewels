@@ -12,8 +12,31 @@ mj.modules.decks = (function() {
     };
 
     /**
-     * Represents a deck of cards, with a display name and the number of cards it contains.
-     * @typedef {{id: int, displayName: string, languageFront: string, languageBack: string, size: int}} Deck
+     * Represents a user deck, with its metadata, but not its cards.
+     *
+     * @typedef {{
+     *   id: int, displayName: string, size: int,
+     *   languageFront: [string], languageBack: [string],
+     *   uid: [string], version: [int]
+     * }} Deck
+     *
+     * {int} id - uniquely identifies the deck among all decks the user has in the storage
+     * {String} displayName - how the deck is referred to in the UI
+     * {int} size - how many cards the deck contains
+     * {String} [languageFront] - the code of the language used in the front side of the cards
+     * {String} [languageBack] - the code of the language used in the back side of the cards
+     * {String} [uid] - imported decks with an uid and a version can be updated
+     * {int} [version] - version number used to keep imported decks updated
+     */
+
+    /**
+     * Represents all the data required to import a deck.
+     *
+     * @typedef {{
+     *   displayName: string, cards: Array.<Array.<string>>,
+     *   languageFront: [string], languageBack: [string],
+     *   uid: [string], version: [int]
+     * }} DeckData
      */
 
     /**
@@ -39,12 +62,36 @@ mj.modules.decks = (function() {
 
         main.bind('initialize-storage', function(){
             decks = storage.load(StorageKeys.DECKS) || [];
+            updateDecks();
 
             var preselectedDeck = storage.load(StorageKeys.SELECTED_DECK);
             if (preselectedDeck !== null) {
                 selectDeck(preselectedDeck);
             }
         });
+    }
+
+    /**
+     * Updates all imported decks to their latest version.
+     */
+    function updateDecks() {
+        console.log('updating decks...');
+        var decksByUid = {};
+
+        mj.decks.forEach(function(deck){
+            if (deck.uid) {
+                decksByUid[deck.uid] = deck;
+            }
+        });
+
+        decks.forEach(function(deck){
+            var deckData = decksByUid[deck.uid];
+
+            if (deckData && deckData.version > (deck.version || 0)) {
+                updateDeck(deck, deckData);
+            }
+        });
+        console.log('decks up to date');
     }
 
     /**
@@ -89,19 +136,13 @@ mj.modules.decks = (function() {
     }
 
     /**
-     * Creates and stores a new deck.
+     * Imports and stores a new deck.
      *
-     * @param {{displayName: string, languageFront: string, languageBack: string, cards: Array.<Array.<string>>}} deckData
+     * @param {DeckData} deckData
      * @return {Deck} - the info about the imported deck
      */
     function importDeck(deckData) {
-        var deck = {
-            id: generateNewId(),
-            displayName: deckData.displayName,
-            languageFront: deckData.languageFront,
-            languageBack: deckData.languageBack,
-            size: deckData.cards.length
-        };
+        var deck = createDeck(generateNewId(), deckData);
 
         decks.push(deck);
         storage.store(StorageKeys.DECKS, decks);
@@ -115,30 +156,84 @@ mj.modules.decks = (function() {
     }
 
     /**
-     * Updates an existing deck, adding or removing cards according to deckData.
+     * Updates a deck, inserting/removing/sorting cards, but keeping the learning data.
      *
-     * @param {int} deckId - deck to be updated
-     * @param {{displayName: string, cards: Array.<Array.<string>>}} deckData
-     * @return {Deck} - the updated info about the deck
+     * @param {Deck} deck - the outdated deck
+     * @param {DeckData} deckData - the updated deck data
      */
-    function updateDeck(deckId, deckData) {
-        // TODO
-//        var oldDeckIndex = findDeck(deckId);
-//        var deck = {
-//            id: generateNewId(),
-//            displayName: deckData.displayName,
-//            size: deckData.cards.length
-//        };
-//
-//        decks.push(deck);
-//        storage.store(StorageKeys.DECKS, decks);
-//
-//        for (var cardId = 0; cardId < deck.size; cardId++) {
-//            var cardData = deckData.cards[cardId];
-//            var card = new Card(cardId, cardData[0], cardData[1]);
-//            storage.storeCard(deck.id, card);
-//        }
-//        return utils.copyData(deck);
+    function updateDeck(deck, deckData) {
+        var index = indexCardsByContent(deck);
+
+        console.log('updating deck ' + deck.uid);
+
+        storage.transaction(function(){
+            var cardId;
+
+            // remove all old cards
+            for (cardId = 0; cardId < deck.size; cardId++) {
+                storage.removeCard(deck.id, cardId);
+            }
+
+            // update deck metadata on the deck list
+            decks = decks.map(function(d){
+                if (d.id === deck.id) {
+                    return createDeck(deck.id, deckData);
+                }
+                return d;
+            });
+            storage.store(StorageKeys.DECKS, decks);
+
+            // add new cards with existing learning data, if any
+            for (cardId = 0; cardId < deckData.cards.length; cardId++) {
+                var front = deckData.cards[cardId][0];
+                var back = deckData.cards[cardId][1];
+                var card;
+
+                if (front in index && back in index[front]) {
+                    card = Card.unserialize(cardId, index[front][back]);
+                } else {
+                    card = new Card(cardId, front, back);
+                }
+                storage.storeCard(deck.id, card);
+            }
+        });
+    }
+
+    /**
+     * Creates a deck, copying its metadata from a DeckData object.
+     *
+     * @param {int} deckId
+     * @param {DeckData} deckData
+     * @return {Deck}
+     */
+    function createDeck(deckId, deckData) {
+        return {
+            id: deckId,
+            uid: deckData.uid,
+            version: deckData.version,
+            displayName: deckData.displayName,
+            languageFront: deckData.languageFront,
+            languageBack: deckData.languageBack,
+            size: deckData.cards.length
+        };
+    }
+
+    /**
+     * Creates a a structure, in which all cards from a deck are indexed by their front and back sides.
+     *
+     * @param {Deck} deck - the deck to be indexed
+     * @return {Object} a map in which index[front][back] = serializedCard
+     */
+    function indexCardsByContent(deck) {
+        var index = {};
+        for (var id = 0; id < deck.size; id++) {
+            var card = storage.loadCard(deck.id, id);
+            if (!(card.front in index)) {
+                index[card.front] = {};
+            }
+            index[card.front][card.back] = card.serialize();
+        }
+        return index;
     }
 
     /**
