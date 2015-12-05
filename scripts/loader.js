@@ -76,7 +76,7 @@ window.addEventListener('load', function() {
             "scripts/screen.deck-stats.js",
             "scripts/screen.top-scores.js",
             "scripts/lib/donut-chart.js",
-            "data/testWords.js"
+            "decks/top-sv-en.js"
         ],
         complete : function() {
             mj.modules.main.initializeAllModules();
