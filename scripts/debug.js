@@ -54,11 +54,8 @@ mj.modules.debug = (function() {
     function prepareTestDeck() {
         var selectedDeck = mj.modules.decks.getSelectedDeck();
         if (selectedDeck === null) {
-            var deck = mj.modules.decks.importDeck(testDeck);
+            var deck = mj.modules.decks.importDeck(mj.decks[0]);
             mj.modules.decks.selectDeck(deck.id);
-        } else if (selectedDeck.displayName == 'Swedish / English') {
-            // just to include info about languages for users of older versions
-            mj.modules.decks.updateSelectedDeckInfo(testDeck);
         }
     }
 
@@ -130,20 +127,6 @@ mj.modules.debug = (function() {
         return bytes;
     }
 
-    function testCreateGroup() {
-        // TODO: adapt this
-//        for (var i = 0; i < 300; i++) {
-//            console.log('GROUP ' + i);
-//            mj.modules.cards.createNewGroup(3, [], function (cards) {
-//                while (cards.length) {
-//                    var card = cards[0];
-//                    mj.modules.cards.rescheduleMatch(card.id, cards, 1000);
-//                    cards.shift();
-//                }
-//            });
-//        }
-    }
-
     function testWeighedRandom() {
         var weights = [1, 2, 7];
         var iterations = 10000;
@@ -176,15 +159,144 @@ mj.modules.debug = (function() {
         console.log("+ weighedRandom is within the acceptable error margin");
     }
 
+    function testTransactions() {
+        var runTransaction = testTransaction(true);
+        var rollbackTransaction = testTransaction(false);
+
+        return runTransaction && rollbackTransaction;
+    }
+
+    function testTransaction(mustSucceed) {
+        var testResult = true;
+        var exceptionThrown = false;
+        var testCases = [
+            {initialValue: 'value1', newValue: 'value2'},
+            {initialValue: 1, newValue: 2},
+            {initialValue: true, newValue: false},
+            {initialValue: null, newValue: 'notNull'},
+            {initialValue: 'notNull', newValue: null}
+        ];
+
+        try {
+            var previousStorageLength = localStorage.length;
+
+            storeValues(testCases.map(function(value, index){
+                return {
+                    key: 'key' + index,
+                    value: value.initialValue
+                };
+            }));
+
+            mj.modules.storage.transaction(function(){
+                storeValues(testCases.map(function(value, index){
+                    return {
+                        key: 'key' + index,
+                        value: value.newValue
+                    };
+                }));
+                if (!mustSucceed) {
+                    var a = null;
+                    a['CRASH!'] = true;
+                }
+            });
+        } catch(e) {
+            exceptionThrown = true;
+        }
+
+        if (exceptionThrown == mustSucceed) {
+            console.log(exceptionThrown ? 'x Unexpected exception thrown' : 'x Expected exception was not thrown');
+            testResult = false;
+        }
+        for (var i = 0; i < testCases.length; i++) {
+            var key = 'key' + i;
+            var value = mj.modules.storage.load(key);
+            var expectedValue = (mustSucceed ? testCases[i].newValue : testCases[i].initialValue);
+
+            if (value !== expectedValue) {
+                if (mustSucceed) {
+                    console.log('x Failed to run transaction (' + value + ' != ' + expectedValue + ') - ' + key);
+                } else {
+                    console.log('x Failed to rollback an unsuccessful transaction (' + value + ' != ' + expectedValue + ') - ' + key);
+                }
+                testResult = false;
+                break;
+            }
+        }
+        for (i = 0; i < testCases.length; i++) {
+            mj.modules.storage.remove('key' + i);
+        }
+        if (localStorage.length !== previousStorageLength) {
+            console.log('x localStorage.length unexpectedly changed (' + previousStorageLength + ' -> ' + localStorage.length + ')');
+            testResult = false;
+        } else if (testResult) {
+            console.log(mustSucceed ? '+ Run transaction' : '+ Rollback an unsuccessful transaction');
+        }
+        return testResult;
+    }
+
+    function storeValues(keyValues) {
+        for (var i = 0; i < keyValues.length; i++) {
+            var key = keyValues[i].key;
+            var value = keyValues[i].value;
+
+            if (value === null) {
+                mj.modules.storage.remove(key);
+            } else {
+                mj.modules.storage.store(key, value);
+            }
+        }
+    }
+
+    function testDeckUpdate() {
+        var initialData    = "{\"mj.d0c0\":\"{\\\"ft\\\":\\\"jag\\\",\\\"bk\\\":\\\"I\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316580657,\\\"nr\\\":1449450464954}\",\"mj.d0c1\":\"{\\\"ft\\\":\\\"jag\\\",\\\"bk\\\":\\\"ego\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":1449316605637,\\\"nr\\\":1449316725637,\\\"ms\\\":true}\",\"mj.d0c2\":\"{\\\"ft\\\":\\\"det\\\",\\\"bk\\\":\\\"that\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316653255,\\\"nr\\\":1449385589425}\",\"mj.d0c3\":\"{\\\"ft\\\":\\\"det\\\",\\\"bk\\\":\\\"it\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c4\":\"{\\\"ft\\\":\\\"du\\\",\\\"bk\\\":\\\"you\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":1449316655499,\\\"nr\\\":1449316775499,\\\"ms\\\":true}\",\"mj.d0c5\":\"{\\\"ft\\\":\\\"inte\\\",\\\"bk\\\":\\\"not\\\",\\\"ea\\\":2.5,\\\"st\\\":4,\\\"lr\\\":1449316655499,\\\"nr\\\":1449316775499}\",\"mj.d0c6\":\"{\\\"ft\\\":\\\"att\\\",\\\"bk\\\":\\\"to\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c7\":\"{\\\"ft\\\":\\\"att\\\",\\\"bk\\\":\\\"that\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c8\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"one\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316684925,\\\"nr\\\":1449375380577}\",\"mj.d0c9\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"a\\\",\\\"ea\\\":2.5,\\\"st\\\":3,\\\"lr\\\":1449316632640,\\\"nr\\\":1449405124259}\",\"mj.decks\":\"[{\\\"uid\\\":\\\"top-sv-en\\\",\\\"version\\\":1,\\\"displayName\\\":\\\"Swedish / English\\\",\\\"languageFront\\\":\\\"sv\\\",\\\"languageBack\\\":\\\"en\\\",\\\"size\\\":10,\\\"id\\\":0}]\",\"mj.modelVersion\":\"1\",\"mj.selectedDeck\":\"0\",\"mj.topScores\":\"[]\"}";
+        var expectedResult = "{\"mj.d0c0\":\"{\\\"ft\\\":\\\"jag\\\",\\\"bk\\\":\\\"I\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316580657,\\\"nr\\\":1449450464954}\",\"mj.d0c1\":\"{\\\"ft\\\":\\\"jag\\\",\\\"bk\\\":\\\"ego\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":1449316605637,\\\"nr\\\":1449316725637,\\\"ms\\\":true}\",\"mj.d0c2\":\"{\\\"ft\\\":\\\"det\\\",\\\"bk\\\":\\\"that\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316653255,\\\"nr\\\":1449385589425}\",\"mj.d0c3\":\"{\\\"ft\\\":\\\"det\\\",\\\"bk\\\":\\\"it\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c4\":\"{\\\"ft\\\":\\\"du\\\",\\\"bk\\\":\\\"you\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":1449316655499,\\\"nr\\\":1449316775499,\\\"ms\\\":true}\",\"mj.d0c5\":\"{\\\"ft\\\":\\\"inte\\\",\\\"bk\\\":\\\"not\\\",\\\"ea\\\":2.5,\\\"st\\\":4,\\\"lr\\\":1449316655499,\\\"nr\\\":1449316775499}\",\"mj.d0c6\":\"{\\\"ft\\\":\\\"att\\\",\\\"bk\\\":\\\"to\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.d0c7\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"one\\\",\\\"ea\\\":2.5,\\\"st\\\":2,\\\"lr\\\":1449316684925,\\\"nr\\\":1449375380577}\",\"mj.d0c8\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"a\\\",\\\"ea\\\":2.5,\\\"st\\\":3,\\\"lr\\\":1449316632640,\\\"nr\\\":1449405124259}\",\"mj.d0c9\":\"{\\\"ft\\\":\\\"en\\\",\\\"bk\\\":\\\"an\\\",\\\"ea\\\":2.5,\\\"st\\\":1,\\\"lr\\\":null,\\\"nr\\\":null}\",\"mj.decks\":\"[{\\\"uid\\\":\\\"top-sv-en\\\",\\\"version\\\":2,\\\"displayName\\\":\\\"Swedish / English (US)\\\",\\\"languageFront\\\":\\\"sv\\\",\\\"languageBack\\\":\\\"en_US\\\",\\\"size\\\":10,\\\"id\\\":0}]\",\"mj.modelVersion\":\"1\",\"mj.selectedDeck\":\"0\",\"mj.topScores\":\"[]\"}";
+
+        mj.modules.storage.setup();
+        mj.modules.storage.importData(initialData, true);
+        mj.decks = [{
+            uid: 'top-sv-en',
+            version: 2,
+            displayName: 'Swedish / English (US)',
+            languageFront: 'sv',
+            languageBack: 'en_US',
+            cards: [
+                ["jag","I"],
+                ["jag","ego"],
+                ["det","that"],
+                ["det","it"],
+                ["du","you"],
+                ["inte","not"],
+                ["att","to"],
+                ["en","one"],
+                ["en","a"],
+                ["en","an"]
+            ]
+        }];
+        mj.modules.decks.setup();
+        mj.modules.main.bind('initialize-decks', function(){
+            if (mj.modules.storage.exportData() === expectedResult) {
+                console.log("+ Update decks");
+            } else {
+                console.log("x Update decks");
+            }
+        });
+    }
+
+    function setup() {
+        if (location.hash == '#test') {
+            testTransactions();
+            testWeighedRandom();
+            testDeckUpdate();
+        }
+    }
     return {
+        setup: setup,
         TimeMeter: TimeMeter,
         prepareTestDeck: prepareTestDeck,
         getStats : function() {
             return TimeMeter.getStats('CA') + ' ' + TimeMeter.getStats('D');
         },
-        testCreateGroup: testCreateGroup,
-        testWeighedRandom: testWeighedRandom,
-//        testChooseAlternative: testChooseAlternative,
+        testChooseAlternative: testChooseAlternative,
         roughSizeOfObject: roughSizeOfObject
     };
 })();

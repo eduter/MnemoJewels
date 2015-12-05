@@ -1,10 +1,11 @@
-var testDeck = {
+mj.decks.push({
+    uid: 'top-sv-en',
+    version: 1,
     displayName: 'Swedish / English',
     languageFront: 'sv',
     languageBack: 'en',
     cards: [
 ["jag","I"],
-["jag","ego"],
 ["det","that"],
 ["det","it"],
 ["du","you"],
@@ -1879,4 +1880,4 @@ var testDeck = {
 ["gäng", "gang"],
 ["rom", "rum"],
 ["skrivit", "written"]
-]};
+]});
