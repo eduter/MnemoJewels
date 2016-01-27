@@ -34,6 +34,12 @@ mj.modules.cards = (function() {
     var normalizedFront = null;
 
     /**
+     * Maps cards' back side to a language-specific normalized version of themselves.
+     * @type {Object.<string, string>}
+     */
+    var normalizedBack = null;
+
+    /**
      * The deck currently loaded.
      * @type {Deck}
      */
@@ -194,7 +200,7 @@ mj.modules.cards = (function() {
             }
         }
         updateWordMappings();
-        updateNormalizedFront();
+        updateNormalizations();
     }
 
     /**
@@ -205,7 +211,7 @@ mj.modules.cards = (function() {
         allCards = {};
         mismatchCount = 0;
         updateWordMappings();
-        updateNormalizedFront();
+        updateNormalizations();
         for (var s in States) {
             if (States.hasOwnProperty(s)) {
                 indexes[States[s]] = [];
@@ -234,13 +240,23 @@ mj.modules.cards = (function() {
     }
 
     /**
-     * Makes sure normalizedFront is up to date with the content of allCards.
+     * Makes sure the normalized versions of both sides of all cards currently loaded are up-to-date.
      */
-    function updateNormalizedFront() {
+    function updateNormalizations() {
         normalizedFront = {};
-        for (var word in wordMappings) {
-            if (wordMappings.hasOwnProperty(word)) {
-                normalizedFront[word] = normalizeWord(word, deck.languageFront);
+        normalizedBack = {};
+
+        for (var cardId in allCards) {
+            if (allCards.hasOwnProperty(cardId)) {
+                var front = allCards[cardId].front;
+                var back = allCards[cardId].back;
+
+                if (!(front in normalizedFront)) {
+                    normalizedFront[front] = normalizeWord(front, deck.languageFront);
+                }
+                if (!(back in normalizedBack)) {
+                    normalizedBack[back] = normalizeWord(back, deck.languageBack);
+                }
             }
         }
     }
@@ -253,10 +269,11 @@ mj.modules.cards = (function() {
      * @return {string}
      */
     function normalizeWord(word, language) {
+        var normalizedWord = word.replace(/\s*(\([^)]*\)|\[[^\]]*\])\s*/g, ' ').trim();
         if (typeof(normalizationFunctions[language]) == 'function') {
-            return normalizationFunctions[language](word);
+            return normalizationFunctions[language](normalizedWord);
         }
-        return word;
+        return normalizedWord;
     }
 
     function toWordMap(words, frontKey, backKey) {
@@ -478,14 +495,15 @@ mj.modules.cards = (function() {
     function cardDistance(candidateCard, card) {
         var normalizedCardFront = normalizedFront[card.front];
         var normalizedCandidateFront = normalizedFront[candidateCard.front];
-        var distanceFront = levenshtein(normalizedCardFront, normalizedCandidateFront);
+        var normalizedCandidateBack = normalizedBack[candidateCard.back];
+        var distanceFront = levenshtein(normalizedCandidateFront, normalizedCardFront);
 
         distanceFront *= 1 - 0.10 * commonPrefixLength(normalizedCandidateFront, normalizedCardFront, 5);
         distanceFront *= 1 - 0.05 * commonSuffixLength(normalizedCandidateFront, normalizedCardFront, 6);
 
         var distance = Math.min(
             distanceFront,
-            levenshtein(candidateCard.back, normalizedCardFront)
+            levenshtein(normalizedCandidateBack, normalizedCardFront)
         );
         return Math.round(100 * distance) / 100;
     }
