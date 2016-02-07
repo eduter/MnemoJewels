@@ -76,10 +76,18 @@ window.addEventListener('load', function() {
             "scripts/screen.deck-stats.js",
             "scripts/screen.top-scores.js",
             "scripts/lib/donut-chart.js",
+
+            //"scripts/tools/translate.js",
+            //"scripts/tools/data/pt_BR-translations.js",
+
+            "decks/top-pt_BR-en.js",
             "decks/top-sv-en.js"
         ],
         complete : function() {
             mj.modules.main.initializeAllModules();
+
+            //mj.modules.translate.translationsToCards(translations); return;
+
             mj.modules.debug.prepareTestDeck();
 
             // Prevents logging of debug info, unless debug is on
