@@ -75,6 +75,7 @@ window.addEventListener('load', function() {
             "scripts/screen.game.js",
             "scripts/screen.deck-stats.js",
             "scripts/screen.top-scores.js",
+            "scripts/screen.settings.js",
             "scripts/lib/donut-chart.js",
 
             //"scripts/tools/translate.js",
@@ -88,7 +89,9 @@ window.addEventListener('load', function() {
 
             //mj.modules.translate.translationsToCards(translations); return;
 
-            mj.modules.debug.prepareTestDeck();
+            if (mj.modules.decks.getSelectedDeck() == null) {
+                mj.modules.main.navigateTo('settings');
+            }
 
             // Prevents logging of debug info, unless debug is on
             if (!mj.modules.storage.load('debug')) {
