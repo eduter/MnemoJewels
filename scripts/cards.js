@@ -545,7 +545,7 @@ mj.modules.cards = (function() {
     function moveToIndex(card) {
         // add to index
         var index = indexes[card.state];
-        var position = - index.find(card, cmpFuncs[card.state]);
+        var position = - index.binarySearch(card, cmpFuncs[card.state]);
         index.splice(position, 0, card);
 
         // updates mismatch counter
@@ -568,7 +568,7 @@ mj.modules.cards = (function() {
     function moveToGame(card) {
         // removes from the index
         var index = indexes[card.state];
-        var position = index.find(card, cmpFuncs[card.state]);
+        var position = index.binarySearch(card, cmpFuncs[card.state]);
         index.splice(position, 1);
 
         // updates mismatch counter
@@ -710,7 +710,7 @@ mj.modules.cards = (function() {
      * @param {function} cmpFunc compare function
      * @return {Number} The index of the element, if found, or the complement of where it would be
      */
-    Array.prototype.find = function(searchElement, cmpFunc) {
+    Array.prototype.binarySearch = function(searchElement, cmpFunc) {
         var currentIndex, currentElement, cmpRes;
         var minIndex = 0;
         var maxIndex = this.length - 1;
