@@ -1,74 +1,96 @@
 mj.screens['settings'] = (function() {
-    var parser = null;
     var firstRun = true;
-    var dom, $, db, cards;
+    var dom, $, decks;
+    var continueButton, backButton;
 
+    /**
+     * Initializes the Settings screen.
+     */
     function setup() {
-        parser = mj.modules.parser;
-        db = mj.modules.database;
-        cards = mj.modules.cards;
         dom = mj.dom;
         $ = dom.$;
+        decks = mj.modules.decks;
 
-        dom.bind('#clear', 'click', function() {
-            if (confirm('Are you REALLY sure you want to destroy the DB?')) {
-                db.destroy();
-                db.create();
+        continueButton = $('#settings button.continue')[0];
+        backButton = $('#settings button.back')[0];
+
+        populateDeckDropDown();
+
+        dom.bind('#selected-deck', 'change', function() {
+            if (this.value == '') {
+                continueButton.disabled = true;
+            } else {
+                continueButton.disabled = false;
+                selectDeck(this.value);
+                $('#selected-deck option[value=""]').forEach(function(option){
+                    option.parentNode.removeChild(option);
+                });
             }
         });
+    }
 
-        dom.bind('#synch', 'click', function() {
-            // TODO
-            alert('TODO');
-//            var diff = cards.diff(mj.testWords);
-//
-//            if (diff.add.length || diff.remove.length) {
-//                var msg = 'Are you sure you want to';
-//
-//                if (diff.add.length) {
-//                    msg += ' add ' + diff.add.length + ' new card(s)';
-//                }
-//                if (diff.remove.length) {
-//                    if (diff.add.length) {
-//                        msg += ' and remove ' + diff.remove.length;
-//                    } else {
-//                        msg += ' remove ' + diff.remove.length + ' card(s)';
-//                    }
-//                }
-//                msg += '?';
-//
-//                if (confirm(msg)) {
-//                    cards.addCards(diff.add);
-//                    cards.removeCards(diff.remove);
-//                    setTimeout(function () {
-//                        alert("Restart required...");
-//                        location.reload();
-//                    }, 1000);
-//                }
-//            } else {
-//                alert('Already up to date');
-//            }
-        });
+    /**
+     * Populates the deck drop-down with all pre-defined decks.
+     */
+    function populateDeckDropDown() {
+        var selectedDeck = decks.getSelectedDeck();
+        var deckDropDown = $('#selected-deck')[0];
 
-        dom.bind('#showStats', 'click', function() {
-            var stats = mj.modules.cards.getStatesStats();
-            var output = '';
-            for (var i = 0; i < stats.length; i++) {
-                output += stats[i].state + ': ' + stats[i].count + '<br/>';
+        function addDeckToDropDown(deck) {
+            var option = document.createElement('option');
+            option.value = deck.uid;
+            option.innerHTML = deck.displayName;
+            if (!!selectedDeck && deck.uid == selectedDeck.uid) {
+                option.setAttribute('selected', 'selected');
             }
-            dom.$('#output')[0].innerHTML = output;
-        });
+            deckDropDown.appendChild(option);
+        }
+
+        if (selectedDeck === null) {
+            addDeckToDropDown({uid: '', displayName: ''});
+        }
+        mj.decks.forEach(addDeckToDropDown);
     }
-    
-    function run() {
-        if (firstRun) {
-            setup();
-            firstRun = false;
-            //parser.parse();
-        } 
+
+    /**
+     * Switches the deck in use. Only works for pre-defined decks (i.e. the ones containing a UID).
+     * If the selected deck is not imported yet, this will import it.
+     *
+     * @param {string} uid - the unique ID of the deck
+     */
+    function selectDeck(uid) {
+        var matchesUid = function(deck){ return deck.uid === uid };
+        var deck = decks.findDeck(matchesUid);
+
+        if (deck === undefined) {
+            var deckToImport = mj.decks.filter(matchesUid)[0];
+            deck = decks.importDeck(deckToImport);
+        }
+        decks.selectDeck(deck.id);
     }
-    
+
+    /**
+     * Initializes visibility and enable state of the buttons.
+     */
+    function initializeButtonsState() {
+        if (decks.getSelectedDeck() === null) {
+            // First run -> must select a deck
+            continueButton.disabled = true;
+            continueButton.style.display = 'inline';
+            backButton.style.display = 'none';
+        } else {
+            continueButton.style.display = 'none';
+            backButton.style.display = 'inline';
+        }
+    }
+
     return {
-        run : run
+        run: function() {
+            if (firstRun) {
+                setup();
+                firstRun = false;
+            }
+            initializeButtonsState();
+        }
     };
 })();

@@ -75,12 +75,23 @@ window.addEventListener('load', function() {
             "scripts/screen.game.js",
             "scripts/screen.deck-stats.js",
             "scripts/screen.top-scores.js",
+            "scripts/screen.settings.js",
             "scripts/lib/donut-chart.js",
+
+            //"scripts/tools/translate.js",
+            //"scripts/tools/data/pt_BR-translations.js",
+
+            "decks/top-pt_BR-en.js",
             "decks/top-sv-en.js"
         ],
         complete : function() {
             mj.modules.main.initializeAllModules();
-            mj.modules.debug.prepareTestDeck();
+
+            //mj.modules.translate.translationsToCards(translations); return;
+
+            if (mj.modules.decks.getSelectedDeck() == null) {
+                mj.modules.main.navigateTo('settings');
+            }
 
             // Prevents logging of debug info, unless debug is on
             if (!mj.modules.storage.load('debug')) {

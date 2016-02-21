@@ -50,15 +50,6 @@ mj.modules.debug = (function() {
 
     };
 
-    // If there's no deck stored, import and select the test deck
-    function prepareTestDeck() {
-        var selectedDeck = mj.modules.decks.getSelectedDeck();
-        if (selectedDeck === null) {
-            var deck = mj.modules.decks.importDeck(mj.decks[0]);
-            mj.modules.decks.selectDeck(deck.id);
-        }
-    }
-
     function testChooseAlternative() {
         var start = 1300;
         var end = 1875;
@@ -292,7 +283,6 @@ mj.modules.debug = (function() {
     return {
         setup: setup,
         TimeMeter: TimeMeter,
-        prepareTestDeck: prepareTestDeck,
         getStats : function() {
             return TimeMeter.getStats('CA') + ' ' + TimeMeter.getStats('D');
         },

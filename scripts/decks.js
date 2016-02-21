@@ -60,6 +60,11 @@ mj.modules.decks = (function() {
         utils = mj.modules.utils;
         Card = mj.classes.Card;
 
+        // sorts the list of decks available for importing
+        mj.decks.sort(function(deckData1, deckData2) {
+            return (deckData1.displayName < deckData2.displayName ? -1 : 1);
+        });
+
         main.bind('initialize-storage', function(){
             decks = storage.load(StorageKeys.DECKS) || [];
             updateDecks();
@@ -100,7 +105,7 @@ mj.modules.decks = (function() {
      */
     function selectDeck(deckId) {
         if (deckId !== selectedDeck) {
-            var deckIndex = findDeck(deckId);
+            var deckIndex = getDeck(deckId);
             if (deckIndex === null) {
                 throw "Unknown deck (" + deckId + ") cannot be selected";
             } else {
@@ -116,7 +121,7 @@ mj.modules.decks = (function() {
      * @return {Deck}
      */
     function getSelectedDeck() {
-        var deckIndex = findDeck(selectedDeck);
+        var deckIndex = getDeck(selectedDeck);
         return (deckIndex === null ? null : utils.copyData(decks[deckIndex]));
     }
 
@@ -126,13 +131,23 @@ mj.modules.decks = (function() {
      * @param {int} deckId
      * @return {int|null} index of the deck (in "decks") or null, if not found
      */
-    function findDeck(deckId) {
+    function getDeck(deckId) {
         for (var i = 0; i < decks.length; i++) {
             if (decks[i].id === deckId) {
                 return i;
             }
         }
         return null;
+    }
+
+    /**
+     * Returns a deck that satisfies the provided testing function, if there is one. Otherwise returns undefined.
+     *
+     * @param {function} callback - the test function to be executed on each deck
+     * @return {Deck|undefined}
+     */
+    function findDeck(callback) {
+        return decks.filter(callback)[0];
     }
 
     /**
@@ -253,6 +268,7 @@ mj.modules.decks = (function() {
     return {
         setup: setup,
         selectDeck: selectDeck,
+        findDeck: findDeck,
         getSelectedDeck: getSelectedDeck,
         importDeck: importDeck
     };
