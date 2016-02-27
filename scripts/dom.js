@@ -16,11 +16,21 @@ mj.dom = (function() {
         $(element).on(event, null, null, handler);
     }
 
+    /**
+     * Returns the scale factor for the whole screen.
+     *
+     * @return {Number}
+     */
+    function getScale() {
+        return parseFloat(document.getElementById('top-container').style.fontSize);
+    }
+
     return {
-        $ : $,
+        $: $,
         hasClass: hasClass,
         addClass: addClass,
         removeClass: removeClass,
-        bind: bind
+        bind: bind,
+        getScale: getScale
     };
 })();

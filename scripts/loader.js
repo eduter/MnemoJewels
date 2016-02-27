@@ -40,6 +40,7 @@ window.addEventListener('load', function() {
         {
             load : [
                 "scripts/lib/jquery-2.2.1.min.js",
+                "scripts/lib/spin.min.js",
                 "scripts/dom.js",
                 "scripts/main.js",
                 "scripts/screen.splash.js"
@@ -48,58 +49,56 @@ window.addEventListener('load', function() {
                 mj.modules.main.setup();
                 var img = new Image();
                 img.onload = function(){
-                    mj.modules.main.navigateTo("splash-screen");
+                    mj.modules.main.trigger('load-images', null, true);
                 };
                 img.src = 'images/jewel.svg';
+                mj.modules.main.navigateTo("splash-screen");
+
+                // loading stage 2
+                Modernizr.load([
+                    {
+                        load : [
+                            "scripts/debug.js",
+                            "scripts/classes.js",
+                            "scripts/storage.js",
+                            "scripts/game.js",
+                            "scripts/board.js",
+                            "scripts/decks.js",
+                            "scripts/cards.js",
+                            "scripts/score.js",
+                            "scripts/time.js",
+                            "scripts/display.js",
+                            "scripts/input.js",
+                            "scripts/parser.js",
+                            "scripts/utils.js",
+                            "scripts/screen.game.js",
+                            "scripts/screen.deck-stats.js",
+                            "scripts/screen.top-scores.js",
+                            "scripts/screen.settings.js",
+                            "scripts/lib/donut-chart.js",
+
+                            //"scripts/tools/translate.js",
+                            //"scripts/tools/data/pt_BR-translations.js",
+
+                            "decks/top-pt_BR-en.js",
+                            "decks/top-sv-en.js"
+                        ],
+                        complete : function() {
+                            mj.modules.main.initializeAllModules();
+                            mj.modules.main.trigger('load-scripts', null, true);
+
+                            //mj.modules.translate.translationsToCards(translations); return;
+
+                            // Prevents logging of debug info, unless debug is on
+                            if (!mj.modules.storage.load('debug')) {
+                                var noop = function(){};
+                                window.console = {log: noop, dir: noop, error: noop, group: noop, groupEnd: noop};
+                            }
+                        }
+                    }
+                ]);
             }
         }
-    ]);
-    
-    // loading stage 2
-    Modernizr.load([
-    {
-        load : [
-            "scripts/debug.js",
-            "scripts/classes.js",
-            "scripts/storage.js",
-            "scripts/game.js",
-            "scripts/board.js",
-            "scripts/decks.js",
-            "scripts/cards.js",
-            "scripts/score.js",
-            "scripts/time.js",
-            "scripts/display.js",
-            "scripts/input.js",
-            "scripts/parser.js",
-            "scripts/utils.js",
-            "scripts/screen.game.js",
-            "scripts/screen.deck-stats.js",
-            "scripts/screen.top-scores.js",
-            "scripts/screen.settings.js",
-            "scripts/lib/donut-chart.js",
-
-            //"scripts/tools/translate.js",
-            //"scripts/tools/data/pt_BR-translations.js",
-
-            "decks/top-pt_BR-en.js",
-            "decks/top-sv-en.js"
-        ],
-        complete : function() {
-            mj.modules.main.initializeAllModules();
-
-            //mj.modules.translate.translationsToCards(translations); return;
-
-            if (mj.modules.decks.getSelectedDeck() == null) {
-                mj.modules.main.navigateTo('settings');
-            }
-
-            // Prevents logging of debug info, unless debug is on
-            if (!mj.modules.storage.load('debug')) {
-                var noop = function(){};
-                window.console = {log: noop, dir: noop, error: noop, group: noop, groupEnd: noop};
-            }
-        }
-    }
     ]);
 
 }, false);

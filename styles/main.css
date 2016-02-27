@@ -14,7 +14,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     font-family : default-font;
-    color : rgb(200,200,100);
+    color: #C8C864;
 }
 
 #top-container .screen {
@@ -74,6 +74,9 @@ select {
 }
 #splash-screen .logo {
     margin-top: 2.5em;
+}
+#splash-screen .spinner {
+    position: relative;
 }
 #splash-screen .continue {
     cursor : pointer;
