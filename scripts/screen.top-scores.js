@@ -6,16 +6,16 @@ mj.screens['top-scores'] = (function() {
 
     /**
      * Reference to the tbody element where the top scores are rendered.
-     * @type {HTMLElement}
+     * @type {jQuery}
      */
-    var tableBody;
+    var $tableBody;
 
     /**
      * One-time initialization.
      */
     function setup() {
         score = mj.modules.score;
-        tableBody = mj.dom.$('#top-scores table tbody')[0];
+        $tableBody = $('#top-scores').find('table tbody');
     }
 
     /**
@@ -54,16 +54,16 @@ mj.screens['top-scores'] = (function() {
      * @param {Array.<{score: string, duration: string}>} tableData
      */
     function updateTable(tableData) {
-        var content = '';
+        $tableBody.empty();
         for (var i = 0; i < tableData.length; i++) {
             var rowData = tableData[i];
-            content += '<tr>'
-                     +   '<td>' + (i + 1) + '.</td>'
-                     +   '<td>' + rowData.score + '</td>'
-                     +   '<td>' + rowData.duration + '</td>'
-                     + '</tr>';
+            var $tr = $('<tr>');
+
+            $tr.append('<td>' + (i + 1) + '.</td>');
+            $tr.append('<td>' + rowData.score + '</td>');
+            $tr.append('<td>' + rowData.duration + '</td>');
+            $tableBody.append($tr);
         }
-        tableBody.innerHTML = content;
     }
 
     return {
