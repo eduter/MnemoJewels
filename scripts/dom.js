@@ -1,34 +1,26 @@
 mj.dom = (function() {
-    var $ = Sizzle;
-    
-    function hasClass(el, clsName) {
-        var regex = new RegExp("(^|\\s)" + clsName + "(\\s|$)");
-        return regex.test(el.className);
+
+    function hasClass(element, className) {
+        return $(element).hasClass(className);
     }
-    
-    function addClass(el, clsName) {
-        if (!hasClass(el, clsName)) {
-            el.className += " " + clsName;
-        }
+
+    function addClass(element, className) {
+        $(element).addClass(className);
     }
-    
-    function removeClass(el, clsName) {
-        var regex = new RegExp("(^|\\s)" + clsName + "(\\s|$)");
-        el.className = el.className.replace(regex, " ");
+
+    function removeClass(element, className) {
+        $(element).removeClass(className);
     }
-    
+
     function bind(element, event, handler) {
-        if (typeof element == "string") {
-            element = $(element)[0];
-        }
-        element.addEventListener(event, handler, false);
+        $(element).on(event, null, null, handler);
     }
-    
+
     return {
         $ : $,
-        hasClass : hasClass,
-        addClass : addClass,
-        removeClass : removeClass,
-        bind : bind
+        hasClass: hasClass,
+        addClass: addClass,
+        removeClass: removeClass,
+        bind: bind
     };
 })();

@@ -39,7 +39,7 @@ window.addEventListener('load', function() {
     Modernizr.load([
         {
             load : [
-                "scripts/lib/sizzle.js",
+                "scripts/lib/jquery-2.2.1.min.js",
                 "scripts/dom.js",
                 "scripts/main.js",
                 "scripts/screen.splash.js"

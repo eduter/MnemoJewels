@@ -22,8 +22,8 @@ mj.screens['settings'] = (function() {
             } else {
                 continueButton.disabled = false;
                 selectDeck(this.value);
-                $('#selected-deck option[value=""]').forEach(function(option){
-                    option.parentNode.removeChild(option);
+                $('#selected-deck option[value=""]').each(function(){
+                    $(this).remove();
                 });
             }
         });
