@@ -157,17 +157,19 @@ mj.modules.decks = (function() {
      * @return {Deck} - the info about the imported deck
      */
     function importDeck(deckData) {
-        var deck = createDeck(generateNewId(), deckData);
+        return storage.transaction(function(){
+            var deck = createDeck(generateNewId(), deckData);
 
-        decks.push(deck);
-        storage.store(StorageKeys.DECKS, decks);
+            decks.push(deck);
+            storage.store(StorageKeys.DECKS, decks);
 
-        for (var cardId = 0; cardId < deck.size; cardId++) {
-            var cardData = deckData.cards[cardId];
-            var card = new Card(cardId, cardData[0], cardData[1]);
-            storage.storeCard(deck.id, card);
-        }
-        return utils.copyData(deck);
+            for (var cardId = 0; cardId < deck.size; cardId++) {
+                var cardData = deckData.cards[cardId];
+                var card = new Card(cardId, cardData[0], cardData[1]);
+                storage.storeCard(deck.id, card);
+            }
+            return utils.copyData(deck);
+        });
     }
 
     /**

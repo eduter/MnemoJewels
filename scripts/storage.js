@@ -149,12 +149,14 @@ mj.modules.storage = (function() {
      * Inside a transaction, with multiple calls to store() or remove(), either all of them are executed, or none of them (case an exception is raised at any point during the execution of the callback).
      *
      * @param {function} callback
+     * @return {*} the return from the callback
      */
     function transaction(callback) {
         insideTransaction = true;
         try {
-            callback();
+            var returnValue = callback();
             commit();
+            return returnValue;
         } catch(e) {
             rollback();
             throw e;
