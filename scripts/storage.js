@@ -24,6 +24,7 @@ mj.modules.storage = (function() {
      */
     var migrations = [
         function(){
+            // from prototype to first "versioned" version
             var decks = load('decks') || [];
             for (var deckId in decks) {
                 if (decks.hasOwnProperty(deckId)) {
@@ -37,6 +38,20 @@ mj.modules.storage = (function() {
             }
             store('decks', decks);
             store('topScores', load('topScores') || []);
+        },
+        function(){
+            // from "each card as its own item" to "all cards from a deck as only one item" (because of iOS + WebKit)
+            load('decks').forEach(function(deck) {
+                var cards = [];
+                for (var cardId = 0; cardId < deck.size; cardId++) {
+                    var cardKey = 'd' + deck.id + 'c' + cardId;
+                    var cardData = load(cardKey);
+                    var card = mj.classes.Card.unserialize(cardId, cardData);
+                    cards.push(card);
+                    remove(cardKey);
+                }
+                mj.modules.decks.storeCards(cards, deck.id);
+            });
         }
     ];
 
@@ -99,49 +114,6 @@ mj.modules.storage = (function() {
             backupItem(fullKey);
         }
         localStorage.removeItem(fullKey);
-    }
-
-    /**
-     * Stores a card in the local storage.
-     *
-     * @param {int} deckId
-     * @param {Card} card
-     */
-    function storeCard(deckId, card) {
-        store(getCardKey(deckId, card.id), card.serialize());
-    }
-
-    /**
-     * Loads a card from the local storage.
-     *
-     * @param {int} deckId
-     * @param {int} cardId
-     * @return {Card|null}
-     */
-    function loadCard(deckId, cardId) {
-        var cardData = load(getCardKey(deckId, cardId));
-        return (cardData === null ? null : mj.classes.Card.unserialize(cardId, cardData));
-    }
-
-    /**
-     * Removes a card from the local storage.
-     *
-     * @param {int} deckId
-     * @param {int} cardId
-     */
-    function removeCard(deckId, cardId) {
-        remove(getCardKey(deckId, cardId));
-    }
-
-    /**
-     * Calculates the key used to store a card.
-     *
-     * @param {int} deckId
-     * @param {int} cardId
-     * @return {string}
-     */
-    function getCardKey(deckId, cardId) {
-        return 'd' + deckId + 'c' + cardId;
     }
 
     /**
@@ -290,9 +262,6 @@ mj.modules.storage = (function() {
         store: store,
         load: load,
         remove: remove,
-        storeCard: storeCard,
-        loadCard: loadCard,
-        removeCard: removeCard,
         transaction: transaction,
         importData: importData,
         exportData: exportData

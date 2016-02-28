@@ -73,6 +73,11 @@ mj.modules.main = (function() {
                 }
             }
         });
+
+        // handles closing browser's tab/window or navigating away from MJ
+        $(window).on('unload beforeunload', function() {
+            trigger('exitApp', null, true);
+        });
     }
 
     /**
