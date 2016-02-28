@@ -16,10 +16,10 @@ mj.modules.cards = (function() {
     var ACCEPTABLE_MISMATCHES = 30;
 
     /**
-     * Map of all cards from the selected deck, indexed by their IDs.
-     * @type {Object.<int, Card>}
+     * List of all cards from the selected deck (their index is also their ID).
+     * @type {Array.<Card>}
      */
-    var allCards = null;
+    var allCards = [];
 
     /**
      * Index of all possible "back sides" for each "front side".
@@ -163,15 +163,20 @@ mj.modules.cards = (function() {
 
         var selectedDeck = decks.getSelectedDeck();
         if (selectedDeck !== null) {
-            loadCards(selectedDeck);
+            loadDeck(selectedDeck);
         }
 
-        main.bind('deckSelected', function(eventData){loadCards(eventData.deck)});
+        main.bind('deckSelected', function(eventData){loadDeck(eventData.deck)});
         main.bind('match', rescheduleMatch);
         main.bind('mismatch', rescheduleMismatch);
         main.bind('gameOver', reindexCardInGame);
+        main.bind('gameOver', persistCards);
+        main.bind('exitApp', persistCards);
     }
 
+    /**
+     * Adds back to the index all cards which were on the board when the game ended.
+     */
     function reindexCardInGame() {
         while (cardsInGame.length > 0) {
             moveToIndex(cardsInGame[0]);
@@ -179,26 +184,29 @@ mj.modules.cards = (function() {
     }
 
     /**
+     * Persists the state of all cards of the selected deck.
+     */
+    function persistCards() {
+        if (deck !== null) {
+            decks.storeCards(allCards);
+        }
+    }
+
+    /**
      * Loads all cards from the specified deck.
      * @param {Deck} deckToLoad
      */
-    function loadCards(deckToLoad) {
+    function loadDeck(deckToLoad) {
         unloadDeck();
         deck = deckToLoad;
-        for (var cardId = 0; cardId < deck.size; cardId++) {
-            var card = storage.loadCard(deck.id, cardId);
-            allCards[card.id] = card;
+        allCards = decks.loadCards(deckToLoad.id);
+        allCards.forEach(function(card) {
             indexes[card.state].push(card);
             if (card.isMismatched) {
                 mismatchCount++;
             }
-        }
-        for (var s in States) {
-            if (States.hasOwnProperty(s)) {
-                var state = States[s];
-                indexes[state].sort(cmpFuncs[state]);
-            }
-        }
+        });
+        sortIndexes();
         updateWordMappings();
         updateNormalizations();
     }
@@ -208,13 +216,32 @@ mj.modules.cards = (function() {
      */
     function unloadDeck() {
         deck = null;
-        allCards = {};
+        allCards = [];
         mismatchCount = 0;
         updateWordMappings();
         updateNormalizations();
+        clearIndexes();
+    }
+
+    /**
+     * Empties all state indexes.
+     */
+    function clearIndexes() {
         for (var s in States) {
             if (States.hasOwnProperty(s)) {
                 indexes[States[s]] = [];
+            }
+        }
+    }
+
+    /**
+     * Sorts all state indexes using their specific compare functions.
+     */
+    function sortIndexes() {
+        for (var s in States) {
+            if (States.hasOwnProperty(s)) {
+                var state = States[s];
+                indexes[state].sort(cmpFuncs[state]);
             }
         }
     }
@@ -612,7 +639,6 @@ mj.modules.cards = (function() {
                 card.setSchedule(now, Math.floor(now + minInterval));
             }
             card.match();
-            storage.storeCard(deck.id, card);
         }
         card.suspend(now + groupSize * 30 * TimeUnits.SECOND);
         moveToIndex(card);
@@ -620,7 +646,6 @@ mj.modules.cards = (function() {
     }
 
     function debugReview() {
-        // TODO: add back to index the cards which are on the board when game is over
         var learning = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
         var i = iterators.reviewing;
         var l = 0;
@@ -657,7 +682,6 @@ mj.modules.cards = (function() {
             card = allCards[mismatchedCards[m]];
             card.setSchedule(now, nextRep);
             card.mismatch();
-            storage.storeCard(deck.id, card);
         }
         for (var i = 0; i < cardsInGroup.length; i++) {
             card = cardsInGroup[i];

@@ -73,6 +73,11 @@ mj.modules.main = (function() {
                 }
             }
         });
+
+        // handles closing browser's tab/window or navigating away from MJ
+        $(window).on('unload beforeunload', function() {
+            trigger('exitApp', null, true);
+        });
     }
 
     /**
@@ -125,6 +130,30 @@ mj.modules.main = (function() {
     }
 
     /**
+     * Convenience method to trigger a callback once all (one-time) events from a list are triggered.
+     *
+     * @param {Array.<string>} events - the names of all events to wait for
+     * @param {function} callback
+     */
+    function waitFor(events, callback) {
+        var stillWaitingFor = events.slice();
+
+        for (var i = 0; i < events.length; i++) {
+            bind(events[i], (function(eventName) {
+                return function(){
+                    var index = stillWaitingFor.indexOf(eventName);
+                    if (index >= 0) {
+                        stillWaitingFor.splice(index, 1);
+                        if (stillWaitingFor.length == 0) {
+                            callback();
+                        }
+                    }
+                };
+            })(events[i]));
+        }
+    }
+
+    /**
      * Notifies all handlers attached to an event.
      *
      * @param {string} eventName - name of the event being triggered
@@ -165,6 +194,7 @@ mj.modules.main = (function() {
         initializeAllModules: initializeAllModules,
         bind: bind,
         trigger: trigger,
+        waitFor: waitFor,
         navigateTo: navigateTo
     };
 })();

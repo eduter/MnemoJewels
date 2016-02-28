@@ -6,12 +6,18 @@ mj.modules.debug = (function() {
 
         methods: [],
 
+        now: (window['performance'] && typeof window['performance'].now == 'function' ? function () {
+            return window['performance'].now()
+        } : function () {
+            return Date.now()
+        }),
+
         start: function(name) {
-            this.running[name] = window.performance.now();
+            this.running[name] = this.now();
         },
 
         stop: function(name) {
-            var time = window.performance.now() - this.running[name];
+            var time = this.now() - this.running[name];
             this.running[name] = null;
             var method = this.getByName(name);
             method.total += time;

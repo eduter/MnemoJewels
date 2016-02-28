@@ -7,6 +7,7 @@ mj.modules.decks = (function() {
      * Keys this module uses from the storage.
      */
     var StorageKeys = {
+        DECK_PREFIX: 'deck.',
         SELECTED_DECK: 'selectedDeck',
         DECKS: 'decks'
     };
@@ -157,17 +158,43 @@ mj.modules.decks = (function() {
      * @return {Deck} - the info about the imported deck
      */
     function importDeck(deckData) {
-        var deck = createDeck(generateNewId(), deckData);
+        return storage.transaction(function(){
+            var deck = createDeck(generateNewId(), deckData);
+            var cards = deckData.cards.map(function(cardData, cardId) {
+                return new Card(cardId, cardData[0], cardData[1]);
+            });
 
-        decks.push(deck);
-        storage.store(StorageKeys.DECKS, decks);
+            decks.push(deck);
+            storage.store(StorageKeys.DECKS, decks);
+            storeCards(cards, deck.id);
+            return utils.copyData(deck);
+        });
+    }
 
-        for (var cardId = 0; cardId < deck.size; cardId++) {
-            var cardData = deckData.cards[cardId];
-            var card = new Card(cardId, cardData[0], cardData[1]);
-            storage.storeCard(deck.id, card);
-        }
-        return utils.copyData(deck);
+    /**
+     * Stores the list of cards of the specified deck.
+     *
+     * @param {Array.<Card>} cards - the list of cards (their index must be their ID)
+     * @param {int} [deckId] - if a deck ID is not specified, it defaults to the currently selected deck
+     */
+    function storeCards(cards, deckId) {
+        var serializedCards = cards.map(function(card) {
+            return card.serialize();
+        });
+        deckId = (deckId === undefined ? selectedDeck : deckId);
+        mj.modules.storage.store(StorageKeys.DECK_PREFIX + deckId, serializedCards);
+    }
+
+    /**
+     * Loads the list of cards of the specified deck.
+     *
+     * @param {int} deckId
+     * @return {Array.<Card>}
+     */
+    function loadCards(deckId) {
+        return storage.load(StorageKeys.DECK_PREFIX + deckId).map(function(serializedCard, cardId) {
+            return Card.unserialize(cardId, serializedCard);
+        });
     }
 
     /**
@@ -177,17 +204,9 @@ mj.modules.decks = (function() {
      * @param {DeckData} deckData - the updated deck data
      */
     function updateDeck(deck, deckData) {
-        var index = indexCardsByContent(deck);
-
         console.log('updating deck ' + deck.uid);
-
         storage.transaction(function(){
-            var cardId;
-
-            // remove all old cards
-            for (cardId = 0; cardId < deck.size; cardId++) {
-                storage.removeCard(deck.id, cardId);
-            }
+            var index = indexCardsByContent(deck);
 
             // update deck metadata on the deck list
             decks = decks.map(function(d){
@@ -199,18 +218,17 @@ mj.modules.decks = (function() {
             storage.store(StorageKeys.DECKS, decks);
 
             // add new cards with existing learning data, if any
-            for (cardId = 0; cardId < deckData.cards.length; cardId++) {
-                var front = deckData.cards[cardId][0];
-                var back = deckData.cards[cardId][1];
-                var card;
+            var cards = deckData.cards.map(function(cardData, cardId) {
+                var front = cardData[0];
+                var back = cardData[1];
 
                 if (front in index && back in index[front]) {
-                    card = Card.unserialize(cardId, index[front][back]);
+                    return Card.unserialize(cardId, index[front][back]);
                 } else {
-                    card = new Card(cardId, front, back);
+                    return new Card(cardId, front, back);
                 }
-                storage.storeCard(deck.id, card);
-            }
+            });
+            storeCards(cards, deck.id);
         });
     }
 
@@ -241,13 +259,13 @@ mj.modules.decks = (function() {
      */
     function indexCardsByContent(deck) {
         var index = {};
-        for (var id = 0; id < deck.size; id++) {
-            var card = storage.loadCard(deck.id, id);
+
+        loadCards(deck.id).forEach(function(card) {
             if (!(card.front in index)) {
                 index[card.front] = {};
             }
             index[card.front][card.back] = card.serialize();
-        }
+        });
         return index;
     }
 
@@ -270,6 +288,8 @@ mj.modules.decks = (function() {
         selectDeck: selectDeck,
         findDeck: findDeck,
         getSelectedDeck: getSelectedDeck,
-        importDeck: importDeck
+        importDeck: importDeck,
+        storeCards: storeCards,
+        loadCards: loadCards
     };
 })();
