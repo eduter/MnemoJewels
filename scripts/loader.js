@@ -78,8 +78,9 @@ window.addEventListener('load', function() {
                             "scripts/lib/donut-chart.js",
 
                             //"scripts/tools/translate.js",
-                            //"scripts/tools/data/pt_BR-translations.js",
+                            //"scripts/tools/data/no-translations.js",
 
+                            "decks/top-no-en.js",
                             "decks/top-pt_BR-en.js",
                             "decks/top-sv-en.js"
                         ],
