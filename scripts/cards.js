@@ -80,6 +80,7 @@ mj.modules.cards = (function() {
      * @type {Object.<string, function>}
      */
     var normalizationFunctions = {
+        no: function(word){ return word.toLowerCase().replace(/å/g, 'a').replace(/ø/g, 'o') },
         sv: function(word){ return word.toLowerCase().replace(/[äå]/g, 'a').replace(/ö/g, 'o') }
     };
 
