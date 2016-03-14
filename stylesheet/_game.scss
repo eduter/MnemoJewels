@@ -1,0 +1,63 @@
+/* Game Screen */
+
+#board {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-spacing: 0;
+
+    td {
+        border: {
+            style: solid;
+            width: 0.1em;
+            color: rgba(0, 0, 0, 0.5);
+            radius: 0.5em;
+        }
+        background: {
+            image: url("../images/jewel.svg");
+            size: 100% 100%;
+        }
+        height: 1.3em;
+        font-size: 18em;
+        text-align: center;
+        color: #000;
+        width: 50%;
+        padding: 0.4em;
+
+        &.selected {
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+
+        &.group1  { background-color: blue }
+        &.group2  { background-color: green }
+        &.group3  { background-color: orange }
+        &.group4  { background-color: purple }
+        &.group5  { background-color: red }
+        &.group6  { background-color: yellow }
+        &.group7  { background-color: navy }
+        &.group8  { background-color: #093 }
+        &.group9  { background-color: #750 }
+        &.group10 { background-color: #505 }
+        &.group11 { background-color: #500 }
+        &.group12 { background-color: #880 }
+    }
+}
+
+#overlay {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    z-index: 32000;
+    width: 100%;
+    height: 415em;
+    background-color: #000;
+    opacity: 0.5;
+
+    &.visible {
+        display: block;
+    }
+}
+
+#stats {
+    font-size: 16em;
+}

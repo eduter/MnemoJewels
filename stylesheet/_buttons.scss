@@ -1,0 +1,36 @@
+button {
+    font: {
+        size: 20em;
+        family: default-font;
+        weight: bold;
+    }
+    background: {
+        image: url("../images/jewel.svg");
+        size: 9em 2.03em;
+        position: center;
+    }
+    width: 9em;
+    height: 2em;
+    border: solid 0.1em rgba(0, 0, 0, 0.5);
+    border-radius: 0.4em;
+
+    &:active, &:hover {
+        color: #333;
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    &.continue {
+        background-color: green;
+    }
+
+    &.back {
+        background-color: red;
+    }
+
+    &.bt_blue   { background-color: blue   }
+    &.bt_green  { background-color: green  }
+    &.bt_red    { background-color: red    }
+    &.bt_yellow { background-color: yellow }
+    &.bt_purple { background-color: purple }
+    &.bt_orange { background-color: orange }
+}
