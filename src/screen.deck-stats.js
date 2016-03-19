@@ -3,8 +3,6 @@ import cards from './cards'
 import '../lib/donut-chart'
 
 
-var firstRun = true;
-
 /**
  * Map containing the colors to be used for each card state in the chart.
  * @type {Object.<string, string>}
@@ -46,12 +44,8 @@ function setup() {
 /**
  * Updates the screen, when it is displayed.
  */
-function run() {
-    if (firstRun) {
-        setup();
-        firstRun = false;
-    }
-    var stats = cards.getStatesStats();
+function update() {
+    let stats = cards.getStatesStats();
     updateLegend(stats);
     updateChart(stats);
 }
@@ -125,5 +119,6 @@ function updateChart(stats) {
 }
 
 export default {
-    run: run
+    setup: setup,
+    update: update
 };

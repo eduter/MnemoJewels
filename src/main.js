@@ -1,7 +1,5 @@
 var $ = require('jquery');
 
-var history = [];
-var currentScreen = null;
 
 /**
  * Event handlers indexed by event name.
@@ -16,45 +14,6 @@ var eventHandlers = {};
  */
 var oneTimeEvents = {};
 
-function showScreen(screenId) {
-    console.log(`showScreen(${screenId})`);
-    // run the screen module setup, if any
-    if (mj.screens[screenId] && mj.screens[screenId].run) {
-        mj.screens[screenId].run();
-    }
-    // display new screen
-    getScreen(screenId).addClass('active');
-}
-
-function hideScreen(screenId) {
-    getScreen(screenId).removeClass('active');
-}
-
-/**
- * Returns the screen with the specified ID.
- *
- * @param {string} screenId
- * @returns {jQuery}
- */
-function getScreen(screenId) {
-    return $('#' + screenId);
-}
-
-function navigateTo(screenId) {
-    if (currentScreen) {
-        hideScreen(currentScreen);
-        history.push(currentScreen);
-    }
-    currentScreen = screenId;
-    showScreen(currentScreen);
-}
-
-function back() {
-    hideScreen(currentScreen);
-    currentScreen = history.pop();
-    showScreen(currentScreen);
-}
-
 function setup() {
     // disable native touchmove behavior to prevent overscroll
     $(document).on('touchmove', event => event.preventDefault());
@@ -67,17 +26,6 @@ function setup() {
         }, 0);
     }
 
-    // handle navigation button clicks
-    $('body').on('click', 'button.nav, button.back', function(event) {
-        let $target = $(event.target);
-
-        if ($target.hasClass('back')) {
-            back();
-        } else {
-          navigateTo($target.attr('name'));
-        }
-    });
-
     // handles closing browser's tab/window or navigating away from MJ
     $(window).on('unload beforeunload', function () {
         trigger('exitApp', null, true);
@@ -85,7 +33,6 @@ function setup() {
 
     initializeDeckList();
     initializeAllModules();
-    initializeScreenList();
 }
 
 /**
@@ -112,15 +59,6 @@ function initializeAllModules() {
         }
     }
     window.mj.modules = modules;
-}
-
-function initializeScreenList() {
-    window.mj.screens = {
-        'game': require('./screen.game').default,
-        'deck-stats': require('./screen.deck-stats').default,
-        'top-scores': require('./screen.top-scores').default,
-        'settings': require('./screen.settings').default
-    };
 }
 
 function initializeDeckList() {
@@ -229,6 +167,5 @@ export default {
     setup: setup,
     bind: bind,
     trigger: trigger,
-    waitFor: waitFor,
-    navigateTo: navigateTo
+    waitFor: waitFor
 };

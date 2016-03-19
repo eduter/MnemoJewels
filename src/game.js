@@ -1,4 +1,5 @@
 import main from './main'
+import navigation from './navigation'
 import time from './time'
 import board from './board'
 import cards from './cards'
@@ -53,7 +54,7 @@ import TimeMeter from './TimeMeter'
     function gameOver() {
         display.redraw(board.getJewels());
         alert('Game Over!');
-        main.navigateTo('main-menu');
+        navigation.navigateTo('main-menu');
         main.trigger('gameOver', {
             score: score.getScore(),
             gameStart: gameStart,

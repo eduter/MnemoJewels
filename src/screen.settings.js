@@ -1,7 +1,6 @@
 import $ from 'jquery'
 import decks from './decks'
 
-var firstRun = true;
 var continueButton, backButton;
 
 var $deckDropDown = $('#selected-deck');
@@ -14,8 +13,6 @@ function setup() {
     continueButton = $settings.find('button.continue')[0];
     backButton = $settings.find('button.back')[0];
 
-    populateDeckDropDown();
-
     $deckDropDown.change(function() {
         if (this.value == '') {
             continueButton.disabled = true;
@@ -27,6 +24,14 @@ function setup() {
             });
         }
     });
+}
+
+/**
+ * Updates the screen before displaying it.
+ */
+function update() {
+    populateDeckDropDown();
+    initializeButtonsState();
 }
 
 /**
@@ -45,6 +50,7 @@ function populateDeckDropDown() {
         $deckDropDown.append(option);
     }
 
+    $deckDropDown.empty();
     if (selectedDeck === null) {
         addDeckToDropDown({uid: '', displayName: ''});
     }
@@ -84,11 +90,6 @@ function initializeButtonsState() {
 }
 
 export default {
-    run: function() {
-        if (firstRun) {
-            setup();
-            firstRun = false;
-        }
-        initializeButtonsState();
-    }
+    setup: setup,
+    update: update
 };

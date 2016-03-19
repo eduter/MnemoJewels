@@ -1,5 +1,6 @@
 require('../stylesheet/additional.scss');
 import main from './main';
+import navigation from './navigation';
 import decks from './decks';
 import spinner from './spinner';
 var $ = require('jquery');
@@ -12,9 +13,9 @@ img.onload = function () {
     $screen.click(function () {
         $screen.hide();
         if (decks.getSelectedDeck() == null) {
-            main.navigateTo('settings');
+            navigation.navigateTo('settings');
         } else {
-            main.navigateTo('main-menu');
+            navigation.navigateTo('main-menu');
         }
     });
     $screen.find('.continue').removeClass('hidden');
