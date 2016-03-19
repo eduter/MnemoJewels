@@ -1,9 +1,10 @@
 import $ from 'jquery'
-import dom from './dom'
 import decks from './decks'
 
 var firstRun = true;
 var continueButton, backButton;
+
+var $deckDropDown = $('#selected-deck');
 
 /**
  * Initializes the Settings screen.
@@ -15,13 +16,13 @@ function setup() {
 
     populateDeckDropDown();
 
-    dom.bind('#selected-deck', 'change', function() {
+    $deckDropDown.change(function() {
         if (this.value == '') {
             continueButton.disabled = true;
         } else {
             continueButton.disabled = false;
             selectDeck(this.value);
-            $('#selected-deck').find('option[value=""]').each(function(){
+            $deckDropDown.find('option[value=""]').each(function(){
                 $(this).remove();
             });
         }
@@ -33,7 +34,6 @@ function setup() {
  */
 function populateDeckDropDown() {
     var selectedDeck = decks.getSelectedDeck();
-    var deckDropDown = $('#selected-deck')[0];
 
     function addDeckToDropDown(deck) {
         var option = document.createElement('option');
@@ -42,7 +42,7 @@ function populateDeckDropDown() {
         if (!!selectedDeck && deck.uid == selectedDeck.uid) {
             option.setAttribute('selected', 'selected');
         }
-        deckDropDown.appendChild(option);
+        $deckDropDown.append(option);
     }
 
     if (selectedDeck === null) {

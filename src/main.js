@@ -1,4 +1,3 @@
-import dom from './dom.js';
 var $ = require('jquery');
 
 var history = [];
@@ -24,15 +23,21 @@ function showScreen(screenId) {
         mj.screens[screenId].run();
     }
     // display new screen
-    dom.addClass(getScreen(screenId), 'active');
+    getScreen(screenId).addClass('active');
 }
 
 function hideScreen(screenId) {
-    dom.removeClass(getScreen(screenId), 'active');
+    getScreen(screenId).removeClass('active');
 }
 
+/**
+ * Returns the screen with the specified ID.
+ *
+ * @param {string} screenId
+ * @returns {jQuery}
+ */
 function getScreen(screenId) {
-    return $('#' + screenId)[0];
+    return $('#' + screenId);
 }
 
 function navigateTo(screenId) {
@@ -52,9 +57,7 @@ function back() {
 
 function setup() {
     // disable native touchmove behavior to prevent overscroll
-    dom.bind(document, 'touchmove', function (event) {
-        event.preventDefault();
-    });
+    $(document).on('touchmove', event => event.preventDefault());
 
     // hide the address bar on Android devices
     if (/Android/.test(navigator.userAgent)) {
@@ -65,13 +68,13 @@ function setup() {
     }
 
     // handle navigation button clicks
-    dom.bind('body', 'click', function (e) {
-        if (e.target.nodeName.toLowerCase() === 'button') {
-            if (dom.hasClass(e.target, 'back')) {
-                back();
-            } else if (dom.hasClass(e.target, 'nav')) {
-                navigateTo(e.target.getAttribute('name'));
-            }
+    $('body').on('click', 'button.nav, button.back', function(event) {
+        let $target = $(event.target);
+
+        if ($target.hasClass('back')) {
+            back();
+        } else {
+          navigateTo($target.attr('name'));
         }
     });
 
