@@ -1,9 +1,9 @@
 // TODO: Refactor this whole module. This mess with the events might be what makes the game so slow on Safari Mobile.
 
+import constants from './constants'
 import $ from 'jquery'
 
 
-var settings = mj.settings;
 var inputHandlers = null;
 var fmLastStart = null;
 
@@ -46,14 +46,14 @@ function trigger(action) {
 
 function handleClick(event, control, pbStart, click) {
     // is any action bound to this input control?
-    var action = settings.controls[control];
+    var action = constants.controls[control];
     if (!action) {
         return;
     }
 
     var moTarget = (control == 'TOUCH' ? event.targetTouches[0].target : event.target);
     var miCol = moTarget.cellIndex;
-    var miRow = settings.NUM_ROWS - moTarget.parentNode.rowIndex - 1;
+    var miRow = constants.NUM_ROWS - moTarget.parentNode.rowIndex - 1;
 
     if (pbStart) {
         fmLastStart = {row: miRow, col: miCol};
@@ -72,8 +72,8 @@ function handleClick(event, control, pbStart, click) {
     relX = click.clientX - rect.left;
     relY = click.clientY - rect.top;
     // jewel coordinates
-    jewelX = Math.floor(relX / rect.width * settings.cols);
-    jewelY = Math.floor(relY / rect.height * settings.rows);
+    jewelX = Math.floor(relX / rect.width * constants.cols);
+    jewelY = Math.floor(relY / rect.height * constants.rows);
     // trigger functions bound to action
     trigger(action, jewelX, jewelY);
     // prevent default click behavior

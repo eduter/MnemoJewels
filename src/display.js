@@ -1,3 +1,4 @@
+import constants from './constants'
 import $ from 'jquery'
 import main from './main'
 import board from './board'
@@ -6,7 +7,7 @@ import game from './game'
 import TimeMeter from './TimeMeter'
 
 var foBoard = null;
-var NUM_ROWS = mj.settings.NUM_ROWS;
+var NUM_ROWS = constants.NUM_ROWS;
 var stats = null;
 
 var redrawIntervalId;

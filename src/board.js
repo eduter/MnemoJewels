@@ -1,3 +1,4 @@
+import constants from './constants'
 import $ from 'jquery'
 import main from './main'
 import cards from './cards'
@@ -6,8 +7,6 @@ import time from './time'
 import utils from './utils'
 import Jewel from './Jewel'
 
-// Aliases
-var settings = mj.settings;
 
 /**
  * Overlay that prevents the user from selecting jewels during the penalty time after a mismatch.
@@ -61,7 +60,7 @@ function addNewGroup(groupSize) {
  * Adds a new group to the board, containing the default number of cards.
  */
 function addDefaultGroup() {
-    addNewGroup(settings.DEFAULT_GROUP_SIZE);
+    addNewGroup(constants.DEFAULT_GROUP_SIZE);
 }
 
 /**
@@ -91,7 +90,7 @@ function addGroup(cards) {
         backJewels.push(new Jewel(groupId, card, false));
     }
     while (frontJewels.length) {
-        if (getNumCards() < settings.NUM_ROWS) {
+        if (getNumCards() < constants.NUM_ROWS) {
             faJewels[0].push(utils.randomPop(frontJewels));
             faJewels[1].push(utils.randomPop(backJewels));
         } else {
@@ -182,7 +181,7 @@ function mismatch(cardId1, cardId2, selectionTime) {
     var thinkingTime = selectionTime - Math.max(fiLastSelectionTime, fmGroupCreationTime[groupId]);
 
     $overlay.show();
-    setTimeout(() => $overlay.hide(), settings.MISMATCH_PENALTY_TIME);
+    setTimeout(() => $overlay.hide(), constants.MISMATCH_PENALTY_TIME);
 
     removeGroup(groupId);
     addNewGroup(cardsInGroup.length);
