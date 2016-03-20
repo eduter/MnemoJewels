@@ -33,11 +33,11 @@ var averageThinkingTimes = [
 
 var intervalBetweenGroups;
 
-function setup() {
+(function setup() {
     main.bind('match', onMatch);
     main.bind('mismatch', onMismatch);
     main.bind('scoreUp', onScoreUp);
-}
+})();
 
 function startGame() {
     var t = cards.getTotalCards();
@@ -133,16 +133,15 @@ function getAverageThinkingTime() {
 
 // expose public methods
 export default {
-    setup : setup,
-    startGame : startGame,
-    gameOver : gameOver,
-    selectJewel : selectJewel,
-    redraw : redraw,
-    getScopeSize : getScopeSize,
+    startGame: startGame,
+    gameOver: gameOver,
+    selectJewel: selectJewel,
+    redraw: redraw,
+    getScopeSize: getScopeSize,
     getLevel: function(){ return level },
     getDifficulty: getDifficulty,
-    getIntervalBetweenGroups : getIntervalBetweenGroups,
-    getStats : function() {
+    getIntervalBetweenGroups: getIntervalBetweenGroups,
+    getStats: function() {
         return TimeMeter.getStats('CA') + ' '
               + TimeMeter.getStats('D')
               + ' 1st: ' + Math.round(100 * cards.probabilityLearningFirstCard())

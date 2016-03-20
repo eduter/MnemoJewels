@@ -13,7 +13,7 @@ import Jewel from './Jewel'
  *
  * @type {jQuery}
  */
-var $overlay = null; // TODO: this doesn't belong in this module
+var $overlay = $('#overlay'); // TODO: this doesn't belong in this module
 
 var faJewels = [[],[]]; // array of 2 columns, each containing Jewel objects
 var faAvailableGroupIds = [];
@@ -26,13 +26,6 @@ var fiLastSelectionTime = null;
  * @type {number}
  */
 var intervalId = null;
-
-/**
- * Module setup.
- */
-function setup() {
-    $overlay = $('#overlay');
-}
 
 /**
  * Initializes the board for a new game.
@@ -285,9 +278,8 @@ function getSelectedJewel() {
 }
 
 export default {
-    setup : setup,
-    initialize : initialize,
-    selectJewel : selectJewel,
-    getJewels : getJewels,
-    getSelectedJewel : getSelectedJewel
+    initialize: initialize,
+    selectJewel: selectJewel,
+    getJewels: getJewels,
+    getSelectedJewel: getSelectedJewel
 };

@@ -28,15 +28,15 @@ var consecutiveMatches = 0;
  */
 var topScores = [];
 
-function setup() {
-    main.bind('initialize-storage', function(){
+(function setup() {
+    main.bind('storageReady', function(){
         topScores = storage.load('topScores') || [];
     });
     main.bind('gameStart', onGameStart);
     main.bind('gameOver', updateTopScores);
     main.bind('match', onMatch);
     main.bind('mismatch', onMismatch);
-}
+})();
 
 function onGameStart() {
     score = 0;
@@ -129,7 +129,6 @@ function getTopScores() {
 }
 
 export default {
-    setup: setup,
     getScore: function(){ return score },
     getTopScores: getTopScores,
     MAX_TOP_SCORES: MAX_TOP_SCORES

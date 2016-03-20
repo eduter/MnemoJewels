@@ -2,7 +2,6 @@ require('../stylesheet/initial.scss');
 import spinner from './spinner'
 
 window.mj = {
-    modules: {},
     decks: []
 };
 

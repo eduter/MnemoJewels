@@ -39,7 +39,7 @@ function setup() {
  * Initializes all modules and triggers the initialize event for each.
  */
 function initializeAllModules() {
-    var modules = {
+    let modules = {
         board: require('./board').default,
         cards: require('./cards').default,
         decks: require('./decks').default,
@@ -50,15 +50,12 @@ function initializeAllModules() {
         time: require('./time').default,
         utils: require('./utils').default
     };
-    for (var moduleName in modules) {
-        if (moduleName != 'main' && modules.hasOwnProperty(moduleName)) {
-            if (typeof modules[moduleName].setup == 'function') {
-                modules[moduleName].setup();
-            }
-            trigger('initialize-' + moduleName, null, true);
+    Object.keys(modules).forEach(function(moduleName) {
+        if (typeof(modules[moduleName].setup) === 'function') {
+            modules[moduleName].setup();
         }
-    }
-    window.mj.modules = modules;
+        trigger(`${moduleName}Ready`, null, true);
+    });
 }
 
 function initializeDeckList() {

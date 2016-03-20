@@ -75,13 +75,22 @@ var cardsInGame = [];
  * Compare functions for sorting the indexes.
  * @type {Object.<State, function>}
  */
-var cmpFuncs = {};
+var cmpFuncs = {
+    [States.NEW]: cmpId,
+    [States.LEARNING]: cmpRelativeScheduling,
+    [States.KNOWN]: cmpRelativeScheduling,
+    [States.LAPSE]: cmpNextRep
+};
 
 /**
  * Map with all available iterators.
  * @type {Object.<string, Iterator>}
  */
-var iterators = {};
+var iterators = {
+    learning    : new Iterator([States.LAPSE, States.NEW     , States.LEARNING, States.KNOWN]),
+    reviewing   : new Iterator([States.LAPSE, States.LEARNING, States.KNOWN   , States.NEW  ]),
+    alternatives: new Iterator([States.KNOWN, States.LEARNING, States.LAPSE   , States.NEW  ])
+};
 
 /**
  * Language-specific functions to normalize words before they are compared.
@@ -145,21 +154,10 @@ function Iterator(priorities) {
 /**
  * Initializes the module.
  */
-function setup() {
+(function setup() {
+    let selectedDeck = decks.getSelectedDeck();
+
     unloadDeck();
-
-    cmpFuncs[States.NEW] = cmpId;
-    cmpFuncs[States.LEARNING] = cmpRelativeScheduling;
-    cmpFuncs[States.KNOWN] = cmpRelativeScheduling;
-    cmpFuncs[States.LAPSE] = cmpNextRep;
-
-    iterators = {
-      learning    : new Iterator([States.LAPSE, States.NEW     , States.LEARNING, States.KNOWN]),
-      reviewing   : new Iterator([States.LAPSE, States.LEARNING, States.KNOWN   , States.NEW  ]),
-      alternatives: new Iterator([States.KNOWN, States.LEARNING, States.LAPSE   , States.NEW  ])
-    };
-
-    var selectedDeck = decks.getSelectedDeck();
     if (selectedDeck !== null) {
         loadDeck(selectedDeck);
     }
@@ -170,7 +168,7 @@ function setup() {
     main.bind('gameOver', reindexCardInGame);
     main.bind('gameOver', persistCards);
     main.bind('exitApp', persistCards);
-}
+})();
 
 /**
  * Adds back to the index all cards which were on the board when the game ended.
@@ -805,7 +803,6 @@ function levenshtein (s1, s2) {
 }
 
 export default {
-    setup: setup,
     createNewGroup: createNewGroup,
     getStatesStats: getStatesStats,
     getTotalCards: getTotalCards,

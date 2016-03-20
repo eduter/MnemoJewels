@@ -12,7 +12,7 @@ var stats = null;
 
 var redrawIntervalId;
 
-function setup() {
+(function setup() {
     // TODO: display this in the game screen
     main.bind('scoreUp', function (eventData) {
         console.log('Score Up ' + JSON.stringify(eventData));
@@ -23,7 +23,7 @@ function setup() {
 
     main.bind('gameStart', onGameStart);
     main.bind('gameOver', onGameOver);
-}
+})();
 
 function onGameStart() {
     redrawIntervalId = setInterval(
@@ -80,6 +80,5 @@ function redraw(paJewels, pmSelectedJewel) {
 }
 
 export default {
-    setup: setup,
     redraw: redraw
 };

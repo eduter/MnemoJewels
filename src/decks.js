@@ -56,13 +56,13 @@ var selectedDeck = null;
 /**
  * Initializes the module.
  */
-function setup() {
+(function setup() {
     // sorts the list of decks available for importing
     mj.decks.sort(function(deckData1, deckData2) {
         return (deckData1.displayName < deckData2.displayName ? -1 : 1);
     });
 
-    main.bind('initialize-storage', function(){
+    main.bind('storageReady', function(){
         decks = storage.load(StorageKeys.DECKS) || [];
         updateDecks();
 
@@ -71,7 +71,7 @@ function setup() {
             selectDeck(preselectedDeck);
         }
     });
-}
+})();
 
 /**
  * Updates all imported decks to their latest version.
@@ -280,7 +280,6 @@ function generateNewId() {
 }
 
 export default {
-    setup: setup,
     selectDeck: selectDeck,
     findDeck: findDeck,
     getSelectedDeck: getSelectedDeck,
