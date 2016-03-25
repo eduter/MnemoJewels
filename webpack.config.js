@@ -21,8 +21,8 @@ module.exports = {
                 loader: ExtractTextPlugin.extract("style-loader", "css?-url!sass")
             },
             {
-                test: /\.json$/,
-                loader: 'json-loader'
+                test: /\/decks\/.+\.json$/,
+                loader: './loaders/deck-data-loader'
             }
         ]
     },

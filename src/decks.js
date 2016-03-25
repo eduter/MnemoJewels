@@ -2,6 +2,7 @@ import events from './events'
 import storage from './storage'
 import utils from './utils'
 import Card from './Card'
+import $ from 'jquery'
 
 
 /**
@@ -86,23 +87,26 @@ var selectedDeck = null;
  * Updates all imported decks to their latest version.
  */
 function updateDecks() {
-    console.log('updating decks...');
-    var decksByUid = {};
-
-    availableDecks.forEach(function(deck){
-        if (deck.uid) {
-            decksByUid[deck.uid] = deck;
-        }
+    let outdated = decks.filter(function(deck) {
+        let deckData = availableDecks.find(d => d.uid === deck.uid);
+        return (deckData && deckData.version > (deck.version || 0));
     });
 
-    decks.forEach(function(deck){
-        var deckData = decksByUid[deck.uid];
-
-        if (deckData && deckData.version > (deck.version || 0)) {
-            updateDeck(deck, deckData);
-        }
-    });
-    console.log('decks up to date');
+    if (decks.length === 0) {
+        console.log('No decks stored locally');
+    } else if (outdated.length === 0) {
+        console.log(`All ${decks.length} decks are up-to-date.`);
+    } else {
+        console.log('Updating decks...');
+        Promise.all(outdated.map(function(deck) {
+            return downloadDeck(deck.uid).then(function(deckData) {
+                updateDeck(deck, deckData);
+                console.log(`Deck "${deck.displayName}" up-to-date`);
+            }).catch(() => console.error(`Failed to update deck "${deck.displayName}"`));
+        })).then(function() {
+            console.log('Finished updating decks');
+        });
+    }
 }
 
 /**
@@ -160,31 +164,33 @@ function findDeck(callback) {
  * Imports and stores a new deck.
  *
  * @param {string|DeckData} deckToImport
- * @return {Deck} - the info about the imported deck
+ * @return {Promise<Deck>} - the info about the imported deck
  */
 function importDeck(deckToImport) {
-    var deckData = null;
+    return new Promise(function(resolve, reject) {
+        if (typeof(deckToImport) == 'string') {
+            let deckInfo = availableDecks.find(deck => deck.uid === deckToImport);
 
-    if (typeof(deckToImport) == 'string') {
-        var matches = availableDecks.filter(deck => deck.uid === deckToImport);
-        if (matches.length == 0) {
-            throw Error(`Deck "${deckToImport}" not found.`);
+            if (deckInfo) {
+                resolve(downloadDeck(deckInfo.uid));
+            } else {
+                reject(Error(`Deck "${deckToImport}" not found.`));
+            }
+        } else {
+            resolve(deckToImport);
         }
-        deckData = matches[0];
-    } else {
-        deckData = deckToImport;
-    }
+    }).then(function(deckData) {
+        return storage.transaction(function(){
+            var deck = createDeck(generateNewId(), deckData);
+            var cards = deckData.cards.map(function(cardData, cardId) {
+                return new Card(cardId, cardData[0], cardData[1]);
+            });
 
-    return storage.transaction(function(){
-        var deck = createDeck(generateNewId(), deckData);
-        var cards = deckData.cards.map(function(cardData, cardId) {
-            return new Card(cardId, cardData[0], cardData[1]);
+            decks.push(deck);
+            storage.store(StorageKeys.DECKS, decks);
+            storeCards(cards, deck.id);
+            return utils.copyData(deck);
         });
-
-        decks.push(deck);
-        storage.store(StorageKeys.DECKS, decks);
-        storeCards(cards, deck.id);
-        return utils.copyData(deck);
     });
 }
 
@@ -221,7 +227,6 @@ function loadCards(deckId) {
  * @param {DeckData} deckData - the updated deck data
  */
 function updateDeck(deck, deckData) {
-    console.log('updating deck ' + deck.uid);
     storage.transaction(function(){
         var index = indexCardsByContent(deck);
 
@@ -307,6 +312,24 @@ function generateNewId() {
 function getAvailableDecks() {
     return availableDecks.map(deckData => {
         return {uid: deckData.uid, displayName: deckData.displayName}
+    });
+}
+
+/**
+ * Downloads the specified deck.
+ * @param {string} uid
+ * @returns {Promise<DeckData>}
+ */
+function downloadDeck(uid) {
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            url: `./decks/${uid}.json`,
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            success: resolve,
+            error: reject
+        });
     });
 }
 

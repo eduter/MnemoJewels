@@ -64,8 +64,13 @@ function populateDeckDropDown() {
  * @param {string} uid - the unique ID of the deck
  */
 function selectDeck(uid) {
-    var deck = decks.findDeck(deck => deck.uid === uid) || decks.importDeck(uid);
-    decks.selectDeck(deck.id);
+    var deck = decks.findDeck(deck => deck.uid === uid);
+
+    if (deck) {
+        decks.selectDeck(deck.id);
+    } else {
+        decks.importDeck(uid).then(d => decks.selectDeck(d.id));
+    }
 }
 
 /**
