@@ -1,5 +1,5 @@
 import constants from './constants'
-import main from './main'
+import events from './events'
 import storage from './storage'
 import game from './game'
 import decks from './decks'
@@ -162,12 +162,12 @@ function Iterator(priorities) {
         loadDeck(selectedDeck);
     }
 
-    main.bind('deckSelected', function(eventData){loadDeck(eventData.deck)});
-    main.bind('match', rescheduleMatch);
-    main.bind('mismatch', rescheduleMismatch);
-    main.bind('gameOver', reindexCardInGame);
-    main.bind('gameOver', persistCards);
-    main.bind('exitApp', persistCards);
+    events.bind('deckSelected', function(eventData){loadDeck(eventData.deck)});
+    events.bind('match', rescheduleMatch);
+    events.bind('mismatch', rescheduleMismatch);
+    events.bind('gameOver', reindexCardInGame);
+    events.bind('gameOver', persistCards);
+    events.bind('exitApp', persistCards);
 })();
 
 /**

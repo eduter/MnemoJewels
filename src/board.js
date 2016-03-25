@@ -1,6 +1,6 @@
 import constants from './constants'
 import $ from 'jquery'
-import main from './main'
+import events from './events'
 import cards from './cards'
 import game from './game'
 import time from './time'
@@ -145,7 +145,7 @@ function match(cardId, selectionTime) {
 
     removeCard(cardId);
     fiLastSelectionTime = selectionTime;
-    main.trigger('match', {
+    events.trigger('match', {
         cardId: cardId,
         cardsInGroup: cardsInGroup,
         thinkingTime: thinkingTime
@@ -180,7 +180,7 @@ function mismatch(cardId1, cardId2, selectionTime) {
     addNewGroup(cardsInGroup.length);
 
     fiLastSelectionTime = selectionTime;
-    main.trigger('mismatch', {
+    events.trigger('mismatch', {
         mismatchedCards: [cardId1, cardId2],
         cardsInGroup: cardsInGroup,
         thinkingTime: thinkingTime

@@ -1,8 +1,8 @@
-import main from './main';
-import storage from './storage';
-import decks from './decks';
-import utils from './utils';
-import States from './States';
+import events from './events'
+import storage from './storage'
+import decks from './decks'
+import utils from './utils'
+import States from './States'
 
 /**
  * Number of top scores to keep.
@@ -29,13 +29,13 @@ var consecutiveMatches = 0;
 var topScores = [];
 
 (function setup() {
-    main.bind('storageReady', function(){
+    events.bind('storageReady', function(){
         topScores = storage.load('topScores') || [];
     });
-    main.bind('gameStart', onGameStart);
-    main.bind('gameOver', updateTopScores);
-    main.bind('match', onMatch);
-    main.bind('mismatch', onMismatch);
+    events.bind('gameStart', onGameStart);
+    events.bind('gameOver', updateTopScores);
+    events.bind('match', onMatch);
+    events.bind('mismatch', onMismatch);
 })();
 
 function onGameStart() {
@@ -94,7 +94,7 @@ function onMatch(eventData) {
         pointsEarned = Math.round(pointsEarned);
     }
     score += pointsEarned;
-    main.trigger('scoreUp', {
+    events.trigger('scoreUp', {
         points: pointsEarned,
         reason: 'match'
     });
@@ -107,7 +107,7 @@ function onMatch(eventData) {
         var bonusFactor = consecutiveMatches / 1000;
         var bonusPoints = Math.round(bonusFactor * score);
         score += bonusPoints;
-        main.trigger('scoreUp', {
+        events.trigger('scoreUp', {
             points: bonusPoints,
             reason: 'streakBonus',
             streakLength: consecutiveMatches,

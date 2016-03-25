@@ -1,5 +1,5 @@
 import constants from './constants'
-import main from './main'
+import events from './events'
 import navigation from './navigation'
 import time from './time'
 import board from './board'
@@ -34,9 +34,9 @@ var averageThinkingTimes = [
 var intervalBetweenGroups;
 
 (function setup() {
-    main.bind('match', onMatch);
-    main.bind('mismatch', onMismatch);
-    main.bind('scoreUp', onScoreUp);
+    events.bind('match', onMatch);
+    events.bind('mismatch', onMismatch);
+    events.bind('scoreUp', onScoreUp);
 })();
 
 function startGame() {
@@ -47,14 +47,14 @@ function startGame() {
     gameStart = time.now();
     level = 1;
     board.initialize();
-    main.trigger('gameStart');
+    events.trigger('gameStart');
 }
 
 function gameOver() {
     display.redraw(board.getJewels());
     alert('Game Over!');
     navigation.navigateTo('main-menu');
-    main.trigger('gameOver', {
+    events.trigger('gameOver', {
         score: score.getScore(),
         gameStart: gameStart,
         gameEnd: time.now()
@@ -84,7 +84,7 @@ function onScoreUp() {
     var updatedLevel = Math.min(LAST_LEVEL, Math.floor(score.getScore() / POINTS_PER_LEVEL) + 1);
     if (updatedLevel > level) {
         level = updatedLevel;
-        main.trigger('levelUp', {level: level});
+        events.trigger('levelUp', {level: level});
     }
 }
 

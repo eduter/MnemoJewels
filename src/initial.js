@@ -1,9 +1,6 @@
 require('../stylesheet/initial.scss');
 import spinner from './spinner'
 
-window.mj = {
-    decks: []
-};
 
 window.addEventListener('load', function() {
     var body = document.getElementsByTagName('body')[0];

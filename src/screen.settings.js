@@ -54,7 +54,7 @@ function populateDeckDropDown() {
     if (selectedDeck === null) {
         addDeckToDropDown({uid: '', displayName: ''});
     }
-    mj.decks.forEach(addDeckToDropDown);
+    decks.getAvailableDecks().forEach(addDeckToDropDown);
 }
 
 /**
@@ -64,13 +64,7 @@ function populateDeckDropDown() {
  * @param {string} uid - the unique ID of the deck
  */
 function selectDeck(uid) {
-    var matchesUid = function(deck){ return deck.uid === uid };
-    var deck = decks.findDeck(matchesUid);
-
-    if (deck === undefined) {
-        var deckToImport = mj.decks.filter(matchesUid)[0];
-        deck = decks.importDeck(deckToImport);
-    }
+    var deck = decks.findDeck(deck => deck.uid === uid) || decks.importDeck(uid);
     decks.selectDeck(deck.id);
 }
 

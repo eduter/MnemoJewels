@@ -1,5 +1,6 @@
 import Card from './Card'
 import decks from './decks'
+import events from './events'
 
 /**
  * Prefix for all keys (to avoid collisions, in case something else in the same domain uses local storage).
@@ -74,6 +75,7 @@ function setup() {
         });
         console.log('successfully migrated to v' + modelVersion);
     }
+    events.trigger('storageReady', null, true);
 }
 
 /**

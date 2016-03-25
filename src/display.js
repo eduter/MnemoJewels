@@ -1,6 +1,6 @@
 import constants from './constants'
 import $ from 'jquery'
-import main from './main'
+import events from './events'
 import board from './board'
 import score from './score'
 import game from './game'
@@ -14,15 +14,15 @@ var redrawIntervalId;
 
 (function setup() {
     // TODO: display this in the game screen
-    main.bind('scoreUp', function (eventData) {
+    events.bind('scoreUp', function (eventData) {
         console.log('Score Up ' + JSON.stringify(eventData));
     });
-    main.bind('levelUp', function (eventData) {
+    events.bind('levelUp', function (eventData) {
         console.log('Level Up ' + JSON.stringify(eventData));
     });
 
-    main.bind('gameStart', onGameStart);
-    main.bind('gameOver', onGameOver);
+    events.bind('gameStart', onGameStart);
+    events.bind('gameOver', onGameOver);
 })();
 
 function onGameStart() {

@@ -1,5 +1,3 @@
-var $ = require('jquery');
-
 
 /**
  * Event handlers indexed by event name.
@@ -13,58 +11,6 @@ var eventHandlers = {};
  * @type {Object.<string, string>}
  */
 var oneTimeEvents = {};
-
-function setup() {
-    // disable native touchmove behavior to prevent overscroll
-    $(document).on('touchmove', event => event.preventDefault());
-
-    // hide the address bar on Android devices
-    if (/Android/.test(navigator.userAgent)) {
-        $('html')[0].style.height = '200%';
-        setTimeout(function () {
-            window.scrollTo(0, 1);
-        }, 0);
-    }
-
-    // handles closing browser's tab/window or navigating away from MJ
-    $(window).on('unload beforeunload', function () {
-        trigger('exitApp', null, true);
-    });
-
-    initializeDeckList();
-    initializeAllModules();
-}
-
-/**
- * Initializes all modules and triggers the initialize event for each.
- */
-function initializeAllModules() {
-    let modules = {
-        board: require('./board').default,
-        cards: require('./cards').default,
-        decks: require('./decks').default,
-        display: require('./display').default,
-        game: require('./game').default,
-        score: require('./score').default,
-        storage: require('./storage').default,
-        time: require('./time').default,
-        utils: require('./utils').default
-    };
-    Object.keys(modules).forEach(function(moduleName) {
-        if (typeof(modules[moduleName].setup) === 'function') {
-            modules[moduleName].setup();
-        }
-        trigger(`${moduleName}Ready`, null, true);
-    });
-}
-
-function initializeDeckList() {
-    window.mj.decks = [
-        require('../decks/top-no-en.json'),
-        require('../decks/top-pt_BR-en.json'),
-        require('../decks/top-sv-en.json')
-    ];
-}
 
 /**
  * Attach an event handler to an event.
@@ -161,7 +107,6 @@ function serializeEventData(eventData) {
 
 
 export default {
-    setup: setup,
     bind: bind,
     trigger: trigger,
     waitFor: waitFor

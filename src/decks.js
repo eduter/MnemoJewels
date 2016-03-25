@@ -1,4 +1,4 @@
-import main from './main'
+import events from './events'
 import storage from './storage'
 import utils from './utils'
 import Card from './Card'
@@ -48,6 +48,16 @@ var StorageKeys = {
 var decks = [];
 
 /**
+ * List of all decks available for import.
+ * @type {Array.<DeckData>}
+ */
+var availableDecks = [
+    require('../decks/top-no-en.json'),
+    require('../decks/top-pt_BR-en.json'),
+    require('../decks/top-sv-en.json')
+];
+
+/**
  * ID of the selected deck, if any.
  * @type {int|null}
  */
@@ -57,12 +67,11 @@ var selectedDeck = null;
  * Initializes the module.
  */
 (function setup() {
-    // sorts the list of decks available for importing
-    mj.decks.sort(function(deckData1, deckData2) {
+    availableDecks.sort(function(deckData1, deckData2) {
         return (deckData1.displayName < deckData2.displayName ? -1 : 1);
     });
 
-    main.bind('storageReady', function(){
+    events.bind('storageReady', function(){
         decks = storage.load(StorageKeys.DECKS) || [];
         updateDecks();
 
@@ -80,7 +89,7 @@ function updateDecks() {
     console.log('updating decks...');
     var decksByUid = {};
 
-    mj.decks.forEach(function(deck){
+    availableDecks.forEach(function(deck){
         if (deck.uid) {
             decksByUid[deck.uid] = deck;
         }
@@ -108,7 +117,7 @@ function selectDeck(deckId) {
         } else {
             selectedDeck = deckId;
             storage.store(StorageKeys.SELECTED_DECK, deckId);
-            main.trigger('deckSelected', {deck: decks[deckIndex]});
+            events.trigger('deckSelected', {deck: decks[deckIndex]});
         }
     }
 }
@@ -150,10 +159,22 @@ function findDeck(callback) {
 /**
  * Imports and stores a new deck.
  *
- * @param {DeckData} deckData
+ * @param {string|DeckData} deckToImport
  * @return {Deck} - the info about the imported deck
  */
-function importDeck(deckData) {
+function importDeck(deckToImport) {
+    var deckData = null;
+
+    if (typeof(deckToImport) == 'string') {
+        var matches = availableDecks.filter(deck => deck.uid === deckToImport);
+        if (matches.length == 0) {
+            throw Error(`Deck "${deckToImport}" not found.`);
+        }
+        deckData = matches[0];
+    } else {
+        deckData = deckToImport;
+    }
+
     return storage.transaction(function(){
         var deck = createDeck(generateNewId(), deckData);
         var cards = deckData.cards.map(function(cardData, cardId) {
@@ -279,10 +300,21 @@ function generateNewId() {
     return maxId + 1;
 }
 
+/**
+ * Returns a list of all decks available for import.
+ * @returns {Array.<{uid: string, displayName: string}>}
+ */
+function getAvailableDecks() {
+    return availableDecks.map(deckData => {
+        return {uid: deckData.uid, displayName: deckData.displayName}
+    });
+}
+
 export default {
     selectDeck: selectDeck,
     findDeck: findDeck,
     getSelectedDeck: getSelectedDeck,
+    getAvailableDecks: getAvailableDecks,
     importDeck: importDeck,
     storeCards: storeCards,
     loadCards: loadCards
