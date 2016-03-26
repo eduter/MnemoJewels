@@ -1,0 +1,18 @@
+#splash-screen {
+    text-align: center;
+
+    .logo {
+        margin-top: 2.5em;
+    }
+
+    .spinner {
+        position: relative;
+    }
+
+    .continue {
+        cursor: pointer;
+        font-size: 24em;
+        font-weight: bold;
+        text-shadow: 0.05em 0.05em 0.1em black;
+    }
+}

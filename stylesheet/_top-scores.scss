@@ -1,0 +1,26 @@
+/* Top Scores Screen */
+
+#top-scores {
+    table {
+        width: 100%;
+    }
+    thead td {
+        font-size: 20em;
+        font-weight: bold;
+        text-align: center;
+    }
+    tbody {
+        td {
+            font: {
+                size: 18em;
+                family: Courier, monospace;
+                weight: bold;
+            }
+            text-align: right;
+            padding: 0 1em 0 0;
+        }
+        tr:nth-child(odd) {
+            background-color: rgba(0,0,0,0.5);
+        }
+    }
+}

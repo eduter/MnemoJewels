@@ -2,6 +2,7 @@
 .project
 .checkstyle
 .idea
+/node_modules
 
 syntax: glob
 *.bak
