@@ -65,6 +65,12 @@ var availableDecks = [
 var selectedDeck = null;
 
 /**
+ * Whether all decks are done updating.
+ * @type {boolean}
+ */
+var upToDate = false;
+
+/**
  * Initializes the module.
  */
 (function setup() {
@@ -74,17 +80,19 @@ var selectedDeck = null;
 
     events.bind('storageReady', function(){
         decks = storage.load(StorageKeys.DECKS) || [];
-        updateDecks();
-
-        var preselectedDeck = storage.load(StorageKeys.SELECTED_DECK);
-        if (preselectedDeck !== null) {
-            selectDeck(preselectedDeck);
-        }
+        return updateDecks().then(function() {
+            upToDate = true;
+            let preselectedDeck = storage.load(StorageKeys.SELECTED_DECK);
+            if (preselectedDeck !== null) {
+                selectDeck(preselectedDeck);
+            }
+        }).catch(e => console.error(e));
     });
 })();
 
 /**
  * Updates all imported decks to their latest version.
+ * @returns {Promise}
  */
 function updateDecks() {
     let outdated = decks.filter(function(deck) {
@@ -98,7 +106,7 @@ function updateDecks() {
         console.log(`All ${decks.length} decks are up-to-date.`);
     } else {
         console.log('Updating decks...');
-        Promise.all(outdated.map(function(deck) {
+        return Promise.all(outdated.map(function(deck) {
             return downloadDeck(deck.uid).then(function(deckData) {
                 updateDeck(deck, deckData);
                 console.log(`Deck "${deck.displayName}" up-to-date`);
@@ -107,6 +115,7 @@ function updateDecks() {
             console.log('Finished updating decks');
         });
     }
+    return Promise.resolve();
 }
 
 /**
@@ -114,10 +123,14 @@ function updateDecks() {
  * @param {int} deckId
  */
 function selectDeck(deckId) {
+    console.log(`selectDeck(${deckId})`);
+    if (!upToDate) {
+        throw Error('A deck cannot be selected before all decks are up-to-date.');
+    }
     if (deckId !== selectedDeck) {
-        var deckIndex = getDeck(deckId);
+        let deckIndex = getDeck(deckId);
         if (deckIndex === null) {
-            throw "Unknown deck (" + deckId + ") cannot be selected";
+            throw `Unknown deck (${deckId}) cannot be selected`;
         } else {
             selectedDeck = deckId;
             storage.store(StorageKeys.SELECTED_DECK, deckId);

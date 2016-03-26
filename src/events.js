@@ -16,7 +16,7 @@ var oneTimeEvents = {};
  * Attach an event handler to an event.
  *
  * @param {string} eventName - name of the event the event handler will be attached to
- * @param {function} eventHandler - function to be called when the event is triggered
+ * @param {function} eventHandler - Function to be called when the event is triggered. If it is async, it must return a promise.
  */
 function bind(eventName, eventHandler) {
     if (eventName in oneTimeEvents) {
@@ -33,16 +33,19 @@ function bind(eventName, eventHandler) {
  * @param {string} eventName - name of the event to be triggered
  * @param {*} [eventData=null] - an "immutable" copy of this is passed to the event handlers
  * @param {boolean} [oneTimeEvent=false] - indicates whether this event is a one-time thing (i.e. handlers registered after the event will be executed immediately)
+ * @returns {Promise} - a promise that fulfills once all handlers (registered so far) finish executing
  */
 function trigger(eventName, eventData, oneTimeEvent) {
     if (oneTimeEvent) {
         if (!(eventName in oneTimeEvents)) {
             oneTimeEvents[eventName] = serializeEventData(eventData);
-            notifyHandlers(eventName, eventData);
+            let promise = notifyHandlers(eventName, eventData);
             delete eventHandlers[eventName];
+            return promise;
         }
+        return Promise.resolve();
     } else {
-        notifyHandlers(eventName, eventData);
+        return notifyHandlers(eventName, eventData);
     }
 }
 
@@ -75,14 +78,14 @@ function waitFor(events, callback) {
  *
  * @param {string} eventName - name of the event being triggered
  * @param {*} [eventData=null] - an "immutable" copy of this is passed to the event handlers
+ * @returns {Promise}
  */
 function notifyHandlers(eventName, eventData) {
     if (eventName in eventHandlers) {
-        var serializedData = serializeEventData(eventData);
-        for (var i = 0; i < eventHandlers[eventName].length; i++) {
-            notifyHandler(eventHandlers[eventName][i], serializedData);
-        }
+        let serializedData = serializeEventData(eventData);
+        return Promise.all(eventHandlers[eventName].map(handler => notifyHandler(handler, serializedData)));
     }
+    return Promise.resolve();
 }
 
 /**
@@ -90,9 +93,10 @@ function notifyHandlers(eventName, eventData) {
  *
  * @param {function} handler
  * @param {string} serializedEventData
+ * @returns {Promise}
  */
 function notifyHandler(handler, serializedEventData) {
-    handler.call(null, JSON.parse(serializedEventData));
+    return Promise.resolve(handler.call(null, JSON.parse(serializedEventData)));
 }
 
 /**

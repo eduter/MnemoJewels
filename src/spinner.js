@@ -31,6 +31,7 @@ function start() {
 
 function stop() {
     spinner.stop();
+    console.log('spinner.stop()');
 }
 
 /**

@@ -23,16 +23,23 @@ var imagesToLoad = [
     $(document).on('touchmove', event => event.preventDefault());
 
     // handles closing browser's tab/window or navigating away from MJ
-    $(window).on('unload beforeunload', () => events.trigger('exitApp', null, true));
+    $(window).on('unload beforeunload', function() {
+        events.trigger('exitApp', null, true);
+    });
+
+    let promises = [];
 
     // initializes the storage
-    storage.setup();
+    promises.push(storage.setup());
 
-    // After all images are loaded, let the user proceed
-    loadImages().catch(function (error) {
+    // loads all images
+    promises.push(loadImages().catch(function (error) {
         // Well, that's life. Hopefully everything still works without images.
         console.error(error);
-    }).then(function() {
+    }));
+
+    // once everything is loaded and initialized, let the user proceed
+    Promise.all(promises).then(function() {
         var $screen = $('#splash-screen');
         $screen.click(function () {
             $screen.hide();

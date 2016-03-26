@@ -59,6 +59,7 @@ var migrations = [
 
 /**
  * Initializes the module and updates the storage model.
+ * @returns {Promise}
  */
 function setup() {
     // before anything else, calls rollback, to recover from an eventual crash last time it ran
@@ -75,7 +76,7 @@ function setup() {
         });
         console.log('successfully migrated to v' + modelVersion);
     }
-    events.trigger('storageReady', null, true);
+    return events.trigger('storageReady', null, true);
 }
 
 /**
