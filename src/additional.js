@@ -59,7 +59,8 @@ var imagesToLoad = [
  * @returns {Promise}
  */
 function loadImages() {
-    return Promise.all(imagesToLoad.map(loadImage));
+    let promises = imagesToLoad.map(url => loadImage(url).catch(() => console.error(`failed to load ${url}`)));
+    return Promise.all(promises).then(() => console.log('images loaded'));
 }
 
 /**
@@ -68,20 +69,11 @@ function loadImages() {
  * @returns {Promise}
  */
 function loadImage(url) {
+    console.log(`loading "${url}"...`);
     return new Promise(function (resolve, reject) {
-        var req = new XMLHttpRequest();
-
-        req.open('GET', url);
-        req.onload = function () {
-            if (req.status == 200) {
-                resolve(req.response);
-            } else {
-                reject(Error(`${req.status}: Failed to load image "${url}"`));
-            }
-        };
-        req.onerror = function () {
-            reject(Error(`Failed to load image "${url}" due to network problems`));
-        };
-        req.send();
+        let image = new Image();
+        image.onload = resolve;
+        image.onerror = reject;
+        image.src = url;
     });
 }
