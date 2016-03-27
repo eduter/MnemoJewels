@@ -1,4 +1,4 @@
-import constants from './constants'
+import {INITIAL_INTERVAL, DEFAULT_GROUP_SIZE, MIN_INTERVAL, MAX_INTERVAL} from './constants'
 import events from './events'
 import navigation from './navigation'
 import time from './time'
@@ -26,9 +26,9 @@ var level = 1;
 
 var increment, ffScopeSize;
 var averageThinkingTimes = [
-    constants.INITIAL_INTERVAL / 6,
-    constants.INITIAL_INTERVAL / 3,
-    constants.INITIAL_INTERVAL / 2
+    INITIAL_INTERVAL / 6,
+    INITIAL_INTERVAL / 3,
+    INITIAL_INTERVAL / 2
 ];
 
 var intervalBetweenGroups;
@@ -43,7 +43,7 @@ function startGame() {
     var t = cards.getTotalCards();
     ffScopeSize = saturate(30, 0.1 * t, 100);
     increment = saturate(3, (t - ffScopeSize) / (5 * 60 * 1000 / getAverageThinkingTime()), 10);
-    intervalBetweenGroups = getIntervalBetweenGroups(constants.DEFAULT_GROUP_SIZE);
+    intervalBetweenGroups = getIntervalBetweenGroups(DEFAULT_GROUP_SIZE);
     gameStart = time.now();
     level = 1;
     board.initialize();
@@ -104,7 +104,7 @@ function getIntervalBetweenGroups(numCards){
     if (numCards > 2) {
         intervalBetweenGroups = Math.min((numCards - 2) * getAverageThinkingTime(), getMaxInterval());
     } else {
-        intervalBetweenGroups = constants.MIN_INTERVAL;
+        intervalBetweenGroups = MIN_INTERVAL;
     }
     return intervalBetweenGroups;
 }
@@ -114,9 +114,7 @@ function getIntervalBetweenGroups(numCards){
  * @returns {number} - maximum interval in milliseconds
  */
 function getMaxInterval() {
-    var max = constants.MAX_INTERVAL;
-    var min = constants.MIN_INTERVAL;
-    return max - getDifficulty() * (max - min);
+    return MAX_INTERVAL - getDifficulty() * (MAX_INTERVAL - MIN_INTERVAL);
 }
 
 /**

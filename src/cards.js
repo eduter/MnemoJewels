@@ -1,4 +1,4 @@
-import constants from './constants'
+import {MAX_LEARNING} from './constants'
 import events from './events'
 import storage from './storage'
 import game from './game'
@@ -491,7 +491,7 @@ function chooseAlternativesIterator() {
  */
 function probabilityLearningFirstCard() {
     var learningSetSize = indexes[States.LAPSE].length + indexes[States.LEARNING].length;
-    var learningSetFullness = Math.min(learningSetSize / constants.MAX_LEARNING, 1);
+    var learningSetFullness = Math.min(learningSetSize / MAX_LEARNING, 1);
     return 1 - (1 - game.getDifficulty()) * learningSetFullness;
 }
 
