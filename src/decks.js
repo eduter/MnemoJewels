@@ -204,7 +204,7 @@ function importDeck(deckToImport) {
             storeCards(cards, deck.id);
             return utils.copyData(deck);
         });
-    });
+    }).catch(e => console.error(e));
 }
 
 /**
