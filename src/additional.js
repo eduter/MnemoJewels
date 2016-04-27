@@ -1,3 +1,7 @@
+// import polyfills
+import 'core-js/fn/array/find';
+require('es6-promise').polyfill();
+
 import decks from './decks'
 import events from './events'
 import imageLoader from './imageLoader'
@@ -5,8 +9,6 @@ import navigation from './navigation'
 import spinner from './spinner'
 import storage from './storage'
 import $ from 'jquery'
-
-require('es6-promise').polyfill();
 
 require('../stylesheet/additional.scss');
 
