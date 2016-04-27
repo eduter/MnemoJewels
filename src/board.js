@@ -1,4 +1,4 @@
-import constants from './constants'
+import {NUM_ROWS, DEFAULT_GROUP_SIZE, MISMATCH_PENALTY_TIME} from './constants'
 import $ from 'jquery'
 import events from './events'
 import cards from './cards'
@@ -53,7 +53,7 @@ function addNewGroup(groupSize) {
  * Adds a new group to the board, containing the default number of cards.
  */
 function addDefaultGroup() {
-    addNewGroup(constants.DEFAULT_GROUP_SIZE);
+    addNewGroup(DEFAULT_GROUP_SIZE);
 }
 
 /**
@@ -83,7 +83,7 @@ function addGroup(cards) {
         backJewels.push(new Jewel(groupId, card, false));
     }
     while (frontJewels.length) {
-        if (getNumCards() < constants.NUM_ROWS) {
+        if (getNumCards() < NUM_ROWS) {
             faJewels[0].push(utils.randomPop(frontJewels));
             faJewels[1].push(utils.randomPop(backJewels));
         } else {
@@ -174,7 +174,7 @@ function mismatch(cardId1, cardId2, selectionTime) {
     var thinkingTime = selectionTime - Math.max(fiLastSelectionTime, fmGroupCreationTime[groupId]);
 
     $overlay.show();
-    setTimeout(() => $overlay.hide(), constants.MISMATCH_PENALTY_TIME);
+    setTimeout(() => $overlay.hide(), MISMATCH_PENALTY_TIME);
 
     removeGroup(groupId);
     addNewGroup(cardsInGroup.length);

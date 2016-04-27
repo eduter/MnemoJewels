@@ -1,11 +1,16 @@
 // TODO: Refactor this whole module. This mess with the events might be what makes the game so slow on Safari Mobile.
 
-import constants from './constants'
+import {NUM_ROWS} from './constants'
 import $ from 'jquery'
 
 
 var inputHandlers = null;
 var fmLastStart = null;
+
+const controls = {
+    CLICK: 'selectJewel',
+    TOUCH: 'selectJewel'
+};
 
 function initialize() {
     let $board = $('#board');
@@ -18,12 +23,12 @@ function initialize() {
     $board.bind('mouseup', function(event) {
         handleClick(event, 'CLICK', false, event);
     });
-    $board.bind('touchstart', function(event) {
-        handleClick(event, 'TOUCH', true, event.targetTouches[0]);
-    });
-    $board.bind('touchend', function(event) {
-        handleClick(event, 'TOUCH', false, event.targetTouches[0]);
-    });
+    // $board.bind('touchstart', function(event) {
+    //     handleClick(event, 'TOUCH', true, event.targetTouches[0]);
+    // });
+    // $board.bind('touchend', function(event) {
+    //     handleClick(event, 'TOUCH', false, event.targetTouches[0]);
+    // });
 }
 
 function bind(action, handler) {
@@ -46,14 +51,14 @@ function trigger(action) {
 
 function handleClick(event, control, pbStart, click) {
     // is any action bound to this input control?
-    var action = constants.controls[control];
+    var action = controls[control];
     if (!action) {
         return;
     }
 
     var moTarget = (control == 'TOUCH' ? event.targetTouches[0].target : event.target);
     var miCol = moTarget.cellIndex;
-    var miRow = constants.NUM_ROWS - moTarget.parentNode.rowIndex - 1;
+    var miRow = NUM_ROWS - moTarget.parentNode.rowIndex - 1;
 
     if (pbStart) {
         fmLastStart = {row: miRow, col: miCol};

@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
     window.onresize = resize;
     resize();
     spinner.start();
-    require(["./additional"]);
+    require(["./additional"], () => console.log('additional.js loaded'));
 }, false);
 
 // Prevents logging of debug info, unless debug is on

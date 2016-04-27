@@ -1,4 +1,4 @@
-import constants from './constants'
+import {NUM_ROWS} from './constants'
 import $ from 'jquery'
 import events from './events'
 import board from './board'
@@ -7,7 +7,6 @@ import game from './game'
 import TimeMeter from './TimeMeter'
 
 var foBoard = null;
-var NUM_ROWS = constants.NUM_ROWS;
 var stats = null;
 
 var redrawIntervalId;
