@@ -23,12 +23,12 @@ function initialize() {
     $board.bind('mouseup', function(event) {
         handleClick(event, 'CLICK', false, event);
     });
-    $board.bind('touchstart', function(event) {
-        handleClick(event, 'TOUCH', true, event.targetTouches[0]);
-    });
-    $board.bind('touchend', function(event) {
-        handleClick(event, 'TOUCH', false, event.targetTouches[0]);
-    });
+    // $board.bind('touchstart', function(event) {
+    //     handleClick(event, 'TOUCH', true, event.targetTouches[0]);
+    // });
+    // $board.bind('touchend', function(event) {
+    //     handleClick(event, 'TOUCH', false, event.targetTouches[0]);
+    // });
 }
 
 function bind(action, handler) {
