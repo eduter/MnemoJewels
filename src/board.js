@@ -1,5 +1,4 @@
 import {NUM_ROWS, DEFAULT_GROUP_SIZE, MISMATCH_PENALTY_TIME} from './constants'
-import $ from 'jquery'
 import events from './events'
 import cards from './cards'
 import game from './game'
@@ -11,9 +10,9 @@ import Jewel from './Jewel'
 /**
  * Overlay that prevents the user from selecting jewels during the penalty time after a mismatch.
  *
- * @type {jQuery}
+ * @type {HTMLElement}
  */
-var $overlay = $('#overlay'); // TODO: this doesn't belong in this module
+var overlay = document.getElementById('overlay'); // TODO: this doesn't belong in this module
 
 var faJewels = [[],[]]; // array of 2 columns, each containing Jewel objects
 var faAvailableGroupIds = [];
@@ -173,8 +172,8 @@ function mismatch(cardId1, cardId2, selectionTime) {
     var cardsInGroup = getCardsInGroup(groupId);
     var thinkingTime = selectionTime - Math.max(fiLastSelectionTime, fmGroupCreationTime[groupId]);
 
-    $overlay.show();
-    setTimeout(() => $overlay.hide(), MISMATCH_PENALTY_TIME);
+    overlay.style.display = 'block';
+    setTimeout(() => { overlay.style.display = 'none'; }, MISMATCH_PENALTY_TIME);
 
     removeGroup(groupId);
     addNewGroup(cardsInGroup.length);

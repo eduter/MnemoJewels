@@ -1,5 +1,4 @@
 import {NUM_ROWS} from './constants'
-import $ from 'jquery'
 import events from './events'
 import board from './board'
 import score from './score'
@@ -39,14 +38,14 @@ function onGameOver() {
 
 function getBoardElem() {
     if (foBoard == null) {
-        foBoard = $('#board')[0];
+        foBoard = document.getElementById('board');
     }
     return foBoard;
 }
 
 function getStatsElem() {
     if (stats == null) {
-        stats = $('#stats')[0];
+        stats = document.getElementById('stats');
     }
     return stats;
 }

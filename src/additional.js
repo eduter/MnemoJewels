@@ -1,23 +1,21 @@
-// import polyfills
-import 'core-js/fn/array/find';
-require('es6-promise').polyfill();
-
 import decks from './decks'
 import events from './events'
 import imageLoader from './imageLoader'
 import navigation from './navigation'
 import spinner from './spinner'
 import storage from './storage'
-import $ from 'jquery'
 
-require('../stylesheet/additional.scss');
+import '../stylesheet/additional.css';
 
 
 // disable native touchmove behavior to prevent overscroll
-$(document).on('touchmove', event => event.preventDefault());
+document.addEventListener('touchmove', event => event.preventDefault(), { passive: false });
 
 // handles closing browser's tab/window or navigating away from MJ
-$(window).on('unload beforeunload', function() {
+window.addEventListener('pagehide', function() {
+    events.trigger('exitApp', null, true);
+});
+window.addEventListener('beforeunload', function() {
     events.trigger('exitApp', null, true);
 });
 
@@ -26,7 +24,7 @@ $(window).on('unload beforeunload', function() {
  * @type {string[]}
  */
 let images = [
-    'images/jewel.svg'
+    '/images/jewel.svg'
 ];
 
 /**
@@ -43,15 +41,15 @@ promises.push(imageLoader.loadImages(images).then(() => console.log('images load
 
 // once everything is loaded and initialized, let the user proceed
 Promise.all(promises).then(function() {
-    var $screen = $('#splash-screen');
-    $screen.click(function() {
-        $screen.hide();
+    var screen = document.getElementById('splash-screen');
+    screen.addEventListener('click', function() {
+        screen.classList.remove('active');
         if (decks.getSelectedDeck() == null) {
             navigation.navigateTo('settings');
         } else {
             navigation.navigateTo('main-menu');
         }
     });
-    $screen.find('.continue').removeClass('hidden');
+    screen.querySelector('.continue').classList.remove('hidden');
     spinner.stop();
 });
