@@ -1,7 +1,6 @@
 // TODO: Refactor this whole module. This mess with the events might be what makes the game so slow on Safari Mobile.
 
 import {NUM_ROWS} from './constants'
-import $ from 'jquery'
 
 
 var inputHandlers = null;
@@ -13,20 +12,20 @@ const controls = {
 };
 
 function initialize() {
-    let $board = $('#board');
+    let board = document.getElementById('board');
 
     inputHandlers = {};
 
-    $board.bind('mousedown', function(event) {
+    board.addEventListener('mousedown', function(event) {
         handleClick(event, "CLICK", true, event);
     });
-    $board.bind('mouseup', function(event) {
+    board.addEventListener('mouseup', function(event) {
         handleClick(event, 'CLICK', false, event);
     });
-    // $board.bind('touchstart', function(event) {
+    // board.addEventListener('touchstart', function(event) {
     //     handleClick(event, 'TOUCH', true, event.targetTouches[0]);
     // });
-    // $board.bind('touchend', function(event) {
+    // board.addEventListener('touchend', function(event) {
     //     handleClick(event, 'TOUCH', false, event.targetTouches[0]);
     // });
 }

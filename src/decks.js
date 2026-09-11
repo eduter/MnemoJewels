@@ -2,7 +2,7 @@ import events from './events'
 import storage from './storage'
 import utils from './utils'
 import Card from './Card'
-import $ from 'jquery'
+import availableDecksMeta from './available-decks.json'
 
 
 /**
@@ -49,14 +49,10 @@ var StorageKeys = {
 var decks = [];
 
 /**
- * List of all decks available for import.
- * @type {Array.<DeckData>}
+ * List of all decks available for import (metadata only; full JSON is fetched at runtime).
+ * @type {Array.<{uid: string, displayName: string, version: int}>}
  */
-var availableDecks = [
-    require('../decks/top-no-en.json'),
-    require('../decks/top-pt_BR-en.json'),
-    require('../decks/top-sv-en.json')
-];
+var availableDecks = availableDecksMeta.slice();
 
 /**
  * ID of the selected deck, if any.
@@ -334,16 +330,13 @@ function getAvailableDecks() {
  * @returns {Promise<DeckData>}
  */
 function downloadDeck(uid) {
-    return new Promise(function(resolve, reject) {
-        $.ajax({
-            url: `./decks/${uid}.json`,
-            type: 'GET',
-            dataType: 'json',
-            cache: false,
-            success: resolve,
-            error: reject
+    return fetch(`/decks/${uid}.json`, { cache: 'no-store' })
+        .then(function(response) {
+            if (!response.ok) {
+                throw Error(`Failed to download deck "${uid}" (${response.status})`);
+            }
+            return response.json();
         });
-    });
 }
 
 export default {

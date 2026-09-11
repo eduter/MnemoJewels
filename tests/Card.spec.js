@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import States from '../src/States';
 import Card from '../src/Card';
 
@@ -66,8 +67,8 @@ describe('Card', () => {
     });
 
     it('should be rescheduled for reviewing', () => {
-        jasmine.clock().install();
-        jasmine.clock().mockDate(new Date(2016, 1, 1));
+        vi.useFakeTimers();
+        vi.setSystemTime(new Date(2016, 1, 1));
 
         let lastRep = (new Date(2016, 1, 1)).getTime();
         let nextRep = (new Date(2016, 1, 9)).getTime();
@@ -78,22 +79,22 @@ describe('Card', () => {
         expect(card.nextRep).toBe(nextRep);
         expect(card.relativeScheduling).toBe(-1);
 
-        jasmine.clock().mockDate(new Date(2016, 1, 5));
+        vi.setSystemTime(new Date(2016, 1, 5));
         card.setSchedule(lastRep, nextRep);
         expect(card.relativeScheduling).toBe(-0.5);
 
-        jasmine.clock().mockDate(new Date(2016, 1, 9));
+        vi.setSystemTime(new Date(2016, 1, 9));
         card.setSchedule(lastRep, nextRep);
         expect(card.relativeScheduling).toBe(0);
 
-        jasmine.clock().mockDate(new Date(2016, 1, 25));
+        vi.setSystemTime(new Date(2016, 1, 25));
         card.setSchedule(lastRep, nextRep);
         expect(card.relativeScheduling).toBe(2);
 
         card.setSchedule(null, null);
         expect(card.relativeScheduling).toBe(null);
 
-        jasmine.clock().uninstall();
+        vi.useRealTimers();
     });
 
     it('should update its state when it gets matched', () => {
@@ -133,8 +134,8 @@ describe('Card', () => {
     });
 
     it('should be suspended for a specified amount of time', () => {
-        jasmine.clock().install();
-        jasmine.clock().mockDate(new Date(2015, 10, 21));
+        vi.useFakeTimers();
+        vi.setSystemTime(new Date(2015, 10, 21));
 
         let card = new Card(137, 'abc', 'def');
         let now = Date.now();
@@ -142,12 +143,12 @@ describe('Card', () => {
         expect(card.isSuspended()).toBe(false);
         card.suspend(now + 100);
         expect(card.isSuspended()).toBe(true);
-        jasmine.clock().tick(99);
+        vi.advanceTimersByTime(99);
         expect(card.isSuspended()).toBe(true);
-        jasmine.clock().tick(1);
+        vi.advanceTimersByTime(1);
         expect(card.isSuspended()).toBe(false);
 
-        jasmine.clock().uninstall();
+        vi.useRealTimers();
     });
 
     it('should override toString', () => {

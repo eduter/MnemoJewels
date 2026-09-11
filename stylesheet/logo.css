@@ -1,4 +1,4 @@
-@import "logo-font";
+@import "./logo-font.css";
 
 .logo {
     font-family: logo-font;
@@ -23,8 +23,4 @@
         text-align: left;
         margin: 5%;
     }
-}
-
-.no-textshadow .logo {
-    filter: dropshadow(color=#000000, offX=3, offY=3);
 }

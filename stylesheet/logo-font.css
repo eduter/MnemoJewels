@@ -1,0 +1,7 @@
+@font-face {
+    font-family: logo-font;
+    font-weight: normal;
+    font-style: normal;
+    src: url("/fonts/russo_one.woff") format("woff"),
+    url("/fonts/russo_one.ttf") format("truetype");
+}

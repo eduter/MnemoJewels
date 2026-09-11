@@ -1,14 +1,17 @@
-var $ = require('jquery');
+import gameScreen from './screen.game'
+import deckStatsScreen from './screen.deck-stats'
+import topScoresScreen from './screen.top-scores'
+import settingsScreen from './screen.settings'
 
 /**
  * Map with all screen modules indexed by their IDs.
  * @type {Object.<string, Object>}
  */
 var screens = {
-    'game': require('./screen.game').default,
-    'deck-stats': require('./screen.deck-stats').default,
-    'top-scores': require('./screen.top-scores').default,
-    'settings': require('./screen.settings').default
+    'game': gameScreen,
+    'deck-stats': deckStatsScreen,
+    'top-scores': topScoresScreen,
+    'settings': settingsScreen
 };
 
 /**
@@ -47,10 +50,17 @@ function initializeScreenModules() {
  * Register the listeners to handle navigation buttons.
  */
 function registerListeners() {
-    let $body = $('body');
-
-    $body.on('click', 'button.nav', event => navigateTo(event.target.name));
-    $body.on('click', 'button.back', event => back());
+    document.body.addEventListener('click', event => {
+        var navButton = event.target.closest('button.nav');
+        if (navButton) {
+            navigateTo(navButton.name);
+            return;
+        }
+        var backButton = event.target.closest('button.back');
+        if (backButton) {
+            back();
+        }
+    });
 }
 
 /**
@@ -84,7 +94,7 @@ function back() {
  * @param {string} screenId
  */
 function hideScreen(screenId) {
-    getScreen(screenId).removeClass('active');
+    getScreen(screenId).classList.remove('active');
 }
 
 /**
@@ -97,17 +107,17 @@ function showScreen(screenId) {
         screens[screenId].update();
     }
     // makes the screen visible
-    getScreen(screenId).addClass('active');
+    getScreen(screenId).classList.add('active');
 }
 
 /**
  * Returns the screen with the specified ID.
  *
  * @param {string} screenId
- * @returns {jQuery} element representing the screen
+ * @returns {HTMLElement} element representing the screen
  */
 function getScreen(screenId) {
-    return $('#' + screenId);
+    return document.getElementById(screenId);
 }
 
 

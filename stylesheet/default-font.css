@@ -1,0 +1,7 @@
+@font-face {
+    font-family: default-font;
+    font-weight: normal;
+    font-style: normal;
+    src: url("/fonts/belleza_regular.woff") format("woff"),
+    url("/fonts/belleza_regular.ttf") format("truetype");
+}

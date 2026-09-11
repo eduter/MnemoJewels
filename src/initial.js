@@ -1,4 +1,4 @@
-require('../stylesheet/initial.scss');
+import '../stylesheet/initial.css';
 import spinner from './spinner'
 
 
@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
     window.onresize = resize;
     resize();
     spinner.start();
-    require(["./additional"], () => console.log('additional.js loaded'));
+    import('./additional.js').then(() => console.log('additional.js loaded'));
 }, false);
 
 // Prevents logging of debug info, unless debug is on
