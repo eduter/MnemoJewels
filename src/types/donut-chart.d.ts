@@ -18,5 +18,3 @@ interface DonutChart {
   init(options: DonutChartOptions): void;
   update(options: DonutChartOptions): void;
 }
-
-declare const DonutChart: DonutChart;

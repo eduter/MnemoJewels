@@ -1,4 +1,3 @@
-
 export const NUM_ROWS = 10;
 export const DEFAULT_GROUP_SIZE = 3;
 export const MIN_INTERVAL = 3000;
