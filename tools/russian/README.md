@@ -71,9 +71,11 @@ errors make generation fail. Missing IPA is retained as missing and reported.
 
 Legacy `[front, back]` cards remain the gameplay representation, preserving
 learning history and existing decks. The normalized `lexicon` records the n:n
-graph and sense metadata. Candidate cards still pass the original ambiguity
-checks before ranking. IPA distance only augments the existing orthographic
-distance for candidates that are already valid.
+graph and sense metadata. On import, only a compact pronunciation index is
+persisted with the user's deck, avoiding local-storage quota problems.
+Candidate cards still pass the original ambiguity checks before ranking. IPA
+distance only augments the existing orthographic distance for candidates that
+are already valid.
 
 Similarity annotations describe computed resemblance. They do not assert
 historical cognacy and never add translation edges. The compact etymology flag

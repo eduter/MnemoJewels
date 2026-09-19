@@ -32,11 +32,15 @@ export function lexicalSimilarity(left: LexicalItem, right: LexicalItem): Simila
 }
 
 export function lexicalDistance(left: LexicalItem | undefined, right: LexicalItem | undefined): number | null {
-  if (!left?.ipa?.length || !right?.ipa?.length) {
+  return ipaDistance(left?.ipa, right?.ipa);
+}
+
+export function ipaDistance(left: string[] | undefined, right: string[] | undefined): number | null {
+  if (!left?.length || !right?.length) {
     return null;
   }
-  const similarity = bestIpaSimilarity(left.ipa, right.ipa)!;
-  const scale = Math.max(normalizeIpa(left.ipa[0]).length, normalizeIpa(right.ipa[0]).length, 1);
+  const similarity = bestIpaSimilarity(left, right)!;
+  const scale = Math.max(normalizeIpa(left[0]).length, normalizeIpa(right[0]).length, 1);
   return round((1 - similarity) * scale);
 }
 

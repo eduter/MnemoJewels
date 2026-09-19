@@ -7,12 +7,11 @@ import utils from './utils';
 import Card from './Card';
 import States from './States';
 import TimeMeter from './TimeMeter';
-import { lexicalDistance } from './lexicalSimilarity';
+import { ipaDistance } from './lexicalSimilarity';
 import { mappedCardsConflict } from './alternativeSelection';
 import type {
   Deck,
   DeckSelectedEventData,
-  LexicalItem,
   MatchEventData,
   MismatchEventData,
   State,
@@ -29,8 +28,8 @@ let allCards: Card[] = [];
 let wordMappings: Record<string, string[]> | null = null;
 let normalizedFront: Record<string, string> | null = null;
 let normalizedBack: Record<string, string> | null = null;
-let lexicalFront: Record<string, LexicalItem> | null = null;
-let lexicalBack: Record<string, LexicalItem> | null = null;
+let ipaFront: Record<string, string[]> | null = null;
+let ipaBack: Record<string, string[]> | null = null;
 let deck: Deck | null = null;
 const indexes: Record<State, Card[]> = {
   1: [],
@@ -195,19 +194,22 @@ function updateWordMappings(): void {
 function updateNormalizations(): void {
   normalizedFront = {};
   normalizedBack = {};
-  lexicalFront = {};
-  lexicalBack = {};
+  ipaFront = {};
+  ipaBack = {};
 
   if (!deck) {
     return;
   }
 
-  for (const item of Object.values(deck.lexicon?.items ?? {})) {
-    if (item.language === deck.languageFront && !(item.lemma in lexicalFront)) {
-      lexicalFront[item.lemma] = item;
+  for (const [key, ipa] of Object.entries(deck.pronunciations ?? {})) {
+    const separator = key.indexOf(':');
+    const language = key.slice(0, separator);
+    const lemma = key.slice(separator + 1);
+    if (language === deck.languageFront) {
+      ipaFront[lemma] = ipa;
     }
-    if (item.language === deck.languageBack && !(item.lemma in lexicalBack)) {
-      lexicalBack[item.lemma] = item;
+    if (language === deck.languageBack) {
+      ipaBack[lemma] = ipa;
     }
   }
 
@@ -408,8 +410,8 @@ function cardDistance(candidateCard: Card, card: Card): number {
   const distance = Math.min(
     distanceFront,
     levenshtein(normalizedCandidateBack, normalizedCardFront),
-    lexicalDistance(lexicalFront?.[candidateCard.front], lexicalFront?.[card.front]) ?? Infinity,
-    lexicalDistance(lexicalBack?.[candidateCard.back], lexicalFront?.[card.front]) ?? Infinity,
+    ipaDistance(ipaFront?.[candidateCard.front], ipaFront?.[card.front]) ?? Infinity,
+    ipaDistance(ipaBack?.[candidateCard.back], ipaFront?.[card.front]) ?? Infinity,
   );
   return Math.round(100 * distance) / 100;
 }
