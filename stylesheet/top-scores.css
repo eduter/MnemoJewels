@@ -11,11 +11,9 @@
     }
     tbody {
         td {
-            font: {
-                size: 18em;
-                family: Courier, monospace;
-                weight: bold;
-            }
+            font-size: 18em;
+            font-family: Courier, monospace;
+            font-weight: bold;
             text-align: right;
             padding: 0 1em 0 0;
         }

@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import cards from './cards'
 import '../lib/donut-chart'
 
@@ -37,8 +36,8 @@ var legendContainer = null;
  */
 function setup() {
     chart = Object.create(DonutChart);
-    chartContainer = $('#stats-chart')[0];
-    legendContainer = $('#deck-stats figcaption dl')[0];
+    chartContainer = document.getElementById('stats-chart');
+    legendContainer = document.querySelector('#deck-stats figcaption dl');
 }
 
 /**
@@ -105,13 +104,15 @@ function updateChart(stats) {
         });
 
         // hides the labels from the wedges which are probably too small to have them
-        let $deckStats = $('#deck-stats');
+        let deckStats = document.getElementById('deck-stats');
         for (let i = 0; i < stats.length; i++) {
             let  stateData = stats[i];
             if (stateData.count > 0) {
                 if (stateData.count / data.total < 0.03) {
-                    let $label = $deckStats.find('.donut-chart div[data-wedge-id="' + stateData.state + '"] .wedge-value');
-                    $label.addClass('too-small');
+                    let label = deckStats.querySelector('.donut-chart div[data-wedge-id="' + stateData.state + '"] .wedge-value');
+                    if (label) {
+                        label.classList.add('too-small');
+                    }
                 }
             }
         }

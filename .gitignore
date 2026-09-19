@@ -3,6 +3,9 @@
 .checkstyle
 .idea
 /node_modules
+/dist
+.vite
+/target
 
 syntax: glob
 *.bak

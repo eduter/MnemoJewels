@@ -1,0 +1,17 @@
+[
+  {
+    "uid": "top-no-en",
+    "displayName": "Norwegian / English",
+    "version": 1
+  },
+  {
+    "uid": "top-pt_BR-en",
+    "displayName": "Portuguese (BR) / English",
+    "version": 1
+  },
+  {
+    "uid": "top-sv-en",
+    "displayName": "Swedish / English",
+    "version": 2
+  }
+]

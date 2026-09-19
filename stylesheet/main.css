@@ -9,16 +9,12 @@ body {
     width: 320em;
     height: 480em;
     color: #C8C864;
-    font: {
-        size: 0;
-        family: default-font;
-    }
-    background: {
-        color: #C5CADF;
-        image: url("../images/bg.jpg");
-        repeat: no-repeat;
-        size: cover;
-    }
+    font-size: 0;
+    font-family: default-font;
+    background-color: #C5CADF;
+    background-image: url("/images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .screen {
@@ -47,34 +43,26 @@ body {
         margin-top: 0;
         text-align: center;
         text-shadow: 0.05em 0.05em 0.1em black;
-        font: {
-            size: 24em;
-            weight: bold;
-        }
+        font-size: 24em;
+        font-weight: bold;
     }
 }
 
 .small-text {
-    font: {
-        size: 12em;
-        weight: bold;
-    }
+    font-size: 12em;
+    font-weight: bold;
     text-shadow: 0.05em 0.05em 0.1em black;
 }
 
 .medium-text {
-    font: {
-        size: 20em;
-        weight: bold;
-    }
+    font-size: 20em;
+    font-weight: bold;
     text-shadow: 0.05em 0.05em 0.1em black;
 }
 
 select {
-    font: {
-        size: 12em;
-        weight: bold;
-    }
+    font-size: 12em;
+    font-weight: bold;
 }
 
 .hidden {

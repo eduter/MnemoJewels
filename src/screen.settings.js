@@ -1,26 +1,26 @@
-import $ from 'jquery'
 import decks from './decks'
 
 var continueButton, backButton;
 
-var $deckDropDown = $('#selected-deck');
+/** @type {HTMLSelectElement} */
+var deckDropDown = document.getElementById('selected-deck');
 
 /**
  * Initializes the Settings screen.
  */
 function setup() {
-    let $settings = $('#settings');
-    continueButton = $settings.find('button.continue')[0];
-    backButton = $settings.find('button.back')[0];
+    let settings = document.getElementById('settings');
+    continueButton = settings.querySelector('button.continue');
+    backButton = settings.querySelector('button.back');
 
-    $deckDropDown.change(function() {
+    deckDropDown.addEventListener('change', function() {
         if (this.value == '') {
             continueButton.disabled = true;
         } else {
             continueButton.disabled = false;
             selectDeck(this.value);
-            $deckDropDown.find('option[value=""]').each(function(){
-                $(this).remove();
+            deckDropDown.querySelectorAll('option[value=""]').forEach(function(option) {
+                option.remove();
             });
         }
     });
@@ -47,10 +47,10 @@ function populateDeckDropDown() {
         if (!!selectedDeck && deck.uid == selectedDeck.uid) {
             option.setAttribute('selected', 'selected');
         }
-        $deckDropDown.append(option);
+        deckDropDown.append(option);
     }
 
-    $deckDropDown.empty();
+    deckDropDown.replaceChildren();
     if (selectedDeck === null) {
         addDeckToDropDown({uid: '', displayName: ''});
     }
