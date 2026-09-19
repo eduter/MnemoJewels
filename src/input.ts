@@ -1,91 +1,71 @@
-// TODO: Refactor this whole module. This mess with the events might be what makes the game so slow on Safari Mobile.
+import { NUM_ROWS } from './constants';
+import type { JewelSelection } from './types';
 
-import {NUM_ROWS} from './constants'
+type InputAction = 'selectJewel';
+type InputHandler = (row: number, col: number) => void;
 
-
-var inputHandlers = null;
-var fmLastStart = null;
-
-const controls = {
-    CLICK: 'selectJewel',
-    TOUCH: 'selectJewel'
+const controls: Record<string, InputAction> = {
+  CLICK: 'selectJewel',
+  TOUCH: 'selectJewel',
 };
 
-function initialize() {
-    let board = document.getElementById('board');
+let inputHandlers: Partial<Record<InputAction, InputHandler[]>> | null = null;
+let fmLastStart: JewelSelection | null = null;
 
+function initialize(): void {
+  const board = document.getElementById('board')!;
+
+  inputHandlers = {};
+
+  board.addEventListener('mousedown', function (event) {
+    handleClick(event, 'CLICK', true);
+  });
+  board.addEventListener('mouseup', function (event) {
+    handleClick(event, 'CLICK', false);
+  });
+}
+
+function bind(action: InputAction, handler: InputHandler): void {
+  if (!inputHandlers) {
     inputHandlers = {};
-
-    board.addEventListener('mousedown', function(event) {
-        handleClick(event, "CLICK", true, event);
-    });
-    board.addEventListener('mouseup', function(event) {
-        handleClick(event, 'CLICK', false, event);
-    });
-    // board.addEventListener('touchstart', function(event) {
-    //     handleClick(event, 'TOUCH', true, event.targetTouches[0]);
-    // });
-    // board.addEventListener('touchend', function(event) {
-    //     handleClick(event, 'TOUCH', false, event.targetTouches[0]);
-    // });
+  }
+  if (!inputHandlers[action]) {
+    inputHandlers[action] = [];
+  }
+  inputHandlers[action]!.push(handler);
 }
 
-function bind(action, handler) {
-    if (!inputHandlers[action]) {
-        inputHandlers[action] = [];
+function trigger(action: InputAction, row: number, col: number): void {
+  const handlers = inputHandlers?.[action];
+
+  if (handlers) {
+    for (let i = 0; i < handlers.length; i++) {
+      handlers[i](row, col);
     }
-    inputHandlers[action].push(handler);
+  }
 }
 
-function trigger(action) {
-    var handlers = inputHandlers[action];
-    var args = Array.prototype.slice.call(arguments, 1);
+function handleClick(event: MouseEvent, control: keyof typeof controls, pbStart: boolean): void {
+  const action = controls[control];
+  if (!action) {
+    return;
+  }
 
-    if (handlers) {
-        for (var i=0;i<handlers.length;i++) {
-            handlers[i].apply(null, args);
-        }
-    }
-}
+  const moTarget = event.target as HTMLTableCellElement;
+  const miCol = moTarget.cellIndex;
+  const miRow = NUM_ROWS - (moTarget.parentElement as HTMLTableRowElement).rowIndex - 1;
 
-function handleClick(event, control, pbStart, click) {
-    // is any action bound to this input control?
-    var action = controls[control];
-    if (!action) {
-        return;
-    }
+  if (pbStart) {
+    fmLastStart = { row: miRow, col: miCol };
+  } else if (fmLastStart && fmLastStart.row === miRow && fmLastStart.col === miCol) {
+    return;
+  }
 
-    var moTarget = (control == 'TOUCH' ? event.targetTouches[0].target : event.target);
-    var miCol = moTarget.cellIndex;
-    var miRow = NUM_ROWS - moTarget.parentNode.rowIndex - 1;
-
-    if (pbStart) {
-        fmLastStart = {row: miRow, col: miCol};
-    } else if (fmLastStart && fmLastStart.row == miRow && fmLastStart.col == miCol) {
-        return;
-    }
-
-    trigger(action, miRow, miCol);
-    /*
-    var board = $("#game-screen .game-board")[0],
-        rect = board.getBoundingClientRect(),
-        relX, relY,
-        jewelX, jewelY;
-
-    // click position relative to board
-    relX = click.clientX - rect.left;
-    relY = click.clientY - rect.top;
-    // jewel coordinates
-    jewelX = Math.floor(relX / rect.width * constants.cols);
-    jewelY = Math.floor(relY / rect.height * constants.rows);
-    // trigger functions bound to action
-    trigger(action, jewelX, jewelY);
-    // prevent default click behavior
-    */
-    event.preventDefault();
+  trigger(action, miRow, miCol);
+  event.preventDefault();
 }
 
 export default {
-    initialize : initialize,
-    bind : bind
+  initialize,
+  bind,
 };
