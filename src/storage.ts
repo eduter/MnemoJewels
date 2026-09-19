@@ -1,272 +1,193 @@
-import Card from './Card'
-import decks from './decks'
-import events from './events'
+import Card from './Card';
+import decks from './decks';
+import events from './events';
+import type { CardDto, Deck } from './types';
 
-/**
- * Prefix for all keys (to avoid collisions, in case something else in the same domain uses local storage).
- * @type {string}
- */
-var NAMESPACE = 'mj.';
+const NAMESPACE = 'mj.';
+const BACKUP_PREFIX = 'bkp.';
 
-/**
- * Prefix for keys of backups.
- * @type {string}
- */
-var BACKUP_PREFIX = 'bkp.';
+let insideTransaction = false;
 
-/**
- * Flag turned on while performing a transaction.
- * @type {boolean}
- */
-var insideTransaction = false;
-
-/**
- * Migration functions. The N-th element migrates the storage model from version N to version N+1.
- * @type {Array.<function>}
- */
-var migrations = [
-    function(){
-        // from prototype to first "versioned" version
-        var decks = load('decks') || [];
-        for (var deckId in decks) {
-            if (decks.hasOwnProperty(deckId)) {
-                var deck = decks[deckId];
-                if (deck.displayName == 'Swedish / English') {
-                    deck.uid = 'top-sv-en';
-                    deck.languageFront = 'sv';
-                    deck.languageBack = 'en';
-                }
-            }
+const migrations: Array<() => void> = [
+  function () {
+    const storedDecks = load<Deck[]>('decks') || [];
+    for (const deckId in storedDecks) {
+      if (Object.prototype.hasOwnProperty.call(storedDecks, deckId)) {
+        const deck = storedDecks[deckId as unknown as number];
+        if (deck.displayName === 'Swedish / English') {
+          deck.uid = 'top-sv-en';
+          deck.languageFront = 'sv';
+          deck.languageBack = 'en';
         }
-        store('decks', decks);
-        store('topScores', load('topScores') || []);
-    },
-    function(){
-        // from "each card as its own item" to "all cards from a deck as only one item" (because of iOS + WebKit)
-        load('decks').forEach(function(deck) {
-            var cards = [];
-            for (var cardId = 0; cardId < deck.size; cardId++) {
-                var cardKey = 'd' + deck.id + 'c' + cardId;
-                var cardData = load(cardKey);
-                var card = Card.unserialize(cardId, cardData);
-                cards.push(card);
-                remove(cardKey);
-            }
-            decks.storeCards(cards, deck.id);
-        });
+      }
     }
+    store('decks', storedDecks);
+    store('topScores', load('topScores') || []);
+  },
+  function () {
+    const storedDecks = load<Deck[]>('decks');
+    if (!storedDecks) {
+      return;
+    }
+    storedDecks.forEach(function (deck) {
+      const cards: Card[] = [];
+      for (let cardId = 0; cardId < deck.size; cardId++) {
+        const cardKey = 'd' + deck.id + 'c' + cardId;
+        const cardData = load<CardDto>(cardKey);
+        if (cardData) {
+          const card = Card.unserialize(cardId, cardData);
+          cards.push(card);
+          remove(cardKey);
+        }
+      }
+      decks.storeCards(cards, deck.id);
+    });
+  },
 ];
 
-/**
- * Initializes the module and updates the storage model.
- * @returns {Promise}
- */
-function setup() {
-    // before anything else, calls rollback, to recover from an eventual crash last time it ran
+function setup(): Promise<void> {
+  rollback();
+
+  let modelVersion = load<number>('modelVersion') || 0;
+  console.log('storage model v' + modelVersion);
+  while (modelVersion < migrations.length) {
+    console.log('migrating to version ' + (modelVersion + 1) + '...');
+    transaction(function () {
+      migrations[modelVersion]();
+      modelVersion++;
+      store('modelVersion', modelVersion);
+    });
+    console.log('successfully migrated to v' + modelVersion);
+  }
+  return events.trigger('storageReady', null, true);
+}
+
+function store<T>(key: string, value: T): void {
+  const fullKey = NAMESPACE + key;
+  const serializedValue = JSON.stringify(value);
+
+  if (insideTransaction) {
+    backupItem(fullKey);
+  }
+  localStorage.setItem(fullKey, serializedValue);
+}
+
+function load<T = unknown>(key: string): T | null {
+  const item = localStorage.getItem(NAMESPACE + key);
+  return item === null ? null : JSON.parse(item) as T;
+}
+
+function remove(key: string): void {
+  const fullKey = NAMESPACE + key;
+
+  if (insideTransaction) {
+    backupItem(fullKey);
+  }
+  localStorage.removeItem(fullKey);
+}
+
+function transaction<T>(callback: () => T): T {
+  insideTransaction = true;
+  try {
+    const returnValue = callback();
+    commit();
+    return returnValue;
+  } catch (e) {
     rollback();
+    throw e;
+  } finally {
+    insideTransaction = false;
+  }
+}
 
-    var modelVersion = load('modelVersion') || 0;
-    console.log('storage model v' + modelVersion);
-    while (modelVersion < migrations.length) {
-        console.log('migrating to version ' + (modelVersion + 1) + '...');
-        transaction(function(){
-            migrations[modelVersion]();
-            modelVersion++;
-            store('modelVersion', modelVersion);
-        });
-        console.log('successfully migrated to v' + modelVersion);
+function commit(): void {
+  allBackupKeys().forEach(function (backupKey) {
+    localStorage.removeItem(backupKey);
+  });
+}
+
+function rollback(): void {
+  allBackupKeys().forEach(function (backupKey) {
+    restoreItem(backupKey);
+  });
+}
+
+function backupItem(fullKey: string): void {
+  const backupKey = BACKUP_PREFIX + fullKey;
+
+  if (localStorage.getItem(backupKey) === null) {
+    const value = localStorage.getItem(fullKey);
+    localStorage.setItem(backupKey, JSON.stringify(value));
+  }
+}
+
+function restoreItem(backupKey: string): void {
+  const fullKey = backupKey.substr(BACKUP_PREFIX.length);
+  const rawValue = localStorage.getItem(backupKey);
+
+  if (rawValue !== null) {
+    const value = JSON.parse(rawValue) as string | null;
+
+    if (value === null) {
+      localStorage.removeItem(fullKey);
+    } else {
+      localStorage.setItem(fullKey, value);
     }
-    return events.trigger('storageReady', null, true);
+    localStorage.removeItem(backupKey);
+  }
 }
 
-/**
- * Stores a value in the local storage.
- *
- * @param {string} key
- * @param {*} value
- */
-function store(key, value) {
-    var fullKey = NAMESPACE + key;
-    var serializedValue = JSON.stringify(value);
+function allBackupKeys(): string[] {
+  return Object.keys(localStorage).filter(function (key) { return startsWith(key, BACKUP_PREFIX); });
+}
 
-    if (insideTransaction) {
-        backupItem(fullKey);
+function startsWith(string: string, prefix: string): boolean {
+  if (string.length < prefix.length) {
+    return false;
+  }
+  for (let i = 0; i < prefix.length; i++) {
+    if (string[i] !== prefix[i]) {
+      return false;
     }
-    localStorage.setItem(fullKey, serializedValue);
+  }
+  return true;
 }
 
-/**
- * Loads a value from the local storage.
- *
- * @param {string} key
- * @return {*}
- */
-function load(key) {
-    var item = localStorage.getItem(NAMESPACE + key);
-    return (item === null ? null : JSON.parse(item));
-}
+function importData(stringifiedData: string, clear = false): void {
+  const data = JSON.parse(stringifiedData) as Record<string, string>;
 
-/**
- * Removes a value from the local storage.
- *
- * @param {string} key
- */
-function remove(key) {
-    var fullKey = NAMESPACE + key;
-
-    if (insideTransaction) {
-        backupItem(fullKey);
+  if (clear) {
+    localStorage.clear();
+  }
+  for (const key in data) {
+    if (Object.prototype.hasOwnProperty.call(data, key)) {
+      localStorage.setItem(key, data[key]);
     }
-    localStorage.removeItem(fullKey);
+  }
 }
 
-/**
- * Makes a series of operations "atomic".
- * Inside a transaction, with multiple calls to store() or remove(), either all of them are executed, or none of them (case an exception is raised at any point during the execution of the callback).
- *
- * @param {function} callback
- * @return {*} the return from the callback
- */
-function transaction(callback) {
-    insideTransaction = true;
-    try {
-        var returnValue = callback();
-        commit();
-        return returnValue;
-    } catch(e) {
-        rollback();
-        throw e;
-    } finally {
-        insideTransaction = false;
+function exportData(includeBackups = true): string {
+  const keys = Object.keys(localStorage).filter(function (key) {
+    return startsWith(key, NAMESPACE) || (includeBackups && startsWith(key, BACKUP_PREFIX));
+  });
+  const data: Record<string, string> = {};
+
+  keys.sort();
+  keys.forEach(function (key) {
+    const value = localStorage.getItem(key);
+    if (value !== null) {
+      data[key] = value;
     }
-}
-
-/**
- * Makes all changes made so far (during a transaction), permanent.
- */
-function commit() {
-    allBackupKeys().forEach(function(backupKey) {
-        localStorage.removeItem(backupKey);
-    });
-}
-
-/**
- * Reverts all uncommitted changes.
- */
-function rollback() {
-    allBackupKeys().forEach(function(backupKey) {
-        restoreItem(backupKey);
-    });
-}
-
-/**
- * Stores a backup of an item, unless it already has one.
- *
- * @param {string} fullKey - the full key of the item (including any prefixes it might have)
- */
-function backupItem(fullKey) {
-    var backupKey = BACKUP_PREFIX + fullKey;
-
-    if (localStorage.getItem(backupKey) === null) {
-        var value = localStorage.getItem(fullKey);
-        localStorage.setItem(backupKey, JSON.stringify(value));
-    }
-}
-
-/**
- * Restores the old value of an item, from its backup.
- *
- * @param {string} backupKey - the key of the backup
- */
-function restoreItem(backupKey) {
-    var fullKey = backupKey.substr(BACKUP_PREFIX.length);
-    var rawValue = localStorage.getItem(backupKey);
-
-    if (rawValue !== null) {
-        var value = JSON.parse(rawValue);
-
-        if (value === null) {
-            localStorage.removeItem(fullKey);
-        } else {
-            localStorage.setItem(fullKey, value);
-        }
-        localStorage.removeItem(backupKey);
-    }
-}
-
-/**
- * Returns a list with the keys of all existing backups.
- *
- * @return {Array.<string>}
- */
-function allBackupKeys() {
-    return Object.keys(localStorage).filter(function(key){ return startsWith(key, BACKUP_PREFIX) });
-}
-
-/**
- * Determines whether a string begins with the characters of another string.
- *
- * @param {string} string - the string to be searched in
- * @param {string} prefix - the string to be searched for
- * @return {boolean}
- */
-function startsWith(string, prefix) {
-    if (string.length < prefix) {
-        return false;
-    }
-    for (var i = 0; i < prefix.length; i++) {
-        if (string[i] !== prefix[i]) {
-            return false;
-        }
-    }
-    return true;
-}
-
-/**
- * Imports data exported with the exportData method.
- *
- * @param {string} stringifiedData - the output of exportData
- * @param {boolean} [clear=false] - if true, the whole localStorage is cleared before the import
- */
-function importData(stringifiedData, clear) {
-    var data = JSON.parse(stringifiedData);
-
-    if (clear) {
-        localStorage.clear();
-    }
-    for (var key in data) {
-        if (data.hasOwnProperty(key)) {
-            localStorage.setItem(key, data[key]);
-        }
-    }
-}
-
-/**
- * Exports the whole content of the storage.
- *
- * @param {boolean} [includeBackups=true] - whether the backups (during a transaction) should also be included
- * @return {string} - a JSON representation of the whole content of the storage
- */
-function exportData(includeBackups) {
-    includeBackups = (includeBackups === undefined ? true : !!includeBackups);
-    var keys = Object.keys(localStorage).filter(function(key){
-        return startsWith(key, NAMESPACE) || (includeBackups && startsWith(key, BACKUP_PREFIX));
-    });
-    var data = {};
-
-    keys.sort();
-    keys.forEach(function(key){
-        data[key] = localStorage.getItem(key);
-    });
-    return JSON.stringify(data);
+  });
+  return JSON.stringify(data);
 }
 
 export default {
-    setup: setup,
-    store: store,
-    load: load,
-    remove: remove,
-    transaction: transaction,
-    importData: importData,
-    exportData: exportData
+  setup,
+  store,
+  load,
+  remove,
+  transaction,
+  importData,
+  exportData,
 };

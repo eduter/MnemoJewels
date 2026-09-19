@@ -1,17 +1,16 @@
-import game from './game'
-import input from './input'
+import game from './game';
+import input from './input';
 
-
-function setup() {
-    input.initialize();
-    input.bind('selectJewel', game.selectJewel);
+function setup(): void {
+  input.initialize();
+  input.bind('selectJewel', game.selectJewel);
 }
 
-function update() {
-    game.startGame();
+function update(): void {
+  game.startGame();
 }
 
 export default {
-    setup: setup,
-    update: update
+  setup,
+  update,
 };
