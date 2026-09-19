@@ -7,9 +7,12 @@ import utils from './utils';
 import Card from './Card';
 import States from './States';
 import TimeMeter from './TimeMeter';
+import { lexicalDistance } from './lexicalSimilarity';
+import { mappedCardsConflict } from './alternativeSelection';
 import type {
   Deck,
   DeckSelectedEventData,
+  LexicalItem,
   MatchEventData,
   MismatchEventData,
   State,
@@ -26,6 +29,8 @@ let allCards: Card[] = [];
 let wordMappings: Record<string, string[]> | null = null;
 let normalizedFront: Record<string, string> | null = null;
 let normalizedBack: Record<string, string> | null = null;
+let lexicalFront: Record<string, LexicalItem> | null = null;
+let lexicalBack: Record<string, LexicalItem> | null = null;
 let deck: Deck | null = null;
 const indexes: Record<State, Card[]> = {
   1: [],
@@ -190,9 +195,20 @@ function updateWordMappings(): void {
 function updateNormalizations(): void {
   normalizedFront = {};
   normalizedBack = {};
+  lexicalFront = {};
+  lexicalBack = {};
 
   if (!deck) {
     return;
+  }
+
+  for (const item of Object.values(deck.lexicon?.items ?? {})) {
+    if (item.language === deck.languageFront && !(item.lemma in lexicalFront)) {
+      lexicalFront[item.lemma] = item;
+    }
+    if (item.language === deck.languageBack && !(item.lemma in lexicalBack)) {
+      lexicalBack[item.lemma] = item;
+    }
   }
 
   for (const cardId in allCards) {
@@ -274,10 +290,7 @@ function cardsConflict(card1: Card, card2: Card): boolean {
   if (!wordMappings) {
     return false;
   }
-  return card1.front === card2.front
-    || card1.back === card2.back
-    || wordMappings[card1.front].indexOf(card2.back) >= 0
-    || wordMappings[card2.front].indexOf(card1.back) >= 0;
+  return mappedCardsConflict(card1, card2, wordMappings);
 }
 
 function createNewGroup(groupSize: number): Card[] {
@@ -395,6 +408,8 @@ function cardDistance(candidateCard: Card, card: Card): number {
   const distance = Math.min(
     distanceFront,
     levenshtein(normalizedCandidateBack, normalizedCardFront),
+    lexicalDistance(lexicalFront?.[candidateCard.front], lexicalFront?.[card.front]) ?? Infinity,
+    lexicalDistance(lexicalBack?.[candidateCard.back], lexicalFront?.[card.front]) ?? Infinity,
   );
   return Math.round(100 * distance) / 100;
 }

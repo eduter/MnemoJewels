@@ -20,6 +20,7 @@ export interface Deck {
   languageBack?: string;
   uid?: string;
   version?: number;
+  lexicon?: DeckLexicon;
 }
 
 export interface DeckData {
@@ -29,6 +30,55 @@ export interface DeckData {
   languageBack?: string;
   uid?: string;
   version?: number;
+  lexicon?: DeckLexicon;
+}
+
+export interface LexicalItem {
+  id: string;
+  language: string;
+  lemma: string;
+  display?: string;
+  ipa?: string[];
+  partOfSpeech?: string;
+  etymology?: {
+    source: 'wiktionary';
+    text: string;
+  };
+  frequency?: {
+    rank: number;
+    ipm?: number;
+    cefr?: string;
+  };
+}
+
+export interface TranslationRelation {
+  source: string;
+  target: string;
+  senses?: string[];
+}
+
+export type LexicalRelationship =
+  | 'cognate'
+  | 'loanword'
+  | 'phonologically_similar'
+  | 'orthographically_similar';
+
+export interface SimilarityRelation {
+  source: string;
+  target: string;
+  relationship: LexicalRelationship;
+  sourceType: 'wiktionary_etymology' | 'computed';
+  confidence: number | 'source-derived';
+  score?: number;
+  phonologicalScore?: number;
+  orthographicScore?: number;
+  note?: string;
+}
+
+export interface DeckLexicon {
+  items: Record<string, LexicalItem>;
+  translations: TranslationRelation[];
+  similarities?: SimilarityRelation[];
 }
 
 export interface AvailableDeckMeta {
