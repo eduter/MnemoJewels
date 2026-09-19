@@ -1,3 +1,3 @@
-@import "main";
-@import "logo";
-@import "splash";
+@import "./main.css";
+@import "./logo.css";
+@import "./splash.css";

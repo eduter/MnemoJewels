@@ -1,13 +1,12 @@
 import score from './score'
 import time from './time'
-import $ from 'jquery'
 
 
 /**
  * Reference to the tbody element where the top scores are rendered.
- * @type {jQuery}
+ * @type {HTMLElement}
  */
-var $tableBody = $('#top-scores').find('table tbody');
+var tableBody = document.querySelector('#top-scores table tbody');
 
 
 /**
@@ -42,16 +41,22 @@ function getTableData() {
  * @param {Array.<{score: string, duration: string}>} tableData
  */
 function updateTable(tableData) {
-    $tableBody.empty();
+    var rows = [];
     for (var i = 0; i < tableData.length; i++) {
         var rowData = tableData[i];
-        var $tr = $('<tr>');
+        var tr = document.createElement('tr');
 
-        $tr.append('<td>' + (i + 1) + '.</td>');
-        $tr.append('<td>' + rowData.score + '</td>');
-        $tr.append('<td>' + rowData.duration + '</td>');
-        $tableBody.append($tr);
+        var rankTd = document.createElement('td');
+        rankTd.textContent = (i + 1) + '.';
+        var scoreTd = document.createElement('td');
+        scoreTd.textContent = rowData.score;
+        var durationTd = document.createElement('td');
+        durationTd.textContent = rowData.duration;
+
+        tr.append(rankTd, scoreTd, durationTd);
+        rows.push(tr);
     }
+    tableBody.replaceChildren(...rows);
 }
 
 

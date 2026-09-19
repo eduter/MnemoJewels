@@ -7,6 +7,18 @@
 
     .spinner {
         position: relative;
+        width: 4em;
+        height: 4em;
+        margin: 2em auto 0;
+        border: 0.35em solid rgba(200, 200, 100, 0.15);
+        border-top-color: #C8C864;
+        border-radius: 50%;
+        display: none;
+
+        &.active {
+            display: block;
+            animation: splash-spin 0.9s linear infinite;
+        }
     }
 
     .continue {
@@ -14,5 +26,11 @@
         font-size: 24em;
         font-weight: bold;
         text-shadow: 0.05em 0.05em 0.1em black;
+    }
+}
+
+@keyframes splash-spin {
+    to {
+        transform: rotate(360deg);
     }
 }

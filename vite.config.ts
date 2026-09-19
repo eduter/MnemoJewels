@@ -1,33 +1,24 @@
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+import dns from 'node:dns';
+import { defineConfig } from 'vitest/config';
 
-module.exports = {
-    entry: './src/initial.js',
-    output: {
-        path: 'target/',
-        publicPath: 'target/',
-        filename: 'bundle.js'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
-                }
-            },
-            {
-                test: /\.scss$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css?-url!sass")
-            },
-            {
-                test: /\/decks\/.+\.json$/,
-                loader: './loaders/deck-data-loader'
-            }
-        ]
-    },
-    // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
-    plugins: [
-        new ExtractTextPlugin("bundle.css")
-    ]
-};
+// Avoid localhost resolving to ::1 in WSL while the browser uses 127.0.0.1.
+dns.setDefaultResultOrder('verbatim');
+
+export default defineConfig({
+  build: {
+    outDir: 'dist',
+  },
+  server: {
+    host: true,
+    port: 5173,
+  },
+  preview: {
+    host: true,
+    port: 4173,
+  },
+  test: {
+    environment: 'node',
+    globals: true,
+    include: ['tests/**/*.spec.js'],
+  },
+});

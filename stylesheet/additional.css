@@ -1,7 +1,7 @@
-@import "default-font";
-@import "buttons";
-@import "main-menu";
-@import "game";
-@import "deck-stats";
-@import "top-scores";
-@import "settings";
+@import "./default-font.css";
+@import "./buttons.css";
+@import "./main-menu.css";
+@import "./game.css";
+@import "./deck-stats.css";
+@import "./top-scores.css";
+@import "./settings.css";
