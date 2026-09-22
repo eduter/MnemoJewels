@@ -68,8 +68,15 @@ The pipeline:
 1. de-duplicates and validates Kelly's ranked lemma rows;
 2. filters punctuation, malformed tokens, and non-standalone entries;
 3. joins the first 3,000 usable lemmas to Russian Wiktionary entries;
-4. emits `cards` and card-scoped `pronunciations` (Russian and English IPA);
-5. validates duplicate cards, coverage, and the `проблема`/`problem` example.
+4. keeps English backs only when Kaikki metadata supports them (English
+   Wiktionary headword, non-`w:` link targets, gloss fallback only when the
+   gloss is itself a headword), then applies a small heuristic pass for
+   leftover usage-note glosses;
+5. emits `cards` and card-scoped `pronunciations` (Russian and English IPA);
+6. validates duplicate cards, coverage, and the `проблема`/`problem` example.
+
+Sources live under `tools/russian/*.ts` (TypeScript run via
+`node --experimental-strip-types`, see `package.json`).
 
 `validation-report.json` records coverage and anomalies. Serious structural
 errors make generation fail. Missing IPA is retained as missing and reported.
