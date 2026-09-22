@@ -3,13 +3,16 @@ import events from './events';
 import board from './board';
 import score from './score';
 import game from './game';
+import time from './time';
+import { getGameOverAction } from './gameOver';
 import TimeMeter from './TimeMeter';
-import type { JewelSelection } from './types';
+import type { GameOverEventData, JewelSelection } from './types';
 import type Jewel from './Jewel';
 
 let foBoard: HTMLTableElement | null = null;
 let stats: HTMLElement | null = null;
 let redrawIntervalId: ReturnType<typeof setInterval> | undefined;
+let ignoreDialogClose = false;
 
 (function setup() {
   events.bind('scoreUp', function (eventData) {
@@ -21,9 +24,25 @@ let redrawIntervalId: ReturnType<typeof setInterval> | undefined;
 
   events.bind('gameStart', onGameStart);
   events.bind('gameOver', onGameOver);
+
+  getGameOverDialog().addEventListener('close', () => {
+    if (ignoreDialogClose) {
+      return;
+    }
+    events.trigger('gameOverDialogClosed', {
+      action: getGameOverAction(getGameOverDialog().returnValue),
+    });
+  });
 })();
 
 function onGameStart(): void {
+  const dialog = getGameOverDialog();
+  if (dialog.open) {
+    ignoreDialogClose = true;
+    dialog.close();
+    ignoreDialogClose = false;
+  }
+  clearInterval(redrawIntervalId);
   redrawIntervalId = setInterval(
     function () {
       redraw(board.getJewels(), board.getSelectedJewel());
@@ -32,8 +51,16 @@ function onGameStart(): void {
   );
 }
 
-function onGameOver(): void {
+function onGameOver(eventData: unknown): void {
   clearInterval(redrawIntervalId);
+  const data = eventData as GameOverEventData;
+  redraw(board.getJewels(), board.getSelectedJewel());
+  setText('result-score', String(data.score));
+  setText('result-duration', time.formatDuration(data.gameEnd - data.gameStart, 2));
+  setText('result-level', String(data.level));
+  const dialog = getGameOverDialog();
+  dialog.returnValue = '';
+  dialog.showModal();
 }
 
 function getBoardElem(): HTMLTableElement {
@@ -48,6 +75,14 @@ function getStatsElem(): HTMLElement {
     stats = document.getElementById('stats')!;
   }
   return stats;
+}
+
+function getGameOverDialog(): HTMLDialogElement {
+  return document.getElementById('game-over-dialog') as HTMLDialogElement;
+}
+
+function setText(id: string, value: string): void {
+  document.getElementById(id)!.textContent = value;
 }
 
 function redraw(paJewels: Jewel[][], pmSelectedJewel: JewelSelection | null): void {

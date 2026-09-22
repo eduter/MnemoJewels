@@ -18,6 +18,7 @@ let fiLastSelectionTime: number | null = null;
 let intervalId: number | null = null;
 
 function initialize(): void {
+  stopAddingGroups();
   faJewels = [[], []];
   faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   fiLastSelectionTime = time.now();
@@ -63,6 +64,7 @@ function addGroup(cardsToAdd: Card[]): void {
 
 function gameOver(): void {
   stopAddingGroups();
+  overlay.style.display = 'none';
   game.gameOver();
 }
 
@@ -148,6 +150,7 @@ function startAddingGroups(): void {
 function stopAddingGroups(): void {
   if (intervalId !== null) {
     utils.clearInterval(intervalId);
+    intervalId = null;
   }
 }
 

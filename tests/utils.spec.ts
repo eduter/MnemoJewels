@@ -64,4 +64,18 @@ describe('dynamic interval', () => {
     expect(callback).toHaveBeenCalledTimes(1);
     expect(utils.getDynamicIntervalSchedule(intervalId)).toBeNull();
   });
+
+  it('can start a new chain after the previous one is cleared', () => {
+    const first = vi.fn();
+    const firstId = utils.setDynamicInterval(first, () => 1000);
+    utils.clearInterval(firstId);
+
+    const second = vi.fn();
+    const secondId = utils.setDynamicInterval(second, () => 1000);
+    vi.advanceTimersByTime(1000);
+
+    expect(first).not.toHaveBeenCalled();
+    expect(second).toHaveBeenCalledTimes(1);
+    utils.clearInterval(secondId);
+  });
 });

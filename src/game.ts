@@ -1,10 +1,8 @@
 import { DEFAULT_GROUP_SIZE, LAST_LEVEL } from './constants';
 import events from './events';
-import navigation from './navigation';
 import time from './time';
 import board from './board';
 import cards from './cards';
-import display from './display';
 import score from './score';
 import {
   createPacingState,
@@ -14,10 +12,8 @@ import {
   recordMatch,
   recordMismatch,
 } from './pacing';
-import type Jewel from './Jewel';
 import type {
   GameOverEventData,
-  JewelSelection,
   MatchEventData,
   MismatchEventData,
 } from './types';
@@ -54,9 +50,6 @@ function startGame(): void {
 }
 
 function gameOver(): void {
-  display.redraw(board.getJewels(), board.getSelectedJewel());
-  alert('Game Over!');
-  navigation.navigateTo('main-menu');
   events.trigger('gameOver', {
     score: score.getScore(),
     gameStart,
@@ -92,12 +85,6 @@ function onScoreUp(): void {
   }
 }
 
-function redraw(paJewels: Jewel[][] | null, pmSelectedJewel?: JewelSelection | null): void {
-  if (paJewels) {
-    display.redraw(paJewels, pmSelectedJewel ?? null);
-  }
-}
-
 function getScopeSize(): number {
   return saturate(3, Math.round(ffScopeSize), cards.getTotalCards());
 }
@@ -115,7 +102,6 @@ export default {
   startGame,
   gameOver,
   selectJewel,
-  redraw,
   getScopeSize,
   getLevel: function () { return level; },
   getDifficulty: function () { return getDifficulty(level); },

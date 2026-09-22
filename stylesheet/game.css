@@ -54,3 +54,61 @@
 #stats {
     font-size: 16em;
 }
+
+#game-over-dialog {
+    box-sizing: border-box;
+    width: 260em;
+    padding: 16em 18em 8em;
+    color: #C8C864;
+    font-family: default-font;
+    background-color: rgba(0, 0, 0, 0.85);
+    border: none;
+    border-radius: 5%;
+    box-shadow: 3em 3em 10em #000;
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    h2 {
+        margin: 0 0 12em;
+        color: #f1c101;
+        font-size: 24em;
+        font-weight: bold;
+        text-align: center;
+        text-shadow: 0.05em 0.05em 0.1em black;
+    }
+
+    .menu {
+        margin-top: 8em;
+    }
+}
+
+.game-over-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 4em;
+        min-width: 4em;
+        text-align: center;
+    }
+
+    dt {
+        color: #f1c101;
+        font-size: 12em;
+        font-weight: bold;
+        text-shadow: 0.05em 0.05em 0.1em black;
+    }
+
+    dd {
+        margin: 0;
+        font-size: 18em;
+        font-weight: bold;
+        text-shadow: 0.05em 0.05em 0.1em black;
+    }
+}
