@@ -47,6 +47,7 @@ describe('adaptive pacing', () => {
   it('gives a crowded board more time while respecting the level cap', () => {
     const state = createPacingState();
 
+    expect(getSpawnDelay(state, 8, 1)).toBeGreaterThan(getSpawnDelay(state, 3, 1));
     expect(getSpawnDelay(state, 8, 1)).toBe(MAX_INTERVAL);
     expect(getSpawnDelay(state, 8, 10)).toBe(EXPERT_MAX_INTERVAL);
   });

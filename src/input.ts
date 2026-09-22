@@ -1,32 +1,34 @@
-import animationState from './animationState';
+import { NUM_ROWS } from './constants';
+import type { JewelSelection } from './types';
 
 type InputAction = 'selectJewel';
 type InputHandler = (row: number, col: number) => void;
 
-const inputHandlers: Partial<Record<InputAction, InputHandler[]>> = {};
-let initialized = false;
+const controls: Record<string, InputAction> = {
+  CLICK: 'selectJewel',
+  TOUCH: 'selectJewel',
+};
+
+let inputHandlers: Partial<Record<InputAction, InputHandler[]>> | null = null;
+let fmLastStart: JewelSelection | null = null;
 
 function initialize(): void {
-  if (initialized) {
-    return;
-  }
-  initialized = true;
+  const board = document.getElementById('board')!;
 
-  document.getElementById('board')!.addEventListener('click', event => {
-    const tile = (event.target as HTMLElement).closest<HTMLButtonElement>('.tile');
-    if (!tile || tile.disabled || !animationState.isInteractive()) {
-      return;
-    }
-    const row = Number(tile.dataset.row);
-    const col = Number(tile.dataset.col);
-    if (Number.isInteger(row) && Number.isInteger(col)) {
-      trigger('selectJewel', row, col);
-      event.preventDefault();
-    }
+  inputHandlers = {};
+
+  board.addEventListener('mousedown', function (event) {
+    handleClick(event, 'CLICK', true);
+  });
+  board.addEventListener('mouseup', function (event) {
+    handleClick(event, 'CLICK', false);
   });
 }
 
 function bind(action: InputAction, handler: InputHandler): void {
+  if (!inputHandlers) {
+    inputHandlers = {};
+  }
   if (!inputHandlers[action]) {
     inputHandlers[action] = [];
   }
@@ -34,13 +36,33 @@ function bind(action: InputAction, handler: InputHandler): void {
 }
 
 function trigger(action: InputAction, row: number, col: number): void {
-  const handlers = inputHandlers[action];
+  const handlers = inputHandlers?.[action];
 
   if (handlers) {
     for (let i = 0; i < handlers.length; i++) {
       handlers[i](row, col);
     }
   }
+}
+
+function handleClick(event: MouseEvent, control: keyof typeof controls, pbStart: boolean): void {
+  const action = controls[control];
+  if (!action) {
+    return;
+  }
+
+  const moTarget = event.target as HTMLTableCellElement;
+  const miCol = moTarget.cellIndex;
+  const miRow = NUM_ROWS - (moTarget.parentElement as HTMLTableRowElement).rowIndex - 1;
+
+  if (pbStart) {
+    fmLastStart = { row: miRow, col: miCol };
+  } else if (fmLastStart && fmLastStart.row === miRow && fmLastStart.col === miCol) {
+    return;
+  }
+
+  trigger(action, miRow, miCol);
+  event.preventDefault();
 }
 
 export default {

@@ -7,8 +7,7 @@ window.addEventListener('load', function () {
 
   function resize(): void {
     const height = window.innerHeight || document.documentElement.clientHeight || body.clientHeight;
-    const width = window.innerWidth || document.documentElement.clientWidth || body.clientWidth;
-    topContainer.style.fontSize = Math.min(height / 480, width / 320) + 'px';
+    topContainer.style.fontSize = (height / 480) + 'px';
   }
 
   window.onresize = resize;
@@ -23,6 +22,7 @@ if (localStorage.getItem('debug') !== 'true') {
     ...console,
     log: noop,
     dir: noop,
+    error: noop,
     group: noop,
     groupEnd: noop,
   };

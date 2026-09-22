@@ -3,6 +3,7 @@ import events from './events';
 import time from './time';
 import board from './board';
 import cards from './cards';
+import display from './display';
 import score from './score';
 import {
   createPacingState,
@@ -14,9 +15,11 @@ import {
 } from './pacing';
 import type {
   GameOverEventData,
+  JewelSelection,
   MatchEventData,
   MismatchEventData,
 } from './types';
+import type Jewel from './Jewel';
 
 const POINTS_PER_LEVEL = 1000;
 
@@ -50,6 +53,7 @@ function startGame(): void {
 }
 
 function gameOver(): void {
+  display.redraw(board.getJewels(), board.getSelectedJewel());
   events.trigger('gameOver', {
     score: score.getScore(),
     gameStart,
@@ -88,6 +92,12 @@ function onScoreUp(): void {
   }
 }
 
+function redraw(paJewels: Jewel[][] | null, pmSelectedJewel?: JewelSelection | null): void {
+  if (paJewels) {
+    display.redraw(paJewels, pmSelectedJewel ?? null);
+  }
+}
+
 function getScopeSize(): number {
   return saturate(3, Math.round(ffScopeSize), cards.getTotalCards());
 }
@@ -105,6 +115,7 @@ export default {
   startGame,
   gameOver,
   selectJewel,
+  redraw,
   getScopeSize,
   getLevel: function () { return level; },
   getDifficulty: function () { return getDifficulty(level); },

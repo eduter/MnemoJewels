@@ -1,4 +1,4 @@
-import { NUM_ROWS, DEFAULT_GROUP_SIZE } from './constants';
+import { NUM_ROWS, DEFAULT_GROUP_SIZE, MISMATCH_PENALTY_TIME } from './constants';
 import events from './events';
 import cards from './cards';
 import game from './game';
@@ -7,12 +7,13 @@ import utils from './utils';
 import Jewel from './Jewel';
 import type Card from './Card';
 import type {
-  BoardChangedEventData,
   JewelSelection,
   MatchEventData,
   MismatchEventData,
   SpawnScheduledEventData,
 } from './types';
+
+const overlay = document.getElementById('overlay')!;
 
 let faJewels: Jewel[][] = [[], []];
 let faAvailableGroupIds: number[] = [];
@@ -25,10 +26,9 @@ function initialize(): void {
   stopAddingGroups();
   faJewels = [[], []];
   faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  Object.keys(fmGroupCreationTime).forEach(key => delete fmGroupCreationTime[Number(key)]);
   fiLastSelectionTime = time.now();
   fmSelectedJewel = null;
-  addDefaultGroup(false);
+  addDefaultGroup();
   startAddingGroups();
 }
 
@@ -37,11 +37,8 @@ function addNewGroup(groupSize: number): void {
   addGroup(newGroup);
 }
 
-function addDefaultGroup(notify = true): void {
+function addDefaultGroup(): void {
   addNewGroup(DEFAULT_GROUP_SIZE);
-  if (notify) {
-    notifyBoardChanged({ reason: 'spawn' });
-  }
 }
 
 function getNumCards(): number {
@@ -81,15 +78,12 @@ function getNextGroupId(): number {
 
 function selectJewel(piRow: number, piCol: number): void {
   const miSelectionTime = time.now();
-  let selectionChanged = false;
 
   if (piRow < faJewels[0].length) {
     if (fmSelectedJewel == null) {
       fmSelectedJewel = { row: piRow, col: piCol };
-      selectionChanged = true;
     } else if (piCol === fmSelectedJewel.col) {
       fmSelectedJewel.row = piRow;
-      selectionChanged = true;
     } else {
       const prevSelectedJewel = faJewels[fmSelectedJewel.col][fmSelectedJewel.row];
       const newSelectedJewel = faJewels[piCol][piRow];
@@ -108,11 +102,6 @@ function selectJewel(piRow: number, piCol: number): void {
     }
   } else {
     fmSelectedJewel = null;
-    selectionChanged = true;
-  }
-
-  if (selectionChanged) {
-    notifyBoardChanged({ reason: 'selection' });
   }
 }
 
@@ -134,16 +123,18 @@ function match(cardId: number, selectionTime: number): void {
 
   if (getNumCards() === 0) {
     stopAddingGroups();
-    addDefaultGroup(false);
+    addDefaultGroup();
     startAddingGroups();
   }
-  notifyBoardChanged({ reason: 'match', cardId });
 }
 
 function mismatch(cardId1: number, cardId2: number, selectionTime: number): void {
   const groupId = getGroup(cardId1)!;
   const cardsInGroup = getCardsInGroup(groupId);
   const thinkingTime = selectionTime - Math.max(fiLastSelectionTime!, fmGroupCreationTime[groupId]);
+
+  overlay.style.display = 'block';
+  setTimeout(() => { overlay.style.display = 'none'; }, MISMATCH_PENALTY_TIME);
 
   removeGroup(groupId);
   addNewGroup(cardsInGroup.length);
@@ -154,10 +145,10 @@ function mismatch(cardId1: number, cardId2: number, selectionTime: number): void
     cardsInGroup,
     thinkingTime,
   } satisfies MismatchEventData);
-  notifyBoardChanged({ reason: 'mismatch' });
 }
 
 function startAddingGroups(): void {
+  stopAddingGroups();
   intervalId = utils.setDynamicInterval(
     addDefaultGroup,
     getIntervalBetweenGroups,
@@ -169,6 +160,7 @@ function stopAddingGroups(): void {
   if (intervalId !== null) {
     utils.clearInterval(intervalId);
     intervalId = null;
+    events.trigger('spawnScheduled', null);
   }
 }
 
@@ -222,10 +214,6 @@ function getJewels(): Jewel[][] {
 
 function getSelectedJewel(): JewelSelection | null {
   return fmSelectedJewel;
-}
-
-function notifyBoardChanged(data: BoardChangedEventData): void {
-  events.trigger('boardChanged', data);
 }
 
 export default {

@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>MnemoJewels</title>
 </head>
 <body>
@@ -17,26 +17,16 @@
         <div class="screen" id="main-menu">
             <h2 class="logo">Mnemo<br/>Jewels</h2>
             <ul class="menu">
-                <li><button class="nav bt_red" name="game">Play</button></li>
+                <li><button class="nav bt_red" name="game">Play</button>
                 <li><button class="nav bt_yellow" name="deck-stats">Learning Stats</button></li>
                 <li><button class="nav bt_green" name="top-scores">Top Scores</button></li>
-                <li><button class="nav bt_blue" name="settings">Settings</button></li>
-                <li><button class="nav bt_purple" name="about">About</button></li>
+                <li><button class="nav bt_blue" name="settings">Settings</button>
+                <li><button class="nav bt_purple" name="about">About</button>
             </ul>
         </div>
 
         <div class="screen" id="game">
-            <header class="game-hud">
-                <div class="hud-stat">
-                    <span class="hud-label">Score</span>
-                    <strong id="score-value">0</strong>
-                </div>
-                <div class="hud-title">Find the pair</div>
-                <div class="hud-stat hud-stat-right">
-                    <span class="hud-label">Level</span>
-                    <strong id="level-value">1</strong>
-                </div>
-            </header>
+            <div id="stats"></div>
             <div class="pace">
                 <div class="pace-label">
                     <span>Next group</span>
@@ -48,17 +38,25 @@
                     <div class="spawn-progress-fill"></div>
                 </div>
             </div>
-            <div class="board-frame">
-                <div id="board" role="grid" aria-label="Vocabulary matching board"
-                     aria-rowcount="10" aria-colcount="2"></div>
-                <div id="feedback" aria-live="polite"></div>
-            </div>
+            <div id="overlay"></div>
+            <table id="board">
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+            </table>
         </div>
 
         <dialog id="game-over-dialog" aria-labelledby="game-over-title">
             <form method="dialog">
-                <p class="dialog-eyebrow">Session complete</p>
-                <h2 id="game-over-title">Nice run!</h2>
+                <p class="dialog-eyebrow">Game over</p>
+                <h2 id="game-over-title">Board is full</h2>
                 <div class="result-grid">
                     <div><span>Score</span><strong id="result-score">0</strong></div>
                     <div><span>Time</span><strong id="result-duration">0:00</strong></div>
@@ -113,7 +111,7 @@
                 <select id="selected-deck"></select>
             </div>
             <ul class="menu">
-                <li><button class="nav continue" name="main-menu">Continue</button></li>
+                <li><button class="nav continue" name="main-menu">Continue</button>
                 <li><button class="back">Back</button></li>
             </ul>
         </div>
