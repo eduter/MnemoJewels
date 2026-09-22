@@ -117,7 +117,10 @@
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 6em 8em 4em;
+    padding: 8em 10em 4em;
+}
+
+#stats span {
     font-size: 16em;
     font-weight: bold;
     text-shadow: 0.05em 0.05em 0.1em black;
@@ -146,7 +149,7 @@
     padding: 16em 18em 8em;
     color: #C8C864;
     font-family: default-font;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.92);
     border: none;
     border-radius: 5%;
     box-shadow: 3em 3em 10em #000;
