@@ -1,6 +1,17 @@
 import time from './time';
 
-const intervals: Record<number, ReturnType<typeof setTimeout>> = {};
+export interface DynamicIntervalSchedule {
+  startedAt: number;
+  delay: number;
+}
+
+interface DynamicInterval {
+  timeoutId: ReturnType<typeof setTimeout> | null;
+  schedule: DynamicIntervalSchedule;
+}
+
+const intervals = new Map<number, DynamicInterval>();
+let nextIntervalId = 1;
 
 function randomInt(max: number): number {
   return Math.floor(Math.random() * max);
@@ -30,31 +41,56 @@ function randomPop<T>(array: T[]): T {
   return array.splice(randomInt(array.length), 1)[0];
 }
 
-function setDynamicInterval(callback: () => void, getDelay: () => number): number {
-  const internalIntervalId = time.now();
+function setDynamicInterval(
+  callback: () => void,
+  getDelay: () => number,
+  onSchedule?: (schedule: DynamicIntervalSchedule) => void,
+): number {
+  const internalIntervalId = nextIntervalId++;
 
   function iteration(): void {
+    if (!intervals.has(internalIntervalId)) {
+      return;
+    }
     callback();
     scheduleNextIteration();
   }
 
   function scheduleNextIteration(): void {
-    if (internalIntervalId in intervals) {
-      intervals[internalIntervalId] = setTimeout(iteration, getDelay());
+    if (!intervals.has(internalIntervalId)) {
+      return;
     }
+    const schedule = {
+      startedAt: time.now(),
+      delay: Math.max(0, getDelay()),
+    };
+    const timeoutId = setTimeout(iteration, schedule.delay);
+    intervals.set(internalIntervalId, { timeoutId, schedule });
+    onSchedule?.({ ...schedule });
   }
 
-  intervals[internalIntervalId] = setTimeout(iteration, 0);
+  intervals.set(internalIntervalId, {
+    timeoutId: null,
+    schedule: { startedAt: time.now(), delay: 0 },
+  });
   scheduleNextIteration();
 
   return internalIntervalId;
 }
 
 function clearDynamicInterval(intervalId: number): void {
-  if (intervalId in intervals) {
-    clearTimeout(intervals[intervalId]);
-    delete intervals[intervalId];
+  const interval = intervals.get(intervalId);
+  if (interval) {
+    if (interval.timeoutId !== null) {
+      clearTimeout(interval.timeoutId);
+    }
+    intervals.delete(intervalId);
   }
+}
+
+function getDynamicIntervalSchedule(intervalId: number): DynamicIntervalSchedule | null {
+  const interval = intervals.get(intervalId);
+  return interval ? { ...interval.schedule } : null;
 }
 
 function copyData<T>(value: T): T {
@@ -71,5 +107,6 @@ export default {
   randomPop,
   setDynamicInterval,
   clearInterval: clearDynamicInterval,
+  getDynamicIntervalSchedule,
   copyData,
 };
