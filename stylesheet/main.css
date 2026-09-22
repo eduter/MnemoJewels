@@ -1,13 +1,17 @@
 body {
     margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #080a18;
 }
 
 #top-container {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
     width: 320em;
     height: 480em;
+    overflow: hidden;
     color: #C8C864;
     font-size: 0;
     font-family: default-font;
@@ -15,6 +19,8 @@ body {
     background-image: url("../public/images/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    box-shadow: 0 0 45em rgba(0, 0, 0, 0.7);
+    transform: translate(-50%, -50%);
 }
 
 .screen {

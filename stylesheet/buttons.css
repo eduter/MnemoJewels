@@ -15,6 +15,11 @@ button {
         border-color: rgba(255, 255, 255, 0.3);
     }
 
+    &:focus-visible {
+        outline: 0.15em solid #fff7bd;
+        outline-offset: 0.12em;
+    }
+
     &.continue {
         background-color: green;
     }

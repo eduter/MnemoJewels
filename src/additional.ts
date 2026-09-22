@@ -7,8 +7,6 @@ import storage from './storage';
 
 import '../stylesheet/additional.css';
 
-document.addEventListener('touchmove', event => event.preventDefault(), { passive: false });
-
 window.addEventListener('pagehide', function () {
   events.trigger('exitApp', null, true);
 });
