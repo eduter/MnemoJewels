@@ -6,6 +6,7 @@
 /dist
 .vite
 /target
+/.cache
 
 syntax: glob
 *.bak

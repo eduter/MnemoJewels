@@ -182,6 +182,7 @@ function createDeck(deckId: number, deckData: DeckData): Deck {
     languageFront: deckData.languageFront,
     languageBack: deckData.languageBack,
     size: deckData.cards.length,
+    lexicon: deckData.lexicon,
   };
 }
 
