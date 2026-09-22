@@ -10,6 +10,11 @@
     "version": 1
   },
   {
+    "uid": "top-ru-en",
+    "displayName": "Russian / English",
+    "version": 3
+  },
+  {
     "uid": "top-sv-en",
     "displayName": "Swedish / English",
     "version": 2

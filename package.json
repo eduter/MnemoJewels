@@ -11,7 +11,10 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test-watch": "vitest",
-    "check": "npm run typecheck && npm run test"
+    "check": "npm run typecheck && npm run test",
+    "data:russian": "node tools/russian/generate.mjs",
+    "data:russian:sanitize": "node tools/russian/generate.mjs --sanitize",
+    "data:russian:download": "node tools/russian/generate.mjs --download"
   },
   "author": "eduter",
   "license": "ISC",

@@ -7,6 +7,8 @@ import utils from './utils';
 import Card from './Card';
 import States from './States';
 import TimeMeter from './TimeMeter';
+import { ipaDistance } from './lexicalSimilarity';
+import { mappedCardsConflict } from './alternativeSelection';
 import type {
   Deck,
   DeckSelectedEventData,
@@ -26,6 +28,8 @@ let allCards: Card[] = [];
 let wordMappings: Record<string, string[]> | null = null;
 let normalizedFront: Record<string, string> | null = null;
 let normalizedBack: Record<string, string> | null = null;
+let ipaFront: Record<string, string[]> | null = null;
+let ipaBack: Record<string, string[]> | null = null;
 let deck: Deck | null = null;
 const indexes: Record<State, Card[]> = {
   1: [],
@@ -190,9 +194,23 @@ function updateWordMappings(): void {
 function updateNormalizations(): void {
   normalizedFront = {};
   normalizedBack = {};
+  ipaFront = {};
+  ipaBack = {};
 
   if (!deck) {
     return;
+  }
+
+  for (const [key, ipa] of Object.entries(deck.pronunciations ?? {})) {
+    const separator = key.indexOf(':');
+    const language = key.slice(0, separator);
+    const lemma = key.slice(separator + 1);
+    if (language === deck.languageFront) {
+      ipaFront[lemma] = ipa;
+    }
+    if (language === deck.languageBack) {
+      ipaBack[lemma] = ipa;
+    }
   }
 
   for (const cardId in allCards) {
@@ -274,10 +292,7 @@ function cardsConflict(card1: Card, card2: Card): boolean {
   if (!wordMappings) {
     return false;
   }
-  return card1.front === card2.front
-    || card1.back === card2.back
-    || wordMappings[card1.front].indexOf(card2.back) >= 0
-    || wordMappings[card2.front].indexOf(card1.back) >= 0;
+  return mappedCardsConflict(card1, card2, wordMappings);
 }
 
 function createNewGroup(groupSize: number): Card[] {
@@ -395,6 +410,8 @@ function cardDistance(candidateCard: Card, card: Card): number {
   const distance = Math.min(
     distanceFront,
     levenshtein(normalizedCandidateBack, normalizedCardFront),
+    ipaDistance(ipaFront?.[candidateCard.front], ipaFront?.[card.front]) ?? Infinity,
+    ipaDistance(ipaBack?.[candidateCard.back], ipaFront?.[card.front]) ?? Infinity,
   );
   return Math.round(100 * distance) / 100;
 }

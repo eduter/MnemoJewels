@@ -182,7 +182,24 @@ function createDeck(deckId: number, deckData: DeckData): Deck {
     languageFront: deckData.languageFront,
     languageBack: deckData.languageBack,
     size: deckData.cards.length,
+    pronunciations: createPronunciationIndex(deckData),
   };
+}
+
+function createPronunciationIndex(deckData: DeckData): Record<string, string[]> | undefined {
+  if (deckData.pronunciations && Object.keys(deckData.pronunciations).length > 0) {
+    return deckData.pronunciations;
+  }
+  if (!deckData.lexicon) {
+    return undefined;
+  }
+  const pronunciations: Record<string, string[]> = {};
+  for (const item of Object.values(deckData.lexicon.items)) {
+    if (item.ipa?.length) {
+      pronunciations[`${item.language}:${item.lemma}`] = item.ipa;
+    }
+  }
+  return Object.keys(pronunciations).length > 0 ? pronunciations : undefined;
 }
 
 type CardContentIndex = Record<string, Record<string, CardDto>>;
