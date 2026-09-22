@@ -12,7 +12,7 @@ body {
     font-size: 0;
     font-family: default-font;
     background-color: #C5CADF;
-    background-image: url("/images/bg.jpg");
+    background-image: url("../public/images/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }

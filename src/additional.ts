@@ -17,7 +17,7 @@ window.addEventListener('beforeunload', function () {
 });
 
 const images = [
-  '/images/jewel.svg',
+  `${import.meta.env.BASE_URL}images/jewel.svg`,
 ];
 
 const promises: Promise<unknown>[] = [];

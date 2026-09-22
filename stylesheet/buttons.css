@@ -2,7 +2,7 @@ button {
     font-size: 20em;
     font-family: default-font;
     font-weight: bold;
-    background-image: url("/images/jewel.svg");
+    background-image: url("../public/images/jewel.svg");
     background-size: 9em 2.03em;
     background-position: center;
     width: 9em;
