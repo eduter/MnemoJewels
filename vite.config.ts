@@ -5,6 +5,7 @@ import { defineConfig } from 'vitest/config';
 dns.setDefaultResultOrder('verbatim');
 
 export default defineConfig({
+  base: '/MnemoJewels/',
   build: {
     outDir: 'dist',
   },

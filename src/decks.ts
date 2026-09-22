@@ -216,7 +216,7 @@ function getAvailableDecks(): Array<{ uid: string; displayName: string }> {
 }
 
 function downloadDeck(uid: string): Promise<DeckData> {
-  return fetch(`/decks/${uid}.json`, { cache: 'no-store' })
+  return fetch(`${import.meta.env.BASE_URL}decks/${uid}.json`, { cache: 'no-store' })
     .then(function (response) {
       if (!response.ok) {
         throw Error(`Failed to download deck "${uid}" (${response.status})`);
