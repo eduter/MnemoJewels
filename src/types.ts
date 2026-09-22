@@ -122,6 +122,7 @@ export interface GameOverEventData {
   score: number;
   gameStart: Timestamp;
   gameEnd: Timestamp;
+  level: number;
 }
 
 export interface ScoreUpEventData {
