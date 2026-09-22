@@ -118,6 +118,13 @@ export interface MismatchEventData {
   thinkingTime: number;
 }
 
+export type BoardChangeReason = 'reset' | 'spawn' | 'selection' | 'match' | 'mismatch';
+
+export interface BoardChangedEventData {
+  reason: BoardChangeReason;
+  cardId?: number;
+}
+
 export interface SpawnScheduledEventData {
   startedAt: number;
   delay: number;

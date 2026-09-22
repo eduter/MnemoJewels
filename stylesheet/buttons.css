@@ -1,4 +1,6 @@
-button {
+.menu button,
+button.back,
+button.continue {
     font-size: 20em;
     font-family: default-font;
     font-weight: bold;

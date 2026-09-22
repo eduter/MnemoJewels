@@ -1,29 +1,34 @@
-import { NUM_ROWS } from './constants';
+import { MATCH_FADE_TIME, TILE_DROP_TIME } from './constants';
+import animationState from './animationState';
 import events from './events';
 import board from './board';
 import score from './score';
 import game from './game';
 import time from './time';
 import { getGameOverAction } from './gameOver';
-import TimeMeter from './TimeMeter';
-import type { GameOverEventData, JewelSelection, SpawnScheduledEventData } from './types';
+import type {
+  BoardChangedEventData,
+  BoardChangeReason,
+  GameOverEventData,
+  SpawnScheduledEventData,
+} from './types';
 import type Jewel from './Jewel';
 
-let foBoard: HTMLTableElement | null = null;
-let redrawIntervalId: ReturnType<typeof setInterval> | undefined;
-let ignoreDialogClose = false;
+const timers = new Set<ReturnType<typeof setTimeout>>();
+let renderGeneration = 0;
 let progressGeneration = 0;
+let ignoreDialogClose = false;
 
 (function setup() {
-  events.bind('scoreUp', function (eventData) {
-    console.log('Score Up ' + JSON.stringify(eventData));
-  });
-  events.bind('levelUp', function (eventData) {
-    console.log('Level Up ' + JSON.stringify(eventData));
-  });
-
   events.bind('gameStart', onGameStart);
   events.bind('gameOver', onGameOver);
+  events.bind('boardChanged', eventData => {
+    const data = eventData as BoardChangedEventData;
+    renderBoard(data.reason);
+    updateHud();
+  });
+  events.bind('scoreUp', updateHud);
+  events.bind('levelUp', updateHud);
   events.bind('spawnScheduled', eventData => {
     startProgress(eventData as SpawnScheduledEventData);
   });
@@ -45,20 +50,14 @@ function onGameStart(): void {
     dialog.close();
     ignoreDialogClose = false;
   }
-  clearInterval(redrawIntervalId);
-  redrawIntervalId = setInterval(
-    function () {
-      redraw(board.getJewels(), board.getSelectedJewel());
-    },
-    1000 / 6,
-  );
+  clearPendingAnimations();
+  renderBoard('reset');
+  updateHud();
 }
 
 function onGameOver(eventData: unknown): void {
-  clearInterval(redrawIntervalId);
   stopProgress();
   const data = eventData as GameOverEventData;
-  redraw(board.getJewels(), board.getSelectedJewel());
   setText('result-score', String(data.score));
   setText('result-duration', time.formatDuration(data.gameEnd - data.gameStart, 2));
   setText('result-level', String(data.level));
@@ -67,48 +66,123 @@ function onGameOver(eventData: unknown): void {
   dialog.showModal();
 }
 
-function getBoardElem(): HTMLTableElement {
-  if (foBoard == null) {
-    foBoard = document.getElementById('board') as HTMLTableElement;
+function renderBoard(reason: BoardChangeReason): void {
+  const boardElement = getBoardElem();
+  const jewels = board.getJewels();
+  const selected = board.getSelectedJewel();
+  const currentTiles = new Map<string, HTMLButtonElement>();
+  boardElement.querySelectorAll<HTMLButtonElement>('.tile').forEach(tile => {
+    currentTiles.set(tile.dataset.key!, tile);
+  });
+
+  const incomingKeys = new Set<string>();
+  const transitionDuration = getTransitionDuration(reason);
+  const transitionId = transitionDuration > 0 ? animationState.begin() : null;
+  const generation = renderGeneration;
+
+  if (transitionId !== null) {
+    boardElement.setAttribute('aria-busy', 'true');
+    currentTiles.forEach(tile => { tile.disabled = true; });
   }
-  return foBoard;
-}
 
-function getGameOverDialog(): HTMLDialogElement {
-  return document.getElementById('game-over-dialog') as HTMLDialogElement;
-}
+  for (let col = 0; col < jewels.length; col++) {
+    for (let row = 0; row < jewels[col].length; row++) {
+      const jewel = jewels[col][row];
+      const key = getJewelKey(jewel, col);
+      incomingKeys.add(key);
+      let tile = currentTiles.get(key);
+      const isNew = !tile;
 
-function setText(id: string, value: string): void {
-  document.getElementById(id)!.textContent = value;
-}
+      if (!tile) {
+        tile = createTile(jewel, row, col, key);
+      }
 
-function redraw(paJewels: Jewel[][], pmSelectedJewel: JewelSelection | null): void {
-  TimeMeter.start('D');
-  const moBoard = getBoardElem();
-  let i: number;
-  let j: number;
-  let moCell: HTMLTableCellElement;
+      updateTile(tile, jewel, row, col, selected?.row === row && selected.col === col);
 
-  for (i = 0; i < NUM_ROWS; i++) {
-    for (j = 0; j < 2; j++) {
-      moCell = moBoard.rows[i].cells[j];
-      moCell.className = '';
-      moCell.innerHTML = '';
-    }
-  }
-  for (j = 0; j < paJewels.length; j++) {
-    for (i = 0; i < paJewels[0].length; i++) {
-      const moJewel = paJewels[j][i];
-      moCell = moBoard.rows[NUM_ROWS - i - 1].cells[j];
-      moCell.className = 'group' + moJewel.groupId;
-      moCell.innerHTML = moJewel.getText();
-      if (pmSelectedJewel && pmSelectedJewel.row === i && pmSelectedJewel.col === j) {
-        moCell.className += ' selected';
+      if (isNew) {
+        tile.disabled = transitionId !== null;
+        if (transitionDuration > 0) {
+          tile.classList.add('is-new');
+        }
+        boardElement.appendChild(tile);
+        if (transitionDuration > 0) {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              if (generation === renderGeneration) {
+                tile!.classList.remove('is-new');
+              }
+            });
+          });
+        }
+      }
+
+      if (reason === 'match' && currentTiles.has(key) && transitionDuration > 0) {
+        schedule(() => updateTilePosition(tile!, row, col), MATCH_FADE_TIME);
+      } else {
+        updateTilePosition(tile, row, col);
       }
     }
   }
-  updateHud();
-  TimeMeter.stop('D');
+
+  currentTiles.forEach((tile, key) => {
+    if (!incomingKeys.has(key)) {
+      tile.disabled = true;
+      tile.classList.add(reason === 'match' ? 'is-matched' : 'is-leaving');
+      schedule(() => tile.remove(), Math.max(MATCH_FADE_TIME, transitionDuration));
+    }
+  });
+
+  if (transitionId !== null) {
+    schedule(() => {
+      animationState.complete(transitionId);
+      if (animationState.isInteractive()) {
+        boardElement.removeAttribute('aria-busy');
+        boardElement.querySelectorAll<HTMLButtonElement>('.tile').forEach(tile => {
+          tile.disabled = false;
+        });
+      }
+    }, transitionDuration);
+  }
+}
+
+function createTile(
+  jewel: Jewel,
+  row: number,
+  col: number,
+  key: string,
+): HTMLButtonElement {
+  const tile = document.createElement('button');
+  tile.type = 'button';
+  tile.className = 'tile';
+  tile.dataset.key = key;
+  tile.setAttribute('role', 'gridcell');
+  updateTile(tile, jewel, row, col, false);
+  return tile;
+}
+
+function updateTile(
+  tile: HTMLButtonElement,
+  jewel: Jewel,
+  row: number,
+  col: number,
+  selected: boolean,
+): void {
+  tile.dataset.row = String(row);
+  tile.dataset.col = String(col);
+  tile.dataset.cardId = String(jewel.card.id);
+  tile.textContent = jewel.getText();
+  tile.className = `tile group${jewel.groupId}`;
+  tile.classList.toggle('selected', selected);
+  tile.setAttribute('aria-selected', String(selected));
+  tile.setAttribute(
+    'aria-label',
+    `${col === 0 ? 'Word' : 'Translation'}: ${jewel.getText()}`,
+  );
+}
+
+function updateTilePosition(tile: HTMLButtonElement, row: number, col: number): void {
+  tile.style.bottom = `${row * 10}%`;
+  tile.style.left = `${col * 50}%`;
 }
 
 function updateHud(): void {
@@ -156,6 +230,59 @@ function stopProgress(): void {
   fill.style.transition = 'none';
 }
 
+function clearPendingAnimations(): void {
+  renderGeneration++;
+  timers.forEach(timer => clearTimeout(timer));
+  timers.clear();
+  animationState.reset();
+  getBoardElem().replaceChildren();
+}
+
+function schedule(callback: () => void, delay: number): void {
+  if (delay <= 0) {
+    callback();
+    return;
+  }
+  const timer = setTimeout(() => {
+    timers.delete(timer);
+    callback();
+  }, delay);
+  timers.add(timer);
+}
+
+function getTransitionDuration(reason: BoardChangeReason): number {
+  if (prefersReducedMotion()) {
+    return 0;
+  }
+  if (reason === 'match') {
+    return MATCH_FADE_TIME + TILE_DROP_TIME;
+  }
+  if (reason === 'reset' || reason === 'spawn' || reason === 'mismatch') {
+    return TILE_DROP_TIME;
+  }
+  return 0;
+}
+
+function prefersReducedMotion(): boolean {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function getJewelKey(jewel: Jewel, col: number): string {
+  return `${jewel.card.id}:${col}`;
+}
+
+function getBoardElem(): HTMLElement {
+  return document.getElementById('board')!;
+}
+
+function getGameOverDialog(): HTMLDialogElement {
+  return document.getElementById('game-over-dialog') as HTMLDialogElement;
+}
+
+function setText(id: string, value: string): void {
+  document.getElementById(id)!.textContent = value;
+}
+
 export default {
-  redraw,
+  redraw: () => renderBoard('selection'),
 };

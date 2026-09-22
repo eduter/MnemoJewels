@@ -35,19 +35,23 @@
                  aria-valuenow="0">
                 <div class="spawn-progress-fill"></div>
             </div>
-            <div id="overlay"></div>
-            <table id="board">
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-            </table>
+            <div id="board-area">
+                <table id="board-slots">
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                </table>
+                <div id="board" role="grid" aria-label="Vocabulary matching board"
+                     aria-rowcount="10" aria-colcount="2"></div>
+                <div id="overlay"></div>
+            </div>
         </div>
 
         <dialog id="game-over-dialog" aria-labelledby="game-over-title">
