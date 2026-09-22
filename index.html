@@ -26,7 +26,15 @@
         </div>
 
         <div class="screen" id="game">
-            <div id="stats"></div>
+            <div id="stats">
+                <span>SCORE: <strong id="score-value">0</strong></span>
+                <span>LEVEL: <strong id="level-value">1</strong></span>
+            </div>
+            <div id="spawn-progress" class="spawn-progress" role="progressbar"
+                 aria-label="Time until the next group" aria-valuemin="0" aria-valuemax="100"
+                 aria-valuenow="0">
+                <div class="spawn-progress-fill"></div>
+            </div>
             <div id="overlay"></div>
             <table id="board">
                 <tr><td></td><td></td></tr>

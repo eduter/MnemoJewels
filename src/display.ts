@@ -6,13 +6,13 @@ import game from './game';
 import time from './time';
 import { getGameOverAction } from './gameOver';
 import TimeMeter from './TimeMeter';
-import type { GameOverEventData, JewelSelection } from './types';
+import type { GameOverEventData, JewelSelection, SpawnScheduledEventData } from './types';
 import type Jewel from './Jewel';
 
 let foBoard: HTMLTableElement | null = null;
-let stats: HTMLElement | null = null;
 let redrawIntervalId: ReturnType<typeof setInterval> | undefined;
 let ignoreDialogClose = false;
+let progressGeneration = 0;
 
 (function setup() {
   events.bind('scoreUp', function (eventData) {
@@ -24,6 +24,9 @@ let ignoreDialogClose = false;
 
   events.bind('gameStart', onGameStart);
   events.bind('gameOver', onGameOver);
+  events.bind('spawnScheduled', eventData => {
+    startProgress(eventData as SpawnScheduledEventData);
+  });
 
   getGameOverDialog().addEventListener('close', () => {
     if (ignoreDialogClose) {
@@ -53,6 +56,7 @@ function onGameStart(): void {
 
 function onGameOver(eventData: unknown): void {
   clearInterval(redrawIntervalId);
+  stopProgress();
   const data = eventData as GameOverEventData;
   redraw(board.getJewels(), board.getSelectedJewel());
   setText('result-score', String(data.score));
@@ -68,13 +72,6 @@ function getBoardElem(): HTMLTableElement {
     foBoard = document.getElementById('board') as HTMLTableElement;
   }
   return foBoard;
-}
-
-function getStatsElem(): HTMLElement {
-  if (stats == null) {
-    stats = document.getElementById('stats')!;
-  }
-  return stats;
 }
 
 function getGameOverDialog(): HTMLDialogElement {
@@ -110,8 +107,53 @@ function redraw(paJewels: Jewel[][], pmSelectedJewel: JewelSelection | null): vo
       }
     }
   }
-  getStatsElem().innerHTML = 'SCORE: ' + score.getScore() + '<br>' + game.getStats();
+  updateHud();
   TimeMeter.stop('D');
+}
+
+function updateHud(): void {
+  setText('score-value', String(score.getScore()));
+  setText('level-value', String(game.getLevel()));
+}
+
+function startProgress(schedule: SpawnScheduledEventData): void {
+  const progress = document.getElementById('spawn-progress')!;
+  const fill = progress.querySelector<HTMLElement>('.spawn-progress-fill')!;
+  const generation = ++progressGeneration;
+
+  fill.style.transition = 'none';
+  fill.style.transform = 'scaleX(0)';
+  progress.setAttribute('aria-valuenow', '0');
+  progress.setAttribute(
+    'aria-valuetext',
+    `Next group in ${(schedule.delay / 1000).toFixed(1)} seconds`,
+  );
+
+  const startFill = () => {
+    if (generation !== progressGeneration) {
+      return;
+    }
+    fill.style.transition = `transform ${schedule.delay}ms linear`;
+    fill.style.transform = 'scaleX(1)';
+    progress.setAttribute('aria-valuenow', '100');
+  };
+
+  if (schedule.delay <= 0) {
+    fill.style.transform = 'scaleX(1)';
+    progress.setAttribute('aria-valuenow', '100');
+    return;
+  }
+
+  requestAnimationFrame(() => requestAnimationFrame(startFill));
+}
+
+function stopProgress(): void {
+  progressGeneration++;
+  const fill = document.querySelector<HTMLElement>('.spawn-progress-fill');
+  if (!fill) {
+    return;
+  }
+  fill.style.transition = 'none';
 }
 
 export default {

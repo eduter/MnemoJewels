@@ -118,6 +118,11 @@ export interface MismatchEventData {
   thinkingTime: number;
 }
 
+export interface SpawnScheduledEventData {
+  startedAt: number;
+  delay: number;
+}
+
 export interface GameOverEventData {
   score: number;
   gameStart: Timestamp;

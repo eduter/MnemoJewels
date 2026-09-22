@@ -1,4 +1,4 @@
-import utils from '../src/utils';
+import utils, { getSpawnProgress } from '../src/utils';
 
 describe('dynamic interval', () => {
   beforeEach(() => {
@@ -77,5 +77,14 @@ describe('dynamic interval', () => {
     expect(first).not.toHaveBeenCalled();
     expect(second).toHaveBeenCalledTimes(1);
     utils.clearInterval(secondId);
+  });
+
+  it('maps an active spawn window to progress from empty to full', () => {
+    const startedAt = Date.now();
+    expect(getSpawnProgress(startedAt, 8000, startedAt)).toBe(0);
+    expect(getSpawnProgress(startedAt, 8000, startedAt + 4000)).toBe(0.5);
+    expect(getSpawnProgress(startedAt, 8000, startedAt + 8000)).toBe(1);
+    expect(getSpawnProgress(startedAt, 8000, startedAt + 9000)).toBe(1);
+    expect(getSpawnProgress(startedAt, 0, startedAt)).toBe(1);
   });
 });

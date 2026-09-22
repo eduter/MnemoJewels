@@ -93,6 +93,13 @@ function getDynamicIntervalSchedule(intervalId: number): DynamicIntervalSchedule
   return interval ? { ...interval.schedule } : null;
 }
 
+export function getSpawnProgress(startedAt: number, delay: number, now: number): number {
+  if (delay <= 0) {
+    return 1;
+  }
+  return Math.max(0, Math.min(1, (now - startedAt) / delay));
+}
+
 function copyData<T>(value: T): T {
   if (value === undefined) {
     return undefined as T;

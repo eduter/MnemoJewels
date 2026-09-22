@@ -106,8 +106,4 @@ export default {
   getLevel: function () { return level; },
   getDifficulty: function () { return getDifficulty(level); },
   getIntervalBetweenGroups,
-  getStats: function () {
-    return 'LEVEL: ' + level
-      + '  p: ' + Math.round(intervalBetweenGroups / 100) / 10;
-  },
 };

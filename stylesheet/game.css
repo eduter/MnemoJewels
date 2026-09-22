@@ -52,7 +52,30 @@
 }
 
 #stats {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 6em 8em 4em;
     font-size: 16em;
+    font-weight: bold;
+    text-shadow: 0.05em 0.05em 0.1em black;
+}
+
+.spawn-progress {
+    height: 8em;
+    margin: 0 8em 6em;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.45);
+    border: 0.1em solid rgba(0, 0, 0, 0.5);
+    border-radius: 0.5em;
+}
+
+.spawn-progress-fill {
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background-color: #C8C864;
 }
 
 #game-over-dialog {

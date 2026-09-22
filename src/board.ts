@@ -6,7 +6,12 @@ import time from './time';
 import utils from './utils';
 import Jewel from './Jewel';
 import type Card from './Card';
-import type { JewelSelection, MatchEventData, MismatchEventData } from './types';
+import type {
+  JewelSelection,
+  MatchEventData,
+  MismatchEventData,
+  SpawnScheduledEventData,
+} from './types';
 
 const overlay = document.getElementById('overlay')!;
 
@@ -144,7 +149,11 @@ function mismatch(cardId1: number, cardId2: number, selectionTime: number): void
 }
 
 function startAddingGroups(): void {
-  intervalId = utils.setDynamicInterval(addDefaultGroup, getIntervalBetweenGroups);
+  intervalId = utils.setDynamicInterval(
+    addDefaultGroup,
+    getIntervalBetweenGroups,
+    schedule => events.trigger('spawnScheduled', schedule satisfies SpawnScheduledEventData),
+  );
 }
 
 function stopAddingGroups(): void {
