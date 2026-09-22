@@ -7,57 +7,56 @@ const russianDeck = JSON.parse(
 ) as DeckData;
 
 describe('Russian deck', () => {
-  it('loads as a regular Russian-to-English deck', () => {
+  it('loads as a Russian-to-English deck with IPA pronunciations only', () => {
     expect(russianDeck.uid).toBe('top-ru-en');
     expect(russianDeck.languageFront).toBe('ru');
     expect(russianDeck.languageBack).toBe('en');
     expect(russianDeck.cards.length).toBeGreaterThan(3000);
-    expect(russianDeck.lexicon).toBeDefined();
+    expect(russianDeck.pronunciations).toBeDefined();
+    expect(russianDeck.lexicon).toBeUndefined();
   });
 
-  it('contains 3,000 ranked Russian lemmas with high IPA coverage', () => {
-    const russianItems = Object.values(russianDeck.lexicon!.items)
-      .filter(item => item.language === 'ru');
+  it('covers about 3,000 Russian lemmas with high IPA coverage', () => {
+    const russianLemmas = new Set(russianDeck.cards.map(card => card[0]));
 
-    expect(russianItems).toHaveLength(3000);
-    expect(russianItems.filter(item => item.ipa?.length).length).toBeGreaterThan(2800);
-    expect(russianItems.every(item => item.frequency?.rank)).toBe(true);
+    expect(russianLemmas.size).toBe(3000);
+    expect(
+      [...russianLemmas].filter(lemma => russianDeck.pronunciations![`ru:${lemma}`]?.length).length,
+    ).toBeGreaterThan(2800);
   });
 
-  it('contains English lexical items and English IPA', () => {
-    const englishItems = Object.values(russianDeck.lexicon!.items)
-      .filter(item => item.language === 'en');
+  it('includes English IPA for many card backs', () => {
+    const englishLemmas = new Set(russianDeck.cards.map(card => card[1]));
 
-    expect(englishItems.length).toBeGreaterThan(2000);
-    expect(englishItems.filter(item => item.ipa?.length).length).toBeGreaterThan(1500);
+    expect(englishLemmas.size).toBeGreaterThan(2000);
+    expect(
+      [...englishLemmas].filter(lemma => russianDeck.pronunciations![`en:${lemma}`]?.length).length,
+    ).toBeGreaterThan(1500);
+  });
+
+  it('stores pronunciations only for lemmas that appear on cards', () => {
+    const allowed = new Set<string>();
+    for (const [russianLemma, englishLemma] of russianDeck.cards) {
+      allowed.add(`ru:${russianLemma}`);
+      allowed.add(`en:${englishLemma}`);
+    }
+    for (const key of Object.keys(russianDeck.pronunciations!)) {
+      expect(allowed.has(key)).toBe(true);
+    }
   });
 
   it('preserves many-to-many translation relationships', () => {
-    const relations = russianDeck.lexicon!.translations;
-    const targetsBySource = groupBy(relations, relation => relation.source, relation => relation.target);
-    const sourcesByTarget = groupBy(relations, relation => relation.target, relation => relation.source);
+    const targetsBySource = groupBy(russianDeck.cards, card => card[0], card => card[1]);
+    const sourcesByTarget = groupBy(russianDeck.cards, card => card[1], card => card[0]);
 
     expect([...targetsBySource.values()].some(targets => targets.size > 1)).toBe(true);
     expect([...sourcesByTarget.values()].some(sources => sources.size > 1)).toBe(true);
-    expect(relations.some(relation => relation.senses?.length)).toBe(true);
   });
 
-  it('represents проблема/problem with IPA and similarity metadata', () => {
-    const items = russianDeck.lexicon!.items;
-    const relation = russianDeck.lexicon!.translations.find(candidate =>
-      items[candidate.source].lemma === 'проблема'
-        && items[candidate.target].lemma === 'problem');
-
-    expect(relation).toBeDefined();
-    expect(items[relation!.source].ipa?.length).toBeGreaterThan(0);
-    expect(items[relation!.target].ipa?.length).toBeGreaterThan(0);
-    expect(russianDeck.lexicon!.similarities).toContainEqual(
-      expect.objectContaining({
-        source: relation!.source,
-        target: relation!.target,
-        sourceType: 'computed',
-      }),
-    );
+  it('includes проблема/problem with IPA', () => {
+    expect(russianDeck.cards).toContainEqual(['проблема', 'problem']);
+    expect(russianDeck.pronunciations!['ru:проблема']?.length).toBeGreaterThan(0);
+    expect(russianDeck.pronunciations!['en:problem']?.length).toBeGreaterThan(0);
   });
 });
 

@@ -30,6 +30,9 @@ export interface DeckData {
   languageBack?: string;
   uid?: string;
   version?: number;
+  /** `language:lemma` keys, e.g. `ru:проблема` → IPA strings for mnemonic distance. */
+  pronunciations?: Record<string, string[]>;
+  /** @deprecated Legacy Russian deck payload; import reads IPA from here if `pronunciations` is absent. */
   lexicon?: DeckLexicon;
 }
 
