@@ -149,13 +149,13 @@
     padding: 16em 18em 8em;
     color: #C8C864;
     font-family: default-font;
-    background-color: rgba(0, 0, 0, 0.92);
-    border: none;
+    background: #111;
+    border: 0.15em solid rgba(255, 255, 255, 0.2);
     border-radius: 5%;
     box-shadow: 3em 3em 10em #000;
 
     &::backdrop {
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.72);
     }
 
     h2 {
