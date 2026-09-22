@@ -20,7 +20,7 @@ export interface Deck {
   languageBack?: string;
   uid?: string;
   version?: number;
-  lexicon?: DeckLexicon;
+  pronunciations?: Record<string, string[]>;
 }
 
 export interface DeckData {
