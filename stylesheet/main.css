@@ -21,6 +21,7 @@ body {
     font-size: min(0.3125vw, 0.208333vh);
     font-size: min(0.3125vw, 0.208333dvh);
     font-family: default-font;
+    line-height: 1.25;
     background-color: #C5CADF;
     background-image: url("../public/images/bg.jpg");
     background-position: center;
@@ -41,15 +42,25 @@ body {
     }
 }
 
+/* Every screen except the game centres its content as a column. `safe center`
+   keeps tall content reachable on short viewports instead of clipping its top. */
+.screen:not(#game).active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe center;
+    overflow: hidden;
+}
+
 .screen-content {
     box-sizing: border-box;
     width: min(90%, 288em);
     background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 3em 3em 10em #000;
     border-radius: 5%;
-    height: 300em;
-    padding: 5%;
-    margin: 5% auto;
+    padding: 12em;
+    margin: 2em auto;
+    overflow-wrap: break-word;
 
     h3 {
         color: #f1c101;

@@ -20,7 +20,7 @@
 
     &.small {
         font-size: 20em;
-        text-align: left;
-        margin: 5%;
+        margin: 0;
+        max-width: 100%;
     }
 }

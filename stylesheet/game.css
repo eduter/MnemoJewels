@@ -1,17 +1,31 @@
 /* Game Screen */
 
+/* Reserve the HUD's space so the board can never grow into it. */
+#game {
+    --hud-height: 60em;
+}
+
 #board-area {
     position: absolute;
     bottom: 0;
     left: 50%;
     width: min(100%, 320em);
+    /* The board grows with the viewport but stops before it would collide with
+       the HUD; on very short viewports the remaining height is the hard cap. */
+    height: min(calc(100% - var(--hud-height)), 454em);
     overflow: hidden;
     transform: translateX(-50%);
 }
 
 #board-slots {
     width: 100%;
+    height: 100%;
     border-spacing: 0;
+    table-layout: fixed;
+}
+
+#board-slots tr {
+    height: 10%;
 }
 
 #board {
@@ -22,7 +36,7 @@
 
 #board-slots td,
 .tile {
-    box-sizing: content-box;
+    box-sizing: border-box;
     border-style: solid;
     border-width: 0.1em;
     border-color: rgba(0, 0, 0, 0.5);
@@ -31,7 +45,8 @@
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    height: 1.55em;
+    /* Matches .tile so the faded slot lines up with the jewel on top of it. */
+    height: 10%;
     font-size: 18em;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
@@ -42,16 +57,12 @@
 }
 
 #board-slots td {
-    box-sizing: content-box;
     opacity: 0.45;
 }
 
 .tile {
     position: absolute;
     z-index: 2;
-    box-sizing: border-box;
-    width: 50%;
-    height: 10%;
     margin: 0;
     overflow: hidden;
     min-width: 0;
@@ -118,7 +129,7 @@
 
 .game-logo {
     display: none;
-    margin-bottom: 0;
+    margin: 2em 0 0;
 }
 
 #overlay {
