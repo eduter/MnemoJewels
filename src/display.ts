@@ -127,6 +127,8 @@ function renderBoard(reason: BoardChangeReason): void {
   currentTiles.forEach((tile, key) => {
     if (!incomingKeys.has(key)) {
       tile.disabled = true;
+      tile.classList.remove('selected');
+      tile.setAttribute('aria-selected', 'false');
       tile.classList.add(reason === 'match' ? 'is-matched' : 'is-leaving');
       schedule(() => tile.remove(), Math.max(MATCH_FADE_TIME, transitionDuration));
     }

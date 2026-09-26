@@ -110,12 +110,15 @@ function selectJewel(piRow: number, piCol: number): void {
         const miPrevSelectedId = prevSelectedJewel.card.id;
         const miNewSelectedId = newSelectedJewel.card.id;
 
+        // Clear before resolving: match/mismatch re-render the board, and a
+        // stale selection would be painted onto whichever jewel shifted into
+        // its coordinates.
+        fmSelectedJewel = null;
         if (miNewSelectedId === miPrevSelectedId) {
           match(miNewSelectedId, miSelectionTime);
         } else {
           mismatch(miNewSelectedId, miPrevSelectedId, miSelectionTime);
         }
-        fmSelectedJewel = null;
       }
     }
   } else {
