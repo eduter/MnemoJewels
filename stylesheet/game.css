@@ -41,6 +41,7 @@
 
 #board-slots td {
     box-sizing: content-box;
+    opacity: 0.45;
 }
 
 .tile {
