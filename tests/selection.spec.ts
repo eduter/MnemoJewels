@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { beforeAll, beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
-import { INITIAL_INTERVAL } from '../src/constants';
+import { INITIAL_INTERVAL, TILE_DROP_TIME } from '../src/constants';
 import type { CardDto, Deck, JewelSelection } from '../src/types';
 import type Jewel from '../src/Jewel';
 
@@ -9,10 +9,11 @@ const CARD_COUNT = 60;
 let board: typeof import('../src/board').default;
 let game: typeof import('../src/game').default;
 let events: typeof import('../src/events').default;
+let reducedMotion = true;
 
 beforeAll(async () => {
-  window.matchMedia = vi.fn().mockReturnValue({
-    matches: true,
+  window.matchMedia = vi.fn().mockImplementation(() => ({
+    matches: reducedMotion,
     media: '',
     onchange: null,
     addListener: vi.fn(),
@@ -20,7 +21,7 @@ beforeAll(async () => {
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
-  }) as unknown as typeof window.matchMedia;
+  })) as unknown as typeof window.matchMedia;
   window.requestAnimationFrame = callback => window.setTimeout(() => callback(0), 0);
 
   seedStorage();
@@ -35,10 +36,12 @@ beforeAll(async () => {
 });
 
 beforeEach(() => {
+  reducedMotion = true;
   game.startGame();
 });
 
 afterEach(() => {
+  reducedMotion = true;
   vi.useRealTimers();
 });
 
@@ -172,6 +175,52 @@ describe('tile selection', () => {
       `.tile[data-row="${selected!.row}"][data-col="${selected!.col}"]`,
     );
     expect(selectedTile?.classList.contains('selected')).toBe(true);
+    vi.useRealTimers();
+  });
+
+  it('accepts a click on an existing tile while a new group is dropping in', () => {
+    vi.useFakeTimers();
+    reducedMotion = false;
+    game.startGame();
+    vi.advanceTimersByTime(INITIAL_INTERVAL);
+    expect(document.querySelectorAll('.tile.is-new').length).toBeGreaterThan(0);
+
+    board.selectJewel(0, 0);
+
+    expect(board.getSelectedJewel()).toEqual({ row: 0, col: 0 });
+    vi.useRealTimers();
+  });
+
+  it('keeps incoming tiles inert until their drop finishes', () => {
+    vi.useFakeTimers();
+    reducedMotion = false;
+    game.startGame();
+    vi.advanceTimersByTime(INITIAL_INTERVAL);
+
+    const dropping = document.querySelector<HTMLButtonElement>('.tile.is-new');
+    expect(dropping?.disabled).toBe(true);
+
+    vi.advanceTimersByTime(TILE_DROP_TIME);
+    expect(dropping?.disabled).toBe(false);
+    vi.useRealTimers();
+  });
+
+  it('registers a real click on an existing tile while a new group drops in', async () => {
+    vi.useFakeTimers();
+    reducedMotion = false;
+    const input = (await import('../src/input')).default;
+    input.initialize();
+    input.bind('selectJewel', game.selectJewel);
+    game.startGame();
+    vi.advanceTimersByTime(INITIAL_INTERVAL);
+
+    const existing = document.querySelector<HTMLButtonElement>(
+      '.tile:not(.is-new)[data-row="0"][data-col="0"]',
+    );
+    expect(existing).not.toBeNull();
+    existing!.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+    expect(board.getSelectedJewel()).toEqual({ row: 0, col: 0 });
     vi.useRealTimers();
   });
 });

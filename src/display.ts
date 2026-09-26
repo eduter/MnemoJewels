@@ -77,8 +77,9 @@ function renderBoard(reason: BoardChangeReason): void {
 
   const incomingKeys = new Set<string>();
   const transitionDuration = getTransitionDuration(reason);
-  const transitionId = transitionDuration > 0 ? animationState.begin() : null;
+  const transitionId = locksInput(reason) && transitionDuration > 0 ? animationState.begin() : null;
   const generation = renderGeneration;
+  const droppingTiles: HTMLButtonElement[] = [];
 
   if (transitionId !== null) {
     boardElement.setAttribute('aria-busy', 'true');
@@ -100,9 +101,10 @@ function renderBoard(reason: BoardChangeReason): void {
       updateTile(tile, jewel, row, col, selected?.row === row && selected.col === col);
 
       if (isNew) {
-        tile.disabled = transitionId !== null;
         if (transitionDuration > 0) {
+          tile.disabled = true;
           tile.classList.add('is-new');
+          droppingTiles.push(tile);
         }
         boardElement.appendChild(tile);
         if (transitionDuration > 0) {
@@ -142,6 +144,14 @@ function renderBoard(reason: BoardChangeReason): void {
         boardElement.querySelectorAll<HTMLButtonElement>('.tile').forEach(tile => {
           tile.disabled = false;
         });
+      }
+    }, transitionDuration);
+  } else if (droppingTiles.length > 0) {
+    // A spawn appends tiles without reflowing existing ones, so it animates
+    // without locking input; only the incoming tiles stay inert mid-drop.
+    schedule(() => {
+      if (animationState.isInteractive()) {
+        droppingTiles.forEach(tile => { tile.disabled = false; });
       }
     }, transitionDuration);
   }
@@ -263,6 +273,12 @@ function getTransitionDuration(reason: BoardChangeReason): number {
     return TILE_DROP_TIME;
   }
   return 0;
+}
+
+function locksInput(reason: BoardChangeReason): boolean {
+  // Only reasons that reflow existing rows need to freeze the board. A spawn
+  // only appends tiles, so the player can keep selecting while it drops in.
+  return reason === 'reset' || reason === 'match' || reason === 'mismatch';
 }
 
 function prefersReducedMotion(): boolean {
