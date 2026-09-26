@@ -1,4 +1,3 @@
-import animationState from './animationState';
 import { NUM_ROWS } from './constants';
 
 type InputAction = 'selectJewel';
@@ -15,10 +14,6 @@ function initialize(): void {
 
   const boardArea = document.getElementById('board-area')!;
   boardArea.addEventListener('click', event => {
-    if (!animationState.isInteractive()) {
-      return;
-    }
-
     const target = event.target as HTMLElement;
     const tile = target.closest<HTMLButtonElement>('.tile');
     if (tile) {
@@ -44,9 +39,6 @@ function initialize(): void {
   });
 
   boardArea.addEventListener('keydown', event => {
-    if (!animationState.isInteractive()) {
-      return;
-    }
     const current = (event.target as HTMLElement).closest<HTMLButtonElement>('.tile');
     if (!current) {
       return;

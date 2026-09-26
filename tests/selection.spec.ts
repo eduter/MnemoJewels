@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 import { beforeAll, beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
-import { INITIAL_INTERVAL, TILE_DROP_TIME } from '../src/constants';
+import { INITIAL_INTERVAL } from '../src/constants';
 import type { CardDto, Deck, JewelSelection } from '../src/types';
 import type Jewel from '../src/Jewel';
 
-const CARD_COUNT = 60;
+const CARD_COUNT = 300;
 
 let board: typeof import('../src/board').default;
 let game: typeof import('../src/game').default;
@@ -30,9 +30,12 @@ beforeAll(async () => {
   board = (await import('../src/board')).default;
   game = (await import('../src/game')).default;
   events = (await import('../src/events')).default;
+  const input = (await import('../src/input')).default;
   const storage = (await import('../src/storage')).default;
   await storage.setup();
   await import('../src/display');
+  input.initialize();
+  input.bind('selectJewel', game.selectJewel);
 });
 
 beforeEach(() => {
@@ -191,26 +194,77 @@ describe('tile selection', () => {
     vi.useRealTimers();
   });
 
-  it('keeps incoming tiles inert until their drop finishes', () => {
+  it('makes a newly spawned tile selectable while it drops in', () => {
     vi.useFakeTimers();
     reducedMotion = false;
     game.startGame();
     vi.advanceTimersByTime(INITIAL_INTERVAL);
 
     const dropping = document.querySelector<HTMLButtonElement>('.tile.is-new');
-    expect(dropping?.disabled).toBe(true);
-
-    vi.advanceTimersByTime(TILE_DROP_TIME);
+    expect(dropping).not.toBeNull();
     expect(dropping?.disabled).toBe(false);
+
+    board.selectJewel(Number(dropping!.dataset.row), Number(dropping!.dataset.col));
+    expect(board.getSelectedJewel()).not.toBeNull();
     vi.useRealTimers();
   });
 
-  it('registers a real click on an existing tile while a new group drops in', async () => {
+  it('accepts a click on a tile falling into a gap after a match', () => {
     vi.useFakeTimers();
     reducedMotion = false;
-    const input = (await import('../src/input')).default;
-    input.initialize();
-    input.bind('selectJewel', game.selectJewel);
+    game.startGame();
+    vi.advanceTimersByTime(INITIAL_INTERVAL);
+    const { first, second } = findMatchingPair(board.getJewels());
+
+    board.selectJewel(first.row, first.col);
+    board.selectJewel(second.row, second.col);
+    expect(selectedTiles()).toHaveLength(0);
+
+    board.selectJewel(0, 0);
+
+    expect(board.getSelectedJewel()).toEqual({ row: 0, col: 0 });
+    vi.useRealTimers();
+  });
+
+  it('registers a real click on a tile falling into a gap after a match', () => {
+    vi.useFakeTimers();
+    reducedMotion = false;
+    game.startGame();
+    vi.advanceTimersByTime(INITIAL_INTERVAL);
+    const { first, second } = findMatchingPair(board.getJewels());
+
+    board.selectJewel(first.row, first.col);
+    board.selectJewel(second.row, second.col);
+
+    const falling = document.querySelector<HTMLButtonElement>(
+      '.tile:not(.is-matched):not(.is-leaving)[data-row="0"][data-col="0"]',
+    );
+    expect(falling).not.toBeNull();
+    falling!.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+    expect(board.getSelectedJewel()).toEqual({ row: 0, col: 0 });
+    vi.useRealTimers();
+  });
+
+  it('ignores clicks on a matched tile that is fading out', () => {
+    vi.useFakeTimers();
+    reducedMotion = false;
+    game.startGame();
+    vi.advanceTimersByTime(INITIAL_INTERVAL);
+    const { first, second } = findMatchingPair(board.getJewels());
+
+    board.selectJewel(first.row, first.col);
+    board.selectJewel(second.row, second.col);
+
+    const leaving = document.querySelector<HTMLButtonElement>('.tile.is-matched');
+    expect(leaving).not.toBeNull();
+    expect(leaving?.disabled).toBe(true);
+    vi.useRealTimers();
+  });
+
+  it('registers a real click on an existing tile while a new group drops in', () => {
+    vi.useFakeTimers();
+    reducedMotion = false;
     game.startGame();
     vi.advanceTimersByTime(INITIAL_INTERVAL);
 

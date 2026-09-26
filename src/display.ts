@@ -77,13 +77,11 @@ function renderBoard(reason: BoardChangeReason): void {
 
   const incomingKeys = new Set<string>();
   const transitionDuration = getTransitionDuration(reason);
-  const transitionId = locksInput(reason) && transitionDuration > 0 ? animationState.begin() : null;
+  const transitionId = transitionDuration > 0 ? animationState.begin() : null;
   const generation = renderGeneration;
-  const droppingTiles: HTMLButtonElement[] = [];
 
   if (transitionId !== null) {
     boardElement.setAttribute('aria-busy', 'true');
-    currentTiles.forEach(tile => { tile.disabled = true; });
   }
 
   for (let col = 0; col < jewels.length; col++) {
@@ -102,9 +100,7 @@ function renderBoard(reason: BoardChangeReason): void {
 
       if (isNew) {
         if (transitionDuration > 0) {
-          tile.disabled = true;
           tile.classList.add('is-new');
-          droppingTiles.push(tile);
         }
         boardElement.appendChild(tile);
         if (transitionDuration > 0) {
@@ -128,6 +124,8 @@ function renderBoard(reason: BoardChangeReason): void {
 
   currentTiles.forEach((tile, key) => {
     if (!incomingKeys.has(key)) {
+      // A leaving tile keeps its pre-reflow coordinates, so it must not stay
+      // clickable; the player interacts with the tiles that fall into the gap.
       tile.disabled = true;
       tile.classList.remove('selected');
       tile.setAttribute('aria-selected', 'false');
@@ -141,17 +139,6 @@ function renderBoard(reason: BoardChangeReason): void {
       animationState.complete(transitionId);
       if (animationState.isInteractive()) {
         boardElement.removeAttribute('aria-busy');
-        boardElement.querySelectorAll<HTMLButtonElement>('.tile').forEach(tile => {
-          tile.disabled = false;
-        });
-      }
-    }, transitionDuration);
-  } else if (droppingTiles.length > 0) {
-    // A spawn appends tiles without reflowing existing ones, so it animates
-    // without locking input; only the incoming tiles stay inert mid-drop.
-    schedule(() => {
-      if (animationState.isInteractive()) {
-        droppingTiles.forEach(tile => { tile.disabled = false; });
       }
     }, transitionDuration);
   }
@@ -273,12 +260,6 @@ function getTransitionDuration(reason: BoardChangeReason): number {
     return TILE_DROP_TIME;
   }
   return 0;
-}
-
-function locksInput(reason: BoardChangeReason): boolean {
-  // Only reasons that reflow existing rows need to freeze the board. A spawn
-  // only appends tiles, so the player can keep selecting while it drops in.
-  return reason === 'reset' || reason === 'match' || reason === 'mismatch';
 }
 
 function prefersReducedMotion(): boolean {

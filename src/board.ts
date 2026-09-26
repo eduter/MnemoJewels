@@ -4,7 +4,6 @@ import cards from './cards';
 import game from './game';
 import time from './time';
 import utils from './utils';
-import animationState from './animationState';
 import Jewel from './Jewel';
 import type Card from './Card';
 import type {
@@ -88,10 +87,6 @@ function getNextGroupId(): number {
 }
 
 function selectJewel(piRow: number, piCol: number): void {
-  if (!animationState.isInteractive()) {
-    return;
-  }
-
   const miSelectionTime = time.now();
   let selectionChanged = false;
 
