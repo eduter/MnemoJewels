@@ -1,34 +1,82 @@
+import animationState from './animationState';
 import { NUM_ROWS } from './constants';
-import type { JewelSelection } from './types';
 
 type InputAction = 'selectJewel';
 type InputHandler = (row: number, col: number) => void;
 
-const controls: Record<string, InputAction> = {
-  CLICK: 'selectJewel',
-  TOUCH: 'selectJewel',
-};
-
-let inputHandlers: Partial<Record<InputAction, InputHandler[]>> | null = null;
-let fmLastStart: JewelSelection | null = null;
+const inputHandlers: Partial<Record<InputAction, InputHandler[]>> = {};
+let initialized = false;
 
 function initialize(): void {
-  const board = document.getElementById('board')!;
+  if (initialized) {
+    return;
+  }
+  initialized = true;
 
-  inputHandlers = {};
+  const boardArea = document.getElementById('board-area')!;
+  boardArea.addEventListener('click', event => {
+    if (!animationState.isInteractive()) {
+      return;
+    }
 
-  board.addEventListener('mousedown', function (event) {
-    handleClick(event, 'CLICK', true);
+    const target = event.target as HTMLElement;
+    const tile = target.closest<HTMLButtonElement>('.tile');
+    if (tile) {
+      if (tile.disabled) {
+        return;
+      }
+      const row = Number(tile.dataset.row);
+      const col = Number(tile.dataset.col);
+      if (Number.isInteger(row) && Number.isInteger(col)) {
+        trigger('selectJewel', row, col);
+        event.preventDefault();
+      }
+      return;
+    }
+
+    const cell = target.closest('td');
+    if (cell && cell.parentElement) {
+      const miCol = cell.cellIndex;
+      const miRow = NUM_ROWS - (cell.parentElement as HTMLTableRowElement).rowIndex - 1;
+      trigger('selectJewel', miRow, miCol);
+      event.preventDefault();
+    }
   });
-  board.addEventListener('mouseup', function (event) {
-    handleClick(event, 'CLICK', false);
+
+  boardArea.addEventListener('keydown', event => {
+    if (!animationState.isInteractive()) {
+      return;
+    }
+    const current = (event.target as HTMLElement).closest<HTMLButtonElement>('.tile');
+    if (!current) {
+      return;
+    }
+    const row = Number(current.dataset.row);
+    const col = Number(current.dataset.col);
+    let nextRow = row;
+    let nextCol = col;
+    if (event.key === 'ArrowUp') {
+      nextRow += 1;
+    } else if (event.key === 'ArrowDown') {
+      nextRow -= 1;
+    } else if (event.key === 'ArrowLeft') {
+      nextCol -= 1;
+    } else if (event.key === 'ArrowRight') {
+      nextCol += 1;
+    } else {
+      return;
+    }
+    const next = boardArea.querySelector<HTMLButtonElement>(
+      `.tile[data-row="${nextRow}"][data-col="${nextCol}"]`,
+    );
+    if (next && !next.disabled) {
+      next.focus();
+      event.preventDefault();
+    }
   });
 }
 
 function bind(action: InputAction, handler: InputHandler): void {
-  if (!inputHandlers) {
-    inputHandlers = {};
-  }
   if (!inputHandlers[action]) {
     inputHandlers[action] = [];
   }
@@ -36,33 +84,12 @@ function bind(action: InputAction, handler: InputHandler): void {
 }
 
 function trigger(action: InputAction, row: number, col: number): void {
-  const handlers = inputHandlers?.[action];
-
+  const handlers = inputHandlers[action];
   if (handlers) {
     for (let i = 0; i < handlers.length; i++) {
       handlers[i](row, col);
     }
   }
-}
-
-function handleClick(event: MouseEvent, control: keyof typeof controls, pbStart: boolean): void {
-  const action = controls[control];
-  if (!action) {
-    return;
-  }
-
-  const moTarget = event.target as HTMLTableCellElement;
-  const miCol = moTarget.cellIndex;
-  const miRow = NUM_ROWS - (moTarget.parentElement as HTMLTableRowElement).rowIndex - 1;
-
-  if (pbStart) {
-    fmLastStart = { row: miRow, col: miCol };
-  } else if (fmLastStart && fmLastStart.row === miRow && fmLastStart.col === miCol) {
-    return;
-  }
-
-  trigger(action, miRow, miCol);
-  event.preventDefault();
 }
 
 export default {

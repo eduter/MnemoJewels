@@ -2,6 +2,7 @@ import gameScreen from './screen.game';
 import deckStatsScreen from './screen.deck-stats';
 import topScoresScreen from './screen.top-scores';
 import settingsScreen from './screen.settings';
+import events from './events';
 import type { ScreenModule } from './types';
 
 const screens: Record<string, ScreenModule> = {
@@ -17,6 +18,14 @@ const previousScreens: string[] = [];
 (function setup() {
   initializeScreenModules();
   registerListeners();
+  events.bind('gameOverDialogClosed', eventData => {
+    const data = eventData as { action: string };
+    if (data.action === 'replay') {
+      screens.game.update?.();
+    } else {
+      navigateTo('main-menu');
+    }
+  });
 })();
 
 function initializeScreenModules(): void {

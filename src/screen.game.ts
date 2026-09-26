@@ -1,5 +1,6 @@
 import game from './game';
 import input from './input';
+import './display';
 
 function setup(): void {
   input.initialize();

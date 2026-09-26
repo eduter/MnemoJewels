@@ -7,7 +7,8 @@ window.addEventListener('load', function () {
 
   function resize(): void {
     const height = window.innerHeight || document.documentElement.clientHeight || body.clientHeight;
-    topContainer.style.fontSize = (height / 480) + 'px';
+    const width = window.innerWidth || document.documentElement.clientWidth || body.clientWidth;
+    topContainer.style.fontSize = Math.min(height / 480, width / 320) + 'px';
   }
 
   window.onresize = resize;

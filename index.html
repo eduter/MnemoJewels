@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MnemoJewels</title>
 </head>
 <body>
@@ -26,21 +26,57 @@
         </div>
 
         <div class="screen" id="game">
-            <div id="stats"></div>
-            <div id="overlay"></div>
-            <table id="board">
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td></td><td></td></tr>
-            </table>
+            <div id="stats">
+                <span>SCORE: <strong id="score-value">0</strong></span>
+                <span>LEVEL: <strong id="level-value">1</strong></span>
+            </div>
+            <div id="spawn-progress" class="spawn-progress" role="progressbar"
+                 aria-label="Time until the next group" aria-valuemin="0" aria-valuemax="100"
+                 aria-valuenow="0">
+                <div class="spawn-progress-fill"></div>
+            </div>
+            <div id="board-area">
+                <table id="board-slots">
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                </table>
+                <div id="board" role="grid" aria-label="Vocabulary matching board"
+                     aria-rowcount="10" aria-colcount="2"></div>
+                <div id="overlay"></div>
+            </div>
         </div>
+
+        <dialog id="game-over-dialog" aria-labelledby="game-over-title">
+            <form method="dialog">
+                <h2 id="game-over-title">Game Over</h2>
+                <dl class="game-over-stats">
+                    <div>
+                        <dt>Score</dt>
+                        <dd id="result-score">0</dd>
+                    </div>
+                    <div>
+                        <dt>Time</dt>
+                        <dd id="result-duration">0:00</dd>
+                    </div>
+                    <div>
+                        <dt>Level</dt>
+                        <dd id="result-level">1</dd>
+                    </div>
+                </dl>
+                <ul class="menu">
+                    <li><button class="bt_green" value="replay">Play again</button></li>
+                    <li><button class="bt_blue" value="menu">Main menu</button></li>
+                </ul>
+            </form>
+        </dialog>
 
         <div class="screen" id="deck-stats">
             <h2 class="logo small">Mnemo<br/>Jewels</h2>
