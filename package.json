@@ -12,9 +12,9 @@
     "test": "vitest run",
     "test-watch": "vitest",
     "check": "npm run typecheck && npm run test",
-    "data:russian": "node tools/russian/generate.mjs",
-    "data:russian:sanitize": "node tools/russian/generate.mjs --sanitize",
-    "data:russian:download": "node tools/russian/generate.mjs --download"
+    "data:russian": "node --experimental-strip-types tools/russian/generate.ts",
+    "data:russian:sanitize": "node --experimental-strip-types tools/russian/generate.ts --sanitize",
+    "data:russian:download": "node --experimental-strip-types tools/russian/generate.ts --download"
   },
   "author": "eduter",
   "license": "ISC",

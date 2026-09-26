@@ -1,18 +1,12 @@
 {
   "russianLemmas": 3000,
-  "frequencyRankRange": [
-    1,
-    3246
-  ],
+  "cards": 11084,
   "russianWithIpa": 2999,
   "russianWithoutIpa": 1,
-  "russianWithTranslation": 3000,
-  "russianWithoutTranslation": 0,
-  "englishLexicalItems": 6526,
-  "englishWithIpa": 5521,
-  "englishWithoutIpa": 1005,
-  "translationRelationships": 11180,
-  "similarityAnnotations": 237,
+  "englishLemmas": 6428,
+  "englishWithIpa": 5531,
+  "englishWithoutIpa": 897,
+  "pronunciationEntries": 8530,
   "frequencyDuplicateRows": 11,
   "duplicateCards": 0,
   "malformedEntries": 0
