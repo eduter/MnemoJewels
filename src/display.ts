@@ -15,6 +15,7 @@ import type {
 import type Jewel from './Jewel';
 
 const timers = new Set<ReturnType<typeof setTimeout>>();
+const MIN_TILE_LABEL_SCALE = 0.55;
 let renderGeneration = 0;
 let progressGeneration = 0;
 let ignoreDialogClose = false;
@@ -32,6 +33,7 @@ let ignoreDialogClose = false;
   events.bind('spawnScheduled', eventData => {
     startProgress(eventData as SpawnScheduledEventData);
   });
+  window.addEventListener('resize', fitAllTileLabels);
 
   getGameOverDialog().addEventListener('close', () => {
     if (ignoreDialogClose) {
@@ -155,6 +157,9 @@ function createTile(
   tile.className = 'tile';
   tile.dataset.key = key;
   tile.setAttribute('role', 'gridcell');
+  const label = document.createElement('span');
+  label.className = 'tile-label';
+  tile.appendChild(label);
   updateTile(tile, jewel, row, col, false);
   return tile;
 }
@@ -169,14 +174,49 @@ function updateTile(
   tile.dataset.row = String(row);
   tile.dataset.col = String(col);
   tile.dataset.cardId = String(jewel.card.id);
-  tile.textContent = jewel.getText();
+  const text = jewel.getText();
+  const label = tile.querySelector<HTMLElement>('.tile-label')!;
+  if (label.textContent !== text) {
+    label.textContent = text;
+    requestAnimationFrame(() => fitTileLabel(tile));
+  }
+  tile.title = text;
   tile.className = `tile group${jewel.groupId}`;
   tile.classList.toggle('selected', selected);
   tile.setAttribute('aria-selected', String(selected));
   tile.setAttribute(
     'aria-label',
-    `${col === 0 ? 'Word' : 'Translation'}: ${jewel.getText()}`,
+    `${col === 0 ? 'Word' : 'Translation'}: ${text}`,
   );
+}
+
+function fitAllTileLabels(): void {
+  getBoardElem().querySelectorAll<HTMLButtonElement>('.tile').forEach(fitTileLabel);
+}
+
+function fitTileLabel(tile: HTMLButtonElement): void {
+  const label = tile.querySelector<HTMLElement>('.tile-label');
+  if (!label || !tile.isConnected) {
+    return;
+  }
+
+  label.style.fontSize = '1em';
+  if (label.scrollWidth <= label.clientWidth + 1) {
+    return;
+  }
+
+  let lower = MIN_TILE_LABEL_SCALE;
+  let upper = 1;
+  for (let i = 0; i < 6; i++) {
+    const scale = (lower + upper) / 2;
+    label.style.fontSize = `${scale}em`;
+    if (label.scrollWidth <= label.clientWidth + 1) {
+      lower = scale;
+    } else {
+      upper = scale;
+    }
+  }
+  label.style.fontSize = `${lower}em`;
 }
 
 function updateTilePosition(tile: HTMLButtonElement, row: number, col: number): void {

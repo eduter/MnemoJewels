@@ -3,8 +3,10 @@
 #board-area {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    left: 50%;
+    width: min(100%, 320em);
     overflow: hidden;
+    transform: translateX(-50%);
 }
 
 #board-slots {
@@ -29,7 +31,7 @@
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    height: 1.3em;
+    height: 1.55em;
     font-size: 18em;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
@@ -105,6 +107,20 @@
     &.group12 { background-color: #880; }
 }
 
+.tile-label {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    line-height: 1.1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.game-logo {
+    display: none;
+    margin-bottom: 0;
+}
+
 #overlay {
     display: none;
     position: absolute;
@@ -118,6 +134,8 @@
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
+    width: min(100%, 320em);
+    margin: 0 auto;
     padding: 8em 10em 4em;
 }
 
@@ -128,12 +146,19 @@
 }
 
 .spawn-progress {
+    width: min(calc(100% - 16em), 304em);
     height: 8em;
-    margin: 0 8em 6em;
+    margin: 0 auto 6em;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.45);
     border: 0.1em solid rgba(0, 0, 0, 0.5);
     border-radius: 0.5em;
+}
+
+@media (max-aspect-ratio: 1 / 2) {
+    .game-logo {
+        display: block;
+    }
 }
 
 .spawn-progress-fill {
