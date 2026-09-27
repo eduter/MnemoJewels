@@ -83,6 +83,17 @@ describe('Jev review analyzer', () => {
     expect(entry).toEqual([]);
   });
 
+  it('keeps defaults when an override key is explicitly undefined', () => {
+    // Regression: `{...defaults, ...overrides}` let an undefined value wipe the
+    // default, so band became NaN and every near-threshold card was missed.
+    const opts = defaultReviewOptions({ band: undefined });
+    expect(opts.band).toBe(0.15);
+    const buckets = buildReview(report([
+      lemma('и', [['and', 0.45, true], ['as well', 0.62, false]]),
+    ]), opts);
+    expect(buckets.report.reviewCards).toBe(2);
+  });
+
   it('renders markdown with the counts and reason sections', () => {
     const md = renderMarkdown(buildReview(report([
       lemma('и', [['and', 0.45, true], ['as well', 0.62, false]]),

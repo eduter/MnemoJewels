@@ -18,7 +18,7 @@
 import { parseArgs } from 'node:util';
 import { resolve } from 'node:path';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { DEFAULT_BAND_THRESHOLDS, type TriageReport, type TriageSummary } from './types.ts';
+import { DEFAULT_BAND_THRESHOLDS, mergeDefined, type TriageReport, type TriageSummary } from './types.ts';
 
 export interface ReviewOptions {
   /** Half-width of the review band around the drop threshold. */
@@ -32,13 +32,12 @@ export interface ReviewOptions {
 }
 
 export function defaultReviewOptions(overrides: Partial<ReviewOptions> = {}): ReviewOptions {
-  return {
+  return mergeDefined<ReviewOptions>({
     band: 0.15,
     misleadingThreshold: DEFAULT_BAND_THRESHOLDS.misleading,
     ambiguousPick: DEFAULT_BAND_THRESHOLDS.ambiguousPick,
     scoreThreshold: DEFAULT_BAND_THRESHOLDS.score,
-    ...overrides,
-  };
+  }, overrides);
 }
 
 export type ReviewReason =

@@ -54,7 +54,12 @@ if (values['print-request']) {
 
 if (values.calibrate) {
   const truth = await loadGroundTruth(resolve(values.calibrate));
-  const metrics = await calibrate(truth, { verbose: values.verbose });
+  const metrics = await calibrate(truth, {
+    verbose: values.verbose,
+    thresholds: {
+      misleading: values['misleading-threshold'] ? Number(values['misleading-threshold']) : undefined,
+    },
+  });
   await writeCalibrationReport(resolve(out, 'calibration.json'), metrics);
   console.log(
     `Calibration: ${metrics.correct}/${metrics.total} correct (accuracy ${metrics.accuracy.toFixed(2)}), `

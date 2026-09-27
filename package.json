@@ -18,6 +18,8 @@
     "data:jev": "node --experimental-strip-types tools/jev/cli.ts",
     "data:jev:calibrate": "node --experimental-strip-types tools/jev/cli.ts --calibrate tools/jev/calibration-sample.json",
     "data:jev:analyze": "node --experimental-strip-types tools/jev/analyze.ts",
+    "data:jev:policy": "node --experimental-strip-types tools/jev/policy.ts",
+    "data:jev:compare": "node --experimental-strip-types tools/jev/compare.ts",
     "data:jev:apply": "node --experimental-strip-types tools/jev/apply.ts"
   },
   "author": "eduter",

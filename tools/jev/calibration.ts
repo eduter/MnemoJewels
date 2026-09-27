@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { triageDeck, writeJson, type TriageResult } from './triage.ts';
-import type { DeckCard, DropFile } from './types.ts';
+import type { BandThresholds, DeckCard, DropFile } from './types.ts';
 import type { DeckData } from '../../src/types.ts';
 
 // Ground truth for calibration: a set of cards a human has judged as either a
@@ -15,6 +15,8 @@ export interface GroundTruthPair {
 export interface CalibrationOptions {
   limit?: number;
   verbose?: boolean;
+  /** Override the drop threshold so the policy can be tuned against labels. */
+  thresholds?: Partial<BandThresholds>;
 }
 
 export interface CalibrationRow extends GroundTruthPair {
@@ -96,6 +98,7 @@ export async function calibrate(
   const result: TriageResult = await triageDeck(deck, {
     verbose: options.verbose,
     limit: options.limit,
+    thresholds: options.thresholds,
   });
   const predictedKeep = new Set<string>();
   for (const lemma of result.report.byLemma) {

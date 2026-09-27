@@ -37,6 +37,19 @@ export interface BandThresholds {
   ambiguousPick: number;
 }
 
+// Merges overrides over defaults without letting an explicit `undefined` wipe a
+// default. A plain `{...defaults, ...overrides}` does, which silently turned a
+// numeric threshold into NaN in callers that pass optional CLI flags straight
+// through.
+export function mergeDefined<T extends object>(base: T, overrides: Partial<T>): T {
+  const merged = { ...base };
+  for (const key of Object.keys(overrides) as (keyof T)[]) {
+    const value = overrides[key];
+    if (value !== undefined) merged[key] = value as T[keyof T];
+  }
+  return merged;
+}
+
 export const DEFAULT_BAND_THRESHOLDS: BandThresholds = {
   misleading: 0.5,
   score: 0.4,
