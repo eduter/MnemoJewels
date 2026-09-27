@@ -23,7 +23,12 @@ import { DEFAULT_BAND_THRESHOLDS, mergeDefined, type DropFile, type TriageReport
 export interface PolicyOptions {
   /** Drop a candidate when its misleading probability is at or above this. */
   misleadingThreshold: number;
-  /** Keep a lemma's best pick rather than let a lemma be dropped entirely. */
+  /**
+   * Never drop a lemma's `best` pick. Jev's `best` and `misleading` questions are
+   * asked independently, so it sometimes marks the one sensible translation as
+   * misleading; without this a lemma can lose its primary sense while keeping a
+   * marginal one, or be emptied outright.
+   */
   protectBest: boolean;
   /**
    * Only consider lemmas at least this many characters long. Short lemmas are
@@ -56,14 +61,12 @@ export function applyPolicy(report: TriageReport, options: PolicyOptions): Polic
   for (const lemma of report.byLemma) {
     if (lemma.front.length < options.minLemmaLength) continue;
     const candidates = lemma.candidates ?? [];
-    const keepIfBelow = candidates.filter(c => c.misleading < options.misleadingThreshold);
-    const guard = options.protectBest && keepIfBelow.length === 0 && candidates.length > 0;
     for (const candidate of candidates) {
-      const kept = candidate.misleading < options.misleadingThreshold
-        || (guard && candidate.back === lemma.best);
+      const protectedBest = options.protectBest && candidate.back === lemma.best;
+      const kept = candidate.misleading < options.misleadingThreshold || protectedBest;
       if (kept) {
         keptCards += 1;
-        if (guard && candidate.back === lemma.best) {
+        if (protectedBest && candidate.misleading >= options.misleadingThreshold) {
           protectedLemmas.push({
             front: candidate.front,
             back: candidate.back,

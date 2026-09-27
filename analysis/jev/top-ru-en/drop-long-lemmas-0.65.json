@@ -18456,13 +18456,6 @@
       "score": 1.38
     },
     {
-      "front": "повезти",
-      "back": "luck",
-      "reason": "misleading",
-      "misleading": 0.7,
-      "score": 1.38
-    },
-    {
       "front": "пауза",
       "back": "music",
       "reason": "misleading",
@@ -19532,13 +19525,6 @@
       "reason": "misleading",
       "misleading": 0.87,
       "score": 1.9
-    },
-    {
-      "front": "интересоваться",
-      "back": "interested",
-      "reason": "misleading",
-      "misleading": 0.72,
-      "score": 1.17
     },
     {
       "front": "интересоваться",

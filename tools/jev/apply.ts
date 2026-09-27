@@ -31,8 +31,26 @@ const dropKeys = new Set(drops.cards.map(card => `${card.front}\u0000${card.back
 const kept = deck.cards.filter(([front, back]) => !dropKeys.has(`${front}\u0000${back}`));
 const removed = deck.cards.length - kept.length;
 
+// Pronunciations are keyed by lemma, not by pair, so dropping cards can leave
+// entries no surviving card references. Read them out or decks fail validation.
+const frontLang = deck.languageFront ?? 'ru';
+const backLang = deck.languageBack ?? 'en';
+const allowed = new Set<string>();
+for (const [front, back] of kept) {
+  allowed.add(`${frontLang}:${front}`);
+  allowed.add(`${backLang}:${back}`);
+}
+const pronunciations = Object.fromEntries(
+  Object.entries(deck.pronunciations ?? {}).filter(([key]) => allowed.has(key)),
+);
+const prunedPronunciations = Object.keys(deck.pronunciations ?? {}).length
+  - Object.keys(pronunciations).length;
+
 if (values['dry-run']) {
-  console.log(`Would remove ${removed} of ${deck.cards.length} cards.`);
+  console.log(
+    `Would remove ${removed} of ${deck.cards.length} cards and `
+    + `${prunedPronunciations} orphaned pronunciation entries.`,
+  );
   for (const [front, back] of deck.cards) {
     if (dropKeys.has(`${front}\u0000${back}`)) console.log(`  ${front} → ${back}`);
   }
@@ -42,6 +60,9 @@ if (values['dry-run']) {
 const version = values.version
   ? Number(values.version)
   : Math.max(deck.version ?? 1, 1) + 1;
-const updated = { ...deck, version, cards: kept };
+const updated = { ...deck, version, cards: kept, pronunciations };
 await writeJson(resolve(values.input!), updated);
-console.log(`Removed ${removed} cards; ${kept.length} remain. Deck version is now ${version}.`);
+console.log(
+  `Removed ${removed} cards and ${prunedPronunciations} orphaned pronunciations; `
+  + `${kept.length} cards remain. Deck version is now ${version}.`,
+);

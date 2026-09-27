@@ -154,6 +154,9 @@ npm run data:jev:apply -- \
 
 Then update the matching `version` in `src/available-decks.json`.
 
+Applying also prunes `pronunciations` entries that no surviving card references,
+since they are keyed by lemma rather than by pair, keeping the deck valid.
+
 ## Cost
 
 Input is billed (~$0.04–0.42 per million tokens depending on route) and output

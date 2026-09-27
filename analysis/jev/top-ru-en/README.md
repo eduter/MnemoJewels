@@ -79,17 +79,41 @@ synonyms the curator trimmed for brevity (`папа → daddy`, `мама → mu
 
 ## Recommendation
 
-Short lemmas are PR #28's job; the curation should win there and Jev should not
-touch them. For the 9458 long-lemma cards, run the classifier at 0.6 rather than
-0.5 and keep the never-empty guard:
+Short lemmas are PR #28's job; the curation should win there and Jev does not
+touch them (`--min-lemma-length 5`). For the 9458 long-lemma cards the classifier
+runs at 0.6 with the best-pick guard on:
 
-| | cards dropped | lemmas saved from being emptied |
+| | cards dropped | lemmas protected |
 | --- | --- | --- |
 | default 0.5, all lemmas | 5382 | 98 |
-| 0.6, long lemmas, guard | 3747 | 50 |
-| 0.65, long lemmas, guard | 3468 | 34 |
+| **0.6, long lemmas, guard (applied)** | **3740** | **57** |
+| 0.65, long lemmas, guard | 3466 | 36 |
 
-0.6 is the balance: it removes obvious noise while keeping more of the marginal
-synonyms a learner benefits from. The 0.65 variant is there if the goal is to
-keep the deck larger. In all cases the `best` pick is protected, so no lemma can
-be deleted outright.
+0.6 was chosen on three independent signals that all point at the same knee:
+
+- Calibration on the labeled sample: higher thresholds trade keep recall for drop
+  recall, and 0.6 was the best accuracy/recall balance on the long tail.
+- Jev's own set-level judgments (`best`/`worst`), which are asked independently
+  of the per-candidate `misleading` score: at 0.6 the policy keeps 98.3% of the
+  `best` picks and drops 70.8% of the `worst` picks across 2030 multi-candidate
+  lemmas. Moving to 0.65 buys 0.8pp more best-kept for 3.2pp less worst-dropped.
+- Against PR #28's short-word curation, 0.6 is well clear of the 46 false drops
+  the default produced.
+
+`--min-lemma-length 5` is what keeps Jev off the curated short words; combined
+with the guard it also guarantees the deck keeps all 3000 lemmas, which the deck
+tests require.
+
+## Applied
+
+`public/decks/top-ru-en.json` was updated from this policy: 11084 cards to 7344,
+every lemma kept, 1106 orphaned pronunciation entries pruned, version 3 to 4
+(`src/available-decks.json` bumped to match). `tools/jev/apply.ts` now prunes
+orphaned pronunciations as part of applying drops, so the deck stays valid.
+
+The 3740 removals are the clear noise the classifier is confident about:
+`смерть → woman` (0.99), `девушка → puberty` (0.98), `оранжевый → yellow` (0.98,
+wrong colour), `собака → bastard` (0.95), `отдавать → cast` (0.91). Each lemma
+keeps its primary sense: `дом` still has `house`/`home`, `работа` still has
+`work`/`job`, and the guarded lemmas that the default threshold would have
+emptied (`май → may`, `молчать → silent`, `китаец → chinese`) are intact.

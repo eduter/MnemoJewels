@@ -77,12 +77,17 @@ describe('Jev keep/drop policy', () => {
     expect(result.dropFile.cards.map(c => c.back)).toEqual(['may']);
   });
 
-  it('only protects a lemma when every candidate is above the threshold', () => {
+  it('protects the best pick even when a lesser candidate would keep the lemma', () => {
+    // тройка: Jev calls "three" the best pick but scores it misleading, while a
+    // marginal "troika" survives. Dropping the primary sense here is backwards,
+    // so the guard must fire regardless of what else is kept.
     const result = applyPolicy(report([
-      lemma('год', [['year', 0.2], ['summer', 0.8]], 'summer'),
-    ]), defaultPolicyOptions({ misleadingThreshold: 0.5 }));
-    // year is kept on its own, so no guard is needed even though best=summer.
-    expect(result.protectedLemmas).toEqual([]);
-    expect(result.keptCards).toBe(1);
+      lemma('тройка', [['three', 0.62], ['troika', 0.3]], 'three'),
+    ]), defaultPolicyOptions({ misleadingThreshold: 0.6 }));
+    expect(result.keptCards).toBe(2);
+    expect(result.dropFile.cards).toEqual([]);
+    expect(result.protectedLemmas).toEqual([
+      expect.objectContaining({ front: 'тройка', back: 'three' }),
+    ]);
   });
 });

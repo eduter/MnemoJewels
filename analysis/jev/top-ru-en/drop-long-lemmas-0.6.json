@@ -5458,13 +5458,6 @@
     },
     {
       "front": "головной",
-      "back": "head",
-      "reason": "misleading",
-      "misleading": 0.61,
-      "score": 1.22
-    },
-    {
-      "front": "головной",
       "back": "principal",
       "reason": "misleading",
       "misleading": 0.61,
@@ -5826,13 +5819,6 @@
       "reason": "misleading",
       "misleading": 0.66,
       "score": 1.61
-    },
-    {
-      "front": "засыпать",
-      "back": "fill",
-      "reason": "misleading",
-      "misleading": 0.6,
-      "score": 0.92
     },
     {
       "front": "засыпать",
@@ -15608,13 +15594,6 @@
     },
     {
       "front": "прилетать",
-      "back": "land",
-      "reason": "misleading",
-      "misleading": 0.6,
-      "score": 1.16
-    },
-    {
-      "front": "прилетать",
       "back": "descend",
       "reason": "misleading",
       "misleading": 0.82,
@@ -19941,13 +19920,6 @@
     },
     {
       "front": "повезти",
-      "back": "luck",
-      "reason": "misleading",
-      "misleading": 0.7,
-      "score": 1.38
-    },
-    {
-      "front": "повезти",
       "back": "succeed",
       "reason": "misleading",
       "misleading": 0.64,
@@ -21135,13 +21107,6 @@
       "reason": "misleading",
       "misleading": 0.62,
       "score": 1.17
-    },
-    {
-      "front": "удивляться",
-      "back": "surprised",
-      "reason": "misleading",
-      "misleading": 0.62,
-      "score": 1.39
     },
     {
       "front": "удивляться",
@@ -24666,13 +24631,6 @@
     },
     {
       "front": "тройка",
-      "back": "three",
-      "reason": "misleading",
-      "misleading": 0.62,
-      "score": 1.49
-    },
-    {
-      "front": "тройка",
       "back": "card game",
       "reason": "misleading",
       "misleading": 0.62,
@@ -26021,13 +25979,6 @@
       "reason": "misleading",
       "misleading": 0.84,
       "score": 1.95
-    },
-    {
-      "front": "разрезать",
-      "back": "cut off",
-      "reason": "misleading",
-      "misleading": 0.6,
-      "score": 1.09
     },
     {
       "front": "миска",
