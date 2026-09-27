@@ -1,0 +1,8632 @@
+{
+  "report": {
+    "deck": "top-ru-en",
+    "endpoint": "https://jevtypesafeai.com/api/v1/decide",
+    "model": "jev-latest",
+    "totalCards": 11084,
+    "evaluatedCards": 11084,
+    "settledCards": 10842,
+    "reviewCards": 242,
+    "reviewLemmas": 98
+  },
+  "byReason": {
+    "uncertain-keep": [],
+    "uncertain-drop": [],
+    "ambiguous-best-pick": [],
+    "low-usefulness": [],
+    "lemma-emptied": [
+      {
+        "front": "важно",
+        "back": "grandly",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 0.97,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "importantly",
+          "grandly"
+        ]
+      },
+      {
+        "front": "себе",
+        "back": "keep on",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 0.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "keep on"
+        ]
+      },
+      {
+        "front": "завтракать",
+        "back": "lunch",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 0.95,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "breakfast",
+          "lunch"
+        ]
+      },
+      {
+        "front": "та",
+        "back": "internet",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 0.08,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "internet",
+          "ukrainian"
+        ]
+      },
+      {
+        "front": "полька",
+        "back": "noise",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "female",
+          "pole",
+          "polish",
+          "woman",
+          "military",
+          "reduced",
+          "noise",
+          "mortar"
+        ]
+      },
+      {
+        "front": "дискотека",
+        "back": "library",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 0.66,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "record",
+          "library",
+          "event",
+          "evening",
+          "music",
+          "dance"
+        ]
+      },
+      {
+        "front": "нелегко",
+        "back": "easy",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 0.83,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "not",
+          "easily",
+          "difficulty",
+          "easy"
+        ]
+      },
+      {
+        "front": "прилетать",
+        "back": "abruptly",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 1.16,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "aviation",
+          "land",
+          "touch down",
+          "descend",
+          "soil",
+          "swiftly",
+          "abruptly"
+        ]
+      },
+      {
+        "front": "неизвестно",
+        "back": "known",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 0.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "known"
+        ]
+      },
+      {
+        "front": "тройка",
+        "back": "trowsers",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 1.49,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "three",
+          "card game",
+          "trey",
+          "troika",
+          "trowsers",
+          "vest",
+          "jacket"
+        ]
+      },
+      {
+        "front": "тройка",
+        "back": "vest",
+        "decision": "drop",
+        "misleading": 0.98,
+        "usefulness": 1.49,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "three",
+          "card game",
+          "trey",
+          "troika",
+          "trowsers",
+          "vest",
+          "jacket"
+        ]
+      },
+      {
+        "front": "откуда",
+        "back": "which",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 1.14,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "whence",
+          "from",
+          "where",
+          "which"
+        ]
+      },
+      {
+        "front": "чайный",
+        "back": "colored",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 0.96,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tea",
+          "scented",
+          "colored"
+        ]
+      },
+      {
+        "front": "полька",
+        "back": "reduced",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "female",
+          "pole",
+          "polish",
+          "woman",
+          "military",
+          "reduced",
+          "noise",
+          "mortar"
+        ]
+      },
+      {
+        "front": "неплохо",
+        "back": "badly",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 0.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "badly"
+        ]
+      },
+      {
+        "front": "газовый",
+        "back": "gauze",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 0.87,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "gas",
+          "gauze"
+        ]
+      },
+      {
+        "front": "недолго",
+        "back": "long",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 0.14,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "long",
+          "easily"
+        ]
+      },
+      {
+        "front": "дискотека",
+        "back": "evening",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 0.66,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "record",
+          "library",
+          "event",
+          "evening",
+          "music",
+          "dance"
+        ]
+      },
+      {
+        "front": "прилетать",
+        "back": "aviation",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 1.16,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "aviation",
+          "land",
+          "touch down",
+          "descend",
+          "soil",
+          "swiftly",
+          "abruptly"
+        ]
+      },
+      {
+        "front": "прилетать",
+        "back": "swiftly",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 1.16,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "aviation",
+          "land",
+          "touch down",
+          "descend",
+          "soil",
+          "swiftly",
+          "abruptly"
+        ]
+      },
+      {
+        "front": "приставка",
+        "back": "linguistic",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 1.02,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "linguistic",
+          "morphology",
+          "lexicography",
+          "grammar",
+          "video game",
+          "console"
+        ]
+      },
+      {
+        "front": "приставка",
+        "back": "lexicography",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 1.02,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "linguistic",
+          "morphology",
+          "lexicography",
+          "grammar",
+          "video game",
+          "console"
+        ]
+      },
+      {
+        "front": "переспрашивать",
+        "back": "a",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 1.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ask",
+          "again",
+          "repeat",
+          "a"
+        ]
+      },
+      {
+        "front": "тройка",
+        "back": "jacket",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 1.49,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "three",
+          "card game",
+          "trey",
+          "troika",
+          "trowsers",
+          "vest",
+          "jacket"
+        ]
+      },
+      {
+        "front": "пополам",
+        "back": "all the same",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 0.07,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "two",
+          "all the same",
+          "matter"
+        ]
+      },
+      {
+        "front": "пополам",
+        "back": "matter",
+        "decision": "drop",
+        "misleading": 0.97,
+        "usefulness": 0.07,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "two",
+          "all the same",
+          "matter"
+        ]
+      },
+      {
+        "front": "та",
+        "back": "ukrainian",
+        "decision": "drop",
+        "misleading": 0.96,
+        "usefulness": 0.08,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "internet",
+          "ukrainian"
+        ]
+      },
+      {
+        "front": "полька",
+        "back": "military",
+        "decision": "drop",
+        "misleading": 0.96,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "female",
+          "pole",
+          "polish",
+          "woman",
+          "military",
+          "reduced",
+          "noise",
+          "mortar"
+        ]
+      },
+      {
+        "front": "эта",
+        "back": "eta",
+        "decision": "drop",
+        "misleading": 0.96,
+        "usefulness": 0.07,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "eta"
+        ]
+      },
+      {
+        "front": "дискотека",
+        "back": "record",
+        "decision": "drop",
+        "misleading": 0.96,
+        "usefulness": 0.66,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "record",
+          "library",
+          "event",
+          "evening",
+          "music",
+          "dance"
+        ]
+      },
+      {
+        "front": "нелегко",
+        "back": "easily",
+        "decision": "drop",
+        "misleading": 0.96,
+        "usefulness": 0.83,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "not",
+          "easily",
+          "difficulty",
+          "easy"
+        ]
+      },
+      {
+        "front": "приставка",
+        "back": "grammar",
+        "decision": "drop",
+        "misleading": 0.96,
+        "usefulness": 1.02,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "linguistic",
+          "morphology",
+          "lexicography",
+          "grammar",
+          "video game",
+          "console"
+        ]
+      },
+      {
+        "front": "согласный",
+        "back": "phonetics",
+        "decision": "drop",
+        "misleading": 0.95,
+        "usefulness": 1.54,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ready",
+          "willing",
+          "agreeable",
+          "harmonious",
+          "concordant",
+          "phonetics",
+          "consonantic",
+          "consonantal"
+        ]
+      },
+      {
+        "front": "недолго",
+        "back": "easily",
+        "decision": "drop",
+        "misleading": 0.95,
+        "usefulness": 0.14,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "long",
+          "easily"
+        ]
+      },
+      {
+        "front": "приставка",
+        "back": "morphology",
+        "decision": "drop",
+        "misleading": 0.95,
+        "usefulness": 1.02,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "linguistic",
+          "morphology",
+          "lexicography",
+          "grammar",
+          "video game",
+          "console"
+        ]
+      },
+      {
+        "front": "телевизионный",
+        "back": "tele-",
+        "decision": "drop",
+        "misleading": 0.94,
+        "usefulness": 1.02,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tv",
+          "television",
+          "tele-"
+        ]
+      },
+      {
+        "front": "теракт",
+        "back": "terrorist",
+        "decision": "drop",
+        "misleading": 0.94,
+        "usefulness": 0.97,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "act",
+          "terrorism",
+          "terror",
+          "terrorist"
+        ]
+      },
+      {
+        "front": "разве",
+        "back": "only",
+        "decision": "drop",
+        "misleading": 0.93,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "really",
+          "perhaps",
+          "only",
+          "unless"
+        ]
+      },
+      {
+        "front": "игровой",
+        "back": "acting",
+        "decision": "drop",
+        "misleading": 0.93,
+        "usefulness": 0.77,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "game",
+          "play",
+          "acting",
+          "playing"
+        ]
+      },
+      {
+        "front": "обучаться",
+        "back": "get",
+        "decision": "drop",
+        "misleading": 0.93,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "get",
+          "trained",
+          "receive",
+          "training"
+        ]
+      },
+      {
+        "front": "долго",
+        "back": "time",
+        "decision": "drop",
+        "misleading": 0.92,
+        "usefulness": 0.13,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "time"
+        ]
+      },
+      {
+        "front": "замолчать",
+        "back": "conceal",
+        "decision": "drop",
+        "misleading": 0.92,
+        "usefulness": 0.82,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "silent",
+          "conceal"
+        ]
+      },
+      {
+        "front": "горный",
+        "back": "rock",
+        "decision": "drop",
+        "misleading": 0.92,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "mountain",
+          "rock",
+          "mining"
+        ]
+      },
+      {
+        "front": "цент",
+        "back": "cent",
+        "decision": "drop",
+        "misleading": 0.92,
+        "usefulness": 0.26,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "cent"
+        ]
+      },
+      {
+        "front": "ту",
+        "back": "train",
+        "decision": "drop",
+        "misleading": 0.91,
+        "usefulness": 0.21,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "train",
+          "horn"
+        ]
+      },
+      {
+        "front": "полька",
+        "back": "pole",
+        "decision": "drop",
+        "misleading": 0.91,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "female",
+          "pole",
+          "polish",
+          "woman",
+          "military",
+          "reduced",
+          "noise",
+          "mortar"
+        ]
+      },
+      {
+        "front": "полкило",
+        "back": "kilo",
+        "decision": "drop",
+        "misleading": 0.91,
+        "usefulness": 0.95,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "half",
+          "kilo"
+        ]
+      },
+      {
+        "front": "ничего",
+        "back": "that's",
+        "decision": "drop",
+        "misleading": 0.91,
+        "usefulness": 0.82,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "so-so",
+          "not bad",
+          "fair",
+          "never mind",
+          "that's",
+          "all right",
+          "no problem"
+        ]
+      },
+      {
+        "front": "сбоку",
+        "back": "askance",
+        "decision": "drop",
+        "misleading": 0.91,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "askance",
+          "side"
+        ]
+      },
+      {
+        "front": "пополам",
+        "back": "two",
+        "decision": "drop",
+        "misleading": 0.91,
+        "usefulness": 0.07,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "two",
+          "all the same",
+          "matter"
+        ]
+      },
+      {
+        "front": "обучаться",
+        "back": "receive",
+        "decision": "drop",
+        "misleading": 0.91,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "get",
+          "trained",
+          "receive",
+          "training"
+        ]
+      },
+      {
+        "front": "засыпать",
+        "back": "into",
+        "decision": "drop",
+        "misleading": 0.9,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fill",
+          "cover",
+          "bury",
+          "engulf",
+          "pour",
+          "into",
+          "strew",
+          "bombard"
+        ]
+      },
+      {
+        "front": "чайный",
+        "back": "scented",
+        "decision": "drop",
+        "misleading": 0.9,
+        "usefulness": 0.96,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tea",
+          "scented",
+          "colored"
+        ]
+      },
+      {
+        "front": "ту",
+        "back": "horn",
+        "decision": "drop",
+        "misleading": 0.9,
+        "usefulness": 0.21,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "train",
+          "horn"
+        ]
+      },
+      {
+        "front": "полька",
+        "back": "mortar",
+        "decision": "drop",
+        "misleading": 0.9,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "female",
+          "pole",
+          "polish",
+          "woman",
+          "military",
+          "reduced",
+          "noise",
+          "mortar"
+        ]
+      },
+      {
+        "front": "ничего",
+        "back": "fair",
+        "decision": "drop",
+        "misleading": 0.9,
+        "usefulness": 0.82,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "so-so",
+          "not bad",
+          "fair",
+          "never mind",
+          "that's",
+          "all right",
+          "no problem"
+        ]
+      },
+      {
+        "front": "партийный",
+        "back": "member",
+        "decision": "drop",
+        "misleading": 0.9,
+        "usefulness": 1.13,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "politics",
+          "party",
+          "loyal",
+          "party line",
+          "member"
+        ]
+      },
+      {
+        "front": "теракт",
+        "back": "act",
+        "decision": "drop",
+        "misleading": 0.9,
+        "usefulness": 0.97,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "act",
+          "terrorism",
+          "terror",
+          "terrorist"
+        ]
+      },
+      {
+        "front": "бы",
+        "back": "conditional",
+        "decision": "drop",
+        "misleading": 0.89,
+        "usefulness": 0.36,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "conditional",
+          "subjunctive"
+        ]
+      },
+      {
+        "front": "дискотека",
+        "back": "music",
+        "decision": "drop",
+        "misleading": 0.89,
+        "usefulness": 0.66,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "record",
+          "library",
+          "event",
+          "evening",
+          "music",
+          "dance"
+        ]
+      },
+      {
+        "front": "рыбный",
+        "back": "fishful",
+        "decision": "drop",
+        "misleading": 0.89,
+        "usefulness": 0.65,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fish",
+          "fish-filled",
+          "fishful"
+        ]
+      },
+      {
+        "front": "нелегко",
+        "back": "not",
+        "decision": "drop",
+        "misleading": 0.89,
+        "usefulness": 0.83,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "not",
+          "easily",
+          "difficulty",
+          "easy"
+        ]
+      },
+      {
+        "front": "засыпать",
+        "back": "bombard",
+        "decision": "drop",
+        "misleading": 0.88,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fill",
+          "cover",
+          "bury",
+          "engulf",
+          "pour",
+          "into",
+          "strew",
+          "bombard"
+        ]
+      },
+      {
+        "front": "немка",
+        "back": "girl",
+        "decision": "drop",
+        "misleading": 0.88,
+        "usefulness": 1.04,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "german",
+          "woman",
+          "girl"
+        ]
+      },
+      {
+        "front": "тем",
+        "back": "the",
+        "decision": "drop",
+        "misleading": 0.88,
+        "usefulness": 0.33,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "the"
+        ]
+      },
+      {
+        "front": "бы",
+        "back": "subjunctive",
+        "decision": "drop",
+        "misleading": 0.87,
+        "usefulness": 0.36,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "conditional",
+          "subjunctive"
+        ]
+      },
+      {
+        "front": "подъезжать",
+        "back": "get",
+        "decision": "drop",
+        "misleading": 0.87,
+        "usefulness": 1.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "drive",
+          "drop in",
+          "get"
+        ]
+      },
+      {
+        "front": "прилетать",
+        "back": "soil",
+        "decision": "drop",
+        "misleading": 0.87,
+        "usefulness": 1.16,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "aviation",
+          "land",
+          "touch down",
+          "descend",
+          "soil",
+          "swiftly",
+          "abruptly"
+        ]
+      },
+      {
+        "front": "партийный",
+        "back": "politics",
+        "decision": "drop",
+        "misleading": 0.87,
+        "usefulness": 1.13,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "politics",
+          "party",
+          "loyal",
+          "party line",
+          "member"
+        ]
+      },
+      {
+        "front": "подъезжать",
+        "back": "drop in",
+        "decision": "drop",
+        "misleading": 0.86,
+        "usefulness": 1.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "drive",
+          "drop in",
+          "get"
+        ]
+      },
+      {
+        "front": "переспрашивать",
+        "back": "again",
+        "decision": "drop",
+        "misleading": 0.86,
+        "usefulness": 1.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ask",
+          "again",
+          "repeat",
+          "a"
+        ]
+      },
+      {
+        "front": "лесной",
+        "back": "lumber",
+        "decision": "drop",
+        "misleading": 0.86,
+        "usefulness": 0.72,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "forest",
+          "wood",
+          "lumber",
+          "timber"
+        ]
+      },
+      {
+        "front": "теракт",
+        "back": "terror",
+        "decision": "drop",
+        "misleading": 0.86,
+        "usefulness": 0.97,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "act",
+          "terrorism",
+          "terror",
+          "terrorist"
+        ]
+      },
+      {
+        "front": "игровой",
+        "back": "play",
+        "decision": "drop",
+        "misleading": 0.85,
+        "usefulness": 0.77,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "game",
+          "play",
+          "acting",
+          "playing"
+        ]
+      },
+      {
+        "front": "засыпать",
+        "back": "engulf",
+        "decision": "drop",
+        "misleading": 0.84,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fill",
+          "cover",
+          "bury",
+          "engulf",
+          "pour",
+          "into",
+          "strew",
+          "bombard"
+        ]
+      },
+      {
+        "front": "дружить",
+        "back": "friends",
+        "decision": "drop",
+        "misleading": 0.83,
+        "usefulness": 0.48,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "friends"
+        ]
+      },
+      {
+        "front": "горный",
+        "back": "mining",
+        "decision": "drop",
+        "misleading": 0.83,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "mountain",
+          "rock",
+          "mining"
+        ]
+      },
+      {
+        "front": "игровой",
+        "back": "playing",
+        "decision": "drop",
+        "misleading": 0.83,
+        "usefulness": 0.77,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "game",
+          "play",
+          "acting",
+          "playing"
+        ]
+      },
+      {
+        "front": "читаться",
+        "back": "like",
+        "decision": "drop",
+        "misleading": 0.83,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "read",
+          "feel",
+          "like",
+          "reading"
+        ]
+      },
+      {
+        "front": "ничего",
+        "back": "so-so",
+        "decision": "drop",
+        "misleading": 0.82,
+        "usefulness": 0.82,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "so-so",
+          "not bad",
+          "fair",
+          "never mind",
+          "that's",
+          "all right",
+          "no problem"
+        ]
+      },
+      {
+        "front": "прилетать",
+        "back": "descend",
+        "decision": "drop",
+        "misleading": 0.82,
+        "usefulness": 1.16,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "aviation",
+          "land",
+          "touch down",
+          "descend",
+          "soil",
+          "swiftly",
+          "abruptly"
+        ]
+      },
+      {
+        "front": "дорожный",
+        "back": "travelling",
+        "decision": "drop",
+        "misleading": 0.82,
+        "usefulness": 0.89,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "road",
+          "travelling"
+        ]
+      },
+      {
+        "front": "читаться",
+        "back": "reading",
+        "decision": "drop",
+        "misleading": 0.82,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "read",
+          "feel",
+          "like",
+          "reading"
+        ]
+      },
+      {
+        "front": "засыпать",
+        "back": "strew",
+        "decision": "drop",
+        "misleading": 0.81,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fill",
+          "cover",
+          "bury",
+          "engulf",
+          "pour",
+          "into",
+          "strew",
+          "bombard"
+        ]
+      },
+      {
+        "front": "ничего",
+        "back": "not bad",
+        "decision": "drop",
+        "misleading": 0.81,
+        "usefulness": 0.82,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "so-so",
+          "not bad",
+          "fair",
+          "never mind",
+          "that's",
+          "all right",
+          "no problem"
+        ]
+      },
+      {
+        "front": "дискотека",
+        "back": "dance",
+        "decision": "drop",
+        "misleading": 0.81,
+        "usefulness": 0.66,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "record",
+          "library",
+          "event",
+          "evening",
+          "music",
+          "dance"
+        ]
+      },
+      {
+        "front": "студенческий",
+        "back": "student",
+        "decision": "drop",
+        "misleading": 0.81,
+        "usefulness": 0.43,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "student"
+        ]
+      },
+      {
+        "front": "немка",
+        "back": "woman",
+        "decision": "drop",
+        "misleading": 0.8,
+        "usefulness": 1.04,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "german",
+          "woman",
+          "girl"
+        ]
+      },
+      {
+        "front": "пасха",
+        "back": "paskha",
+        "decision": "drop",
+        "misleading": 0.8,
+        "usefulness": 0.45,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "paskha"
+        ]
+      },
+      {
+        "front": "желающий",
+        "back": "desire",
+        "decision": "drop",
+        "misleading": 0.8,
+        "usefulness": 0.51,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "wish",
+          "desire"
+        ]
+      },
+      {
+        "front": "теракт",
+        "back": "terrorism",
+        "decision": "drop",
+        "misleading": 0.8,
+        "usefulness": 0.97,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "act",
+          "terrorism",
+          "terror",
+          "terrorist"
+        ]
+      },
+      {
+        "front": "бутерброд",
+        "back": "butterbrot",
+        "decision": "drop",
+        "misleading": 0.79,
+        "usefulness": 0.48,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "butterbrot"
+        ]
+      },
+      {
+        "front": "интересоваться",
+        "back": "ask",
+        "decision": "drop",
+        "misleading": 0.79,
+        "usefulness": 1.17,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "interested",
+          "ask",
+          "enquire"
+        ]
+      },
+      {
+        "front": "транспортный",
+        "back": "shipping",
+        "decision": "drop",
+        "misleading": 0.79,
+        "usefulness": 1.21,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "transportation",
+          "transport",
+          "shipping"
+        ]
+      },
+      {
+        "front": "октябрьский",
+        "back": "october",
+        "decision": "drop",
+        "misleading": 0.79,
+        "usefulness": 0.48,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "october"
+        ]
+      },
+      {
+        "front": "читаться",
+        "back": "feel",
+        "decision": "drop",
+        "misleading": 0.79,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "read",
+          "feel",
+          "like",
+          "reading"
+        ]
+      },
+      {
+        "front": "полкило",
+        "back": "half",
+        "decision": "drop",
+        "misleading": 0.78,
+        "usefulness": 0.95,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "half",
+          "kilo"
+        ]
+      },
+      {
+        "front": "привыкать",
+        "back": "get",
+        "decision": "drop",
+        "misleading": 0.78,
+        "usefulness": 1.04,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "get",
+          "accustomed"
+        ]
+      },
+      {
+        "front": "первое",
+        "back": "meal",
+        "decision": "drop",
+        "misleading": 0.78,
+        "usefulness": 0.79,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "starter",
+          "course",
+          "meal"
+        ]
+      },
+      {
+        "front": "дискотека",
+        "back": "event",
+        "decision": "drop",
+        "misleading": 0.78,
+        "usefulness": 0.66,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "record",
+          "library",
+          "event",
+          "evening",
+          "music",
+          "dance"
+        ]
+      },
+      {
+        "front": "квартплата",
+        "back": "rent",
+        "decision": "drop",
+        "misleading": 0.78,
+        "usefulness": 0.39,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "rent"
+        ]
+      },
+      {
+        "front": "детский",
+        "back": "baby",
+        "decision": "drop",
+        "misleading": 0.77,
+        "usefulness": 1.23,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "child",
+          "children",
+          "childish",
+          "baby"
+        ]
+      },
+      {
+        "front": "ничего",
+        "back": "all right",
+        "decision": "drop",
+        "misleading": 0.77,
+        "usefulness": 0.82,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "so-so",
+          "not bad",
+          "fair",
+          "never mind",
+          "that's",
+          "all right",
+          "no problem"
+        ]
+      },
+      {
+        "front": "желающий",
+        "back": "wish",
+        "decision": "drop",
+        "misleading": 0.77,
+        "usefulness": 0.51,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "wish",
+          "desire"
+        ]
+      },
+      {
+        "front": "полька",
+        "back": "polish",
+        "decision": "drop",
+        "misleading": 0.76,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "female",
+          "pole",
+          "polish",
+          "woman",
+          "military",
+          "reduced",
+          "noise",
+          "mortar"
+        ]
+      },
+      {
+        "front": "партийный",
+        "back": "loyal",
+        "decision": "drop",
+        "misleading": 0.76,
+        "usefulness": 1.13,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "politics",
+          "party",
+          "loyal",
+          "party line",
+          "member"
+        ]
+      },
+      {
+        "front": "лесной",
+        "back": "wood",
+        "decision": "drop",
+        "misleading": 0.76,
+        "usefulness": 0.72,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "forest",
+          "wood",
+          "lumber",
+          "timber"
+        ]
+      },
+      {
+        "front": "лесной",
+        "back": "timber",
+        "decision": "drop",
+        "misleading": 0.76,
+        "usefulness": 0.72,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "forest",
+          "wood",
+          "lumber",
+          "timber"
+        ]
+      },
+      {
+        "front": "дежурить",
+        "back": "duty",
+        "decision": "drop",
+        "misleading": 0.76,
+        "usefulness": 0.53,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "duty"
+        ]
+      },
+      {
+        "front": "разве",
+        "back": "perhaps",
+        "decision": "drop",
+        "misleading": 0.75,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "really",
+          "perhaps",
+          "only",
+          "unless"
+        ]
+      },
+      {
+        "front": "разве",
+        "back": "unless",
+        "decision": "drop",
+        "misleading": 0.75,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "really",
+          "perhaps",
+          "only",
+          "unless"
+        ]
+      },
+      {
+        "front": "чего",
+        "back": "why",
+        "decision": "drop",
+        "misleading": 0.75,
+        "usefulness": 1.05,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "what for",
+          "why",
+          "what"
+        ]
+      },
+      {
+        "front": "компьютерный",
+        "back": "computer",
+        "decision": "drop",
+        "misleading": 0.75,
+        "usefulness": 0.55,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "computer"
+        ]
+      },
+      {
+        "front": "автомобильный",
+        "back": "automobile",
+        "decision": "drop",
+        "misleading": 0.75,
+        "usefulness": 0.53,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "car",
+          "automobile"
+        ]
+      },
+      {
+        "front": "приставка",
+        "back": "video game",
+        "decision": "drop",
+        "misleading": 0.75,
+        "usefulness": 1.02,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "linguistic",
+          "morphology",
+          "lexicography",
+          "grammar",
+          "video game",
+          "console"
+        ]
+      },
+      {
+        "front": "партийный",
+        "back": "party line",
+        "decision": "drop",
+        "misleading": 0.75,
+        "usefulness": 1.13,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "politics",
+          "party",
+          "loyal",
+          "party line",
+          "member"
+        ]
+      },
+      {
+        "front": "террористический",
+        "back": "terrorist",
+        "decision": "drop",
+        "misleading": 0.75,
+        "usefulness": 0.64,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "terrorist"
+        ]
+      },
+      {
+        "front": "автомобильный",
+        "back": "car",
+        "decision": "drop",
+        "misleading": 0.74,
+        "usefulness": 0.53,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "car",
+          "automobile"
+        ]
+      },
+      {
+        "front": "пельмени",
+        "back": "pelmeni",
+        "decision": "drop",
+        "misleading": 0.74,
+        "usefulness": 0.53,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "pelmeni"
+        ]
+      },
+      {
+        "front": "повезти",
+        "back": "convey",
+        "decision": "drop",
+        "misleading": 0.74,
+        "usefulness": 1.38,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "convey",
+          "carry",
+          "deliver",
+          "transport",
+          "lucky",
+          "luck",
+          "work out",
+          "succeed"
+        ]
+      },
+      {
+        "front": "повезти",
+        "back": "lucky",
+        "decision": "drop",
+        "misleading": 0.74,
+        "usefulness": 1.38,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "convey",
+          "carry",
+          "deliver",
+          "transport",
+          "lucky",
+          "luck",
+          "work out",
+          "succeed"
+        ]
+      },
+      {
+        "front": "тройка",
+        "back": "trey",
+        "decision": "drop",
+        "misleading": 0.74,
+        "usefulness": 1.49,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "three",
+          "card game",
+          "trey",
+          "troika",
+          "trowsers",
+          "vest",
+          "jacket"
+        ]
+      },
+      {
+        "front": "здравствовать",
+        "back": "thrive",
+        "decision": "drop",
+        "misleading": 0.73,
+        "usefulness": 0.89,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "well",
+          "prosper",
+          "thrive"
+        ]
+      },
+      {
+        "front": "засыпать",
+        "back": "pour",
+        "decision": "drop",
+        "misleading": 0.73,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fill",
+          "cover",
+          "bury",
+          "engulf",
+          "pour",
+          "into",
+          "strew",
+          "bombard"
+        ]
+      },
+      {
+        "front": "прошлогодний",
+        "back": "last year",
+        "decision": "drop",
+        "misleading": 0.73,
+        "usefulness": 0.78,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "last year"
+        ]
+      },
+      {
+        "front": "согласный",
+        "back": "ready",
+        "decision": "drop",
+        "misleading": 0.72,
+        "usefulness": 1.54,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ready",
+          "willing",
+          "agreeable",
+          "harmonious",
+          "concordant",
+          "phonetics",
+          "consonantic",
+          "consonantal"
+        ]
+      },
+      {
+        "front": "здравствовать",
+        "back": "prosper",
+        "decision": "drop",
+        "misleading": 0.72,
+        "usefulness": 0.89,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "well",
+          "prosper",
+          "thrive"
+        ]
+      },
+      {
+        "front": "детский",
+        "back": "child",
+        "decision": "drop",
+        "misleading": 0.72,
+        "usefulness": 1.23,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "child",
+          "children",
+          "childish",
+          "baby"
+        ]
+      },
+      {
+        "front": "детский",
+        "back": "children",
+        "decision": "drop",
+        "misleading": 0.72,
+        "usefulness": 1.23,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "child",
+          "children",
+          "childish",
+          "baby"
+        ]
+      },
+      {
+        "front": "чего",
+        "back": "what for",
+        "decision": "drop",
+        "misleading": 0.72,
+        "usefulness": 1.05,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "what for",
+          "why",
+          "what"
+        ]
+      },
+      {
+        "front": "замолчать",
+        "back": "silent",
+        "decision": "drop",
+        "misleading": 0.72,
+        "usefulness": 0.82,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "silent",
+          "conceal"
+        ]
+      },
+      {
+        "front": "нелегко",
+        "back": "difficulty",
+        "decision": "drop",
+        "misleading": 0.72,
+        "usefulness": 0.83,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "not",
+          "easily",
+          "difficulty",
+          "easy"
+        ]
+      },
+      {
+        "front": "интересоваться",
+        "back": "interested",
+        "decision": "drop",
+        "misleading": 0.72,
+        "usefulness": 1.17,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "interested",
+          "ask",
+          "enquire"
+        ]
+      },
+      {
+        "front": "товарный",
+        "back": "trade",
+        "decision": "drop",
+        "misleading": 0.72,
+        "usefulness": 1.33,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "commodity",
+          "goods",
+          "freight",
+          "trade"
+        ]
+      },
+      {
+        "front": "новогодний",
+        "back": "new year",
+        "decision": "drop",
+        "misleading": 0.71,
+        "usefulness": 0.61,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "new year"
+        ]
+      },
+      {
+        "front": "рок",
+        "back": "fate",
+        "decision": "drop",
+        "misleading": 0.71,
+        "usefulness": 1.46,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fate",
+          "doom",
+          "rock music"
+        ]
+      },
+      {
+        "front": "здравствовать",
+        "back": "well",
+        "decision": "drop",
+        "misleading": 0.7,
+        "usefulness": 0.89,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "well",
+          "prosper",
+          "thrive"
+        ]
+      },
+      {
+        "front": "миллиард",
+        "back": "milliard",
+        "decision": "drop",
+        "misleading": 0.7,
+        "usefulness": 1.14,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "billion",
+          "milliard"
+        ]
+      },
+      {
+        "front": "школьный",
+        "back": "school",
+        "decision": "drop",
+        "misleading": 0.7,
+        "usefulness": 0.62,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "school"
+        ]
+      },
+      {
+        "front": "рыбный",
+        "back": "fish",
+        "decision": "drop",
+        "misleading": 0.7,
+        "usefulness": 0.65,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fish",
+          "fish-filled",
+          "fishful"
+        ]
+      },
+      {
+        "front": "переспрашивать",
+        "back": "repeat",
+        "decision": "drop",
+        "misleading": 0.7,
+        "usefulness": 1.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ask",
+          "again",
+          "repeat",
+          "a"
+        ]
+      },
+      {
+        "front": "повезти",
+        "back": "luck",
+        "decision": "drop",
+        "misleading": 0.7,
+        "usefulness": 1.38,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "convey",
+          "carry",
+          "deliver",
+          "transport",
+          "lucky",
+          "luck",
+          "work out",
+          "succeed"
+        ]
+      },
+      {
+        "front": "промолчать",
+        "back": "silent",
+        "decision": "drop",
+        "misleading": 0.7,
+        "usefulness": 0.75,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "silent"
+        ]
+      },
+      {
+        "front": "обучаться",
+        "back": "training",
+        "decision": "drop",
+        "misleading": 0.7,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "get",
+          "trained",
+          "receive",
+          "training"
+        ]
+      },
+      {
+        "front": "приставка",
+        "back": "console",
+        "decision": "drop",
+        "misleading": 0.69,
+        "usefulness": 1.02,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "linguistic",
+          "morphology",
+          "lexicography",
+          "grammar",
+          "video game",
+          "console"
+        ]
+      },
+      {
+        "front": "рок",
+        "back": "doom",
+        "decision": "drop",
+        "misleading": 0.69,
+        "usefulness": 1.46,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fate",
+          "doom",
+          "rock music"
+        ]
+      },
+      {
+        "front": "обучаться",
+        "back": "trained",
+        "decision": "drop",
+        "misleading": 0.69,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "get",
+          "trained",
+          "receive",
+          "training"
+        ]
+      },
+      {
+        "front": "кот",
+        "back": "tomcat",
+        "decision": "drop",
+        "misleading": 0.68,
+        "usefulness": 0.7,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tomcat"
+        ]
+      },
+      {
+        "front": "ничего",
+        "back": "never mind",
+        "decision": "drop",
+        "misleading": 0.68,
+        "usefulness": 0.82,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "so-so",
+          "not bad",
+          "fair",
+          "never mind",
+          "that's",
+          "all right",
+          "no problem"
+        ]
+      },
+      {
+        "front": "ничего",
+        "back": "no problem",
+        "decision": "drop",
+        "misleading": 0.68,
+        "usefulness": 0.82,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "so-so",
+          "not bad",
+          "fair",
+          "never mind",
+          "that's",
+          "all right",
+          "no problem"
+        ]
+      },
+      {
+        "front": "телевизионный",
+        "back": "tv",
+        "decision": "drop",
+        "misleading": 0.68,
+        "usefulness": 1.02,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tv",
+          "television",
+          "tele-"
+        ]
+      },
+      {
+        "front": "полька",
+        "back": "female",
+        "decision": "drop",
+        "misleading": 0.67,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "female",
+          "pole",
+          "polish",
+          "woman",
+          "military",
+          "reduced",
+          "noise",
+          "mortar"
+        ]
+      },
+      {
+        "front": "рыбный",
+        "back": "fish-filled",
+        "decision": "drop",
+        "misleading": 0.67,
+        "usefulness": 0.65,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fish",
+          "fish-filled",
+          "fishful"
+        ]
+      },
+      {
+        "front": "повезти",
+        "back": "deliver",
+        "decision": "drop",
+        "misleading": 0.67,
+        "usefulness": 1.38,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "convey",
+          "carry",
+          "deliver",
+          "transport",
+          "lucky",
+          "luck",
+          "work out",
+          "succeed"
+        ]
+      },
+      {
+        "front": "согласный",
+        "back": "harmonious",
+        "decision": "drop",
+        "misleading": 0.66,
+        "usefulness": 1.54,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ready",
+          "willing",
+          "agreeable",
+          "harmonious",
+          "concordant",
+          "phonetics",
+          "consonantic",
+          "consonantal"
+        ]
+      },
+      {
+        "front": "согласный",
+        "back": "concordant",
+        "decision": "drop",
+        "misleading": 0.66,
+        "usefulness": 1.54,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ready",
+          "willing",
+          "agreeable",
+          "harmonious",
+          "concordant",
+          "phonetics",
+          "consonantic",
+          "consonantal"
+        ]
+      },
+      {
+        "front": "устанавливаться",
+        "back": "formed",
+        "decision": "drop",
+        "misleading": 0.66,
+        "usefulness": 1.15,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "settled",
+          "formed",
+          "set in"
+        ]
+      },
+      {
+        "front": "шуметь",
+        "back": "rustle",
+        "decision": "drop",
+        "misleading": 0.66,
+        "usefulness": 0.84,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "rustle"
+        ]
+      },
+      {
+        "front": "обедать",
+        "back": "eat",
+        "decision": "drop",
+        "misleading": 0.65,
+        "usefulness": 1.18,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "eat",
+          "lunch"
+        ]
+      },
+      {
+        "front": "полька",
+        "back": "woman",
+        "decision": "drop",
+        "misleading": 0.65,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "female",
+          "pole",
+          "polish",
+          "woman",
+          "military",
+          "reduced",
+          "noise",
+          "mortar"
+        ]
+      },
+      {
+        "front": "первое",
+        "back": "starter",
+        "decision": "drop",
+        "misleading": 0.65,
+        "usefulness": 0.79,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "starter",
+          "course",
+          "meal"
+        ]
+      },
+      {
+        "front": "читаться",
+        "back": "read",
+        "decision": "drop",
+        "misleading": 0.65,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "read",
+          "feel",
+          "like",
+          "reading"
+        ]
+      },
+      {
+        "front": "немка",
+        "back": "german",
+        "decision": "drop",
+        "misleading": 0.64,
+        "usefulness": 1.04,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "german",
+          "woman",
+          "girl"
+        ]
+      },
+      {
+        "front": "разве",
+        "back": "really",
+        "decision": "drop",
+        "misleading": 0.64,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "really",
+          "perhaps",
+          "only",
+          "unless"
+        ]
+      },
+      {
+        "front": "переспрашивать",
+        "back": "ask",
+        "decision": "drop",
+        "misleading": 0.64,
+        "usefulness": 1.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ask",
+          "again",
+          "repeat",
+          "a"
+        ]
+      },
+      {
+        "front": "повезти",
+        "back": "succeed",
+        "decision": "drop",
+        "misleading": 0.64,
+        "usefulness": 1.38,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "convey",
+          "carry",
+          "deliver",
+          "transport",
+          "lucky",
+          "luck",
+          "work out",
+          "succeed"
+        ]
+      },
+      {
+        "front": "горный",
+        "back": "mountain",
+        "decision": "drop",
+        "misleading": 0.64,
+        "usefulness": 0.98,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "mountain",
+          "rock",
+          "mining"
+        ]
+      },
+      {
+        "front": "лесной",
+        "back": "forest",
+        "decision": "drop",
+        "misleading": 0.64,
+        "usefulness": 0.72,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "forest",
+          "wood",
+          "lumber",
+          "timber"
+        ]
+      },
+      {
+        "front": "молчать",
+        "back": "silent",
+        "decision": "drop",
+        "misleading": 0.63,
+        "usefulness": 0.56,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "silent"
+        ]
+      },
+      {
+        "front": "повезти",
+        "back": "carry",
+        "decision": "drop",
+        "misleading": 0.63,
+        "usefulness": 1.38,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "convey",
+          "carry",
+          "deliver",
+          "transport",
+          "lucky",
+          "luck",
+          "work out",
+          "succeed"
+        ]
+      },
+      {
+        "front": "дорожный",
+        "back": "road",
+        "decision": "drop",
+        "misleading": 0.63,
+        "usefulness": 0.89,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "road",
+          "travelling"
+        ]
+      },
+      {
+        "front": "товарный",
+        "back": "commodity",
+        "decision": "drop",
+        "misleading": 0.63,
+        "usefulness": 1.33,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "commodity",
+          "goods",
+          "freight",
+          "trade"
+        ]
+      },
+      {
+        "front": "товарный",
+        "back": "freight",
+        "decision": "drop",
+        "misleading": 0.63,
+        "usefulness": 1.33,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "commodity",
+          "goods",
+          "freight",
+          "trade"
+        ]
+      },
+      {
+        "front": "откуда",
+        "back": "where",
+        "decision": "drop",
+        "misleading": 0.62,
+        "usefulness": 1.14,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "whence",
+          "from",
+          "where",
+          "which"
+        ]
+      },
+      {
+        "front": "повезти",
+        "back": "transport",
+        "decision": "drop",
+        "misleading": 0.62,
+        "usefulness": 1.38,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "convey",
+          "carry",
+          "deliver",
+          "transport",
+          "lucky",
+          "luck",
+          "work out",
+          "succeed"
+        ]
+      },
+      {
+        "front": "интересоваться",
+        "back": "enquire",
+        "decision": "drop",
+        "misleading": 0.62,
+        "usefulness": 1.17,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "interested",
+          "ask",
+          "enquire"
+        ]
+      },
+      {
+        "front": "игровой",
+        "back": "game",
+        "decision": "drop",
+        "misleading": 0.62,
+        "usefulness": 0.77,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "game",
+          "play",
+          "acting",
+          "playing"
+        ]
+      },
+      {
+        "front": "кредитный",
+        "back": "credit",
+        "decision": "drop",
+        "misleading": 0.62,
+        "usefulness": 0.88,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "credit"
+        ]
+      },
+      {
+        "front": "товарный",
+        "back": "goods",
+        "decision": "drop",
+        "misleading": 0.62,
+        "usefulness": 1.33,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "commodity",
+          "goods",
+          "freight",
+          "trade"
+        ]
+      },
+      {
+        "front": "тройка",
+        "back": "three",
+        "decision": "drop",
+        "misleading": 0.62,
+        "usefulness": 1.49,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "three",
+          "card game",
+          "trey",
+          "troika",
+          "trowsers",
+          "vest",
+          "jacket"
+        ]
+      },
+      {
+        "front": "тройка",
+        "back": "card game",
+        "decision": "drop",
+        "misleading": 0.62,
+        "usefulness": 1.49,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "three",
+          "card game",
+          "trey",
+          "troika",
+          "trowsers",
+          "vest",
+          "jacket"
+        ]
+      },
+      {
+        "front": "согласный",
+        "back": "willing",
+        "decision": "drop",
+        "misleading": 0.61,
+        "usefulness": 1.54,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ready",
+          "willing",
+          "agreeable",
+          "harmonious",
+          "concordant",
+          "phonetics",
+          "consonantic",
+          "consonantal"
+        ]
+      },
+      {
+        "front": "головной",
+        "back": "head",
+        "decision": "drop",
+        "misleading": 0.61,
+        "usefulness": 1.22,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "head",
+          "main",
+          "principal"
+        ]
+      },
+      {
+        "front": "головной",
+        "back": "principal",
+        "decision": "drop",
+        "misleading": 0.61,
+        "usefulness": 1.22,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "head",
+          "main",
+          "principal"
+        ]
+      },
+      {
+        "front": "детский",
+        "back": "childish",
+        "decision": "drop",
+        "misleading": 0.61,
+        "usefulness": 1.23,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "child",
+          "children",
+          "childish",
+          "baby"
+        ]
+      },
+      {
+        "front": "гордиться",
+        "back": "proud",
+        "decision": "drop",
+        "misleading": 0.61,
+        "usefulness": 0.8,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "proud"
+        ]
+      },
+      {
+        "front": "сердиться",
+        "back": "angry",
+        "decision": "drop",
+        "misleading": 0.61,
+        "usefulness": 0.88,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "angry"
+        ]
+      },
+      {
+        "front": "май",
+        "back": "may",
+        "decision": "drop",
+        "misleading": 0.6,
+        "usefulness": 0.96,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "may"
+        ]
+      },
+      {
+        "front": "засыпать",
+        "back": "fill",
+        "decision": "drop",
+        "misleading": 0.6,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fill",
+          "cover",
+          "bury",
+          "engulf",
+          "pour",
+          "into",
+          "strew",
+          "bombard"
+        ]
+      },
+      {
+        "front": "засыпать",
+        "back": "cover",
+        "decision": "drop",
+        "misleading": 0.6,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fill",
+          "cover",
+          "bury",
+          "engulf",
+          "pour",
+          "into",
+          "strew",
+          "bombard"
+        ]
+      },
+      {
+        "front": "из-под",
+        "back": "from",
+        "decision": "drop",
+        "misleading": 0.6,
+        "usefulness": 1.36,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "from",
+          "under"
+        ]
+      },
+      {
+        "front": "уставать",
+        "back": "tired",
+        "decision": "drop",
+        "misleading": 0.6,
+        "usefulness": 0.8,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tired"
+        ]
+      },
+      {
+        "front": "прилетать",
+        "back": "land",
+        "decision": "drop",
+        "misleading": 0.6,
+        "usefulness": 1.16,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "aviation",
+          "land",
+          "touch down",
+          "descend",
+          "soil",
+          "swiftly",
+          "abruptly"
+        ]
+      },
+      {
+        "front": "партийный",
+        "back": "party",
+        "decision": "drop",
+        "misleading": 0.6,
+        "usefulness": 1.13,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "politics",
+          "party",
+          "loyal",
+          "party line",
+          "member"
+        ]
+      },
+      {
+        "front": "разрезать",
+        "back": "cut off",
+        "decision": "drop",
+        "misleading": 0.6,
+        "usefulness": 1.09,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "cut off",
+          "bisect"
+        ]
+      },
+      {
+        "front": "чайный",
+        "back": "tea",
+        "decision": "drop",
+        "misleading": 0.59,
+        "usefulness": 0.96,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tea",
+          "scented",
+          "colored"
+        ]
+      },
+      {
+        "front": "газовый",
+        "back": "gas",
+        "decision": "drop",
+        "misleading": 0.59,
+        "usefulness": 0.87,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "gas",
+          "gauze"
+        ]
+      },
+      {
+        "front": "первое",
+        "back": "course",
+        "decision": "drop",
+        "misleading": 0.59,
+        "usefulness": 0.79,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "starter",
+          "course",
+          "meal"
+        ]
+      },
+      {
+        "front": "заинтересоваться",
+        "back": "interested",
+        "decision": "drop",
+        "misleading": 0.59,
+        "usefulness": 0.89,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "interested"
+        ]
+      },
+      {
+        "front": "откуда",
+        "back": "from",
+        "decision": "drop",
+        "misleading": 0.58,
+        "usefulness": 1.14,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "whence",
+          "from",
+          "where",
+          "which"
+        ]
+      },
+      {
+        "front": "согласный",
+        "back": "consonantic",
+        "decision": "drop",
+        "misleading": 0.58,
+        "usefulness": 1.54,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ready",
+          "willing",
+          "agreeable",
+          "harmonious",
+          "concordant",
+          "phonetics",
+          "consonantic",
+          "consonantal"
+        ]
+      },
+      {
+        "front": "замуж",
+        "back": "married",
+        "decision": "drop",
+        "misleading": 0.58,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "married"
+        ]
+      },
+      {
+        "front": "кухонный",
+        "back": "kitchen",
+        "decision": "drop",
+        "misleading": 0.58,
+        "usefulness": 0.81,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "kitchen"
+        ]
+      },
+      {
+        "front": "повезти",
+        "back": "work out",
+        "decision": "drop",
+        "misleading": 0.58,
+        "usefulness": 1.38,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "convey",
+          "carry",
+          "deliver",
+          "transport",
+          "lucky",
+          "luck",
+          "work out",
+          "succeed"
+        ]
+      },
+      {
+        "front": "налоговый",
+        "back": "taxation",
+        "decision": "drop",
+        "misleading": 0.58,
+        "usefulness": 1.17,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tax",
+          "taxation"
+        ]
+      },
+      {
+        "front": "тройка",
+        "back": "troika",
+        "decision": "drop",
+        "misleading": 0.58,
+        "usefulness": 1.49,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "three",
+          "card game",
+          "trey",
+          "troika",
+          "trowsers",
+          "vest",
+          "jacket"
+        ]
+      },
+      {
+        "front": "классик",
+        "back": "classicist",
+        "decision": "drop",
+        "misleading": 0.58,
+        "usefulness": 1.24,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "classic",
+          "classicist"
+        ]
+      },
+      {
+        "front": "оттуда",
+        "back": "thence",
+        "decision": "drop",
+        "misleading": 0.57,
+        "usefulness": 1.23,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "thence",
+          "there"
+        ]
+      },
+      {
+        "front": "из-под",
+        "back": "under",
+        "decision": "drop",
+        "misleading": 0.57,
+        "usefulness": 1.36,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "from",
+          "under"
+        ]
+      },
+      {
+        "front": "прилетать",
+        "back": "touch down",
+        "decision": "drop",
+        "misleading": 0.57,
+        "usefulness": 1.16,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "aviation",
+          "land",
+          "touch down",
+          "descend",
+          "soil",
+          "swiftly",
+          "abruptly"
+        ]
+      },
+      {
+        "front": "уличный",
+        "back": "street",
+        "decision": "drop",
+        "misleading": 0.57,
+        "usefulness": 0.71,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "street"
+        ]
+      },
+      {
+        "front": "разрезать",
+        "back": "bisect",
+        "decision": "drop",
+        "misleading": 0.57,
+        "usefulness": 1.09,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "cut off",
+          "bisect"
+        ]
+      },
+      {
+        "front": "обедать",
+        "back": "lunch",
+        "decision": "drop",
+        "misleading": 0.56,
+        "usefulness": 1.18,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "eat",
+          "lunch"
+        ]
+      },
+      {
+        "front": "завтракать",
+        "back": "breakfast",
+        "decision": "drop",
+        "misleading": 0.56,
+        "usefulness": 0.95,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "breakfast",
+          "lunch"
+        ]
+      },
+      {
+        "front": "лучше",
+        "back": "rather",
+        "decision": "drop",
+        "misleading": 0.56,
+        "usefulness": 0.52,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "rather"
+        ]
+      },
+      {
+        "front": "сбоку",
+        "back": "side",
+        "decision": "drop",
+        "misleading": 0.56,
+        "usefulness": 0.94,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "askance",
+          "side"
+        ]
+      },
+      {
+        "front": "классик",
+        "back": "classic",
+        "decision": "drop",
+        "misleading": 0.56,
+        "usefulness": 1.24,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "classic",
+          "classicist"
+        ]
+      },
+      {
+        "front": "согласный",
+        "back": "consonantal",
+        "decision": "drop",
+        "misleading": 0.55,
+        "usefulness": 1.54,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ready",
+          "willing",
+          "agreeable",
+          "harmonious",
+          "concordant",
+          "phonetics",
+          "consonantic",
+          "consonantal"
+        ]
+      },
+      {
+        "front": "транспортный",
+        "back": "transportation",
+        "decision": "drop",
+        "misleading": 0.55,
+        "usefulness": 1.21,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "transportation",
+          "transport",
+          "shipping"
+        ]
+      },
+      {
+        "front": "откуда",
+        "back": "whence",
+        "decision": "drop",
+        "misleading": 0.54,
+        "usefulness": 1.14,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "whence",
+          "from",
+          "where",
+          "which"
+        ]
+      },
+      {
+        "front": "согласный",
+        "back": "agreeable",
+        "decision": "drop",
+        "misleading": 0.54,
+        "usefulness": 1.54,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "ready",
+          "willing",
+          "agreeable",
+          "harmonious",
+          "concordant",
+          "phonetics",
+          "consonantic",
+          "consonantal"
+        ]
+      },
+      {
+        "front": "засыпать",
+        "back": "bury",
+        "decision": "drop",
+        "misleading": 0.54,
+        "usefulness": 0.92,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fill",
+          "cover",
+          "bury",
+          "engulf",
+          "pour",
+          "into",
+          "strew",
+          "bombard"
+        ]
+      },
+      {
+        "front": "чего",
+        "back": "what",
+        "decision": "drop",
+        "misleading": 0.54,
+        "usefulness": 1.05,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "what for",
+          "why",
+          "what"
+        ]
+      },
+      {
+        "front": "устанавливаться",
+        "back": "settled",
+        "decision": "drop",
+        "misleading": 0.54,
+        "usefulness": 1.15,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "settled",
+          "formed",
+          "set in"
+        ]
+      },
+      {
+        "front": "телевизионный",
+        "back": "television",
+        "decision": "drop",
+        "misleading": 0.52,
+        "usefulness": 1.02,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tv",
+          "television",
+          "tele-"
+        ]
+      },
+      {
+        "front": "налоговый",
+        "back": "tax",
+        "decision": "drop",
+        "misleading": 0.52,
+        "usefulness": 1.17,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "tax",
+          "taxation"
+        ]
+      },
+      {
+        "front": "транспортный",
+        "back": "transport",
+        "decision": "drop",
+        "misleading": 0.52,
+        "usefulness": 1.21,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "transportation",
+          "transport",
+          "shipping"
+        ]
+      },
+      {
+        "front": "мусульманский",
+        "back": "muslim",
+        "decision": "drop",
+        "misleading": 0.52,
+        "usefulness": 0.97,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "muslim"
+        ]
+      },
+      {
+        "front": "важно",
+        "back": "importantly",
+        "decision": "drop",
+        "misleading": 0.51,
+        "usefulness": 0.97,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "importantly",
+          "grandly"
+        ]
+      },
+      {
+        "front": "китаец",
+        "back": "chinese",
+        "decision": "drop",
+        "misleading": 0.51,
+        "usefulness": 0.96,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "chinese"
+        ]
+      },
+      {
+        "front": "миллиард",
+        "back": "billion",
+        "decision": "drop",
+        "misleading": 0.51,
+        "usefulness": 1.14,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "billion",
+          "milliard"
+        ]
+      },
+      {
+        "front": "оттуда",
+        "back": "there",
+        "decision": "drop",
+        "misleading": 0.51,
+        "usefulness": 1.23,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "thence",
+          "there"
+        ]
+      },
+      {
+        "front": "утренний",
+        "back": "morning",
+        "decision": "drop",
+        "misleading": 0.51,
+        "usefulness": 1.03,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "morning"
+        ]
+      },
+      {
+        "front": "вечерний",
+        "back": "evening",
+        "decision": "drop",
+        "misleading": 0.51,
+        "usefulness": 0.93,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "evening"
+        ]
+      },
+      {
+        "front": "головной",
+        "back": "main",
+        "decision": "drop",
+        "misleading": 0.5,
+        "usefulness": 1.22,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "head",
+          "main",
+          "principal"
+        ]
+      },
+      {
+        "front": "японец",
+        "back": "japanese",
+        "decision": "drop",
+        "misleading": 0.5,
+        "usefulness": 0.96,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "japanese"
+        ]
+      },
+      {
+        "front": "привыкать",
+        "back": "accustomed",
+        "decision": "drop",
+        "misleading": 0.5,
+        "usefulness": 1.04,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "get",
+          "accustomed"
+        ]
+      },
+      {
+        "front": "подъезжать",
+        "back": "drive",
+        "decision": "drop",
+        "misleading": 0.5,
+        "usefulness": 1.01,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "drive",
+          "drop in",
+          "get"
+        ]
+      },
+      {
+        "front": "фотографировать",
+        "back": "photograph",
+        "decision": "drop",
+        "misleading": 0.5,
+        "usefulness": 0.85,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "photograph"
+        ]
+      },
+      {
+        "front": "рок",
+        "back": "rock music",
+        "decision": "drop",
+        "misleading": 0.5,
+        "usefulness": 1.46,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "fate",
+          "doom",
+          "rock music"
+        ]
+      },
+      {
+        "front": "устанавливаться",
+        "back": "set in",
+        "decision": "drop",
+        "misleading": 0.5,
+        "usefulness": 1.15,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "settled",
+          "formed",
+          "set in"
+        ]
+      },
+      {
+        "front": "присниться",
+        "back": "dream",
+        "decision": "drop",
+        "misleading": 0.5,
+        "usefulness": 0.89,
+        "band": [
+          "lemma-emptied"
+        ],
+        "siblings": [
+          "dream"
+        ]
+      }
+    ]
+  },
+  "entries": [
+    {
+      "front": "важно",
+      "back": "grandly",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 0.97,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "importantly",
+        "grandly"
+      ]
+    },
+    {
+      "front": "себе",
+      "back": "keep on",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 0.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "keep on"
+      ]
+    },
+    {
+      "front": "завтракать",
+      "back": "lunch",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 0.95,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "breakfast",
+        "lunch"
+      ]
+    },
+    {
+      "front": "та",
+      "back": "internet",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 0.08,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "internet",
+        "ukrainian"
+      ]
+    },
+    {
+      "front": "полька",
+      "back": "noise",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "female",
+        "pole",
+        "polish",
+        "woman",
+        "military",
+        "reduced",
+        "noise",
+        "mortar"
+      ]
+    },
+    {
+      "front": "дискотека",
+      "back": "library",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 0.66,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "record",
+        "library",
+        "event",
+        "evening",
+        "music",
+        "dance"
+      ]
+    },
+    {
+      "front": "нелегко",
+      "back": "easy",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 0.83,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "not",
+        "easily",
+        "difficulty",
+        "easy"
+      ]
+    },
+    {
+      "front": "прилетать",
+      "back": "abruptly",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 1.16,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "aviation",
+        "land",
+        "touch down",
+        "descend",
+        "soil",
+        "swiftly",
+        "abruptly"
+      ]
+    },
+    {
+      "front": "неизвестно",
+      "back": "known",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 0.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "known"
+      ]
+    },
+    {
+      "front": "тройка",
+      "back": "trowsers",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 1.49,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "three",
+        "card game",
+        "trey",
+        "troika",
+        "trowsers",
+        "vest",
+        "jacket"
+      ]
+    },
+    {
+      "front": "тройка",
+      "back": "vest",
+      "decision": "drop",
+      "misleading": 0.98,
+      "usefulness": 1.49,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "three",
+        "card game",
+        "trey",
+        "troika",
+        "trowsers",
+        "vest",
+        "jacket"
+      ]
+    },
+    {
+      "front": "откуда",
+      "back": "which",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 1.14,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "whence",
+        "from",
+        "where",
+        "which"
+      ]
+    },
+    {
+      "front": "чайный",
+      "back": "colored",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 0.96,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tea",
+        "scented",
+        "colored"
+      ]
+    },
+    {
+      "front": "полька",
+      "back": "reduced",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "female",
+        "pole",
+        "polish",
+        "woman",
+        "military",
+        "reduced",
+        "noise",
+        "mortar"
+      ]
+    },
+    {
+      "front": "неплохо",
+      "back": "badly",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 0.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "badly"
+      ]
+    },
+    {
+      "front": "газовый",
+      "back": "gauze",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 0.87,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "gas",
+        "gauze"
+      ]
+    },
+    {
+      "front": "недолго",
+      "back": "long",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 0.14,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "long",
+        "easily"
+      ]
+    },
+    {
+      "front": "дискотека",
+      "back": "evening",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 0.66,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "record",
+        "library",
+        "event",
+        "evening",
+        "music",
+        "dance"
+      ]
+    },
+    {
+      "front": "прилетать",
+      "back": "aviation",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 1.16,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "aviation",
+        "land",
+        "touch down",
+        "descend",
+        "soil",
+        "swiftly",
+        "abruptly"
+      ]
+    },
+    {
+      "front": "прилетать",
+      "back": "swiftly",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 1.16,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "aviation",
+        "land",
+        "touch down",
+        "descend",
+        "soil",
+        "swiftly",
+        "abruptly"
+      ]
+    },
+    {
+      "front": "приставка",
+      "back": "linguistic",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 1.02,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "linguistic",
+        "morphology",
+        "lexicography",
+        "grammar",
+        "video game",
+        "console"
+      ]
+    },
+    {
+      "front": "приставка",
+      "back": "lexicography",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 1.02,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "linguistic",
+        "morphology",
+        "lexicography",
+        "grammar",
+        "video game",
+        "console"
+      ]
+    },
+    {
+      "front": "переспрашивать",
+      "back": "a",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 1.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ask",
+        "again",
+        "repeat",
+        "a"
+      ]
+    },
+    {
+      "front": "тройка",
+      "back": "jacket",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 1.49,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "three",
+        "card game",
+        "trey",
+        "troika",
+        "trowsers",
+        "vest",
+        "jacket"
+      ]
+    },
+    {
+      "front": "пополам",
+      "back": "all the same",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 0.07,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "two",
+        "all the same",
+        "matter"
+      ]
+    },
+    {
+      "front": "пополам",
+      "back": "matter",
+      "decision": "drop",
+      "misleading": 0.97,
+      "usefulness": 0.07,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "two",
+        "all the same",
+        "matter"
+      ]
+    },
+    {
+      "front": "та",
+      "back": "ukrainian",
+      "decision": "drop",
+      "misleading": 0.96,
+      "usefulness": 0.08,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "internet",
+        "ukrainian"
+      ]
+    },
+    {
+      "front": "полька",
+      "back": "military",
+      "decision": "drop",
+      "misleading": 0.96,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "female",
+        "pole",
+        "polish",
+        "woman",
+        "military",
+        "reduced",
+        "noise",
+        "mortar"
+      ]
+    },
+    {
+      "front": "эта",
+      "back": "eta",
+      "decision": "drop",
+      "misleading": 0.96,
+      "usefulness": 0.07,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "eta"
+      ]
+    },
+    {
+      "front": "дискотека",
+      "back": "record",
+      "decision": "drop",
+      "misleading": 0.96,
+      "usefulness": 0.66,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "record",
+        "library",
+        "event",
+        "evening",
+        "music",
+        "dance"
+      ]
+    },
+    {
+      "front": "нелегко",
+      "back": "easily",
+      "decision": "drop",
+      "misleading": 0.96,
+      "usefulness": 0.83,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "not",
+        "easily",
+        "difficulty",
+        "easy"
+      ]
+    },
+    {
+      "front": "приставка",
+      "back": "grammar",
+      "decision": "drop",
+      "misleading": 0.96,
+      "usefulness": 1.02,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "linguistic",
+        "morphology",
+        "lexicography",
+        "grammar",
+        "video game",
+        "console"
+      ]
+    },
+    {
+      "front": "согласный",
+      "back": "phonetics",
+      "decision": "drop",
+      "misleading": 0.95,
+      "usefulness": 1.54,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ready",
+        "willing",
+        "agreeable",
+        "harmonious",
+        "concordant",
+        "phonetics",
+        "consonantic",
+        "consonantal"
+      ]
+    },
+    {
+      "front": "недолго",
+      "back": "easily",
+      "decision": "drop",
+      "misleading": 0.95,
+      "usefulness": 0.14,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "long",
+        "easily"
+      ]
+    },
+    {
+      "front": "приставка",
+      "back": "morphology",
+      "decision": "drop",
+      "misleading": 0.95,
+      "usefulness": 1.02,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "linguistic",
+        "morphology",
+        "lexicography",
+        "grammar",
+        "video game",
+        "console"
+      ]
+    },
+    {
+      "front": "телевизионный",
+      "back": "tele-",
+      "decision": "drop",
+      "misleading": 0.94,
+      "usefulness": 1.02,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tv",
+        "television",
+        "tele-"
+      ]
+    },
+    {
+      "front": "теракт",
+      "back": "terrorist",
+      "decision": "drop",
+      "misleading": 0.94,
+      "usefulness": 0.97,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "act",
+        "terrorism",
+        "terror",
+        "terrorist"
+      ]
+    },
+    {
+      "front": "разве",
+      "back": "only",
+      "decision": "drop",
+      "misleading": 0.93,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "really",
+        "perhaps",
+        "only",
+        "unless"
+      ]
+    },
+    {
+      "front": "игровой",
+      "back": "acting",
+      "decision": "drop",
+      "misleading": 0.93,
+      "usefulness": 0.77,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "game",
+        "play",
+        "acting",
+        "playing"
+      ]
+    },
+    {
+      "front": "обучаться",
+      "back": "get",
+      "decision": "drop",
+      "misleading": 0.93,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "get",
+        "trained",
+        "receive",
+        "training"
+      ]
+    },
+    {
+      "front": "долго",
+      "back": "time",
+      "decision": "drop",
+      "misleading": 0.92,
+      "usefulness": 0.13,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "time"
+      ]
+    },
+    {
+      "front": "замолчать",
+      "back": "conceal",
+      "decision": "drop",
+      "misleading": 0.92,
+      "usefulness": 0.82,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "silent",
+        "conceal"
+      ]
+    },
+    {
+      "front": "горный",
+      "back": "rock",
+      "decision": "drop",
+      "misleading": 0.92,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "mountain",
+        "rock",
+        "mining"
+      ]
+    },
+    {
+      "front": "цент",
+      "back": "cent",
+      "decision": "drop",
+      "misleading": 0.92,
+      "usefulness": 0.26,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "cent"
+      ]
+    },
+    {
+      "front": "ту",
+      "back": "train",
+      "decision": "drop",
+      "misleading": 0.91,
+      "usefulness": 0.21,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "train",
+        "horn"
+      ]
+    },
+    {
+      "front": "полька",
+      "back": "pole",
+      "decision": "drop",
+      "misleading": 0.91,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "female",
+        "pole",
+        "polish",
+        "woman",
+        "military",
+        "reduced",
+        "noise",
+        "mortar"
+      ]
+    },
+    {
+      "front": "полкило",
+      "back": "kilo",
+      "decision": "drop",
+      "misleading": 0.91,
+      "usefulness": 0.95,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "half",
+        "kilo"
+      ]
+    },
+    {
+      "front": "ничего",
+      "back": "that's",
+      "decision": "drop",
+      "misleading": 0.91,
+      "usefulness": 0.82,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "so-so",
+        "not bad",
+        "fair",
+        "never mind",
+        "that's",
+        "all right",
+        "no problem"
+      ]
+    },
+    {
+      "front": "сбоку",
+      "back": "askance",
+      "decision": "drop",
+      "misleading": 0.91,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "askance",
+        "side"
+      ]
+    },
+    {
+      "front": "пополам",
+      "back": "two",
+      "decision": "drop",
+      "misleading": 0.91,
+      "usefulness": 0.07,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "two",
+        "all the same",
+        "matter"
+      ]
+    },
+    {
+      "front": "обучаться",
+      "back": "receive",
+      "decision": "drop",
+      "misleading": 0.91,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "get",
+        "trained",
+        "receive",
+        "training"
+      ]
+    },
+    {
+      "front": "засыпать",
+      "back": "into",
+      "decision": "drop",
+      "misleading": 0.9,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fill",
+        "cover",
+        "bury",
+        "engulf",
+        "pour",
+        "into",
+        "strew",
+        "bombard"
+      ]
+    },
+    {
+      "front": "чайный",
+      "back": "scented",
+      "decision": "drop",
+      "misleading": 0.9,
+      "usefulness": 0.96,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tea",
+        "scented",
+        "colored"
+      ]
+    },
+    {
+      "front": "ту",
+      "back": "horn",
+      "decision": "drop",
+      "misleading": 0.9,
+      "usefulness": 0.21,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "train",
+        "horn"
+      ]
+    },
+    {
+      "front": "полька",
+      "back": "mortar",
+      "decision": "drop",
+      "misleading": 0.9,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "female",
+        "pole",
+        "polish",
+        "woman",
+        "military",
+        "reduced",
+        "noise",
+        "mortar"
+      ]
+    },
+    {
+      "front": "ничего",
+      "back": "fair",
+      "decision": "drop",
+      "misleading": 0.9,
+      "usefulness": 0.82,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "so-so",
+        "not bad",
+        "fair",
+        "never mind",
+        "that's",
+        "all right",
+        "no problem"
+      ]
+    },
+    {
+      "front": "партийный",
+      "back": "member",
+      "decision": "drop",
+      "misleading": 0.9,
+      "usefulness": 1.13,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "politics",
+        "party",
+        "loyal",
+        "party line",
+        "member"
+      ]
+    },
+    {
+      "front": "теракт",
+      "back": "act",
+      "decision": "drop",
+      "misleading": 0.9,
+      "usefulness": 0.97,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "act",
+        "terrorism",
+        "terror",
+        "terrorist"
+      ]
+    },
+    {
+      "front": "бы",
+      "back": "conditional",
+      "decision": "drop",
+      "misleading": 0.89,
+      "usefulness": 0.36,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "conditional",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "дискотека",
+      "back": "music",
+      "decision": "drop",
+      "misleading": 0.89,
+      "usefulness": 0.66,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "record",
+        "library",
+        "event",
+        "evening",
+        "music",
+        "dance"
+      ]
+    },
+    {
+      "front": "рыбный",
+      "back": "fishful",
+      "decision": "drop",
+      "misleading": 0.89,
+      "usefulness": 0.65,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fish",
+        "fish-filled",
+        "fishful"
+      ]
+    },
+    {
+      "front": "нелегко",
+      "back": "not",
+      "decision": "drop",
+      "misleading": 0.89,
+      "usefulness": 0.83,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "not",
+        "easily",
+        "difficulty",
+        "easy"
+      ]
+    },
+    {
+      "front": "засыпать",
+      "back": "bombard",
+      "decision": "drop",
+      "misleading": 0.88,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fill",
+        "cover",
+        "bury",
+        "engulf",
+        "pour",
+        "into",
+        "strew",
+        "bombard"
+      ]
+    },
+    {
+      "front": "немка",
+      "back": "girl",
+      "decision": "drop",
+      "misleading": 0.88,
+      "usefulness": 1.04,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "german",
+        "woman",
+        "girl"
+      ]
+    },
+    {
+      "front": "тем",
+      "back": "the",
+      "decision": "drop",
+      "misleading": 0.88,
+      "usefulness": 0.33,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "the"
+      ]
+    },
+    {
+      "front": "бы",
+      "back": "subjunctive",
+      "decision": "drop",
+      "misleading": 0.87,
+      "usefulness": 0.36,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "conditional",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "подъезжать",
+      "back": "get",
+      "decision": "drop",
+      "misleading": 0.87,
+      "usefulness": 1.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "drive",
+        "drop in",
+        "get"
+      ]
+    },
+    {
+      "front": "прилетать",
+      "back": "soil",
+      "decision": "drop",
+      "misleading": 0.87,
+      "usefulness": 1.16,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "aviation",
+        "land",
+        "touch down",
+        "descend",
+        "soil",
+        "swiftly",
+        "abruptly"
+      ]
+    },
+    {
+      "front": "партийный",
+      "back": "politics",
+      "decision": "drop",
+      "misleading": 0.87,
+      "usefulness": 1.13,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "politics",
+        "party",
+        "loyal",
+        "party line",
+        "member"
+      ]
+    },
+    {
+      "front": "подъезжать",
+      "back": "drop in",
+      "decision": "drop",
+      "misleading": 0.86,
+      "usefulness": 1.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "drive",
+        "drop in",
+        "get"
+      ]
+    },
+    {
+      "front": "переспрашивать",
+      "back": "again",
+      "decision": "drop",
+      "misleading": 0.86,
+      "usefulness": 1.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ask",
+        "again",
+        "repeat",
+        "a"
+      ]
+    },
+    {
+      "front": "лесной",
+      "back": "lumber",
+      "decision": "drop",
+      "misleading": 0.86,
+      "usefulness": 0.72,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "forest",
+        "wood",
+        "lumber",
+        "timber"
+      ]
+    },
+    {
+      "front": "теракт",
+      "back": "terror",
+      "decision": "drop",
+      "misleading": 0.86,
+      "usefulness": 0.97,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "act",
+        "terrorism",
+        "terror",
+        "terrorist"
+      ]
+    },
+    {
+      "front": "игровой",
+      "back": "play",
+      "decision": "drop",
+      "misleading": 0.85,
+      "usefulness": 0.77,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "game",
+        "play",
+        "acting",
+        "playing"
+      ]
+    },
+    {
+      "front": "засыпать",
+      "back": "engulf",
+      "decision": "drop",
+      "misleading": 0.84,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fill",
+        "cover",
+        "bury",
+        "engulf",
+        "pour",
+        "into",
+        "strew",
+        "bombard"
+      ]
+    },
+    {
+      "front": "дружить",
+      "back": "friends",
+      "decision": "drop",
+      "misleading": 0.83,
+      "usefulness": 0.48,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "friends"
+      ]
+    },
+    {
+      "front": "горный",
+      "back": "mining",
+      "decision": "drop",
+      "misleading": 0.83,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "mountain",
+        "rock",
+        "mining"
+      ]
+    },
+    {
+      "front": "игровой",
+      "back": "playing",
+      "decision": "drop",
+      "misleading": 0.83,
+      "usefulness": 0.77,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "game",
+        "play",
+        "acting",
+        "playing"
+      ]
+    },
+    {
+      "front": "читаться",
+      "back": "like",
+      "decision": "drop",
+      "misleading": 0.83,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "read",
+        "feel",
+        "like",
+        "reading"
+      ]
+    },
+    {
+      "front": "ничего",
+      "back": "so-so",
+      "decision": "drop",
+      "misleading": 0.82,
+      "usefulness": 0.82,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "so-so",
+        "not bad",
+        "fair",
+        "never mind",
+        "that's",
+        "all right",
+        "no problem"
+      ]
+    },
+    {
+      "front": "прилетать",
+      "back": "descend",
+      "decision": "drop",
+      "misleading": 0.82,
+      "usefulness": 1.16,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "aviation",
+        "land",
+        "touch down",
+        "descend",
+        "soil",
+        "swiftly",
+        "abruptly"
+      ]
+    },
+    {
+      "front": "дорожный",
+      "back": "travelling",
+      "decision": "drop",
+      "misleading": 0.82,
+      "usefulness": 0.89,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "road",
+        "travelling"
+      ]
+    },
+    {
+      "front": "читаться",
+      "back": "reading",
+      "decision": "drop",
+      "misleading": 0.82,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "read",
+        "feel",
+        "like",
+        "reading"
+      ]
+    },
+    {
+      "front": "засыпать",
+      "back": "strew",
+      "decision": "drop",
+      "misleading": 0.81,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fill",
+        "cover",
+        "bury",
+        "engulf",
+        "pour",
+        "into",
+        "strew",
+        "bombard"
+      ]
+    },
+    {
+      "front": "ничего",
+      "back": "not bad",
+      "decision": "drop",
+      "misleading": 0.81,
+      "usefulness": 0.82,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "so-so",
+        "not bad",
+        "fair",
+        "never mind",
+        "that's",
+        "all right",
+        "no problem"
+      ]
+    },
+    {
+      "front": "дискотека",
+      "back": "dance",
+      "decision": "drop",
+      "misleading": 0.81,
+      "usefulness": 0.66,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "record",
+        "library",
+        "event",
+        "evening",
+        "music",
+        "dance"
+      ]
+    },
+    {
+      "front": "студенческий",
+      "back": "student",
+      "decision": "drop",
+      "misleading": 0.81,
+      "usefulness": 0.43,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "student"
+      ]
+    },
+    {
+      "front": "немка",
+      "back": "woman",
+      "decision": "drop",
+      "misleading": 0.8,
+      "usefulness": 1.04,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "german",
+        "woman",
+        "girl"
+      ]
+    },
+    {
+      "front": "пасха",
+      "back": "paskha",
+      "decision": "drop",
+      "misleading": 0.8,
+      "usefulness": 0.45,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "paskha"
+      ]
+    },
+    {
+      "front": "желающий",
+      "back": "desire",
+      "decision": "drop",
+      "misleading": 0.8,
+      "usefulness": 0.51,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "wish",
+        "desire"
+      ]
+    },
+    {
+      "front": "теракт",
+      "back": "terrorism",
+      "decision": "drop",
+      "misleading": 0.8,
+      "usefulness": 0.97,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "act",
+        "terrorism",
+        "terror",
+        "terrorist"
+      ]
+    },
+    {
+      "front": "бутерброд",
+      "back": "butterbrot",
+      "decision": "drop",
+      "misleading": 0.79,
+      "usefulness": 0.48,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "butterbrot"
+      ]
+    },
+    {
+      "front": "интересоваться",
+      "back": "ask",
+      "decision": "drop",
+      "misleading": 0.79,
+      "usefulness": 1.17,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "interested",
+        "ask",
+        "enquire"
+      ]
+    },
+    {
+      "front": "транспортный",
+      "back": "shipping",
+      "decision": "drop",
+      "misleading": 0.79,
+      "usefulness": 1.21,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "transportation",
+        "transport",
+        "shipping"
+      ]
+    },
+    {
+      "front": "октябрьский",
+      "back": "october",
+      "decision": "drop",
+      "misleading": 0.79,
+      "usefulness": 0.48,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "october"
+      ]
+    },
+    {
+      "front": "читаться",
+      "back": "feel",
+      "decision": "drop",
+      "misleading": 0.79,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "read",
+        "feel",
+        "like",
+        "reading"
+      ]
+    },
+    {
+      "front": "полкило",
+      "back": "half",
+      "decision": "drop",
+      "misleading": 0.78,
+      "usefulness": 0.95,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "half",
+        "kilo"
+      ]
+    },
+    {
+      "front": "привыкать",
+      "back": "get",
+      "decision": "drop",
+      "misleading": 0.78,
+      "usefulness": 1.04,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "get",
+        "accustomed"
+      ]
+    },
+    {
+      "front": "первое",
+      "back": "meal",
+      "decision": "drop",
+      "misleading": 0.78,
+      "usefulness": 0.79,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "starter",
+        "course",
+        "meal"
+      ]
+    },
+    {
+      "front": "дискотека",
+      "back": "event",
+      "decision": "drop",
+      "misleading": 0.78,
+      "usefulness": 0.66,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "record",
+        "library",
+        "event",
+        "evening",
+        "music",
+        "dance"
+      ]
+    },
+    {
+      "front": "квартплата",
+      "back": "rent",
+      "decision": "drop",
+      "misleading": 0.78,
+      "usefulness": 0.39,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "rent"
+      ]
+    },
+    {
+      "front": "детский",
+      "back": "baby",
+      "decision": "drop",
+      "misleading": 0.77,
+      "usefulness": 1.23,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "child",
+        "children",
+        "childish",
+        "baby"
+      ]
+    },
+    {
+      "front": "ничего",
+      "back": "all right",
+      "decision": "drop",
+      "misleading": 0.77,
+      "usefulness": 0.82,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "so-so",
+        "not bad",
+        "fair",
+        "never mind",
+        "that's",
+        "all right",
+        "no problem"
+      ]
+    },
+    {
+      "front": "желающий",
+      "back": "wish",
+      "decision": "drop",
+      "misleading": 0.77,
+      "usefulness": 0.51,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "wish",
+        "desire"
+      ]
+    },
+    {
+      "front": "полька",
+      "back": "polish",
+      "decision": "drop",
+      "misleading": 0.76,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "female",
+        "pole",
+        "polish",
+        "woman",
+        "military",
+        "reduced",
+        "noise",
+        "mortar"
+      ]
+    },
+    {
+      "front": "партийный",
+      "back": "loyal",
+      "decision": "drop",
+      "misleading": 0.76,
+      "usefulness": 1.13,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "politics",
+        "party",
+        "loyal",
+        "party line",
+        "member"
+      ]
+    },
+    {
+      "front": "лесной",
+      "back": "wood",
+      "decision": "drop",
+      "misleading": 0.76,
+      "usefulness": 0.72,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "forest",
+        "wood",
+        "lumber",
+        "timber"
+      ]
+    },
+    {
+      "front": "лесной",
+      "back": "timber",
+      "decision": "drop",
+      "misleading": 0.76,
+      "usefulness": 0.72,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "forest",
+        "wood",
+        "lumber",
+        "timber"
+      ]
+    },
+    {
+      "front": "дежурить",
+      "back": "duty",
+      "decision": "drop",
+      "misleading": 0.76,
+      "usefulness": 0.53,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "duty"
+      ]
+    },
+    {
+      "front": "разве",
+      "back": "perhaps",
+      "decision": "drop",
+      "misleading": 0.75,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "really",
+        "perhaps",
+        "only",
+        "unless"
+      ]
+    },
+    {
+      "front": "разве",
+      "back": "unless",
+      "decision": "drop",
+      "misleading": 0.75,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "really",
+        "perhaps",
+        "only",
+        "unless"
+      ]
+    },
+    {
+      "front": "чего",
+      "back": "why",
+      "decision": "drop",
+      "misleading": 0.75,
+      "usefulness": 1.05,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "what for",
+        "why",
+        "what"
+      ]
+    },
+    {
+      "front": "компьютерный",
+      "back": "computer",
+      "decision": "drop",
+      "misleading": 0.75,
+      "usefulness": 0.55,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "computer"
+      ]
+    },
+    {
+      "front": "автомобильный",
+      "back": "automobile",
+      "decision": "drop",
+      "misleading": 0.75,
+      "usefulness": 0.53,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "car",
+        "automobile"
+      ]
+    },
+    {
+      "front": "приставка",
+      "back": "video game",
+      "decision": "drop",
+      "misleading": 0.75,
+      "usefulness": 1.02,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "linguistic",
+        "morphology",
+        "lexicography",
+        "grammar",
+        "video game",
+        "console"
+      ]
+    },
+    {
+      "front": "партийный",
+      "back": "party line",
+      "decision": "drop",
+      "misleading": 0.75,
+      "usefulness": 1.13,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "politics",
+        "party",
+        "loyal",
+        "party line",
+        "member"
+      ]
+    },
+    {
+      "front": "террористический",
+      "back": "terrorist",
+      "decision": "drop",
+      "misleading": 0.75,
+      "usefulness": 0.64,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "terrorist"
+      ]
+    },
+    {
+      "front": "автомобильный",
+      "back": "car",
+      "decision": "drop",
+      "misleading": 0.74,
+      "usefulness": 0.53,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "car",
+        "automobile"
+      ]
+    },
+    {
+      "front": "пельмени",
+      "back": "pelmeni",
+      "decision": "drop",
+      "misleading": 0.74,
+      "usefulness": 0.53,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "pelmeni"
+      ]
+    },
+    {
+      "front": "повезти",
+      "back": "convey",
+      "decision": "drop",
+      "misleading": 0.74,
+      "usefulness": 1.38,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "convey",
+        "carry",
+        "deliver",
+        "transport",
+        "lucky",
+        "luck",
+        "work out",
+        "succeed"
+      ]
+    },
+    {
+      "front": "повезти",
+      "back": "lucky",
+      "decision": "drop",
+      "misleading": 0.74,
+      "usefulness": 1.38,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "convey",
+        "carry",
+        "deliver",
+        "transport",
+        "lucky",
+        "luck",
+        "work out",
+        "succeed"
+      ]
+    },
+    {
+      "front": "тройка",
+      "back": "trey",
+      "decision": "drop",
+      "misleading": 0.74,
+      "usefulness": 1.49,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "three",
+        "card game",
+        "trey",
+        "troika",
+        "trowsers",
+        "vest",
+        "jacket"
+      ]
+    },
+    {
+      "front": "здравствовать",
+      "back": "thrive",
+      "decision": "drop",
+      "misleading": 0.73,
+      "usefulness": 0.89,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "well",
+        "prosper",
+        "thrive"
+      ]
+    },
+    {
+      "front": "засыпать",
+      "back": "pour",
+      "decision": "drop",
+      "misleading": 0.73,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fill",
+        "cover",
+        "bury",
+        "engulf",
+        "pour",
+        "into",
+        "strew",
+        "bombard"
+      ]
+    },
+    {
+      "front": "прошлогодний",
+      "back": "last year",
+      "decision": "drop",
+      "misleading": 0.73,
+      "usefulness": 0.78,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "last year"
+      ]
+    },
+    {
+      "front": "согласный",
+      "back": "ready",
+      "decision": "drop",
+      "misleading": 0.72,
+      "usefulness": 1.54,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ready",
+        "willing",
+        "agreeable",
+        "harmonious",
+        "concordant",
+        "phonetics",
+        "consonantic",
+        "consonantal"
+      ]
+    },
+    {
+      "front": "здравствовать",
+      "back": "prosper",
+      "decision": "drop",
+      "misleading": 0.72,
+      "usefulness": 0.89,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "well",
+        "prosper",
+        "thrive"
+      ]
+    },
+    {
+      "front": "детский",
+      "back": "child",
+      "decision": "drop",
+      "misleading": 0.72,
+      "usefulness": 1.23,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "child",
+        "children",
+        "childish",
+        "baby"
+      ]
+    },
+    {
+      "front": "детский",
+      "back": "children",
+      "decision": "drop",
+      "misleading": 0.72,
+      "usefulness": 1.23,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "child",
+        "children",
+        "childish",
+        "baby"
+      ]
+    },
+    {
+      "front": "чего",
+      "back": "what for",
+      "decision": "drop",
+      "misleading": 0.72,
+      "usefulness": 1.05,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "what for",
+        "why",
+        "what"
+      ]
+    },
+    {
+      "front": "замолчать",
+      "back": "silent",
+      "decision": "drop",
+      "misleading": 0.72,
+      "usefulness": 0.82,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "silent",
+        "conceal"
+      ]
+    },
+    {
+      "front": "нелегко",
+      "back": "difficulty",
+      "decision": "drop",
+      "misleading": 0.72,
+      "usefulness": 0.83,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "not",
+        "easily",
+        "difficulty",
+        "easy"
+      ]
+    },
+    {
+      "front": "интересоваться",
+      "back": "interested",
+      "decision": "drop",
+      "misleading": 0.72,
+      "usefulness": 1.17,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "interested",
+        "ask",
+        "enquire"
+      ]
+    },
+    {
+      "front": "товарный",
+      "back": "trade",
+      "decision": "drop",
+      "misleading": 0.72,
+      "usefulness": 1.33,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "commodity",
+        "goods",
+        "freight",
+        "trade"
+      ]
+    },
+    {
+      "front": "новогодний",
+      "back": "new year",
+      "decision": "drop",
+      "misleading": 0.71,
+      "usefulness": 0.61,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "new year"
+      ]
+    },
+    {
+      "front": "рок",
+      "back": "fate",
+      "decision": "drop",
+      "misleading": 0.71,
+      "usefulness": 1.46,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fate",
+        "doom",
+        "rock music"
+      ]
+    },
+    {
+      "front": "здравствовать",
+      "back": "well",
+      "decision": "drop",
+      "misleading": 0.7,
+      "usefulness": 0.89,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "well",
+        "prosper",
+        "thrive"
+      ]
+    },
+    {
+      "front": "миллиард",
+      "back": "milliard",
+      "decision": "drop",
+      "misleading": 0.7,
+      "usefulness": 1.14,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "billion",
+        "milliard"
+      ]
+    },
+    {
+      "front": "школьный",
+      "back": "school",
+      "decision": "drop",
+      "misleading": 0.7,
+      "usefulness": 0.62,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "school"
+      ]
+    },
+    {
+      "front": "рыбный",
+      "back": "fish",
+      "decision": "drop",
+      "misleading": 0.7,
+      "usefulness": 0.65,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fish",
+        "fish-filled",
+        "fishful"
+      ]
+    },
+    {
+      "front": "переспрашивать",
+      "back": "repeat",
+      "decision": "drop",
+      "misleading": 0.7,
+      "usefulness": 1.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ask",
+        "again",
+        "repeat",
+        "a"
+      ]
+    },
+    {
+      "front": "повезти",
+      "back": "luck",
+      "decision": "drop",
+      "misleading": 0.7,
+      "usefulness": 1.38,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "convey",
+        "carry",
+        "deliver",
+        "transport",
+        "lucky",
+        "luck",
+        "work out",
+        "succeed"
+      ]
+    },
+    {
+      "front": "промолчать",
+      "back": "silent",
+      "decision": "drop",
+      "misleading": 0.7,
+      "usefulness": 0.75,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "silent"
+      ]
+    },
+    {
+      "front": "обучаться",
+      "back": "training",
+      "decision": "drop",
+      "misleading": 0.7,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "get",
+        "trained",
+        "receive",
+        "training"
+      ]
+    },
+    {
+      "front": "приставка",
+      "back": "console",
+      "decision": "drop",
+      "misleading": 0.69,
+      "usefulness": 1.02,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "linguistic",
+        "morphology",
+        "lexicography",
+        "grammar",
+        "video game",
+        "console"
+      ]
+    },
+    {
+      "front": "рок",
+      "back": "doom",
+      "decision": "drop",
+      "misleading": 0.69,
+      "usefulness": 1.46,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fate",
+        "doom",
+        "rock music"
+      ]
+    },
+    {
+      "front": "обучаться",
+      "back": "trained",
+      "decision": "drop",
+      "misleading": 0.69,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "get",
+        "trained",
+        "receive",
+        "training"
+      ]
+    },
+    {
+      "front": "кот",
+      "back": "tomcat",
+      "decision": "drop",
+      "misleading": 0.68,
+      "usefulness": 0.7,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tomcat"
+      ]
+    },
+    {
+      "front": "ничего",
+      "back": "never mind",
+      "decision": "drop",
+      "misleading": 0.68,
+      "usefulness": 0.82,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "so-so",
+        "not bad",
+        "fair",
+        "never mind",
+        "that's",
+        "all right",
+        "no problem"
+      ]
+    },
+    {
+      "front": "ничего",
+      "back": "no problem",
+      "decision": "drop",
+      "misleading": 0.68,
+      "usefulness": 0.82,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "so-so",
+        "not bad",
+        "fair",
+        "never mind",
+        "that's",
+        "all right",
+        "no problem"
+      ]
+    },
+    {
+      "front": "телевизионный",
+      "back": "tv",
+      "decision": "drop",
+      "misleading": 0.68,
+      "usefulness": 1.02,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tv",
+        "television",
+        "tele-"
+      ]
+    },
+    {
+      "front": "полька",
+      "back": "female",
+      "decision": "drop",
+      "misleading": 0.67,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "female",
+        "pole",
+        "polish",
+        "woman",
+        "military",
+        "reduced",
+        "noise",
+        "mortar"
+      ]
+    },
+    {
+      "front": "рыбный",
+      "back": "fish-filled",
+      "decision": "drop",
+      "misleading": 0.67,
+      "usefulness": 0.65,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fish",
+        "fish-filled",
+        "fishful"
+      ]
+    },
+    {
+      "front": "повезти",
+      "back": "deliver",
+      "decision": "drop",
+      "misleading": 0.67,
+      "usefulness": 1.38,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "convey",
+        "carry",
+        "deliver",
+        "transport",
+        "lucky",
+        "luck",
+        "work out",
+        "succeed"
+      ]
+    },
+    {
+      "front": "согласный",
+      "back": "harmonious",
+      "decision": "drop",
+      "misleading": 0.66,
+      "usefulness": 1.54,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ready",
+        "willing",
+        "agreeable",
+        "harmonious",
+        "concordant",
+        "phonetics",
+        "consonantic",
+        "consonantal"
+      ]
+    },
+    {
+      "front": "согласный",
+      "back": "concordant",
+      "decision": "drop",
+      "misleading": 0.66,
+      "usefulness": 1.54,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ready",
+        "willing",
+        "agreeable",
+        "harmonious",
+        "concordant",
+        "phonetics",
+        "consonantic",
+        "consonantal"
+      ]
+    },
+    {
+      "front": "устанавливаться",
+      "back": "formed",
+      "decision": "drop",
+      "misleading": 0.66,
+      "usefulness": 1.15,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "settled",
+        "formed",
+        "set in"
+      ]
+    },
+    {
+      "front": "шуметь",
+      "back": "rustle",
+      "decision": "drop",
+      "misleading": 0.66,
+      "usefulness": 0.84,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "rustle"
+      ]
+    },
+    {
+      "front": "обедать",
+      "back": "eat",
+      "decision": "drop",
+      "misleading": 0.65,
+      "usefulness": 1.18,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "eat",
+        "lunch"
+      ]
+    },
+    {
+      "front": "полька",
+      "back": "woman",
+      "decision": "drop",
+      "misleading": 0.65,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "female",
+        "pole",
+        "polish",
+        "woman",
+        "military",
+        "reduced",
+        "noise",
+        "mortar"
+      ]
+    },
+    {
+      "front": "первое",
+      "back": "starter",
+      "decision": "drop",
+      "misleading": 0.65,
+      "usefulness": 0.79,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "starter",
+        "course",
+        "meal"
+      ]
+    },
+    {
+      "front": "читаться",
+      "back": "read",
+      "decision": "drop",
+      "misleading": 0.65,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "read",
+        "feel",
+        "like",
+        "reading"
+      ]
+    },
+    {
+      "front": "немка",
+      "back": "german",
+      "decision": "drop",
+      "misleading": 0.64,
+      "usefulness": 1.04,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "german",
+        "woman",
+        "girl"
+      ]
+    },
+    {
+      "front": "разве",
+      "back": "really",
+      "decision": "drop",
+      "misleading": 0.64,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "really",
+        "perhaps",
+        "only",
+        "unless"
+      ]
+    },
+    {
+      "front": "переспрашивать",
+      "back": "ask",
+      "decision": "drop",
+      "misleading": 0.64,
+      "usefulness": 1.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ask",
+        "again",
+        "repeat",
+        "a"
+      ]
+    },
+    {
+      "front": "повезти",
+      "back": "succeed",
+      "decision": "drop",
+      "misleading": 0.64,
+      "usefulness": 1.38,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "convey",
+        "carry",
+        "deliver",
+        "transport",
+        "lucky",
+        "luck",
+        "work out",
+        "succeed"
+      ]
+    },
+    {
+      "front": "горный",
+      "back": "mountain",
+      "decision": "drop",
+      "misleading": 0.64,
+      "usefulness": 0.98,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "mountain",
+        "rock",
+        "mining"
+      ]
+    },
+    {
+      "front": "лесной",
+      "back": "forest",
+      "decision": "drop",
+      "misleading": 0.64,
+      "usefulness": 0.72,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "forest",
+        "wood",
+        "lumber",
+        "timber"
+      ]
+    },
+    {
+      "front": "молчать",
+      "back": "silent",
+      "decision": "drop",
+      "misleading": 0.63,
+      "usefulness": 0.56,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "silent"
+      ]
+    },
+    {
+      "front": "повезти",
+      "back": "carry",
+      "decision": "drop",
+      "misleading": 0.63,
+      "usefulness": 1.38,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "convey",
+        "carry",
+        "deliver",
+        "transport",
+        "lucky",
+        "luck",
+        "work out",
+        "succeed"
+      ]
+    },
+    {
+      "front": "дорожный",
+      "back": "road",
+      "decision": "drop",
+      "misleading": 0.63,
+      "usefulness": 0.89,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "road",
+        "travelling"
+      ]
+    },
+    {
+      "front": "товарный",
+      "back": "commodity",
+      "decision": "drop",
+      "misleading": 0.63,
+      "usefulness": 1.33,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "commodity",
+        "goods",
+        "freight",
+        "trade"
+      ]
+    },
+    {
+      "front": "товарный",
+      "back": "freight",
+      "decision": "drop",
+      "misleading": 0.63,
+      "usefulness": 1.33,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "commodity",
+        "goods",
+        "freight",
+        "trade"
+      ]
+    },
+    {
+      "front": "откуда",
+      "back": "where",
+      "decision": "drop",
+      "misleading": 0.62,
+      "usefulness": 1.14,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "whence",
+        "from",
+        "where",
+        "which"
+      ]
+    },
+    {
+      "front": "повезти",
+      "back": "transport",
+      "decision": "drop",
+      "misleading": 0.62,
+      "usefulness": 1.38,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "convey",
+        "carry",
+        "deliver",
+        "transport",
+        "lucky",
+        "luck",
+        "work out",
+        "succeed"
+      ]
+    },
+    {
+      "front": "интересоваться",
+      "back": "enquire",
+      "decision": "drop",
+      "misleading": 0.62,
+      "usefulness": 1.17,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "interested",
+        "ask",
+        "enquire"
+      ]
+    },
+    {
+      "front": "игровой",
+      "back": "game",
+      "decision": "drop",
+      "misleading": 0.62,
+      "usefulness": 0.77,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "game",
+        "play",
+        "acting",
+        "playing"
+      ]
+    },
+    {
+      "front": "кредитный",
+      "back": "credit",
+      "decision": "drop",
+      "misleading": 0.62,
+      "usefulness": 0.88,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "credit"
+      ]
+    },
+    {
+      "front": "товарный",
+      "back": "goods",
+      "decision": "drop",
+      "misleading": 0.62,
+      "usefulness": 1.33,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "commodity",
+        "goods",
+        "freight",
+        "trade"
+      ]
+    },
+    {
+      "front": "тройка",
+      "back": "three",
+      "decision": "drop",
+      "misleading": 0.62,
+      "usefulness": 1.49,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "three",
+        "card game",
+        "trey",
+        "troika",
+        "trowsers",
+        "vest",
+        "jacket"
+      ]
+    },
+    {
+      "front": "тройка",
+      "back": "card game",
+      "decision": "drop",
+      "misleading": 0.62,
+      "usefulness": 1.49,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "three",
+        "card game",
+        "trey",
+        "troika",
+        "trowsers",
+        "vest",
+        "jacket"
+      ]
+    },
+    {
+      "front": "согласный",
+      "back": "willing",
+      "decision": "drop",
+      "misleading": 0.61,
+      "usefulness": 1.54,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ready",
+        "willing",
+        "agreeable",
+        "harmonious",
+        "concordant",
+        "phonetics",
+        "consonantic",
+        "consonantal"
+      ]
+    },
+    {
+      "front": "головной",
+      "back": "head",
+      "decision": "drop",
+      "misleading": 0.61,
+      "usefulness": 1.22,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "head",
+        "main",
+        "principal"
+      ]
+    },
+    {
+      "front": "головной",
+      "back": "principal",
+      "decision": "drop",
+      "misleading": 0.61,
+      "usefulness": 1.22,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "head",
+        "main",
+        "principal"
+      ]
+    },
+    {
+      "front": "детский",
+      "back": "childish",
+      "decision": "drop",
+      "misleading": 0.61,
+      "usefulness": 1.23,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "child",
+        "children",
+        "childish",
+        "baby"
+      ]
+    },
+    {
+      "front": "гордиться",
+      "back": "proud",
+      "decision": "drop",
+      "misleading": 0.61,
+      "usefulness": 0.8,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "proud"
+      ]
+    },
+    {
+      "front": "сердиться",
+      "back": "angry",
+      "decision": "drop",
+      "misleading": 0.61,
+      "usefulness": 0.88,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "angry"
+      ]
+    },
+    {
+      "front": "май",
+      "back": "may",
+      "decision": "drop",
+      "misleading": 0.6,
+      "usefulness": 0.96,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "may"
+      ]
+    },
+    {
+      "front": "засыпать",
+      "back": "fill",
+      "decision": "drop",
+      "misleading": 0.6,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fill",
+        "cover",
+        "bury",
+        "engulf",
+        "pour",
+        "into",
+        "strew",
+        "bombard"
+      ]
+    },
+    {
+      "front": "засыпать",
+      "back": "cover",
+      "decision": "drop",
+      "misleading": 0.6,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fill",
+        "cover",
+        "bury",
+        "engulf",
+        "pour",
+        "into",
+        "strew",
+        "bombard"
+      ]
+    },
+    {
+      "front": "из-под",
+      "back": "from",
+      "decision": "drop",
+      "misleading": 0.6,
+      "usefulness": 1.36,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "from",
+        "under"
+      ]
+    },
+    {
+      "front": "уставать",
+      "back": "tired",
+      "decision": "drop",
+      "misleading": 0.6,
+      "usefulness": 0.8,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tired"
+      ]
+    },
+    {
+      "front": "прилетать",
+      "back": "land",
+      "decision": "drop",
+      "misleading": 0.6,
+      "usefulness": 1.16,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "aviation",
+        "land",
+        "touch down",
+        "descend",
+        "soil",
+        "swiftly",
+        "abruptly"
+      ]
+    },
+    {
+      "front": "партийный",
+      "back": "party",
+      "decision": "drop",
+      "misleading": 0.6,
+      "usefulness": 1.13,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "politics",
+        "party",
+        "loyal",
+        "party line",
+        "member"
+      ]
+    },
+    {
+      "front": "разрезать",
+      "back": "cut off",
+      "decision": "drop",
+      "misleading": 0.6,
+      "usefulness": 1.09,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "cut off",
+        "bisect"
+      ]
+    },
+    {
+      "front": "чайный",
+      "back": "tea",
+      "decision": "drop",
+      "misleading": 0.59,
+      "usefulness": 0.96,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tea",
+        "scented",
+        "colored"
+      ]
+    },
+    {
+      "front": "газовый",
+      "back": "gas",
+      "decision": "drop",
+      "misleading": 0.59,
+      "usefulness": 0.87,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "gas",
+        "gauze"
+      ]
+    },
+    {
+      "front": "первое",
+      "back": "course",
+      "decision": "drop",
+      "misleading": 0.59,
+      "usefulness": 0.79,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "starter",
+        "course",
+        "meal"
+      ]
+    },
+    {
+      "front": "заинтересоваться",
+      "back": "interested",
+      "decision": "drop",
+      "misleading": 0.59,
+      "usefulness": 0.89,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "interested"
+      ]
+    },
+    {
+      "front": "откуда",
+      "back": "from",
+      "decision": "drop",
+      "misleading": 0.58,
+      "usefulness": 1.14,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "whence",
+        "from",
+        "where",
+        "which"
+      ]
+    },
+    {
+      "front": "согласный",
+      "back": "consonantic",
+      "decision": "drop",
+      "misleading": 0.58,
+      "usefulness": 1.54,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ready",
+        "willing",
+        "agreeable",
+        "harmonious",
+        "concordant",
+        "phonetics",
+        "consonantic",
+        "consonantal"
+      ]
+    },
+    {
+      "front": "замуж",
+      "back": "married",
+      "decision": "drop",
+      "misleading": 0.58,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "married"
+      ]
+    },
+    {
+      "front": "кухонный",
+      "back": "kitchen",
+      "decision": "drop",
+      "misleading": 0.58,
+      "usefulness": 0.81,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "kitchen"
+      ]
+    },
+    {
+      "front": "повезти",
+      "back": "work out",
+      "decision": "drop",
+      "misleading": 0.58,
+      "usefulness": 1.38,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "convey",
+        "carry",
+        "deliver",
+        "transport",
+        "lucky",
+        "luck",
+        "work out",
+        "succeed"
+      ]
+    },
+    {
+      "front": "налоговый",
+      "back": "taxation",
+      "decision": "drop",
+      "misleading": 0.58,
+      "usefulness": 1.17,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tax",
+        "taxation"
+      ]
+    },
+    {
+      "front": "тройка",
+      "back": "troika",
+      "decision": "drop",
+      "misleading": 0.58,
+      "usefulness": 1.49,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "three",
+        "card game",
+        "trey",
+        "troika",
+        "trowsers",
+        "vest",
+        "jacket"
+      ]
+    },
+    {
+      "front": "классик",
+      "back": "classicist",
+      "decision": "drop",
+      "misleading": 0.58,
+      "usefulness": 1.24,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "classic",
+        "classicist"
+      ]
+    },
+    {
+      "front": "оттуда",
+      "back": "thence",
+      "decision": "drop",
+      "misleading": 0.57,
+      "usefulness": 1.23,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "thence",
+        "there"
+      ]
+    },
+    {
+      "front": "из-под",
+      "back": "under",
+      "decision": "drop",
+      "misleading": 0.57,
+      "usefulness": 1.36,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "from",
+        "under"
+      ]
+    },
+    {
+      "front": "прилетать",
+      "back": "touch down",
+      "decision": "drop",
+      "misleading": 0.57,
+      "usefulness": 1.16,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "aviation",
+        "land",
+        "touch down",
+        "descend",
+        "soil",
+        "swiftly",
+        "abruptly"
+      ]
+    },
+    {
+      "front": "уличный",
+      "back": "street",
+      "decision": "drop",
+      "misleading": 0.57,
+      "usefulness": 0.71,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "street"
+      ]
+    },
+    {
+      "front": "разрезать",
+      "back": "bisect",
+      "decision": "drop",
+      "misleading": 0.57,
+      "usefulness": 1.09,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "cut off",
+        "bisect"
+      ]
+    },
+    {
+      "front": "обедать",
+      "back": "lunch",
+      "decision": "drop",
+      "misleading": 0.56,
+      "usefulness": 1.18,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "eat",
+        "lunch"
+      ]
+    },
+    {
+      "front": "завтракать",
+      "back": "breakfast",
+      "decision": "drop",
+      "misleading": 0.56,
+      "usefulness": 0.95,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "breakfast",
+        "lunch"
+      ]
+    },
+    {
+      "front": "лучше",
+      "back": "rather",
+      "decision": "drop",
+      "misleading": 0.56,
+      "usefulness": 0.52,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "rather"
+      ]
+    },
+    {
+      "front": "сбоку",
+      "back": "side",
+      "decision": "drop",
+      "misleading": 0.56,
+      "usefulness": 0.94,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "askance",
+        "side"
+      ]
+    },
+    {
+      "front": "классик",
+      "back": "classic",
+      "decision": "drop",
+      "misleading": 0.56,
+      "usefulness": 1.24,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "classic",
+        "classicist"
+      ]
+    },
+    {
+      "front": "согласный",
+      "back": "consonantal",
+      "decision": "drop",
+      "misleading": 0.55,
+      "usefulness": 1.54,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ready",
+        "willing",
+        "agreeable",
+        "harmonious",
+        "concordant",
+        "phonetics",
+        "consonantic",
+        "consonantal"
+      ]
+    },
+    {
+      "front": "транспортный",
+      "back": "transportation",
+      "decision": "drop",
+      "misleading": 0.55,
+      "usefulness": 1.21,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "transportation",
+        "transport",
+        "shipping"
+      ]
+    },
+    {
+      "front": "откуда",
+      "back": "whence",
+      "decision": "drop",
+      "misleading": 0.54,
+      "usefulness": 1.14,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "whence",
+        "from",
+        "where",
+        "which"
+      ]
+    },
+    {
+      "front": "согласный",
+      "back": "agreeable",
+      "decision": "drop",
+      "misleading": 0.54,
+      "usefulness": 1.54,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "ready",
+        "willing",
+        "agreeable",
+        "harmonious",
+        "concordant",
+        "phonetics",
+        "consonantic",
+        "consonantal"
+      ]
+    },
+    {
+      "front": "засыпать",
+      "back": "bury",
+      "decision": "drop",
+      "misleading": 0.54,
+      "usefulness": 0.92,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fill",
+        "cover",
+        "bury",
+        "engulf",
+        "pour",
+        "into",
+        "strew",
+        "bombard"
+      ]
+    },
+    {
+      "front": "чего",
+      "back": "what",
+      "decision": "drop",
+      "misleading": 0.54,
+      "usefulness": 1.05,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "what for",
+        "why",
+        "what"
+      ]
+    },
+    {
+      "front": "устанавливаться",
+      "back": "settled",
+      "decision": "drop",
+      "misleading": 0.54,
+      "usefulness": 1.15,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "settled",
+        "formed",
+        "set in"
+      ]
+    },
+    {
+      "front": "телевизионный",
+      "back": "television",
+      "decision": "drop",
+      "misleading": 0.52,
+      "usefulness": 1.02,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tv",
+        "television",
+        "tele-"
+      ]
+    },
+    {
+      "front": "налоговый",
+      "back": "tax",
+      "decision": "drop",
+      "misleading": 0.52,
+      "usefulness": 1.17,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "tax",
+        "taxation"
+      ]
+    },
+    {
+      "front": "транспортный",
+      "back": "transport",
+      "decision": "drop",
+      "misleading": 0.52,
+      "usefulness": 1.21,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "transportation",
+        "transport",
+        "shipping"
+      ]
+    },
+    {
+      "front": "мусульманский",
+      "back": "muslim",
+      "decision": "drop",
+      "misleading": 0.52,
+      "usefulness": 0.97,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "muslim"
+      ]
+    },
+    {
+      "front": "важно",
+      "back": "importantly",
+      "decision": "drop",
+      "misleading": 0.51,
+      "usefulness": 0.97,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "importantly",
+        "grandly"
+      ]
+    },
+    {
+      "front": "китаец",
+      "back": "chinese",
+      "decision": "drop",
+      "misleading": 0.51,
+      "usefulness": 0.96,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "chinese"
+      ]
+    },
+    {
+      "front": "миллиард",
+      "back": "billion",
+      "decision": "drop",
+      "misleading": 0.51,
+      "usefulness": 1.14,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "billion",
+        "milliard"
+      ]
+    },
+    {
+      "front": "оттуда",
+      "back": "there",
+      "decision": "drop",
+      "misleading": 0.51,
+      "usefulness": 1.23,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "thence",
+        "there"
+      ]
+    },
+    {
+      "front": "утренний",
+      "back": "morning",
+      "decision": "drop",
+      "misleading": 0.51,
+      "usefulness": 1.03,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "morning"
+      ]
+    },
+    {
+      "front": "вечерний",
+      "back": "evening",
+      "decision": "drop",
+      "misleading": 0.51,
+      "usefulness": 0.93,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "evening"
+      ]
+    },
+    {
+      "front": "головной",
+      "back": "main",
+      "decision": "drop",
+      "misleading": 0.5,
+      "usefulness": 1.22,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "head",
+        "main",
+        "principal"
+      ]
+    },
+    {
+      "front": "японец",
+      "back": "japanese",
+      "decision": "drop",
+      "misleading": 0.5,
+      "usefulness": 0.96,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "japanese"
+      ]
+    },
+    {
+      "front": "привыкать",
+      "back": "accustomed",
+      "decision": "drop",
+      "misleading": 0.5,
+      "usefulness": 1.04,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "get",
+        "accustomed"
+      ]
+    },
+    {
+      "front": "подъезжать",
+      "back": "drive",
+      "decision": "drop",
+      "misleading": 0.5,
+      "usefulness": 1.01,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "drive",
+        "drop in",
+        "get"
+      ]
+    },
+    {
+      "front": "фотографировать",
+      "back": "photograph",
+      "decision": "drop",
+      "misleading": 0.5,
+      "usefulness": 0.85,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "photograph"
+      ]
+    },
+    {
+      "front": "рок",
+      "back": "rock music",
+      "decision": "drop",
+      "misleading": 0.5,
+      "usefulness": 1.46,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "fate",
+        "doom",
+        "rock music"
+      ]
+    },
+    {
+      "front": "устанавливаться",
+      "back": "set in",
+      "decision": "drop",
+      "misleading": 0.5,
+      "usefulness": 1.15,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "settled",
+        "formed",
+        "set in"
+      ]
+    },
+    {
+      "front": "присниться",
+      "back": "dream",
+      "decision": "drop",
+      "misleading": 0.5,
+      "usefulness": 0.89,
+      "band": [
+        "lemma-emptied"
+      ],
+      "siblings": [
+        "dream"
+      ]
+    }
+  ],
+  "emptiedLemmas": [
+    {
+      "front": "долго",
+      "best": "time",
+      "bestConfidence": 1,
+      "candidates": [
+        "time"
+      ]
+    },
+    {
+      "front": "откуда",
+      "best": "from",
+      "bestConfidence": 0.43,
+      "candidates": [
+        "whence",
+        "from",
+        "where",
+        "which"
+      ]
+    },
+    {
+      "front": "май",
+      "best": "may",
+      "bestConfidence": 1,
+      "candidates": [
+        "may"
+      ]
+    },
+    {
+      "front": "согласный",
+      "best": "agreeable",
+      "bestConfidence": 0.48,
+      "candidates": [
+        "ready",
+        "willing",
+        "agreeable",
+        "harmonious",
+        "concordant",
+        "phonetics",
+        "consonantic",
+        "consonantal"
+      ]
+    },
+    {
+      "front": "здравствовать",
+      "best": "well",
+      "bestConfidence": 0.44,
+      "candidates": [
+        "well",
+        "prosper",
+        "thrive"
+      ]
+    },
+    {
+      "front": "важно",
+      "best": "importantly",
+      "bestConfidence": 0.99,
+      "candidates": [
+        "importantly",
+        "grandly"
+      ]
+    },
+    {
+      "front": "головной",
+      "best": "head",
+      "bestConfidence": 0.5,
+      "candidates": [
+        "head",
+        "main",
+        "principal"
+      ]
+    },
+    {
+      "front": "китаец",
+      "best": "chinese",
+      "bestConfidence": 1,
+      "candidates": [
+        "chinese"
+      ]
+    },
+    {
+      "front": "засыпать",
+      "best": "fill",
+      "bestConfidence": 0.36,
+      "candidates": [
+        "fill",
+        "cover",
+        "bury",
+        "engulf",
+        "pour",
+        "into",
+        "strew",
+        "bombard"
+      ]
+    },
+    {
+      "front": "японец",
+      "best": "japanese",
+      "bestConfidence": 1,
+      "candidates": [
+        "japanese"
+      ]
+    },
+    {
+      "front": "себе",
+      "best": "keep on",
+      "bestConfidence": 1,
+      "candidates": [
+        "keep on"
+      ]
+    },
+    {
+      "front": "обедать",
+      "best": "lunch",
+      "bestConfidence": 0.91,
+      "candidates": [
+        "eat",
+        "lunch"
+      ]
+    },
+    {
+      "front": "чайный",
+      "best": "tea",
+      "bestConfidence": 1,
+      "candidates": [
+        "tea",
+        "scented",
+        "colored"
+      ]
+    },
+    {
+      "front": "бутерброд",
+      "best": "butterbrot",
+      "bestConfidence": 1,
+      "candidates": [
+        "butterbrot"
+      ]
+    },
+    {
+      "front": "завтракать",
+      "best": "breakfast",
+      "bestConfidence": 1,
+      "candidates": [
+        "breakfast",
+        "lunch"
+      ]
+    },
+    {
+      "front": "немка",
+      "best": "german",
+      "bestConfidence": 0.89,
+      "candidates": [
+        "german",
+        "woman",
+        "girl"
+      ]
+    },
+    {
+      "front": "ту",
+      "best": "train",
+      "bestConfidence": 0.17,
+      "candidates": [
+        "train",
+        "horn"
+      ]
+    },
+    {
+      "front": "та",
+      "best": "ukrainian",
+      "bestConfidence": 0.47,
+      "candidates": [
+        "internet",
+        "ukrainian"
+      ]
+    },
+    {
+      "front": "полька",
+      "best": "polish",
+      "bestConfidence": 0.62,
+      "candidates": [
+        "female",
+        "pole",
+        "polish",
+        "woman",
+        "military",
+        "reduced",
+        "noise",
+        "mortar"
+      ]
+    },
+    {
+      "front": "эта",
+      "best": "eta",
+      "bestConfidence": 1,
+      "candidates": [
+        "eta"
+      ]
+    },
+    {
+      "front": "полкило",
+      "best": "half",
+      "bestConfidence": 0.27,
+      "candidates": [
+        "half",
+        "kilo"
+      ]
+    },
+    {
+      "front": "бы",
+      "best": "subjunctive",
+      "bestConfidence": 0.05,
+      "candidates": [
+        "conditional",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "лучше",
+      "best": "rather",
+      "bestConfidence": 1,
+      "candidates": [
+        "rather"
+      ]
+    },
+    {
+      "front": "детский",
+      "best": "childish",
+      "bestConfidence": 0.28,
+      "candidates": [
+        "child",
+        "children",
+        "childish",
+        "baby"
+      ]
+    },
+    {
+      "front": "разве",
+      "best": "really",
+      "bestConfidence": 0.68,
+      "candidates": [
+        "really",
+        "perhaps",
+        "only",
+        "unless"
+      ]
+    },
+    {
+      "front": "чего",
+      "best": "what",
+      "bestConfidence": 0.83,
+      "candidates": [
+        "what for",
+        "why",
+        "what"
+      ]
+    },
+    {
+      "front": "молчать",
+      "best": "silent",
+      "bestConfidence": 1,
+      "candidates": [
+        "silent"
+      ]
+    },
+    {
+      "front": "миллиард",
+      "best": "billion",
+      "bestConfidence": 0.66,
+      "candidates": [
+        "billion",
+        "milliard"
+      ]
+    },
+    {
+      "front": "оттуда",
+      "best": "there",
+      "bestConfidence": 0.56,
+      "candidates": [
+        "thence",
+        "there"
+      ]
+    },
+    {
+      "front": "компьютерный",
+      "best": "computer",
+      "bestConfidence": 1,
+      "candidates": [
+        "computer"
+      ]
+    },
+    {
+      "front": "кот",
+      "best": "tomcat",
+      "bestConfidence": 1,
+      "candidates": [
+        "tomcat"
+      ]
+    },
+    {
+      "front": "из-под",
+      "best": "under",
+      "bestConfidence": 0.54,
+      "candidates": [
+        "from",
+        "under"
+      ]
+    },
+    {
+      "front": "школьный",
+      "best": "school",
+      "bestConfidence": 1,
+      "candidates": [
+        "school"
+      ]
+    },
+    {
+      "front": "замуж",
+      "best": "married",
+      "bestConfidence": 1,
+      "candidates": [
+        "married"
+      ]
+    },
+    {
+      "front": "неплохо",
+      "best": "badly",
+      "bestConfidence": 1,
+      "candidates": [
+        "badly"
+      ]
+    },
+    {
+      "front": "утренний",
+      "best": "morning",
+      "bestConfidence": 1,
+      "candidates": [
+        "morning"
+      ]
+    },
+    {
+      "front": "ничего",
+      "best": "no problem",
+      "bestConfidence": 0.37,
+      "candidates": [
+        "so-so",
+        "not bad",
+        "fair",
+        "never mind",
+        "that's",
+        "all right",
+        "no problem"
+      ]
+    },
+    {
+      "front": "автомобильный",
+      "best": "automobile",
+      "bestConfidence": 0.31,
+      "candidates": [
+        "car",
+        "automobile"
+      ]
+    },
+    {
+      "front": "замолчать",
+      "best": "silent",
+      "bestConfidence": 0.97,
+      "candidates": [
+        "silent",
+        "conceal"
+      ]
+    },
+    {
+      "front": "тем",
+      "best": "the",
+      "bestConfidence": 1,
+      "candidates": [
+        "the"
+      ]
+    },
+    {
+      "front": "телевизионный",
+      "best": "television",
+      "bestConfidence": 0.82,
+      "candidates": [
+        "tv",
+        "television",
+        "tele-"
+      ]
+    },
+    {
+      "front": "газовый",
+      "best": "gas",
+      "bestConfidence": 0.99,
+      "candidates": [
+        "gas",
+        "gauze"
+      ]
+    },
+    {
+      "front": "недолго",
+      "best": "long",
+      "bestConfidence": 0.57,
+      "candidates": [
+        "long",
+        "easily"
+      ]
+    },
+    {
+      "front": "дружить",
+      "best": "friends",
+      "bestConfidence": 1,
+      "candidates": [
+        "friends"
+      ]
+    },
+    {
+      "front": "новогодний",
+      "best": "new year",
+      "bestConfidence": 1,
+      "candidates": [
+        "new year"
+      ]
+    },
+    {
+      "front": "привыкать",
+      "best": "accustomed",
+      "bestConfidence": 0.94,
+      "candidates": [
+        "get",
+        "accustomed"
+      ]
+    },
+    {
+      "front": "уставать",
+      "best": "tired",
+      "bestConfidence": 1,
+      "candidates": [
+        "tired"
+      ]
+    },
+    {
+      "front": "первое",
+      "best": "course",
+      "bestConfidence": 0.4,
+      "candidates": [
+        "starter",
+        "course",
+        "meal"
+      ]
+    },
+    {
+      "front": "кухонный",
+      "best": "kitchen",
+      "bestConfidence": 1,
+      "candidates": [
+        "kitchen"
+      ]
+    },
+    {
+      "front": "дискотека",
+      "best": "dance",
+      "bestConfidence": 0.78,
+      "candidates": [
+        "record",
+        "library",
+        "event",
+        "evening",
+        "music",
+        "dance"
+      ]
+    },
+    {
+      "front": "пасха",
+      "best": "paskha",
+      "bestConfidence": 1,
+      "candidates": [
+        "paskha"
+      ]
+    },
+    {
+      "front": "рыбный",
+      "best": "fish",
+      "bestConfidence": 0.85,
+      "candidates": [
+        "fish",
+        "fish-filled",
+        "fishful"
+      ]
+    },
+    {
+      "front": "сбоку",
+      "best": "side",
+      "bestConfidence": 0.97,
+      "candidates": [
+        "askance",
+        "side"
+      ]
+    },
+    {
+      "front": "подъезжать",
+      "best": "drive",
+      "bestConfidence": 0.96,
+      "candidates": [
+        "drive",
+        "drop in",
+        "get"
+      ]
+    },
+    {
+      "front": "нелегко",
+      "best": "difficulty",
+      "bestConfidence": 0.55,
+      "candidates": [
+        "not",
+        "easily",
+        "difficulty",
+        "easy"
+      ]
+    },
+    {
+      "front": "фотографировать",
+      "best": "photograph",
+      "bestConfidence": 1,
+      "candidates": [
+        "photograph"
+      ]
+    },
+    {
+      "front": "прилетать",
+      "best": "land",
+      "bestConfidence": 0.65,
+      "candidates": [
+        "aviation",
+        "land",
+        "touch down",
+        "descend",
+        "soil",
+        "swiftly",
+        "abruptly"
+      ]
+    },
+    {
+      "front": "приставка",
+      "best": "console",
+      "bestConfidence": 0.51,
+      "candidates": [
+        "linguistic",
+        "morphology",
+        "lexicography",
+        "grammar",
+        "video game",
+        "console"
+      ]
+    },
+    {
+      "front": "переспрашивать",
+      "best": "ask",
+      "bestConfidence": 0.64,
+      "candidates": [
+        "ask",
+        "again",
+        "repeat",
+        "a"
+      ]
+    },
+    {
+      "front": "квартплата",
+      "best": "rent",
+      "bestConfidence": 1,
+      "candidates": [
+        "rent"
+      ]
+    },
+    {
+      "front": "пельмени",
+      "best": "pelmeni",
+      "bestConfidence": 1,
+      "candidates": [
+        "pelmeni"
+      ]
+    },
+    {
+      "front": "повезти",
+      "best": "luck",
+      "bestConfidence": 0.42,
+      "candidates": [
+        "convey",
+        "carry",
+        "deliver",
+        "transport",
+        "lucky",
+        "luck",
+        "work out",
+        "succeed"
+      ]
+    },
+    {
+      "front": "налоговый",
+      "best": "tax",
+      "bestConfidence": 0.86,
+      "candidates": [
+        "tax",
+        "taxation"
+      ]
+    },
+    {
+      "front": "горный",
+      "best": "mountain",
+      "bestConfidence": 0.95,
+      "candidates": [
+        "mountain",
+        "rock",
+        "mining"
+      ]
+    },
+    {
+      "front": "партийный",
+      "best": "party",
+      "bestConfidence": 0.92,
+      "candidates": [
+        "politics",
+        "party",
+        "loyal",
+        "party line",
+        "member"
+      ]
+    },
+    {
+      "front": "интересоваться",
+      "best": "interested",
+      "bestConfidence": 0.61,
+      "candidates": [
+        "interested",
+        "ask",
+        "enquire"
+      ]
+    },
+    {
+      "front": "вечерний",
+      "best": "evening",
+      "bestConfidence": 1,
+      "candidates": [
+        "evening"
+      ]
+    },
+    {
+      "front": "лесной",
+      "best": "forest",
+      "bestConfidence": 0.81,
+      "candidates": [
+        "forest",
+        "wood",
+        "lumber",
+        "timber"
+      ]
+    },
+    {
+      "front": "неизвестно",
+      "best": "known",
+      "bestConfidence": 1,
+      "candidates": [
+        "known"
+      ]
+    },
+    {
+      "front": "транспортный",
+      "best": "transport",
+      "bestConfidence": 0.39,
+      "candidates": [
+        "transportation",
+        "transport",
+        "shipping"
+      ]
+    },
+    {
+      "front": "рок",
+      "best": "rock music",
+      "bestConfidence": 0.56,
+      "candidates": [
+        "fate",
+        "doom",
+        "rock music"
+      ]
+    },
+    {
+      "front": "игровой",
+      "best": "game",
+      "bestConfidence": 0.91,
+      "candidates": [
+        "game",
+        "play",
+        "acting",
+        "playing"
+      ]
+    },
+    {
+      "front": "гордиться",
+      "best": "proud",
+      "bestConfidence": 1,
+      "candidates": [
+        "proud"
+      ]
+    },
+    {
+      "front": "дорожный",
+      "best": "road",
+      "bestConfidence": 0.8,
+      "candidates": [
+        "road",
+        "travelling"
+      ]
+    },
+    {
+      "front": "кредитный",
+      "best": "credit",
+      "bestConfidence": 1,
+      "candidates": [
+        "credit"
+      ]
+    },
+    {
+      "front": "студенческий",
+      "best": "student",
+      "bestConfidence": 1,
+      "candidates": [
+        "student"
+      ]
+    },
+    {
+      "front": "желающий",
+      "best": "desire",
+      "bestConfidence": 0.28,
+      "candidates": [
+        "wish",
+        "desire"
+      ]
+    },
+    {
+      "front": "товарный",
+      "best": "commodity",
+      "bestConfidence": 0.3,
+      "candidates": [
+        "commodity",
+        "goods",
+        "freight",
+        "trade"
+      ]
+    },
+    {
+      "front": "устанавливаться",
+      "best": "settled",
+      "bestConfidence": 0.67,
+      "candidates": [
+        "settled",
+        "formed",
+        "set in"
+      ]
+    },
+    {
+      "front": "уличный",
+      "best": "street",
+      "bestConfidence": 1,
+      "candidates": [
+        "street"
+      ]
+    },
+    {
+      "front": "сердиться",
+      "best": "angry",
+      "bestConfidence": 1,
+      "candidates": [
+        "angry"
+      ]
+    },
+    {
+      "front": "шуметь",
+      "best": "rustle",
+      "bestConfidence": 1,
+      "candidates": [
+        "rustle"
+      ]
+    },
+    {
+      "front": "тройка",
+      "best": "three",
+      "bestConfidence": 0.36,
+      "candidates": [
+        "three",
+        "card game",
+        "trey",
+        "troika",
+        "trowsers",
+        "vest",
+        "jacket"
+      ]
+    },
+    {
+      "front": "октябрьский",
+      "best": "october",
+      "bestConfidence": 1,
+      "candidates": [
+        "october"
+      ]
+    },
+    {
+      "front": "мусульманский",
+      "best": "muslim",
+      "bestConfidence": 1,
+      "candidates": [
+        "muslim"
+      ]
+    },
+    {
+      "front": "заинтересоваться",
+      "best": "interested",
+      "bestConfidence": 1,
+      "candidates": [
+        "interested"
+      ]
+    },
+    {
+      "front": "теракт",
+      "best": "terrorism",
+      "bestConfidence": 0.73,
+      "candidates": [
+        "act",
+        "terrorism",
+        "terror",
+        "terrorist"
+      ]
+    },
+    {
+      "front": "присниться",
+      "best": "dream",
+      "bestConfidence": 1,
+      "candidates": [
+        "dream"
+      ]
+    },
+    {
+      "front": "промолчать",
+      "best": "silent",
+      "bestConfidence": 1,
+      "candidates": [
+        "silent"
+      ]
+    },
+    {
+      "front": "читаться",
+      "best": "read",
+      "bestConfidence": 0.89,
+      "candidates": [
+        "read",
+        "feel",
+        "like",
+        "reading"
+      ]
+    },
+    {
+      "front": "террористический",
+      "best": "terrorist",
+      "bestConfidence": 1,
+      "candidates": [
+        "terrorist"
+      ]
+    },
+    {
+      "front": "пополам",
+      "best": "two",
+      "bestConfidence": 0.91,
+      "candidates": [
+        "two",
+        "all the same",
+        "matter"
+      ]
+    },
+    {
+      "front": "обучаться",
+      "best": "trained",
+      "bestConfidence": 0.8,
+      "candidates": [
+        "get",
+        "trained",
+        "receive",
+        "training"
+      ]
+    },
+    {
+      "front": "классик",
+      "best": "classic",
+      "bestConfidence": 0.6,
+      "candidates": [
+        "classic",
+        "classicist"
+      ]
+    },
+    {
+      "front": "цент",
+      "best": "cent",
+      "bestConfidence": 1,
+      "candidates": [
+        "cent"
+      ]
+    },
+    {
+      "front": "разрезать",
+      "best": "cut off",
+      "bestConfidence": 0.04,
+      "candidates": [
+        "cut off",
+        "bisect"
+      ]
+    },
+    {
+      "front": "дежурить",
+      "best": "duty",
+      "bestConfidence": 1,
+      "candidates": [
+        "duty"
+      ]
+    },
+    {
+      "front": "прошлогодний",
+      "best": "last year",
+      "bestConfidence": 1,
+      "candidates": [
+        "last year"
+      ]
+    }
+  ]
+}

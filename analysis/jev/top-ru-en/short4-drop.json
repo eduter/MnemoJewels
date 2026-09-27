@@ -1,0 +1,6552 @@
+{
+  "generatedBy": "tools/jev/triage.ts",
+  "model": "jev-latest",
+  "deck": "top-ru-en",
+  "cards": [
+    {
+      "front": "и",
+      "back": "both",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.39
+    },
+    {
+      "front": "и",
+      "back": "as well",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.39
+    },
+    {
+      "front": "и",
+      "back": "even",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.39
+    },
+    {
+      "front": "и",
+      "back": "yi",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.39
+    },
+    {
+      "front": "в",
+      "back": "on",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.72
+    },
+    {
+      "front": "в",
+      "back": "to",
+      "reason": "misleading",
+      "misleading": 0.68,
+      "score": 1.72
+    },
+    {
+      "front": "в",
+      "back": "per",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.72
+    },
+    {
+      "front": "в",
+      "back": "for",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.72
+    },
+    {
+      "front": "в",
+      "back": "as",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.72
+    },
+    {
+      "front": "не",
+      "back": "no",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.22
+    },
+    {
+      "front": "не",
+      "back": "without",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.22
+    },
+    {
+      "front": "не",
+      "back": "perhaps",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.22
+    },
+    {
+      "front": "не",
+      "back": "whether",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.22
+    },
+    {
+      "front": "не",
+      "back": "or",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.22
+    },
+    {
+      "front": "не",
+      "back": "will",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.22
+    },
+    {
+      "front": "не",
+      "back": "never",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.22
+    },
+    {
+      "front": "на",
+      "back": "to",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.74
+    },
+    {
+      "front": "на",
+      "back": "toward",
+      "reason": "misleading",
+      "misleading": 0.6,
+      "score": 1.74
+    },
+    {
+      "front": "на",
+      "back": "set out",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.74
+    },
+    {
+      "front": "на",
+      "back": "go for",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.74
+    },
+    {
+      "front": "на",
+      "back": "for",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.74
+    },
+    {
+      "front": "на",
+      "back": "about",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.74
+    },
+    {
+      "front": "что",
+      "back": "that",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.59
+    },
+    {
+      "front": "что",
+      "back": "which",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.59
+    },
+    {
+      "front": "быть",
+      "back": "there be",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.19
+    },
+    {
+      "front": "он",
+      "back": "it",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.4
+    },
+    {
+      "front": "а",
+      "back": "a",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.06
+    },
+    {
+      "front": "а",
+      "back": "while",
+      "reason": "misleading",
+      "misleading": 0.58,
+      "score": 1.06
+    },
+    {
+      "front": "а",
+      "back": "although",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.06
+    },
+    {
+      "front": "а",
+      "back": "oh",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.06
+    },
+    {
+      "front": "а",
+      "back": "eh",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.06
+    },
+    {
+      "front": "а",
+      "back": "criminal",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.06
+    },
+    {
+      "front": "это",
+      "back": "these",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.62
+    },
+    {
+      "front": "это",
+      "back": "those",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.62
+    },
+    {
+      "front": "это",
+      "back": "he",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.62
+    },
+    {
+      "front": "это",
+      "back": "she",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.62
+    },
+    {
+      "front": "это",
+      "back": "they",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.62
+    },
+    {
+      "front": "как",
+      "back": "what",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.45
+    },
+    {
+      "front": "как",
+      "back": "exclamative",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.45
+    },
+    {
+      "front": "как",
+      "back": "concessive",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.45
+    },
+    {
+      "front": "как",
+      "back": "however",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.45
+    },
+    {
+      "front": "как",
+      "back": "much",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.45
+    },
+    {
+      "front": "как",
+      "back": "as soon as",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.45
+    },
+    {
+      "front": "то",
+      "back": "thing",
+      "reason": "misleading",
+      "misleading": 0.58,
+      "score": 1.44
+    },
+    {
+      "front": "то",
+      "back": "then",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.44
+    },
+    {
+      "front": "этот",
+      "back": "these",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.27
+    },
+    {
+      "front": "этот",
+      "back": "that",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.27
+    },
+    {
+      "front": "этот",
+      "back": "those",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.27
+    },
+    {
+      "front": "этот",
+      "back": "one",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.27
+    },
+    {
+      "front": "этот",
+      "back": "guy",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.27
+    },
+    {
+      "front": "к",
+      "back": "by",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.41
+    },
+    {
+      "front": "к",
+      "back": "for",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.41
+    },
+    {
+      "front": "к",
+      "back": "against",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.41
+    },
+    {
+      "front": "к",
+      "back": "k",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.41
+    },
+    {
+      "front": "к",
+      "back": "kilo-",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.41
+    },
+    {
+      "front": "мы",
+      "back": "i",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.01
+    },
+    {
+      "front": "она",
+      "back": "it",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.25
+    },
+    {
+      "front": "из",
+      "back": "of",
+      "reason": "misleading",
+      "misleading": 0.5,
+      "score": 1.81
+    },
+    {
+      "front": "из",
+      "back": "through",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.81
+    },
+    {
+      "front": "у",
+      "back": "u",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.69
+    },
+    {
+      "front": "у",
+      "back": "wu",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.69
+    },
+    {
+      "front": "у",
+      "back": "possession",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.69
+    },
+    {
+      "front": "у",
+      "back": "belonging",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.69
+    },
+    {
+      "front": "у",
+      "back": "from",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.69
+    },
+    {
+      "front": "от",
+      "back": "away",
+      "reason": "misleading",
+      "misleading": 0.68,
+      "score": 1.8
+    },
+    {
+      "front": "от",
+      "back": "with",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.8
+    },
+    {
+      "front": "от",
+      "back": "since",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.8
+    },
+    {
+      "front": "так",
+      "back": "like",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.87
+    },
+    {
+      "front": "так",
+      "back": "this",
+      "reason": "misleading",
+      "misleading": 0.73,
+      "score": 1.87
+    },
+    {
+      "front": "так",
+      "back": "much",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.87
+    },
+    {
+      "front": "так",
+      "back": "such",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.87
+    },
+    {
+      "front": "мочь",
+      "back": "power",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.88
+    },
+    {
+      "front": "мочь",
+      "back": "might",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.88
+    },
+    {
+      "front": "все",
+      "back": "than",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.48
+    },
+    {
+      "front": "все",
+      "back": "anyone",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.48
+    },
+    {
+      "front": "ты",
+      "back": "thou",
+      "reason": "misleading",
+      "misleading": 0.68,
+      "score": 1.19
+    },
+    {
+      "front": "один",
+      "back": "alone",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.1
+    },
+    {
+      "front": "один",
+      "back": "only",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.1
+    },
+    {
+      "front": "один",
+      "back": "a",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.1
+    },
+    {
+      "front": "один",
+      "back": "some",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.1
+    },
+    {
+      "front": "один",
+      "back": "others",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.1
+    },
+    {
+      "front": "один",
+      "back": "poor",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.1
+    },
+    {
+      "front": "тот",
+      "back": "those",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.14
+    },
+    {
+      "front": "тот",
+      "back": "the",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.14
+    },
+    {
+      "front": "тот",
+      "back": "kind",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.14
+    },
+    {
+      "front": "тот",
+      "back": "sort",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.14
+    },
+    {
+      "front": "тот",
+      "back": "type",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.14
+    },
+    {
+      "front": "тот",
+      "back": "wrong",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.14
+    },
+    {
+      "front": "тот",
+      "back": "right",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.14
+    },
+    {
+      "front": "или",
+      "back": "or else",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.5
+    },
+    {
+      "front": "или",
+      "back": "either",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.5
+    },
+    {
+      "front": "его",
+      "back": "of",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.71
+    },
+    {
+      "front": "его",
+      "back": "it",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.71
+    },
+    {
+      "front": "себя",
+      "back": "herself",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.65
+    },
+    {
+      "front": "мой",
+      "back": "mine",
+      "reason": "misleading",
+      "misleading": 0.5,
+      "score": 1.35
+    },
+    {
+      "front": "наш",
+      "back": "ours",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.04
+    },
+    {
+      "front": "наш",
+      "back": "ingroup",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.04
+    },
+    {
+      "front": "наш",
+      "back": "compatriot",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.04
+    },
+    {
+      "front": "наш",
+      "back": "relative",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.04
+    },
+    {
+      "front": "наш",
+      "back": "associate",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.04
+    },
+    {
+      "front": "вот",
+      "back": "now",
+      "reason": "misleading",
+      "misleading": 0.58,
+      "score": 1.75
+    },
+    {
+      "front": "вот",
+      "back": "that's why",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.75
+    },
+    {
+      "front": "вот",
+      "back": "what",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.75
+    },
+    {
+      "front": "нет",
+      "back": "not",
+      "reason": "misleading",
+      "misleading": 0.75,
+      "score": 1.12
+    },
+    {
+      "front": "нет",
+      "back": "there is",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.12
+    },
+    {
+      "front": "нет",
+      "back": "have",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.12
+    },
+    {
+      "front": "да",
+      "back": "right",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.15
+    },
+    {
+      "front": "да",
+      "back": "isn't it",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.15
+    },
+    {
+      "front": "да",
+      "back": "really",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.15
+    },
+    {
+      "front": "да",
+      "back": "affirmation",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.15
+    },
+    {
+      "front": "да",
+      "back": "support",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.15
+    },
+    {
+      "front": "да",
+      "back": "cause",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.15
+    },
+    {
+      "front": "да",
+      "back": "let",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.15
+    },
+    {
+      "front": "день",
+      "back": "daytime",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.07
+    },
+    {
+      "front": "день",
+      "back": "afternoon",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.07
+    },
+    {
+      "front": "день",
+      "back": "early",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.07
+    },
+    {
+      "front": "день",
+      "back": "evening",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.07
+    },
+    {
+      "front": "два",
+      "back": "poor",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.01
+    },
+    {
+      "front": "раз",
+      "back": "one day",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.59
+    },
+    {
+      "front": "раз",
+      "back": "once upon a time",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.59
+    },
+    {
+      "front": "раз",
+      "back": "if",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.59
+    },
+    {
+      "front": "раз",
+      "back": "since",
+      "reason": "misleading",
+      "misleading": 0.78,
+      "score": 1.59
+    },
+    {
+      "front": "раз",
+      "back": "as long as",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.59
+    },
+    {
+      "front": "со",
+      "back": "off",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.18
+    },
+    {
+      "front": "там",
+      "back": "next",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.02
+    },
+    {
+      "front": "там",
+      "back": "then",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.02
+    },
+    {
+      "front": "там",
+      "back": "else",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.02
+    },
+    {
+      "front": "там",
+      "back": "filler word",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.02
+    },
+    {
+      "front": "их",
+      "back": "they",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.35
+    },
+    {
+      "front": "где",
+      "back": "now",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "рука",
+      "back": "arm",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.3
+    },
+    {
+      "front": "без",
+      "back": "aside from",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.41
+    },
+    {
+      "front": "без",
+      "back": "except",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.41
+    },
+    {
+      "front": "без",
+      "back": "minus",
+      "reason": "misleading",
+      "misleading": 0.78,
+      "score": 1.41
+    },
+    {
+      "front": "без",
+      "back": "less",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.41
+    },
+    {
+      "front": "друг",
+      "back": "other",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.05
+    },
+    {
+      "front": "друг",
+      "back": "another",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.05
+    },
+    {
+      "front": "надо",
+      "back": "want",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.9
+    },
+    {
+      "front": "надо",
+      "back": "above",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.9
+    },
+    {
+      "front": "надо",
+      "back": "over",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.9
+    },
+    {
+      "front": "ваш",
+      "back": "yours",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.45
+    },
+    {
+      "front": "идти",
+      "back": "fall",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.09
+    },
+    {
+      "front": "идти",
+      "back": "function",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.09
+    },
+    {
+      "front": "идти",
+      "back": "work",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.09
+    },
+    {
+      "front": "идти",
+      "back": "suit",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.09
+    },
+    {
+      "front": "идти",
+      "back": "become",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.09
+    },
+    {
+      "front": "глаз",
+      "back": "eyesight",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.19
+    },
+    {
+      "front": "глаз",
+      "back": "view",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.19
+    },
+    {
+      "front": "глаз",
+      "back": "opinion",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.19
+    },
+    {
+      "front": "тут",
+      "back": "time",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "тут",
+      "back": "then",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1
+    },
+    {
+      "front": "тут",
+      "back": "mulberry",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "дом",
+      "back": "building",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.58
+    },
+    {
+      "front": "дом",
+      "back": "plot",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.58
+    },
+    {
+      "front": "дом",
+      "back": "dynasty",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.58
+    },
+    {
+      "front": "дом",
+      "back": "noble",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.58
+    },
+    {
+      "front": "лицо",
+      "back": "anatomy",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.61
+    },
+    {
+      "front": "лицо",
+      "back": "countenance",
+      "reason": "misleading",
+      "misleading": 0.56,
+      "score": 1.61
+    },
+    {
+      "front": "лицо",
+      "back": "front",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.61
+    },
+    {
+      "front": "лицо",
+      "back": "person",
+      "reason": "misleading",
+      "misleading": 0.55,
+      "score": 1.61
+    },
+    {
+      "front": "лицо",
+      "back": "individual",
+      "reason": "misleading",
+      "misleading": 0.68,
+      "score": 1.61
+    },
+    {
+      "front": "лицо",
+      "back": "individuality",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.61
+    },
+    {
+      "front": "лицо",
+      "back": "grammar",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.61
+    },
+    {
+      "front": "пока",
+      "back": "present",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.92
+    },
+    {
+      "front": "пока",
+      "back": "so long as",
+      "reason": "misleading",
+      "misleading": 0.58,
+      "score": 1.92
+    },
+    {
+      "front": "час",
+      "back": "singular",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.67
+    },
+    {
+      "front": "час",
+      "back": "o'clock",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.67
+    },
+    {
+      "front": "час",
+      "back": "time",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.67
+    },
+    {
+      "front": "час",
+      "back": "hours",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.67
+    },
+    {
+      "front": "час",
+      "back": "clock",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.67
+    },
+    {
+      "front": "час",
+      "back": "watch",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.67
+    },
+    {
+      "front": "час",
+      "back": "day",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.67
+    },
+    {
+      "front": "твой",
+      "back": "yours",
+      "reason": "misleading",
+      "misleading": 0.7,
+      "score": 1.36
+    },
+    {
+      "front": "твой",
+      "back": "thy",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.36
+    },
+    {
+      "front": "твой",
+      "back": "thine",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.36
+    },
+    {
+      "front": "имя",
+      "back": "christian name",
+      "reason": "misleading",
+      "misleading": 0.55,
+      "score": 1.88
+    },
+    {
+      "front": "имя",
+      "back": "grammar",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.88
+    },
+    {
+      "front": "имя",
+      "back": "renown",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.88
+    },
+    {
+      "front": "имя",
+      "back": "reputation",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.88
+    },
+    {
+      "front": "вода",
+      "back": "soft drink",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.05
+    },
+    {
+      "front": "вода",
+      "back": "soda",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.05
+    },
+    {
+      "front": "вода",
+      "back": "tide",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.05
+    },
+    {
+      "front": "вода",
+      "back": "watery",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.05
+    },
+    {
+      "front": "вода",
+      "back": "prose",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.05
+    },
+    {
+      "front": "вода",
+      "back": "fluff",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.05
+    },
+    {
+      "front": "вода",
+      "back": "it",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.05
+    },
+    {
+      "front": "язык",
+      "back": "military",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.17
+    },
+    {
+      "front": "язык",
+      "back": "prisoner",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.17
+    },
+    {
+      "front": "язык",
+      "back": "canary",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.17
+    },
+    {
+      "front": "язык",
+      "back": "informer",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.17
+    },
+    {
+      "front": "язык",
+      "back": "clapper",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.17
+    },
+    {
+      "front": "язык",
+      "back": "interpreter",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.17
+    },
+    {
+      "front": "отец",
+      "back": "ancestor",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.01
+    },
+    {
+      "front": "отец",
+      "back": "senior",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.01
+    },
+    {
+      "front": "отец",
+      "back": "superior",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.01
+    },
+    {
+      "front": "отец",
+      "back": "first",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.01
+    },
+    {
+      "front": "отец",
+      "back": "chief",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.01
+    },
+    {
+      "front": "отец",
+      "back": "familiar",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.01
+    },
+    {
+      "front": "отец",
+      "back": "term",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.01
+    },
+    {
+      "front": "мало",
+      "back": "enough",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.69
+    },
+    {
+      "front": "свет",
+      "back": "daylight",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.71
+    },
+    {
+      "front": "свет",
+      "back": "daybreak",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.71
+    },
+    {
+      "front": "свет",
+      "back": "radiance",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.71
+    },
+    {
+      "front": "свет",
+      "back": "lights",
+      "reason": "misleading",
+      "misleading": 0.56,
+      "score": 1.71
+    },
+    {
+      "front": "свет",
+      "back": "lighting",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.71
+    },
+    {
+      "front": "свет",
+      "back": "power",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.71
+    },
+    {
+      "front": "свет",
+      "back": "electricity",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.71
+    },
+    {
+      "front": "игра",
+      "back": "sport",
+      "reason": "misleading",
+      "misleading": 0.79,
+      "score": 1.69
+    },
+    {
+      "front": "игра",
+      "back": "ethology",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.69
+    },
+    {
+      "front": "игра",
+      "back": "acting",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.69
+    },
+    {
+      "front": "игра",
+      "back": "performance",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.69
+    },
+    {
+      "front": "игра",
+      "back": "role-playing",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.69
+    },
+    {
+      "front": "игра",
+      "back": "playing",
+      "reason": "misleading",
+      "misleading": 0.58,
+      "score": 1.69
+    },
+    {
+      "front": "жена",
+      "back": "woman",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.03
+    },
+    {
+      "front": "вещь",
+      "back": "belongings",
+      "reason": "misleading",
+      "misleading": 0.56,
+      "score": 1.79
+    },
+    {
+      "front": "вещь",
+      "back": "goods",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.79
+    },
+    {
+      "front": "стол",
+      "back": "board",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.11
+    },
+    {
+      "front": "стол",
+      "back": "fare",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.11
+    },
+    {
+      "front": "стол",
+      "back": "cuisine",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.11
+    },
+    {
+      "front": "стол",
+      "back": "department",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.11
+    },
+    {
+      "front": "стол",
+      "back": "section",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.11
+    },
+    {
+      "front": "стол",
+      "back": "office",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.11
+    },
+    {
+      "front": "стол",
+      "back": "bureau",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.11
+    },
+    {
+      "front": "куда",
+      "back": "why",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 0.99
+    },
+    {
+      "front": "куда",
+      "back": "much",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 0.99
+    },
+    {
+      "front": "куда",
+      "back": "a lot",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 0.99
+    },
+    {
+      "front": "цена",
+      "back": "worth",
+      "reason": "misleading",
+      "misleading": 0.7,
+      "score": 1.55
+    },
+    {
+      "front": "цена",
+      "back": "value",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.55
+    },
+    {
+      "front": "сын",
+      "back": "child",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.19
+    },
+    {
+      "front": "сын",
+      "back": "sons",
+      "reason": "misleading",
+      "misleading": 0.79,
+      "score": 1.19
+    },
+    {
+      "front": "мама",
+      "back": "computing",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.92
+    },
+    {
+      "front": "мама",
+      "back": "motherboard",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.92
+    },
+    {
+      "front": "мама",
+      "back": "female",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.92
+    },
+    {
+      "front": "мама",
+      "back": "socket",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.92
+    },
+    {
+      "front": "муж",
+      "back": "man",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.06
+    },
+    {
+      "front": "муж",
+      "back": "great",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.06
+    },
+    {
+      "front": "муж",
+      "back": "forefront",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.06
+    },
+    {
+      "front": "муж",
+      "back": "field",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.06
+    },
+    {
+      "front": "пол",
+      "back": "half",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.79
+    },
+    {
+      "front": "пол",
+      "back": "sex",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.79
+    },
+    {
+      "front": "метр",
+      "back": "meter stick",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.5
+    },
+    {
+      "front": "метр",
+      "back": "metre stick",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.5
+    },
+    {
+      "front": "метр",
+      "back": "tape measure",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.5
+    },
+    {
+      "front": "метр",
+      "back": "measuring tape",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.5
+    },
+    {
+      "front": "брат",
+      "back": "boy",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1
+    },
+    {
+      "front": "брат",
+      "back": "pal",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1
+    },
+    {
+      "front": "брат",
+      "back": "kind",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1
+    },
+    {
+      "front": "брат",
+      "back": "sort",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "сон",
+      "back": "dream",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.57
+    },
+    {
+      "front": "врач",
+      "back": "medicine",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.88
+    },
+    {
+      "front": "врач",
+      "back": "therapist",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.88
+    },
+    {
+      "front": "врач",
+      "back": "surgeon",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.88
+    },
+    {
+      "front": "врач",
+      "back": "hospital",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.88
+    },
+    {
+      "front": "врач",
+      "back": "vet",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.88
+    },
+    {
+      "front": "род",
+      "back": "birth",
+      "reason": "misleading",
+      "misleading": 0.5,
+      "score": 1.79
+    },
+    {
+      "front": "род",
+      "back": "stock",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.79
+    },
+    {
+      "front": "род",
+      "back": "taxonomy",
+      "reason": "misleading",
+      "misleading": 0.78,
+      "score": 1.79
+    },
+    {
+      "front": "род",
+      "back": "genus",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.79
+    },
+    {
+      "front": "род",
+      "back": "sort",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.79
+    },
+    {
+      "front": "сюда",
+      "back": "hither",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.63
+    },
+    {
+      "front": "папа",
+      "back": "electronics",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.2
+    },
+    {
+      "front": "папа",
+      "back": "male",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.2
+    },
+    {
+      "front": "папа",
+      "back": "socket",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.2
+    },
+    {
+      "front": "папа",
+      "back": "christianity",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.2
+    },
+    {
+      "front": "папа",
+      "back": "pope",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.2
+    },
+    {
+      "front": "папа",
+      "back": "childish",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.2
+    },
+    {
+      "front": "цвет",
+      "back": "blossom",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.11
+    },
+    {
+      "front": "цвет",
+      "back": "bloom",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.11
+    },
+    {
+      "front": "цвет",
+      "back": "flower",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.11
+    },
+    {
+      "front": "цвет",
+      "back": "cream",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.11
+    },
+    {
+      "front": "цвет",
+      "back": "pick",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.11
+    },
+    {
+      "front": "круг",
+      "back": "sphere",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.56
+    },
+    {
+      "front": "круг",
+      "back": "range",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.56
+    },
+    {
+      "front": "круг",
+      "back": "orbit",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.56
+    },
+    {
+      "front": "круг",
+      "back": "average",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.56
+    },
+    {
+      "front": "круг",
+      "back": "slice",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.56
+    },
+    {
+      "front": "круг",
+      "back": "motor racing",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.56
+    },
+    {
+      "front": "май",
+      "back": "may",
+      "reason": "misleading",
+      "misleading": 0.56,
+      "score": 0.96
+    },
+    {
+      "front": "боль",
+      "back": "pang",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.49
+    },
+    {
+      "front": "боль",
+      "back": "stab",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.49
+    },
+    {
+      "front": "боль",
+      "back": "stitch",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.49
+    },
+    {
+      "front": "знак",
+      "back": "omen",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.94
+    },
+    {
+      "front": "знак",
+      "back": "badge",
+      "reason": "misleading",
+      "misleading": 0.56,
+      "score": 1.94
+    },
+    {
+      "front": "есть",
+      "back": "exists",
+      "reason": "misleading",
+      "misleading": 0.55,
+      "score": 1.88
+    },
+    {
+      "front": "есть",
+      "back": "am",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.88
+    },
+    {
+      "front": "есть",
+      "back": "are",
+      "reason": "misleading",
+      "misleading": 0.56,
+      "score": 1.88
+    },
+    {
+      "front": "нос",
+      "back": "bow",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.34
+    },
+    {
+      "front": "нос",
+      "back": "prow",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.34
+    },
+    {
+      "front": "нос",
+      "back": "forepart",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.34
+    },
+    {
+      "front": "нос",
+      "back": "point",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.34
+    },
+    {
+      "front": "нос",
+      "back": "horn",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.34
+    },
+    {
+      "front": "нос",
+      "back": "anvil",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.34
+    },
+    {
+      "front": "нос",
+      "back": "headland",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.34
+    },
+    {
+      "front": "лето",
+      "back": "year",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "лето",
+      "back": "age",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1
+    },
+    {
+      "front": "петь",
+      "back": "crow",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.01
+    },
+    {
+      "front": "петь",
+      "back": "snitch",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.01
+    },
+    {
+      "front": "петь",
+      "back": "rat out",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.01
+    },
+    {
+      "front": "петь",
+      "back": "crack",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.01
+    },
+    {
+      "front": "петь",
+      "back": "testifying",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.01
+    },
+    {
+      "front": "чай",
+      "back": "tip",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "чай",
+      "back": "methinks",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1
+    },
+    {
+      "front": "чай",
+      "back": "may be",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "чай",
+      "back": "hopefully",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1
+    },
+    {
+      "front": "чай",
+      "back": "probably",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1
+    },
+    {
+      "front": "тихо",
+      "back": "faintly",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.9
+    },
+    {
+      "front": "тихо",
+      "back": "slowly",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.9
+    },
+    {
+      "front": "тихо",
+      "back": "calm",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.9
+    },
+    {
+      "front": "снег",
+      "back": "cocaine",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.01
+    },
+    {
+      "front": "зуб",
+      "back": "cog",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.34
+    },
+    {
+      "front": "зуб",
+      "back": "dent",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.34
+    },
+    {
+      "front": "пиво",
+      "back": "portion",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "хлеб",
+      "back": "black",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.19
+    },
+    {
+      "front": "хлеб",
+      "back": "rye",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.19
+    },
+    {
+      "front": "хлеб",
+      "back": "grain",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.19
+    },
+    {
+      "front": "хлеб",
+      "back": "food",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.19
+    },
+    {
+      "front": "хлеб",
+      "back": "subsistence",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.19
+    },
+    {
+      "front": "хлеб",
+      "back": "living",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.19
+    },
+    {
+      "front": "урок",
+      "back": "task",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.02
+    },
+    {
+      "front": "вино",
+      "back": "vodka",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.01
+    },
+    {
+      "front": "рыба",
+      "back": "dominoes",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1
+    },
+    {
+      "front": "рыба",
+      "back": "blocked",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "рыба",
+      "back": "game",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "рыба",
+      "back": "block",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1
+    },
+    {
+      "front": "рыба",
+      "back": "publishing",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1
+    },
+    {
+      "front": "рыба",
+      "back": "music",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "рыба",
+      "back": "placeholder",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "ключ",
+      "back": "wrench",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.61
+    },
+    {
+      "front": "ключ",
+      "back": "spanner",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.61
+    },
+    {
+      "front": "ключ",
+      "back": "screw wrench",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.61
+    },
+    {
+      "front": "ключ",
+      "back": "clue",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.61
+    },
+    {
+      "front": "ключ",
+      "back": "music",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.61
+    },
+    {
+      "front": "ключ",
+      "back": "clef",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.61
+    },
+    {
+      "front": "ключ",
+      "back": "radical",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.61
+    },
+    {
+      "front": "кино",
+      "back": "pictures",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.94
+    },
+    {
+      "front": "обед",
+      "back": "dinner",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.04
+    },
+    {
+      "front": "обед",
+      "back": "noon",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.04
+    },
+    {
+      "front": "дядя",
+      "back": "man",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.01
+    },
+    {
+      "front": "дядя",
+      "back": "the man",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.01
+    },
+    {
+      "front": "дядя",
+      "back": "boss",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.01
+    },
+    {
+      "front": "стул",
+      "back": "seat",
+      "reason": "misleading",
+      "misleading": 0.58,
+      "score": 1.26
+    },
+    {
+      "front": "стул",
+      "back": "knock at the door",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.26
+    },
+    {
+      "front": "стул",
+      "back": "four",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.26
+    },
+    {
+      "front": "стул",
+      "back": "lotto",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.26
+    },
+    {
+      "front": "стул",
+      "back": "game",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.26
+    },
+    {
+      "front": "стул",
+      "back": "medicine",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.26
+    },
+    {
+      "front": "стул",
+      "back": "stool",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.26
+    },
+    {
+      "front": "еда",
+      "back": "eating",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.56
+    },
+    {
+      "front": "мясо",
+      "back": "flesh",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.12
+    },
+    {
+      "front": "мясо",
+      "back": "pulp",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.12
+    },
+    {
+      "front": "мясо",
+      "back": "biology",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.12
+    },
+    {
+      "front": "мясо",
+      "back": "tissue",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.12
+    },
+    {
+      "front": "мясо",
+      "back": "fodder",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.12
+    },
+    {
+      "front": "мясо",
+      "back": "soccer",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.12
+    },
+    {
+      "front": "часы",
+      "back": "guard",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.44
+    },
+    {
+      "front": "юг",
+      "back": "southerly",
+      "reason": "misleading",
+      "misleading": 0.7,
+      "score": 1.14
+    },
+    {
+      "front": "юг",
+      "back": "wind",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.14
+    },
+    {
+      "front": "нож",
+      "back": "blade",
+      "reason": "misleading",
+      "misleading": 0.79,
+      "score": 1.09
+    },
+    {
+      "front": "яйцо",
+      "back": "ovum",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.1
+    },
+    {
+      "front": "яйцо",
+      "back": "testicle",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.1
+    },
+    {
+      "front": "яйцо",
+      "back": "ball",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.1
+    },
+    {
+      "front": "яйцо",
+      "back": "nut",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.1
+    },
+    {
+      "front": "шкаф",
+      "back": "locker",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.88
+    },
+    {
+      "front": "шкаф",
+      "back": "bookcase",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.88
+    },
+    {
+      "front": "шкаф",
+      "back": "shelves",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.88
+    },
+    {
+      "front": "сок",
+      "back": "sap",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.16
+    },
+    {
+      "front": "сок",
+      "back": "cum",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.16
+    },
+    {
+      "front": "сок",
+      "back": "semen",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.16
+    },
+    {
+      "front": "мука",
+      "back": "meal",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.49
+    },
+    {
+      "front": "мука",
+      "back": "pain",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.49
+    },
+    {
+      "front": "мука",
+      "back": "anguish",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.49
+    },
+    {
+      "front": "мука",
+      "back": "torment",
+      "reason": "misleading",
+      "misleading": 0.7,
+      "score": 1.49
+    },
+    {
+      "front": "мука",
+      "back": "suffering",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.49
+    },
+    {
+      "front": "мука",
+      "back": "ordeal",
+      "reason": "misleading",
+      "misleading": 0.78,
+      "score": 1.49
+    },
+    {
+      "front": "мука",
+      "back": "harassment",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.49
+    },
+    {
+      "front": "внук",
+      "back": "grandchildren",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.04
+    },
+    {
+      "front": "верх",
+      "back": "roof",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.75
+    },
+    {
+      "front": "верх",
+      "back": "dome",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.75
+    },
+    {
+      "front": "верх",
+      "back": "height",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.75
+    },
+    {
+      "front": "верх",
+      "back": "summit",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.75
+    },
+    {
+      "front": "верх",
+      "back": "apex",
+      "reason": "misleading",
+      "misleading": 0.6,
+      "score": 1.75
+    },
+    {
+      "front": "верх",
+      "back": "upper class",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.75
+    },
+    {
+      "front": "верх",
+      "back": "right",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.75
+    },
+    {
+      "front": "печь",
+      "back": "scorch",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.84
+    },
+    {
+      "front": "печь",
+      "back": "kiln",
+      "reason": "misleading",
+      "misleading": 0.58,
+      "score": 1.84
+    },
+    {
+      "front": "соль",
+      "back": "point",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.11
+    },
+    {
+      "front": "соль",
+      "back": "punch line",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.11
+    },
+    {
+      "front": "соль",
+      "back": "bath salt",
+      "reason": "misleading",
+      "misleading": 0.79,
+      "score": 1.11
+    },
+    {
+      "front": "соль",
+      "back": "mephedrone",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.11
+    },
+    {
+      "front": "соль",
+      "back": "stimulant",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.11
+    },
+    {
+      "front": "соль",
+      "back": "designer drug",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.11
+    },
+    {
+      "front": "соль",
+      "back": "g",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.11
+    },
+    {
+      "front": "юбка",
+      "back": "woman",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "лук",
+      "back": "bow",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.61
+    },
+    {
+      "front": "лук",
+      "back": "appearance",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.61
+    },
+    {
+      "front": "лук",
+      "back": "look",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.61
+    },
+    {
+      "front": "себе",
+      "back": "keep on",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 0.01
+    },
+    {
+      "front": "мыло",
+      "back": "lather",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.02
+    },
+    {
+      "front": "мыло",
+      "back": "e-mail",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.02
+    },
+    {
+      "front": "мыло",
+      "back": "phono-semantic matching",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.02
+    },
+    {
+      "front": "мыло",
+      "back": "mail",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.02
+    },
+    {
+      "front": "ноль",
+      "back": "nothing",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.39
+    },
+    {
+      "front": "ноль",
+      "back": "precise",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.39
+    },
+    {
+      "front": "ноль",
+      "back": "exactly",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.39
+    },
+    {
+      "front": "ноль",
+      "back": "cipher",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.39
+    },
+    {
+      "front": "ноль",
+      "back": "nobody",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.39
+    },
+    {
+      "front": "ноль",
+      "back": "nonentity",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.39
+    },
+    {
+      "front": "орех",
+      "back": "walnut",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.29
+    },
+    {
+      "front": "орех",
+      "back": "wood",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.29
+    },
+    {
+      "front": "орех",
+      "back": "coal",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.29
+    },
+    {
+      "front": "орех",
+      "back": "chestnut",
+      "reason": "misleading",
+      "misleading": 0.78,
+      "score": 1.29
+    },
+    {
+      "front": "орех",
+      "back": "cocaine",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.29
+    },
+    {
+      "front": "орех",
+      "back": "ass",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.29
+    },
+    {
+      "front": "орех",
+      "back": "booty",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.29
+    },
+    {
+      "front": "стоп",
+      "back": "that'll do",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.29
+    },
+    {
+      "front": "стоп",
+      "back": "enough",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.29
+    },
+    {
+      "front": "слог",
+      "back": "phonology",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1
+    },
+    {
+      "front": "слог",
+      "back": "style",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1
+    },
+    {
+      "front": "слог",
+      "back": "manner",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "торт",
+      "back": "torte",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.32
+    },
+    {
+      "front": "низ",
+      "back": "lower",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.36
+    },
+    {
+      "front": "низ",
+      "back": "part",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.36
+    },
+    {
+      "front": "рис",
+      "back": "botany",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.1
+    },
+    {
+      "front": "рис",
+      "back": "paddy",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.1
+    },
+    {
+      "front": "ту",
+      "back": "train",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 0.2
+    },
+    {
+      "front": "ту",
+      "back": "horn",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 0.2
+    },
+    {
+      "front": "та",
+      "back": "internet",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 0.07
+    },
+    {
+      "front": "та",
+      "back": "ukrainian",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 0.07
+    },
+    {
+      "front": "км",
+      "back": "km",
+      "reason": "misleading",
+      "misleading": 0.5,
+      "score": 1.25
+    },
+    {
+      "front": "эта",
+      "back": "eta",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 0.06
+    },
+    {
+      "front": "с",
+      "back": "off",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.74
+    },
+    {
+      "front": "с",
+      "back": "below",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.74
+    },
+    {
+      "front": "с",
+      "back": "because of",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.74
+    },
+    {
+      "front": "с",
+      "back": "since",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.74
+    },
+    {
+      "front": "с",
+      "back": "for",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.74
+    },
+    {
+      "front": "с",
+      "back": "about",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.74
+    },
+    {
+      "front": "по",
+      "back": "down",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.86
+    },
+    {
+      "front": "по",
+      "back": "for",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.86
+    },
+    {
+      "front": "по",
+      "back": "about",
+      "reason": "misleading",
+      "misleading": 0.58,
+      "score": 1.86
+    },
+    {
+      "front": "но",
+      "back": "noh",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.22
+    },
+    {
+      "front": "свой",
+      "back": "my",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.57
+    },
+    {
+      "front": "свой",
+      "back": "his",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.57
+    },
+    {
+      "front": "свой",
+      "back": "her",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.57
+    },
+    {
+      "front": "свой",
+      "back": "allied",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.57
+    },
+    {
+      "front": "свой",
+      "back": "friendly",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.57
+    },
+    {
+      "front": "свой",
+      "back": "peculiar",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.57
+    },
+    {
+      "front": "весь",
+      "back": "singular",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.88
+    },
+    {
+      "front": "весь",
+      "back": "no",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.88
+    },
+    {
+      "front": "весь",
+      "back": "less",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.88
+    },
+    {
+      "front": "весь",
+      "back": "than",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.88
+    },
+    {
+      "front": "весь",
+      "back": "fewer",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.88
+    },
+    {
+      "front": "за",
+      "back": "to",
+      "reason": "misleading",
+      "misleading": 0.6,
+      "score": 1.81
+    },
+    {
+      "front": "за",
+      "back": "during",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.81
+    },
+    {
+      "front": "за",
+      "back": "after",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.81
+    },
+    {
+      "front": "за",
+      "back": "instead of",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.81
+    },
+    {
+      "front": "за",
+      "back": "in favor of",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.81
+    },
+    {
+      "front": "за",
+      "back": "about",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.81
+    },
+    {
+      "front": "о",
+      "back": "o",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.51
+    },
+    {
+      "front": "о",
+      "back": "oh",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.51
+    },
+    {
+      "front": "о",
+      "back": "of",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.51
+    },
+    {
+      "front": "о",
+      "back": "on",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.51
+    },
+    {
+      "front": "о",
+      "back": "against",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.51
+    },
+    {
+      "front": "о",
+      "back": "upon",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.51
+    },
+    {
+      "front": "если",
+      "back": "in case",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.28
+    },
+    {
+      "front": "бы",
+      "back": "conditional",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 0.44
+    },
+    {
+      "front": "бы",
+      "back": "subjunctive",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 0.44
+    },
+    {
+      "front": "уже",
+      "back": "as of",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.49
+    },
+    {
+      "front": "уже",
+      "back": "now",
+      "reason": "misleading",
+      "misleading": 0.75,
+      "score": 1.49
+    },
+    {
+      "front": "уже",
+      "back": "by",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.49
+    },
+    {
+      "front": "уже",
+      "back": "then",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.49
+    },
+    {
+      "front": "уже",
+      "back": "that",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.49
+    },
+    {
+      "front": "уже",
+      "back": "point",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.49
+    },
+    {
+      "front": "до",
+      "back": "with respect to",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.68
+    },
+    {
+      "front": "до",
+      "back": "concerning",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.68
+    },
+    {
+      "front": "до",
+      "back": "regarding",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.68
+    },
+    {
+      "front": "до",
+      "back": "c",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.68
+    },
+    {
+      "front": "при",
+      "back": "when",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.77
+    },
+    {
+      "front": "при",
+      "back": "time",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.77
+    },
+    {
+      "front": "ни",
+      "back": "whatever",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.54
+    },
+    {
+      "front": "ни",
+      "back": "however",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.54
+    },
+    {
+      "front": "ни",
+      "back": "any",
+      "reason": "misleading",
+      "misleading": 0.75,
+      "score": 1.54
+    },
+    {
+      "front": "ни",
+      "back": "no",
+      "reason": "misleading",
+      "misleading": 0.56,
+      "score": 1.54
+    },
+    {
+      "front": "ни",
+      "back": "nu",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.54
+    },
+    {
+      "front": "сам",
+      "back": "regional",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.16
+    },
+    {
+      "front": "сам",
+      "back": "alone",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.16
+    },
+    {
+      "front": "дело",
+      "back": "art",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.96
+    },
+    {
+      "front": "дело",
+      "back": "science",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.96
+    },
+    {
+      "front": "дело",
+      "back": "deed",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.96
+    },
+    {
+      "front": "под",
+      "back": "towards",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.72
+    },
+    {
+      "front": "под",
+      "back": "to",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.72
+    },
+    {
+      "front": "под",
+      "back": "approaching",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.72
+    },
+    {
+      "front": "под",
+      "back": "slightly",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.72
+    },
+    {
+      "front": "под",
+      "back": "less than",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.72
+    },
+    {
+      "front": "чем",
+      "back": "instead of",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 0.97
+    },
+    {
+      "front": "чем",
+      "back": "rather",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 0.97
+    },
+    {
+      "front": "мир",
+      "back": "universe",
+      "reason": "misleading",
+      "misleading": 0.68,
+      "score": 1.78
+    },
+    {
+      "front": "мир",
+      "back": "planet",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.78
+    },
+    {
+      "front": "тоже",
+      "back": "either",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.92
+    },
+    {
+      "front": "тоже",
+      "back": "neither",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.92
+    },
+    {
+      "front": "тоже",
+      "back": "nor",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.92
+    },
+    {
+      "front": "об",
+      "back": "of",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.5
+    },
+    {
+      "front": "об",
+      "back": "on",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.5
+    },
+    {
+      "front": "об",
+      "back": "against",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.5
+    },
+    {
+      "front": "об",
+      "back": "upon",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.5
+    },
+    {
+      "front": "сила",
+      "back": "intensity",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.96
+    },
+    {
+      "front": "сила",
+      "back": "efficacy",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.96
+    },
+    {
+      "front": "сила",
+      "back": "energy",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.96
+    },
+    {
+      "front": "вид",
+      "back": "looks",
+      "reason": "misleading",
+      "misleading": 0.56,
+      "score": 1.9
+    },
+    {
+      "front": "вид",
+      "back": "air",
+      "reason": "misleading",
+      "misleading": 0.79,
+      "score": 1.9
+    },
+    {
+      "front": "путь",
+      "back": "line",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.96
+    },
+    {
+      "front": "путь",
+      "back": "means",
+      "reason": "misleading",
+      "misleading": 0.68,
+      "score": 1.96
+    },
+    {
+      "front": "путь",
+      "back": "trip",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.96
+    },
+    {
+      "front": "бог",
+      "back": "idol",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.01
+    },
+    {
+      "front": "тема",
+      "back": "thing",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.88
+    },
+    {
+      "front": "труд",
+      "back": "pains",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.91
+    },
+    {
+      "front": "труд",
+      "back": "shop",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.91
+    },
+    {
+      "front": "труд",
+      "back": "handicrafts",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.91
+    },
+    {
+      "front": "речь",
+      "back": "language",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.78
+    },
+    {
+      "front": "речь",
+      "back": "discourse",
+      "reason": "misleading",
+      "misleading": 0.55,
+      "score": 1.78
+    },
+    {
+      "front": "речь",
+      "back": "conversation",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.78
+    },
+    {
+      "front": "речь",
+      "back": "word",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.78
+    },
+    {
+      "front": "план",
+      "back": "draft",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.44
+    },
+    {
+      "front": "план",
+      "back": "contrivance",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.44
+    },
+    {
+      "front": "план",
+      "back": "target",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.44
+    },
+    {
+      "front": "план",
+      "back": "figure",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.44
+    },
+    {
+      "front": "план",
+      "back": "plane",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.44
+    },
+    {
+      "front": "план",
+      "back": "marijuana",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.44
+    },
+    {
+      "front": "роль",
+      "back": "part",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.21
+    },
+    {
+      "front": "роль",
+      "back": "roll",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.21
+    },
+    {
+      "front": "член",
+      "back": "limb",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.73
+    },
+    {
+      "front": "член",
+      "back": "grammar",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.73
+    },
+    {
+      "front": "член",
+      "back": "mathematics",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.73
+    },
+    {
+      "front": "член",
+      "back": "term",
+      "reason": "misleading",
+      "misleading": 0.6,
+      "score": 1.73
+    },
+    {
+      "front": "сайт",
+      "back": "biochemistry",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.28
+    },
+    {
+      "front": "небо",
+      "back": "heaven",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.46
+    },
+    {
+      "front": "небо",
+      "back": "firmament",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.46
+    },
+    {
+      "front": "небо",
+      "back": "air",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.46
+    },
+    {
+      "front": "туда",
+      "back": "thither",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.18
+    },
+    {
+      "front": "шаг",
+      "back": "action",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.72
+    },
+    {
+      "front": "шаг",
+      "back": "initiative",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.72
+    },
+    {
+      "front": "шаг",
+      "back": "gait",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.72
+    },
+    {
+      "front": "шаг",
+      "back": "walking",
+      "reason": "misleading",
+      "misleading": 0.68,
+      "score": 1.72
+    },
+    {
+      "front": "море",
+      "back": "astronomy",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.04
+    },
+    {
+      "front": "море",
+      "back": "mare",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.04
+    },
+    {
+      "front": "союз",
+      "back": "soviet",
+      "reason": "misleading",
+      "misleading": 0.78,
+      "score": 1.86
+    },
+    {
+      "front": "союз",
+      "back": "confederation",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.86
+    },
+    {
+      "front": "союз",
+      "back": "confederacy",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.86
+    },
+    {
+      "front": "союз",
+      "back": "grammar",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.86
+    },
+    {
+      "front": "союз",
+      "back": "conjunction",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.86
+    },
+    {
+      "front": "лес",
+      "back": "lumber",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.37
+    },
+    {
+      "front": "лес",
+      "back": "timber",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.37
+    },
+    {
+      "front": "лес",
+      "back": "scaffolding",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.37
+    },
+    {
+      "front": "лес",
+      "back": "scaffold",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.37
+    },
+    {
+      "front": "лес",
+      "back": "trestle",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.37
+    },
+    {
+      "front": "лес",
+      "back": "falsework",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.37
+    },
+    {
+      "front": "ум",
+      "back": "cleverness",
+      "reason": "misleading",
+      "misleading": 0.6,
+      "score": 1.88
+    },
+    {
+      "front": "ум",
+      "back": "wit",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.88
+    },
+    {
+      "front": "река",
+      "back": "stream",
+      "reason": "misleading",
+      "misleading": 0.75,
+      "score": 1.18
+    },
+    {
+      "front": "зал",
+      "back": "living room",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.46
+    },
+    {
+      "front": "зал",
+      "back": "gym",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.46
+    },
+    {
+      "front": "курс",
+      "back": "year",
+      "reason": "misleading",
+      "misleading": 0.73,
+      "score": 1.59
+    },
+    {
+      "front": "курс",
+      "back": "aviation",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.59
+    },
+    {
+      "front": "курс",
+      "back": "nautical",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.59
+    },
+    {
+      "front": "курс",
+      "back": "vector",
+      "reason": "misleading",
+      "misleading": 0.73,
+      "score": 1.59
+    },
+    {
+      "front": "курс",
+      "back": "line",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.59
+    },
+    {
+      "front": "курс",
+      "back": "policy",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.59
+    },
+    {
+      "front": "угол",
+      "back": "dwelling",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.59
+    },
+    {
+      "front": "угол",
+      "back": "quarters",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.59
+    },
+    {
+      "front": "клуб",
+      "back": "cloud",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.4
+    },
+    {
+      "front": "клуб",
+      "back": "puff",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.4
+    },
+    {
+      "front": "клуб",
+      "back": "swarm",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.4
+    },
+    {
+      "front": "клуб",
+      "back": "lump",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.4
+    },
+    {
+      "front": "клуб",
+      "back": "ball",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.4
+    },
+    {
+      "front": "клуб",
+      "back": "clubhouse",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.4
+    },
+    {
+      "front": "клуб",
+      "back": "nightclub",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.4
+    },
+    {
+      "front": "вниз",
+      "back": "downstairs",
+      "reason": "misleading",
+      "misleading": 0.75,
+      "score": 1.19
+    },
+    {
+      "front": "чего",
+      "back": "what for",
+      "reason": "misleading",
+      "misleading": 0.73,
+      "score": 1.07
+    },
+    {
+      "front": "чего",
+      "back": "why",
+      "reason": "misleading",
+      "misleading": 0.73,
+      "score": 1.07
+    },
+    {
+      "front": "чего",
+      "back": "what",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.07
+    },
+    {
+      "front": "лист",
+      "back": "certificate",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.92
+    },
+    {
+      "front": "лист",
+      "back": "deed",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.92
+    },
+    {
+      "front": "лист",
+      "back": "list",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.92
+    },
+    {
+      "front": "лист",
+      "back": "baking tray",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.92
+    },
+    {
+      "front": "лист",
+      "back": "sheet pan",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.92
+    },
+    {
+      "front": "бить",
+      "back": "chime",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.01
+    },
+    {
+      "front": "бить",
+      "back": "churn",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.01
+    },
+    {
+      "front": "ясно",
+      "back": "brightly",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.79
+    },
+    {
+      "front": "ясно",
+      "back": "finely",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.79
+    },
+    {
+      "front": "ясно",
+      "back": "limpidly",
+      "reason": "misleading",
+      "misleading": 0.81,
+      "score": 1.79
+    },
+    {
+      "front": "ясно",
+      "back": "okay",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.79
+    },
+    {
+      "front": "ясно",
+      "back": "i see",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.79
+    },
+    {
+      "front": "сад",
+      "back": "orchard",
+      "reason": "misleading",
+      "misleading": 0.55,
+      "score": 1.09
+    },
+    {
+      "front": "сад",
+      "back": "botany",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.09
+    },
+    {
+      "front": "сад",
+      "back": "zoology",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.09
+    },
+    {
+      "front": "сад",
+      "back": "kindergarten",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.09
+    },
+    {
+      "front": "вес",
+      "back": "influence",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.39
+    },
+    {
+      "front": "вес",
+      "back": "authority",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.39
+    },
+    {
+      "front": "вес",
+      "back": "importance",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.39
+    },
+    {
+      "front": "вес",
+      "back": "hanging",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.39
+    },
+    {
+      "front": "вес",
+      "back": "suspended",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.39
+    },
+    {
+      "front": "вес",
+      "back": "balanced",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.39
+    },
+    {
+      "front": "вкус",
+      "back": "fancy",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.57
+    },
+    {
+      "front": "вкус",
+      "back": "style",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.57
+    },
+    {
+      "front": "вкус",
+      "back": "manner",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.57
+    },
+    {
+      "front": "газ",
+      "back": "gas pedal",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.19
+    },
+    {
+      "front": "газ",
+      "back": "throttle",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.19
+    },
+    {
+      "front": "газ",
+      "back": "wind",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.19
+    },
+    {
+      "front": "газ",
+      "back": "vodka",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.19
+    },
+    {
+      "front": "газ",
+      "back": "gauze",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.19
+    },
+    {
+      "front": "газ",
+      "back": "gossamer",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.19
+    },
+    {
+      "front": "ящик",
+      "back": "chest",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.82
+    },
+    {
+      "front": "ящик",
+      "back": "derogatory",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.82
+    },
+    {
+      "front": "ящик",
+      "back": "idiot box",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.82
+    },
+    {
+      "front": "ящик",
+      "back": "boob tube",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.82
+    },
+    {
+      "front": "ящик",
+      "back": "tv set",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.82
+    },
+    {
+      "front": "зло",
+      "back": "wrong",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.84
+    },
+    {
+      "front": "зло",
+      "back": "malice",
+      "reason": "misleading",
+      "misleading": 0.5,
+      "score": 1.84
+    },
+    {
+      "front": "зло",
+      "back": "rage",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.84
+    },
+    {
+      "front": "зло",
+      "back": "anger",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.84
+    },
+    {
+      "front": "зло",
+      "back": "grudge",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.84
+    },
+    {
+      "front": "диск",
+      "back": "sports",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.73
+    },
+    {
+      "front": "диск",
+      "back": "discus",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.73
+    },
+    {
+      "front": "диск",
+      "back": "platter",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.73
+    },
+    {
+      "front": "диск",
+      "back": "cd",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.73
+    },
+    {
+      "front": "диск",
+      "back": "compact disc",
+      "reason": "misleading",
+      "misleading": 0.6,
+      "score": 1.73
+    },
+    {
+      "front": "мост",
+      "back": "dentistry",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.23
+    },
+    {
+      "front": "мост",
+      "back": "prosthesis",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.23
+    },
+    {
+      "front": "мост",
+      "back": "axle",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.23
+    },
+    {
+      "front": "мост",
+      "back": "gymnastics",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.23
+    },
+    {
+      "front": "мост",
+      "back": "dance",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.23
+    },
+    {
+      "front": "мост",
+      "back": "backbend",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.23
+    },
+    {
+      "front": "луна",
+      "back": "earth",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "плюс",
+      "back": "sign",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.32
+    },
+    {
+      "front": "плюс",
+      "back": "advantage",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.32
+    },
+    {
+      "front": "парк",
+      "back": "yard",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.02
+    },
+    {
+      "front": "парк",
+      "back": "depot",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.02
+    },
+    {
+      "front": "парк",
+      "back": "fleet",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.02
+    },
+    {
+      "front": "парк",
+      "back": "stock",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.02
+    },
+    {
+      "front": "кот",
+      "back": "tomcat",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 0.69
+    },
+    {
+      "front": "шар",
+      "back": "solid",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.64
+    },
+    {
+      "front": "шар",
+      "back": "mathematics",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.64
+    },
+    {
+      "front": "шар",
+      "back": "balloon",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.64
+    },
+    {
+      "front": "роза",
+      "back": "colour",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "роза",
+      "back": "color",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1
+    },
+    {
+      "front": "роза",
+      "back": "complexion",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1
+    },
+    {
+      "front": "ниже",
+      "back": "shorter",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.91
+    },
+    {
+      "front": "мода",
+      "back": "habit",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.42
+    },
+    {
+      "front": "мода",
+      "back": "statistics",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.42
+    },
+    {
+      "front": "мода",
+      "back": "mode",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.42
+    },
+    {
+      "front": "пояс",
+      "back": "zone",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.8
+    },
+    {
+      "front": "пояс",
+      "back": "region",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.8
+    },
+    {
+      "front": "пояс",
+      "back": "flange",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.8
+    },
+    {
+      "front": "пояс",
+      "back": "collar",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.8
+    },
+    {
+      "front": "блин",
+      "back": "blini",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.72
+    },
+    {
+      "front": "блин",
+      "back": "disc",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.72
+    },
+    {
+      "front": "блин",
+      "back": "plate",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.72
+    },
+    {
+      "front": "блин",
+      "back": "computing",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.72
+    },
+    {
+      "front": "блин",
+      "back": "cd",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.72
+    },
+    {
+      "front": "блин",
+      "back": "bodybuilding",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.72
+    },
+    {
+      "front": "течь",
+      "back": "run",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.85
+    },
+    {
+      "front": "течь",
+      "back": "move",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.85
+    },
+    {
+      "front": "жара",
+      "back": "hot",
+      "reason": "misleading",
+      "misleading": 0.73,
+      "score": 1.69
+    },
+    {
+      "front": "гриб",
+      "back": "eukaryotic",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.28
+    },
+    {
+      "front": "каша",
+      "back": "mash",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.78
+    },
+    {
+      "front": "каша",
+      "back": "muddle",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.78
+    },
+    {
+      "front": "каша",
+      "back": "mess",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.78
+    },
+    {
+      "front": "каша",
+      "back": "confusion",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.78
+    },
+    {
+      "front": "фунт",
+      "back": "numismatics",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.01
+    },
+    {
+      "front": "мм",
+      "back": "mm",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.02
+    },
+    {
+      "front": "тем",
+      "back": "the",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 0.36
+    },
+    {
+      "front": "жир",
+      "back": "oil",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.53
+    },
+    {
+      "front": "жир",
+      "back": "body",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.53
+    },
+    {
+      "front": "жир",
+      "back": "animal",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.53
+    },
+    {
+      "front": "рейс",
+      "back": "trip",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.25
+    },
+    {
+      "front": "рейс",
+      "back": "voyage",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.25
+    },
+    {
+      "front": "кран",
+      "back": "engineering",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.85
+    },
+    {
+      "front": "кран",
+      "back": "ball valve",
+      "reason": "misleading",
+      "misleading": 0.6,
+      "score": 1.85
+    },
+    {
+      "front": "кран",
+      "back": "plug valve",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.85
+    },
+    {
+      "front": "кран",
+      "back": "crane",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.85
+    },
+    {
+      "front": "бег",
+      "back": "sports",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.08
+    },
+    {
+      "front": "бег",
+      "back": "athletics",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.08
+    },
+    {
+      "front": "бег",
+      "back": "track and field",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.08
+    },
+    {
+      "front": "пена",
+      "back": "spume",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.79
+    },
+    {
+      "front": "пена",
+      "back": "scum",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.79
+    },
+    {
+      "front": "цирк",
+      "back": "geology",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.13
+    },
+    {
+      "front": "цирк",
+      "back": "cirque",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.13
+    },
+    {
+      "front": "купе",
+      "back": "rail transport",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.29
+    },
+    {
+      "front": "купе",
+      "back": "couchette",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.29
+    },
+    {
+      "front": "купе",
+      "back": "coupe",
+      "reason": "misleading",
+      "misleading": 0.8,
+      "score": 1.29
+    },
+    {
+      "front": "чек",
+      "back": "check",
+      "reason": "misleading",
+      "misleading": 0.5,
+      "score": 1.75
+    },
+    {
+      "front": "чек",
+      "back": "bill",
+      "reason": "misleading",
+      "misleading": 0.64,
+      "score": 1.75
+    },
+    {
+      "front": "корм",
+      "back": "food",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.68
+    },
+    {
+      "front": "корм",
+      "back": "animal",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.68
+    },
+    {
+      "front": "корм",
+      "back": "act",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.68
+    },
+    {
+      "front": "гол",
+      "back": "sports",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.04
+    },
+    {
+      "front": "борщ",
+      "back": "hogweed",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.75
+    },
+    {
+      "front": "зонт",
+      "back": "sunshade",
+      "reason": "misleading",
+      "misleading": 0.7,
+      "score": 1.44
+    },
+    {
+      "front": "зонт",
+      "back": "parasol",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.44
+    },
+    {
+      "front": "зонт",
+      "back": "canopy",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.44
+    },
+    {
+      "front": "зонт",
+      "back": "awning",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.44
+    },
+    {
+      "front": "зонт",
+      "back": "cupola",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.44
+    },
+    {
+      "front": "зонт",
+      "back": "hood",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.44
+    },
+    {
+      "front": "зонт",
+      "back": "furnace",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.44
+    },
+    {
+      "front": "же",
+      "back": "and",
+      "reason": "misleading",
+      "misleading": 0.73,
+      "score": 1.51
+    },
+    {
+      "front": "же",
+      "back": "on the other hand",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.51
+    },
+    {
+      "front": "же",
+      "back": "whereas",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.51
+    },
+    {
+      "front": "же",
+      "back": "as for",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.51
+    },
+    {
+      "front": "же",
+      "back": "as to",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.51
+    },
+    {
+      "front": "же",
+      "back": "very",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.51
+    },
+    {
+      "front": "же",
+      "back": "same",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.51
+    },
+    {
+      "front": "хотя",
+      "back": "at least",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.25
+    },
+    {
+      "front": "хотя",
+      "back": "even",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.25
+    },
+    {
+      "front": "хотя",
+      "back": "if only",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.25
+    },
+    {
+      "front": "пора",
+      "back": "season",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.18
+    },
+    {
+      "front": "пора",
+      "back": "weather",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.18
+    },
+    {
+      "front": "пора",
+      "back": "period",
+      "reason": "misleading",
+      "misleading": 0.5,
+      "score": 1.18
+    },
+    {
+      "front": "пора",
+      "back": "pore",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.18
+    },
+    {
+      "front": "тело",
+      "back": "physics",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.01
+    },
+    {
+      "front": "век",
+      "back": "lifetime",
+      "reason": "misleading",
+      "misleading": 0.55,
+      "score": 1.72
+    },
+    {
+      "front": "век",
+      "back": "geology",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.72
+    },
+    {
+      "front": "опыт",
+      "back": "experiment",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.12
+    },
+    {
+      "front": "тип",
+      "back": "model",
+      "reason": "misleading",
+      "misleading": 0.55,
+      "score": 1.55
+    },
+    {
+      "front": "тип",
+      "back": "character",
+      "reason": "misleading",
+      "misleading": 0.68,
+      "score": 1.55
+    },
+    {
+      "front": "тип",
+      "back": "derogatory",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.55
+    },
+    {
+      "front": "тип",
+      "back": "man",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.55
+    },
+    {
+      "front": "тип",
+      "back": "guy",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.55
+    },
+    {
+      "front": "тип",
+      "back": "zoology",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.55
+    },
+    {
+      "front": "тип",
+      "back": "phylum",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.55
+    },
+    {
+      "front": "ряд",
+      "back": "tier",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.87
+    },
+    {
+      "front": "ряд",
+      "back": "a number of",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.87
+    },
+    {
+      "front": "ряд",
+      "back": "several",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.87
+    },
+    {
+      "front": "ряд",
+      "back": "phonetics",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.87
+    },
+    {
+      "front": "пара",
+      "back": "other",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.74
+    },
+    {
+      "front": "пара",
+      "back": "second",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.74
+    },
+    {
+      "front": "пара",
+      "back": "fellow",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.74
+    },
+    {
+      "front": "пара",
+      "back": "match",
+      "reason": "misleading",
+      "misleading": 0.69,
+      "score": 1.74
+    },
+    {
+      "front": "пара",
+      "back": "partner",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.74
+    },
+    {
+      "front": "пара",
+      "back": "equal",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.74
+    },
+    {
+      "front": "гора",
+      "back": "heap",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.16
+    },
+    {
+      "front": "гора",
+      "back": "pile",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.16
+    },
+    {
+      "front": "удар",
+      "back": "kick",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.96
+    },
+    {
+      "front": "удар",
+      "back": "sound",
+      "reason": "misleading",
+      "misleading": 0.75,
+      "score": 1.96
+    },
+    {
+      "front": "удар",
+      "back": "quality",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.96
+    },
+    {
+      "front": "удар",
+      "back": "ability",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.96
+    },
+    {
+      "front": "вера",
+      "back": "religion",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.79
+    },
+    {
+      "front": "вера",
+      "back": "creed",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.79
+    },
+    {
+      "front": "двор",
+      "back": "homestead",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.76
+    },
+    {
+      "front": "двор",
+      "back": "court",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.76
+    },
+    {
+      "front": "двор",
+      "back": "royal family",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.76
+    },
+    {
+      "front": "губа",
+      "back": "anatomy",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.04
+    },
+    {
+      "front": "губа",
+      "back": "tip",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.04
+    },
+    {
+      "front": "губа",
+      "back": "certain",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.04
+    },
+    {
+      "front": "губа",
+      "back": "instrument",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.04
+    },
+    {
+      "front": "губа",
+      "back": "botany",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.04
+    },
+    {
+      "front": "губа",
+      "back": "polypore",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.04
+    },
+    {
+      "front": "губа",
+      "back": "zoology",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.04
+    },
+    {
+      "front": "мозг",
+      "back": "anatomy",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.12
+    },
+    {
+      "front": "мозг",
+      "back": "marrow",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.12
+    },
+    {
+      "front": "тень",
+      "back": "vestige",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.2
+    },
+    {
+      "front": "тень",
+      "back": "atom",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.2
+    },
+    {
+      "front": "тень",
+      "back": "hint",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.2
+    },
+    {
+      "front": "тень",
+      "back": "eye shadow",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.2
+    },
+    {
+      "front": "тень",
+      "back": "apparition",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.2
+    },
+    {
+      "front": "тень",
+      "back": "phantom",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.2
+    },
+    {
+      "front": "брак",
+      "back": "defective",
+      "reason": "misleading",
+      "misleading": 0.78,
+      "score": 1.86
+    },
+    {
+      "front": "брак",
+      "back": "goods",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.86
+    },
+    {
+      "front": "брак",
+      "back": "waste",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.86
+    },
+    {
+      "front": "брак",
+      "back": "spoilage",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.86
+    },
+    {
+      "front": "шум",
+      "back": "static",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.78
+    },
+    {
+      "front": "шум",
+      "back": "sound",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.78
+    },
+    {
+      "front": "шум",
+      "back": "murmur",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.78
+    },
+    {
+      "front": "шум",
+      "back": "blare",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.78
+    },
+    {
+      "front": "шея",
+      "back": "anatomy",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1
+    },
+    {
+      "front": "кадр",
+      "back": "scene",
+      "reason": "misleading",
+      "misleading": 0.58,
+      "score": 1.74
+    },
+    {
+      "front": "кадр",
+      "back": "military",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.74
+    },
+    {
+      "front": "кадр",
+      "back": "cadre",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.74
+    },
+    {
+      "front": "слух",
+      "back": "ear",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.74
+    },
+    {
+      "front": "слух",
+      "back": "hearsay",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.74
+    },
+    {
+      "front": "слух",
+      "back": "news",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.74
+    },
+    {
+      "front": "слух",
+      "back": "sign",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.74
+    },
+    {
+      "front": "файл",
+      "back": "computing",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.01
+    },
+    {
+      "front": "файл",
+      "back": "punched pocket",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.01
+    },
+    {
+      "front": "дума",
+      "back": "meditation",
+      "reason": "misleading",
+      "misleading": 0.73,
+      "score": 1.22
+    },
+    {
+      "front": "дума",
+      "back": "duma",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.22
+    },
+    {
+      "front": "спор",
+      "back": "bet",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.89
+    },
+    {
+      "front": "спор",
+      "back": "wager",
+      "reason": "misleading",
+      "misleading": 0.7,
+      "score": 1.89
+    },
+    {
+      "front": "спор",
+      "back": "law",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.89
+    },
+    {
+      "front": "спор",
+      "back": "spore",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.89
+    },
+    {
+      "front": "дно",
+      "back": "floor",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.16
+    },
+    {
+      "front": "дно",
+      "back": "bed",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.16
+    },
+    {
+      "front": "дно",
+      "back": "hard",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.16
+    },
+    {
+      "front": "дно",
+      "back": "surface",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.16
+    },
+    {
+      "front": "дно",
+      "back": "container",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.16
+    },
+    {
+      "front": "дно",
+      "back": "society",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.16
+    },
+    {
+      "front": "конь",
+      "back": "male",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.53
+    },
+    {
+      "front": "конь",
+      "back": "gymnastics",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.53
+    },
+    {
+      "front": "конь",
+      "back": "chess",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.53
+    },
+    {
+      "front": "конь",
+      "back": "knight",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.53
+    },
+    {
+      "front": "злой",
+      "back": "enraged",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.81
+    },
+    {
+      "front": "лоб",
+      "back": "adult",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1
+    },
+    {
+      "front": "жаль",
+      "back": "pities",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.41
+    },
+    {
+      "front": "жаль",
+      "back": "sorry",
+      "reason": "misleading",
+      "misleading": 0.55,
+      "score": 1.41
+    },
+    {
+      "front": "жаль",
+      "back": "bite",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.41
+    },
+    {
+      "front": "жаль",
+      "back": "sting",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.41
+    },
+    {
+      "front": "лечь",
+      "back": "fall",
+      "reason": "misleading",
+      "misleading": 0.73,
+      "score": 1.04
+    },
+    {
+      "front": "лечь",
+      "back": "cover",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.04
+    },
+    {
+      "front": "лечь",
+      "back": "flow",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.04
+    },
+    {
+      "front": "лечь",
+      "back": "adhere",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.04
+    },
+    {
+      "front": "лечь",
+      "back": "nautical",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.04
+    },
+    {
+      "front": "лечь",
+      "back": "heave",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.04
+    },
+    {
+      "front": "лечь",
+      "back": "computing",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.04
+    },
+    {
+      "front": "щека",
+      "back": "mouth",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.02
+    },
+    {
+      "front": "щека",
+      "back": "jaw",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.02
+    },
+    {
+      "front": "щека",
+      "back": "side",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.02
+    },
+    {
+      "front": "щека",
+      "back": "sidepiece",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.02
+    },
+    {
+      "front": "щека",
+      "back": "stock",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.02
+    },
+    {
+      "front": "вуз",
+      "back": "college",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.8
+    },
+    {
+      "front": "сбор",
+      "back": "receipts",
+      "reason": "misleading",
+      "misleading": 0.65,
+      "score": 1.91
+    },
+    {
+      "front": "темп",
+      "back": "music",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.87
+    },
+    {
+      "front": "дача",
+      "back": "dacha",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.65
+    },
+    {
+      "front": "дача",
+      "back": "villa",
+      "reason": "misleading",
+      "misleading": 0.56,
+      "score": 1.65
+    },
+    {
+      "front": "дача",
+      "back": "allotment",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.65
+    },
+    {
+      "front": "дача",
+      "back": "giving",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.65
+    },
+    {
+      "front": "куст",
+      "back": "wellsite",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.19
+    },
+    {
+      "front": "бар",
+      "back": "saloon",
+      "reason": "misleading",
+      "misleading": 0.71,
+      "score": 1.24
+    },
+    {
+      "front": "бар",
+      "back": "snack bar",
+      "reason": "misleading",
+      "misleading": 0.82,
+      "score": 1.24
+    },
+    {
+      "front": "бар",
+      "back": "technical",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.24
+    },
+    {
+      "front": "бар",
+      "back": "jib",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.24
+    },
+    {
+      "front": "бар",
+      "back": "sandbar",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.24
+    },
+    {
+      "front": "бар",
+      "back": "meteorology",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.24
+    },
+    {
+      "front": "рана",
+      "back": "suffering",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.27
+    },
+    {
+      "front": "рана",
+      "back": "heartache",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.27
+    },
+    {
+      "front": "мышь",
+      "back": "computing",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.04
+    },
+    {
+      "front": "рок",
+      "back": "fate",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.41
+    },
+    {
+      "front": "рок",
+      "back": "doom",
+      "reason": "misleading",
+      "misleading": 0.66,
+      "score": 1.41
+    },
+    {
+      "front": "матч",
+      "back": "sports",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.02
+    },
+    {
+      "front": "флаг",
+      "back": "programming",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.2
+    },
+    {
+      "front": "вор",
+      "back": "traitor",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.02
+    },
+    {
+      "front": "вор",
+      "back": "apostate",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.02
+    },
+    {
+      "front": "вор",
+      "back": "outlaw",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.02
+    },
+    {
+      "front": "вор",
+      "back": "vore",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.02
+    },
+    {
+      "front": "ритм",
+      "back": "physiology",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.01
+    },
+    {
+      "front": "ритм",
+      "back": "heartbeat",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.01
+    },
+    {
+      "front": "стих",
+      "back": "line",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.7
+    },
+    {
+      "front": "стих",
+      "back": "poetry",
+      "reason": "misleading",
+      "misleading": 0.51,
+      "score": 1.7
+    },
+    {
+      "front": "стих",
+      "back": "biblical",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.7
+    },
+    {
+      "front": "стих",
+      "back": "poems",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.7
+    },
+    {
+      "front": "стих",
+      "back": "work",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.7
+    },
+    {
+      "front": "стих",
+      "back": "religious",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.7
+    },
+    {
+      "front": "дыра",
+      "back": "backwater",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.08
+    },
+    {
+      "front": "дыра",
+      "back": "out-of-the-way",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.08
+    },
+    {
+      "front": "дыра",
+      "back": "place",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.08
+    },
+    {
+      "front": "яма",
+      "back": "dungeon",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.35
+    },
+    {
+      "front": "яма",
+      "back": "yoga",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.35
+    },
+    {
+      "front": "яма",
+      "back": "yama",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.35
+    },
+    {
+      "front": "тур",
+      "back": "round",
+      "reason": "misleading",
+      "misleading": 0.55,
+      "score": 1.42
+    },
+    {
+      "front": "тур",
+      "back": "turn",
+      "reason": "misleading",
+      "misleading": 0.62,
+      "score": 1.42
+    },
+    {
+      "front": "тур",
+      "back": "cairn",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.42
+    },
+    {
+      "front": "тур",
+      "back": "aurochs",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.42
+    },
+    {
+      "front": "тур",
+      "back": "tur",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.42
+    },
+    {
+      "front": "туча",
+      "back": "meteorology",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.43
+    },
+    {
+      "front": "туча",
+      "back": "multitude",
+      "reason": "misleading",
+      "misleading": 0.88,
+      "score": 1.43
+    },
+    {
+      "front": "туча",
+      "back": "host",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.43
+    },
+    {
+      "front": "сорт",
+      "back": "quality",
+      "reason": "misleading",
+      "misleading": 0.6,
+      "score": 1.91
+    },
+    {
+      "front": "сорт",
+      "back": "brand",
+      "reason": "misleading",
+      "misleading": 0.75,
+      "score": 1.91
+    },
+    {
+      "front": "плащ",
+      "back": "poncho",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.64
+    },
+    {
+      "front": "баня",
+      "back": "banya",
+      "reason": "misleading",
+      "misleading": 0.76,
+      "score": 1.37
+    },
+    {
+      "front": "баня",
+      "back": "turkish bath",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.37
+    },
+    {
+      "front": "хрен",
+      "back": "minced oath",
+      "reason": "misleading",
+      "misleading": 0.78,
+      "score": 1.31
+    },
+    {
+      "front": "хрен",
+      "back": "prick",
+      "reason": "misleading",
+      "misleading": 0.67,
+      "score": 1.31
+    },
+    {
+      "front": "хрен",
+      "back": "crap",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.31
+    },
+    {
+      "front": "хрен",
+      "back": "hell",
+      "reason": "misleading",
+      "misleading": 0.72,
+      "score": 1.31
+    },
+    {
+      "front": "хрен",
+      "back": "derogatory",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.31
+    },
+    {
+      "front": "хрен",
+      "back": "asshole",
+      "reason": "misleading",
+      "misleading": 0.68,
+      "score": 1.31
+    },
+    {
+      "front": "хрен",
+      "back": "old fart",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.31
+    },
+    {
+      "front": "змея",
+      "back": "crafty",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.2
+    },
+    {
+      "front": "змея",
+      "back": "sneaky",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.2
+    },
+    {
+      "front": "слон",
+      "back": "chess",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.21
+    },
+    {
+      "front": "слон",
+      "back": "bishop",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.21
+    },
+    {
+      "front": "слон",
+      "back": "stomper",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.21
+    },
+    {
+      "front": "ус",
+      "back": "feeler",
+      "reason": "misleading",
+      "misleading": 0.57,
+      "score": 1.2
+    },
+    {
+      "front": "ус",
+      "back": "antenna",
+      "reason": "misleading",
+      "misleading": 0.6,
+      "score": 1.2
+    },
+    {
+      "front": "ус",
+      "back": "tendril",
+      "reason": "misleading",
+      "misleading": 0.7,
+      "score": 1.2
+    },
+    {
+      "front": "ус",
+      "back": "awn",
+      "reason": "misleading",
+      "misleading": 0.85,
+      "score": 1.2
+    },
+    {
+      "front": "заяц",
+      "back": "jackrabbit",
+      "reason": "misleading",
+      "misleading": 0.59,
+      "score": 1.18
+    },
+    {
+      "front": "заяц",
+      "back": "fare dodger",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.18
+    },
+    {
+      "front": "заяц",
+      "back": "stowaway",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.18
+    },
+    {
+      "front": "лужа",
+      "back": "pool",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.08
+    },
+    {
+      "front": "стук",
+      "back": "rattle",
+      "reason": "misleading",
+      "misleading": 0.52,
+      "score": 1.6
+    },
+    {
+      "front": "стук",
+      "back": "noise",
+      "reason": "misleading",
+      "misleading": 0.53,
+      "score": 1.6
+    },
+    {
+      "front": "бык",
+      "back": "big",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.15
+    },
+    {
+      "front": "бык",
+      "back": "strong",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.15
+    },
+    {
+      "front": "бык",
+      "back": "stubborn",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.15
+    },
+    {
+      "front": "бык",
+      "back": "man",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.15
+    },
+    {
+      "front": "бык",
+      "back": "gangster",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.15
+    },
+    {
+      "front": "бык",
+      "back": "mobster",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.15
+    },
+    {
+      "front": "гром",
+      "back": "meteorology",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.26
+    },
+    {
+      "front": "гром",
+      "back": "thunderbolt",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.26
+    },
+    {
+      "front": "гром",
+      "back": "roar",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.26
+    },
+    {
+      "front": "гром",
+      "back": "thunderous",
+      "reason": "misleading",
+      "misleading": 0.86,
+      "score": 1.26
+    },
+    {
+      "front": "гром",
+      "back": "sound",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.26
+    },
+    {
+      "front": "лить",
+      "back": "shed",
+      "reason": "misleading",
+      "misleading": 0.61,
+      "score": 1.56
+    },
+    {
+      "front": "лить",
+      "back": "cast",
+      "reason": "misleading",
+      "misleading": 0.63,
+      "score": 1.56
+    },
+    {
+      "front": "лить",
+      "back": "mould",
+      "reason": "misleading",
+      "misleading": 0.78,
+      "score": 1.56
+    },
+    {
+      "front": "лить",
+      "back": "found",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.56
+    },
+    {
+      "front": "веко",
+      "back": "anatomy",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1
+    },
+    {
+      "front": "бокс",
+      "back": "sports",
+      "reason": "misleading",
+      "misleading": 0.91,
+      "score": 1.47
+    },
+    {
+      "front": "бокс",
+      "back": "boxing",
+      "reason": "misleading",
+      "misleading": 0.54,
+      "score": 1.47
+    },
+    {
+      "front": "бокс",
+      "back": "medicine",
+      "reason": "misleading",
+      "misleading": 0.96,
+      "score": 1.47
+    },
+    {
+      "front": "шить",
+      "back": "tailor",
+      "reason": "misleading",
+      "misleading": 0.83,
+      "score": 1.24
+    },
+    {
+      "front": "шить",
+      "back": "order",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.24
+    },
+    {
+      "front": "шить",
+      "back": "embroider",
+      "reason": "misleading",
+      "misleading": 0.74,
+      "score": 1.24
+    },
+    {
+      "front": "шить",
+      "back": "nail",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.24
+    },
+    {
+      "front": "шить",
+      "back": "planking",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.24
+    },
+    {
+      "front": "укол",
+      "back": "fencing",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.8
+    },
+    {
+      "front": "укол",
+      "back": "hit",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.8
+    },
+    {
+      "front": "укол",
+      "back": "touch",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.8
+    },
+    {
+      "front": "укол",
+      "back": "piquing",
+      "reason": "misleading",
+      "misleading": 0.84,
+      "score": 1.8
+    },
+    {
+      "front": "лыжа",
+      "back": "runner",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.03
+    },
+    {
+      "front": "лыжа",
+      "back": "sleigh",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.03
+    },
+    {
+      "front": "лыжа",
+      "back": "sled",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.03
+    },
+    {
+      "front": "няня",
+      "back": "nurse",
+      "reason": "misleading",
+      "misleading": 0.77,
+      "score": 1.55
+    },
+    {
+      "front": "град",
+      "back": "meteorology",
+      "reason": "misleading",
+      "misleading": 0.97,
+      "score": 1.68
+    },
+    {
+      "front": "град",
+      "back": "deluge",
+      "reason": "misleading",
+      "misleading": 0.89,
+      "score": 1.68
+    },
+    {
+      "front": "град",
+      "back": "shower",
+      "reason": "misleading",
+      "misleading": 0.87,
+      "score": 1.68
+    },
+    {
+      "front": "коза",
+      "back": "fishing",
+      "reason": "misleading",
+      "misleading": 0.99,
+      "score": 1.07
+    },
+    {
+      "front": "коза",
+      "back": "fire basket",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.07
+    },
+    {
+      "front": "коза",
+      "back": "fatwood",
+      "reason": "misleading",
+      "misleading": 0.98,
+      "score": 1.07
+    },
+    {
+      "front": "коза",
+      "back": "derogatory",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.07
+    },
+    {
+      "front": "коза",
+      "back": "stupid",
+      "reason": "misleading",
+      "misleading": 0.93,
+      "score": 1.07
+    },
+    {
+      "front": "коза",
+      "back": "annoying",
+      "reason": "misleading",
+      "misleading": 0.95,
+      "score": 1.07
+    },
+    {
+      "front": "чат",
+      "back": "internet",
+      "reason": "misleading",
+      "misleading": 0.94,
+      "score": 1.02
+    },
+    {
+      "front": "цент",
+      "back": "cent",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 0.34
+    },
+    {
+      "front": "зять",
+      "back": "brother-in-law",
+      "reason": "misleading",
+      "misleading": 0.9,
+      "score": 1.02
+    },
+    {
+      "front": "ваза",
+      "back": "bowl",
+      "reason": "misleading",
+      "misleading": 0.92,
+      "score": 1.03
+    }
+  ]
+}

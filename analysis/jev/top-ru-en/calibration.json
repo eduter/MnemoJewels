@@ -1,0 +1,1002 @@
+{
+  "total": 141,
+  "correct": 110,
+  "accuracy": 0.7801418439716312,
+  "dropRecall": 0.8470588235294118,
+  "keepRecall": 0.6785714285714286,
+  "confusion": {
+    "trueKeep": 38,
+    "falseDrop": 18,
+    "falseKeep": 13,
+    "trueDrop": 72
+  },
+  "rows": [
+    {
+      "front": "и",
+      "back": "and",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "и",
+      "back": "as well as",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "и",
+      "back": "as well",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "и",
+      "back": "both",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "и",
+      "back": "even",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "и",
+      "back": "yi",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "а",
+      "back": "but",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "а",
+      "back": "and",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "а",
+      "back": "while",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "а",
+      "back": "oh",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "а",
+      "back": "a",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "а",
+      "back": "although",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "а",
+      "back": "eh",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "а",
+      "back": "criminal",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "в",
+      "back": "in",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "в",
+      "back": "at",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "в",
+      "back": "on",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "в",
+      "back": "to",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "в",
+      "back": "into",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "в",
+      "back": "per",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "в",
+      "back": "for",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "в",
+      "back": "as",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "раз",
+      "back": "time",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "раз",
+      "back": "once",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "раз",
+      "back": "one",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "раз",
+      "back": "one day",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "раз",
+      "back": "once upon a time",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "раз",
+      "back": "if",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "раз",
+      "back": "since",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "раз",
+      "back": "as long as",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "яма",
+      "back": "pit",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "яма",
+      "back": "hole",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "яма",
+      "back": "dungeon",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "яма",
+      "back": "yoga",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "яма",
+      "back": "yama",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "ус",
+      "back": "moustache",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "ус",
+      "back": "whisker",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "ус",
+      "back": "feeler",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "ус",
+      "back": "antenna",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "ус",
+      "back": "tendril",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "ус",
+      "back": "awn",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "вор",
+      "back": "thief",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "вор",
+      "back": "traitor",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "вор",
+      "back": "apostate",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "вор",
+      "back": "outlaw",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "вор",
+      "back": "vore",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "план",
+      "back": "plan",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "план",
+      "back": "scheme",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "план",
+      "back": "draft",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "план",
+      "back": "contrivance",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "план",
+      "back": "target",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "план",
+      "back": "figure",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "план",
+      "back": "plane",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "план",
+      "back": "marijuana",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "год",
+      "back": "year",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "град",
+      "back": "hail",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "град",
+      "back": "meteorology",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "град",
+      "back": "deluge",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "град",
+      "back": "shower",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "град",
+      "back": "town",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "град",
+      "back": "city",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "тем",
+      "back": "the",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "пол",
+      "back": "floor",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "пол",
+      "back": "half",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "пол",
+      "back": "sex",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "пол",
+      "back": "gender",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "май",
+      "back": "may",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "март",
+      "back": "march",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "род",
+      "back": "generation",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "род",
+      "back": "sort",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "род",
+      "back": "kind",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "род",
+      "back": "birth",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "род",
+      "back": "origin",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "род",
+      "back": "stock",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "род",
+      "back": "taxonomy",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "род",
+      "back": "genus",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "бег",
+      "back": "run",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "бег",
+      "back": "sports",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "бег",
+      "back": "athletics",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "бег",
+      "back": "track and field",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "клуб",
+      "back": "club",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "клуб",
+      "back": "clubhouse",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "клуб",
+      "back": "nightclub",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "клуб",
+      "back": "cloud",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "клуб",
+      "back": "puff",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "клуб",
+      "back": "swarm",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "клуб",
+      "back": "lump",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "клуб",
+      "back": "ball",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "кран",
+      "back": "faucet",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "кран",
+      "back": "tap",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "кран",
+      "back": "crane",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "кран",
+      "back": "engineering",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "кран",
+      "back": "valve",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "кран",
+      "back": "spigot",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "лук",
+      "back": "onion",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "лук",
+      "back": "bow",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "лук",
+      "back": "appearance",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "лук",
+      "back": "look",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "мир",
+      "back": "peace",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "мир",
+      "back": "universe",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "мир",
+      "back": "world",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "мир",
+      "back": "planet",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "так",
+      "back": "like that",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "так",
+      "back": "like",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "так",
+      "back": "so",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "так",
+      "back": "this",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "так",
+      "back": "that",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "так",
+      "back": "much",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "так",
+      "back": "as",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "так",
+      "back": "such",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "уже",
+      "back": "already",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "уже",
+      "back": "by now",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "уже",
+      "back": "as of",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "уже",
+      "back": "now",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "уже",
+      "back": "by",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "уже",
+      "back": "then",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "уже",
+      "back": "that",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "уже",
+      "back": "point",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "что",
+      "back": "that",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "что",
+      "back": "what",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "что",
+      "back": "which",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "как",
+      "back": "how",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "как",
+      "back": "as",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "как",
+      "back": "what",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "как",
+      "back": "exclamative",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "как",
+      "back": "concessive",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "как",
+      "back": "however",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "как",
+      "back": "much",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "как",
+      "back": "as soon as",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "есть",
+      "back": "eat",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "есть",
+      "back": "there is",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "есть",
+      "back": "there are",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "есть",
+      "back": "exists",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "есть",
+      "back": "exist",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "есть",
+      "back": "am",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "есть",
+      "back": "is",
+      "expect": "drop",
+      "predicted": "keep",
+      "correct": false
+    },
+    {
+      "front": "есть",
+      "back": "are",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "бокс",
+      "back": "boxing",
+      "expect": "keep",
+      "predicted": "drop",
+      "correct": false
+    },
+    {
+      "front": "бокс",
+      "back": "box",
+      "expect": "keep",
+      "predicted": "keep",
+      "correct": true
+    },
+    {
+      "front": "бокс",
+      "back": "sports",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    },
+    {
+      "front": "бокс",
+      "back": "medicine",
+      "expect": "drop",
+      "predicted": "drop",
+      "correct": true
+    }
+  ]
+}

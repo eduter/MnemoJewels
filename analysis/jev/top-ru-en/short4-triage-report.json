@@ -1,0 +1,6171 @@
+{
+  "model": "jev-latest",
+  "deck": "top-ru-en",
+  "totalCards": 11084,
+  "processedCards": 1626,
+  "keptCards": 691,
+  "droppedCards": 935,
+  "flaggedLemmas": 0,
+  "inputTokens": 685543,
+  "outputTokens": 72930,
+  "byLemma": [
+    {
+      "front": "и",
+      "best": "and",
+      "bestConfidence": 1,
+      "worst": "yi",
+      "worstConfidence": 0.87,
+      "keep": [
+        "and",
+        "as well as"
+      ],
+      "drop": [
+        "both",
+        "as well",
+        "even",
+        "yi"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "в",
+      "best": "in",
+      "bestConfidence": 1,
+      "worst": "per",
+      "worstConfidence": 0.65,
+      "keep": [
+        "in",
+        "at",
+        "into"
+      ],
+      "drop": [
+        "on",
+        "to",
+        "per",
+        "for",
+        "as"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "не",
+      "best": "not",
+      "bestConfidence": 0.94,
+      "worst": "will",
+      "worstConfidence": 0.66,
+      "keep": [
+        "not"
+      ],
+      "drop": [
+        "no",
+        "without",
+        "perhaps",
+        "whether",
+        "or",
+        "will",
+        "never"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "на",
+      "best": "on",
+      "bestConfidence": 0.98,
+      "worst": "set out",
+      "worstConfidence": 0.59,
+      "keep": [
+        "onto",
+        "on"
+      ],
+      "drop": [
+        "to",
+        "toward",
+        "set out",
+        "go for",
+        "for",
+        "about"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "я",
+      "best": "i",
+      "bestConfidence": 1,
+      "worst": "i",
+      "worstConfidence": 1,
+      "keep": [
+        "i"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "что",
+      "best": "what",
+      "bestConfidence": 1,
+      "worst": "that",
+      "worstConfidence": 0.41,
+      "keep": [
+        "what"
+      ],
+      "drop": [
+        "that",
+        "which"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "быть",
+      "best": "be",
+      "bestConfidence": 1,
+      "worst": "there be",
+      "worstConfidence": 0.95,
+      "keep": [
+        "be"
+      ],
+      "drop": [
+        "there be"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "он",
+      "best": "he",
+      "bestConfidence": 1,
+      "worst": "it",
+      "worstConfidence": 0.74,
+      "keep": [
+        "he"
+      ],
+      "drop": [
+        "it"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "а",
+      "best": "and",
+      "bestConfidence": 0.4,
+      "worst": "criminal",
+      "worstConfidence": 0.97,
+      "keep": [
+        "but",
+        "and"
+      ],
+      "drop": [
+        "a",
+        "while",
+        "although",
+        "oh",
+        "eh",
+        "criminal"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "это",
+      "best": "this",
+      "bestConfidence": 0.92,
+      "worst": "he",
+      "worstConfidence": 0.77,
+      "keep": [
+        "this",
+        "that",
+        "it"
+      ],
+      "drop": [
+        "these",
+        "those",
+        "he",
+        "she",
+        "they"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "как",
+      "best": "how",
+      "bestConfidence": 1,
+      "worst": "exclamative",
+      "worstConfidence": 0.47,
+      "keep": [
+        "how",
+        "as"
+      ],
+      "drop": [
+        "what",
+        "exclamative",
+        "concessive",
+        "however",
+        "much",
+        "as soon as"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "то",
+      "best": "that",
+      "bestConfidence": 0.96,
+      "worst": "then",
+      "worstConfidence": 0.68,
+      "keep": [
+        "that"
+      ],
+      "drop": [
+        "thing",
+        "then"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "этот",
+      "best": "this",
+      "bestConfidence": 1,
+      "worst": "guy",
+      "worstConfidence": 0.97,
+      "keep": [
+        "this"
+      ],
+      "drop": [
+        "these",
+        "that",
+        "those",
+        "one",
+        "guy"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "к",
+      "best": "to",
+      "bestConfidence": 0.92,
+      "worst": "k",
+      "worstConfidence": 0.53,
+      "keep": [
+        "to",
+        "toward"
+      ],
+      "drop": [
+        "by",
+        "for",
+        "against",
+        "k",
+        "kilo-"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "они",
+      "best": "they",
+      "bestConfidence": 1,
+      "worst": "they",
+      "worstConfidence": 1,
+      "keep": [
+        "they"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "мы",
+      "best": "we",
+      "bestConfidence": 1,
+      "worst": "i",
+      "worstConfidence": 0.98,
+      "keep": [
+        "we"
+      ],
+      "drop": [
+        "i"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "она",
+      "best": "she",
+      "bestConfidence": 1,
+      "worst": "it",
+      "worstConfidence": 0.78,
+      "keep": [
+        "she"
+      ],
+      "drop": [
+        "it"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "из",
+      "best": "from",
+      "bestConfidence": 0.98,
+      "worst": "through",
+      "worstConfidence": 0.56,
+      "keep": [
+        "from",
+        "out of"
+      ],
+      "drop": [
+        "of",
+        "through"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "у",
+      "best": "at",
+      "bestConfidence": 0.74,
+      "worst": "wu",
+      "worstConfidence": 0.59,
+      "keep": [
+        "at",
+        "by",
+        "near"
+      ],
+      "drop": [
+        "u",
+        "wu",
+        "possession",
+        "belonging",
+        "from"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вы",
+      "best": "you",
+      "bestConfidence": 1,
+      "worst": "you",
+      "worstConfidence": 1,
+      "keep": [
+        "you"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "для",
+      "best": "for",
+      "bestConfidence": 1,
+      "worst": "for",
+      "worstConfidence": 1,
+      "keep": [
+        "for"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "от",
+      "best": "from",
+      "bestConfidence": 1,
+      "worst": "with",
+      "worstConfidence": 0.58,
+      "keep": [
+        "from",
+        "of"
+      ],
+      "drop": [
+        "away",
+        "with",
+        "since"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "так",
+      "best": "so",
+      "bestConfidence": 0.55,
+      "worst": "much",
+      "worstConfidence": 0.71,
+      "keep": [
+        "like that",
+        "so",
+        "that",
+        "as"
+      ],
+      "drop": [
+        "like",
+        "this",
+        "much",
+        "such"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мочь",
+      "best": "can",
+      "bestConfidence": 0.79,
+      "worst": "power",
+      "worstConfidence": 0.97,
+      "keep": [
+        "can",
+        "be able to",
+        "may"
+      ],
+      "drop": [
+        "power",
+        "might"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "все",
+      "best": "everyone",
+      "bestConfidence": 0.75,
+      "worst": "than",
+      "worstConfidence": 0.99,
+      "keep": [
+        "everyone",
+        "everybody"
+      ],
+      "drop": [
+        "than",
+        "anyone"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ты",
+      "best": "you",
+      "bestConfidence": 1,
+      "worst": "thou",
+      "worstConfidence": 0.97,
+      "keep": [
+        "you"
+      ],
+      "drop": [
+        "thou"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "год",
+      "best": "year",
+      "bestConfidence": 1,
+      "worst": "year",
+      "worstConfidence": 1,
+      "keep": [
+        "year"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "один",
+      "best": "one",
+      "bestConfidence": 1,
+      "worst": "poor",
+      "worstConfidence": 0.82,
+      "keep": [
+        "one"
+      ],
+      "drop": [
+        "alone",
+        "only",
+        "a",
+        "some",
+        "others",
+        "poor"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тот",
+      "best": "that",
+      "bestConfidence": 1,
+      "worst": "wrong",
+      "worstConfidence": 0.4,
+      "keep": [
+        "that"
+      ],
+      "drop": [
+        "those",
+        "the",
+        "kind",
+        "sort",
+        "type",
+        "wrong",
+        "right"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "или",
+      "best": "or",
+      "bestConfidence": 1,
+      "worst": "either",
+      "worstConfidence": 0.6,
+      "keep": [
+        "or"
+      ],
+      "drop": [
+        "or else",
+        "either"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "его",
+      "best": "his",
+      "bestConfidence": 0.89,
+      "worst": "of",
+      "worstConfidence": 0.41,
+      "keep": [
+        "his",
+        "its",
+        "him"
+      ],
+      "drop": [
+        "of",
+        "it"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "себя",
+      "best": "oneself",
+      "bestConfidence": 0.83,
+      "worst": "oneself",
+      "worstConfidence": 0.35,
+      "keep": [
+        "myself",
+        "yourself",
+        "himself",
+        "oneself"
+      ],
+      "drop": [
+        "herself"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мой",
+      "best": "my",
+      "bestConfidence": 1,
+      "worst": "mine",
+      "worstConfidence": 0.93,
+      "keep": [
+        "my"
+      ],
+      "drop": [
+        "mine"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "наш",
+      "best": "our",
+      "bestConfidence": 1,
+      "worst": "ingroup",
+      "worstConfidence": 0.26,
+      "keep": [
+        "our"
+      ],
+      "drop": [
+        "ours",
+        "ingroup",
+        "compatriot",
+        "relative",
+        "associate"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вот",
+      "best": "here",
+      "bestConfidence": 0.69,
+      "worst": "what",
+      "worstConfidence": 0.71,
+      "keep": [
+        "this",
+        "here",
+        "that",
+        "there",
+        "so"
+      ],
+      "drop": [
+        "now",
+        "that's why",
+        "what"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "нет",
+      "best": "no",
+      "bestConfidence": 1,
+      "worst": "have",
+      "worstConfidence": 0.8,
+      "keep": [
+        "no"
+      ],
+      "drop": [
+        "not",
+        "there is",
+        "have"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "кто",
+      "best": "who",
+      "bestConfidence": 1,
+      "worst": "who",
+      "worstConfidence": 1,
+      "keep": [
+        "who"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "да",
+      "best": "yes",
+      "bestConfidence": 1,
+      "worst": "let",
+      "worstConfidence": 0.39,
+      "keep": [
+        "yes"
+      ],
+      "drop": [
+        "right",
+        "isn't it",
+        "really",
+        "affirmation",
+        "support",
+        "cause",
+        "let"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "день",
+      "best": "day",
+      "bestConfidence": 1,
+      "worst": "early",
+      "worstConfidence": 0.9,
+      "keep": [
+        "day"
+      ],
+      "drop": [
+        "daytime",
+        "afternoon",
+        "early",
+        "evening"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "два",
+      "best": "two",
+      "bestConfidence": 1,
+      "worst": "poor",
+      "worstConfidence": 0.99,
+      "keep": [
+        "two"
+      ],
+      "drop": [
+        "poor"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "раз",
+      "best": "one",
+      "bestConfidence": 0.53,
+      "worst": "if",
+      "worstConfidence": 0.39,
+      "keep": [
+        "time",
+        "one",
+        "once"
+      ],
+      "drop": [
+        "one day",
+        "once upon a time",
+        "if",
+        "since",
+        "as long as"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "со",
+      "best": "with",
+      "bestConfidence": 0.94,
+      "worst": "off",
+      "worstConfidence": 0.85,
+      "keep": [
+        "with",
+        "from"
+      ],
+      "drop": [
+        "off"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "там",
+      "best": "there",
+      "bestConfidence": 1,
+      "worst": "filler word",
+      "worstConfidence": 0.83,
+      "keep": [
+        "there"
+      ],
+      "drop": [
+        "next",
+        "then",
+        "else",
+        "filler word"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "их",
+      "best": "their",
+      "bestConfidence": 0.74,
+      "worst": "they",
+      "worstConfidence": 0.89,
+      "keep": [
+        "their",
+        "them"
+      ],
+      "drop": [
+        "they"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "где",
+      "best": "where",
+      "bestConfidence": 1,
+      "worst": "now",
+      "worstConfidence": 0.99,
+      "keep": [
+        "where"
+      ],
+      "drop": [
+        "now"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "рука",
+      "best": "hand",
+      "bestConfidence": 0.97,
+      "worst": "arm",
+      "worstConfidence": 0.72,
+      "keep": [
+        "hand"
+      ],
+      "drop": [
+        "arm"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "без",
+      "best": "without",
+      "bestConfidence": 1,
+      "worst": "less",
+      "worstConfidence": 0.6,
+      "keep": [
+        "without"
+      ],
+      "drop": [
+        "aside from",
+        "except",
+        "minus",
+        "less"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "друг",
+      "best": "friend",
+      "bestConfidence": 1,
+      "worst": "another",
+      "worstConfidence": 0.21,
+      "keep": [
+        "friend"
+      ],
+      "drop": [
+        "other",
+        "another"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "надо",
+      "best": "need",
+      "bestConfidence": 0.54,
+      "worst": "above",
+      "worstConfidence": 0.73,
+      "keep": [
+        "must",
+        "necessary",
+        "need",
+        "has to"
+      ],
+      "drop": [
+        "want",
+        "above",
+        "over"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ваш",
+      "best": "your",
+      "bestConfidence": 0.99,
+      "worst": "yours",
+      "worstConfidence": 0.84,
+      "keep": [
+        "your"
+      ],
+      "drop": [
+        "yours"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "идти",
+      "best": "go",
+      "bestConfidence": 0.88,
+      "worst": "function",
+      "worstConfidence": 0.46,
+      "keep": [
+        "go",
+        "walk"
+      ],
+      "drop": [
+        "fall",
+        "function",
+        "work",
+        "suit",
+        "become"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "глаз",
+      "best": "eye",
+      "bestConfidence": 1,
+      "worst": "opinion",
+      "worstConfidence": 0.67,
+      "keep": [
+        "eye"
+      ],
+      "drop": [
+        "eyesight",
+        "view",
+        "opinion"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тут",
+      "best": "here",
+      "bestConfidence": 1,
+      "worst": "mulberry",
+      "worstConfidence": 0.91,
+      "keep": [
+        "here"
+      ],
+      "drop": [
+        "time",
+        "then",
+        "mulberry"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "дом",
+      "best": "house",
+      "bestConfidence": 0.9,
+      "worst": "noble",
+      "worstConfidence": 0.65,
+      "keep": [
+        "house",
+        "home"
+      ],
+      "drop": [
+        "building",
+        "plot",
+        "dynasty",
+        "noble"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "лицо",
+      "best": "face",
+      "bestConfidence": 1,
+      "worst": "grammar",
+      "worstConfidence": 0.99,
+      "keep": [
+        "face"
+      ],
+      "drop": [
+        "anatomy",
+        "countenance",
+        "front",
+        "person",
+        "individual",
+        "individuality",
+        "grammar"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "жить",
+      "best": "live",
+      "bestConfidence": 1,
+      "worst": "reside",
+      "worstConfidence": 0.8,
+      "keep": [
+        "live",
+        "reside"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "пока",
+      "best": "bye",
+      "bestConfidence": 0.86,
+      "worst": "present",
+      "worstConfidence": 0.98,
+      "keep": [
+        "for the time being",
+        "for now",
+        "while",
+        "bye",
+        "so long",
+        "see you later"
+      ],
+      "drop": [
+        "present",
+        "so long as"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "три",
+      "best": "three",
+      "bestConfidence": 1,
+      "worst": "three",
+      "worstConfidence": 1,
+      "keep": [
+        "three"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "час",
+      "best": "hour",
+      "bestConfidence": 0.99,
+      "worst": "singular",
+      "worstConfidence": 0.97,
+      "keep": [
+        "hour"
+      ],
+      "drop": [
+        "singular",
+        "o'clock",
+        "time",
+        "hours",
+        "clock",
+        "watch",
+        "day"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "твой",
+      "best": "your",
+      "bestConfidence": 1,
+      "worst": "yours",
+      "worstConfidence": 0.27,
+      "keep": [
+        "your"
+      ],
+      "drop": [
+        "yours",
+        "thy",
+        "thine"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "имя",
+      "best": "name",
+      "bestConfidence": 0.98,
+      "worst": "grammar",
+      "worstConfidence": 0.98,
+      "keep": [
+        "personal name",
+        "first name",
+        "given name",
+        "name"
+      ],
+      "drop": [
+        "christian name",
+        "grammar",
+        "renown",
+        "reputation"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вода",
+      "best": "water",
+      "bestConfidence": 1,
+      "worst": "prose",
+      "worstConfidence": 0.32,
+      "keep": [
+        "water"
+      ],
+      "drop": [
+        "soft drink",
+        "soda",
+        "tide",
+        "watery",
+        "prose",
+        "fluff",
+        "it"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "язык",
+      "best": "language",
+      "bestConfidence": 0.94,
+      "worst": "canary",
+      "worstConfidence": 0.3,
+      "keep": [
+        "tongue",
+        "language"
+      ],
+      "drop": [
+        "military",
+        "prisoner",
+        "canary",
+        "informer",
+        "clapper",
+        "interpreter"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ночь",
+      "best": "night",
+      "bestConfidence": 1,
+      "worst": "nighttime",
+      "worstConfidence": 0.85,
+      "keep": [
+        "night",
+        "nighttime"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "оно",
+      "best": "it",
+      "bestConfidence": 1,
+      "worst": "it",
+      "worstConfidence": 1,
+      "keep": [
+        "it"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "отец",
+      "best": "father",
+      "bestConfidence": 1,
+      "worst": "term",
+      "worstConfidence": 0.79,
+      "keep": [
+        "father"
+      ],
+      "drop": [
+        "ancestor",
+        "senior",
+        "superior",
+        "first",
+        "chief",
+        "familiar",
+        "term"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "нога",
+      "best": "leg",
+      "bestConfidence": 0.9,
+      "worst": "foot",
+      "worstConfidence": 0.47,
+      "keep": [
+        "leg",
+        "foot"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "мало",
+      "best": "little",
+      "bestConfidence": 0.97,
+      "worst": "enough",
+      "worstConfidence": 0.99,
+      "keep": [
+        "little",
+        "few",
+        "insufficient"
+      ],
+      "drop": [
+        "enough"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "свет",
+      "best": "light",
+      "bestConfidence": 1,
+      "worst": "electricity",
+      "worstConfidence": 0.39,
+      "keep": [
+        "light"
+      ],
+      "drop": [
+        "daylight",
+        "daybreak",
+        "radiance",
+        "lights",
+        "lighting",
+        "power",
+        "electricity"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "игра",
+      "best": "game",
+      "bestConfidence": 0.96,
+      "worst": "ethology",
+      "worstConfidence": 0.99,
+      "keep": [
+        "game",
+        "play"
+      ],
+      "drop": [
+        "sport",
+        "ethology",
+        "acting",
+        "performance",
+        "role-playing",
+        "playing"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "жена",
+      "best": "wife",
+      "bestConfidence": 1,
+      "worst": "woman",
+      "worstConfidence": 0.95,
+      "keep": [
+        "wife"
+      ],
+      "drop": [
+        "woman"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вещь",
+      "best": "thing",
+      "bestConfidence": 0.99,
+      "worst": "goods",
+      "worstConfidence": 0.29,
+      "keep": [
+        "thing",
+        "object",
+        "things",
+        "stuff"
+      ],
+      "drop": [
+        "belongings",
+        "goods"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "утро",
+      "best": "morning",
+      "bestConfidence": 1,
+      "worst": "morning",
+      "worstConfidence": 1,
+      "keep": [
+        "morning"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "мать",
+      "best": "mother",
+      "bestConfidence": 1,
+      "worst": "mother",
+      "worstConfidence": 1,
+      "keep": [
+        "mother"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "стол",
+      "best": "table",
+      "bestConfidence": 1,
+      "worst": "department",
+      "worstConfidence": 0.22,
+      "keep": [
+        "table"
+      ],
+      "drop": [
+        "board",
+        "fare",
+        "cuisine",
+        "department",
+        "section",
+        "office",
+        "bureau"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "куда",
+      "best": "where",
+      "bestConfidence": 1,
+      "worst": "a lot",
+      "worstConfidence": 0.18,
+      "keep": [
+        "where"
+      ],
+      "drop": [
+        "why",
+        "much",
+        "a lot"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "цена",
+      "best": "price",
+      "bestConfidence": 1,
+      "worst": "value",
+      "worstConfidence": 0.33,
+      "keep": [
+        "price",
+        "cost"
+      ],
+      "drop": [
+        "worth",
+        "value"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "сын",
+      "best": "son",
+      "bestConfidence": 1,
+      "worst": "child",
+      "worstConfidence": 0.45,
+      "keep": [
+        "son"
+      ],
+      "drop": [
+        "child",
+        "sons"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мама",
+      "best": "mama",
+      "bestConfidence": 0.63,
+      "worst": "socket",
+      "worstConfidence": 0.27,
+      "keep": [
+        "mama",
+        "mummy",
+        "mommy",
+        "mum"
+      ],
+      "drop": [
+        "computing",
+        "motherboard",
+        "female",
+        "socket"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "пять",
+      "best": "five",
+      "bestConfidence": 1,
+      "worst": "five",
+      "worstConfidence": 1,
+      "keep": [
+        "five"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "муж",
+      "best": "husband",
+      "bestConfidence": 0.99,
+      "worst": "forefront",
+      "worstConfidence": 0.54,
+      "keep": [
+        "husband"
+      ],
+      "drop": [
+        "man",
+        "great",
+        "forefront",
+        "field"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "окно",
+      "best": "window",
+      "bestConfidence": 1,
+      "worst": "window",
+      "worstConfidence": 1,
+      "keep": [
+        "window"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "пол",
+      "best": "floor",
+      "bestConfidence": 0.89,
+      "worst": "half",
+      "worstConfidence": 0.72,
+      "keep": [
+        "floor",
+        "gender"
+      ],
+      "drop": [
+        "half",
+        "sex"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "метр",
+      "best": "meter",
+      "bestConfidence": 0.77,
+      "worst": "tape measure",
+      "worstConfidence": 0.26,
+      "keep": [
+        "meter",
+        "metre"
+      ],
+      "drop": [
+        "meter stick",
+        "metre stick",
+        "tape measure",
+        "measuring tape"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "брат",
+      "best": "brother",
+      "bestConfidence": 1,
+      "worst": "sort",
+      "worstConfidence": 0.74,
+      "keep": [
+        "brother"
+      ],
+      "drop": [
+        "boy",
+        "pal",
+        "kind",
+        "sort"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "сон",
+      "best": "sleep",
+      "bestConfidence": 0.78,
+      "worst": "dream",
+      "worstConfidence": 0.6,
+      "keep": [
+        "sleep"
+      ],
+      "drop": [
+        "dream"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "врач",
+      "best": "physician",
+      "bestConfidence": 0.52,
+      "worst": "medicine",
+      "worstConfidence": 0.4,
+      "keep": [
+        "doc",
+        "medic",
+        "physician"
+      ],
+      "drop": [
+        "medicine",
+        "therapist",
+        "surgeon",
+        "hospital",
+        "vet"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "род",
+      "best": "kind",
+      "bestConfidence": 0.6,
+      "worst": "taxonomy",
+      "worstConfidence": 0.57,
+      "keep": [
+        "generation",
+        "origin",
+        "kind"
+      ],
+      "drop": [
+        "birth",
+        "stock",
+        "taxonomy",
+        "genus",
+        "sort"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "пить",
+      "best": "drink",
+      "bestConfidence": 1,
+      "worst": "drink",
+      "worstConfidence": 1,
+      "keep": [
+        "drink"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "март",
+      "best": "march",
+      "bestConfidence": 1,
+      "worst": "march",
+      "worstConfidence": 1,
+      "keep": [
+        "march"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "сюда",
+      "best": "here",
+      "bestConfidence": 0.63,
+      "worst": "hither",
+      "worstConfidence": 0.68,
+      "keep": [
+        "here",
+        "this way"
+      ],
+      "drop": [
+        "hither"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "папа",
+      "best": "dad",
+      "bestConfidence": 0.93,
+      "worst": "christianity",
+      "worstConfidence": 0.28,
+      "keep": [
+        "dad",
+        "daddy"
+      ],
+      "drop": [
+        "electronics",
+        "male",
+        "socket",
+        "christianity",
+        "pope",
+        "childish"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "звук",
+      "best": "sound",
+      "bestConfidence": 1,
+      "worst": "sound",
+      "worstConfidence": 1,
+      "keep": [
+        "sound"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "цвет",
+      "best": "color",
+      "bestConfidence": 1,
+      "worst": "pick",
+      "worstConfidence": 0.93,
+      "keep": [
+        "color"
+      ],
+      "drop": [
+        "blossom",
+        "bloom",
+        "flower",
+        "cream",
+        "pick"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "круг",
+      "best": "circle",
+      "bestConfidence": 1,
+      "worst": "motor racing",
+      "worstConfidence": 0.79,
+      "keep": [
+        "circle",
+        "ring"
+      ],
+      "drop": [
+        "sphere",
+        "range",
+        "orbit",
+        "average",
+        "slice",
+        "motor racing"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "дочь",
+      "best": "daughter",
+      "bestConfidence": 1,
+      "worst": "daughter",
+      "worstConfidence": 1,
+      "keep": [
+        "daughter"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "май",
+      "best": "may",
+      "bestConfidence": 1,
+      "worst": "may",
+      "worstConfidence": 1,
+      "keep": [],
+      "drop": [
+        "may"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "боль",
+      "best": "pain",
+      "bestConfidence": 1,
+      "worst": "stitch",
+      "worstConfidence": 0.69,
+      "keep": [
+        "pain",
+        "ache"
+      ],
+      "drop": [
+        "pang",
+        "stab",
+        "stitch"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "банк",
+      "best": "bank",
+      "bestConfidence": 1,
+      "worst": "bank",
+      "worstConfidence": 1,
+      "keep": [
+        "bank"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "дома",
+      "best": "at home",
+      "bestConfidence": 1,
+      "worst": "at home",
+      "worstConfidence": 1,
+      "keep": [
+        "at home"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "знак",
+      "best": "sign",
+      "bestConfidence": 0.99,
+      "worst": "omen",
+      "worstConfidence": 0.66,
+      "keep": [
+        "sign",
+        "mark",
+        "symbol"
+      ],
+      "drop": [
+        "omen",
+        "badge"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "рот",
+      "best": "mouth",
+      "bestConfidence": 1,
+      "worst": "mouth",
+      "worstConfidence": 1,
+      "keep": [
+        "mouth"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "есть",
+      "best": "eat",
+      "bestConfidence": 0.5,
+      "worst": "am",
+      "worstConfidence": 0.9,
+      "keep": [
+        "eat",
+        "there is",
+        "there are",
+        "exist",
+        "is"
+      ],
+      "drop": [
+        "exists",
+        "am",
+        "are"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ухо",
+      "best": "ear",
+      "bestConfidence": 1,
+      "worst": "ear",
+      "worstConfidence": 1,
+      "keep": [
+        "ear"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "нос",
+      "best": "nose",
+      "bestConfidence": 1,
+      "worst": "anvil",
+      "worstConfidence": 0.97,
+      "keep": [
+        "nose"
+      ],
+      "drop": [
+        "bow",
+        "prow",
+        "forepart",
+        "point",
+        "horn",
+        "anvil",
+        "headland"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "лето",
+      "best": "summer",
+      "bestConfidence": 1,
+      "worst": "age",
+      "worstConfidence": 0.56,
+      "keep": [
+        "summer"
+      ],
+      "drop": [
+        "year",
+        "age"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "июнь",
+      "best": "june",
+      "bestConfidence": 1,
+      "worst": "june",
+      "worstConfidence": 1,
+      "keep": [
+        "june"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "июль",
+      "best": "july",
+      "bestConfidence": 1,
+      "worst": "july",
+      "worstConfidence": 1,
+      "keep": [
+        "july"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "сто",
+      "best": "hundred",
+      "bestConfidence": 1,
+      "worst": "hundred",
+      "worstConfidence": 1,
+      "keep": [
+        "hundred"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "петь",
+      "best": "sing",
+      "bestConfidence": 1,
+      "worst": "crack",
+      "worstConfidence": 0.28,
+      "keep": [
+        "sing"
+      ],
+      "drop": [
+        "crow",
+        "snitch",
+        "rat out",
+        "crack",
+        "testifying"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "дата",
+      "best": "date",
+      "bestConfidence": 1,
+      "worst": "date",
+      "worstConfidence": 1,
+      "keep": [
+        "date"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "семь",
+      "best": "seven",
+      "bestConfidence": 1,
+      "worst": "seven",
+      "worstConfidence": 1,
+      "keep": [
+        "seven"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "чай",
+      "best": "tea",
+      "bestConfidence": 1,
+      "worst": "methinks",
+      "worstConfidence": 0.45,
+      "keep": [
+        "tea"
+      ],
+      "drop": [
+        "tip",
+        "methinks",
+        "may be",
+        "hopefully",
+        "probably"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тихо",
+      "best": "quietly",
+      "bestConfidence": 1,
+      "worst": "calm",
+      "worstConfidence": 0.44,
+      "keep": [
+        "quietly",
+        "softly",
+        "gently",
+        "calmly",
+        "peacefully"
+      ],
+      "drop": [
+        "faintly",
+        "slowly",
+        "calm"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "снег",
+      "best": "snow",
+      "bestConfidence": 1,
+      "worst": "cocaine",
+      "worstConfidence": 0.98,
+      "keep": [
+        "snow"
+      ],
+      "drop": [
+        "cocaine"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "зуб",
+      "best": "tooth",
+      "bestConfidence": 1,
+      "worst": "dent",
+      "worstConfidence": 0.24,
+      "keep": [
+        "tooth"
+      ],
+      "drop": [
+        "cog",
+        "dent"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "пиво",
+      "best": "beer",
+      "bestConfidence": 1,
+      "worst": "portion",
+      "worstConfidence": 0.99,
+      "keep": [
+        "beer"
+      ],
+      "drop": [
+        "portion"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "хлеб",
+      "best": "bread",
+      "bestConfidence": 1,
+      "worst": "black",
+      "worstConfidence": 0.52,
+      "keep": [
+        "bread",
+        "loaf"
+      ],
+      "drop": [
+        "black",
+        "rye",
+        "grain",
+        "food",
+        "subsistence",
+        "living"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "кожа",
+      "best": "skin",
+      "bestConfidence": 1,
+      "worst": "leather",
+      "worstConfidence": 0.76,
+      "keep": [
+        "skin",
+        "leather"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "зима",
+      "best": "winter",
+      "bestConfidence": 1,
+      "worst": "winter",
+      "worstConfidence": 1,
+      "keep": [
+        "winter"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "урок",
+      "best": "lesson",
+      "bestConfidence": 1,
+      "worst": "task",
+      "worstConfidence": 0.96,
+      "keep": [
+        "lesson"
+      ],
+      "drop": [
+        "task"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вино",
+      "best": "wine",
+      "bestConfidence": 1,
+      "worst": "vodka",
+      "worstConfidence": 0.98,
+      "keep": [
+        "wine"
+      ],
+      "drop": [
+        "vodka"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "этаж",
+      "best": "floor",
+      "bestConfidence": 0.61,
+      "worst": "storey",
+      "worstConfidence": 0.24,
+      "keep": [
+        "floor",
+        "storey"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "рыба",
+      "best": "fish",
+      "bestConfidence": 1,
+      "worst": "placeholder",
+      "worstConfidence": 0.42,
+      "keep": [
+        "fish"
+      ],
+      "drop": [
+        "dominoes",
+        "blocked",
+        "game",
+        "block",
+        "publishing",
+        "music",
+        "placeholder"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ключ",
+      "best": "key",
+      "bestConfidence": 0.99,
+      "worst": "music",
+      "worstConfidence": 0.53,
+      "keep": [
+        "key"
+      ],
+      "drop": [
+        "wrench",
+        "spanner",
+        "screw wrench",
+        "clue",
+        "music",
+        "clef",
+        "radical"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "кино",
+      "best": "movie",
+      "bestConfidence": 0.48,
+      "worst": "pictures",
+      "worstConfidence": 0.83,
+      "keep": [
+        "movie",
+        "motion picture",
+        "film",
+        "movies",
+        "cinema"
+      ],
+      "drop": [
+        "pictures"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "обед",
+      "best": "lunch",
+      "bestConfidence": 0.99,
+      "worst": "noon",
+      "worstConfidence": 0.76,
+      "keep": [
+        "lunch"
+      ],
+      "drop": [
+        "dinner",
+        "noon"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вход",
+      "best": "entrance",
+      "bestConfidence": 0.94,
+      "worst": "entry",
+      "worstConfidence": 0.65,
+      "keep": [
+        "entrance",
+        "entry"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "дядя",
+      "best": "uncle",
+      "bestConfidence": 1,
+      "worst": "boss",
+      "worstConfidence": 0.8,
+      "keep": [
+        "uncle"
+      ],
+      "drop": [
+        "man",
+        "the man",
+        "boss"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "стул",
+      "best": "chair",
+      "bestConfidence": 0.86,
+      "worst": "knock at the door",
+      "worstConfidence": 0.28,
+      "keep": [
+        "chair"
+      ],
+      "drop": [
+        "seat",
+        "knock at the door",
+        "four",
+        "lotto",
+        "game",
+        "medicine",
+        "stool"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "кофе",
+      "best": "coffee",
+      "bestConfidence": 1,
+      "worst": "coffee",
+      "worstConfidence": 1,
+      "keep": [
+        "coffee"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "еда",
+      "best": "food",
+      "bestConfidence": 1,
+      "worst": "eating",
+      "worstConfidence": 0.79,
+      "keep": [
+        "food",
+        "meal"
+      ],
+      "drop": [
+        "eating"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мясо",
+      "best": "meat",
+      "bestConfidence": 1,
+      "worst": "soccer",
+      "worstConfidence": 0.97,
+      "keep": [
+        "meat"
+      ],
+      "drop": [
+        "flesh",
+        "pulp",
+        "biology",
+        "tissue",
+        "fodder",
+        "soccer"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "бок",
+      "best": "side",
+      "bestConfidence": 1,
+      "worst": "side",
+      "worstConfidence": 1,
+      "keep": [
+        "side"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "часы",
+      "best": "clock",
+      "bestConfidence": 0.89,
+      "worst": "guard",
+      "worstConfidence": 1,
+      "keep": [
+        "clock",
+        "watch"
+      ],
+      "drop": [
+        "guard"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "юг",
+      "best": "south",
+      "bestConfidence": 1,
+      "worst": "wind",
+      "worstConfidence": 0.96,
+      "keep": [
+        "south"
+      ],
+      "drop": [
+        "southerly",
+        "wind"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "нож",
+      "best": "knife",
+      "bestConfidence": 1,
+      "worst": "blade",
+      "worstConfidence": 0.96,
+      "keep": [
+        "knife"
+      ],
+      "drop": [
+        "blade"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "очки",
+      "best": "glasses",
+      "bestConfidence": 1,
+      "worst": "spectacles",
+      "worstConfidence": 0.55,
+      "keep": [
+        "glasses",
+        "spectacles"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "ужин",
+      "best": "dinner",
+      "bestConfidence": 0.37,
+      "worst": "supper",
+      "worstConfidence": 0.17,
+      "keep": [
+        "supper",
+        "dinner"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "яйцо",
+      "best": "egg",
+      "bestConfidence": 1,
+      "worst": "testicle",
+      "worstConfidence": 0.41,
+      "keep": [
+        "egg"
+      ],
+      "drop": [
+        "ovum",
+        "testicle",
+        "ball",
+        "nut"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тест",
+      "best": "test",
+      "bestConfidence": 1,
+      "worst": "test",
+      "worstConfidence": 1,
+      "keep": [
+        "test"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "шкаф",
+      "best": "wardrobe",
+      "bestConfidence": 0.74,
+      "worst": "shelves",
+      "worstConfidence": 0.65,
+      "keep": [
+        "cupboard",
+        "wardrobe",
+        "closet",
+        "cabinet"
+      ],
+      "drop": [
+        "locker",
+        "bookcase",
+        "shelves"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "литр",
+      "best": "liter",
+      "bestConfidence": 1,
+      "worst": "liter",
+      "worstConfidence": 1,
+      "keep": [
+        "liter"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "фото",
+      "best": "photo",
+      "bestConfidence": 0.98,
+      "worst": "photograph",
+      "worstConfidence": 0.52,
+      "keep": [
+        "photo",
+        "photograph"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "сок",
+      "best": "juice",
+      "bestConfidence": 1,
+      "worst": "cum",
+      "worstConfidence": 0.51,
+      "keep": [
+        "juice"
+      ],
+      "drop": [
+        "sap",
+        "cum",
+        "semen"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мука",
+      "best": "flour",
+      "bestConfidence": 0.99,
+      "worst": "harassment",
+      "worstConfidence": 0.73,
+      "keep": [
+        "flour"
+      ],
+      "drop": [
+        "meal",
+        "pain",
+        "anguish",
+        "torment",
+        "suffering",
+        "ordeal",
+        "harassment"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "внук",
+      "best": "grandson",
+      "bestConfidence": 1,
+      "worst": "grandchildren",
+      "worstConfidence": 0.89,
+      "keep": [
+        "grandson"
+      ],
+      "drop": [
+        "grandchildren"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "верх",
+      "best": "top",
+      "bestConfidence": 1,
+      "worst": "right",
+      "worstConfidence": 0.92,
+      "keep": [
+        "top"
+      ],
+      "drop": [
+        "roof",
+        "dome",
+        "height",
+        "summit",
+        "apex",
+        "upper class",
+        "right"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "евро",
+      "best": "euro",
+      "bestConfidence": 1,
+      "worst": "euro",
+      "worstConfidence": 1,
+      "keep": [
+        "euro"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "виза",
+      "best": "visa",
+      "bestConfidence": 1,
+      "worst": "visa",
+      "worstConfidence": 1,
+      "keep": [
+        "visa"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "печь",
+      "best": "oven",
+      "bestConfidence": 0.81,
+      "worst": "scorch",
+      "worstConfidence": 0.8,
+      "keep": [
+        "bake",
+        "stove",
+        "oven",
+        "furnace"
+      ],
+      "drop": [
+        "scorch",
+        "kiln"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "соль",
+      "best": "salt",
+      "bestConfidence": 1,
+      "worst": "g",
+      "worstConfidence": 0.37,
+      "keep": [
+        "salt"
+      ],
+      "drop": [
+        "point",
+        "punch line",
+        "bath salt",
+        "mephedrone",
+        "stimulant",
+        "designer drug",
+        "g"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мыть",
+      "best": "wash",
+      "bestConfidence": 1,
+      "worst": "wash",
+      "worstConfidence": 1,
+      "keep": [
+        "wash"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "сыр",
+      "best": "cheese",
+      "bestConfidence": 1,
+      "worst": "cheese",
+      "worstConfidence": 1,
+      "keep": [
+        "cheese"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "юбка",
+      "best": "skirt",
+      "bestConfidence": 1,
+      "worst": "woman",
+      "worstConfidence": 0.99,
+      "keep": [
+        "skirt"
+      ],
+      "drop": [
+        "woman"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "лук",
+      "best": "onion",
+      "bestConfidence": 0.98,
+      "worst": "appearance",
+      "worstConfidence": 0.74,
+      "keep": [
+        "onion"
+      ],
+      "drop": [
+        "bow",
+        "appearance",
+        "look"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мяч",
+      "best": "ball",
+      "bestConfidence": 1,
+      "worst": "ball",
+      "worstConfidence": 1,
+      "keep": [
+        "ball"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "себе",
+      "best": "keep on",
+      "bestConfidence": 1,
+      "worst": "keep on",
+      "worstConfidence": 1,
+      "keep": [],
+      "drop": [
+        "keep on"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мыло",
+      "best": "soap",
+      "bestConfidence": 1,
+      "worst": "phono-semantic matching",
+      "worstConfidence": 0.77,
+      "keep": [
+        "soap"
+      ],
+      "drop": [
+        "lather",
+        "e-mail",
+        "phono-semantic matching",
+        "mail"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "суп",
+      "best": "soup",
+      "bestConfidence": 1,
+      "worst": "soup",
+      "worstConfidence": 1,
+      "keep": [
+        "soup"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "овощ",
+      "best": "vegetable",
+      "bestConfidence": 1,
+      "worst": "vegetable",
+      "worstConfidence": 1,
+      "keep": [
+        "vegetable"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "грек",
+      "best": "greek",
+      "bestConfidence": 1,
+      "worst": "greek",
+      "worstConfidence": 1,
+      "keep": [
+        "greek"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "душ",
+      "best": "shower",
+      "bestConfidence": 1,
+      "worst": "shower",
+      "worstConfidence": 1,
+      "keep": [
+        "shower"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "араб",
+      "best": "arab",
+      "bestConfidence": 1,
+      "worst": "arab",
+      "worstConfidence": 1,
+      "keep": [
+        "arab"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "ноль",
+      "best": "zero",
+      "bestConfidence": 1,
+      "worst": "precise",
+      "worstConfidence": 0.68,
+      "keep": [
+        "zero",
+        "nil"
+      ],
+      "drop": [
+        "nothing",
+        "precise",
+        "exactly",
+        "cipher",
+        "nobody",
+        "nonentity"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "орех",
+      "best": "nut",
+      "bestConfidence": 0.99,
+      "worst": "cocaine",
+      "worstConfidence": 0.65,
+      "keep": [
+        "nut"
+      ],
+      "drop": [
+        "walnut",
+        "wood",
+        "coal",
+        "chestnut",
+        "cocaine",
+        "ass",
+        "booty"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "стоп",
+      "best": "stop",
+      "bestConfidence": 1,
+      "worst": "that'll do",
+      "worstConfidence": 0.85,
+      "keep": [
+        "stop"
+      ],
+      "drop": [
+        "that'll do",
+        "enough"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тост",
+      "best": "toast",
+      "bestConfidence": 1,
+      "worst": "toast",
+      "worstConfidence": 1,
+      "keep": [
+        "toast"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "слог",
+      "best": "syllable",
+      "bestConfidence": 1,
+      "worst": "style",
+      "worstConfidence": 0.14,
+      "keep": [
+        "syllable"
+      ],
+      "drop": [
+        "phonology",
+        "style",
+        "manner"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "финн",
+      "best": "finn",
+      "bestConfidence": 1,
+      "worst": "finn",
+      "worstConfidence": 1,
+      "keep": [
+        "finn"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "торт",
+      "best": "cake",
+      "bestConfidence": 0.89,
+      "worst": "torte",
+      "worstConfidence": 0.73,
+      "keep": [
+        "cake"
+      ],
+      "drop": [
+        "torte"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "низ",
+      "best": "bottom",
+      "bestConfidence": 1,
+      "worst": "part",
+      "worstConfidence": 0.82,
+      "keep": [
+        "bottom"
+      ],
+      "drop": [
+        "lower",
+        "part"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "рис",
+      "best": "rice",
+      "bestConfidence": 1,
+      "worst": "botany",
+      "worstConfidence": 0.99,
+      "keep": [
+        "rice"
+      ],
+      "drop": [
+        "botany",
+        "paddy"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "гель",
+      "best": "gel",
+      "bestConfidence": 1,
+      "worst": "gel",
+      "worstConfidence": 1,
+      "keep": [
+        "gel"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "кило",
+      "best": "kilogram",
+      "bestConfidence": 0.47,
+      "worst": "kilogram",
+      "worstConfidence": 0.06,
+      "keep": [
+        "kilogram",
+        "kilo"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "ту",
+      "best": "train",
+      "bestConfidence": 0.25,
+      "worst": "train",
+      "worstConfidence": 0.19,
+      "keep": [],
+      "drop": [
+        "train",
+        "horn"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "та",
+      "best": "ukrainian",
+      "bestConfidence": 0.46,
+      "worst": "internet",
+      "worstConfidence": 0.3,
+      "keep": [],
+      "drop": [
+        "internet",
+        "ukrainian"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "км",
+      "best": "kilometer",
+      "bestConfidence": 0.91,
+      "worst": "km",
+      "worstConfidence": 0.78,
+      "keep": [
+        "kilometer"
+      ],
+      "drop": [
+        "km"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "эта",
+      "best": "eta",
+      "bestConfidence": 1,
+      "worst": "eta",
+      "worstConfidence": 1,
+      "keep": [],
+      "drop": [
+        "eta"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "кг",
+      "best": "kilogram",
+      "bestConfidence": 0.7,
+      "worst": "kg",
+      "worstConfidence": 0.45,
+      "keep": [
+        "kg",
+        "kilogram"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "люди",
+      "best": "people",
+      "bestConfidence": 1,
+      "worst": "humans",
+      "worstConfidence": 0.8,
+      "keep": [
+        "people",
+        "humans"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "с",
+      "best": "with",
+      "bestConfidence": 0.98,
+      "worst": "below",
+      "worstConfidence": 0.64,
+      "keep": [
+        "with",
+        "from"
+      ],
+      "drop": [
+        "off",
+        "below",
+        "because of",
+        "since",
+        "for",
+        "about"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "по",
+      "best": "on",
+      "bestConfidence": 0.49,
+      "worst": "down",
+      "worstConfidence": 0.13,
+      "keep": [
+        "across",
+        "on",
+        "along",
+        "in",
+        "according to"
+      ],
+      "drop": [
+        "down",
+        "for",
+        "about"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "но",
+      "best": "but",
+      "bestConfidence": 0.99,
+      "worst": "noh",
+      "worstConfidence": 0.99,
+      "keep": [
+        "but",
+        "yet"
+      ],
+      "drop": [
+        "noh"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "свой",
+      "best": "one's",
+      "bestConfidence": 0.93,
+      "worst": "allied",
+      "worstConfidence": 0.29,
+      "keep": [
+        "one's"
+      ],
+      "drop": [
+        "my",
+        "his",
+        "her",
+        "allied",
+        "friendly",
+        "peculiar"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "весь",
+      "best": "all",
+      "bestConfidence": 0.71,
+      "worst": "singular",
+      "worstConfidence": 0.63,
+      "keep": [
+        "all",
+        "whole",
+        "entire"
+      ],
+      "drop": [
+        "singular",
+        "no",
+        "less",
+        "than",
+        "fewer"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "за",
+      "best": "for",
+      "bestConfidence": 0.85,
+      "worst": "instead of",
+      "worstConfidence": 0.15,
+      "keep": [
+        "for",
+        "by"
+      ],
+      "drop": [
+        "to",
+        "during",
+        "after",
+        "instead of",
+        "in favor of",
+        "about"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "о",
+      "best": "about",
+      "bestConfidence": 0.81,
+      "worst": "o",
+      "worstConfidence": 0.47,
+      "keep": [
+        "about"
+      ],
+      "drop": [
+        "o",
+        "oh",
+        "of",
+        "on",
+        "against",
+        "upon"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "если",
+      "best": "if",
+      "bestConfidence": 1,
+      "worst": "in case",
+      "worstConfidence": 0.94,
+      "keep": [
+        "if"
+      ],
+      "drop": [
+        "in case"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "бы",
+      "best": "subjunctive",
+      "bestConfidence": 0.27,
+      "worst": "conditional",
+      "worstConfidence": 0.02,
+      "keep": [],
+      "drop": [
+        "conditional",
+        "subjunctive"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "уже",
+      "best": "already",
+      "bestConfidence": 1,
+      "worst": "point",
+      "worstConfidence": 0.7,
+      "keep": [
+        "already",
+        "by now"
+      ],
+      "drop": [
+        "as of",
+        "now",
+        "by",
+        "then",
+        "that",
+        "point"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "до",
+      "best": "until",
+      "bestConfidence": 0.46,
+      "worst": "c",
+      "worstConfidence": 0.99,
+      "keep": [
+        "before",
+        "till",
+        "until"
+      ],
+      "drop": [
+        "with respect to",
+        "concerning",
+        "regarding",
+        "c"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "при",
+      "best": "at",
+      "bestConfidence": 0.77,
+      "worst": "time",
+      "worstConfidence": 0.97,
+      "keep": [
+        "with",
+        "during",
+        "at",
+        "by"
+      ],
+      "drop": [
+        "when",
+        "time"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ни",
+      "best": "no",
+      "bestConfidence": 0.3,
+      "worst": "nu",
+      "worstConfidence": 0.57,
+      "keep": [
+        "neither",
+        "nor"
+      ],
+      "drop": [
+        "whatever",
+        "however",
+        "any",
+        "no",
+        "nu"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "сам",
+      "best": "self",
+      "bestConfidence": 0.8,
+      "worst": "regional",
+      "worstConfidence": 0.98,
+      "keep": [
+        "self"
+      ],
+      "drop": [
+        "regional",
+        "alone"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "дело",
+      "best": "matter",
+      "bestConfidence": 0.74,
+      "worst": "science",
+      "worstConfidence": 0.59,
+      "keep": [
+        "affair",
+        "matter",
+        "concern",
+        "work",
+        "business"
+      ],
+      "drop": [
+        "art",
+        "science",
+        "deed"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "под",
+      "best": "under",
+      "bestConfidence": 1,
+      "worst": "approaching",
+      "worstConfidence": 0.48,
+      "keep": [
+        "under",
+        "below",
+        "beneath"
+      ],
+      "drop": [
+        "towards",
+        "to",
+        "approaching",
+        "slightly",
+        "less than"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "чем",
+      "best": "than",
+      "bestConfidence": 0.9,
+      "worst": "rather",
+      "worstConfidence": 0.47,
+      "keep": [
+        "than"
+      ],
+      "drop": [
+        "instead of",
+        "rather"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мир",
+      "best": "world",
+      "bestConfidence": 0.81,
+      "worst": "planet",
+      "worstConfidence": 0.71,
+      "keep": [
+        "peace",
+        "world"
+      ],
+      "drop": [
+        "universe",
+        "planet"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тоже",
+      "best": "also",
+      "bestConfidence": 0.53,
+      "worst": "nor",
+      "worstConfidence": 0.33,
+      "keep": [
+        "also",
+        "too",
+        "as well",
+        "likewise"
+      ],
+      "drop": [
+        "either",
+        "neither",
+        "nor"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "об",
+      "best": "about",
+      "bestConfidence": 0.95,
+      "worst": "against",
+      "worstConfidence": 0.24,
+      "keep": [
+        "about"
+      ],
+      "drop": [
+        "of",
+        "on",
+        "against",
+        "upon"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "сила",
+      "best": "strength",
+      "bestConfidence": 0.89,
+      "worst": "efficacy",
+      "worstConfidence": 0.94,
+      "keep": [
+        "strength",
+        "force",
+        "power",
+        "might",
+        "vigor"
+      ],
+      "drop": [
+        "intensity",
+        "efficacy",
+        "energy"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вид",
+      "best": "kind",
+      "bestConfidence": 0.48,
+      "worst": "air",
+      "worstConfidence": 0.54,
+      "keep": [
+        "look",
+        "appearance",
+        "sight",
+        "view",
+        "kind",
+        "sort"
+      ],
+      "drop": [
+        "looks",
+        "air"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "над",
+      "best": "above",
+      "bestConfidence": 0.22,
+      "worst": "over",
+      "worstConfidence": 0.32,
+      "keep": [
+        "above",
+        "over"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "путь",
+      "best": "path",
+      "bestConfidence": 0.57,
+      "worst": "means",
+      "worstConfidence": 0.36,
+      "keep": [
+        "way",
+        "path",
+        "road",
+        "track",
+        "journey"
+      ],
+      "drop": [
+        "line",
+        "means",
+        "trip"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "бог",
+      "best": "god",
+      "bestConfidence": 1,
+      "worst": "idol",
+      "worstConfidence": 0.97,
+      "keep": [
+        "god"
+      ],
+      "drop": [
+        "idol"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тема",
+      "best": "topic",
+      "bestConfidence": 0.88,
+      "worst": "thing",
+      "worstConfidence": 0.99,
+      "keep": [
+        "theme",
+        "subject",
+        "topic"
+      ],
+      "drop": [
+        "thing"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "труд",
+      "best": "work",
+      "bestConfidence": 0.64,
+      "worst": "shop",
+      "worstConfidence": 0.99,
+      "keep": [
+        "work",
+        "labor",
+        "labour",
+        "effort"
+      ],
+      "drop": [
+        "pains",
+        "shop",
+        "handicrafts"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "речь",
+      "best": "speech",
+      "bestConfidence": 0.95,
+      "worst": "word",
+      "worstConfidence": 0.88,
+      "keep": [
+        "speech",
+        "talk"
+      ],
+      "drop": [
+        "language",
+        "discourse",
+        "conversation",
+        "word"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "план",
+      "best": "plan",
+      "bestConfidence": 1,
+      "worst": "marijuana",
+      "worstConfidence": 0.93,
+      "keep": [
+        "plan",
+        "scheme"
+      ],
+      "drop": [
+        "draft",
+        "contrivance",
+        "target",
+        "figure",
+        "plane",
+        "marijuana"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "оба",
+      "best": "both",
+      "bestConfidence": 1,
+      "worst": "both",
+      "worstConfidence": 1,
+      "keep": [
+        "both"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "роль",
+      "best": "role",
+      "bestConfidence": 1,
+      "worst": "roll",
+      "worstConfidence": 0.86,
+      "keep": [
+        "role"
+      ],
+      "drop": [
+        "part",
+        "roll"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "рано",
+      "best": "early",
+      "bestConfidence": 1,
+      "worst": "early",
+      "worstConfidence": 1,
+      "keep": [
+        "early"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "член",
+      "best": "member",
+      "bestConfidence": 0.93,
+      "worst": "grammar",
+      "worstConfidence": 0.47,
+      "keep": [
+        "part",
+        "member",
+        "penis"
+      ],
+      "drop": [
+        "limb",
+        "grammar",
+        "mathematics",
+        "term"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "сайт",
+      "best": "website",
+      "bestConfidence": 0.84,
+      "worst": "biochemistry",
+      "worstConfidence": 1,
+      "keep": [
+        "website",
+        "site"
+      ],
+      "drop": [
+        "biochemistry"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "чуть",
+      "best": "a little",
+      "bestConfidence": 0.8,
+      "worst": "hardly",
+      "worstConfidence": 0.3,
+      "keep": [
+        "a little",
+        "slightly",
+        "hardly",
+        "barely",
+        "almost",
+        "nearly"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "небо",
+      "best": "sky",
+      "bestConfidence": 1,
+      "worst": "air",
+      "worstConfidence": 0.3,
+      "keep": [
+        "sky"
+      ],
+      "drop": [
+        "heaven",
+        "firmament",
+        "air"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "туда",
+      "best": "there",
+      "bestConfidence": 0.99,
+      "worst": "thither",
+      "worstConfidence": 0.94,
+      "keep": [
+        "there"
+      ],
+      "drop": [
+        "thither"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "шаг",
+      "best": "step",
+      "bestConfidence": 1,
+      "worst": "initiative",
+      "worstConfidence": 0.75,
+      "keep": [
+        "step",
+        "move",
+        "pace",
+        "stride"
+      ],
+      "drop": [
+        "action",
+        "initiative",
+        "gait",
+        "walking"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "море",
+      "best": "sea",
+      "bestConfidence": 0.99,
+      "worst": "astronomy",
+      "worstConfidence": 0.91,
+      "keep": [
+        "sea"
+      ],
+      "drop": [
+        "astronomy",
+        "mare"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "союз",
+      "best": "union",
+      "bestConfidence": 0.62,
+      "worst": "grammar",
+      "worstConfidence": 0.92,
+      "keep": [
+        "union",
+        "alliance",
+        "league"
+      ],
+      "drop": [
+        "soviet",
+        "confederation",
+        "confederacy",
+        "grammar",
+        "conjunction"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "лес",
+      "best": "forest",
+      "bestConfidence": 1,
+      "worst": "falsework",
+      "worstConfidence": 0.45,
+      "keep": [
+        "forest",
+        "woods"
+      ],
+      "drop": [
+        "lumber",
+        "timber",
+        "scaffolding",
+        "scaffold",
+        "trestle",
+        "falsework"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ум",
+      "best": "mind",
+      "bestConfidence": 0.86,
+      "worst": "cleverness",
+      "worstConfidence": 0.25,
+      "keep": [
+        "mind",
+        "intellect",
+        "brains",
+        "reason"
+      ],
+      "drop": [
+        "cleverness",
+        "wit"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "река",
+      "best": "river",
+      "bestConfidence": 1,
+      "worst": "stream",
+      "worstConfidence": 0.89,
+      "keep": [
+        "river"
+      ],
+      "drop": [
+        "stream"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "зал",
+      "best": "hall",
+      "bestConfidence": 0.86,
+      "worst": "living room",
+      "worstConfidence": 0.51,
+      "keep": [
+        "hall"
+      ],
+      "drop": [
+        "living room",
+        "gym"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "курс",
+      "best": "course",
+      "bestConfidence": 0.99,
+      "worst": "year",
+      "worstConfidence": 0.22,
+      "keep": [
+        "course",
+        "exchange rate"
+      ],
+      "drop": [
+        "year",
+        "aviation",
+        "nautical",
+        "vector",
+        "line",
+        "policy"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "враг",
+      "best": "enemy",
+      "bestConfidence": 1,
+      "worst": "foe",
+      "worstConfidence": 0.59,
+      "keep": [
+        "enemy",
+        "foe"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "угол",
+      "best": "corner",
+      "bestConfidence": 0.76,
+      "worst": "dwelling",
+      "worstConfidence": 0.71,
+      "keep": [
+        "corner",
+        "angle"
+      ],
+      "drop": [
+        "dwelling",
+        "quarters"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "клуб",
+      "best": "club",
+      "bestConfidence": 0.99,
+      "worst": "cloud",
+      "worstConfidence": 0.24,
+      "keep": [
+        "club"
+      ],
+      "drop": [
+        "cloud",
+        "puff",
+        "swarm",
+        "lump",
+        "ball",
+        "clubhouse",
+        "nightclub"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вниз",
+      "best": "downwards",
+      "bestConfidence": 1,
+      "worst": "downstairs",
+      "worstConfidence": 0.93,
+      "keep": [
+        "downwards"
+      ],
+      "drop": [
+        "downstairs"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "чего",
+      "best": "what",
+      "bestConfidence": 0.8,
+      "worst": "why",
+      "worstConfidence": 0.27,
+      "keep": [],
+      "drop": [
+        "what for",
+        "why",
+        "what"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "лист",
+      "best": "leaf",
+      "bestConfidence": 0.75,
+      "worst": "list",
+      "worstConfidence": 0.71,
+      "keep": [
+        "leaf",
+        "sheet",
+        "page"
+      ],
+      "drop": [
+        "certificate",
+        "deed",
+        "list",
+        "baking tray",
+        "sheet pan"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "бить",
+      "best": "beat",
+      "bestConfidence": 1,
+      "worst": "churn",
+      "worstConfidence": 0.31,
+      "keep": [
+        "beat"
+      ],
+      "drop": [
+        "chime",
+        "churn"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ясно",
+      "best": "clearly",
+      "bestConfidence": 0.97,
+      "worst": "okay",
+      "worstConfidence": 0.18,
+      "keep": [
+        "clearly",
+        "distinctly",
+        "evidently"
+      ],
+      "drop": [
+        "brightly",
+        "finely",
+        "limpidly",
+        "okay",
+        "i see"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "сад",
+      "best": "garden",
+      "bestConfidence": 1,
+      "worst": "zoology",
+      "worstConfidence": 0.86,
+      "keep": [
+        "garden"
+      ],
+      "drop": [
+        "orchard",
+        "botany",
+        "zoology",
+        "kindergarten"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "чей",
+      "best": "whose",
+      "bestConfidence": 1,
+      "worst": "whose",
+      "worstConfidence": 1,
+      "keep": [
+        "whose"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "вес",
+      "best": "weight",
+      "bestConfidence": 1,
+      "worst": "hanging",
+      "worstConfidence": 0.46,
+      "keep": [
+        "weight"
+      ],
+      "drop": [
+        "influence",
+        "authority",
+        "importance",
+        "hanging",
+        "suspended",
+        "balanced"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вкус",
+      "best": "taste",
+      "bestConfidence": 0.98,
+      "worst": "fancy",
+      "worstConfidence": 0.79,
+      "keep": [
+        "taste",
+        "flavour",
+        "flavor"
+      ],
+      "drop": [
+        "fancy",
+        "style",
+        "manner"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "газ",
+      "best": "gas",
+      "bestConfidence": 0.97,
+      "worst": "gossamer",
+      "worstConfidence": 0.59,
+      "keep": [
+        "gas",
+        "natural gas"
+      ],
+      "drop": [
+        "gas pedal",
+        "throttle",
+        "wind",
+        "vodka",
+        "gauze",
+        "gossamer"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ящик",
+      "best": "box",
+      "bestConfidence": 0.86,
+      "worst": "derogatory",
+      "worstConfidence": 0.97,
+      "keep": [
+        "box",
+        "case",
+        "drawer"
+      ],
+      "drop": [
+        "chest",
+        "derogatory",
+        "idiot box",
+        "boob tube",
+        "tv set"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "зло",
+      "best": "evil",
+      "bestConfidence": 0.94,
+      "worst": "rage",
+      "worstConfidence": 0.34,
+      "keep": [
+        "evil",
+        "bad",
+        "harm"
+      ],
+      "drop": [
+        "wrong",
+        "malice",
+        "rage",
+        "anger",
+        "grudge"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "диск",
+      "best": "disk",
+      "bestConfidence": 0.83,
+      "worst": "sports",
+      "worstConfidence": 0.99,
+      "keep": [
+        "disk",
+        "disc"
+      ],
+      "drop": [
+        "sports",
+        "discus",
+        "platter",
+        "cd",
+        "compact disc"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "смех",
+      "best": "laughter",
+      "bestConfidence": 0.63,
+      "worst": "laugh",
+      "worstConfidence": 0.58,
+      "keep": [
+        "laugh",
+        "laughter"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "мост",
+      "best": "bridge",
+      "bestConfidence": 1,
+      "worst": "dentistry",
+      "worstConfidence": 0.26,
+      "keep": [
+        "bridge"
+      ],
+      "drop": [
+        "dentistry",
+        "prosthesis",
+        "axle",
+        "gymnastics",
+        "dance",
+        "backbend"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "луна",
+      "best": "moon",
+      "bestConfidence": 1,
+      "worst": "earth",
+      "worstConfidence": 0.99,
+      "keep": [
+        "moon"
+      ],
+      "drop": [
+        "earth"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "плюс",
+      "best": "plus",
+      "bestConfidence": 0.95,
+      "worst": "sign",
+      "worstConfidence": 0.68,
+      "keep": [
+        "plus"
+      ],
+      "drop": [
+        "sign",
+        "advantage"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "парк",
+      "best": "park",
+      "bestConfidence": 1,
+      "worst": "fleet",
+      "worstConfidence": 0.62,
+      "keep": [
+        "park"
+      ],
+      "drop": [
+        "yard",
+        "depot",
+        "fleet",
+        "stock"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "кот",
+      "best": "tomcat",
+      "bestConfidence": 1,
+      "worst": "tomcat",
+      "worstConfidence": 1,
+      "keep": [],
+      "drop": [
+        "tomcat"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "офис",
+      "best": "office",
+      "bestConfidence": 1,
+      "worst": "office",
+      "worstConfidence": 1,
+      "keep": [
+        "office"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "шар",
+      "best": "ball",
+      "bestConfidence": 0.96,
+      "worst": "mathematics",
+      "worstConfidence": 0.96,
+      "keep": [
+        "ball",
+        "sphere"
+      ],
+      "drop": [
+        "solid",
+        "mathematics",
+        "balloon"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "роза",
+      "best": "rose",
+      "bestConfidence": 1,
+      "worst": "complexion",
+      "worstConfidence": 0.57,
+      "keep": [
+        "rose"
+      ],
+      "drop": [
+        "colour",
+        "color",
+        "complexion"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ниже",
+      "best": "below",
+      "bestConfidence": 0.98,
+      "worst": "shorter",
+      "worstConfidence": 0.99,
+      "keep": [
+        "below",
+        "beneath",
+        "under",
+        "lower",
+        "down"
+      ],
+      "drop": [
+        "shorter"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мода",
+      "best": "fashion",
+      "bestConfidence": 0.98,
+      "worst": "statistics",
+      "worstConfidence": 0.97,
+      "keep": [
+        "fashion",
+        "vogue"
+      ],
+      "drop": [
+        "habit",
+        "statistics",
+        "mode"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "пояс",
+      "best": "belt",
+      "bestConfidence": 1,
+      "worst": "flange",
+      "worstConfidence": 0.83,
+      "keep": [
+        "belt",
+        "girdle",
+        "band",
+        "waistband"
+      ],
+      "drop": [
+        "zone",
+        "region",
+        "flange",
+        "collar"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "блин",
+      "best": "pancake",
+      "bestConfidence": 0.91,
+      "worst": "bodybuilding",
+      "worstConfidence": 0.7,
+      "keep": [
+        "pancake",
+        "crepe"
+      ],
+      "drop": [
+        "blini",
+        "disc",
+        "plate",
+        "computing",
+        "cd",
+        "bodybuilding"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "течь",
+      "best": "flow",
+      "bestConfidence": 0.92,
+      "worst": "move",
+      "worstConfidence": 0.82,
+      "keep": [
+        "flow",
+        "stream",
+        "leak"
+      ],
+      "drop": [
+        "run",
+        "move"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "юмор",
+      "best": "humour",
+      "bestConfidence": 1,
+      "worst": "humour",
+      "worstConfidence": 1,
+      "keep": [
+        "humour"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "лифт",
+      "best": "elevator",
+      "bestConfidence": 0.23,
+      "worst": "lift",
+      "worstConfidence": 0.33,
+      "keep": [
+        "elevator",
+        "lift"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "пот",
+      "best": "sweat",
+      "bestConfidence": 1,
+      "worst": "perspiration",
+      "worstConfidence": 0.9,
+      "keep": [
+        "sweat",
+        "perspiration"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "меню",
+      "best": "menu",
+      "bestConfidence": 1,
+      "worst": "menu",
+      "worstConfidence": 1,
+      "keep": [
+        "menu"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "жара",
+      "best": "heat",
+      "bestConfidence": 0.92,
+      "worst": "hot",
+      "worstConfidence": 0.73,
+      "keep": [
+        "heat",
+        "hot spell"
+      ],
+      "drop": [
+        "hot"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "гриб",
+      "best": "mushroom",
+      "bestConfidence": 0.98,
+      "worst": "eukaryotic",
+      "worstConfidence": 1,
+      "keep": [
+        "fungus",
+        "mushroom"
+      ],
+      "drop": [
+        "eukaryotic"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "балл",
+      "best": "point",
+      "bestConfidence": 0.46,
+      "worst": "grade",
+      "worstConfidence": 0.79,
+      "keep": [
+        "point",
+        "mark",
+        "grade",
+        "score"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "каша",
+      "best": "porridge",
+      "bestConfidence": 1,
+      "worst": "confusion",
+      "worstConfidence": 0.86,
+      "keep": [
+        "porridge",
+        "gruel",
+        "mush"
+      ],
+      "drop": [
+        "mash",
+        "muddle",
+        "mess",
+        "confusion"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "фунт",
+      "best": "pound",
+      "bestConfidence": 1,
+      "worst": "numismatics",
+      "worstConfidence": 0.99,
+      "keep": [
+        "pound"
+      ],
+      "drop": [
+        "numismatics"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мм",
+      "best": "millimeter",
+      "bestConfidence": 0.93,
+      "worst": "mm",
+      "worstConfidence": 0.8,
+      "keep": [
+        "millimeter"
+      ],
+      "drop": [
+        "mm"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тем",
+      "best": "the",
+      "bestConfidence": 1,
+      "worst": "the",
+      "worstConfidence": 1,
+      "keep": [],
+      "drop": [
+        "the"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "жир",
+      "best": "fat",
+      "bestConfidence": 1,
+      "worst": "animal",
+      "worstConfidence": 0.79,
+      "keep": [
+        "fat",
+        "grease"
+      ],
+      "drop": [
+        "oil",
+        "body",
+        "animal"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "рейс",
+      "best": "flight",
+      "bestConfidence": 1,
+      "worst": "voyage",
+      "worstConfidence": 0.41,
+      "keep": [
+        "flight"
+      ],
+      "drop": [
+        "trip",
+        "voyage"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "кран",
+      "best": "faucet",
+      "bestConfidence": 0.44,
+      "worst": "engineering",
+      "worstConfidence": 0.98,
+      "keep": [
+        "valve",
+        "faucet",
+        "tap",
+        "spigot"
+      ],
+      "drop": [
+        "engineering",
+        "ball valve",
+        "plug valve",
+        "crane"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "бег",
+      "best": "run",
+      "bestConfidence": 1,
+      "worst": "sports",
+      "worstConfidence": 0.34,
+      "keep": [
+        "run"
+      ],
+      "drop": [
+        "sports",
+        "athletics",
+        "track and field"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "холл",
+      "best": "hall",
+      "bestConfidence": 0.96,
+      "worst": "vestibule",
+      "worstConfidence": 0.38,
+      "keep": [
+        "lobby",
+        "foyer",
+        "hall",
+        "vestibule"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "см",
+      "best": "centimeter",
+      "bestConfidence": 0.63,
+      "worst": "cm",
+      "worstConfidence": 0.33,
+      "keep": [
+        "cm",
+        "centimeter"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "пена",
+      "best": "foam",
+      "bestConfidence": 1,
+      "worst": "spume",
+      "worstConfidence": 0.37,
+      "keep": [
+        "foam",
+        "froth",
+        "lather"
+      ],
+      "drop": [
+        "spume",
+        "scum"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "цирк",
+      "best": "circus",
+      "bestConfidence": 0.98,
+      "worst": "geology",
+      "worstConfidence": 0.95,
+      "keep": [
+        "circus"
+      ],
+      "drop": [
+        "geology",
+        "cirque"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "крем",
+      "best": "cream",
+      "bestConfidence": 0.98,
+      "worst": "creme",
+      "worstConfidence": 0.82,
+      "keep": [
+        "cream",
+        "creme"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "купе",
+      "best": "compartment",
+      "bestConfidence": 0.95,
+      "worst": "rail transport",
+      "worstConfidence": 0.7,
+      "keep": [
+        "compartment"
+      ],
+      "drop": [
+        "rail transport",
+        "couchette",
+        "coupe"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "чек",
+      "best": "receipt",
+      "bestConfidence": 0.26,
+      "worst": "bill",
+      "worstConfidence": 0.31,
+      "keep": [
+        "cheque",
+        "receipt"
+      ],
+      "drop": [
+        "check",
+        "bill"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "корм",
+      "best": "feed",
+      "bestConfidence": 0.88,
+      "worst": "act",
+      "worstConfidence": 0.92,
+      "keep": [
+        "feed",
+        "fodder"
+      ],
+      "drop": [
+        "food",
+        "animal",
+        "act"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "шарф",
+      "best": "scarf",
+      "bestConfidence": 1,
+      "worst": "scarf",
+      "worstConfidence": 1,
+      "keep": [
+        "scarf"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "гол",
+      "best": "goal",
+      "bestConfidence": 0.99,
+      "worst": "sports",
+      "worstConfidence": 0.97,
+      "keep": [
+        "goal"
+      ],
+      "drop": [
+        "sports"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "борщ",
+      "best": "borscht",
+      "bestConfidence": 0.98,
+      "worst": "hogweed",
+      "worstConfidence": 1,
+      "keep": [
+        "borscht",
+        "borsht",
+        "borshch",
+        "borsch"
+      ],
+      "drop": [
+        "hogweed"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "бинт",
+      "best": "bandage",
+      "bestConfidence": 1,
+      "worst": "bandage",
+      "worstConfidence": 1,
+      "keep": [
+        "bandage"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "зонт",
+      "best": "umbrella",
+      "bestConfidence": 1,
+      "worst": "furnace",
+      "worstConfidence": 0.99,
+      "keep": [
+        "umbrella"
+      ],
+      "drop": [
+        "sunshade",
+        "parasol",
+        "canopy",
+        "awning",
+        "cupola",
+        "hood",
+        "furnace"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "дыня",
+      "best": "melon",
+      "bestConfidence": 1,
+      "worst": "melon",
+      "worstConfidence": 1,
+      "keep": [
+        "melon"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "же",
+      "best": "but",
+      "bestConfidence": 0.44,
+      "worst": "very",
+      "worstConfidence": 0.52,
+      "keep": [
+        "but"
+      ],
+      "drop": [
+        "and",
+        "on the other hand",
+        "whereas",
+        "as for",
+        "as to",
+        "very",
+        "same"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "даже",
+      "best": "even",
+      "bestConfidence": 1,
+      "worst": "even",
+      "worstConfidence": 1,
+      "keep": [
+        "even"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "ли",
+      "best": "if",
+      "bestConfidence": 0.28,
+      "worst": "if",
+      "worstConfidence": 0.12,
+      "keep": [
+        "whether",
+        "if"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "хотя",
+      "best": "although",
+      "bestConfidence": 0.92,
+      "worst": "if only",
+      "worstConfidence": 0.72,
+      "keep": [
+        "although",
+        "though"
+      ],
+      "drop": [
+        "at least",
+        "even",
+        "if only"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "пора",
+      "best": "time",
+      "bestConfidence": 0.84,
+      "worst": "pore",
+      "worstConfidence": 0.94,
+      "keep": [
+        "time"
+      ],
+      "drop": [
+        "season",
+        "weather",
+        "period",
+        "pore"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "цель",
+      "best": "goal",
+      "bestConfidence": 0.95,
+      "worst": "destination",
+      "worstConfidence": 0.58,
+      "keep": [
+        "goal",
+        "target",
+        "aim",
+        "end",
+        "purpose",
+        "destination"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "тело",
+      "best": "body",
+      "bestConfidence": 1,
+      "worst": "physics",
+      "worstConfidence": 0.99,
+      "keep": [
+        "body"
+      ],
+      "drop": [
+        "physics"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "идея",
+      "best": "idea",
+      "bestConfidence": 1,
+      "worst": "thought",
+      "worstConfidence": 0.5,
+      "keep": [
+        "idea",
+        "thought",
+        "notion"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "век",
+      "best": "century",
+      "bestConfidence": 0.92,
+      "worst": "geology",
+      "worstConfidence": 0.99,
+      "keep": [
+        "century",
+        "age",
+        "epoch",
+        "era",
+        "period"
+      ],
+      "drop": [
+        "lifetime",
+        "geology"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "опыт",
+      "best": "experience",
+      "bestConfidence": 0.99,
+      "worst": "experiment",
+      "worstConfidence": 0.87,
+      "keep": [
+        "experience"
+      ],
+      "drop": [
+        "experiment"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тип",
+      "best": "type",
+      "bestConfidence": 0.99,
+      "worst": "derogatory",
+      "worstConfidence": 0.42,
+      "keep": [
+        "type"
+      ],
+      "drop": [
+        "model",
+        "character",
+        "derogatory",
+        "man",
+        "guy",
+        "zoology",
+        "phylum"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ряд",
+      "best": "row",
+      "bestConfidence": 0.99,
+      "worst": "phonetics",
+      "worstConfidence": 1,
+      "keep": [
+        "row",
+        "line",
+        "rank",
+        "series"
+      ],
+      "drop": [
+        "tier",
+        "a number of",
+        "several",
+        "phonetics"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "пара",
+      "best": "pair",
+      "bestConfidence": 0.98,
+      "worst": "second",
+      "worstConfidence": 0.5,
+      "keep": [
+        "pair",
+        "couple"
+      ],
+      "drop": [
+        "other",
+        "second",
+        "fellow",
+        "match",
+        "partner",
+        "equal"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "рост",
+      "best": "growth",
+      "bestConfidence": 0.69,
+      "worst": "stature",
+      "worstConfidence": 0.57,
+      "keep": [
+        "growth",
+        "increase",
+        "rise",
+        "height",
+        "stature"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "гора",
+      "best": "mountain",
+      "bestConfidence": 1,
+      "worst": "heap",
+      "worstConfidence": 0.17,
+      "keep": [
+        "mountain"
+      ],
+      "drop": [
+        "heap",
+        "pile"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "удар",
+      "best": "blow",
+      "bestConfidence": 0.39,
+      "worst": "quality",
+      "worstConfidence": 0.53,
+      "keep": [
+        "hit",
+        "blow",
+        "strike",
+        "impact"
+      ],
+      "drop": [
+        "kick",
+        "sound",
+        "quality",
+        "ability"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вера",
+      "best": "faith",
+      "bestConfidence": 0.97,
+      "worst": "religion",
+      "worstConfidence": 0.36,
+      "keep": [
+        "belief",
+        "faith",
+        "trust"
+      ],
+      "drop": [
+        "religion",
+        "creed"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "двор",
+      "best": "yard",
+      "bestConfidence": 0.75,
+      "worst": "royal family",
+      "worstConfidence": 0.97,
+      "keep": [
+        "yard",
+        "courtyard"
+      ],
+      "drop": [
+        "homestead",
+        "court",
+        "royal family"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "губа",
+      "best": "lip",
+      "bestConfidence": 1,
+      "worst": "certain",
+      "worstConfidence": 0.61,
+      "keep": [
+        "lip"
+      ],
+      "drop": [
+        "anatomy",
+        "tip",
+        "certain",
+        "instrument",
+        "botany",
+        "polypore",
+        "zoology"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "поэт",
+      "best": "poet",
+      "bestConfidence": 1,
+      "worst": "poet",
+      "worstConfidence": 1,
+      "keep": [
+        "poet"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "мозг",
+      "best": "brain",
+      "bestConfidence": 1,
+      "worst": "anatomy",
+      "worstConfidence": 0.8,
+      "keep": [
+        "brain",
+        "brains"
+      ],
+      "drop": [
+        "anatomy",
+        "marrow"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тень",
+      "best": "shadow",
+      "bestConfidence": 1,
+      "worst": "atom",
+      "worstConfidence": 0.98,
+      "keep": [
+        "shade",
+        "shadow"
+      ],
+      "drop": [
+        "vestige",
+        "atom",
+        "hint",
+        "eye shadow",
+        "apparition",
+        "phantom"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "секс",
+      "best": "sex",
+      "bestConfidence": 1,
+      "worst": "sex",
+      "worstConfidence": 1,
+      "keep": [
+        "sex"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "брак",
+      "best": "marriage",
+      "bestConfidence": 0.83,
+      "worst": "goods",
+      "worstConfidence": 0.67,
+      "keep": [
+        "marriage",
+        "matrimony",
+        "flaw",
+        "defect"
+      ],
+      "drop": [
+        "defective",
+        "goods",
+        "waste",
+        "spoilage"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "шум",
+      "best": "noise",
+      "bestConfidence": 0.99,
+      "worst": "static",
+      "worstConfidence": 0.5,
+      "keep": [
+        "noise",
+        "uproar",
+        "din",
+        "clamour"
+      ],
+      "drop": [
+        "static",
+        "sound",
+        "murmur",
+        "blare"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "шея",
+      "best": "neck",
+      "bestConfidence": 1,
+      "worst": "anatomy",
+      "worstConfidence": 0.99,
+      "keep": [
+        "neck"
+      ],
+      "drop": [
+        "anatomy"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "кадр",
+      "best": "frame",
+      "bestConfidence": 0.7,
+      "worst": "military",
+      "worstConfidence": 0.75,
+      "keep": [
+        "still",
+        "shot",
+        "frame"
+      ],
+      "drop": [
+        "scene",
+        "military",
+        "cadre"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "слух",
+      "best": "hearing",
+      "bestConfidence": 0.97,
+      "worst": "sign",
+      "worstConfidence": 0.91,
+      "keep": [
+        "hearing",
+        "rumor"
+      ],
+      "drop": [
+        "ear",
+        "hearsay",
+        "news",
+        "sign"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "файл",
+      "best": "file",
+      "bestConfidence": 1,
+      "worst": "punched pocket",
+      "worstConfidence": 0.62,
+      "keep": [
+        "file"
+      ],
+      "drop": [
+        "computing",
+        "punched pocket"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "дума",
+      "best": "thought",
+      "bestConfidence": 0.97,
+      "worst": "duma",
+      "worstConfidence": 0.83,
+      "keep": [
+        "thought"
+      ],
+      "drop": [
+        "meditation",
+        "duma"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "спор",
+      "best": "argument",
+      "bestConfidence": 0.82,
+      "worst": "spore",
+      "worstConfidence": 0.71,
+      "keep": [
+        "dispute",
+        "controversy",
+        "argument",
+        "quarrel"
+      ],
+      "drop": [
+        "bet",
+        "wager",
+        "law",
+        "spore"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "дно",
+      "best": "bottom",
+      "bestConfidence": 1,
+      "worst": "hard",
+      "worstConfidence": 0.52,
+      "keep": [
+        "bottom"
+      ],
+      "drop": [
+        "floor",
+        "bed",
+        "hard",
+        "surface",
+        "container",
+        "society"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "конь",
+      "best": "horse",
+      "bestConfidence": 1,
+      "worst": "male",
+      "worstConfidence": 0.39,
+      "keep": [
+        "horse",
+        "steed"
+      ],
+      "drop": [
+        "male",
+        "gymnastics",
+        "chess",
+        "knight"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "злой",
+      "best": "angry",
+      "bestConfidence": 0.85,
+      "worst": "malevolent",
+      "worstConfidence": 0.38,
+      "keep": [
+        "wicked",
+        "evil",
+        "ill-natured",
+        "malicious",
+        "malevolent",
+        "spiteful",
+        "angry"
+      ],
+      "drop": [
+        "enraged"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "лоб",
+      "best": "forehead",
+      "bestConfidence": 1,
+      "worst": "adult",
+      "worstConfidence": 1,
+      "keep": [
+        "forehead"
+      ],
+      "drop": [
+        "adult"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "жаль",
+      "best": "pity",
+      "bestConfidence": 0.96,
+      "worst": "bite",
+      "worstConfidence": 0.97,
+      "keep": [
+        "pity"
+      ],
+      "drop": [
+        "pities",
+        "sorry",
+        "bite",
+        "sting"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "лечь",
+      "best": "lie down",
+      "bestConfidence": 1,
+      "worst": "computing",
+      "worstConfidence": 0.83,
+      "keep": [
+        "lie down"
+      ],
+      "drop": [
+        "fall",
+        "cover",
+        "flow",
+        "adhere",
+        "nautical",
+        "heave",
+        "computing"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ой",
+      "best": "oh",
+      "bestConfidence": 0.59,
+      "worst": "oops",
+      "worstConfidence": 0.7,
+      "keep": [
+        "oh",
+        "oops",
+        "ouch"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "щека",
+      "best": "cheek",
+      "bestConfidence": 1,
+      "worst": "stock",
+      "worstConfidence": 0.88,
+      "keep": [
+        "cheek"
+      ],
+      "drop": [
+        "mouth",
+        "jaw",
+        "side",
+        "sidepiece",
+        "stock"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вуз",
+      "best": "university",
+      "bestConfidence": 0.95,
+      "worst": "college",
+      "worstConfidence": 0.51,
+      "keep": [
+        "university",
+        "institute"
+      ],
+      "drop": [
+        "college"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "юный",
+      "best": "young",
+      "bestConfidence": 0.95,
+      "worst": "juvenile",
+      "worstConfidence": 0.85,
+      "keep": [
+        "young",
+        "youthful",
+        "juvenile"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "сбор",
+      "best": "collection",
+      "bestConfidence": 0.58,
+      "worst": "receipts",
+      "worstConfidence": 0.6,
+      "keep": [
+        "collection",
+        "accumulation",
+        "gathering",
+        "harvest",
+        "levy",
+        "tax",
+        "duty"
+      ],
+      "drop": [
+        "receipts"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "темп",
+      "best": "tempo",
+      "bestConfidence": 0.31,
+      "worst": "music",
+      "worstConfidence": 0.97,
+      "keep": [
+        "rate",
+        "speed",
+        "pace",
+        "tempo"
+      ],
+      "drop": [
+        "music"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "пыль",
+      "best": "dust",
+      "bestConfidence": 1,
+      "worst": "dust",
+      "worstConfidence": 1,
+      "keep": [
+        "dust"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "жест",
+      "best": "gesture",
+      "bestConfidence": 1,
+      "worst": "gesture",
+      "worstConfidence": 1,
+      "keep": [
+        "gesture"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "дача",
+      "best": "country house",
+      "bestConfidence": 0.81,
+      "worst": "giving",
+      "worstConfidence": 0.93,
+      "keep": [
+        "country house"
+      ],
+      "drop": [
+        "dacha",
+        "villa",
+        "allotment",
+        "giving"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "куст",
+      "best": "bush",
+      "bestConfidence": 0.94,
+      "worst": "wellsite",
+      "worstConfidence": 1,
+      "keep": [
+        "bush",
+        "shrub"
+      ],
+      "drop": [
+        "wellsite"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "бар",
+      "best": "bar",
+      "bestConfidence": 1,
+      "worst": "meteorology",
+      "worstConfidence": 0.64,
+      "keep": [
+        "bar"
+      ],
+      "drop": [
+        "saloon",
+        "snack bar",
+        "technical",
+        "jib",
+        "sandbar",
+        "meteorology"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "рана",
+      "best": "wound",
+      "bestConfidence": 1,
+      "worst": "heartache",
+      "worstConfidence": 0.62,
+      "keep": [
+        "wound",
+        "injury"
+      ],
+      "drop": [
+        "suffering",
+        "heartache"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мышь",
+      "best": "mouse",
+      "bestConfidence": 1,
+      "worst": "computing",
+      "worstConfidence": 0.99,
+      "keep": [
+        "mouse"
+      ],
+      "drop": [
+        "computing"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "рок",
+      "best": "rock music",
+      "bestConfidence": 0.49,
+      "worst": "rock music",
+      "worstConfidence": 0.09,
+      "keep": [
+        "rock music"
+      ],
+      "drop": [
+        "fate",
+        "doom"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "матч",
+      "best": "match",
+      "bestConfidence": 0.99,
+      "worst": "sports",
+      "worstConfidence": 0.95,
+      "keep": [
+        "match"
+      ],
+      "drop": [
+        "sports"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "флаг",
+      "best": "flag",
+      "bestConfidence": 1,
+      "worst": "programming",
+      "worstConfidence": 0.99,
+      "keep": [
+        "flag",
+        "banner"
+      ],
+      "drop": [
+        "programming"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "вор",
+      "best": "thief",
+      "bestConfidence": 1,
+      "worst": "vore",
+      "worstConfidence": 0.96,
+      "keep": [
+        "thief"
+      ],
+      "drop": [
+        "traitor",
+        "apostate",
+        "outlaw",
+        "vore"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "пляж",
+      "best": "beach",
+      "bestConfidence": 1,
+      "worst": "beach",
+      "worstConfidence": 1,
+      "keep": [
+        "beach"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "ритм",
+      "best": "rhythm",
+      "bestConfidence": 1,
+      "worst": "physiology",
+      "worstConfidence": 0.95,
+      "keep": [
+        "rhythm"
+      ],
+      "drop": [
+        "physiology",
+        "heartbeat"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "мэр",
+      "best": "mayor",
+      "bestConfidence": 1,
+      "worst": "mayor",
+      "worstConfidence": 1,
+      "keep": [
+        "mayor"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "шоу",
+      "best": "show",
+      "bestConfidence": 1,
+      "worst": "show",
+      "worstConfidence": 1,
+      "keep": [
+        "show"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "стих",
+      "best": "poem",
+      "bestConfidence": 0.79,
+      "worst": "biblical",
+      "worstConfidence": 0.67,
+      "keep": [
+        "verse",
+        "poem"
+      ],
+      "drop": [
+        "line",
+        "poetry",
+        "biblical",
+        "poems",
+        "work",
+        "religious"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "дыра",
+      "best": "hole",
+      "bestConfidence": 1,
+      "worst": "out-of-the-way",
+      "worstConfidence": 0.44,
+      "keep": [
+        "hole"
+      ],
+      "drop": [
+        "backwater",
+        "out-of-the-way",
+        "place"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "духи",
+      "best": "perfume",
+      "bestConfidence": 1,
+      "worst": "perfume",
+      "worstConfidence": 1,
+      "keep": [
+        "perfume"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "яма",
+      "best": "pit",
+      "bestConfidence": 0.63,
+      "worst": "yoga",
+      "worstConfidence": 0.92,
+      "keep": [
+        "pit",
+        "hole"
+      ],
+      "drop": [
+        "dungeon",
+        "yoga",
+        "yama"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тур",
+      "best": "tour",
+      "bestConfidence": 0.84,
+      "worst": "aurochs",
+      "worstConfidence": 0.8,
+      "keep": [
+        "tour"
+      ],
+      "drop": [
+        "round",
+        "turn",
+        "cairn",
+        "aurochs",
+        "tur"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "туча",
+      "best": "cloud",
+      "bestConfidence": 0.42,
+      "worst": "meteorology",
+      "worstConfidence": 0.85,
+      "keep": [
+        "rain cloud",
+        "cloud"
+      ],
+      "drop": [
+        "meteorology",
+        "multitude",
+        "host"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "сорт",
+      "best": "sort",
+      "bestConfidence": 0.44,
+      "worst": "sort",
+      "worstConfidence": 0.24,
+      "keep": [
+        "sort",
+        "kind",
+        "variety",
+        "grade",
+        "cultivar"
+      ],
+      "drop": [
+        "quality",
+        "brand"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "плащ",
+      "best": "cloak",
+      "bestConfidence": 0.69,
+      "worst": "poncho",
+      "worstConfidence": 0.33,
+      "keep": [
+        "raincoat",
+        "overcoat",
+        "cloak"
+      ],
+      "drop": [
+        "poncho"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "баня",
+      "best": "bath",
+      "bestConfidence": 0.47,
+      "worst": "banya",
+      "worstConfidence": 0.74,
+      "keep": [
+        "bath",
+        "steam bath"
+      ],
+      "drop": [
+        "banya",
+        "turkish bath"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "хрен",
+      "best": "horseradish",
+      "bestConfidence": 0.97,
+      "worst": "derogatory",
+      "worstConfidence": 0.87,
+      "keep": [
+        "horseradish"
+      ],
+      "drop": [
+        "minced oath",
+        "prick",
+        "crap",
+        "hell",
+        "derogatory",
+        "asshole",
+        "old fart"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "змея",
+      "best": "snake",
+      "bestConfidence": 1,
+      "worst": "crafty",
+      "worstConfidence": 0.5,
+      "keep": [
+        "snake",
+        "serpent"
+      ],
+      "drop": [
+        "crafty",
+        "sneaky"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "дура",
+      "best": "fool",
+      "bestConfidence": 0.54,
+      "worst": "imbecile",
+      "worstConfidence": 0.28,
+      "keep": [
+        "imbecile",
+        "fool",
+        "simpleton",
+        "idiot"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "слон",
+      "best": "elephant",
+      "bestConfidence": 0.99,
+      "worst": "chess",
+      "worstConfidence": 0.69,
+      "keep": [
+        "elephant"
+      ],
+      "drop": [
+        "chess",
+        "bishop",
+        "stomper"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ус",
+      "best": "moustache",
+      "bestConfidence": 0.96,
+      "worst": "awn",
+      "worstConfidence": 0.79,
+      "keep": [
+        "moustache",
+        "whisker"
+      ],
+      "drop": [
+        "feeler",
+        "antenna",
+        "tendril",
+        "awn"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "заяц",
+      "best": "hare",
+      "bestConfidence": 1,
+      "worst": "stowaway",
+      "worstConfidence": 0.38,
+      "keep": [
+        "hare"
+      ],
+      "drop": [
+        "jackrabbit",
+        "fare dodger",
+        "stowaway"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "лужа",
+      "best": "puddle",
+      "bestConfidence": 1,
+      "worst": "pool",
+      "worstConfidence": 0.95,
+      "keep": [
+        "puddle"
+      ],
+      "drop": [
+        "pool"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "стук",
+      "best": "knock",
+      "bestConfidence": 1,
+      "worst": "noise",
+      "worstConfidence": 0.58,
+      "keep": [
+        "knock",
+        "clatter"
+      ],
+      "drop": [
+        "rattle",
+        "noise"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "ура",
+      "best": "hooray",
+      "bestConfidence": 0.84,
+      "worst": "yay",
+      "worstConfidence": 0.25,
+      "keep": [
+        "hoorah",
+        "hooray",
+        "yay"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "бык",
+      "best": "bull",
+      "bestConfidence": 0.98,
+      "worst": "mobster",
+      "worstConfidence": 0.49,
+      "keep": [
+        "bull",
+        "ox"
+      ],
+      "drop": [
+        "big",
+        "strong",
+        "stubborn",
+        "man",
+        "gangster",
+        "mobster"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "гром",
+      "best": "thunder",
+      "bestConfidence": 1,
+      "worst": "meteorology",
+      "worstConfidence": 0.99,
+      "keep": [
+        "thunder"
+      ],
+      "drop": [
+        "meteorology",
+        "thunderbolt",
+        "roar",
+        "thunderous",
+        "sound"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "тигр",
+      "best": "tiger",
+      "bestConfidence": 1,
+      "worst": "tiger",
+      "worstConfidence": 1,
+      "keep": [
+        "tiger"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "лить",
+      "best": "pour",
+      "bestConfidence": 1,
+      "worst": "found",
+      "worstConfidence": 0.93,
+      "keep": [
+        "pour",
+        "spill"
+      ],
+      "drop": [
+        "shed",
+        "cast",
+        "mould",
+        "found"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "веко",
+      "best": "eyelid",
+      "bestConfidence": 1,
+      "worst": "anatomy",
+      "worstConfidence": 0.99,
+      "keep": [
+        "eyelid"
+      ],
+      "drop": [
+        "anatomy"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "факс",
+      "best": "fax",
+      "bestConfidence": 1,
+      "worst": "fax",
+      "worstConfidence": 1,
+      "keep": [
+        "fax"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "бокс",
+      "best": "box",
+      "bestConfidence": 0.8,
+      "worst": "medicine",
+      "worstConfidence": 0.87,
+      "keep": [
+        "box"
+      ],
+      "drop": [
+        "sports",
+        "boxing",
+        "medicine"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "гимн",
+      "best": "anthem",
+      "bestConfidence": 0.13,
+      "worst": "hymn",
+      "worstConfidence": 0.02,
+      "keep": [
+        "anthem",
+        "hymn"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "шить",
+      "best": "sew",
+      "bestConfidence": 1,
+      "worst": "planking",
+      "worstConfidence": 0.65,
+      "keep": [
+        "sew"
+      ],
+      "drop": [
+        "tailor",
+        "order",
+        "embroider",
+        "nail",
+        "planking"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "укол",
+      "best": "prick",
+      "bestConfidence": 0.45,
+      "worst": "fencing",
+      "worstConfidence": 0.96,
+      "keep": [
+        "prick",
+        "pricking",
+        "injection",
+        "shot"
+      ],
+      "drop": [
+        "fencing",
+        "hit",
+        "touch",
+        "piquing"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "лыжа",
+      "best": "ski",
+      "bestConfidence": 1,
+      "worst": "runner",
+      "worstConfidence": 0.94,
+      "keep": [
+        "ski"
+      ],
+      "drop": [
+        "runner",
+        "sleigh",
+        "sled"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "гид",
+      "best": "guide",
+      "bestConfidence": 1,
+      "worst": "guide",
+      "worstConfidence": 1,
+      "keep": [
+        "guide"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "няня",
+      "best": "nanny",
+      "bestConfidence": 0.99,
+      "worst": "nurse",
+      "worstConfidence": 0.92,
+      "keep": [
+        "nanny",
+        "babysitter"
+      ],
+      "drop": [
+        "nurse"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "суша",
+      "best": "land",
+      "bestConfidence": 0.67,
+      "worst": "dry land",
+      "worstConfidence": 0.44,
+      "keep": [
+        "land",
+        "dry land"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "град",
+      "best": "hail",
+      "bestConfidence": 0.45,
+      "worst": "meteorology",
+      "worstConfidence": 0.96,
+      "keep": [
+        "hail",
+        "town",
+        "city"
+      ],
+      "drop": [
+        "meteorology",
+        "deluge",
+        "shower"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "весы",
+      "best": "scales",
+      "bestConfidence": 0.99,
+      "worst": "balance",
+      "worstConfidence": 0.78,
+      "keep": [
+        "scales",
+        "balance"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "коза",
+      "best": "goat",
+      "bestConfidence": 0.96,
+      "worst": "fatwood",
+      "worstConfidence": 0.23,
+      "keep": [
+        "goat",
+        "she-goat"
+      ],
+      "drop": [
+        "fishing",
+        "fire basket",
+        "fatwood",
+        "derogatory",
+        "stupid",
+        "annoying"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "чат",
+      "best": "chat",
+      "bestConfidence": 1,
+      "worst": "internet",
+      "worstConfidence": 0.95,
+      "keep": [
+        "chat"
+      ],
+      "drop": [
+        "internet"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "цент",
+      "best": "cent",
+      "bestConfidence": 1,
+      "worst": "cent",
+      "worstConfidence": 1,
+      "keep": [],
+      "drop": [
+        "cent"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "зять",
+      "best": "son-in-law",
+      "bestConfidence": 1,
+      "worst": "brother-in-law",
+      "worstConfidence": 0.92,
+      "keep": [
+        "son-in-law"
+      ],
+      "drop": [
+        "brother-in-law"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "сухо",
+      "best": "dryly",
+      "bestConfidence": 1,
+      "worst": "dryly",
+      "worstConfidence": 1,
+      "keep": [
+        "dryly"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "ваза",
+      "best": "vase",
+      "bestConfidence": 1,
+      "worst": "bowl",
+      "worstConfidence": 0.95,
+      "keep": [
+        "vase"
+      ],
+      "drop": [
+        "bowl"
+      ],
+      "flagged": false
+    },
+    {
+      "front": "блог",
+      "best": "blog",
+      "bestConfidence": 1,
+      "worst": "blog",
+      "worstConfidence": 1,
+      "keep": [
+        "blog"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "клей",
+      "best": "glue",
+      "bestConfidence": 1,
+      "worst": "glue",
+      "worstConfidence": 1,
+      "keep": [
+        "glue"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "герб",
+      "best": "coat of arms",
+      "bestConfidence": 1,
+      "worst": "coat of arms",
+      "worstConfidence": 1,
+      "keep": [
+        "coat of arms"
+      ],
+      "drop": [],
+      "flagged": false
+    },
+    {
+      "front": "соус",
+      "best": "sauce",
+      "bestConfidence": 1,
+      "worst": "sauce",
+      "worstConfidence": 1,
+      "keep": [
+        "sauce"
+      ],
+      "drop": [],
+      "flagged": false
+    }
+  ]
+}
