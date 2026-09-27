@@ -99,6 +99,43 @@ cards by reason: kept-but-near-the-line, dropped-but-near-the-line, ambiguous
 best picks, low-usefulness lemmas, and lemmas a drop would empty entirely. It is
 deck-agnostic — it only reads the report.
 
+## Scoring against a hand-curated list
+
+If a deck has an authoritative curated gloss map, that map is ground truth and
+the classifier can be scored against it before it is trusted on the uncurated
+rest. `compare` takes any module exporting `SHORT_WORD_GLOSSES` (a `Map` from
+lemma to the glosses a learner should associate with it) and, optionally,
+`SHORT_WORD_MAX_LENGTH`:
+
+```sh
+npm run data:jev:compare -- \
+  --report   analysis/jev/top-ru-en/triage-report.json \
+  --curation tools/russian/shortWordCuration.ts \
+  --out      analysis/jev/top-ru-en/short-words-vs-curation.json
+```
+
+It reports how many cards agree, how many curated senses Jev would drop (the
+damaging class — each removes a sense a beginner needs), and how many uncurated
+senses it would keep. Deck-agnostic; only reads the report and the map.
+
+## Re-deciding without re-billing
+
+The classifier's probabilities are stored in the report, so thresholds can be
+re-applied offline. `policy` re-decides keep/drop from a stored report, protects
+a lemma's `best` pick from being dropped as the only candidate, and can be
+scoped to lemmas of a minimum length:
+
+```sh
+npm run data:jev:policy -- \
+  --report     analysis/jev/top-ru-en/triage-report.json \
+  --out        analysis/jev/top-ru-en/drop-long-lemmas-0.6.json \
+  --misleading-threshold 0.6 \
+  --min-lemma-length 5
+```
+
+`--min-lemma-length 5` leaves the ≤4-character lemmas to the curated list, which
+should win there. Feed the output to `data:jev:apply` like any other drop file.
+
 ## Applying the drops
 
 Once you have reviewed `drop.json`, apply it:
