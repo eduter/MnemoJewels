@@ -24,3 +24,14 @@
         max-width: 100%;
     }
 }
+
+/* Narrow, tall screens (thin phones) leave a lot of vertical space over, so let
+   the small logo grow toward the full logo size instead of sitting tiny. Wider
+   portrait screens like iPad portrait do not have that surplus, so they keep the
+   logo small and avoid crowding the content below. The game logo sizes itself
+   from the board's leftover height instead (see game.css). */
+@media (max-aspect-ratio: 3 / 4) and (max-width: 600px) {
+    .screen:not(#game) .logo.small {
+        font-size: clamp(20em, 17vw, 54em);
+    }
+}

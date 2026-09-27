@@ -22,6 +22,8 @@ body {
     font-size: min(0.3125vw, 0.208333dvh);
     font-family: default-font;
     line-height: 1.25;
+    /* Shared vertical rhythm: gap between logo/content/menu on every screen. */
+    --screen-gap: 12em;
     background-color: #C5CADF;
     background-image: url("../public/images/bg.jpg");
     background-position: center;
@@ -43,13 +45,23 @@ body {
 }
 
 /* Every screen except the game centres its content as a column. `safe center`
-   keeps tall content reachable on short viewports instead of clipping its top. */
+   keeps tall content reachable on short viewports instead of clipping its top,
+   and `overflow: auto` makes it scrollable when it cannot fit at all. The
+   shared gap makes the logo/content/menu rhythm identical everywhere. */
 .screen:not(#game).active {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: safe center;
-    overflow: hidden;
+    gap: var(--screen-gap);
+    overflow: auto;
+}
+
+/* Margins live in the flex gap instead, so logo/content/menu spacing matches. */
+.screen:not(#game).active > .logo,
+.screen:not(#game).active > .screen-content,
+.screen:not(#game).active > .menu {
+    margin: 0;
 }
 
 .screen-content {
@@ -59,7 +71,6 @@ body {
     box-shadow: 3em 3em 10em #000;
     border-radius: 5%;
     padding: 12em;
-    margin: 2em auto;
     overflow-wrap: break-word;
 
     h3 {

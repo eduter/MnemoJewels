@@ -1,20 +1,34 @@
 /* Game Screen */
 
-/* Reserve the HUD's space so the board can never grow into it. */
+/* The HUD and board form a bottom-anchored column; the logo absorbs whatever
+   vertical space is left above them and centres itself inside it.
+
+   --hud-height is the header's own height, --board-max is the tallest the board
+   is allowed to grow, and --logo-avail is the height left for the logo once it
+   has also reserved the shared gap above and below itself. */
 #game {
-    --hud-height: 60em;
+    --hud-height: 48em;
+    --board-max: 454em;
+    --logo-avail: max(0em, 100dvh - var(--hud-height) - var(--board-max) - 2 * var(--screen-gap));
+}
+
+#game.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
 }
 
 #board-area {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
+    position: relative;
+    flex: 0 1 auto;
     width: min(100%, 320em);
-    /* The board grows with the viewport but stops before it would collide with
-       the HUD; on very short viewports the remaining height is the hard cap. */
-    height: min(calc(100% - var(--hud-height)), 454em);
+    /* Grow with the viewport but stop once the board would be taller than
+       --board-max; flex shrink takes the difference out of the board when the
+       HUD needs the room, so the header stays directly above the board. */
+    height: min(100%, var(--board-max));
     overflow: hidden;
-    transform: translateX(-50%);
 }
 
 #board-slots {
@@ -127,9 +141,29 @@
     white-space: nowrap;
 }
 
-.game-logo {
+/* The game screen only shows the logo once there is comfortable room for it.
+   9/16 is the point at which the HUD and a full-height board still leave the
+   logo-small size over with roughly the shared screen gap above and below it
+   on a width-limited screen (`em` follows the width, so the surplus grows as
+   the screen gets narrower). */
+#game .game-logo {
     display: none;
-    margin: 2em 0 0;
+}
+
+@media (max-aspect-ratio: 9 / 16) {
+    #game .game-logo {
+        /* Fills the leftover height and centres inside it, clamped between the
+           logo-small size and the full logo size. `#game` outranks the
+           `.logo.small` font-size so the clamp wins. The shared gap is already
+           reserved in --logo-avail, so the clamp needs no extra offset. */
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        font-size: clamp(20em, calc(var(--logo-avail) / 2), 54em);
+    }
 }
 
 #overlay {
@@ -143,10 +177,10 @@
 
 #stats {
     display: flex;
+    flex: 0 0 auto;
     justify-content: space-between;
     box-sizing: border-box;
     width: min(100%, 320em);
-    margin: 0 auto;
     padding: 8em 10em 4em;
 }
 
@@ -157,19 +191,14 @@
 }
 
 .spawn-progress {
+    flex: 0 0 auto;
     width: min(calc(100% - 16em), 304em);
     height: 8em;
-    margin: 0 auto 6em;
+    margin-bottom: 6em;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.45);
     border: 0.1em solid rgba(0, 0, 0, 0.5);
     border-radius: 0.5em;
-}
-
-@media (max-aspect-ratio: 1 / 2) {
-    .game-logo {
-        display: block;
-    }
 }
 
 .spawn-progress-fill {
