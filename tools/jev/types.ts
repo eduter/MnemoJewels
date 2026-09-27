@@ -53,10 +53,14 @@ export interface TriageSummary {
   keep: string[];
   drop: string[];
   flagged: boolean;
+  /** Per-candidate verdicts so borderline keeps can be reviewed, not just drops. */
+  candidates: CandidateVerdict[];
 }
 
 export interface TriageReport {
   model: string;
+  /** Base URL the requests were sent to, for provenance across Jev providers. */
+  endpoint: string;
   deck: string;
   totalCards: number;
   processedCards: number;

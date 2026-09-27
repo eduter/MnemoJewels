@@ -180,6 +180,7 @@ export async function triageDeck(
 
   const report: TriageReport = {
     model: client.model,
+    endpoint: client.endpoint,
     deck: deck.uid ?? deck.displayName,
     totalCards: deck.cards.length,
     processedCards: lemmas.reduce((sum, [, candidates]) => sum + candidates.length, 0),
@@ -197,6 +198,7 @@ export async function triageDeck(
       keep: triage.candidates.filter(c => c.keep).map(c => c.back),
       drop: triage.candidates.filter(c => !c.keep).map(c => c.back),
       flagged: false,
+      candidates: triage.candidates,
     })),
   };
 

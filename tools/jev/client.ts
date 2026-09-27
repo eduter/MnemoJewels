@@ -63,6 +63,12 @@ export interface JevClientOptions {
 }
 
 export const DEFAULT_JE_BASE_URL = 'https://api.typesafe.ai/v1/systemone';
+/**
+ * Independent hosted Jev proxy with the same request/response contract. Keys
+ * minted on jevtypesafeai.com (prefix `jv_live_`) authenticate here, not at the
+ * official endpoint; the reverse is also true.
+ */
+export const HOSTED_JE_BASE_URL = 'https://jevtypesafeai.com/api/v1/decide';
 export const DEFAULT_JE_MODEL = 'jev-latest';
 
 export class JevClient {
@@ -75,6 +81,10 @@ export class JevClient {
     this.apiKey = options.apiKey;
     this.baseURL = options.baseURL ?? DEFAULT_JE_BASE_URL;
     this.model = options.model ?? DEFAULT_JE_MODEL;
+  }
+
+  get endpoint(): string {
+    return this.baseURL;
   }
 
   async ask(state: unknown, questions: Record<string, JevQuestion>): Promise<JevResponse> {

@@ -67,11 +67,37 @@ Outputs:
 
 ## Configuration
 
+There are two Jev providers with the same request/response contract but
+different keys and URLs. A key minted at `console.typesafe.ai` works only at the
+official endpoint; a `jv_live_…` key minted at `jevtypesafeai.com` works only at
+the hosted proxy. Point `TYPESAFE_API_BASE` at the one that matches your key.
+
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `TYPESAFE_API_KEY` | — | Bearer key; required for live runs. |
-| `TYPESAFE_API_BASE` | `https://api.typesafe.ai/v1/systemone` | Endpoint. |
+| `TYPESAFE_API_BASE` | `https://api.typesafe.ai/v1/systemone` | Endpoint. Use `https://jevtypesafeai.com/api/v1/decide` for a hosted `jv_live_` key. |
 | `TYPESAFE_MODEL` | `jev-latest` | Model alias. |
+
+A 401 with a key you did not revoke almost always means the key and the endpoint
+belong to different providers; the usage history on the issuing dashboard will
+show no calls because the request never reached it.
+
+## Reviewing the results
+
+The triage policy is a single threshold, so the interesting calls are the ones
+near the line. `analyze` reads a triage report and splits the settled cards from
+the ones worth a human look:
+
+```sh
+npm run data:jev:analyze -- \
+  --report .cache/jev/full/triage-report.json \
+  --out    .cache/jev/full/review
+```
+
+It writes `review.json` (machine-readable) and `review.md` (to read), bucketing
+cards by reason: kept-but-near-the-line, dropped-but-near-the-line, ambiguous
+best picks, low-usefulness lemmas, and lemmas a drop would empty entirely. It is
+deck-agnostic — it only reads the report.
 
 ## Applying the drops
 
