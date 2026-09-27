@@ -1,15 +1,30 @@
-#splash-screen {
-    text-align: center;
+#splash-screen.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe center;
+    gap: var(--screen-gap);
+    overflow: hidden;
 
     .logo {
-        margin-top: 2.5em;
+        margin: 0;
+    }
+
+    /* Portrait screens have vertical room to spare, so let the logo grow past
+       its default ~17vw width. 20vw renders it at ~74% of the screen width,
+       leaving a clear margin on either side instead of a tiny logo adrift in
+       empty space. */
+    @media (max-aspect-ratio: 3 / 4) {
+        .logo {
+            font-size: 20vw;
+        }
     }
 
     .spinner {
         position: relative;
         width: 4em;
         height: 4em;
-        margin: 2em auto 0;
+        margin: 0;
         border: 0.35em solid rgba(200, 200, 100, 0.15);
         border-top-color: #C8C864;
         border-radius: 50%;
@@ -22,6 +37,7 @@
     }
 
     .continue {
+        display: block;
         cursor: pointer;
         font-size: 24em;
         font-weight: bold;

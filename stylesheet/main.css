@@ -1,27 +1,40 @@
+html,
 body {
     margin: 0;
-    background: #000;
+    width: 100%;
+    min-height: 100%;
+    background-color: #C5CADF;
+    background-image: url("../public/images/bg.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 #top-container {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 320em;
-    height: 480em;
+    position: fixed;
+    inset: 0;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     color: #C8C864;
-    font-size: 0;
+    /* One em remains one design pixel, without constraining the painted area. */
+    font-size: min(0.3125vw, 0.208333vh);
+    font-size: min(0.3125vw, 0.208333dvh);
     font-family: default-font;
+    line-height: 1.25;
+    /* Shared vertical rhythm: gap between logo/content/menu on every screen. */
+    --screen-gap: 12em;
     background-color: #C5CADF;
     background-image: url("../public/images/bg.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .screen {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inset: env(safe-area-inset-top) env(safe-area-inset-right)
+        env(safe-area-inset-bottom) env(safe-area-inset-left);
     display: none;
     z-index: 10;
 
@@ -31,13 +44,34 @@ body {
     }
 }
 
+/* Every screen except the game centres its content as a column. `safe center`
+   keeps tall content reachable on short viewports instead of clipping its top,
+   and `overflow: auto` makes it scrollable when it cannot fit at all. The
+   shared gap makes the logo/content/menu rhythm identical everywhere. */
+.screen:not(#game).active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe center;
+    gap: var(--screen-gap);
+    overflow: auto;
+}
+
+/* Margins live in the flex gap instead, so logo/content/menu spacing matches. */
+.screen:not(#game).active > .logo,
+.screen:not(#game).active > .screen-content,
+.screen:not(#game).active > .menu {
+    margin: 0;
+}
+
 .screen-content {
+    box-sizing: border-box;
+    width: min(90%, 288em);
     background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 3em 3em 10em #000;
     border-radius: 5%;
-    height: 300em;
-    padding: 5%;
-    margin: 5%;
+    padding: 12em;
+    overflow-wrap: break-word;
 
     h3 {
         color: #f1c101;

@@ -1,14 +1,14 @@
 #main-menu .logo {
-    margin: 0.75em 0;
+    margin: 0;
 }
 
 ul.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--screen-gap);
     text-align: center;
     margin: 0;
     padding: 0;
     list-style: none;
-
-    li {
-        margin: 12em 0;
-    }
 }

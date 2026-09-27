@@ -1,15 +1,45 @@
 /* Game Screen */
 
+/* The HUD and board form a bottom-anchored column; the logo absorbs whatever
+   vertical space is left above them and centres itself inside it.
+
+   --hud-height is the header's own height, --board-max is the tallest the board
+   is allowed to grow, and --logo-avail is the height left for the logo once it
+   has also reserved the shared gap above and below itself. */
+#game {
+    --hud-height: 48em;
+    --board-max: 454em;
+    --logo-avail: max(0em, 100dvh - var(--hud-height) - var(--board-max) - 2 * var(--screen-gap));
+}
+
+#game.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
 #board-area {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    position: relative;
+    flex: 0 1 auto;
+    width: min(100%, 320em);
+    /* Grow with the viewport but stop once the board would be taller than
+       --board-max; flex shrink takes the difference out of the board when the
+       HUD needs the room, so the header stays directly above the board. */
+    height: min(100%, var(--board-max));
     overflow: hidden;
 }
 
 #board-slots {
     width: 100%;
+    height: 100%;
     border-spacing: 0;
+    table-layout: fixed;
+}
+
+#board-slots tr {
+    height: 10%;
 }
 
 #board {
@@ -20,7 +50,7 @@
 
 #board-slots td,
 .tile {
-    box-sizing: content-box;
+    box-sizing: border-box;
     border-style: solid;
     border-width: 0.1em;
     border-color: rgba(0, 0, 0, 0.5);
@@ -29,7 +59,8 @@
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    height: 1.3em;
+    /* Matches .tile so the faded slot lines up with the jewel on top of it. */
+    height: 10%;
     font-size: 18em;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
@@ -40,16 +71,12 @@
 }
 
 #board-slots td {
-    box-sizing: content-box;
     opacity: 0.45;
 }
 
 .tile {
     position: absolute;
     z-index: 2;
-    box-sizing: border-box;
-    width: 50%;
-    height: 10%;
     margin: 0;
     overflow: hidden;
     min-width: 0;
@@ -105,6 +132,40 @@
     &.group12 { background-color: #880; }
 }
 
+.tile-label {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    line-height: 1.1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* The game screen only shows the logo once there is comfortable room for it.
+   9/16 is the point at which the HUD and a full-height board still leave the
+   logo-small size over with roughly the shared screen gap above and below it
+   on a width-limited screen (`em` follows the width, so the surplus grows as
+   the screen gets narrower). */
+#game .game-logo {
+    display: none;
+}
+
+@media (max-aspect-ratio: 9 / 16) {
+    #game .game-logo {
+        /* Fills the leftover height and centres inside it, clamped between the
+           logo-small size and the full logo size. `#game` outranks the
+           `.logo.small` font-size so the clamp wins. The shared gap is already
+           reserved in --logo-avail, so the clamp needs no extra offset. */
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        font-size: clamp(20em, calc(var(--logo-avail) / 2), 54em);
+    }
+}
+
 #overlay {
     display: none;
     position: absolute;
@@ -116,8 +177,10 @@
 
 #stats {
     display: flex;
+    flex: 0 0 auto;
     justify-content: space-between;
     box-sizing: border-box;
+    width: min(100%, 320em);
     padding: 8em 10em 4em;
 }
 
@@ -128,8 +191,10 @@
 }
 
 .spawn-progress {
+    flex: 0 0 auto;
+    width: min(calc(100% - 16em), 304em);
     height: 8em;
-    margin: 0 8em 6em;
+    margin-bottom: 6em;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.45);
     border: 0.1em solid rgba(0, 0, 0, 0.5);

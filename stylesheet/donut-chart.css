@@ -1,15 +1,18 @@
 /**
   * Donut Chart - https://github.com/KrisOlszewski/donut-chart
+  *
+  * Sizes are expressed in the app's `em` design unit (1em = 1 design pixel at
+  * 1440x900) so the chart scales with the viewport instead of overflowing.
   */
 
 .donut-chart {
   position: relative;
   overflow: hidden;
-  width: 250px;
-  height: 250px;
+  width: 133.33em;
+  height: 133.33em;
   border-radius: 50%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 3.2em rgba(0, 0, 0, 0.5);
 }
 
 .outer-circle,
@@ -24,7 +27,7 @@
   right: 0;
   bottom: 0;
   background-color: #000;
-  box-shadow: inset 0 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 5.333em rgba(0, 0, 0, 0.5);
 }
 
 .inner-circle {
@@ -33,7 +36,7 @@
   right: 22%;
   bottom: 22%;
   background-color: #000;
-  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 3.2em rgba(0, 0, 0, 0.2);
   opacity: 0.95;
 }
 
@@ -48,17 +51,17 @@
 }
 
 .inner-circle-label {
-  font-size: 18px;
+  font-size: 9.6em;
   line-height: 1;
-  margin-top: -30px;
+  margin-top: -16em;
   color: #aab2bd;
 }
 
 .inner-circle-value {
-  font-size: 42px;
+  font-size: 22.4em;
   line-height: 1;
   font-weight: bold;
-  margin-top: -12px;
+  margin-top: -6.4em;
   color: #656d78;
 }
 
@@ -77,7 +80,7 @@
 
 .wedge,
 .wedge-extension {
-  box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0 3.2em rgba(0, 0, 0, 0.2);
 }
 
 .wedge-value {
@@ -85,10 +88,10 @@
   position: absolute;
   top: 5%;
   left: 50%;
-  width: 30px;
-  margin-left: -15px;
-  font-size: 14px;
-  line-height: 20px;
+  width: 16em;
+  margin-left: -8em;
+  font-size: 7.467em;
+  line-height: 10.667em;
   font-weight: bold;
   text-align: center;
 }
