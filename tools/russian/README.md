@@ -16,6 +16,18 @@ field the app actually reads:
 No `lexicon`, sense graph, or precomputed similarity edges are shipped; IPA
 ranking is computed at runtime from the pronunciation map.
 
+## Short-word curation
+
+Lemmas of four characters or fewer are where the Wiktionary-derived pipeline is
+weakest: raw sense links drag in transliteration look-alikes (`и` → `yi`,
+`а` → `a`), grammatical labels (`раз` → `one`, `род` → `taxonomy`) and rare or
+idiomatic senses that a beginner cannot distinguish from real translations.
+`shortWordCuration.ts` holds a hand-curated gloss list for every such lemma and
+replaces the Wiktionary glosses outright, both when regenerating and when
+re-curating the committed deck. Lemmas longer than four characters are
+untouched. Updates to the curated list must be accompanied by a deck
+regeneration (or a re-run of the curation script) plus a version bump.
+
 ## Sources and licensing
 
 Frequency comes from the Russian Kelly list:
