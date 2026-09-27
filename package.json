@@ -14,7 +14,12 @@
     "check": "npm run typecheck && npm run test",
     "data:russian": "node --experimental-strip-types tools/russian/generate.ts",
     "data:russian:sanitize": "node --experimental-strip-types tools/russian/generate.ts --sanitize",
-    "data:russian:download": "node --experimental-strip-types tools/russian/generate.ts --download"
+    "data:russian:download": "node --experimental-strip-types tools/russian/generate.ts --download",
+    "data:jev": "node --experimental-strip-types tools/jev/cli.ts",
+    "data:jev:analyze": "node --experimental-strip-types tools/jev/analyze.ts",
+    "data:jev:policy": "node --experimental-strip-types tools/jev/policy.ts",
+    "data:jev:compare": "node --experimental-strip-types tools/jev/compare.ts",
+    "data:jev:apply": "node --experimental-strip-types tools/jev/apply.ts"
   },
   "author": "eduter",
   "license": "ISC",
