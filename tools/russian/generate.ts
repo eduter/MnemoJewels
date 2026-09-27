@@ -7,6 +7,7 @@ import type { DeckData, DeckLexicon } from '../../src/types.ts';
 import type { KaikkiEntry, KellyFile } from './kaikki.ts';
 import { forEachJsonLine } from './jsonl.ts';
 import { shouldRejectTranslation, translationsForSense } from './translationQuality.ts';
+import { SHORT_WORD_GLOSSES, curateCards } from './shortWordCuration.ts';
 
 const KELLY_URL = 'https://raw.githubusercontent.com/kotoshu/frequency-list-kelly/main/data/ru.json';
 const RUSSIAN_URL = 'https://kaikki.org/dictionary/Russian/kaikki.org-dictionary-Russian.jsonl';
@@ -35,7 +36,7 @@ if (options.sanitize) {
   const englishHeadwords = await loadEnglishHeadwords(options.english);
   sanitizeDeck(deck, englishHeadwords);
   compactDeck(deck);
-  deck.version = Math.max(deck.version ?? 1, 3);
+  deck.version = Math.max(deck.version ?? 1, 4);
   validate(deck);
   await mkdir(dirname(options.output), { recursive: true });
   await writeFile(options.output, `${JSON.stringify(deck, null, 4)}\n`);
@@ -91,6 +92,11 @@ for (const entry of selected) {
     englishWords.add(translation);
   }
 }
+// Curated short-word glosses override the Wiktionary ones, so their IPA must be
+// loaded too even when the raw sense links never produced them.
+for (const glosses of SHORT_WORD_GLOSSES.values()) {
+  for (const gloss of glosses) englishWords.add(gloss);
+}
 
 const englishIpa = new Map<string, Set<string>>();
 await forEachJsonLine<KaikkiEntry>(options.english, entry => {
@@ -126,28 +132,30 @@ for (const frequencyEntry of selected) {
   }
 }
 
+const curatedCards = curateCards(cards);
+
 const deck: DeckData = {
   uid: 'top-ru-en',
-  version: 3,
+  version: 4,
   displayName: 'Russian / English',
   languageFront: 'ru',
   languageBack: 'en',
-  cards,
-  pronunciations: trimPronunciationsForCards(cards, pronunciations),
+  cards: curatedCards,
+  pronunciations: trimPronunciationsForCards(curatedCards, pronunciations),
 };
 
 validate(deck);
-const russianLemmas = new Set(cards.map(card => card[0]));
-const englishLemmas = new Set(cards.map(card => card[1]));
-const duplicateCards = cards.length - new Set(cards.map(card => JSON.stringify(card))).size;
+const russianLemmas = new Set(curatedCards.map(card => card[0]));
+const englishLemmas = new Set(curatedCards.map(card => card[1]));
+const duplicateCards = curatedCards.length - new Set(curatedCards.map(card => JSON.stringify(card))).size;
 const report = {
   russianLemmas: russianLemmas.size,
-  cards: cards.length,
-  russianWithIpa: [...russianLemmas].filter(lemma => pronunciations[`ru:${lemma}`]?.length).length,
-  russianWithoutIpa: [...russianLemmas].filter(lemma => !pronunciations[`ru:${lemma}`]?.length).length,
+  cards: curatedCards.length,
+  russianWithIpa: [...russianLemmas].filter(lemma => deck.pronunciations?.[`ru:${lemma}`]?.length).length,
+  russianWithoutIpa: [...russianLemmas].filter(lemma => !deck.pronunciations?.[`ru:${lemma}`]?.length).length,
   englishLemmas: englishLemmas.size,
-  englishWithIpa: [...englishLemmas].filter(lemma => pronunciations[`en:${lemma}`]?.length).length,
-  englishWithoutIpa: [...englishLemmas].filter(lemma => !pronunciations[`en:${lemma}`]?.length).length,
+  englishWithIpa: [...englishLemmas].filter(lemma => deck.pronunciations?.[`en:${lemma}`]?.length).length,
+  englishWithoutIpa: [...englishLemmas].filter(lemma => !deck.pronunciations?.[`en:${lemma}`]?.length).length,
   pronunciationEntries: Object.keys(deck.pronunciations ?? {}).length,
   frequencyDuplicateRows: frequencyDuplicates,
   duplicateCards,
@@ -163,18 +171,18 @@ console.log(JSON.stringify(report, null, 2));
 function sanitizeDeck(deck: DeckData, englishHeadwords: Set<string>): void {
   if (deck.lexicon?.items && deck.lexicon?.translations) {
     const items = deck.lexicon.items;
-    deck.cards = deck.lexicon.translations
+    deck.cards = curateCards(deck.lexicon.translations
       .filter(relation => !shouldRejectTranslation(
         items[relation.source].lemma,
         items[relation.target].lemma,
       ))
-      .map(relation => [items[relation.source].lemma, items[relation.target].lemma]);
+      .map(relation => [items[relation.source].lemma, items[relation.target].lemma]));
     return;
   }
-  deck.cards = deck.cards.filter(([russianLemma, englishLemma]) => {
+  deck.cards = curateCards(deck.cards.filter(([russianLemma, englishLemma]) => {
     if (shouldRejectTranslation(russianLemma, englishLemma)) return false;
     return englishHeadwords.has(englishLemma.toLowerCase());
-  });
+  }));
 }
 
 function compactDeck(deck: DeckData): void {

@@ -1,12 +1,12 @@
 {
   "russianLemmas": 3000,
-  "cards": 11084,
+  "cards": 9983,
   "russianWithIpa": 2999,
   "russianWithoutIpa": 1,
-  "englishLemmas": 6428,
-  "englishWithIpa": 5531,
-  "englishWithoutIpa": 897,
-  "pronunciationEntries": 8530,
+  "englishLemmas": 5956,
+  "englishWithIpa": 5151,
+  "englishWithoutIpa": 805,
+  "pronunciationEntries": 8150,
   "frequencyDuplicateRows": 11,
   "duplicateCards": 0,
   "malformedEntries": 0
