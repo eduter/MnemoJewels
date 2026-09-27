@@ -1,0 +1,707 @@
+[
+  {
+    "front": "и",
+    "back": "and",
+    "expect": "keep"
+  },
+  {
+    "front": "и",
+    "back": "as well as",
+    "expect": "keep"
+  },
+  {
+    "front": "и",
+    "back": "as well",
+    "expect": "keep"
+  },
+  {
+    "front": "и",
+    "back": "both",
+    "expect": "drop"
+  },
+  {
+    "front": "и",
+    "back": "even",
+    "expect": "drop"
+  },
+  {
+    "front": "и",
+    "back": "yi",
+    "expect": "drop"
+  },
+  {
+    "front": "а",
+    "back": "but",
+    "expect": "keep"
+  },
+  {
+    "front": "а",
+    "back": "and",
+    "expect": "keep"
+  },
+  {
+    "front": "а",
+    "back": "while",
+    "expect": "keep"
+  },
+  {
+    "front": "а",
+    "back": "oh",
+    "expect": "keep"
+  },
+  {
+    "front": "а",
+    "back": "a",
+    "expect": "drop"
+  },
+  {
+    "front": "а",
+    "back": "although",
+    "expect": "drop"
+  },
+  {
+    "front": "а",
+    "back": "eh",
+    "expect": "drop"
+  },
+  {
+    "front": "а",
+    "back": "criminal",
+    "expect": "drop"
+  },
+  {
+    "front": "в",
+    "back": "in",
+    "expect": "keep"
+  },
+  {
+    "front": "в",
+    "back": "at",
+    "expect": "keep"
+  },
+  {
+    "front": "в",
+    "back": "on",
+    "expect": "keep"
+  },
+  {
+    "front": "в",
+    "back": "to",
+    "expect": "keep"
+  },
+  {
+    "front": "в",
+    "back": "into",
+    "expect": "keep"
+  },
+  {
+    "front": "в",
+    "back": "per",
+    "expect": "drop"
+  },
+  {
+    "front": "в",
+    "back": "for",
+    "expect": "drop"
+  },
+  {
+    "front": "в",
+    "back": "as",
+    "expect": "drop"
+  },
+  {
+    "front": "раз",
+    "back": "time",
+    "expect": "keep"
+  },
+  {
+    "front": "раз",
+    "back": "once",
+    "expect": "keep"
+  },
+  {
+    "front": "раз",
+    "back": "one",
+    "expect": "drop"
+  },
+  {
+    "front": "раз",
+    "back": "one day",
+    "expect": "drop"
+  },
+  {
+    "front": "раз",
+    "back": "once upon a time",
+    "expect": "drop"
+  },
+  {
+    "front": "раз",
+    "back": "if",
+    "expect": "drop"
+  },
+  {
+    "front": "раз",
+    "back": "since",
+    "expect": "drop"
+  },
+  {
+    "front": "раз",
+    "back": "as long as",
+    "expect": "drop"
+  },
+  {
+    "front": "яма",
+    "back": "pit",
+    "expect": "keep"
+  },
+  {
+    "front": "яма",
+    "back": "hole",
+    "expect": "keep"
+  },
+  {
+    "front": "яма",
+    "back": "dungeon",
+    "expect": "drop"
+  },
+  {
+    "front": "яма",
+    "back": "yoga",
+    "expect": "drop"
+  },
+  {
+    "front": "яма",
+    "back": "yama",
+    "expect": "drop"
+  },
+  {
+    "front": "ус",
+    "back": "moustache",
+    "expect": "keep"
+  },
+  {
+    "front": "ус",
+    "back": "whisker",
+    "expect": "keep"
+  },
+  {
+    "front": "ус",
+    "back": "feeler",
+    "expect": "drop"
+  },
+  {
+    "front": "ус",
+    "back": "antenna",
+    "expect": "drop"
+  },
+  {
+    "front": "ус",
+    "back": "tendril",
+    "expect": "drop"
+  },
+  {
+    "front": "ус",
+    "back": "awn",
+    "expect": "drop"
+  },
+  {
+    "front": "вор",
+    "back": "thief",
+    "expect": "keep"
+  },
+  {
+    "front": "вор",
+    "back": "traitor",
+    "expect": "drop"
+  },
+  {
+    "front": "вор",
+    "back": "apostate",
+    "expect": "drop"
+  },
+  {
+    "front": "вор",
+    "back": "outlaw",
+    "expect": "drop"
+  },
+  {
+    "front": "вор",
+    "back": "vore",
+    "expect": "drop"
+  },
+  {
+    "front": "план",
+    "back": "plan",
+    "expect": "keep"
+  },
+  {
+    "front": "план",
+    "back": "scheme",
+    "expect": "keep"
+  },
+  {
+    "front": "план",
+    "back": "draft",
+    "expect": "keep"
+  },
+  {
+    "front": "план",
+    "back": "contrivance",
+    "expect": "drop"
+  },
+  {
+    "front": "план",
+    "back": "target",
+    "expect": "drop"
+  },
+  {
+    "front": "план",
+    "back": "figure",
+    "expect": "drop"
+  },
+  {
+    "front": "план",
+    "back": "plane",
+    "expect": "drop"
+  },
+  {
+    "front": "план",
+    "back": "marijuana",
+    "expect": "drop"
+  },
+  {
+    "front": "год",
+    "back": "year",
+    "expect": "keep"
+  },
+  {
+    "front": "град",
+    "back": "hail",
+    "expect": "keep"
+  },
+  {
+    "front": "град",
+    "back": "meteorology",
+    "expect": "drop"
+  },
+  {
+    "front": "град",
+    "back": "deluge",
+    "expect": "drop"
+  },
+  {
+    "front": "град",
+    "back": "shower",
+    "expect": "drop"
+  },
+  {
+    "front": "град",
+    "back": "town",
+    "expect": "drop"
+  },
+  {
+    "front": "град",
+    "back": "city",
+    "expect": "drop"
+  },
+  {
+    "front": "тем",
+    "back": "the",
+    "expect": "drop"
+  },
+  {
+    "front": "пол",
+    "back": "floor",
+    "expect": "keep"
+  },
+  {
+    "front": "пол",
+    "back": "half",
+    "expect": "keep"
+  },
+  {
+    "front": "пол",
+    "back": "sex",
+    "expect": "keep"
+  },
+  {
+    "front": "пол",
+    "back": "gender",
+    "expect": "drop"
+  },
+  {
+    "front": "май",
+    "back": "may",
+    "expect": "keep"
+  },
+  {
+    "front": "март",
+    "back": "march",
+    "expect": "keep"
+  },
+  {
+    "front": "род",
+    "back": "generation",
+    "expect": "keep"
+  },
+  {
+    "front": "род",
+    "back": "sort",
+    "expect": "keep"
+  },
+  {
+    "front": "род",
+    "back": "kind",
+    "expect": "keep"
+  },
+  {
+    "front": "род",
+    "back": "birth",
+    "expect": "drop"
+  },
+  {
+    "front": "род",
+    "back": "origin",
+    "expect": "drop"
+  },
+  {
+    "front": "род",
+    "back": "stock",
+    "expect": "drop"
+  },
+  {
+    "front": "род",
+    "back": "taxonomy",
+    "expect": "drop"
+  },
+  {
+    "front": "род",
+    "back": "genus",
+    "expect": "drop"
+  },
+  {
+    "front": "бег",
+    "back": "run",
+    "expect": "keep"
+  },
+  {
+    "front": "бег",
+    "back": "sports",
+    "expect": "drop"
+  },
+  {
+    "front": "бег",
+    "back": "athletics",
+    "expect": "drop"
+  },
+  {
+    "front": "бег",
+    "back": "track and field",
+    "expect": "drop"
+  },
+  {
+    "front": "клуб",
+    "back": "club",
+    "expect": "keep"
+  },
+  {
+    "front": "клуб",
+    "back": "clubhouse",
+    "expect": "keep"
+  },
+  {
+    "front": "клуб",
+    "back": "nightclub",
+    "expect": "keep"
+  },
+  {
+    "front": "клуб",
+    "back": "cloud",
+    "expect": "drop"
+  },
+  {
+    "front": "клуб",
+    "back": "puff",
+    "expect": "drop"
+  },
+  {
+    "front": "клуб",
+    "back": "swarm",
+    "expect": "drop"
+  },
+  {
+    "front": "клуб",
+    "back": "lump",
+    "expect": "drop"
+  },
+  {
+    "front": "клуб",
+    "back": "ball",
+    "expect": "drop"
+  },
+  {
+    "front": "кран",
+    "back": "faucet",
+    "expect": "keep"
+  },
+  {
+    "front": "кран",
+    "back": "tap",
+    "expect": "keep"
+  },
+  {
+    "front": "кран",
+    "back": "crane",
+    "expect": "keep"
+  },
+  {
+    "front": "кран",
+    "back": "engineering",
+    "expect": "drop"
+  },
+  {
+    "front": "кран",
+    "back": "valve",
+    "expect": "drop"
+  },
+  {
+    "front": "кран",
+    "back": "spigot",
+    "expect": "drop"
+  },
+  {
+    "front": "лук",
+    "back": "onion",
+    "expect": "keep"
+  },
+  {
+    "front": "лук",
+    "back": "bow",
+    "expect": "keep"
+  },
+  {
+    "front": "лук",
+    "back": "appearance",
+    "expect": "drop"
+  },
+  {
+    "front": "лук",
+    "back": "look",
+    "expect": "drop"
+  },
+  {
+    "front": "мир",
+    "back": "peace",
+    "expect": "keep"
+  },
+  {
+    "front": "мир",
+    "back": "universe",
+    "expect": "keep"
+  },
+  {
+    "front": "мир",
+    "back": "world",
+    "expect": "keep"
+  },
+  {
+    "front": "мир",
+    "back": "planet",
+    "expect": "drop"
+  },
+  {
+    "front": "так",
+    "back": "like that",
+    "expect": "keep"
+  },
+  {
+    "front": "так",
+    "back": "like",
+    "expect": "keep"
+  },
+  {
+    "front": "так",
+    "back": "so",
+    "expect": "keep"
+  },
+  {
+    "front": "так",
+    "back": "this",
+    "expect": "drop"
+  },
+  {
+    "front": "так",
+    "back": "that",
+    "expect": "drop"
+  },
+  {
+    "front": "так",
+    "back": "much",
+    "expect": "drop"
+  },
+  {
+    "front": "так",
+    "back": "as",
+    "expect": "drop"
+  },
+  {
+    "front": "так",
+    "back": "such",
+    "expect": "drop"
+  },
+  {
+    "front": "уже",
+    "back": "already",
+    "expect": "keep"
+  },
+  {
+    "front": "уже",
+    "back": "by now",
+    "expect": "drop"
+  },
+  {
+    "front": "уже",
+    "back": "as of",
+    "expect": "drop"
+  },
+  {
+    "front": "уже",
+    "back": "now",
+    "expect": "drop"
+  },
+  {
+    "front": "уже",
+    "back": "by",
+    "expect": "drop"
+  },
+  {
+    "front": "уже",
+    "back": "then",
+    "expect": "drop"
+  },
+  {
+    "front": "уже",
+    "back": "that",
+    "expect": "drop"
+  },
+  {
+    "front": "уже",
+    "back": "point",
+    "expect": "drop"
+  },
+  {
+    "front": "что",
+    "back": "that",
+    "expect": "keep"
+  },
+  {
+    "front": "что",
+    "back": "what",
+    "expect": "keep"
+  },
+  {
+    "front": "что",
+    "back": "which",
+    "expect": "drop"
+  },
+  {
+    "front": "как",
+    "back": "how",
+    "expect": "keep"
+  },
+  {
+    "front": "как",
+    "back": "as",
+    "expect": "keep"
+  },
+  {
+    "front": "как",
+    "back": "what",
+    "expect": "drop"
+  },
+  {
+    "front": "как",
+    "back": "exclamative",
+    "expect": "drop"
+  },
+  {
+    "front": "как",
+    "back": "concessive",
+    "expect": "drop"
+  },
+  {
+    "front": "как",
+    "back": "however",
+    "expect": "drop"
+  },
+  {
+    "front": "как",
+    "back": "much",
+    "expect": "drop"
+  },
+  {
+    "front": "как",
+    "back": "as soon as",
+    "expect": "drop"
+  },
+  {
+    "front": "есть",
+    "back": "eat",
+    "expect": "keep"
+  },
+  {
+    "front": "есть",
+    "back": "there is",
+    "expect": "keep"
+  },
+  {
+    "front": "есть",
+    "back": "there are",
+    "expect": "drop"
+  },
+  {
+    "front": "есть",
+    "back": "exists",
+    "expect": "drop"
+  },
+  {
+    "front": "есть",
+    "back": "exist",
+    "expect": "drop"
+  },
+  {
+    "front": "есть",
+    "back": "am",
+    "expect": "drop"
+  },
+  {
+    "front": "есть",
+    "back": "is",
+    "expect": "drop"
+  },
+  {
+    "front": "есть",
+    "back": "are",
+    "expect": "drop"
+  },
+  {
+    "front": "бокс",
+    "back": "boxing",
+    "expect": "keep"
+  },
+  {
+    "front": "бокс",
+    "back": "box",
+    "expect": "keep"
+  },
+  {
+    "front": "бокс",
+    "back": "sports",
+    "expect": "drop"
+  },
+  {
+    "front": "бокс",
+    "back": "medicine",
+    "expect": "drop"
+  }
+]
