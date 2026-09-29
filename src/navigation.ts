@@ -33,7 +33,7 @@ let currentScreen: string | null = null;
     if (data.action === 'replay') {
       screens.game.update?.();
     } else {
-      navigateTo(MENU_SCREEN, { replace: true });
+      returnToMenu();
     }
   });
 })();
@@ -51,7 +51,9 @@ function registerListeners(): void {
     const target = event.target as HTMLElement;
     const navButton = target.closest('button.nav');
     if (navButton instanceof HTMLButtonElement) {
-      navigateTo(navButton.name);
+      // A nav button can ask to consume the current entry instead of stacking on
+      // top of it (e.g. leaving the first-visit deck picker for the menu).
+      navigateTo(navButton.name, { replace: navButton.dataset.history === 'replace' });
       return;
     }
     const backButton = target.closest('button.back');
@@ -68,10 +70,20 @@ function registerListeners(): void {
  */
 function registerHistoryListener(): void {
   window.addEventListener('popstate', event => {
+    if (gameOverIsOpen()) {
+      // Back while the run summary is up takes the same path as its "Main menu"
+      // button; closing it emits the event that consumes the game history entry.
+      const dialog = document.getElementById('game-over-dialog') as HTMLDialogElement;
+      dialog.returnValue = 'menu';
+      dialog.close();
+      return;
+    }
+
     if (pause.isOpen()) {
-      // Let the extra Back press collapse onto the menu instead of navigating
-      // the (paused) game screen out from under the dialog.
-      history.pushState(historyState(MENU_SCREEN), '', `#${MENU_SCREEN}`);
+      // The pause dialog owns the Back button: swallow the press and re-anchor
+      // on the game entry so the paused screen stays visible and the address bar
+      // keeps matching it, rather than navigating out from under the dialog.
+      history.pushState(historyState(GAME_SCREEN), '', `#${GAME_SCREEN}`);
       return;
     }
 
@@ -107,26 +119,42 @@ function back(): void {
   history.back();
 }
 
+function gameOverIsOpen(): boolean {
+  const dialog = document.getElementById('game-over-dialog') as HTMLDialogElement | null;
+  return Boolean(dialog?.open);
+}
+
 /**
  * A Back press from the game parks the run and asks whether to resume or quit.
- * Nothing on the board changes until the choice is made, so a resume picks the
- * run up exactly where it left off.
+ * The game stays on screen behind the dialog, so resuming just un-pauses the
+ * board: nothing is re-initialized and no new run is started.
  */
 function interruptGame(): void {
   if (pause.isOpen()) {
     return;
   }
+  // `history.back()` already moved the active entry to the menu; re-anchor on
+  // the game so the pause dialog overlays it and the address bar matches.
+  history.pushState(historyState(GAME_SCREEN), '', `#${GAME_SCREEN}`);
   board.pauseGame();
-  activate(MENU_SCREEN);
   pause.open().then(action => {
     if (action === 'resume') {
-      history.pushState(historyState(GAME_SCREEN), '', `#${GAME_SCREEN}`);
-      activate(GAME_SCREEN);
       board.resumeGame();
     } else {
       board.abandon();
+      returnToMenu();
     }
   });
+}
+
+/**
+ * Shows the menu and consumes the current entry, so a screen the player chose to
+ * leave does not linger in history and require an extra Back press.
+ */
+function returnToMenu(): void {
+  currentScreen = MENU_SCREEN;
+  activate(MENU_SCREEN);
+  history.back();
 }
 
 function activate(screenId: string, skipUpdate = false): void {

@@ -22,6 +22,7 @@ let fmSelectedJewel: JewelSelection | null = null;
 let fiLastSelectionTime: number | null = null;
 let intervalId: number | null = null;
 let mismatchTimeout: ReturnType<typeof setTimeout> | null = null;
+let pendingMismatch: (() => void) | null = null;
 let mismatchFrozen = false;
 let paused = false;
 
@@ -32,6 +33,7 @@ function getOverlay(): HTMLElement {
 function initialize(): void {
   stopAddingGroups();
   clearMismatchTimeout();
+  pendingMismatch = null;
   mismatchFrozen = false;
   paused = false;
   faJewels = [[], []];
@@ -92,6 +94,7 @@ function gameOver(): void {
 function abandon(): void {
   stopAddingGroups();
   clearMismatchTimeout();
+  pendingMismatch = null;
   getOverlay().style.display = 'none';
   mismatchFrozen = false;
   paused = false;
@@ -107,9 +110,21 @@ function pauseGame(): void {
 
 function resumeGame(): void {
   paused = false;
+  if (pendingMismatch !== null) {
+    // A mismatch penalty was frozen when the game was paused; finish it now
+    // instead of restarting the spawn timer while the board is still frozen.
+    runPendingMismatch();
+    return;
+  }
   if (!mismatchFrozen) {
     startAddingGroups();
   }
+}
+
+function runPendingMismatch(): void {
+  const finish = pendingMismatch;
+  pendingMismatch = null;
+  finish?.();
 }
 
 function getNextGroupId(): number {
@@ -228,15 +243,23 @@ function mismatch(
   stopAddingGroups();
   notifyBoardChanged(highlight ? { reason: 'mismatch', highlight } : { reason: 'mismatch' });
 
-  mismatchTimeout = setTimeout(() => {
+  const finishMismatch = () => {
     mismatchTimeout = null;
     overlay.style.display = 'none';
     removeGroup(groupId);
     addNewGroup(cardsInGroup.length);
-    startAddingGroups();
     mismatchFrozen = false;
     notifyBoardChanged({ reason: 'mismatch' });
-  }, MISMATCH_PENALTY_TIME);
+    startAddingGroups();
+  };
+
+  if (paused) {
+    // Freeze with the penalty pending; resuming runs it immediately so a game
+    // paused mid-mismatch cannot leave the board stuck behind the overlay.
+    pendingMismatch = finishMismatch;
+  } else {
+    mismatchTimeout = setTimeout(finishMismatch, MISMATCH_PENALTY_TIME);
+  }
 }
 
 function clearMismatchTimeout(): void {
