@@ -28,6 +28,10 @@ let allCards: Card[] = [];
 let wordMappings: Record<string, string[]> | null = null;
 let distanceContext: DistanceContext | null = null;
 let deck: Deck | null = null;
+
+// Card distance is invariant for a deck and the same pair recurs across a
+// session, so memoize it. Module scoped: kept until the deck changes.
+const cardDistanceCache = new Map<number, number>();
 const indexes: Record<State, Card[]> = {
   1: [],
   2: [],
@@ -144,6 +148,7 @@ function unloadDeck(): void {
   deck = null;
   allCards = [];
   mismatchCount = 0;
+  cardDistanceCache.clear();
   updateWordMappings();
   updateNormalizations();
   clearIndexes();
@@ -360,7 +365,14 @@ function cardDistance(candidateCard: Card, card: Card): number {
   if (!distanceContext) {
     return 0;
   }
-  return computeCardDistance(candidateCard, card, distanceContext);
+  const key = card.id * allCards.length + candidateCard.id;
+  const cached = cardDistanceCache.get(key);
+  if (cached !== undefined) {
+    return cached;
+  }
+  const distance = computeCardDistance(candidateCard, card, distanceContext);
+  cardDistanceCache.set(key, distance);
+  return distance;
 }
 
 function moveToIndex(card: Card): void {
