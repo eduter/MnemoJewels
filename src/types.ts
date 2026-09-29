@@ -161,8 +161,7 @@ export interface GameOverEventData {
   level: number;
   /**
    * Set when the run ended because the player quit from the pause dialog rather
-   * than by filling the board. Records are not kept and cards are not reindexed
-   * for an abandoned run.
+   * than by filling the board. No record is kept for an abandoned run.
    */
   abandoned?: boolean;
 }

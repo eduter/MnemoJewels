@@ -63,6 +63,11 @@ function onGameStart(): void {
 function onGameOver(eventData: unknown): void {
   stopProgress();
   const data = eventData as GameOverEventData;
+  // An abandoned run has no summary to show; the caller navigates straight back
+  // to the menu, so leave the dialog closed.
+  if (data.abandoned) {
+    return;
+  }
   setText('result-score', String(data.score));
   setText('result-duration', time.formatDuration(data.gameEnd - data.gameStart, 2));
   setText('result-level', String(data.level));

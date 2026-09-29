@@ -102,6 +102,9 @@ function abandon(): void {
   paused = false;
   faJewels = [[], []];
   fmSelectedJewel = null;
+  // End the run through the normal path so cards and scores see the same
+  // teardown as a completed game, flagged as abandoned so neither keeps a record.
+  game.gameOver(true);
   notifyBoardChanged({ reason: 'interrupted' });
 }
 

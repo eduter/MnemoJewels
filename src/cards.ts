@@ -12,7 +12,6 @@ import type { DistanceContext } from './alternativeSelection';
 import type {
   Deck,
   DeckSelectedEventData,
-  GameOverEventData,
   MatchEventData,
   MismatchEventData,
   State,
@@ -114,10 +113,7 @@ const iterators: Record<string, Iterator> = {
   events.bind('exitApp', persistCards);
 })();
 
-function reindexCardInGame(eventData: unknown): void {
-  if ((eventData as GameOverEventData).abandoned) {
-    return;
-  }
+function reindexCardInGame(): void {
   while (cardsInGame.length > 0) {
     moveToIndex(cardsInGame[0]);
   }
