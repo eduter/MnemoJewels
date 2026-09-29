@@ -120,9 +120,27 @@ export interface MismatchEventData {
 
 export type BoardChangeReason = 'reset' | 'spawn' | 'selection' | 'match' | 'mismatch';
 
+/**
+ * Tiles to single out while the mismatch freeze is showing. A card's word and
+ * its translation share a card id, so a tile is identified by card id *and*
+ * column (0 = word, 1 = translation).
+ */
+export interface HighlightedTile {
+  cardId: number;
+  col: number;
+}
+
+export interface MismatchHighlight {
+  /** The two tiles the player picked: the word (col 0) and the wrong translation (col 1). */
+  wrong: HighlightedTile[];
+  /** The translation that actually belongs to the picked word. */
+  correct: HighlightedTile[];
+}
+
 export interface BoardChangedEventData {
   reason: BoardChangeReason;
   cardId?: number;
+  highlight?: MismatchHighlight;
 }
 
 export interface SpawnScheduledEventData {

@@ -175,6 +175,66 @@
     opacity: 0.5;
 }
 
+/* Mismatch feedback: while the overlay dims the board, the tiles the player got
+   wrong and the translation that actually matches stay legible. The board is
+   desaturated so those tiles read as the only coloured things on screen, and
+   each is marked with a ring plus a check/cross, so the message survives even
+   when the tile's own colour clashes with red or green. */
+#board.is-mismatch-highlight .tile {
+    filter: grayscale(1) brightness(0.4);
+    transition: bottom 340ms cubic-bezier(0.2, 0.78, 0.3, 1), opacity 180ms ease,
+                filter 200ms ease;
+}
+
+#board.is-mismatch-highlight .tile.is-wrong,
+#board.is-mismatch-highlight .tile.is-right {
+    z-index: 32050;
+    filter: grayscale(0.15) brightness(0.95);
+    transform: scale(0.94);
+}
+
+#board.is-mismatch-highlight .tile.is-wrong {
+    box-shadow: 0 0 0 0.14em rgba(255, 255, 255, 0.95),
+                0 0 0 0.55em #ff3b30,
+                0 0 2.4em 0.1em rgba(255, 59, 48, 0.95);
+}
+
+#board.is-mismatch-highlight .tile.is-right {
+    filter: grayscale(0.15) brightness(1.06) saturate(1.2);
+    box-shadow: 0 0 0 0.14em rgba(255, 255, 255, 0.95),
+                0 0 0 0.55em #2fd07a,
+                0 0 2.4em 0.1em rgba(47, 208, 122, 0.9);
+}
+
+.tile-verdict {
+    position: absolute;
+    top: 0.06em;
+    right: 0.06em;
+    z-index: 6;
+    box-sizing: border-box;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 50%;
+    color: #fff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.75em;
+    font-weight: bold;
+    line-height: 1.55em;
+    text-align: center;
+    box-shadow: 0 0 0 0.14em rgba(255, 255, 255, 0.95),
+                0 0.05em 0.25em rgba(0, 0, 0, 0.7);
+}
+
+.tile-verdict.wrong {
+    background-color: #ff3b30;
+}
+
+.tile-verdict.correct {
+    background-color: #22c46f;
+    color: #04240f;
+}
+
+
 #stats {
     display: flex;
     flex: 0 0 auto;
@@ -271,5 +331,13 @@
     .tile,
     .spawn-progress-fill {
         transition-duration: 1ms;
+    }
+}
+
+/* The mismatch freeze is feedback rather than decoration, so the tile treatment
+   still applies when motion is reduced — only the transition is dropped. */
+@media (prefers-reduced-motion: reduce) {
+    #board.is-mismatch-highlight .tile {
+        transition: none;
     }
 }
