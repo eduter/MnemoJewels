@@ -21,7 +21,9 @@ const fmGroupCreationTime: Record<number, number> = {};
 let fmSelectedJewel: JewelSelection | null = null;
 let fiLastSelectionTime: number | null = null;
 let intervalId: number | null = null;
+let mismatchTimeout: ReturnType<typeof setTimeout> | null = null;
 let mismatchFrozen = false;
+let paused = false;
 
 function getOverlay(): HTMLElement {
   return document.getElementById('overlay')!;
@@ -29,7 +31,9 @@ function getOverlay(): HTMLElement {
 
 function initialize(): void {
   stopAddingGroups();
+  clearMismatchTimeout();
   mismatchFrozen = false;
+  paused = false;
   faJewels = [[], []];
   faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   Object.keys(fmGroupCreationTime).forEach(key => {
@@ -85,12 +89,35 @@ function gameOver(): void {
   game.gameOver();
 }
 
+function abandon(): void {
+  stopAddingGroups();
+  clearMismatchTimeout();
+  getOverlay().style.display = 'none';
+  mismatchFrozen = false;
+  paused = false;
+  faJewels = [[], []];
+  fmSelectedJewel = null;
+  notifyBoardChanged({ reason: 'interrupted' });
+}
+
+function pauseGame(): void {
+  paused = true;
+  stopAddingGroups();
+}
+
+function resumeGame(): void {
+  paused = false;
+  if (!mismatchFrozen) {
+    startAddingGroups();
+  }
+}
+
 function getNextGroupId(): number {
   return faAvailableGroupIds.shift()!;
 }
 
 function selectJewel(piRow: number, piCol: number): void {
-  if (mismatchFrozen) {
+  if (mismatchFrozen || paused) {
     return;
   }
   const miSelectionTime = time.now();
@@ -201,7 +228,8 @@ function mismatch(
   stopAddingGroups();
   notifyBoardChanged(highlight ? { reason: 'mismatch', highlight } : { reason: 'mismatch' });
 
-  setTimeout(() => {
+  mismatchTimeout = setTimeout(() => {
+    mismatchTimeout = null;
     overlay.style.display = 'none';
     removeGroup(groupId);
     addNewGroup(cardsInGroup.length);
@@ -211,7 +239,17 @@ function mismatch(
   }, MISMATCH_PENALTY_TIME);
 }
 
+function clearMismatchTimeout(): void {
+  if (mismatchTimeout !== null) {
+    clearTimeout(mismatchTimeout);
+    mismatchTimeout = null;
+  }
+}
+
 function startAddingGroups(): void {
+  if (paused || intervalId !== null) {
+    return;
+  }
   intervalId = utils.setDynamicInterval(
     addDefaultGroup,
     getIntervalBetweenGroups,
@@ -284,6 +322,9 @@ function notifyBoardChanged(data: BoardChangedEventData): void {
 
 export default {
   initialize,
+  abandon,
+  pauseGame,
+  resumeGame,
   selectJewel,
   getJewels,
   getSelectedJewel,

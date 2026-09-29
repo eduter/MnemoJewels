@@ -29,6 +29,9 @@ function onGameStart(): void {
 
 function updateTopScores(eventData: unknown): void {
   const data = eventData as GameOverEventData;
+  if (data.abandoned) {
+    return;
+  }
   let rank = topScores.length;
   while (rank > 0 && score > topScores[rank - 1].points) {
     rank--;

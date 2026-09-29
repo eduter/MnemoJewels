@@ -49,12 +49,13 @@ function startGame(): void {
   events.trigger('gameStart');
 }
 
-function gameOver(): void {
+function gameOver(abandoned = false): void {
   events.trigger('gameOver', {
     score: score.getScore(),
     gameStart,
     gameEnd: time.now(),
     level,
+    abandoned,
   } satisfies GameOverEventData);
 
   cards.debugReview();

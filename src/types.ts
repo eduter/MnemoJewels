@@ -118,7 +118,13 @@ export interface MismatchEventData {
   thinkingTime: number;
 }
 
-export type BoardChangeReason = 'reset' | 'spawn' | 'selection' | 'match' | 'mismatch';
+export type BoardChangeReason =
+  | 'reset'
+  | 'spawn'
+  | 'selection'
+  | 'match'
+  | 'mismatch'
+  | 'interrupted';
 
 /**
  * Tiles to single out while the mismatch freeze is showing. A card's word and
@@ -153,6 +159,12 @@ export interface GameOverEventData {
   gameStart: Timestamp;
   gameEnd: Timestamp;
   level: number;
+  /**
+   * Set when the run ended because the player quit from the pause dialog rather
+   * than by filling the board. Records are not kept and cards are not reindexed
+   * for an abandoned run.
+   */
+  abandoned?: boolean;
 }
 
 export interface ScoreUpEventData {

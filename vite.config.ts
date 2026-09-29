@@ -12,6 +12,8 @@ export default defineConfig({
   server: {
     host: true,
     port: 5173,
+    // Allow the sandbox preview host to reach the dev server.
+    allowedHosts: ['.prod-runtime.all-hands.dev'],
   },
   preview: {
     host: true,
