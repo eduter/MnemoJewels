@@ -98,18 +98,20 @@ function findMatchingPair(jewels: Jewel[][]): { first: JewelSelection; second: J
 }
 
 function readTopScores(): Array<{ points: number }> {
-  const raw = localStorage.getItem('mj.topScores');
-  return raw === null ? [] : JSON.parse(raw) as Array<{ points: number }>;
+  return score.getTopScores() as Array<{ points: number }>;
 }
 
 describe('top scores', () => {
   it('does not record a completed run that scored nothing', () => {
+    const before = readTopScores().length;
+
     game.gameOver();
 
-    expect(readTopScores()).toHaveLength(0);
+    expect(readTopScores()).toHaveLength(before);
   });
 
   it('records a completed run that scored', () => {
+    const before = readTopScores().length;
     const { first, second } = findMatchingPair(board.getJewels());
     board.selectJewel(first.row, first.col);
     board.selectJewel(second.row, second.col);
@@ -117,23 +119,38 @@ describe('top scores', () => {
     game.gameOver();
 
     const topScores = readTopScores();
-    expect(topScores).toHaveLength(1);
+    expect(topScores).toHaveLength(before + 1);
     expect(topScores[0].points).toBeGreaterThan(0);
   });
 
-  it('does not record a quit even when the run had scored', () => {
+  it('records a quit when the run had scored', () => {
+    const before = readTopScores().length;
     const { first, second } = findMatchingPair(board.getJewels());
     board.selectJewel(first.row, first.col);
     board.selectJewel(second.row, second.col);
-    expect(score.getScore()).toBeGreaterThan(0);
+    const earned = score.getScore();
+    expect(earned).toBeGreaterThan(0);
 
     board.abandon();
 
-    expect(readTopScores()).toHaveLength(0);
+    const topScores = readTopScores();
+    expect(topScores).toHaveLength(before + 1);
+    expect(topScores[0].points).toBe(earned);
+  });
+
+  it('does not record a quit that scored nothing', () => {
+    const before = readTopScores().length;
+
+    board.abandon();
+
+    expect(readTopScores()).toHaveLength(before);
   });
 
   it('does not open the run summary when the player quits', () => {
     const dialog = document.getElementById('game-over-dialog') as HTMLDialogElement;
+    const { first, second } = findMatchingPair(board.getJewels());
+    board.selectJewel(first.row, first.col);
+    board.selectJewel(second.row, second.col);
 
     board.abandon();
 

@@ -24,7 +24,21 @@ function getDialog(): HTMLDialogElement {
   return document.getElementById(DIALOG_ID) as HTMLDialogElement;
 }
 
+/**
+ * Closes the dialog from the outside (a Back press) with an empty return value,
+ * which resolves as "resume" — Back dismisses the pause and the run continues.
+ */
+function dismiss(): void {
+  const dialog = getDialog();
+  if (!dialog.open) {
+    return;
+  }
+  dialog.returnValue = '';
+  dialog.close();
+}
+
 export default {
   isOpen,
   open,
+  dismiss,
 };

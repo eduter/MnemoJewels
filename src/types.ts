@@ -161,7 +161,8 @@ export interface GameOverEventData {
   level: number;
   /**
    * Set when the run ended because the player quit from the pause dialog rather
-   * than by filling the board. No record is kept for an abandoned run.
+   * than by filling the board. The points already earned in an abandoned run are
+   * kept, but the run has no summary to show.
    */
   abandoned?: boolean;
 }

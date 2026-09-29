@@ -29,9 +29,9 @@ function onGameStart(): void {
 
 function updateTopScores(eventData: unknown): void {
   const data = eventData as GameOverEventData;
-  // A run with no points is not a score worth keeping, and an abandoned run is
-  // not a record at all — neither belongs in Top Scores.
-  if (data.abandoned || score <= 0) {
+  // A run with no points is not a score worth keeping. Quitting still counts:
+  // the points were earned, so an abandoned run is recorded like any other.
+  if (score <= 0) {
     return;
   }
   let rank = topScores.length;

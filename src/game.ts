@@ -58,13 +58,7 @@ function gameOver(abandoned = false): void {
     abandoned,
   } satisfies GameOverEventData);
 
-  // Only a completed run advances the learning schedule: an abandoned run is
-  // ended by the player, not by the spaced-repetition cadence, so its cards go
-  // back to the pool untouched. `reindexCardInGame` still runs for the run so
-  // the board can be torn down.
-  if (!abandoned) {
-    cards.debugReview();
-  }
+  cards.debugReview();
 }
 
 function selectJewel(piRow: number, piCol: number): void {

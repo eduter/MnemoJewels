@@ -80,10 +80,12 @@ function registerHistoryListener(): void {
     }
 
     if (pause.isOpen()) {
-      // The pause dialog owns the Back button: swallow the press and re-anchor
-      // on the game entry so the paused screen stays visible and the address bar
-      // keeps matching it, rather than navigating out from under the dialog.
-      history.pushState(historyState(GAME_SCREEN), '', `#${GAME_SCREEN}`);
+      // Back while paused dismisses the dialog and resumes the run. The pop
+      // dropped the game entry, so re-anchor on it (replacing, not pushing, to
+      // avoid leaking an entry into the forward stack) before closing; the
+      // dialog's close handler resumes the board.
+      history.replaceState(historyState(GAME_SCREEN), '', `#${GAME_SCREEN}`);
+      pause.dismiss();
       return;
     }
 
