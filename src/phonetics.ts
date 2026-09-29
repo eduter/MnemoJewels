@@ -150,11 +150,24 @@ function isDiacritic(character: string): boolean {
   return DIACRITICS.has(character) || /\p{M}/u.test(character);
 }
 
+// Alternative selection re-tokenizes and re-compares the same handful of IPA
+// strings thousands of times per group, so every stage is memoized: the
+// segmentation of a string, the cost of a segment pair, and the distance of a
+// transcription pair. Caches are keyed by value for the small, bounded inputs
+// (segments) and by object identity for the transcription arrays, which are
+// owned by the loaded deck and dropped wholesale when it is unloaded.
+const SEGMENTS_CACHE_LIMIT = 8192;
+const segmentsCache = new Map<string, string[]>();
+
 /**
  * Splits an IPA transcription into segments, attaching every following
  * diacritic (palatalization, length, nasalization, …) to its base symbol.
+ * Results are cached per input string; callers must not mutate them.
  */
 export function ipaSegments(ipa: string): string[] {
+  const cached = segmentsCache.get(ipa);
+  if (cached !== undefined) return cached;
+
   const cleaned = ipa
     .normalize('NFD')
     .toLowerCase()
@@ -173,7 +186,64 @@ export function ipaSegments(ipa: string): string[] {
     }
   }
   if (current) segments.push(current);
+
+  // A bounded cache so it cannot grow without limit; a real deck has only a few
+  // hundred distinct transcription strings, far below the cap.
+  if (segmentsCache.size >= SEGMENTS_CACHE_LIMIT) segmentsCache.clear();
+  segmentsCache.set(ipa, segments);
   return segments;
+}
+
+const segmentIds = new Map<string, number>();
+const segmentStrings: string[] = [];
+const segmentIdCache = new WeakMap<string[], Int32Array>();
+
+// Flattened `count x count` matrix of substitution costs between interned
+// segments, filled lazily. NaN marks an uncomputed cell so a genuine zero cost
+// (identical segments) is not confused with "missing".
+let segmentPairCost = new Float64Array(0);
+let segmentPairSize = 0;
+
+function internSegment(segment: string): number {
+  const existing = segmentIds.get(segment);
+  if (existing !== undefined) return existing;
+
+  const id = segmentStrings.length;
+  segmentStrings.push(segment);
+  segmentIds.set(segment, id);
+  growSegmentPairMatrix(id + 1);
+  return id;
+}
+
+function growSegmentPairMatrix(size: number): void {
+  const next = new Float64Array(size * size).fill(NaN);
+  for (let i = 0; i < segmentPairSize; i++) {
+    for (let j = 0; j < segmentPairSize; j++) {
+      next[i * size + j] = segmentPairCost[i * segmentPairSize + j];
+    }
+  }
+  segmentPairCost = next;
+  segmentPairSize = size;
+}
+
+function internedIds(segments: string[]): Int32Array {
+  const cached = segmentIdCache.get(segments);
+  if (cached !== undefined) return cached;
+
+  const ids = new Int32Array(segments.length);
+  for (let i = 0; i < segments.length; i++) ids[i] = internSegment(segments[i]);
+  segmentIdCache.set(segments, ids);
+  return ids;
+}
+
+function internedPairCost(leftId: number, rightId: number): number {
+  const index = leftId * segmentPairSize + rightId;
+  const cached = segmentPairCost[index];
+  if (!Number.isNaN(cached)) return cached;
+
+  const cost = computeSegmentDistance(segmentStrings[leftId], segmentStrings[rightId]);
+  segmentPairCost[index] = cost;
+  return cost;
 }
 
 function baseSymbol(segment: string): string {
@@ -210,6 +280,14 @@ function featureDistance(left: SegmentFeatures, right: SegmentFeatures): number 
  */
 export function segmentDistance(left: string, right: string): number {
   if (left === right) return 0;
+  const leftId = segmentIds.get(left);
+  const rightId = segmentIds.get(right);
+  if (leftId !== undefined && rightId !== undefined) return internedPairCost(leftId, rightId);
+  return computeSegmentDistance(left, right);
+}
+
+function computeSegmentDistance(left: string, right: string): number {
+  if (left === right) return 0;
 
   const leftDiacritics = diacritics(left);
   const rightDiacritics = diacritics(right);
@@ -231,26 +309,45 @@ export function segmentDistance(left: string, right: string): number {
   return Math.min(1, featureDistance(leftFeatures, rightFeatures) + diacriticCost);
 }
 
+// Reused across calls: sequence lengths here are single digits, and this is the
+// innermost loop of alternative selection, so it must not allocate per call.
+let sequenceBuffer = new Float64Array(0);
+
 /**
  * Edit distance between two segment sequences using the graded substitution
- * cost above, with unit-cost insertion and deletion.
+ * cost above, with unit-cost insertion and deletion. Segments are interned, so
+ * the substitution cost is a table lookup rather than a reparsed string.
  */
 export function segmentSequenceDistance(left: string[], right: string[]): number {
-  let previous = Array.from({ length: right.length + 1 }, (_, index) => index);
-  let current = new Array<number>(right.length + 1);
-  for (let leftIndex = 1; leftIndex <= left.length; leftIndex++) {
-    current[0] = leftIndex;
-    for (let rightIndex = 1; rightIndex <= right.length; rightIndex++) {
-      current[rightIndex] = Math.min(
-        current[rightIndex - 1] + 1,
-        previous[rightIndex] + 1,
-        previous[rightIndex - 1] + segmentDistance(left[leftIndex - 1], right[rightIndex - 1]),
+  const leftIds = internedIds(left);
+  const rightIds = internedIds(right);
+  const width = rightIds.length + 1;
+  if (sequenceBuffer.length < width * 2) sequenceBuffer = new Float64Array(width * 2);
+  const buffer = sequenceBuffer;
+
+  for (let rightIndex = 0; rightIndex < width; rightIndex++) buffer[rightIndex] = rightIndex;
+  let previous = 0;
+  let current = width;
+  for (let leftIndex = 1; leftIndex <= leftIds.length; leftIndex++) {
+    buffer[current] = leftIndex;
+    for (let rightIndex = 1; rightIndex < width; rightIndex++) {
+      buffer[current + rightIndex] = Math.min(
+        buffer[current + rightIndex - 1] + 1,
+        buffer[previous + rightIndex] + 1,
+        buffer[previous + rightIndex - 1] + internedPairCost(leftIds[leftIndex - 1], rightIds[rightIndex - 1]),
       );
     }
-    previous = current.slice();
+    const swap = previous;
+    previous = current;
+    current = swap;
   }
-  return previous[right.length];
+  return buffer[previous + rightIds.length];
 }
+
+// Transcript-pair distances are invariant for the lifetime of a deck, and the
+// same pair is re-requested across the groups of a game, so cache by identity of
+// the two arrays (both are owned by the deck and stable while it is loaded).
+const sequenceCache = new WeakMap<string[], Map<string[], number>>();
 
 /**
  * Distance between two sets of IPA transcriptions: the smallest segment-sequence
@@ -258,6 +355,15 @@ export function segmentSequenceDistance(left: string[], right: string[]): number
  */
 export function ipaSequenceDistance(left: string[] | undefined, right: string[] | undefined): number | null {
   if (!left?.length || !right?.length) return null;
+
+  let byRight = sequenceCache.get(left);
+  if (byRight === undefined) {
+    byRight = new Map();
+    sequenceCache.set(left, byRight);
+  }
+  const cached = byRight.get(right);
+  if (cached !== undefined) return cached;
+
   let best = Infinity;
   for (const leftIpa of left) {
     const leftSegments = ipaSegments(leftIpa);
@@ -265,5 +371,6 @@ export function ipaSequenceDistance(left: string[] | undefined, right: string[] 
       best = Math.min(best, segmentSequenceDistance(leftSegments, ipaSegments(rightIpa)));
     }
   }
+  byRight.set(right, best);
   return best;
 }

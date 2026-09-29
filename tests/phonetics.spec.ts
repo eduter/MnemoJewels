@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { ipaSegments, ipaSequenceDistance, segmentDistance } from '../src/phonetics';
+import {
+  ipaSegments,
+  ipaSequenceDistance,
+  segmentDistance,
+  segmentSequenceDistance,
+} from '../src/phonetics';
 
 describe('IPA segment tokenization', () => {
   it('keeps diacritics attached to their base symbol', () => {
@@ -62,5 +67,40 @@ describe('IPA sequence distance', () => {
     )!;
     const bestSingle = ipaSequenceDistance(['[spɔrt]'], ['/spɔːt/'])!;
     expect(withVariants).toBeLessThanOrEqual(bestSingle);
+  });
+});
+
+// The hot path is memoized (segmentation, segment-pair cost, transcript-pair
+// distance, reused DP buffer). These pin the invariants that make that safe:
+// cached calls must return the same values as cold ones, and interning many
+// distinct segments must not corrupt earlier results.
+describe('memoization invariants', () => {
+  it('returns identical distances when a pair is requested again', () => {
+    const first = ipaSequenceDistance(['[məɡɐˈzʲin]'], ['/ˌmæɡəˈziːn/'])!;
+    const second = ipaSequenceDistance(['[məɡɐˈzʲin]'], ['/ˌmæɡəˈziːn/'])!;
+    expect(second).toBe(first);
+  });
+
+  it('is stable across repeated sequence comparisons of the same segments', () => {
+    const left = ipaSegments('[prɐˈblʲemə]');
+    const right = ipaSegments('/ˈprɒbləm/');
+    const first = segmentSequenceDistance(left, right);
+    for (let i = 0; i < 5; i++) {
+      expect(segmentSequenceDistance(left, right)).toBe(first);
+    }
+  });
+
+  it('matches a fresh computation after interning many unrelated segments', () => {
+    const left = ipaSegments('[ɑ]');
+    const right = ipaSegments('[b]');
+    for (const sound of ['ɡ', 'ɟ', 'ɢ', 'χ', 'ʁ', 'ʕ', 'ħ', 'ɦ', 'ɱ', 'ɳ', 'ɲ', 'ŋ']) {
+      segmentDistance(sound, 'a');
+      segmentDistance('a', sound);
+    }
+    // Recompute after the matrix has grown and swapped buffers underneath.
+    expect(segmentSequenceDistance(left, right)).toBe(
+      segmentSequenceDistance(ipaSegments('[ɑ]'), ipaSegments('[b]')),
+    );
+    expect(segmentDistance('ɑ', 'b')).toBe(segmentDistance('ɑ', 'b'));
   });
 });
