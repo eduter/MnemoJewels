@@ -25,6 +25,7 @@ let mismatchTimeout: ReturnType<typeof setTimeout> | null = null;
 let pendingMismatch: (() => void) | null = null;
 let mismatchFrozen = false;
 let paused = false;
+let resumeFromSpawnSchedule: { delay: number; remaining: number } | null = null;
 
 function getOverlay(): HTMLElement {
   return document.getElementById('overlay')!;
@@ -95,6 +96,7 @@ function abandon(): void {
   stopAddingGroups();
   clearMismatchTimeout();
   pendingMismatch = null;
+  resumeFromSpawnSchedule = null;
   getOverlay().style.display = 'none';
   mismatchFrozen = false;
   paused = false;
@@ -105,7 +107,18 @@ function abandon(): void {
 
 function pauseGame(): void {
   paused = true;
+  // Capture how much of the current spawn delay is left so resuming continues
+  // the countdown for exactly that long, rather than restarting it. Spawning is
+  // stopped here either by this call or, mid-mismatch, by the freeze before it.
+  if (!mismatchFrozen && intervalId !== null) {
+    const schedule = utils.getDynamicIntervalSchedule(intervalId);
+    if (schedule) {
+      const remaining = Math.max(0, schedule.startedAt + schedule.delay - time.now());
+      resumeFromSpawnSchedule = { delay: schedule.delay, remaining };
+    }
+  }
   stopAddingGroups();
+  events.trigger('spawningPaused');
 }
 
 function resumeGame(): void {
@@ -117,7 +130,8 @@ function resumeGame(): void {
     return;
   }
   if (!mismatchFrozen) {
-    startAddingGroups();
+    startAddingGroups(resumeFromSpawnSchedule ?? undefined);
+    resumeFromSpawnSchedule = null;
   }
 }
 
@@ -269,7 +283,7 @@ function clearMismatchTimeout(): void {
   }
 }
 
-function startAddingGroups(): void {
+function startAddingGroups(resume?: { delay: number; remaining: number }): void {
   if (paused || intervalId !== null) {
     return;
   }
@@ -277,6 +291,7 @@ function startAddingGroups(): void {
     addDefaultGroup,
     getIntervalBetweenGroups,
     schedule => events.trigger('spawnScheduled', schedule satisfies SpawnScheduledEventData),
+    resume,
   );
 }
 

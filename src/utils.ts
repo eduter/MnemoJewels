@@ -45,6 +45,7 @@ function setDynamicInterval(
   callback: () => void,
   getDelay: () => number,
   onSchedule?: (schedule: DynamicIntervalSchedule) => void,
+  resume?: { delay: number; remaining: number },
 ): number {
   const internalIntervalId = nextIntervalId++;
 
@@ -53,27 +54,39 @@ function setDynamicInterval(
       return;
     }
     callback();
-    scheduleNextIteration();
+    scheduleNextIteration(freshSchedule());
   }
 
-  function scheduleNextIteration(): void {
+  function freshSchedule(): DynamicIntervalSchedule {
+    return { startedAt: time.now(), delay: Math.max(0, getDelay()) };
+  }
+
+  // A resume carries the delay a window should span and the time still left in
+  // it. Anchoring the start "remaining" ago in the past keeps the progress
+  // mapping honest while the paused stretch stays excluded from the countdown;
+  // only the first window is resumed, later ones use the live delay.
+  function firstSchedule(): DynamicIntervalSchedule {
+    if (!resume) {
+      return freshSchedule();
+    }
+    const delay = Math.max(0, resume.delay);
+    const remaining = Math.max(0, resume.remaining);
+    return { startedAt: time.now() - (delay - remaining), delay };
+  }
+
+  function scheduleNextIteration(schedule: DynamicIntervalSchedule): void {
     if (!intervals.has(internalIntervalId)) {
       return;
     }
-    const schedule = {
-      startedAt: time.now(),
-      delay: Math.max(0, getDelay()),
-    };
-    const timeoutId = setTimeout(iteration, schedule.delay);
+    const remaining = Math.max(0, schedule.startedAt + schedule.delay - time.now());
+    const timeoutId = setTimeout(iteration, remaining);
     intervals.set(internalIntervalId, { timeoutId, schedule });
     onSchedule?.({ ...schedule });
   }
 
-  intervals.set(internalIntervalId, {
-    timeoutId: null,
-    schedule: { startedAt: time.now(), delay: 0 },
-  });
-  scheduleNextIteration();
+  const first = firstSchedule();
+  intervals.set(internalIntervalId, { timeoutId: null, schedule: first });
+  scheduleNextIteration(first);
 
   return internalIntervalId;
 }

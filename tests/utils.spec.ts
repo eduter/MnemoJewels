@@ -51,6 +51,37 @@ describe('dynamic interval', () => {
     utils.clearInterval(intervalId);
   });
 
+  it('resumes a supplied window from the time that was left in it', () => {
+    const callback = vi.fn();
+    const schedules: { startedAt: number; delay: number }[] = [];
+    // 8s window with 5s remaining when the game was paused.
+    const intervalId = utils.setDynamicInterval(
+      callback,
+      () => 1000,
+      schedule => schedules.push(schedule),
+      { delay: 8000, remaining: 5000 },
+    );
+
+    expect(schedules).toEqual([{ startedAt: Date.now() - 3000, delay: 8000 }]);
+    expect(getSpawnProgress(schedules[0].startedAt, schedules[0].delay, Date.now())).toBeCloseTo(
+      0.375,
+    );
+
+    vi.advanceTimersByTime(3000);
+    expect(callback).not.toHaveBeenCalled();
+
+    vi.advanceTimersByTime(1999);
+    expect(callback).not.toHaveBeenCalled();
+
+    vi.advanceTimersByTime(1);
+    expect(callback).toHaveBeenCalledTimes(1);
+
+    // The resumed window is a one-off; the next one uses the live delay again.
+    expect(utils.getDynamicIntervalSchedule(intervalId)?.delay).toBe(1000);
+
+    utils.clearInterval(intervalId);
+  });
+
   it('does not schedule another timeout if the callback clears the interval', () => {
     const callback = vi.fn(() => {
       utils.clearInterval(intervalId);
