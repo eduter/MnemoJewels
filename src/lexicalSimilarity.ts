@@ -1,4 +1,5 @@
 import type { LexicalItem } from './types';
+import { ipaSegments, ipaSequenceDistance, segmentSequenceDistance } from './phonetics';
 
 const CYRILLIC_TO_LATIN: Record<string, string> = {
   а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'yo', ж: 'zh',
@@ -35,13 +36,15 @@ export function lexicalDistance(left: LexicalItem | undefined, right: LexicalIte
   return ipaDistance(left?.ipa, right?.ipa);
 }
 
+/**
+ * Phonetic distance between two IPA transcription sets, in "sounds" rather than
+ * characters: each segment substitution costs its articulatory-feature distance
+ * (at most one), insertions and deletions cost one. Near-allophones therefore
+ * stay cheap instead of counting as a whole sound.
+ */
 export function ipaDistance(left: string[] | undefined, right: string[] | undefined): number | null {
-  if (!left?.length || !right?.length) {
-    return null;
-  }
-  const similarity = bestIpaSimilarity(left, right)!;
-  const scale = Math.max(normalizeIpa(left[0]).length, normalizeIpa(right[0]).length, 1);
-  return round((1 - similarity) * scale);
+  const distance = ipaSequenceDistance(left, right);
+  return distance === null ? null : round(distance);
 }
 
 export function normalizedSimilarity(left: string, right: string): number {
@@ -63,8 +66,12 @@ function bestIpaSimilarity(left: string[] | undefined, right: string[] | undefin
   if (!left?.length || !right?.length) return undefined;
   let best = 0;
   for (const leftIpa of left) {
+    const leftSegments = ipaSegments(leftIpa);
     for (const rightIpa of right) {
-      best = Math.max(best, normalizedSimilarity(normalizeIpa(leftIpa), normalizeIpa(rightIpa)));
+      const rightSegments = ipaSegments(rightIpa);
+      const scale = Math.max(leftSegments.length, rightSegments.length, 1);
+      const similarity = 1 - segmentSequenceDistance(leftSegments, rightSegments) / scale;
+      best = Math.max(best, similarity);
     }
   }
   return best;

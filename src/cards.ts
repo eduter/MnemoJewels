@@ -7,8 +7,8 @@ import utils from './utils';
 import Card from './Card';
 import States from './States';
 import TimeMeter from './TimeMeter';
-import { ipaDistance } from './lexicalSimilarity';
-import { mappedCardsConflict } from './alternativeSelection';
+import { cardDistance as computeCardDistance, createDistanceContext, mappedCardsConflict } from './alternativeSelection';
+import type { DistanceContext } from './alternativeSelection';
 import type {
   Deck,
   DeckSelectedEventData,
@@ -26,10 +26,7 @@ const ACCEPTABLE_MISMATCHES = 30;
 
 let allCards: Card[] = [];
 let wordMappings: Record<string, string[]> | null = null;
-let normalizedFront: Record<string, string> | null = null;
-let normalizedBack: Record<string, string> | null = null;
-let ipaFront: Record<string, string[]> | null = null;
-let ipaBack: Record<string, string[]> | null = null;
+let distanceContext: DistanceContext | null = null;
 let deck: Deck | null = null;
 const indexes: Record<State, Card[]> = {
   1: [],
@@ -96,11 +93,6 @@ const iterators: Record<string, Iterator> = {
   learning: new Iterator([States.LAPSE, States.NEW, States.LEARNING, States.KNOWN]),
   reviewing: new Iterator([States.LAPSE, States.LEARNING, States.KNOWN, States.NEW]),
   alternatives: new Iterator([States.KNOWN, States.LEARNING, States.LAPSE, States.NEW]),
-};
-
-const normalizationFunctions: Record<string, (word: string) => string> = {
-  no: function (word) { return word.toLowerCase().replace(/å/g, 'a').replace(/ø/g, 'o'); },
-  sv: function (word) { return word.toLowerCase().replace(/[äå]/g, 'a').replace(/ö/g, 'o'); },
 };
 
 (function setup() {
@@ -192,48 +184,17 @@ function updateWordMappings(): void {
 }
 
 function updateNormalizations(): void {
-  normalizedFront = {};
-  normalizedBack = {};
-  ipaFront = {};
-  ipaBack = {};
-
   if (!deck) {
+    distanceContext = null;
     return;
   }
 
-  for (const [key, ipa] of Object.entries(deck.pronunciations ?? {})) {
-    const separator = key.indexOf(':');
-    const language = key.slice(0, separator);
-    const lemma = key.slice(separator + 1);
-    if (language === deck.languageFront) {
-      ipaFront[lemma] = ipa;
-    }
-    if (language === deck.languageBack) {
-      ipaBack[lemma] = ipa;
-    }
-  }
-
-  for (const cardId in allCards) {
-    if (Object.prototype.hasOwnProperty.call(allCards, cardId)) {
-      const front = allCards[cardId].front;
-      const back = allCards[cardId].back;
-
-      if (!(front in normalizedFront)) {
-        normalizedFront[front] = normalizeWord(front, deck.languageFront);
-      }
-      if (!(back in normalizedBack)) {
-        normalizedBack[back] = normalizeWord(back, deck.languageBack);
-      }
-    }
-  }
-}
-
-function normalizeWord(word: string, language?: string): string {
-  const normalizedWord = word.replace(/\s*(\([^)]*\)|\[[^\]]*\])\s*/g, ' ').trim();
-  if (language && typeof normalizationFunctions[language] === 'function') {
-    return normalizationFunctions[language](normalizedWord);
-  }
-  return normalizedWord;
+  distanceContext = createDistanceContext(
+    Object.values(allCards),
+    deck.pronunciations,
+    deck.languageFront,
+    deck.languageBack,
+  );
 }
 
 function toWordMap(words: [string, string][]): Record<string, string[]> {
@@ -396,38 +357,10 @@ function probabilityLearningAlternatives(): number {
 }
 
 function cardDistance(candidateCard: Card, card: Card): number {
-  if (!normalizedFront || !normalizedBack) {
+  if (!distanceContext) {
     return 0;
   }
-  const normalizedCardFront = normalizedFront[card.front];
-  const normalizedCandidateFront = normalizedFront[candidateCard.front];
-  const normalizedCandidateBack = normalizedBack[candidateCard.back];
-  let distanceFront = levenshtein(normalizedCandidateFront, normalizedCardFront);
-
-  distanceFront *= 1 - 0.10 * commonPrefixLength(normalizedCandidateFront, normalizedCardFront, 5);
-  distanceFront *= 1 - 0.05 * commonSuffixLength(normalizedCandidateFront, normalizedCardFront, 6);
-
-  const distance = Math.min(
-    distanceFront,
-    levenshtein(normalizedCandidateBack, normalizedCardFront),
-    ipaDistance(ipaFront?.[candidateCard.front], ipaFront?.[card.front]) ?? Infinity,
-    ipaDistance(ipaBack?.[candidateCard.back], ipaFront?.[card.front]) ?? Infinity,
-  );
-  return Math.round(100 * distance) / 100;
-}
-
-function commonPrefixLength(word1: string, word2: string, maxLength: number): number {
-  const end = Math.min(maxLength, word1.length, word2.length);
-  let i = 0;
-  while (i < end && word1[i] === word2[i]) i++;
-  return i;
-}
-
-function commonSuffixLength(word1: string, word2: string, maxLength: number): number {
-  const end = Math.min(maxLength, word1.length, word2.length);
-  let i = 0;
-  while (i < end && word1.substr(-1 - i, 1) === word2.substr(-1 - i, 1)) i++;
-  return i;
+  return computeCardDistance(candidateCard, card, distanceContext);
 }
 
 function moveToIndex(card: Card): void {
@@ -583,52 +516,6 @@ Array.prototype.binarySearch = function <T>(searchElement: T, cmpFunc: (a: T, b:
   }
   return ~maxIndex;
 };
-
-function levenshtein(s1: string, s2: string): number {
-  if (s1 === s2) {
-    return 0;
-  }
-  const s1_len = s1.length;
-  const s2_len = s2.length;
-  if (s1_len === 0) {
-    return s2_len;
-  }
-  if (s2_len === 0) {
-    return s1_len;
-  }
-  let v0 = new Array<number>(s1_len + 1);
-  let v1 = new Array<number>(s1_len + 1);
-  let s1_idx: number;
-  let s2_idx: number;
-  let cost = 0;
-  for (s1_idx = 0; s1_idx < s1_len + 1; s1_idx++) {
-    v0[s1_idx] = s1_idx;
-  }
-  let char_s1 = '';
-  let char_s2 = '';
-  for (s2_idx = 1; s2_idx <= s2_len; s2_idx++) {
-    v1[0] = s2_idx;
-    char_s2 = s2[s2_idx - 1];
-    for (s1_idx = 0; s1_idx < s1_len; s1_idx++) {
-      char_s1 = s1[s1_idx];
-      cost = (char_s1 === char_s2) ? 0 : 1;
-      let m_min = v0[s1_idx + 1] + 1;
-      const b = v1[s1_idx] + 1;
-      const c = v0[s1_idx] + cost;
-      if (b < m_min) {
-        m_min = b;
-      }
-      if (c < m_min) {
-        m_min = c;
-      }
-      v1[s1_idx + 1] = m_min;
-    }
-    const v_tmp = v0;
-    v0 = v1;
-    v1 = v_tmp;
-  }
-  return v0[s1_len];
-}
 
 export default {
   createNewGroup,
