@@ -80,11 +80,12 @@ function registerHistoryListener(): void {
     }
 
     if (pause.isOpen()) {
-      // Back while paused dismisses the dialog and resumes the run. The pop
-      // dropped the game entry, so re-anchor on it (replacing, not pushing, to
-      // avoid leaking an entry into the forward stack) before closing; the
+      // Back while paused dismisses the dialog and resumes the run. This pop
+      // landed on the entry below the game, so push the game back on top: the
+      // push also discards that entry, keeping the stack bounded so repeated
+      // Back presses toggle the pause instead of walking out of the app. The
       // dialog's close handler resumes the board.
-      history.replaceState(historyState(GAME_SCREEN), '', `#${GAME_SCREEN}`);
+      history.pushState(historyState(GAME_SCREEN), '', `#${GAME_SCREEN}`);
       pause.dismiss();
       return;
     }

@@ -27,6 +27,23 @@ describe('resolveBackNavigation', () => {
       .toEqual({ action: 'interrupt' });
   });
 
+  it('prompts the dialog whatever entry the pop landed on while the game is on screen', () => {
+    // The entry below the game is the menu, but the pop can land anywhere (e.g.
+    // after the pause was dismissed); the visible screen is what matters, so Back
+    // keeps asking instead of walking out of the app.
+    expect(resolveBackNavigation(historyState('game'), 'game', known))
+      .toEqual({ action: 'interrupt' });
+    expect(resolveBackNavigation(historyState('about'), 'game', known))
+      .toEqual({ action: 'interrupt' });
+    expect(resolveBackNavigation(historyState('settings'), 'game', known))
+      .toEqual({ action: 'interrupt' });
+    // Even the unrecognised floor entry below the app must not end the run.
+    expect(resolveBackNavigation(null, 'game', known))
+      .toEqual({ action: 'interrupt' });
+    expect(resolveBackNavigation({}, 'game', known))
+      .toEqual({ action: 'interrupt' });
+  });
+
   it('just shows the menu when the game was already left', () => {
     expect(resolveBackNavigation(historyState('main-menu'), 'settings', known))
       .toEqual({ action: 'screen', screen: 'main-menu' });

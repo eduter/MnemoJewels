@@ -24,8 +24,12 @@ export function historyState(screenId: string): ScreenState {
 /**
  * Maps a Back (or Forward) history transition to the reaction the app should
  * take. Anything the app does not recognise — including the document entry
- * underneath the app's own history — resolves to the menu, and backing out of a
- * running game prompts the resume/quit dialog instead of leaving silently.
+ * underneath the app's own history — resolves to the menu.
+ *
+ * A Back press while the game is on screen always asks the player, regardless of
+ * which entry the pop landed on. The entry below the game is the menu, so keying
+ * this on the popped entry would make every second Back press skip the prompt and
+ * walk out of the app.
  */
 export function resolveBackNavigation(
   state: unknown,
@@ -34,11 +38,14 @@ export function resolveBackNavigation(
 ): BackDecision {
   const target = getScreenFromState(state);
 
+  // The visible screen wins: a Back press while the game is on screen must ask
+  // the player even if the pop landed on an unrecognised entry (the menu below
+  // the game, or the document floor below the app).
+  if (currentScreen === GAME_SCREEN) {
+    return { action: 'interrupt' };
+  }
   if (target === null || !knownScreens.has(target)) {
     return { action: 'menu' };
-  }
-  if (target === MENU_SCREEN && currentScreen === GAME_SCREEN) {
-    return { action: 'interrupt' };
   }
   return { action: 'screen', screen: target };
 }
