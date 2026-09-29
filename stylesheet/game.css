@@ -269,7 +269,8 @@
     background-color: #C8C864;
 }
 
-#game-over-dialog {
+#game-over-dialog,
+#pause-dialog {
     box-sizing: border-box;
     width: 260em;
     padding: 16em 18em 8em;

@@ -5,6 +5,7 @@ import board from './board';
 import score from './score';
 import game from './game';
 import time from './time';
+import { getSpawnProgress } from './utils';
 import { getGameOverAction } from './gameOver';
 import type {
   BoardChangedEventData,
@@ -34,6 +35,7 @@ let ignoreDialogClose = false;
   events.bind('spawnScheduled', eventData => {
     startProgress(eventData as SpawnScheduledEventData);
   });
+  events.bind('spawningPaused', freezeProgress);
   window.addEventListener('resize', fitAllTileLabels);
 
   getGameOverDialog().addEventListener('close', () => {
@@ -61,6 +63,11 @@ function onGameStart(): void {
 function onGameOver(eventData: unknown): void {
   stopProgress();
   const data = eventData as GameOverEventData;
+  // An abandoned run has no summary to show; the caller navigates straight back
+  // to the menu, so leave the dialog closed.
+  if (data.abandoned) {
+    return;
+  }
   setText('result-score', String(data.score));
   setText('result-duration', time.formatDuration(data.gameEnd - data.gameStart, 2));
   setText('result-level', String(data.level));
@@ -297,25 +304,30 @@ function startProgress(schedule: SpawnScheduledEventData): void {
   const progress = document.getElementById('spawn-progress')!;
   const fill = progress.querySelector<HTMLElement>('.spawn-progress-fill')!;
   const generation = ++progressGeneration;
+  // A resumed schedule reports its original start, so the delay has already
+  // partly elapsed; begin the fill there instead of at zero.
+  const now = time.now();
+  const startFraction = getSpawnProgress(schedule.startedAt, schedule.delay, now);
+  const remaining = Math.max(0, schedule.delay - Math.max(0, now - schedule.startedAt));
 
   fill.style.transition = 'none';
-  fill.style.transform = 'scaleX(0)';
-  progress.setAttribute('aria-valuenow', '0');
+  fill.style.transform = `scaleX(${startFraction})`;
+  progress.setAttribute('aria-valuenow', String(Math.round(startFraction * 100)));
   progress.setAttribute(
     'aria-valuetext',
-    `Next group in ${(schedule.delay / 1000).toFixed(1)} seconds`,
+    `Next group in ${(remaining / 1000).toFixed(1)} seconds`,
   );
 
   const startFill = () => {
     if (generation !== progressGeneration) {
       return;
     }
-    fill.style.transition = `transform ${schedule.delay}ms linear`;
+    fill.style.transition = `transform ${remaining}ms linear`;
     fill.style.transform = 'scaleX(1)';
     progress.setAttribute('aria-valuenow', '100');
   };
 
-  if (schedule.delay <= 0) {
+  if (remaining <= 0) {
     fill.style.transform = 'scaleX(1)';
     progress.setAttribute('aria-valuenow', '100');
     return;
@@ -325,12 +337,23 @@ function startProgress(schedule: SpawnScheduledEventData): void {
 }
 
 function stopProgress(): void {
+  freezeProgress();
+}
+
+// Halt the bar at its current fill so a paused countdown does not run to the end.
+// The inline transform overrides the still-running transition; startProgress
+// clears it when the schedule resumes.
+function freezeProgress(): void {
   progressGeneration++;
   const fill = document.querySelector<HTMLElement>('.spawn-progress-fill');
   if (!fill) {
     return;
   }
+  const currentScale = getComputedStyle(fill).transform;
   fill.style.transition = 'none';
+  if (currentScale !== '' && currentScale !== 'none') {
+    fill.style.transform = currentScale;
+  }
 }
 
 function clearPendingAnimations(): void {

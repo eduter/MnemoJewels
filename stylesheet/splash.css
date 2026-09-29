@@ -36,17 +36,29 @@
         }
     }
 
-    .continue {
+    .loading {
         display: block;
-        cursor: pointer;
         font-size: 24em;
         font-weight: bold;
         text-shadow: 0.05em 0.05em 0.1em black;
+        animation: splash-pulse 1.4s ease-in-out infinite;
     }
 }
 
 @keyframes splash-spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes splash-pulse {
+    50% {
+        opacity: 0.35;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #splash-screen.active .loading {
+        animation-duration: 3s;
     }
 }

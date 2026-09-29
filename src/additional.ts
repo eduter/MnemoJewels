@@ -27,15 +27,9 @@ promises.push(storage.setup());
 promises.push(imageLoader.loadImages(images).then(() => console.log('images loaded')));
 
 Promise.all(promises).then(function () {
-  const screen = document.getElementById('splash-screen')!;
-  screen.addEventListener('click', function () {
-    screen.classList.remove('active');
-    if (decks.getSelectedDeck() == null) {
-      navigation.navigateTo('settings');
-    } else {
-      navigation.navigateTo('main-menu');
-    }
-  });
-  screen.querySelector('.continue')!.classList.remove('hidden');
   spinner.stop();
+  const target = decks.getSelectedDeck() == null ? 'settings' : 'main-menu';
+  // The splash replaced the initial document entry, so the app's first screen
+  // *is* the bottom of the history stack: Back from it leaves the app.
+  navigation.navigateTo(target, { replace: true });
 });

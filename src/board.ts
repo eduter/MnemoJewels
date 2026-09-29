@@ -21,7 +21,11 @@ const fmGroupCreationTime: Record<number, number> = {};
 let fmSelectedJewel: JewelSelection | null = null;
 let fiLastSelectionTime: number | null = null;
 let intervalId: number | null = null;
+let mismatchTimeout: ReturnType<typeof setTimeout> | null = null;
+let pendingMismatch: (() => void) | null = null;
 let mismatchFrozen = false;
+let paused = false;
+let resumeFromSpawnSchedule: { delay: number; remaining: number } | null = null;
 
 function getOverlay(): HTMLElement {
   return document.getElementById('overlay')!;
@@ -29,7 +33,10 @@ function getOverlay(): HTMLElement {
 
 function initialize(): void {
   stopAddingGroups();
+  clearMismatchTimeout();
+  pendingMismatch = null;
   mismatchFrozen = false;
+  paused = false;
   faJewels = [[], []];
   faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   Object.keys(fmGroupCreationTime).forEach(key => {
@@ -85,12 +92,65 @@ function gameOver(): void {
   game.gameOver();
 }
 
+function abandon(): void {
+  stopAddingGroups();
+  clearMismatchTimeout();
+  pendingMismatch = null;
+  resumeFromSpawnSchedule = null;
+  getOverlay().style.display = 'none';
+  mismatchFrozen = false;
+  paused = false;
+  faJewels = [[], []];
+  fmSelectedJewel = null;
+  // End the run through the normal path so cards and scores see the same
+  // teardown as a completed game, flagged as abandoned so the player skips the
+  // summary dialog on the way back to the menu.
+  game.gameOver(true);
+  notifyBoardChanged({ reason: 'interrupted' });
+}
+
+function pauseGame(): void {
+  paused = true;
+  // Capture how much of the current spawn delay is left so resuming continues
+  // the countdown for exactly that long, rather than restarting it. Spawning is
+  // stopped here either by this call or, mid-mismatch, by the freeze before it.
+  if (!mismatchFrozen && intervalId !== null) {
+    const schedule = utils.getDynamicIntervalSchedule(intervalId);
+    if (schedule) {
+      const remaining = Math.max(0, schedule.startedAt + schedule.delay - time.now());
+      resumeFromSpawnSchedule = { delay: schedule.delay, remaining };
+    }
+  }
+  stopAddingGroups();
+  events.trigger('spawningPaused');
+}
+
+function resumeGame(): void {
+  paused = false;
+  if (pendingMismatch !== null) {
+    // A mismatch penalty was frozen when the game was paused; finish it now
+    // instead of restarting the spawn timer while the board is still frozen.
+    runPendingMismatch();
+    return;
+  }
+  if (!mismatchFrozen) {
+    startAddingGroups(resumeFromSpawnSchedule ?? undefined);
+    resumeFromSpawnSchedule = null;
+  }
+}
+
+function runPendingMismatch(): void {
+  const finish = pendingMismatch;
+  pendingMismatch = null;
+  finish?.();
+}
+
 function getNextGroupId(): number {
   return faAvailableGroupIds.shift()!;
 }
 
 function selectJewel(piRow: number, piCol: number): void {
-  if (mismatchFrozen) {
+  if (mismatchFrozen || paused) {
     return;
   }
   const miSelectionTime = time.now();
@@ -201,21 +261,41 @@ function mismatch(
   stopAddingGroups();
   notifyBoardChanged(highlight ? { reason: 'mismatch', highlight } : { reason: 'mismatch' });
 
-  setTimeout(() => {
+  const finishMismatch = () => {
+    mismatchTimeout = null;
     overlay.style.display = 'none';
     removeGroup(groupId);
     addNewGroup(cardsInGroup.length);
-    startAddingGroups();
     mismatchFrozen = false;
     notifyBoardChanged({ reason: 'mismatch' });
-  }, MISMATCH_PENALTY_TIME);
+    startAddingGroups();
+  };
+
+  if (paused) {
+    // Freeze with the penalty pending; resuming runs it immediately so a game
+    // paused mid-mismatch cannot leave the board stuck behind the overlay.
+    pendingMismatch = finishMismatch;
+  } else {
+    mismatchTimeout = setTimeout(finishMismatch, MISMATCH_PENALTY_TIME);
+  }
 }
 
-function startAddingGroups(): void {
+function clearMismatchTimeout(): void {
+  if (mismatchTimeout !== null) {
+    clearTimeout(mismatchTimeout);
+    mismatchTimeout = null;
+  }
+}
+
+function startAddingGroups(resume?: { delay: number; remaining: number }): void {
+  if (paused || intervalId !== null) {
+    return;
+  }
   intervalId = utils.setDynamicInterval(
     addDefaultGroup,
     getIntervalBetweenGroups,
     schedule => events.trigger('spawnScheduled', schedule satisfies SpawnScheduledEventData),
+    resume,
   );
 }
 
@@ -284,6 +364,9 @@ function notifyBoardChanged(data: BoardChangedEventData): void {
 
 export default {
   initialize,
+  abandon,
+  pauseGame,
+  resumeGame,
   selectJewel,
   getJewels,
   getSelectedJewel,
