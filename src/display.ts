@@ -1,4 +1,4 @@
-import { MATCH_FADE_TIME, TILE_DROP_TIME } from './constants';
+import { MATCH_FADE_TIME, MISMATCH_PENALTY_TIME, TILE_DROP_TIME } from './constants';
 import animationState from './animationState';
 import events from './events';
 import board from './board';
@@ -10,6 +10,7 @@ import type {
   BoardChangedEventData,
   BoardChangeReason,
   GameOverEventData,
+  MismatchHighlight,
   SpawnScheduledEventData,
 } from './types';
 import type Jewel from './Jewel';
@@ -25,7 +26,7 @@ let ignoreDialogClose = false;
   events.bind('gameOver', onGameOver);
   events.bind('boardChanged', eventData => {
     const data = eventData as BoardChangedEventData;
-    renderBoard(data.reason);
+    renderBoard(data.reason, data.highlight);
     updateHud();
   });
   events.bind('scoreUp', updateHud);
@@ -68,7 +69,7 @@ function onGameOver(eventData: unknown): void {
   dialog.showModal();
 }
 
-function renderBoard(reason: BoardChangeReason): void {
+function renderBoard(reason: BoardChangeReason, highlight?: MismatchHighlight): void {
   const boardElement = getBoardElem();
   const jewels = board.getJewels();
   const selected = board.getSelectedJewel();
@@ -99,6 +100,7 @@ function renderBoard(reason: BoardChangeReason): void {
       }
 
       updateTile(tile, jewel, row, col, selected?.row === row && selected.col === col);
+      applyHighlight(tile, jewel, col, highlight);
 
       if (isNew) {
         if (transitionDuration > 0) {
@@ -131,6 +133,7 @@ function renderBoard(reason: BoardChangeReason): void {
       tile.disabled = true;
       tile.classList.remove('selected');
       tile.setAttribute('aria-selected', 'false');
+      clearHighlight(tile);
       tile.classList.add(reason === 'match' ? 'is-matched' : 'is-leaving');
       schedule(() => tile.remove(), Math.max(MATCH_FADE_TIME, transitionDuration));
     }
@@ -144,6 +147,67 @@ function renderBoard(reason: BoardChangeReason): void {
       }
     }, transitionDuration);
   }
+
+  setMismatchHighlightActive(Boolean(highlight));
+}
+
+function applyHighlight(
+  tile: HTMLButtonElement,
+  jewel: Jewel,
+  col: number,
+  highlight?: MismatchHighlight,
+): void {
+  if (!highlight) {
+    clearHighlight(tile);
+    return;
+  }
+
+  const isWrong = highlight.wrong.some(
+    entry => entry.cardId === jewel.card.id && entry.col === col,
+  );
+  const isCorrect = highlight.correct.some(
+    entry => entry.cardId === jewel.card.id && entry.col === col,
+  );
+
+  if (isWrong || isCorrect) {
+    tile.classList.toggle('is-wrong', isWrong);
+    tile.classList.toggle('is-right', isCorrect);
+    setVerdict(tile, isWrong ? 'wrong' : 'correct');
+  } else {
+    clearHighlight(tile);
+  }
+}
+
+function clearHighlight(tile: HTMLButtonElement): void {
+  tile.classList.remove('is-wrong', 'is-right');
+  setVerdict(tile, null);
+}
+
+function setVerdict(tile: HTMLButtonElement, verdict: 'wrong' | 'correct' | null): void {
+  const existing = tile.querySelector<HTMLElement>('.tile-verdict');
+  if (verdict === null) {
+    existing?.remove();
+    return;
+  }
+
+  const glyph = verdict === 'wrong' ? '\u2717' : '\u2713';
+  const label = verdict === 'wrong' ? 'Wrong match' : 'Correct match';
+  if (existing) {
+    existing.textContent = glyph;
+    existing.setAttribute('aria-label', label);
+    return;
+  }
+
+  const badge = document.createElement('span');
+  badge.className = `tile-verdict ${verdict}`;
+  badge.setAttribute('aria-hidden', 'true');
+  badge.title = label;
+  badge.textContent = glyph;
+  tile.appendChild(badge);
+}
+
+function setMismatchHighlightActive(active: boolean): void {
+  getBoardElem().classList.toggle('is-mismatch-highlight', active);
 }
 
 function createTile(

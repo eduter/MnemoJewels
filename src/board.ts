@@ -11,6 +11,7 @@ import type {
   JewelSelection,
   MatchEventData,
   MismatchEventData,
+  MismatchHighlight,
   SpawnScheduledEventData,
 } from './types';
 
@@ -20,6 +21,7 @@ const fmGroupCreationTime: Record<number, number> = {};
 let fmSelectedJewel: JewelSelection | null = null;
 let fiLastSelectionTime: number | null = null;
 let intervalId: number | null = null;
+let mismatchFrozen = false;
 
 function getOverlay(): HTMLElement {
   return document.getElementById('overlay')!;
@@ -27,6 +29,7 @@ function getOverlay(): HTMLElement {
 
 function initialize(): void {
   stopAddingGroups();
+  mismatchFrozen = false;
   faJewels = [[], []];
   faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   Object.keys(fmGroupCreationTime).forEach(key => {
@@ -87,6 +90,9 @@ function getNextGroupId(): number {
 }
 
 function selectJewel(piRow: number, piCol: number): void {
+  if (mismatchFrozen) {
+    return;
+  }
   const miSelectionTime = time.now();
   let selectionChanged = false;
 
@@ -112,7 +118,7 @@ function selectJewel(piRow: number, piCol: number): void {
         if (miNewSelectedId === miPrevSelectedId) {
           match(miNewSelectedId, miSelectionTime);
         } else {
-          mismatch(miNewSelectedId, miPrevSelectedId, miSelectionTime);
+          mismatch(prevSelectedJewel, newSelectedJewel, miSelectionTime);
         }
       }
     }
@@ -150,17 +156,34 @@ function match(cardId: number, selectionTime: number): void {
   notifyBoardChanged({ reason: 'match', cardId });
 }
 
-function mismatch(cardId1: number, cardId2: number, selectionTime: number): void {
+function mismatch(
+  first: Jewel,
+  second: Jewel,
+  selectionTime: number,
+): void {
+  const wordJewel = first.isFront ? first : second;
+  const chosenTranslation = first.isFront ? second : first;
+  const cardId1 = wordJewel.card.id;
+  const cardId2 = chosenTranslation.card.id;
   const groupId = getGroup(cardId1)!;
   const cardsInGroup = getCardsInGroup(groupId);
   const thinkingTime = selectionTime - Math.max(fiLastSelectionTime!, fmGroupCreationTime[groupId]);
 
-  const overlay = getOverlay();
-  overlay.style.display = 'block';
-  setTimeout(() => { overlay.style.display = 'none'; }, MISMATCH_PENALTY_TIME);
-
-  removeGroup(groupId);
-  addNewGroup(cardsInGroup.length);
+  // Resolve the correct translation while the group is still on the board; the
+  // group is replaced once the penalty ends, so the highlight has to be captured
+  // up front.
+  const correctTranslation = faJewels[1].find(
+    jewel => jewel.card.id === cardId1 && jewel.isFront === false,
+  );
+  const highlight: MismatchHighlight | undefined = correctTranslation
+    ? {
+        wrong: [
+          { cardId: cardId1, col: 0 },
+          { cardId: cardId2, col: 1 },
+        ],
+        correct: [{ cardId: cardId1, col: 1 }],
+      }
+    : undefined;
 
   fiLastSelectionTime = selectionTime;
   events.trigger('mismatch', {
@@ -168,7 +191,24 @@ function mismatch(cardId1: number, cardId2: number, selectionTime: number): void
     cardsInGroup,
     thinkingTime,
   } satisfies MismatchEventData);
-  notifyBoardChanged({ reason: 'mismatch' });
+
+  // Freeze: dim the board and spotlight the right answer with the group still in
+  // place, then swap the group out once the penalty is over. The board refuses
+  // input until then, so a highlighted tile cannot be tapped for a free match.
+  mismatchFrozen = true;
+  const overlay = getOverlay();
+  overlay.style.display = 'block';
+  stopAddingGroups();
+  notifyBoardChanged(highlight ? { reason: 'mismatch', highlight } : { reason: 'mismatch' });
+
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    removeGroup(groupId);
+    addNewGroup(cardsInGroup.length);
+    startAddingGroups();
+    mismatchFrozen = false;
+    notifyBoardChanged({ reason: 'mismatch' });
+  }, MISMATCH_PENALTY_TIME);
 }
 
 function startAddingGroups(): void {
