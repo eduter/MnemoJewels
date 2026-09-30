@@ -8,6 +8,7 @@ import events from './events';
 import {
   GAME_SCREEN,
   MENU_SCREEN,
+  getScreenFromState,
   historyState,
   resolveBackNavigation,
 } from './backNavigation';
@@ -70,6 +71,13 @@ function registerListeners(): void {
  */
 function registerHistoryListener(): void {
   window.addEventListener('popstate', event => {
+    if (getScreenFromState(event.state) === GAME_SCREEN && currentScreen === GAME_SCREEN) {
+      // Landing on the game entry while the game is on screen is a no-op: this
+      // is either our own re-anchor or a Forward press into the game. Reacting
+      // would re-open the pause dialog or restart the run.
+      return;
+    }
+
     if (gameOverIsOpen()) {
       // Back while the run summary is up takes the same path as its "Main menu"
       // button; closing it emits the event that consumes the game history entry.
@@ -80,12 +88,11 @@ function registerHistoryListener(): void {
     }
 
     if (pause.isOpen()) {
-      // Back while paused dismisses the dialog and resumes the run. This pop
-      // landed on the entry below the game, so push the game back on top: the
-      // push also discards that entry, keeping the stack bounded so repeated
+      // Back while paused dismisses the dialog and resumes the run. The pop
+      // landed on the entry below the game; re-anchor on the game so repeated
       // Back presses toggle the pause instead of walking out of the app. The
       // dialog's close handler resumes the board.
-      history.pushState(historyState(GAME_SCREEN), '', `#${GAME_SCREEN}`);
+      reanchorGame();
       pause.dismiss();
       return;
     }
@@ -128,6 +135,17 @@ function gameOverIsOpen(): boolean {
 }
 
 /**
+ * Re-anchors history on the game after a pop landed on the entry below it.
+ * `history.forward()` is used rather than `pushState`: a pushed entry made
+ * without a user activation is treated as a skippable history-manipulation
+ * entry and the Back gesture skips straight past it (the mobile failure), while
+ * a forward/back navigation the browser performs itself is never skipped.
+ */
+function reanchorGame(): void {
+  history.forward();
+}
+
+/**
  * A Back press from the game parks the run and asks whether to resume or quit.
  * The game stays on screen behind the dialog, so resuming just un-pauses the
  * board: nothing is re-initialized and no new run is started.
@@ -136,9 +154,9 @@ function interruptGame(): void {
   if (pause.isOpen()) {
     return;
   }
-  // `history.back()` already moved the active entry to the menu; re-anchor on
-  // the game so the pause dialog overlays it and the address bar matches.
-  history.pushState(historyState(GAME_SCREEN), '', `#${GAME_SCREEN}`);
+  // The Back press moved the active entry to the entry below the game; re-anchor
+  // on the game so the pause dialog overlays it and the address bar matches.
+  reanchorGame();
   board.pauseGame();
   pause.open().then(action => {
     if (action === 'resume') {
