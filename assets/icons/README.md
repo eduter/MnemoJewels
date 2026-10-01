@@ -1,69 +1,73 @@
 # Icon candidates
 
-Five icon directions for the app, inspired by the gold "MnemoJewels" logo, the jewel
-buttons on the main menu (red / yellow / green / blue / purple emerald-cut gems), and the
-2-column game board. Each is shown below at 48 / 96 / 192 px, and then as a circular
-crop to check how it survives a maskable launcher icon.
+A blue emerald-cut jewel with a gold **MJ** monogram cut from the app's own logo font
+(**Russo One**, `public/fonts/russo_one.ttf`), plus a small shine. These replace the
+earlier red/gold explorations.
 
-The current temporary icon is **02 — jewel + monogram** (copied to `public/icon.svg`).
+The monogram is baked into each SVG as **vector outlines** rather than `<text>` with a
+`@font-face`: standalone SVGs (launcher icons, `raw.githubusercontent.com` images in a
+README or PR, and `@vite-pwa/assets-generator`) don't fetch webfonts, so `<text>` would
+silently fall back to a default face. Outlines render identically everywhere. They are
+regenerated from the font with `generate-icons.mjs`, so they still track the logo font.
 
----
-
-## 01 — emerald-cut jewel
-
-<img src="01-gem.svg" width="48" alt=""> <img src="01-gem.svg" width="96" alt=""> <img src="01-gem.svg" width="192" alt="">
-
-<img src="01-gem.svg" width="192" alt="" style="border-radius:50%">
-
-A single red emerald-cut jewel. The most literal reading of the "jewel" theme, matching
-the red **Play** button.
+Each option is shown at 48 / 96 / 192 px, then as a circular crop to check how it
+survives a maskable launcher icon.
 
 ---
 
-## 02 — jewel + monogram (temporary)
+## 01 — blue jewel + gold MJ (sparkle)
 
-<img src="02-gem-monogram.svg" width="48" alt=""> <img src="02-gem-monogram.svg" width="96" alt=""> <img src="02-gem-monogram.svg" width="192" alt="">
+<img src="01-blue-gem-mj.svg" width="48" alt=""> <img src="01-blue-gem-mj.svg" width="96" alt=""> <img src="01-blue-gem-mj.svg" width="192" alt="">
 
-<img src="02-gem-monogram.svg" width="192" alt="" style="border-radius:50%">
+<img src="01-blue-gem-mj.svg" width="192" alt="" style="border-radius:50%">
 
-The jewel with a gold "M" cut into the table. Ties the jewel motif to the brand initial.
-
----
-
-## 03 — tile pair
-
-<img src="03-tile-pair.svg" width="48" alt=""> <img src="03-tile-pair.svg" width="96" alt=""> <img src="03-tile-pair.svg" width="192" alt="">
-
-<img src="03-tile-pair.svg" width="192" alt="" style="border-radius:50%">
-
-Two jewel tiles side by side — a match, which is the core loop of the game.
+Gold MJ centred on the blue table, a gloss band across the top, and a four-point shine
+top-right. The closest match to the original idea.
 
 ---
 
-## 04 — board
+## 02 — larger monogram
 
-<img src="04-board.svg" width="48" alt=""> <img src="04-board.svg" width="96" alt=""> <img src="04-board.svg" width="192" alt="">
+<img src="02-blue-gem-mj-large.svg" width="48" alt=""> <img src="02-blue-gem-mj-large.svg" width="96" alt=""> <img src="02-blue-gem-mj-large.svg" width="192" alt="">
 
-<img src="04-board.svg" width="192" alt="" style="border-radius:50%">
+<img src="02-blue-gem-mj-large.svg" width="192" alt="" style="border-radius:50%">
 
-A small board of jewel tiles, echoing the 2-column playfield. The most detailed option;
-reads well large, busiest small.
-
----
-
-## 05 — monogram
-
-<img src="05-monogram.svg" width="48" alt=""> <img src="05-monogram.svg" width="96" alt=""> <img src="05-monogram.svg" width="192" alt="">
-
-<img src="05-monogram.svg" width="192" alt="" style="border-radius:50%">
-
-A gold "M" monogram on the app's dark navy. The simplest, most legible at small sizes.
+Same treatment but the MJ fills more of the jewel, so it stays readable at 48 px.
+Slightly heavier gold-on-blue.
 
 ---
 
-## Regenerating the PWA icon set
+## 03 — embossed / faceted
 
-Once a favourite is chosen:
+<img src="03-blue-gem-mj-embossed.svg" width="48" alt=""> <img src="03-blue-gem-mj-embossed.svg" width="96" alt=""> <img src="03-blue-gem-mj-embossed.svg" width="192" alt="">
+
+<img src="03-blue-gem-mj-embossed.svg" width="192" alt="" style="border-radius:50%">
+
+Adds a gold rim around the table and a couple of facet lines, so it reads more like a
+cut gemstone than a flat badge.
+
+---
+
+## 04 — flat and minimal
+
+<img src="04-blue-gem-mj-flat.svg" width="48" alt=""> <img src="04-blue-gem-mj-flat.svg" width="96" alt=""> <img src="04-blue-gem-mj-flat.svg" width="192" alt="">
+
+<img src="04-blue-gem-mj-flat.svg" width="192" alt="" style="border-radius:50%">
+
+No sparkle, just a single gloss band. Cleanest at small sizes.
+
+---
+
+## Regenerating
+
+Icon sources are produced by `generate-icons.mjs` (extracts the MJ outlines from the
+logo font):
+
+```sh
+node assets/icons/generate-icons.mjs
+```
+
+To ship a favourite as the app icon:
 
 ```sh
 cp assets/icons/<chosen>.svg public/icon.svg
@@ -73,9 +77,5 @@ npx pwa-assets-generator --config pwa-assets.config.mjs public/icon.svg
 That rewrites `favicon.ico`, `pwa-{64,192,512}.png`, `maskable-icon-512x512.png` and
 `apple-touch-icon-180x180.png` in `public/`.
 
-`render-preview.mjs` regenerates `preview.html` and `contact-sheet.png` (a rasterised
-comparison sheet) from whatever `*.svg` files sit in this directory:
-
-```sh
-node assets/icons/render-preview.mjs
-```
+`render-preview.mjs` regenerates `preview.html` and `contact-sheet.png` from whatever
+`*.svg` files sit in this directory.
