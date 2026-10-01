@@ -61,21 +61,18 @@ describe('Russian deck', () => {
 });
 
 describe('existing decks', () => {
-  it.each(['top-no-en', 'top-pt_BR-en', 'top-sv-en'])(
-    'keeps the legacy card schema loadable for %s',
-    uid => {
-      const deck = JSON.parse(
-        readFileSync(resolve(`public/decks/${uid}.json`), 'utf8'),
-      ) as DeckData;
+  it('keeps the legacy card schema loadable for the Swedish deck', () => {
+    const deck = JSON.parse(
+      readFileSync(resolve('public/decks/top-sv-en.json'), 'utf8'),
+    ) as DeckData;
 
-      expect(deck.cards.length).toBeGreaterThan(0);
-      expect(deck.cards.every(card =>
-        Array.isArray(card)
-          && card.length === 2
-          && card.every(value => typeof value === 'string'),
-      )).toBe(true);
-    },
-  );
+    expect(deck.cards.length).toBeGreaterThan(0);
+    expect(deck.cards.every(card =>
+      Array.isArray(card)
+        && card.length === 2
+        && card.every(value => typeof value === 'string'),
+    )).toBe(true);
+  });
 });
 
 function groupBy<T>(

@@ -18,6 +18,32 @@ export const VOCABULARY_POS_TRANSLATIONS = new Map<string, string>([
 
 const DISALLOWED_LINK_PREFIXES = /^(w:|Appendix:|Category:|Thesaurus:|File:|MediaWiki:)/i;
 
+// Wiktionary sense links point at other entries on the same page. A translation
+// link points at the English entry (a plain self-link, or an explicit `#English`
+// fragment); a link into another language section (e.g. `de#Spanish`) is a
+// "see also"-style cross-reference, not a translation, and must not become a card
+// back. Topic labels (`law#English` alongside a `(law)` gloss) are handled
+// separately, since they do carry an English fragment.
+const NON_ENGLISH_LINK_LANGUAGES = new Set([
+  'spanish', 'french', 'italian', 'portuguese', 'russian', 'german', 'dutch', 'catalan',
+  'latin', 'romanian', 'galician', 'occitan', 'sardinian', 'chinese', 'japanese', 'korean',
+  'arabic', 'hebrew', 'persian', 'hindi', 'ukrainian', 'polish', 'czech', 'slovak',
+  'serbo-croatian', 'croatian', 'serbian', 'bulgarian', 'greek', 'turkish', 'finnish',
+  'hungarian', 'swedish', 'danish', 'norwegian', 'icelandic', 'irish', 'welsh', 'breton',
+  'basque', 'quechua', 'tagalog', 'translingual', 'ancient', 'middle', 'old', 'classical',
+  'esperanto', 'nahuatl', 'navajo', 'kotava', 'ido', 'interlingua', 'volapük', 'sanskrit',
+  'pali', 'lithuanian', 'latvian', 'estonian', 'slovene', 'slovenian', 'macedonian',
+  'belarusian', 'albanian', 'georgian', 'armenian', 'azerbaijani', 'kazakh', 'uzbek',
+]);
+
+/** Language section a `word#Language` link target points at, if any. */
+function linkFragmentLanguage(target: string): string | null {
+  const hash = target.indexOf('#');
+  if (hash === -1) return null;
+  const fragment = target.slice(hash + 1).split(/[_:/]/, 1)[0].trim().toLowerCase();
+  return fragment || null;
+}
+
 export type TranslationSource = 'link' | 'gloss';
 
 export interface SenseTranslation {
@@ -26,7 +52,7 @@ export interface SenseTranslation {
 }
 
 export interface TranslationsForSenseOptions {
-  russianLemma?: string;
+  frontLemma?: string;
   englishHeadwords?: Set<string>;
   allowGlossFallback?: boolean;
 }
@@ -49,16 +75,20 @@ export function englishFromSenseLink(link: unknown): string | null {
   if (DISALLOWED_LINK_PREFIXES.test(target)) return null;
   const base = target.split('#')[0];
   if (/[а-яё]/iu.test(base)) return null;
+  // `word#Language` links the entry in another language section; the display is
+  // that language's spelling, not an English translation.
+  const language = linkFragmentLanguage(target);
+  if (language && NON_ENGLISH_LINK_LANGUAGES.has(language)) return null;
   if (!isTranslationShape(display)) return null;
   return normalizeTranslation(display);
 }
 
-export function shouldRejectHeuristicGloss(russianLemma: string, englishLemma: string): boolean {
+export function shouldRejectHeuristicGloss(frontLemma: string, englishLemma: string): boolean {
   const english = englishLemma.toLowerCase();
-  const allowedPos = VOCABULARY_POS_TRANSLATIONS.get(russianLemma.toLowerCase());
+  const allowedPos = VOCABULARY_POS_TRANSLATIONS.get(frontLemma.toLowerCase());
   if (allowedPos === english) return false;
 
-  if (russianLemma.length === 1 && (english === 'letter' || english === 'alphabet')) {
+  if (frontLemma.length === 1 && (english === 'letter' || english === 'alphabet')) {
     return true;
   }
   if (/^demonstrative\b/.test(english) || english === 'personal pronoun') {
@@ -82,21 +112,28 @@ export function shouldRejectHeuristicGloss(russianLemma: string, englishLemma: s
   return false;
 }
 
-export function shouldRejectTranslation(russianLemma: string, englishLemma: string): boolean {
-  return shouldRejectHeuristicGloss(russianLemma, englishLemma);
+export function shouldRejectTranslation(frontLemma: string, englishLemma: string): boolean {
+  return shouldRejectHeuristicGloss(frontLemma, englishLemma);
 }
 
 export function translationsForSense(
   sense: KaikkiSense,
-  { russianLemma = '', englishHeadwords, allowGlossFallback = true }: TranslationsForSenseOptions = {},
+  { frontLemma = '', englishHeadwords, allowGlossFallback = true }: TranslationsForSenseOptions = {},
 ): SenseTranslation[] {
   const byValue = new Map<string, SenseTranslation>();
+  const topics = new Set((sense.topics ?? []).map(topic => topic.toLowerCase()));
+  const glossWords = new Set(
+    (sense.glosses ?? []).join(' ').toLowerCase().match(/[a-z'’-]+/g) ?? [],
+  );
 
   for (const link of sense.links ?? []) {
     const normalized = englishFromSenseLink(link);
     if (!normalized) continue;
+    // A topic label such as `law` (gloss `(law) party`) is a subject tag, not a
+    // translation; keep it only when the word is genuinely part of the gloss.
+    if (topics.has(normalized) && !glossWords.has(normalized)) continue;
     if (englishHeadwords && !englishHeadwords.has(normalized)) continue;
-    if (shouldRejectHeuristicGloss(russianLemma, normalized)) continue;
+    if (shouldRejectHeuristicGloss(frontLemma, normalized)) continue;
     const record = byValue.get(normalized) ?? { value: normalized, sources: new Set<TranslationSource>() };
     record.sources.add('link');
     byValue.set(normalized, record);
@@ -108,7 +145,7 @@ export function translationsForSense(
       const normalized = normalizeTranslation(fallback);
       if (
         (!englishHeadwords || englishHeadwords.has(normalized))
-        && !shouldRejectHeuristicGloss(russianLemma, normalized)
+        && !shouldRejectHeuristicGloss(frontLemma, normalized)
       ) {
         const record = byValue.get(normalized) ?? { value: normalized, sources: new Set<TranslationSource>() };
         record.sources.add('gloss');

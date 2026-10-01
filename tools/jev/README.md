@@ -176,5 +176,5 @@ and a short-word-only pass is a few cents.
 Some decks ship a small hand-curated list that is authoritative for part of the
 deck. This harness is for the long tail: run it on the lemmas the list does not
 cover, review `drop.json`, and feed accepted drops into the generator. It can be
-pointed at any deck (`top-ru-en`, `top-no-en`, `top-sv-en`, `top_pt_BR-en`)
+pointed at any deck (`top-ru-en`, `top-sv-en`, `top-es-en`, `top-fr-en`)
 unchanged.

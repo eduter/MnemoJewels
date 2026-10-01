@@ -11,6 +11,8 @@
 // committed file. Lists are kept to the senses a learner should actually
 // associate with the Russian word. Lemmas longer than four characters are
 // untouched.
+import { curateCards as curateWithGlosses } from '../decks/curation.ts';
+
 export const SHORT_WORD_MAX_LENGTH = 4;
 
 export const SHORT_WORD_GLOSSES: ReadonlyMap<string, readonly string[]> = new Map<
@@ -424,21 +426,5 @@ export function curatedGlossesFor(lemma: string): readonly string[] | null {
 // Replaces every short lemma's cards with its curated glosses, preserving the
 // position of the lemma's first occurrence. Longer lemmas are left untouched.
 export function curateCards(cards: [string, string][]): [string, string][] {
-  const curated: [string, string][] = [];
-  const done = new Set<string>();
-  for (const [russianLemma, englishLemma] of cards) {
-    if (!isShortWord(russianLemma)) {
-      curated.push([russianLemma, englishLemma]);
-      continue;
-    }
-    const glosses = curatedGlossesFor(russianLemma);
-    if (!glosses) {
-      curated.push([russianLemma, englishLemma]);
-      continue;
-    }
-    if (done.has(russianLemma)) continue;
-    done.add(russianLemma);
-    for (const gloss of glosses) curated.push([russianLemma, gloss]);
-  }
-  return curated;
+  return curateWithGlosses(cards, SHORT_WORD_GLOSSES, SHORT_WORD_MAX_LENGTH);
 }

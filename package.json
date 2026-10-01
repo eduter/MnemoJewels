@@ -15,6 +15,8 @@
     "data:russian": "node --experimental-strip-types tools/russian/generate.ts",
     "data:russian:sanitize": "node --experimental-strip-types tools/russian/generate.ts --sanitize",
     "data:russian:download": "node --experimental-strip-types tools/russian/generate.ts --download",
+    "data:romance": "node --experimental-strip-types tools/romance/generate.ts",
+    "data:romance:download": "node --experimental-strip-types tools/romance/generate.ts --download",
     "data:jev": "node --experimental-strip-types tools/jev/cli.ts",
     "data:jev:analyze": "node --experimental-strip-types tools/jev/analyze.ts",
     "data:jev:policy": "node --experimental-strip-types tools/jev/policy.ts",
