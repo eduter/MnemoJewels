@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Gold M monogram">
+  <defs>
+    <linearGradient id="e-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#232a40"/>
+      <stop offset="100%" stop-color="#0c0f18"/>
+    </linearGradient>
+    <linearGradient id="e-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe98a"/>
+      <stop offset="55%" stop-color="#f1c101"/>
+      <stop offset="100%" stop-color="#b69202"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#e-bg)"/>
+  <path d="M 122 386 L 122 140 L 256 312 L 390 140 L 390 386" fill="none" stroke="#000000" stroke-opacity="0.55" stroke-width="92" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 122 386 L 122 140 L 256 312 L 390 140 L 390 386" fill="none" stroke="url(#e-gold)" stroke-width="76" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 372 96 Q 380 122 406 130 Q 380 138 372 164 Q 364 138 338 130 Q 364 122 372 96 Z" fill="#ffffff" opacity="0.95"/>
+</svg>
