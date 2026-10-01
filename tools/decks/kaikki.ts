@@ -6,6 +6,7 @@ export interface KaikkiSense {
   links?: unknown[];
   glosses?: string[];
   tags?: string[];
+  topics?: string[];
   form_of?: unknown[];
 }
 
