@@ -43,6 +43,29 @@ describe('articulatory segment distance', () => {
     expect(segmentDistance('l', 'lʲ')).toBeLessThan(0.25);
     expect(segmentDistance('t', 'tʲ')).toBeLessThan(0.25);
   });
+
+  it('keeps Romance lenition pairs close', () => {
+    // Spanish fricative allophones of voiced stops.
+    expect(segmentDistance('ð', 'd')).toBeLessThan(0.45);
+    expect(segmentDistance('β', 'b')).toBeLessThan(0.45);
+    expect(segmentDistance('ɣ', 'ɡ')).toBeLessThan(0.45);
+    // The Spanish tap and the trill are near-identical for confusability.
+    expect(segmentDistance('ɾ', 'r')).toBeLessThan(0.1);
+    // French and Spanish rhotics: uvular vs alveolar is a real but moderate gap.
+    expect(segmentDistance('ʁ', 'r')).toBeLessThan(0.5);
+    // French front rounded vowels against their unrounded/backed neighbours.
+    expect(segmentDistance('ø', 'o')).toBeLessThan(0.7);
+    expect(segmentDistance('y', 'u')).toBeLessThan(0.8);
+  });
+
+  it('distinguishes nasalized vowels from their oral counterparts', () => {
+    // French /ɑ̃/ and /ɔ̃/, Spanish /ã/; nasalization is a real contrast.
+    expect(segmentDistance('ɑ̃', 'ɑ')).toBeGreaterThan(0.3);
+    expect(segmentDistance('ɔ̃', 'ɔ')).toBeGreaterThan(0.3);
+    expect(segmentDistance('ã', 'a')).toBeGreaterThan(0.3);
+    // Still closer than a genuinely different vowel.
+    expect(segmentDistance('ɑ̃', 'ɑ')).toBeLessThan(segmentDistance('ɑ̃', 'i'));
+  });
 });
 
 describe('IPA sequence distance', () => {
