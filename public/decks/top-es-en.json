@@ -427,10 +427,6 @@
         ],
         [
             "ahora",
-            "de"
-        ],
-        [
-            "ahora",
             "nowadays"
         ],
         [
@@ -440,6 +436,10 @@
         [
             "ahora",
             "latter-day"
+        ],
+        [
+            "ahora",
+            "however"
         ],
         [
             "vez",
@@ -519,7 +519,7 @@
         ],
         [
             "parte",
-            "law"
+            "party"
         ],
         [
             "solo",
@@ -532,10 +532,6 @@
         [
             "algo",
             "something"
-        ],
-        [
-            "tiempo",
-            "physics"
         ],
         [
             "tiempo",
@@ -559,11 +555,15 @@
         ],
         [
             "tiempo",
-            "grammar"
+            "tense"
         ],
         [
             "tiempo",
-            "tense"
+            "weather"
+        ],
+        [
+            "tiempo",
+            "atmosphere"
         ],
         [
             "día",
@@ -779,10 +779,6 @@
         ],
         [
             "estado",
-            "estado"
-        ],
-        [
-            "estado",
             "state"
         ],
         [
@@ -792,6 +788,10 @@
         [
             "estado",
             "status"
+        ],
+        [
+            "estado",
+            "estado"
         ],
         [
             "estado",
@@ -863,10 +863,6 @@
         ],
         [
             "menos",
-            "mathematics"
-        ],
-        [
-            "menos",
             "minus"
         ],
         [
@@ -876,6 +872,10 @@
         [
             "menos",
             "besides"
+        ],
+        [
+            "menos",
+            "minus sign"
         ],
         [
             "nunca",
@@ -907,15 +907,15 @@
         ],
         [
             "tanto",
-            "como"
-        ],
-        [
-            "tanto",
             "both"
         ],
         [
             "tanto",
             "copy"
+        ],
+        [
+            "tanto",
+            "poker chip"
         ],
         [
             "antes",
@@ -947,7 +947,7 @@
         ],
         [
             "antes",
-            "de"
+            "once"
         ],
         [
             "poco",
@@ -956,10 +956,6 @@
         [
             "poco",
             "few"
-        ],
-        [
-            "había",
-            "haber"
         ],
         [
             "tener",
@@ -1000,14 +996,6 @@
         [
             "trabajo",
             "job"
-        ],
-        [
-            "trabajo",
-            "physics"
-        ],
-        [
-            "trabajo",
-            "education"
         ],
         [
             "trabajo",
@@ -1068,14 +1056,6 @@
         [
             "hecho",
             "hatching"
-        ],
-        [
-            "hecho",
-            "echo"
-        ],
-        [
-            "sólo",
-            "only"
         ],
         [
             "aunque",
@@ -1143,10 +1123,6 @@
         ],
         [
             "cuenta",
-            "mathematics"
-        ],
-        [
-            "cuenta",
             "operation"
         ],
         [
@@ -1159,11 +1135,15 @@
         ],
         [
             "cuenta",
-            "computing"
+            "account"
         ],
         [
             "cuenta",
-            "account"
+            "report"
+        ],
+        [
+            "cuenta",
+            "score"
         ],
         [
             "decir",
@@ -1327,10 +1307,6 @@
         ],
         [
             "quien",
-            "a"
-        ],
-        [
-            "quien",
             "whom"
         ],
         [
@@ -1355,10 +1331,6 @@
         ],
         [
             "momento",
-            "time"
-        ],
-        [
-            "momento",
             "moment"
         ],
         [
@@ -1371,23 +1343,11 @@
         ],
         [
             "momento",
-            "physics"
-        ],
-        [
-            "momento",
             "momentum"
         ],
         [
             "bueno",
-            "ser"
-        ],
-        [
-            "bueno",
             "good"
-        ],
-        [
-            "bueno",
-            "con"
         ],
         [
             "bueno",
@@ -1408,6 +1368,14 @@
         [
             "bueno",
             "yummy"
+        ],
+        [
+            "bueno",
+            "sick"
+        ],
+        [
+            "bueno",
+            "hot"
         ],
         [
             "ciudad",
@@ -1595,10 +1563,6 @@
         ],
         [
             "veces",
-            "mathematics"
-        ],
-        [
-            "veces",
             "by"
         ],
         [
@@ -1655,10 +1619,6 @@
         ],
         [
             "general",
-            "military"
-        ],
-        [
-            "general",
             "general elections"
         ],
         [
@@ -1691,7 +1651,7 @@
         ],
         [
             "mayor",
-            "music"
+            "enhanced"
         ],
         [
             "tal",
@@ -1732,10 +1692,6 @@
         [
             "mal",
             "evil"
-        ],
-        [
-            "primer",
-            "primero"
         ],
         [
             "según",
@@ -1807,10 +1763,6 @@
         ],
         [
             "nombre",
-            "grammar"
-        ],
-        [
-            "nombre",
             "wow"
         ],
         [
@@ -1843,10 +1795,6 @@
         ],
         [
             "medio",
-            "art"
-        ],
-        [
-            "medio",
             "tasteful"
         ],
         [
@@ -1855,19 +1803,19 @@
         ],
         [
             "medio",
-            "linguistics"
+            "mid"
         ],
         [
             "medio",
-            "mid"
+            "mediopassive"
+        ],
+        [
+            "medio",
+            "ironic"
         ],
         [
             "partido",
             "broken"
-        ],
-        [
-            "partido",
-            "heraldry"
         ],
         [
             "partido",
@@ -1883,15 +1831,19 @@
         ],
         [
             "partido",
-            "politics"
-        ],
-        [
-            "partido",
             "party"
         ],
         [
             "partido",
-            "sports"
+            "game"
+        ],
+        [
+            "partido",
+            "match"
+        ],
+        [
+            "partido",
+            "soccer"
         ],
         [
             "bajo",
@@ -1904,10 +1856,6 @@
         [
             "fuera",
             "outside"
-        ],
-        [
-            "fuera",
-            "sports"
         ],
         [
             "fuera",
@@ -1991,10 +1939,6 @@
         ],
         [
             "haber",
-            "hay"
-        ],
-        [
-            "haber",
             "have to"
         ],
         [
@@ -2002,20 +1946,12 @@
             "necessary"
         ],
         [
+            "haber",
+            "asset"
+        ],
+        [
             "hombre",
             "man"
-        ],
-        [
-            "hombre",
-            "anthropology"
-        ],
-        [
-            "hombre",
-            "archaeology"
-        ],
-        [
-            "hombre",
-            "paleontology"
         ],
         [
             "hombre",
@@ -2032,6 +1968,14 @@
         [
             "hombre",
             "ombre"
+        ],
+        [
+            "hombre",
+            "hey"
+        ],
+        [
+            "hombre",
+            "come on"
         ],
         [
             "buena",
@@ -2054,28 +1998,12 @@
             "character"
         ],
         [
-            "persona",
-            "se"
-        ],
-        [
-            "persona",
-            "persona"
-        ],
-        [
-            "persona",
-            "te"
-        ],
-        [
             "sistema",
             "system"
         ],
         [
             "sistema",
             "scheme"
-        ],
-        [
-            "sistema",
-            "politics"
         ],
         [
             "sistema",
@@ -2142,20 +2070,12 @@
             "bygones"
         ],
         [
-            "pasado",
-            "grammar"
-        ],
-        [
             "presidente",
             "president"
         ],
         [
             "presidente",
             "head"
-        ],
-        [
-            "presidente",
-            "government"
         ],
         [
             "ahí",
@@ -2246,10 +2166,6 @@
             "end"
         ],
         [
-            "final",
-            "sports"
-        ],
-        [
             "política",
             "politics"
         ],
@@ -2295,14 +2211,6 @@
         ],
         [
             "punto",
-            "grammar"
-        ],
-        [
-            "punto",
-            "mathematics"
-        ],
-        [
-            "punto",
             "sewing"
         ],
         [
@@ -2320,6 +2228,14 @@
         [
             "punto",
             "spanish"
+        ],
+        [
+            "punto",
+            "period"
+        ],
+        [
+            "punto",
+            "end of story"
         ],
         [
             "agua",
@@ -2587,15 +2503,7 @@
         ],
         [
             "número",
-            "grammar"
-        ],
-        [
-            "número",
             "spectacle"
-        ],
-        [
-            "número",
-            "military"
         ],
         [
             "número",
@@ -2636,14 +2544,6 @@
         [
             "madre",
             "mother"
-        ],
-        [
-            "madre",
-            "christianity"
-        ],
-        [
-            "madre",
-            "hydrology"
         ],
         [
             "madre",
@@ -2695,14 +2595,6 @@
         ],
         [
             "centro",
-            "geometry"
-        ],
-        [
-            "centro",
-            "politics"
-        ],
-        [
-            "centro",
             "moderate"
         ],
         [
@@ -2720,6 +2612,14 @@
         [
             "centro",
             "heart"
+        ],
+        [
+            "centro",
+            "urban studies"
+        ],
+        [
+            "centro",
+            "city center"
         ],
         [
             "derecho",
@@ -2775,15 +2675,11 @@
         ],
         [
             "falta",
-            "linguistics"
-        ],
-        [
-            "falta",
             "mistake"
         ],
         [
             "falta",
-            "sports"
+            "foul"
         ],
         [
             "cambio",
@@ -2800,10 +2696,6 @@
         [
             "cambio",
             "exchange rate"
-        ],
-        [
-            "cambio",
-            "telecommunications"
         ],
         [
             "cambio",
@@ -2943,10 +2835,6 @@
         ],
         [
             "frente",
-            "anatomy"
-        ],
-        [
-            "frente",
             "forehead"
         ],
         [
@@ -2956,18 +2844,6 @@
         [
             "frente",
             "front"
-        ],
-        [
-            "frente",
-            "architecture"
-        ],
-        [
-            "frente",
-            "military"
-        ],
-        [
-            "frente",
-            "politics"
         ],
         [
             "incluso",
@@ -3174,10 +3050,6 @@
             "gambling"
         ],
         [
-            "juego",
-            "bdsm"
-        ],
-        [
             "llegar",
             "arrive"
         ],
@@ -3199,15 +3071,15 @@
         ],
         [
             "llegar",
-            "a"
-        ],
-        [
-            "llegar",
             "sufficient"
         ],
         [
             "llegar",
             "enough"
+        ],
+        [
+            "llegar",
+            "manage"
         ],
         [
             "mano",
@@ -3232,18 +3104,6 @@
         [
             "uso",
             "use"
-        ],
-        [
-            "artículo",
-            "grammar"
-        ],
-        [
-            "artículo",
-            "journalism"
-        ],
-        [
-            "artículo",
-            "zoology"
         ],
         [
             "artículo",
@@ -3355,10 +3215,6 @@
         ],
         [
             "razón",
-            "tener"
-        ],
-        [
-            "razón",
             "correctness"
         ],
         [
@@ -3411,14 +3267,6 @@
         ],
         [
             "padre",
-            "christianity"
-        ],
-        [
-            "padre",
-            "soccer"
-        ],
-        [
-            "padre",
             "internet"
         ],
         [
@@ -3432,6 +3280,14 @@
         [
             "padre",
             "easy"
+        ],
+        [
+            "padre",
+            "enormous"
+        ],
+        [
+            "padre",
+            "huge"
         ],
         [
             "salir",
@@ -3483,19 +3339,11 @@
         ],
         [
             "tierra",
-            "geography"
-        ],
-        [
-            "tierra",
             "land"
         ],
         [
             "tierra",
             "ground"
-        ],
-        [
-            "tierra",
-            "geology"
         ],
         [
             "tierra",
@@ -3507,7 +3355,15 @@
         ],
         [
             "tierra",
-            "agriculture"
+            "homeland"
+        ],
+        [
+            "tierra",
+            "country"
+        ],
+        [
+            "tierra",
+            "nation"
         ],
         [
             "visto",
@@ -3606,10 +3462,6 @@
             "show"
         ],
         [
-            "programa",
-            "computing"
-        ],
-        [
             "segundo",
             "ordinal number"
         ],
@@ -3644,10 +3496,6 @@
         [
             "último",
             "recent"
-        ],
-        [
-            "cabeza",
-            "anatomy"
         ],
         [
             "cabeza",
@@ -3891,10 +3739,6 @@
         ],
         [
             "proceso",
-            "law"
-        ],
-        [
-            "proceso",
             "lawsuit"
         ],
         [
@@ -3958,10 +3802,6 @@
             "type"
         ],
         [
-            "clase",
-            "taxonomy"
-        ],
-        [
             "cuanto",
             "quantity"
         ],
@@ -3984,10 +3824,6 @@
         [
             "cuanto",
             "however much"
-        ],
-        [
-            "cuanto",
-            "physics"
         ],
         [
             "cuanto",
@@ -4031,23 +3867,15 @@
         ],
         [
             "largo",
-            "soccer"
+            "length"
         ],
         [
             "largo",
-            "ball"
+            "pitch"
         ],
         [
             "orden",
             "order"
-        ],
-        [
-            "orden",
-            "military"
-        ],
-        [
-            "orden",
-            "religion"
         ],
         [
             "orden",
@@ -4056,14 +3884,6 @@
         [
             "orden",
             "behavior"
-        ],
-        [
-            "orden",
-            "taxonomy"
-        ],
-        [
-            "orden",
-            "mathematics"
         ],
         [
             "puesto",
@@ -4207,10 +4027,6 @@
         ],
         [
             "medios",
-            "bullfighting"
-        ],
-        [
-            "medios",
             "medios"
         ],
         [
@@ -4336,10 +4152,6 @@
         [
             "especial",
             "special"
-        ],
-        [
-            "especial",
-            "television"
         ],
         [
             "hola",
@@ -4475,10 +4287,6 @@
         ],
         [
             "línea",
-            "mathematics"
-        ],
-        [
-            "línea",
             "line"
         ],
         [
@@ -4508,10 +4316,6 @@
         [
             "mundial",
             "global"
-        ],
-        [
-            "mundial",
-            "copa"
         ],
         [
             "obra",
@@ -4572,10 +4376,6 @@
         [
             "escuela",
             "school"
-        ],
-        [
-            "escuela",
-            "climbing"
         ],
         [
             "escuela",
@@ -4650,16 +4450,8 @@
             "capital"
         ],
         [
-            "capital",
-            "finance"
-        ],
-        [
             "libre",
             "free"
-        ],
-        [
-            "libre",
-            "grammar"
         ],
         [
             "luz",
@@ -4883,15 +4675,15 @@
         ],
         [
             "fácil",
-            "de"
-        ],
-        [
-            "fácil",
             "gullible"
         ],
         [
             "fácil",
             "credulous"
+        ],
+        [
+            "fácil",
+            "easily"
         ],
         [
             "habla",
@@ -5004,10 +4796,6 @@
         [
             "fuerza",
             "strength"
-        ],
-        [
-            "fuerza",
-            "physics"
         ],
         [
             "mayo",
@@ -5171,18 +4959,6 @@
         ],
         [
             "serie",
-            "mathematics"
-        ],
-        [
-            "serie",
-            "exercise"
-        ],
-        [
-            "serie",
-            "weightlifting"
-        ],
-        [
-            "serie",
             "set"
         ],
         [
@@ -5207,10 +4983,6 @@
         ],
         [
             "trabajar",
-            "en"
-        ],
-        [
-            "trabajar",
             "suffer"
         ],
         [
@@ -5220,10 +4992,6 @@
         [
             "futuro",
             "future"
-        ],
-        [
-            "futuro",
-            "grammar"
         ],
         [
             "futuro",
@@ -5335,10 +5103,6 @@
         ],
         [
             "corazón",
-            "anatomy"
-        ],
-        [
-            "corazón",
             "heart"
         ],
         [
@@ -5364,6 +5128,10 @@
         [
             "corazón",
             "core"
+        ],
+        [
+            "corazón",
+            "artichoke"
         ],
         [
             "diciembre",
@@ -5523,10 +5291,6 @@
         ],
         [
             "actual",
-            "philosophy"
-        ],
-        [
-            "actual",
             "actual"
         ],
         [
@@ -5536,10 +5300,6 @@
         [
             "actual",
             "present-day"
-        ],
-        [
-            "actual",
-            "del"
         ],
         [
             "ambos",
@@ -5556,10 +5316,6 @@
         [
             "media",
             "half"
-        ],
-        [
-            "media",
-            "cuarto"
         ],
         [
             "media",
@@ -5583,7 +5339,11 @@
         ],
         [
             "media",
-            "mathematics"
+            "mean"
+        ],
+        [
+            "media",
+            "average"
         ],
         [
             "modo",
@@ -5619,15 +5379,7 @@
         ],
         [
             "campo",
-            "sports"
-        ],
-        [
-            "campo",
             "pitch"
-        ],
-        [
-            "campo",
-            "golf"
         ],
         [
             "campo",
@@ -5684,10 +5436,6 @@
         [
             "dirección",
             "running"
-        ],
-        [
-            "dirección",
-            "film"
         ],
         [
             "dirección",
@@ -5766,10 +5514,6 @@
             "remainder"
         ],
         [
-            "resto",
-            "mathematics"
-        ],
-        [
             "vuelta",
             "turn"
         ],
@@ -5795,11 +5539,11 @@
         ],
         [
             "vuelta",
-            "sports"
+            "lap"
         ],
         [
             "vuelta",
-            "lap"
+            "second leg"
         ],
         [
             "consejo",
@@ -5851,15 +5595,7 @@
         ],
         [
             "movimiento",
-            "banking"
-        ],
-        [
-            "movimiento",
             "transaction"
-        ],
-        [
-            "movimiento",
-            "music"
         ],
         [
             "noviembre",
@@ -5931,15 +5667,7 @@
         ],
         [
             "cargo",
-            "finance"
-        ],
-        [
-            "cargo",
             "debit"
-        ],
-        [
-            "cargo",
-            "heraldry"
         ],
         [
             "cargo",
@@ -6142,10 +5870,6 @@
             "period"
         ],
         [
-            "espacio",
-            "typography"
-        ],
-        [
             "febrero",
             "february"
         ],
@@ -6190,10 +5914,6 @@
             "saintess"
         ],
         [
-            "santa",
-            "santo"
-        ],
-        [
             "vale",
             "ok"
         ],
@@ -6215,15 +5935,7 @@
         ],
         [
             "acción",
-            "military"
-        ],
-        [
-            "acción",
             "combat"
-        ],
-        [
-            "acción",
-            "law"
         ],
         [
             "acción",
@@ -6299,7 +6011,7 @@
         ],
         [
             "plaza",
-            "commerce"
+            "mall"
         ],
         [
             "septiembre",
@@ -6316,10 +6028,6 @@
         [
             "valor",
             "value"
-        ],
-        [
-            "valor",
-            "finance"
         ],
         [
             "valor",
@@ -6359,10 +6067,6 @@
         ],
         [
             "causa",
-            "law"
-        ],
-        [
-            "causa",
             "lawsuit"
         ],
         [
@@ -6399,10 +6103,6 @@
         ],
         [
             "central",
-            "soccer"
-        ],
-        [
-            "central",
             "centre-back"
         ],
         [
@@ -6435,10 +6135,6 @@
         ],
         [
             "feliz",
-            "ser"
-        ],
-        [
-            "feliz",
             "happy"
         ],
         [
@@ -6456,10 +6152,6 @@
         [
             "feliz",
             "joyous"
-        ],
-        [
-            "iglesia",
-            "christianity"
         ],
         [
             "iglesia",
@@ -6519,7 +6211,7 @@
         ],
         [
             "resultado",
-            "sports"
+            "score"
         ],
         [
             "cambiar",
@@ -6647,10 +6339,6 @@
         ],
         [
             "campaña",
-            "heraldry"
-        ],
-        [
-            "campaña",
             "base"
         ],
         [
@@ -6660,14 +6348,6 @@
         [
             "carrera",
             "run"
-        ],
-        [
-            "carrera",
-            "baseball"
-        ],
-        [
-            "carrera",
-            "education"
         ],
         [
             "carrera",
@@ -6684,6 +6364,14 @@
         [
             "carrera",
             "journey"
+        ],
+        [
+            "carrera",
+            "fare"
+        ],
+        [
+            "carrera",
+            "path"
         ],
         [
             "ejército",
@@ -6720,10 +6408,6 @@
         [
             "encima",
             "on top of that"
-        ],
-        [
-            "interés",
-            "finance"
         ],
         [
             "interés",
@@ -6802,14 +6486,6 @@
             "popular"
         ],
         [
-            "popular",
-            "politics"
-        ],
-        [
-            "popular",
-            "pp"
-        ],
-        [
             "principio",
             "principle"
         ],
@@ -6879,10 +6555,6 @@
         ],
         [
             "blanco",
-            "heraldry"
-        ],
-        [
-            "blanco",
             "argent"
         ],
         [
@@ -6896,6 +6568,10 @@
         [
             "blanco",
             "european"
+        ],
+        [
+            "blanco",
+            "light-skinned"
         ],
         [
             "comer",
@@ -6915,10 +6591,6 @@
         ],
         [
             "comer",
-            "chess"
-        ],
-        [
-            "comer",
             "board game"
         ],
         [
@@ -6928,6 +6600,10 @@
         [
             "comer",
             "sexual intercourse"
+        ],
+        [
+            "comer",
+            "care"
         ],
         [
             "compañía",
@@ -6963,10 +6639,6 @@
         ],
         [
             "ganar",
-            "sports"
-        ],
-        [
-            "ganar",
             "win"
         ],
         [
@@ -6984,6 +6656,10 @@
         [
             "ganar",
             "attain"
+        ],
+        [
+            "ganar",
+            "position"
         ],
         [
             "interior",
@@ -7031,7 +6707,7 @@
         ],
         [
             "lucha",
-            "sports"
+            "martial arts"
         ],
         [
             "mediante",
@@ -7266,10 +6942,6 @@
             "difference"
         ],
         [
-            "diferencia",
-            "arithmetic"
-        ],
-        [
             "entrar",
             "enter"
         ],
@@ -7304,10 +6976,6 @@
         [
             "estilo",
             "style"
-        ],
-        [
-            "estilo",
-            "botany"
         ],
         [
             "estilo",
@@ -7407,10 +7075,6 @@
         ],
         [
             "plata",
-            "heraldry"
-        ],
-        [
-            "plata",
             "argent"
         ],
         [
@@ -7444,10 +7108,6 @@
         [
             "puerta",
             "gateway"
-        ],
-        [
-            "puerta",
-            "sports"
         ],
         [
             "puerta",
@@ -7511,15 +7171,7 @@
         ],
         [
             "defensa",
-            "automotive"
-        ],
-        [
-            "defensa",
             "bumper"
-        ],
-        [
-            "defensa",
-            "sports"
         ],
         [
             "defensa",
@@ -7583,10 +7235,6 @@
         ],
         [
             "menor",
-            "law"
-        ],
-        [
-            "menor",
             "minor"
         ],
         [
@@ -7614,10 +7262,6 @@
             "mountain pass"
         ],
         [
-            "puerto",
-            "computing"
-        ],
-        [
             "recuerdo",
             "memory"
         ],
@@ -7636,10 +7280,6 @@
         [
             "acceso",
             "passage"
-        ],
-        [
-            "acceso",
-            "medicine"
         ],
         [
             "acceso",
@@ -7812,10 +7452,6 @@
         [
             "época",
             "time period"
-        ],
-        [
-            "época",
-            "geology"
         ],
         [
             "actividad",
@@ -8015,10 +7651,6 @@
         ],
         [
             "presente",
-            "grammar"
-        ],
-        [
-            "presente",
             "present tense"
         ],
         [
@@ -8151,10 +7783,6 @@
         ],
         [
             "energía",
-            "physics"
-        ],
-        [
-            "energía",
             "energy"
         ],
         [
@@ -8168,14 +7796,6 @@
         [
             "esperar",
             "wait"
-        ],
-        [
-            "esperar",
-            "a"
-        ],
-        [
-            "esperar",
-            "que"
         ],
         [
             "esperar",
@@ -8279,31 +7899,11 @@
         ],
         [
             "radio",
-            "electronics"
-        ],
-        [
-            "radio",
             "radio"
         ],
         [
             "radio",
-            "communication"
-        ],
-        [
-            "radio",
-            "anatomy"
-        ],
-        [
-            "radio",
             "radius"
-        ],
-        [
-            "radio",
-            "geometry"
-        ],
-        [
-            "radio",
-            "chemistry"
         ],
         [
             "radio",
@@ -8439,15 +8039,15 @@
         ],
         [
             "cámara",
-            "nautical"
-        ],
-        [
-            "cámara",
             "cabin"
         ],
         [
             "cámara",
             "bowel movement"
+        ],
+        [
+            "cámara",
+            "cameraman"
         ],
         [
             "diario",
@@ -8528,10 +8128,6 @@
         [
             "fuego",
             "fire"
-        ],
-        [
-            "fuego",
-            "military"
         ],
         [
             "perder",
@@ -8771,15 +8367,7 @@
         ],
         [
             "banda",
-            "heraldry"
-        ],
-        [
-            "banda",
             "bend"
-        ],
-        [
-            "banda",
-            "music"
         ],
         [
             "banda",
@@ -8847,10 +8435,6 @@
         ],
         [
             "encuentro",
-            "sports"
-        ],
-        [
-            "encuentro",
             "match"
         ],
         [
@@ -8859,7 +8443,11 @@
         ],
         [
             "encuentro",
-            "automotive"
+            "crash"
+        ],
+        [
+            "encuentro",
+            "collision"
         ],
         [
             "entrada",
@@ -9099,10 +8687,6 @@
         ],
         [
             "normal",
-            "geometry"
-        ],
-        [
-            "normal",
             "perpendicular"
         ],
         [
@@ -9111,11 +8695,11 @@
         ],
         [
             "normal",
-            "education"
+            "becoming"
         ],
         [
             "normal",
-            "becoming"
+            "teacher"
         ],
         [
             "sexo",
@@ -9131,10 +8715,6 @@
         ],
         [
             "siete",
-            "clothing"
-        ],
-        [
-            "siete",
             "tear"
         ],
         [
@@ -9144,10 +8724,6 @@
         [
             "texto",
             "text"
-        ],
-        [
-            "texto",
-            "printing"
         ],
         [
             "texto",
@@ -9163,19 +8739,15 @@
         ],
         [
             "texto",
+            "standardize"
+        ],
+        [
+            "texto",
             "text message"
         ],
         [
             "análisis",
             "analysis"
-        ],
-        [
-            "análisis",
-            "mathematics"
-        ],
-        [
-            "análisis",
-            "chemistry"
         ],
         [
             "apenas",
@@ -9276,10 +8848,6 @@
         [
             "izquierda",
             "left"
-        ],
-        [
-            "izquierda",
-            "politics"
         ],
         [
             "mente",
@@ -9410,10 +8978,6 @@
             "alignment"
         ],
         [
-            "formación",
-            "geology"
-        ],
-        [
             "importancia",
             "importance"
         ],
@@ -9523,14 +9087,6 @@
         ],
         [
             "canal",
-            "communication"
-        ],
-        [
-            "canal",
-            "chemistry"
-        ],
-        [
-            "canal",
             "cleavage"
         ],
         [
@@ -9544,10 +9100,6 @@
         [
             "derecha",
             "right"
-        ],
-        [
-            "derecha",
-            "politics"
         ],
         [
             "escrito",
@@ -9619,11 +9171,11 @@
         ],
         [
             "juicio",
-            "law"
+            "trial"
         ],
         [
             "juicio",
-            "trial"
+            "verdict"
         ],
         [
             "miles",
@@ -9819,10 +9371,6 @@
         ],
         [
             "conjunto",
-            "mathematics"
-        ],
-        [
-            "conjunto",
             "set"
         ],
         [
@@ -9847,15 +9395,15 @@
         ],
         [
             "cuarto",
-            "military"
-        ],
-        [
-            "cuarto",
             "english"
         ],
         [
             "cuarto",
             "american"
+        ],
+        [
+            "cuarto",
+            "cuarto"
         ],
         [
             "curso",
@@ -9875,10 +9423,6 @@
         ],
         [
             "curso",
-            "education"
-        ],
-        [
-            "curso",
             "class"
         ],
         [
@@ -9888,6 +9432,10 @@
         [
             "curso",
             "year"
+        ],
+        [
+            "curso",
+            "diarrhea"
         ],
         [
             "democracia",
@@ -9931,23 +9479,7 @@
         ],
         [
             "género",
-            "music"
-        ],
-        [
-            "género",
-            "film"
-        ],
-        [
-            "género",
-            "theater"
-        ],
-        [
-            "género",
-            "television"
-        ],
-        [
-            "género",
-            "taxonomy"
+            "genre"
         ],
         [
             "género",
@@ -9955,7 +9487,23 @@
         ],
         [
             "género",
-            "biology"
+            "gender"
+        ],
+        [
+            "género",
+            "sex"
+        ],
+        [
+            "género",
+            "produce"
+        ],
+        [
+            "género",
+            "merchandise"
+        ],
+        [
+            "género",
+            "cloth"
         ],
         [
             "muerto",
@@ -10151,10 +9699,6 @@
         ],
         [
             "ambiente",
-            "medio"
-        ],
-        [
-            "ambiente",
             "room"
         ],
         [
@@ -10163,19 +9707,7 @@
         ],
         [
             "ataque",
-            "sports"
-        ],
-        [
-            "ataque",
             "offensive"
-        ],
-        [
-            "ataque",
-            "pathology"
-        ],
-        [
-            "ataque",
-            "phonology"
         ],
         [
             "ataque",
@@ -10663,10 +10195,6 @@
         ],
         [
             "responsabilidad",
-            "law"
-        ],
-        [
-            "responsabilidad",
             "liability"
         ],
         [
@@ -10720,10 +10248,6 @@
         [
             "viernes",
             "friday"
-        ],
-        [
-            "vídeo",
-            "video"
         ],
         [
             "aplicación",
@@ -10799,10 +10323,6 @@
         ],
         [
             "doble",
-            "folklore"
-        ],
-        [
-            "doble",
             "doppleganger"
         ],
         [
@@ -10819,15 +10339,7 @@
         ],
         [
             "marca",
-            "sports"
-        ],
-        [
-            "marca",
             "record"
-        ],
-        [
-            "marca",
-            "nautical"
         ],
         [
             "marca",
@@ -10836,6 +10348,14 @@
         [
             "marca",
             "buoy"
+        ],
+        [
+            "marca",
+            "whore"
+        ],
+        [
+            "marca",
+            "harlot"
         ],
         [
             "memoria",
@@ -10848,10 +10368,6 @@
         [
             "memoria",
             "document"
-        ],
-        [
-            "memoria",
-            "computing"
         ],
         [
             "motivo",
@@ -10928,10 +10444,6 @@
         [
             "reino",
             "kingdom"
-        ],
-        [
-            "reino",
-            "taxonomy"
         ],
         [
             "reino",
@@ -11111,10 +10623,6 @@
         ],
         [
             "miembro",
-            "anatomy"
-        ],
-        [
-            "miembro",
             "limb"
         ],
         [
@@ -11155,10 +10663,6 @@
         ],
         [
             "producto",
-            "mathematics"
-        ],
-        [
-            "producto",
             "remainder"
         ],
         [
@@ -11168,6 +10672,10 @@
         [
             "producto",
             "result"
+        ],
+        [
+            "producto",
+            "device"
         ],
         [
             "próximo",
@@ -11204,10 +10712,6 @@
         [
             "salida",
             "future"
-        ],
-        [
-            "salida",
-            "computing"
         ],
         [
             "salida",
@@ -11315,15 +10819,7 @@
         ],
         [
             "función",
-            "theater"
-        ],
-        [
-            "función",
             "showing"
-        ],
-        [
-            "función",
-            "computing"
         ],
         [
             "función",
@@ -11332,6 +10828,10 @@
         [
             "función",
             "method"
+        ],
+        [
+            "función",
+            "procedure"
         ],
         [
             "independencia",
@@ -11499,7 +10999,7 @@
         ],
         [
             "dormir",
-            "medicine"
+            "anesthetize"
         ],
         [
             "esperanza",
@@ -11524,10 +11024,6 @@
         [
             "fiscal",
             "prosecuting"
-        ],
-        [
-            "fiscal",
-            "law"
         ],
         [
             "fiscal",
@@ -11635,11 +11131,11 @@
         ],
         [
             "chico",
-            "chicas"
+            "white-nosed coati"
         ],
         [
             "chico",
-            "white-nosed coati"
+            "raccoon"
         ],
         [
             "ciento",
@@ -11856,10 +11352,6 @@
         [
             "diseño",
             "design"
-        ],
-        [
-            "diseño",
-            "computing"
         ],
         [
             "diseño",
@@ -12171,10 +11663,6 @@
         ],
         [
             "materia",
-            "physics"
-        ],
-        [
-            "materia",
             "matter"
         ],
         [
@@ -12375,14 +11863,6 @@
         ],
         [
             "grado",
-            "geography"
-        ],
-        [
-            "grado",
-            "education"
-        ],
-        [
-            "grado",
             "degree"
         ],
         [
@@ -12404,6 +11884,14 @@
         [
             "grado",
             "alcoholic"
+        ],
+        [
+            "grado",
+            "beverage"
+        ],
+        [
+            "grado",
+            "proof"
         ],
         [
             "lleno",
@@ -12443,19 +11931,11 @@
         ],
         [
             "misión",
-            "christianity"
-        ],
-        [
-            "misión",
             "roman catholicism"
         ],
         [
             "misión",
-            "religion"
-        ],
-        [
-            "misión",
-            "military"
+            "tour of duty"
         ],
         [
             "pan",
@@ -12539,10 +12019,6 @@
         ],
         [
             "tercera",
-            "music"
-        ],
-        [
-            "tercera",
             "third"
         ],
         [
@@ -12600,10 +12076,6 @@
         [
             "eh",
             "hey"
-        ],
-        [
-            "estación",
-            "transport"
         ],
         [
             "estación",
@@ -12675,19 +12147,7 @@
         ],
         [
             "operación",
-            "medicine"
-        ],
-        [
-            "operación",
             "operation"
-        ],
-        [
-            "operación",
-            "computing"
-        ],
-        [
-            "operación",
-            "mathematics"
         ],
         [
             "papa",
@@ -12719,10 +12179,6 @@
         ],
         [
             "planta",
-            "botany"
-        ],
-        [
-            "planta",
             "plant"
         ],
         [
@@ -12731,11 +12187,11 @@
         ],
         [
             "planta",
-            "plantae"
+            "green alga"
         ],
         [
             "planta",
-            "architecture"
+            "eukaryote"
         ],
         [
             "planta",
@@ -12747,7 +12203,11 @@
         ],
         [
             "planta",
-            "anatomy"
+            "sole"
+        ],
+        [
+            "planta",
+            "footwear"
         ],
         [
             "tantos",
@@ -12783,10 +12243,6 @@
         ],
         [
             "concepto",
-            "literature"
-        ],
-        [
-            "concepto",
             "conceit"
         ],
         [
@@ -12815,19 +12271,19 @@
         ],
         [
             "directo",
-            "broadcasting"
-        ],
-        [
-            "directo",
-            "music"
-        ],
-        [
-            "directo",
             "live"
         ],
         [
             "directo",
             "internet"
+        ],
+        [
+            "directo",
+            "live stream"
+        ],
+        [
+            "directo",
+            "stream"
         ],
         [
             "enorme",
@@ -12922,10 +12378,6 @@
             "period"
         ],
         [
-            "período",
-            "geology"
-        ],
-        [
             "piel",
             "skin"
         ],
@@ -13002,10 +12454,6 @@
             "open-ended"
         ],
         [
-            "abierto",
-            "phonetics"
-        ],
-        [
             "afuera",
             "out"
         ],
@@ -13020,10 +12468,6 @@
         [
             "afuera",
             "get out"
-        ],
-        [
-            "blanca",
-            "music"
         ],
         [
             "blanca",
@@ -13044,10 +12488,6 @@
         [
             "clave",
             "code"
-        ],
-        [
-            "clave",
-            "music"
         ],
         [
             "clave",
@@ -13100,10 +12540,6 @@
         [
             "demanda",
             "demand"
-        ],
-        [
-            "demanda",
-            "law"
         ],
         [
             "demanda",
@@ -13207,10 +12643,6 @@
         ],
         [
             "reina",
-            "chess"
-        ],
-        [
-            "reina",
             "card game"
         ],
         [
@@ -13247,10 +12679,6 @@
         ],
         [
             "tercer",
-            "tercero"
-        ],
-        [
-            "tercer",
             "third"
         ],
         [
@@ -13259,15 +12687,7 @@
         ],
         [
             "velocidad",
-            "physics"
-        ],
-        [
-            "velocidad",
             "velocity"
-        ],
-        [
-            "velocidad",
-            "automotive"
         ],
         [
             "velocidad",
@@ -13328,10 +12748,6 @@
         [
             "competencia",
             "expertise"
-        ],
-        [
-            "competencia",
-            "law"
         ],
         [
             "competencia",
@@ -13427,10 +12843,6 @@
         ],
         [
             "menudo",
-            "cooking"
-        ],
-        [
-            "menudo",
             "soup"
         ],
         [
@@ -13440,6 +12852,10 @@
         [
             "menudo",
             "tripes"
+        ],
+        [
+            "menudo",
+            "money"
         ],
         [
             "presupuesto",
@@ -13659,10 +13075,6 @@
         ],
         [
             "ejercicio",
-            "economics"
-        ],
-        [
-            "ejercicio",
             "financial year"
         ],
         [
@@ -13679,15 +13091,7 @@
         ],
         [
             "figura",
-            "heraldry"
-        ],
-        [
-            "figura",
             "charge"
-        ],
-        [
-            "figura",
-            "theater"
         ],
         [
             "figura",
@@ -13704,6 +13108,14 @@
         [
             "figura",
             "derogatory"
+        ],
+        [
+            "figura",
+            "swaggerer"
+        ],
+        [
+            "figura",
+            "show-off"
         ],
         [
             "genial",
@@ -13975,10 +13387,6 @@
         ],
         [
             "listo",
-            "ser"
-        ],
-        [
-            "listo",
             "ready"
         ],
         [
@@ -13996,6 +13404,10 @@
         [
             "listo",
             "alert"
+        ],
+        [
+            "listo",
+            "that's it"
         ],
         [
             "máximo",
@@ -14051,15 +13463,15 @@
         ],
         [
             "privado",
-            "de"
-        ],
-        [
-            "privado",
             "unlisted"
         ],
         [
             "privado",
             "excited"
+        ],
+        [
+            "privado",
+            "ecstatic"
         ],
         [
             "propósito",
@@ -14135,14 +13547,6 @@
         ],
         [
             "cadena",
-            "broadcasting"
-        ],
-        [
-            "cadena",
-            "television"
-        ],
-        [
-            "cadena",
             "radio"
         ],
         [
@@ -14151,7 +13555,7 @@
         ],
         [
             "cadena",
-            "computing"
+            "string"
         ],
         [
             "capitán",
@@ -14683,10 +14087,6 @@
         ],
         [
             "pantalla",
-            "computing"
-        ],
-        [
-            "pantalla",
             "display"
         ],
         [
@@ -14787,10 +14187,6 @@
         ],
         [
             "compañero",
-            "politics"
-        ],
-        [
-            "compañero",
             "comrade"
         ],
         [
@@ -14798,16 +14194,12 @@
             "teammate"
         ],
         [
-            "crédito",
-            "finance"
+            "compañero",
+            "partner"
         ],
         [
             "crédito",
             "credit"
-        ],
-        [
-            "cuesta",
-            "geology"
         ],
         [
             "cuesta",
@@ -14820,10 +14212,6 @@
         [
             "cuesta",
             "declivity"
-        ],
-        [
-            "cuesta",
-            "geography"
         ],
         [
             "cuesta",
@@ -14852,10 +14240,6 @@
         [
             "grave",
             "solemn"
-        ],
-        [
-            "grave",
-            "phonetics"
         ],
         [
             "grave",
@@ -14923,15 +14307,7 @@
         ],
         [
             "resistencia",
-            "physics"
-        ],
-        [
-            "resistencia",
             "resistor"
-        ],
-        [
-            "resistencia",
-            "exercise"
         ],
         [
             "resistencia",
@@ -15143,19 +14519,11 @@
         ],
         [
             "negra",
-            "music"
-        ],
-        [
-            "negra",
             "crotchet"
         ],
         [
             "negra",
             "quarter note"
-        ],
-        [
-            "negra",
-            "chess"
         ],
         [
             "negra",
@@ -15235,11 +14603,7 @@
         ],
         [
             "puente",
-            "nautical"
-        ],
-        [
-            "puente",
-            "dentistry"
+            "denture"
         ],
         [
             "reconocimiento",
@@ -15276,10 +14640,6 @@
         [
             "subir",
             "climb"
-        ],
-        [
-            "subir",
-            "computing"
         ],
         [
             "subir",
@@ -15439,10 +14799,6 @@
         ],
         [
             "penal",
-            "soccer"
-        ],
-        [
-            "penal",
             "penalty"
         ],
         [
@@ -15471,15 +14827,7 @@
         ],
         [
             "accidente",
-            "music"
-        ],
-        [
-            "accidente",
             "accidental"
-        ],
-        [
-            "accidente",
-            "geography"
         ],
         [
             "accidente",
@@ -15603,15 +14951,15 @@
         ],
         [
             "disco",
-            "music"
-        ],
-        [
-            "disco",
             "album"
         ],
         [
             "disco",
             "rotary dial"
+        ],
+        [
+            "disco",
+            "discus"
         ],
         [
             "entrega",
@@ -15656,10 +15004,6 @@
         [
             "etapa",
             "leg"
-        ],
-        [
-            "etapa",
-            "geology"
         ],
         [
             "etapa",
@@ -15863,10 +15207,6 @@
         ],
         [
             "global",
-            "sports"
-        ],
-        [
-            "global",
             "aggregate"
         ],
         [
@@ -15888,10 +15228,6 @@
         [
             "inteligente",
             "clever"
-        ],
-        [
-            "inteligente",
-            "technology"
         ],
         [
             "inteligente",
@@ -15963,15 +15299,15 @@
         ],
         [
             "presentar",
-            "law"
-        ],
-        [
-            "presentar",
             "file"
         ],
         [
             "presentar",
             "lodge"
+        ],
+        [
+            "presentar",
+            "table"
         ],
         [
             "presidencia",
@@ -16106,10 +15442,6 @@
             "animal"
         ],
         [
-            "animal",
-            "biology"
-        ],
-        [
             "aparte",
             "separate"
         ],
@@ -16128,10 +15460,6 @@
         [
             "aparte",
             "separately"
-        ],
-        [
-            "aparte",
-            "de"
         ],
         [
             "aparte",
@@ -16172,10 +15500,6 @@
         [
             "compromiso",
             "appointment"
-        ],
-        [
-            "compromiso",
-            "law"
         ],
         [
             "compromiso",
@@ -16323,10 +15647,6 @@
         ],
         [
             "letras",
-            "music"
-        ],
-        [
-            "letras",
             "lyrics"
         ],
         [
@@ -16398,10 +15718,6 @@
             "platform"
         ],
         [
-            "plataforma",
-            "computing"
-        ],
-        [
             "regalo",
             "present"
         ],
@@ -16471,11 +15787,11 @@
         ],
         [
             "bonito",
-            "zoology"
+            "tuna"
         ],
         [
             "bonito",
-            "tuna"
+            "bonito"
         ],
         [
             "breve",
@@ -16484,10 +15800,6 @@
         [
             "breve",
             "short"
-        ],
-        [
-            "breve",
-            "music"
         ],
         [
             "breve",
@@ -16539,10 +15851,6 @@
         ],
         [
             "estrella",
-            "heraldry"
-        ],
-        [
-            "estrella",
             "mullet"
         ],
         [
@@ -16559,10 +15867,6 @@
         ],
         [
             "firma",
-            "business"
-        ],
-        [
-            "firma",
             "company"
         ],
         [
@@ -16572,10 +15876,6 @@
         [
             "guardia",
             "warden"
-        ],
-        [
-            "guardia",
-            "military"
         ],
         [
             "guardia",
@@ -16596,6 +15896,10 @@
         [
             "guardia",
             "duty"
+        ],
+        [
+            "guardia",
+            "custody"
         ],
         [
             "juventud",
@@ -16635,27 +15939,11 @@
         ],
         [
             "metro",
-            "poetry"
-        ],
-        [
-            "metro",
-            "music"
-        ],
-        [
-            "metro",
             "metre"
         ],
         [
             "metro",
-            "transport"
-        ],
-        [
-            "metro",
             "metro"
-        ],
-        [
-            "navidad",
-            "navidad"
         ],
         [
             "navidad",
@@ -16723,15 +16011,7 @@
         ],
         [
             "sencillo",
-            "music"
-        ],
-        [
-            "sencillo",
             "single"
-        ],
-        [
-            "sencillo",
-            "baseball"
         ],
         [
             "sencillo",
@@ -16839,10 +16119,6 @@
         ],
         [
             "escenario",
-            "theater"
-        ],
-        [
-            "escenario",
             "stage"
         ],
         [
@@ -16915,10 +16191,6 @@
         ],
         [
             "luchar",
-            "sports"
-        ],
-        [
-            "luchar",
             "wrestle"
         ],
         [
@@ -16944,10 +16216,6 @@
         [
             "oferta",
             "offer"
-        ],
-        [
-            "oferta",
-            "economics"
         ],
         [
             "oferta",
@@ -16986,24 +16254,12 @@
             "sentence"
         ],
         [
-            "sentencia",
-            "law"
-        ],
-        [
             "sesión",
             "session"
         ],
         [
             "sesión",
             "showing"
-        ],
-        [
-            "sesión",
-            "computing"
-        ],
-        [
-            "software",
-            "computing"
         ],
         [
             "software",
@@ -17032,10 +16288,6 @@
         [
             "tarjeta",
             "card"
-        ],
-        [
-            "tarjeta",
-            "carta"
         ],
         [
             "tomado",
@@ -17071,10 +16323,6 @@
         ],
         [
             "bolsa",
-            "finance"
-        ],
-        [
-            "bolsa",
             "stock exchange"
         ],
         [
@@ -17086,8 +16334,8 @@
             "pocket"
         ],
         [
-            "cerebro",
-            "anatomy"
+            "bolsa",
+            "testicle"
         ],
         [
             "cerebro",
@@ -17199,10 +16447,6 @@
         ],
         [
             "escala",
-            "music"
-        ],
-        [
-            "escala",
             "hierarchy"
         ],
         [
@@ -17215,15 +16459,7 @@
         ],
         [
             "espalda",
-            "anatomy"
-        ],
-        [
-            "espalda",
             "back"
-        ],
-        [
-            "espalda",
-            "swimming"
         ],
         [
             "espalda",
@@ -17487,10 +16723,6 @@
         ],
         [
             "asistencia",
-            "sports"
-        ],
-        [
-            "asistencia",
             "assist"
         ],
         [
@@ -17683,19 +16915,7 @@
         ],
         [
             "placer",
-            "geology"
-        ],
-        [
-            "placer",
-            "mining"
-        ],
-        [
-            "placer",
             "placer"
-        ],
-        [
-            "placer",
-            "nautical"
         ],
         [
             "placer",
@@ -17743,10 +16963,6 @@
         ],
         [
             "titular",
-            "sports"
-        ],
-        [
-            "titular",
             "starter"
         ],
         [
@@ -17756,6 +16972,10 @@
         [
             "titular",
             "title"
+        ],
+        [
+            "titular",
+            "solution"
         ],
         [
             "turismo",
@@ -17803,10 +17023,6 @@
         ],
         [
             "actuar",
-            "law"
-        ],
-        [
-            "actuar",
             "litigate"
         ],
         [
@@ -17836,10 +17052,6 @@
         [
             "archivo",
             "archive"
-        ],
-        [
-            "archivo",
-            "computing"
         ],
         [
             "archivo",
@@ -18019,10 +17231,6 @@
         ],
         [
             "lectura",
-            "printing"
-        ],
-        [
-            "lectura",
             "medium"
         ],
         [
@@ -18032,6 +17240,10 @@
         [
             "lectura",
             "type"
+        ],
+        [
+            "lectura",
+            "equate"
         ],
         [
             "martín",
@@ -18076,10 +17288,6 @@
         [
             "abuela",
             "grandmother"
-        ],
-        [
-            "abuela",
-            "abuelo"
         ],
         [
             "abuela",
@@ -18220,14 +17428,6 @@
         [
             "letra",
             "lyrics"
-        ],
-        [
-            "letra",
-            "banking"
-        ],
-        [
-            "letra",
-            "finance"
         ],
         [
             "letra",
@@ -18426,10 +17626,6 @@
             "customer"
         ],
         [
-            "cliente",
-            "computing"
-        ],
-        [
             "concierto",
             "concert"
         ],
@@ -18547,10 +17743,6 @@
         ],
         [
             "motor",
-            "mechanics"
-        ],
-        [
-            "motor",
             "engine"
         ],
         [
@@ -18568,6 +17760,10 @@
         [
             "motor",
             "powerhouse"
+        ],
+        [
+            "motor",
+            "backend"
         ],
         [
             "occidental",
@@ -18815,10 +18011,6 @@
         ],
         [
             "entero",
-            "mathematics"
-        ],
-        [
-            "entero",
             "whole number"
         ],
         [
@@ -18835,10 +18027,6 @@
         ],
         [
             "filosofía",
-            "printing"
-        ],
-        [
-            "filosofía",
             "size"
         ],
         [
@@ -18848,6 +18036,10 @@
         [
             "filosofía",
             "standardize"
+        ],
+        [
+            "filosofía",
+            "point"
         ],
         [
             "licencia",
@@ -18936,10 +18128,6 @@
         [
             "pelea",
             "argument"
-        ],
-        [
-            "pelea",
-            "boxing"
         ],
         [
             "pelea",
@@ -19047,10 +18235,6 @@
         ],
         [
             "ámbito",
-            "music"
-        ],
-        [
-            "ámbito",
             "ambitus"
         ],
         [
@@ -19075,15 +18259,15 @@
         ],
         [
             "alianza",
-            "biblical"
+            "judaism"
         ],
         [
             "alianza",
-            "religion"
+            "covenant"
         ],
         [
             "alianza",
-            "christianity"
+            "ark"
         ],
         [
             "amenaza",
@@ -19148,10 +18332,6 @@
         [
             "complejo",
             "complicated"
-        ],
-        [
-            "complejo",
-            "psychology"
         ],
         [
             "complejo",
@@ -19355,10 +18535,6 @@
         ],
         [
             "árbol",
-            "nautical"
-        ],
-        [
-            "árbol",
             "mast"
         ],
         [
@@ -19368,10 +18544,6 @@
         [
             "bosque",
             "forest"
-        ],
-        [
-            "denuncia",
-            "law"
         ],
         [
             "denuncia",
@@ -19463,10 +18635,6 @@
         ],
         [
             "nacimiento",
-            "medicine"
-        ],
-        [
-            "nacimiento",
             "birth"
         ],
         [
@@ -19480,10 +18648,6 @@
         [
             "nacimiento",
             "start"
-        ],
-        [
-            "nacimiento",
-            "christianity"
         ],
         [
             "nacimiento",
@@ -19591,10 +18755,6 @@
         ],
         [
             "romper",
-            "a"
-        ],
-        [
-            "romper",
             "begin"
         ],
         [
@@ -19604,14 +18764,6 @@
         [
             "romper",
             "rupture"
-        ],
-        [
-            "romper",
-            "la"
-        ],
-        [
-            "rostro",
-            "anatomy"
         ],
         [
             "rostro",
@@ -19699,10 +18851,6 @@
         ],
         [
             "virgen",
-            "christianity"
-        ],
-        [
-            "virgen",
             "our lady"
         ],
         [
@@ -19727,10 +18875,6 @@
         ],
         [
             "actuación",
-            "law"
-        ],
-        [
-            "actuación",
             "proceeding"
         ],
         [
@@ -19743,15 +18887,7 @@
         ],
         [
             "alcohol",
-            "mineralogy"
-        ],
-        [
-            "alcohol",
             "galena"
-        ],
-        [
-            "alcohol",
-            "cosmetics"
         ],
         [
             "alcohol",
@@ -19775,15 +18911,7 @@
         ],
         [
             "apertura",
-            "optics"
-        ],
-        [
-            "apertura",
             "aperture"
-        ],
-        [
-            "apertura",
-            "chess"
         ],
         [
             "apertura",
@@ -19800,10 +18928,6 @@
         [
             "caballo",
             "horse"
-        ],
-        [
-            "caballo",
-            "chess"
         ],
         [
             "caballo",
@@ -19926,10 +19050,6 @@
             "cash"
         ],
         [
-            "efectivo",
-            "military"
-        ],
-        [
             "emergencia",
             "emergency"
         ],
@@ -19963,11 +19083,11 @@
         ],
         [
             "enlace",
-            "chemistry"
+            "linkage"
         ],
         [
             "enlace",
-            "linkage"
+            "liaison"
         ],
         [
             "felicidad",
@@ -20146,18 +19266,6 @@
             "alternation"
         ],
         [
-            "alternativa",
-            "bullfighting"
-        ],
-        [
-            "alternativa",
-            "novillero"
-        ],
-        [
-            "alternativa",
-            "matador"
-        ],
-        [
             "amplio",
             "broad"
         ],
@@ -20187,19 +19295,11 @@
         ],
         [
             "arena",
-            "geology"
-        ],
-        [
-            "arena",
             "sand"
         ],
         [
             "arena",
             "gravel"
-        ],
-        [
-            "arena",
-            "sports"
         ],
         [
             "arena",
@@ -20319,10 +19419,6 @@
         ],
         [
             "extremo",
-            "soccer"
-        ],
-        [
-            "extremo",
             "winger"
         ],
         [
@@ -20398,10 +19494,6 @@
             "patient"
         ],
         [
-            "paciente",
-            "medicine"
-        ],
-        [
             "paga",
             "payment"
         ],
@@ -20451,10 +19543,6 @@
         ],
         [
             "pieza",
-            "heraldry"
-        ],
-        [
-            "pieza",
             "ordinary"
         ],
         [
@@ -20483,23 +19571,23 @@
         ],
         [
             "pista",
-            "music"
-        ],
-        [
-            "pista",
-            "aviation"
-        ],
-        [
-            "pista",
             "runway"
         ],
         [
             "pista",
-            "bowling"
+            "lane"
         ],
         [
             "pista",
-            "lane"
+            "court"
+        ],
+        [
+            "pista",
+            "clue"
+        ],
+        [
+            "pista",
+            "fingerprint"
         ],
         [
             "positivo",
@@ -20591,15 +19679,15 @@
         ],
         [
             "reserva",
-            "military"
-        ],
-        [
-            "reserva",
-            "sports"
-        ],
-        [
-            "reserva",
             "supply"
+        ],
+        [
+            "reserva",
+            "stock"
+        ],
+        [
+            "reserva",
+            "stockpile"
         ],
         [
             "ritmo",
@@ -20639,10 +19727,6 @@
         ],
         [
             "variedad",
-            "mathematics"
-        ],
-        [
-            "variedad",
             "manifold"
         ],
         [
@@ -20663,10 +19747,6 @@
         ],
         [
             "activo",
-            "technology"
-        ],
-        [
-            "activo",
             "up"
         ],
         [
@@ -20676,10 +19756,6 @@
         [
             "activo",
             "top"
-        ],
-        [
-            "activo",
-            "accounting"
         ],
         [
             "activo",
@@ -20704,14 +19780,6 @@
         [
             "agente",
             "policewoman"
-        ],
-        [
-            "agente",
-            "linguistics"
-        ],
-        [
-            "antiguos",
-            "philosophy"
         ],
         [
             "antiguos",
@@ -20803,15 +19871,7 @@
         ],
         [
             "estadio",
-            "medicine"
-        ],
-        [
-            "estadio",
             "stage"
-        ],
-        [
-            "goles",
-            "gules"
         ],
         [
             "inicial",
@@ -20911,14 +19971,6 @@
         ],
         [
             "plano",
-            "geometry"
-        ],
-        [
-            "plano",
-            "cinematography"
-        ],
-        [
-            "plano",
             "shot"
         ],
         [
@@ -20928,6 +19980,14 @@
         [
             "plano",
             "street"
+        ],
+        [
+            "plano",
+            "map"
+        ],
+        [
+            "plano",
+            "city"
         ],
         [
             "pongo",
@@ -20987,19 +20047,11 @@
         ],
         [
             "servir",
-            "sports"
-        ],
-        [
-            "servir",
             "help oneself"
         ],
         [
             "socialista",
             "socialist"
-        ],
-        [
-            "socialista",
-            "politics"
         ],
         [
             "triunfo",
@@ -21012,10 +20064,6 @@
         [
             "ventana",
             "window frame"
-        ],
-        [
-            "ventana",
-            "computing"
         ],
         [
             "ventana",
@@ -21107,10 +20155,6 @@
         ],
         [
             "actor",
-            "law"
-        ],
-        [
-            "actor",
             "defendant"
         ],
         [
@@ -21180,10 +20224,6 @@
         [
             "bar",
             "bar"
-        ],
-        [
-            "brazo",
-            "anatomy"
         ],
         [
             "brazo",
@@ -21299,11 +20339,11 @@
         ],
         [
             "nacido",
-            "medicine"
+            "growth"
         ],
         [
             "nacido",
-            "growth"
+            "tumour"
         ],
         [
             "obviamente",
@@ -21359,10 +20399,6 @@
         ],
         [
             "primaria",
-            "education"
-        ],
-        [
-            "primaria",
             "primary school"
         ],
         [
@@ -21380,10 +20416,6 @@
         [
             "puro",
             "pure"
-        ],
-        [
-            "senado",
-            "politics"
         ],
         [
             "senado",
@@ -21495,15 +20527,7 @@
         ],
         [
             "clásico",
-            "sports"
-        ],
-        [
-            "clásico",
             "derby"
-        ],
-        [
-            "cuadro",
-            "geometry"
         ],
         [
             "cuadro",
@@ -21531,7 +20555,11 @@
         ],
         [
             "cuadro",
-            "photography"
+            "frame"
+        ],
+        [
+            "cuadro",
+            "table"
         ],
         [
             "demuestra",
@@ -21636,10 +20664,6 @@
         [
             "torre",
             "tower"
-        ],
-        [
-            "torre",
-            "chess"
         ],
         [
             "torre",
@@ -21779,19 +20803,11 @@
         ],
         [
             "ejecución",
-            "law"
-        ],
-        [
-            "ejecución",
             "enforcement"
         ],
         [
             "ejecución",
             "attachment"
-        ],
-        [
-            "ejecución",
-            "music"
         ],
         [
             "ejecución",
@@ -21835,10 +20851,6 @@
         ],
         [
             "extensión",
-            "sports"
-        ],
-        [
-            "extensión",
             "extension cord"
         ],
         [
@@ -21848,6 +20860,10 @@
         [
             "extensión",
             "power strip"
+        ],
+        [
+            "extensión",
+            "hair extension"
         ],
         [
             "físico",
@@ -21908,10 +20924,6 @@
         [
             "potencial",
             "potential"
-        ],
-        [
-            "potencial",
-            "grammar"
         ],
         [
             "potencial",
@@ -22055,10 +21067,6 @@
         ],
         [
             "corea",
-            "pathology"
-        ],
-        [
-            "corea",
             "chorea"
         ],
         [
@@ -22167,11 +21175,11 @@
         ],
         [
             "huevo",
-            "biology"
+            "zygote"
         ],
         [
             "huevo",
-            "zygote"
+            "ovule"
         ],
         [
             "incluido",
@@ -22359,15 +21367,7 @@
         ],
         [
             "elemento",
-            "philosophy"
-        ],
-        [
-            "elemento",
             "individual"
-        ],
-        [
-            "elemento",
-            "chemistry"
         ],
         [
             "encuesta",
@@ -22692,10 +21692,6 @@
         [
             "sujeto",
             "attached"
-        ],
-        [
-            "sujeto",
-            "grammar"
         ],
         [
             "sujeto",
@@ -23187,14 +22183,6 @@
         ],
         [
             "tabla",
-            "mathematics"
-        ],
-        [
-            "tabla",
-            "computing"
-        ],
-        [
-            "tabla",
             "table"
         ],
         [
@@ -23203,7 +22191,15 @@
         ],
         [
             "tabla",
+            "matrix"
+        ],
+        [
+            "tabla",
             "skirt"
+        ],
+        [
+            "tabla",
+            "pleat"
         ],
         [
             "bienestar",
@@ -23259,14 +22255,6 @@
         ],
         [
             "corona",
-            "heraldry"
-        ],
-        [
-            "corona",
-            "astronomy"
-        ],
-        [
-            "corona",
             "corona"
         ],
         [
@@ -23284,6 +22272,14 @@
         [
             "corona",
             "sprocket"
+        ],
+        [
+            "corona",
+            "cassette"
+        ],
+        [
+            "corona",
+            "gear wheel"
         ],
         [
             "crítico",
@@ -23551,10 +22547,6 @@
         ],
         [
             "broma",
-            "zoology"
-        ],
-        [
-            "broma",
             "shipworm"
         ],
         [
@@ -23591,10 +22583,6 @@
         ],
         [
             "columna",
-            "architecture"
-        ],
-        [
-            "columna",
             "column"
         ],
         [
@@ -23604,10 +22592,6 @@
         [
             "columna",
             "support"
-        ],
-        [
-            "columna",
-            "chess"
         ],
         [
             "columna",
@@ -23643,10 +22627,6 @@
         ],
         [
             "descanso",
-            "sports"
-        ],
-        [
-            "descanso",
             "half-time"
         ],
         [
@@ -23660,10 +22640,6 @@
         [
             "esquina",
             "corner"
-        ],
-        [
-            "esquina",
-            "sports"
         ],
         [
             "gira",
@@ -23995,10 +22971,6 @@
         ],
         [
             "temporal",
-            "anatomy"
-        ],
-        [
-            "temporal",
             "storm"
         ],
         [
@@ -24044,10 +23016,6 @@
         [
             "bailar",
             "dance"
-        ],
-        [
-            "bailar",
-            "soccer"
         ],
         [
             "bailar",
@@ -24104,10 +23072,6 @@
         [
             "conclusión",
             "bottom line"
-        ],
-        [
-            "considerando",
-            "law"
         ],
         [
             "considerando",
@@ -24251,14 +23215,6 @@
         ],
         [
             "liberación",
-            "chemistry"
-        ],
-        [
-            "liberación",
-            "physiology"
-        ],
-        [
-            "liberación",
             "release"
         ],
         [
@@ -24302,16 +23258,8 @@
             "enjoin"
         ],
         [
-            "mandar",
-            "dance"
-        ],
-        [
             "mandato",
             "mandate"
-        ],
-        [
-            "mandato",
-            "computing"
         ],
         [
             "mandato",
@@ -24328,14 +23276,6 @@
         [
             "metal",
             "metal"
-        ],
-        [
-            "metal",
-            "heraldry"
-        ],
-        [
-            "metal",
-            "music"
         ],
         [
             "paraguay",
@@ -24471,10 +23411,6 @@
         ],
         [
             "tercero",
-            "law"
-        ],
-        [
-            "tercero",
             "third party"
         ],
         [
@@ -24587,19 +23523,19 @@
         ],
         [
             "cuarta",
-            "catholicism"
-        ],
-        [
-            "cuarta",
-            "military"
-        ],
-        [
-            "cuarta",
             "battalion"
         ],
         [
             "cuarta",
             "quadrant"
+        ],
+        [
+            "cuarta",
+            "cuarta"
+        ],
+        [
+            "cuarta",
+            "ferrado"
         ],
         [
             "descubierto",
@@ -24616,10 +23552,6 @@
         [
             "escritura",
             "writing"
-        ],
-        [
-            "escritura",
-            "religion"
         ],
         [
             "escritura",
@@ -24726,10 +23658,6 @@
             "request"
         ],
         [
-            "petición",
-            "networking"
-        ],
-        [
             "plena",
             "plain"
         ],
@@ -24788,10 +23716,6 @@
         [
             "protesta",
             "protest"
-        ],
-        [
-            "protesta",
-            "law"
         ],
         [
             "protesta",
@@ -24963,10 +23887,6 @@
         ],
         [
             "cubrir",
-            "zoology"
-        ],
-        [
-            "cubrir",
             "mount"
         ],
         [
@@ -24991,10 +23911,6 @@
         ],
         [
             "deber",
-            "de"
-        ],
-        [
-            "deber",
             "should"
         ],
         [
@@ -25003,7 +23919,11 @@
         ],
         [
             "deber",
-            "haber"
+            "will"
+        ],
+        [
+            "deber",
+            "need"
         ],
         [
             "diablo",
@@ -25215,10 +24135,6 @@
         ],
         [
             "meter",
-            "sports"
-        ],
-        [
-            "meter",
             "score"
         ],
         [
@@ -25236,6 +24152,10 @@
         [
             "meter",
             "stick"
+        ],
+        [
+            "meter",
+            "shove"
         ],
         [
             "obispo",
@@ -25267,10 +24187,6 @@
         ],
         [
             "portal",
-            "architecture"
-        ],
-        [
-            "portal",
             "portal"
         ],
         [
@@ -25280,10 +24196,6 @@
         [
             "portal",
             "internet"
-        ],
-        [
-            "portal",
-            "anatomy"
         ],
         [
             "postura",
@@ -25347,11 +24259,11 @@
         ],
         [
             "primo",
-            "mathematics"
+            "prime"
         ],
         [
             "primo",
-            "prime"
+            "prime number"
         ],
         [
             "reconocido",
@@ -25396,10 +24308,6 @@
         [
             "sueldo",
             "soldo"
-        ],
-        [
-            "sueldo",
-            "dineros"
         ],
         [
             "tensión",
@@ -25472,10 +24380,6 @@
         [
             "clasificación",
             "rating"
-        ],
-        [
-            "clasificación",
-            "sports"
         ],
         [
             "clasificación",
@@ -25603,10 +24507,6 @@
         ],
         [
             "rango",
-            "statistics"
-        ],
-        [
-            "rango",
             "range"
         ],
         [
@@ -25639,10 +24539,6 @@
         ],
         [
             "ronda",
-            "music"
-        ],
-        [
-            "ronda",
             "musician"
         ],
         [
@@ -25651,15 +24547,15 @@
         ],
         [
             "ronda",
-            "transport"
-        ],
-        [
-            "ronda",
             "ring road"
         ],
         [
             "ronda",
             "beat"
+        ],
+        [
+            "ronda",
+            "patrol"
         ],
         [
             "rumbo",
@@ -25722,10 +24618,6 @@
             "phantom"
         ],
         [
-            "sombra",
-            "art"
-        ],
-        [
             "símbolo",
             "symbol"
         ],
@@ -25739,19 +24631,7 @@
         ],
         [
             "testigo",
-            "law"
-        ],
-        [
-            "testigo",
-            "sports"
-        ],
-        [
-            "testigo",
             "baton"
-        ],
-        [
-            "testigo",
-            "sciences"
         ],
         [
             "testigo",
@@ -25780,10 +24660,6 @@
         [
             "agenda",
             "planner"
-        ],
-        [
-            "americana",
-            "fashion"
         ],
         [
             "asesinado",
@@ -25883,10 +24759,6 @@
         ],
         [
             "concepción",
-            "biology"
-        ],
-        [
-            "concepción",
             "conception"
         ],
         [
@@ -25923,10 +24795,6 @@
         ],
         [
             "cuidar",
-            "de"
-        ],
-        [
-            "cuidar",
             "mind"
         ],
         [
@@ -25944,6 +24812,10 @@
         [
             "cuidar",
             "take care"
+        ],
+        [
+            "cuidar",
+            "be careful"
         ],
         [
             "democrático",
@@ -26000,10 +24872,6 @@
         [
             "episodio",
             "episode"
-        ],
-        [
-            "episodio",
-            "medicine"
         ],
         [
             "episodio",
@@ -26111,10 +24979,6 @@
         ],
         [
             "patio",
-            "education"
-        ],
-        [
-            "patio",
             "schoolyard"
         ],
         [
@@ -26151,10 +25015,6 @@
         ],
         [
             "piloto",
-            "piloto"
-        ],
-        [
-            "piloto",
             "rainjacket"
         ],
         [
@@ -26179,19 +25039,11 @@
         ],
         [
             "prima",
-            "music"
-        ],
-        [
-            "prima",
             "string"
         ],
         [
             "recurso",
             "writ"
-        ],
-        [
-            "recurso",
-            "law"
         ],
         [
             "recurso",
@@ -26216,6 +25068,10 @@
         [
             "recurso",
             "resort"
+        ],
+        [
+            "recurso",
+            "refuge"
         ],
         [
             "saco",
@@ -26323,14 +25179,6 @@
         ],
         [
             "cobertura",
-            "communication"
-        ],
-        [
-            "cobertura",
-            "sports"
-        ],
-        [
-            "cobertura",
             "defense"
         ],
         [
@@ -26424,10 +25272,6 @@
         [
             "entrenador",
             "trainer"
-        ],
-        [
-            "entrenador",
-            "soccer"
         ],
         [
             "entrenador",
@@ -26560,10 +25404,6 @@
         [
             "obligación",
             "obligation"
-        ],
-        [
-            "obligación",
-            "finance"
         ],
         [
             "obligación",
@@ -26927,10 +25767,6 @@
         ],
         [
             "fallo",
-            "law"
-        ],
-        [
-            "fallo",
             "verdict"
         ],
         [
@@ -26943,11 +25779,11 @@
         ],
         [
             "fallo",
-            "computing"
+            "bug"
         ],
         [
             "fallo",
-            "bug"
+            "hole"
         ],
         [
             "funcionar",
@@ -27000,10 +25836,6 @@
         [
             "instrumento",
             "penis"
-        ],
-        [
-            "instrumento",
-            "law"
         ],
         [
             "interesado",
@@ -27147,11 +25979,11 @@
         ],
         [
             "salto",
-            "sports"
+            "dive"
         ],
         [
             "salto",
-            "dive"
+            "vault"
         ],
         [
             "soldado",
@@ -27363,10 +26195,6 @@
         ],
         [
             "derrota",
-            "nautical"
-        ],
-        [
-            "derrota",
             "course"
         ],
         [
@@ -27387,10 +26215,6 @@
         ],
         [
             "destacar",
-            "military"
-        ],
-        [
-            "destacar",
             "detach"
         ],
         [
@@ -27400,6 +26224,10 @@
         [
             "destacar",
             "excel"
+        ],
+        [
+            "destacar",
+            "shine"
         ],
         [
             "dieta",
@@ -27531,10 +26359,6 @@
         ],
         [
             "pelota",
-            "sports"
-        ],
-        [
-            "pelota",
             "ball"
         ],
         [
@@ -27599,10 +26423,6 @@
         ],
         [
             "plato",
-            "cycling"
-        ],
-        [
-            "plato",
             "chainring"
         ],
         [
@@ -27635,7 +26455,7 @@
         ],
         [
             "quita",
-            "law"
+            "debt relief"
         ],
         [
             "recuperación",
@@ -28090,10 +26910,6 @@
             "feminine"
         ],
         [
-            "femenino",
-            "grammar"
-        ],
-        [
             "feo",
             "ugly"
         ],
@@ -28127,19 +26943,11 @@
         ],
         [
             "genio",
-            "folklore"
-        ],
-        [
-            "genio",
-            "mythology"
-        ],
-        [
-            "genio",
-            "fantasy"
-        ],
-        [
-            "genio",
             "jinn"
+        ],
+        [
+            "genio",
+            "genie"
         ],
         [
             "hoja",
@@ -28199,15 +27007,7 @@
         ],
         [
             "manga",
-            "tennis"
-        ],
-        [
-            "manga",
             "set"
-        ],
-        [
-            "manga",
-            "comics"
         ],
         [
             "manga",
@@ -28403,10 +27203,6 @@
         ],
         [
             "verga",
-            "nautical"
-        ],
-        [
-            "verga",
             "yardarm"
         ],
         [
@@ -28415,15 +27211,19 @@
         ],
         [
             "verga",
-            "weaponry"
-        ],
-        [
-            "verga",
             "bow"
         ],
         [
             "verga",
             "dick"
+        ],
+        [
+            "verga",
+            "penis"
+        ],
+        [
+            "verga",
+            "cock"
         ],
         [
             "vicepresidente",
@@ -28710,10 +27510,6 @@
             "reader"
         ],
         [
-            "lector",
-            "computing"
-        ],
-        [
             "logro",
             "attainment"
         ],
@@ -28775,10 +27571,6 @@
         ],
         [
             "parada",
-            "sports"
-        ],
-        [
-            "parada",
             "catch"
         ],
         [
@@ -28828,10 +27620,6 @@
         [
             "rechazo",
             "refusal"
-        ],
-        [
-            "rechazo",
-            "medicine"
         ],
         [
             "rechazo",
@@ -28899,27 +27687,11 @@
         ],
         [
             "órgano",
-            "anatomy"
-        ],
-        [
-            "órgano",
-            "biology"
-        ],
-        [
-            "órgano",
             "organ"
         ],
         [
             "órgano",
-            "music"
-        ],
-        [
-            "órgano",
             "bulletin"
-        ],
-        [
-            "órgano",
-            "law"
         ],
         [
             "órgano",
@@ -28928,6 +27700,22 @@
         [
             "órgano",
             "authority"
+        ],
+        [
+            "órgano",
+            "agency"
+        ],
+        [
+            "órgano",
+            "means"
+        ],
+        [
+            "órgano",
+            "medium"
+        ],
+        [
+            "órgano",
+            "cactus"
         ],
         [
             "arreglar",
@@ -29016,10 +27804,6 @@
         [
             "básico",
             "basic"
-        ],
-        [
-            "básico",
-            "chemistry"
         ],
         [
             "campeonato",
@@ -29142,10 +27926,6 @@
             "waxing"
         ],
         [
-            "creciente",
-            "heraldry"
-        ],
-        [
             "criterio",
             "criterion"
         ],
@@ -29160,10 +27940,6 @@
         [
             "espiritual",
             "spiritual"
-        ],
-        [
-            "espiritual",
-            "music"
         ],
         [
             "fiel",
@@ -29259,15 +28035,7 @@
         ],
         [
             "negativo",
-            "mathematics"
-        ],
-        [
-            "negativo",
             "minus sign"
-        ],
-        [
-            "negativo",
-            "photography"
         ],
         [
             "oración",
@@ -29312,10 +28080,6 @@
         [
             "parcial",
             "mid-term"
-        ],
-        [
-            "parcial",
-            "tennis"
         ],
         [
             "parcial",
@@ -29463,10 +28227,6 @@
         ],
         [
             "amarillo",
-            "heraldry"
-        ],
-        [
-            "amarillo",
             "or"
         ],
         [
@@ -29488,10 +28248,6 @@
         [
             "aprovechar",
             "leverage"
-        ],
-        [
-            "aprovechar",
-            "de"
         ],
         [
             "aprovechar",
@@ -29603,10 +28359,6 @@
         ],
         [
             "culto",
-            "linguistics"
-        ],
-        [
-            "culto",
             "learned"
         ],
         [
@@ -29626,6 +28378,10 @@
             "ritual"
         ],
         [
+            "culto",
+            "rite"
+        ],
+        [
             "dato",
             "fact"
         ],
@@ -29636,10 +28392,6 @@
         [
             "depresión",
             "depression"
-        ],
-        [
-            "depresión",
-            "physics"
         ],
         [
             "efectivamente",
@@ -29707,11 +28459,7 @@
         ],
         [
             "espada",
-            "heraldry"
-        ],
-        [
-            "espada",
-            "bullfighting"
+            "matador"
         ],
         [
             "expresar",
@@ -30078,10 +28826,6 @@
             "youthful"
         ],
         [
-            "juvenil",
-            "sports"
-        ],
-        [
             "literalmente",
             "literally"
         ],
@@ -30203,10 +28947,6 @@
         ],
         [
             "tesoro",
-            "government"
-        ],
-        [
-            "tesoro",
             "treasury"
         ],
         [
@@ -30220,10 +28960,6 @@
         [
             "ética",
             "ethic"
-        ],
-        [
-            "ética",
-            "philosophy"
         ],
         [
             "ética",
@@ -30311,15 +29047,7 @@
         ],
         [
             "barra",
-            "typography"
-        ],
-        [
-            "barra",
             "slash"
-        ],
-        [
-            "barra",
-            "computing"
         ],
         [
             "barra",
@@ -30327,15 +29055,19 @@
         ],
         [
             "barra",
-            "heraldry"
-        ],
-        [
-            "barra",
             "bend sinister"
         ],
         [
-            "bicicleta",
-            "exercise"
+            "barra",
+            "barbell"
+        ],
+        [
+            "barra",
+            "fan"
+        ],
+        [
+            "barra",
+            "crowd"
         ],
         [
             "bicicleta",
@@ -30351,15 +29083,15 @@
         ],
         [
             "bicicleta",
+            "cycle"
+        ],
+        [
+            "bicicleta",
             "soccer"
         ],
         [
             "bicicleta",
             "step over"
-        ],
-        [
-            "bicicleta",
-            "climbing"
         ],
         [
             "bicicleta",
@@ -30475,19 +29207,11 @@
         ],
         [
             "falla",
-            "geology"
-        ],
-        [
-            "falla",
             "fault"
         ],
         [
             "guardar",
             "save"
-        ],
-        [
-            "guardar",
-            "computing"
         ],
         [
             "guardar",
@@ -30558,10 +29282,6 @@
             "coconut palm"
         ],
         [
-            "palma",
-            "palmo"
-        ],
-        [
             "pendejo",
             "pubic hair"
         ],
@@ -30622,14 +29342,6 @@
             "complaining"
         ],
         [
-            "queja",
-            "se"
-        ],
-        [
-            "queja",
-            "te"
-        ],
-        [
             "quinta",
             "villa"
         ],
@@ -30679,10 +29391,6 @@
         ],
         [
             "reproducción",
-            "computing"
-        ],
-        [
-            "reproducción",
             "playback"
         ],
         [
@@ -30692,6 +29400,10 @@
         [
             "reproducción",
             "internet"
+        ],
+        [
+            "reproducción",
+            "view"
         ],
         [
             "sanidad",
@@ -30979,10 +29691,6 @@
         ],
         [
             "inflación",
-            "economics"
-        ],
-        [
-            "inflación",
             "inflation"
         ],
         [
@@ -30995,19 +29703,11 @@
         ],
         [
             "misterio",
-            "christianity"
-        ],
-        [
-            "misterio",
             "crib"
         ],
         [
             "misterio",
             "nativity scene"
-        ],
-        [
-            "misterio",
-            "catholicism"
         ],
         [
             "misterio",
@@ -31231,10 +29931,6 @@
         ],
         [
             "banca",
-            "nautical"
-        ],
-        [
-            "banca",
             "outrigger canoe"
         ],
         [
@@ -31264,10 +29960,6 @@
         [
             "compuesto",
             "composite"
-        ],
-        [
-            "compuesto",
-            "mathematics"
         ],
         [
             "convertir",
@@ -31327,10 +30019,6 @@
         ],
         [
             "documentación",
-            "aviation"
-        ],
-        [
-            "documentación",
             "check-in"
         ],
         [
@@ -31370,10 +30058,6 @@
             "wholegrain"
         ],
         [
-            "integral",
-            "mathematics"
-        ],
-        [
             "invertir",
             "invest"
         ],
@@ -31411,10 +30095,6 @@
         ],
         [
             "mariano",
-            "christianity"
-        ],
-        [
-            "mariano",
             "marian"
         ],
         [
@@ -31436,10 +30116,6 @@
         [
             "pastor",
             "herder"
-        ],
-        [
-            "pastor",
-            "catholicism"
         ],
         [
             "pastor",
@@ -31619,10 +30295,6 @@
         ],
         [
             "clínica",
-            "healthcare"
-        ],
-        [
-            "clínica",
             "clinic"
         ],
         [
@@ -31652,10 +30324,6 @@
         [
             "convenio",
             "covenant"
-        ],
-        [
-            "convenio",
-            "diplomacy"
         ],
         [
             "convenio",
@@ -31886,10 +30554,6 @@
             "orange"
         ],
         [
-            "naranja",
-            "politics"
-        ],
-        [
             "otoño",
             "autumn"
         ],
@@ -31923,15 +30587,15 @@
         ],
         [
             "placa",
-            "geology"
-        ],
-        [
-            "placa",
-            "dentistry"
-        ],
-        [
-            "placa",
             "tartar"
+        ],
+        [
+            "placa",
+            "dominican republic"
+        ],
+        [
+            "placa",
+            "cricket"
         ],
         [
             "recepción",
@@ -32027,10 +30691,6 @@
         ],
         [
             "tragedia",
-            "drama"
-        ],
-        [
-            "tragedia",
             "sob story"
         ],
         [
@@ -32111,10 +30771,6 @@
         ],
         [
             "ácido",
-            "chemistry"
-        ],
-        [
-            "ácido",
             "acid"
         ],
         [
@@ -32159,15 +30815,7 @@
         ],
         [
             "calderón",
-            "music"
-        ],
-        [
-            "calderón",
             "fermata"
-        ],
-        [
-            "calderón",
-            "typography"
         ],
         [
             "calderón",
@@ -32252,10 +30900,6 @@
         [
             "cruzar",
             "crossbreed"
-        ],
-        [
-            "cuenca",
-            "anatomy"
         ],
         [
             "cuenca",
@@ -32351,10 +30995,6 @@
         ],
         [
             "emisión",
-            "telecommunications"
-        ],
-        [
-            "emisión",
             "broadcast"
         ],
         [
@@ -32411,10 +31051,6 @@
         ],
         [
             "fruto",
-            "botany"
-        ],
-        [
-            "fruto",
             "fruit"
         ],
         [
@@ -32424,10 +31060,6 @@
         [
             "fruto",
             "produce"
-        ],
-        [
-            "fruto",
-            "economics"
         ],
         [
             "fruto",
@@ -32467,10 +31099,6 @@
         ],
         [
             "incidente",
-            "law"
-        ],
-        [
-            "incidente",
             "ancillary"
         ],
         [
@@ -32488,10 +31116,6 @@
         [
             "independientemente",
             "irrespective"
-        ],
-        [
-            "independientemente",
-            "de"
         ],
         [
             "informado",
@@ -32595,11 +31219,11 @@
         ],
         [
             "ocupar",
-            "de"
+            "look after"
         ],
         [
             "ocupar",
-            "look after"
+            "take on"
         ],
         [
             "océano",
@@ -32710,10 +31334,6 @@
             "vital"
         ],
         [
-            "whatsapp",
-            "whatsapp"
-        ],
-        [
             "adolescente",
             "adolescent"
         ],
@@ -32771,10 +31391,6 @@
         ],
         [
             "bordo",
-            "nautical"
-        ],
-        [
-            "bordo",
             "side"
         ],
         [
@@ -32799,19 +31415,11 @@
         ],
         [
             "cancha",
-            "sports"
-        ],
-        [
-            "cancha",
             "pitch"
         ],
         [
             "cancha",
             "field"
-        ],
-        [
-            "cancha",
-            "golf"
         ],
         [
             "cancha",
@@ -32828,6 +31436,14 @@
         [
             "cancha",
             "shed"
+        ],
+        [
+            "cancha",
+            "popcorn"
+        ],
+        [
+            "cancha",
+            "corn nut"
         ],
         [
             "catedral",
@@ -33007,19 +31623,19 @@
         ],
         [
             "enfrentar",
-            "a"
-        ],
-        [
-            "enfrentar",
-            "con"
-        ],
-        [
-            "enfrentar",
-            "ante"
-        ],
-        [
-            "enfrentar",
             "confront"
+        ],
+        [
+            "enfrentar",
+            "face"
+        ],
+        [
+            "enfrentar",
+            "deal with"
+        ],
+        [
+            "enfrentar",
+            "tackle"
         ],
         [
             "enfrentar",
@@ -33087,10 +31703,6 @@
         ],
         [
             "impulso",
-            "sciences"
-        ],
-        [
-            "impulso",
             "impulse"
         ],
         [
@@ -33115,15 +31727,7 @@
         ],
         [
             "instancia",
-            "law"
-        ],
-        [
-            "instancia",
             "court"
-        ],
-        [
-            "instancia",
-            "computing"
         ],
         [
             "instancia",
@@ -33279,10 +31883,6 @@
         ],
         [
             "rabia",
-            "pathology"
-        ],
-        [
-            "rabia",
             "rabies"
         ],
         [
@@ -33356,10 +31956,6 @@
         [
             "carnaval",
             "carnival"
-        ],
-        [
-            "chilena",
-            "soccer"
         ],
         [
             "chilena",
@@ -33516,10 +32112,6 @@
         [
             "lanzar",
             "launch"
-        ],
-        [
-            "lanzar",
-            "baseball"
         ],
         [
             "lanzar",
@@ -33743,10 +32335,6 @@
         ],
         [
             "cubierto",
-            "accounting"
-        ],
-        [
-            "cubierto",
             "hedged"
         ],
         [
@@ -33772,10 +32360,6 @@
         [
             "declarar",
             "state"
-        ],
-        [
-            "declarar",
-            "law"
         ],
         [
             "declarar",
@@ -33868,10 +32452,6 @@
         [
             "gravedad",
             "severity"
-        ],
-        [
-            "gravedad",
-            "physics"
         ],
         [
             "gravedad",
@@ -33975,19 +32555,11 @@
         ],
         [
             "negar",
-            "a"
-        ],
-        [
-            "negar",
             "refuse"
         ],
         [
             "observación",
             "observation"
-        ],
-        [
-            "pizza",
-            "cooking"
         ],
         [
             "pizza",
@@ -34099,10 +32671,6 @@
         ],
         [
             "solicitar",
-            "physics"
-        ],
-        [
-            "solicitar",
             "attract"
         ],
         [
@@ -34191,15 +32759,7 @@
         ],
         [
             "anillo",
-            "mycology"
-        ],
-        [
-            "anillo",
             "annulus"
-        ],
-        [
-            "anillo",
-            "heraldry"
         ],
         [
             "anillo",
@@ -34256,10 +32816,6 @@
         [
             "cobrar",
             "claim"
-        ],
-        [
-            "comedia",
-            "drama"
         ],
         [
             "comedia",
@@ -34335,10 +32891,6 @@
         ],
         [
             "fiscalía",
-            "law"
-        ],
-        [
-            "fiscalía",
             "public"
         ],
         [
@@ -34348,6 +32900,10 @@
         [
             "fiscalía",
             "office"
+        ],
+        [
+            "fiscalía",
+            "district attorney"
         ],
         [
             "griego",
@@ -34523,15 +33079,15 @@
         ],
         [
             "revés",
-            "knitting"
-        ],
-        [
-            "revés",
             "purl"
         ],
         [
             "revés",
             "stitch"
+        ],
+        [
+            "revés",
+            "backhand"
         ],
         [
             "sacrificio",
@@ -34555,10 +33111,6 @@
         ],
         [
             "tenis",
-            "sports"
-        ],
-        [
-            "tenis",
             "tennis"
         ],
         [
@@ -34579,15 +33131,7 @@
         ],
         [
             "terapia",
-            "psychology"
-        ],
-        [
-            "terapia",
             "therapy"
-        ],
-        [
-            "terapia",
-            "medicine"
         ],
         [
             "terapia",
@@ -34687,10 +33231,6 @@
         ],
         [
             "ciego",
-            "anatomy"
-        ],
-        [
-            "ciego",
             "caecum"
         ],
         [
@@ -34728,14 +33268,6 @@
         [
             "costado",
             "back"
-        ],
-        [
-            "cuartos",
-            "sports"
-        ],
-        [
-            "cuartos",
-            "soccer"
         ],
         [
             "cuartos",
@@ -34808,10 +33340,6 @@
         [
             "fantasía",
             "make-believe"
-        ],
-        [
-            "fantasía",
-            "music"
         ],
         [
             "fantasía",
@@ -34936,22 +33464,6 @@
         [
             "núcleo",
             "core"
-        ],
-        [
-            "núcleo",
-            "chemistry"
-        ],
-        [
-            "núcleo",
-            "physics"
-        ],
-        [
-            "núcleo",
-            "biology"
-        ],
-        [
-            "núcleo",
-            "software"
         ],
         [
             "núcleo",
@@ -35115,10 +33627,6 @@
         ],
         [
             "casco",
-            "nautical"
-        ],
-        [
-            "casco",
             "hulk"
         ],
         [
@@ -35132,6 +33640,10 @@
         [
             "casco",
             "hoof"
+        ],
+        [
+            "casco",
+            "city"
         ],
         [
             "cocinar",
@@ -35192,10 +33704,6 @@
         [
             "descargar",
             "weapon"
-        ],
-        [
-            "descargar",
-            "computing"
         ],
         [
             "descargar",
@@ -35515,10 +34023,6 @@
         ],
         [
             "adoptar",
-            "law"
-        ],
-        [
-            "adoptar",
             "adopt"
         ],
         [
@@ -35607,10 +34111,6 @@
         ],
         [
             "asalto",
-            "boxing"
-        ],
-        [
-            "asalto",
             "round"
         ],
         [
@@ -35632,10 +34132,6 @@
         [
             "botón",
             "bud"
-        ],
-        [
-            "botón",
-            "fencing"
         ],
         [
             "botón",
@@ -35687,10 +34183,6 @@
         ],
         [
             "descuento",
-            "sports"
-        ],
-        [
-            "descuento",
             "injury time"
         ],
         [
@@ -35700,6 +34192,10 @@
         [
             "descuento",
             "additional time"
+        ],
+        [
+            "descuento",
+            "added time"
         ],
         [
             "desempleo",
@@ -35759,10 +34255,6 @@
         ],
         [
             "encanto",
-            "folklore"
-        ],
-        [
-            "encanto",
             "apparition"
         ],
         [
@@ -35774,16 +34266,16 @@
             "endearing"
         ],
         [
+            "encanto",
+            "sweetie"
+        ],
+        [
             "escudo",
             "shield"
         ],
         [
             "escudo",
             "emblem"
-        ],
-        [
-            "escudo",
-            "heraldry"
         ],
         [
             "escudo",
@@ -35795,15 +34287,11 @@
         ],
         [
             "escudo",
-            "geology"
-        ],
-        [
-            "escudo",
-            "numismatics"
-        ],
-        [
-            "escudo",
             "escudo"
+        ],
+        [
+            "escudo",
+            "scudo"
         ],
         [
             "estancia",
@@ -35911,15 +34399,7 @@
         ],
         [
             "garganta",
-            "anatomy"
-        ],
-        [
-            "garganta",
             "throat"
-        ],
-        [
-            "garganta",
-            "geography"
         ],
         [
             "garganta",
@@ -36047,10 +34527,6 @@
         ],
         [
             "oficio",
-            "religion"
-        ],
-        [
-            "oficio",
             "office"
         ],
         [
@@ -36088,10 +34564,6 @@
         [
             "préstamo",
             "loan"
-        ],
-        [
-            "préstamo",
-            "linguistics"
         ],
         [
             "préstamo",
@@ -36291,10 +34763,6 @@
         ],
         [
             "cargar",
-            "computing"
-        ],
-        [
-            "cargar",
             "software"
         ],
         [
@@ -36316,6 +34784,10 @@
         [
             "cargar",
             "american football"
+        ],
+        [
+            "cargar",
+            "blitz"
         ],
         [
             "cometer",
@@ -36395,19 +34867,11 @@
         ],
         [
             "gimnasio",
-            "exercise"
-        ],
-        [
-            "gimnasio",
             "gym"
         ],
         [
             "gimnasio",
             "gymnasium"
-        ],
-        [
-            "hombro",
-            "anatomy"
         ],
         [
             "hombro",
@@ -36570,10 +35034,6 @@
             "urinal"
         ],
         [
-            "servidor",
-            "computing"
-        ],
-        [
             "terminal",
             "final"
         ],
@@ -36640,10 +35100,6 @@
         [
             "triple",
             "three-way"
-        ],
-        [
-            "triple",
-            "basketball"
         ],
         [
             "triple",
@@ -36760,10 +35216,6 @@
         [
             "cartera",
             "handbag"
-        ],
-        [
-            "cartera",
-            "politics"
         ],
         [
             "cartera",
@@ -36971,10 +35423,6 @@
         ],
         [
             "golfo",
-            "geography"
-        ],
-        [
-            "golfo",
             "gulf"
         ],
         [
@@ -37151,10 +35599,6 @@
         ],
         [
             "respaldo",
-            "computing"
-        ],
-        [
-            "respaldo",
             "backup"
         ],
         [
@@ -37219,10 +35663,6 @@
         ],
         [
             "saque",
-            "soccer"
-        ],
-        [
-            "saque",
             "kick-off"
         ],
         [
@@ -37248,10 +35688,6 @@
         [
             "tocado",
             "tainted"
-        ],
-        [
-            "tocado",
-            "fencing"
         ],
         [
             "tocado",
@@ -37435,23 +35871,15 @@
         ],
         [
             "cuerda",
-            "geometry"
-        ],
-        [
-            "cuerda",
-            "architecture"
-        ],
-        [
-            "cuerda",
-            "aeronautics"
-        ],
-        [
-            "cuerda",
             "chord"
         ],
         [
             "cuerda",
-            "music"
+            "clockwork"
+        ],
+        [
+            "cuerda",
+            "cuerda"
         ],
         [
             "cálculo",
@@ -37463,19 +35891,11 @@
         ],
         [
             "cálculo",
-            "mathematics"
-        ],
-        [
-            "cálculo",
             "arithmetic"
         ],
         [
             "cálculo",
             "calculus"
-        ],
-        [
-            "cálculo",
-            "medicine"
         ],
         [
             "cálculo",
@@ -37528,10 +35948,6 @@
         [
             "estética",
             "aesthetics"
-        ],
-        [
-            "estética",
-            "philosophy"
         ],
         [
             "estética",
@@ -37647,10 +36063,6 @@
         ],
         [
             "justificar",
-            "typography"
-        ],
-        [
-            "justificar",
             "account for"
         ],
         [
@@ -37740,10 +36152,6 @@
         [
             "notar",
             "obvious"
-        ],
-        [
-            "piano",
-            "music"
         ],
         [
             "piano",
@@ -37863,10 +36271,6 @@
         ],
         [
             "trama",
-            "geometry"
-        ],
-        [
-            "trama",
             "frame"
         ],
         [
@@ -37924,10 +36328,6 @@
         [
             "balance",
             "weighing up"
-        ],
-        [
-            "balance",
-            "accounting"
         ],
         [
             "bebida",
@@ -38039,15 +36439,7 @@
         ],
         [
             "hueso",
-            "anatomy"
-        ],
-        [
-            "hueso",
             "bone"
-        ],
-        [
-            "hueso",
-            "botany"
         ],
         [
             "hueso",
@@ -38063,11 +36455,19 @@
         ],
         [
             "hueso",
-            "politics"
+            "seed"
         ],
         [
             "hueso",
             "political"
+        ],
+        [
+            "hueso",
+            "position"
+        ],
+        [
+            "hueso",
+            "corny"
         ],
         [
             "humedad",
@@ -38142,10 +36542,6 @@
             "marten"
         ],
         [
-            "marta",
-            "martes"
-        ],
-        [
             "medir",
             "measure"
         ],
@@ -38179,10 +36575,6 @@
         ],
         [
             "morena",
-            "zoology"
-        ],
-        [
-            "morena",
             "moray"
         ],
         [
@@ -38196,10 +36588,6 @@
         [
             "pilar",
             "mainstay"
-        ],
-        [
-            "pilar",
-            "rugby"
         ],
         [
             "pilar",
@@ -38303,19 +36691,11 @@
         ],
         [
             "tejido",
-            "biology"
-        ],
-        [
-            "tejido",
             "tissue"
         ],
         [
             "test",
             "test"
-        ],
-        [
-            "tí",
-            "you"
         ],
         [
             "abandono",
@@ -38371,10 +36751,6 @@
         ],
         [
             "arreglo",
-            "computing"
-        ],
-        [
-            "arreglo",
             "array"
         ],
         [
@@ -38400,10 +36776,6 @@
         [
             "azar",
             "random"
-        ],
-        [
-            "center",
-            "baseball"
         ],
         [
             "center",
@@ -38487,14 +36859,6 @@
         ],
         [
             "defecto",
-            "computing"
-        ],
-        [
-            "defecto",
-            "technology"
-        ],
-        [
-            "defecto",
             "default"
         ],
         [
@@ -38516,14 +36880,6 @@
         [
             "hermandad",
             "brotherhood"
-        ],
-        [
-            "hermandad",
-            "os"
-        ],
-        [
-            "hermandad",
-            "hermandad"
         ],
         [
             "jurisdicción",
@@ -38603,10 +36959,6 @@
         ],
         [
             "ordenador",
-            "christianity"
-        ],
-        [
-            "ordenador",
             "ordinator"
         ],
         [
@@ -38644,10 +36996,6 @@
         [
             "piscina",
             "fishpond"
-        ],
-        [
-            "piscina",
-            "christianity"
         ],
         [
             "piscina",
@@ -38854,10 +37202,6 @@
             "administrator"
         ],
         [
-            "administrador",
-            "computing"
-        ],
-        [
             "afirmación",
             "claim"
         ],
@@ -39015,10 +37359,6 @@
         ],
         [
             "cuero",
-            "soccer"
-        ],
-        [
-            "cuero",
             "football"
         ],
         [
@@ -39159,10 +37499,6 @@
         ],
         [
             "escalera",
-            "poker"
-        ],
-        [
-            "escalera",
             "straight"
         ],
         [
@@ -39191,10 +37527,6 @@
         ],
         [
             "escritorio",
-            "computing"
-        ],
-        [
-            "escritorio",
             "desktop"
         ],
         [
@@ -39208,6 +37540,106 @@
         [
             "especialista",
             "stuntman"
+        ],
+        [
+            "eterno",
+            "eternal"
+        ],
+        [
+            "extraordinario",
+            "extraordinary"
+        ],
+        [
+            "fallecido",
+            "deceased"
+        ],
+        [
+            "fallecido",
+            "departed"
+        ],
+        [
+            "grabado",
+            "recorded"
+        ],
+        [
+            "grabado",
+            "engraved"
+        ],
+        [
+            "grabado",
+            "engraving"
+        ],
+        [
+            "harto",
+            "tired"
+        ],
+        [
+            "harto",
+            "fed up"
+        ],
+        [
+            "harto",
+            "stuffed"
+        ],
+        [
+            "harto",
+            "sated"
+        ],
+        [
+            "harto",
+            "many"
+        ],
+        [
+            "harto",
+            "extremely"
+        ],
+        [
+            "harto",
+            "aplenty"
+        ],
+        [
+            "harto",
+            "a lot"
+        ],
+        [
+            "implementación",
+            "implementation"
+        ],
+        [
+            "impunidad",
+            "impunity"
+        ],
+        [
+            "laguna",
+            "lagoon"
+        ],
+        [
+            "laguna",
+            "lake"
+        ],
+        [
+            "laguna",
+            "pond"
+        ],
+        [
+            "laguna",
+            "pool"
+        ],
+        [
+            "laguna",
+            "lacuna"
+        ],
+        [
+            "laguna",
+            "gap"
+        ],
+        [
+            "laguna",
+            "hole"
+        ],
+        [
+            "laguna",
+            "void"
         ]
     ],
     "pronunciations": {
@@ -39873,12 +38305,6 @@
             "/ˈmolmɛnt/",
             "/ˈməʊmənt̞/"
         ],
-        "en:de": [
-            "/ˈdɛ/",
-            "/diː/",
-            "/dɪ/",
-            "/dɪv/"
-        ],
         "en:nowadays": [
             "/ˈnaʊ.ə.deɪz/",
             "/ˈnuː.ə.deɪz/"
@@ -39893,6 +38319,12 @@
             "/ˈlætə(ɹ)deɪ/",
             "/ˈlæt̬əɹ deɪ/",
             "/ˈlæɾəɹ deɪ/"
+        ],
+        "en:however": [
+            "/haʊˈɛvə/",
+            "/haʊˈɛvɚ/",
+            "/hɑˈwɛvə(ɹ)/",
+            "/hæɔˈevə/"
         ],
         "es:vez": [
             "/ˈbeθ/",
@@ -39992,11 +38424,11 @@
             "/ˈsiː.deɪ/",
             "/ˈsi.deɪ/"
         ],
-        "en:law": [
-            "/lɔː/",
-            "/laː/",
-            "/loː/",
-            "/lɔ/"
+        "en:party": [
+            "/ˈpɑːti/",
+            "/ˈpɑɹti/",
+            "[ˈpʰɑɹɾi]",
+            "/ˈpɐːti/"
         ],
         "es:solo": [
             "/ˈsolo/",
@@ -40028,9 +38460,6 @@
             "/ˈtjempo/",
             "[ˈt̪jẽm.po]"
         ],
-        "en:physics": [
-            "/ˈfɪz.ɪks/"
-        ],
         "en:while": [
             "/ʍaɪl/",
             "/waɪl/",
@@ -40049,14 +38478,20 @@
             "/leŋ(k)θ/",
             "/len(t)θ/"
         ],
-        "en:grammar": [
-            "/ˈɡɹæm.ə(ɹ)/",
-            "/ˈɡɹæm.ɚ/",
-            "[ˈɡɹɛəm.ɚ]",
-            "[ˈɡɹæːm.ɚ]"
-        ],
         "en:tense": [
             "/tɛns/"
+        ],
+        "en:weather": [
+            "/ˈwɛðə/",
+            "/ˈwɛðɚ/",
+            "/ˈweðə/",
+            "/ˈwɛðəɾ/"
+        ],
+        "en:atmosphere": [
+            "/ˈætməsˌfɪə/",
+            "/ˈatməsˌfɪː/",
+            "/ˈatməsˌfɪj.ə/",
+            "/ˈætməsˌfɪɹ/"
         ],
         "es:día": [
             "/ˈdia/",
@@ -40283,6 +38718,12 @@
         "en:next": [
             "/nɛkst/"
         ],
+        "en:de": [
+            "/ˈdɛ/",
+            "/diː/",
+            "/dɪ/",
+            "/dɪv/"
+        ],
         "en:after": [
             "/ˈɑːftə/",
             "/ˈaftə(ɹ)/",
@@ -40441,12 +38882,6 @@
         "en:fewer": [
             "/ˈfjuː.ɚ/"
         ],
-        "en:mathematics": [
-            "/mæθ(.ə)ˈmæt.ɪks/",
-            "[mæθ(.ə)ˈmæɾ.ɪks]",
-            "/mæθ(.ə)ˈmæt.əks/",
-            "[mæθ(.ə)ˈmæɾ.əks]"
-        ],
         "en:minus": [
             "/ˈmaɪ.nəs/",
             "/ˈmɑe.nəs/",
@@ -40512,6 +38947,10 @@
         "en:ahead": [
             "/əˈhɛd/"
         ],
+        "en:once": [
+            "/wʌn(t)s/",
+            "/wɒn(t)s/"
+        ],
         "es:poco": [
             "/ˈpoko/",
             "[ˈpo.ko]"
@@ -40526,10 +38965,6 @@
         "en:few": [
             "/fjuː/",
             "/fɪu̯/"
-        ],
-        "es:había": [
-            "/aˈbia/",
-            "[aˈβ̞i.a]"
         ],
         "es:tener": [
             "/teˈneɾ/",
@@ -40590,12 +39025,6 @@
             "/d͡ʒəʊb/",
             "/d͡ʒɒb/",
             "/d͡ʒɔb/"
-        ],
-        "en:education": [
-            "/ˌɛd͡ʒ.ʊˈkeɪ.ʃən/",
-            "[ˌɛd͡ʒ.ʊˈkeɪ.ʃn̩]",
-            "/ˌɛd.jʊˈkeɪ.ʃən/",
-            "[ˌɛd.jʊˈkeɪ.ʃn̩]"
         ],
         "en:assignment": [
             "/əˈsaɪn.mənt/"
@@ -40662,15 +39091,6 @@
         ],
         "en:hatching": [
             "/ˈhæt͡ʃɪŋ/"
-        ],
-        "en:echo": [
-            "/ˈɛk.əʊ/",
-            "/ˈɛk.oʊ/",
-            "/ˈɛkoʊ/"
-        ],
-        "es:sólo": [
-            "/ˈsolo/",
-            "[ˈso.lo]"
         ],
         "es:aunque": [
             "/ˈaunke/",
@@ -40771,11 +39191,20 @@
             "/tæb/",
             "[tʰæb̥]"
         ],
-        "en:computing": [
-            "/kəmˈpjuːtɪŋ/"
-        ],
         "en:account": [
             "/əˈkaʊnt/"
+        ],
+        "en:report": [
+            "/ɹɪˈpɔːt/",
+            "/ɹɪˈpoɹt/",
+            "/ɹəˈpoɹt/",
+            "/ɹɪˈpoːt/"
+        ],
+        "en:score": [
+            "/skɔː/",
+            "/skoɹ/",
+            "/sko(ː)ɹ/",
+            "/skoə/"
         ],
         "es:decir": [
             "/deˈθiɾ/",
@@ -41076,6 +39505,15 @@
         "en:yummy": [
             "/ˈjʌm.i/"
         ],
+        "en:sick": [
+            "/ˈsɪk/"
+        ],
+        "en:hot": [
+            "/hɒt/",
+            "/hɔt/",
+            "/hɑt/",
+            "[hɔ̟t] ~ [hɞ̠t]"
+        ],
         "es:ciudad": [
             "/θjuˈdad/",
             "[θjuˈð̞að̞]",
@@ -41342,12 +39780,6 @@
             "/ˈoʊ.vɚ.ɑl/",
             "/ˈoʊ.vɚ.ɒl/"
         ],
-        "en:military": [
-            "/ˈmɪlɪt(ə)ɹi/",
-            "/ˈmɪlɪtɛɹi/",
-            "/ˈmɪləˌtɛɹi/",
-            "/ˈmɪlɪtɹi/"
-        ],
         "es:mayor": [
             "/maˈʝoɾ/",
             "[maˈʝoɾ]",
@@ -41379,12 +39811,6 @@
             "/bɔs/",
             "/bɑs/",
             "/bɔ̟s/ ~ /bɞ̠s/"
-        ],
-        "en:music": [
-            "/ˈmjuːzɪk/",
-            "/ˈmjʉwzɪk/",
-            "/ˈmju.zɪk/",
-            "/ˈmjʉːzɪk/"
         ],
         "es:tal": [
             "/ˈtal/",
@@ -41426,10 +39852,6 @@
             "[ˈɪi̯vəl] ~ [ˈɪi̯vl̩]",
             "/ˈiːvɪl/",
             "[ˈɪi̯vɪl]"
-        ],
-        "es:primer": [
-            "/pɾiˈmeɾ/",
-            "[pɾiˈmeɾ]"
         ],
         "es:según": [
             "/seˈɡun/",
@@ -41528,6 +39950,12 @@
             "/ˈlei/",
             "[ˈlei̯]"
         ],
+        "en:law": [
+            "/lɔː/",
+            "/laː/",
+            "/loː/",
+            "/lɔ/"
+        ],
         "es:medio": [
             "/ˈmedjo/",
             "[ˈme.ð̞jo]",
@@ -41550,14 +39978,6 @@
             "/ˈæv.ɚ.ɪd͡ʒ/",
             "/ˈæv.ɹɪd͡ʒ/"
         ],
-        "en:art": [
-            "/ɑːt/",
-            "/ɑɹt/",
-            "[ɑːʔ]",
-            "[äˑɹt]",
-            "/ət/",
-            "/əɹt/"
-        ],
         "en:tasteful": [
             "/ˈteɪstfəl/"
         ],
@@ -41569,12 +39989,14 @@
             "/bəːˈdʒɔɪs/",
             "/bəɹˈd͡ʒɔɪs/"
         ],
-        "en:linguistics": [
-            "/lɪŋˈɡwɪstɪks/",
-            "/liŋˈɡwɪstɪks/"
-        ],
         "en:mid": [
             "/mɪd/"
+        ],
+        "en:ironic": [
+            "/aɪˈɹɒn.ɪk/",
+            "/aɪˈɹɑ.nɪk/",
+            "/ɑeˈɹɔn.ɪk/",
+            "/aɪˈɹɒn.ək/"
         ],
         "es:partido": [
             "/paɾˈtido/",
@@ -41585,9 +40007,6 @@
             "/ˈbɹoʊ.kɪn/",
             "/ˈbɹoʊ.kən/"
         ],
-        "en:heraldry": [
-            "/ˈhɛɹ.əl.dɹi/"
-        ],
         "en:departed": [
             "/dɪˈpɑɹtɪd/",
             "/dɪˈpɑːtɪd/"
@@ -41595,22 +40014,18 @@
         "en:split": [
             "/splɪt/"
         ],
-        "en:politics": [
-            "/ˈpɒl.ɪ.tɪks/",
-            "/ˈpɒl.ə.tɪks/",
-            "/ˈpɑ.lɪ.tɪks/",
-            "/ˈpɑ.lə.tɪks/"
+        "en:game": [
+            "/ɡeɪm/",
+            "[ɡeɪ̯m]",
+            "[ɡɛi̯m]",
+            "/ɡæɪm/"
         ],
-        "en:party": [
-            "/ˈpɑːti/",
-            "/ˈpɑɹti/",
-            "[ˈpʰɑɹɾi]",
-            "/ˈpɐːti/"
+        "en:match": [
+            "/mæt͡ʃ/"
         ],
-        "en:sports": [
-            "/spɔːɹts/",
-            "/spoɹts/",
-            "/spoəts/"
+        "en:soccer": [
+            "/ˈsɒk.ə/",
+            "/ˈsɑk.ɚ/"
         ],
         "es:bajo": [
             "/ˈbaxo/",
@@ -41727,9 +40142,6 @@
             "/əɡˈzɪst/",
             "[əɡˈzɪst]"
         ],
-        "en:hay": [
-            "/heɪ/"
-        ],
         "en:have to": [
             "/ˈhæv.tuː/",
             "/ˈhæf.tu/",
@@ -41741,6 +40153,11 @@
             "/ˈnɛs.ə.ɹi/",
             "/nᵻˈsɛsᵊ.ri/"
         ],
+        "en:asset": [
+            "/ˈæsɛt/",
+            "/ˈæsət/",
+            "/ˈæset/"
+        ],
         "es:hombre": [
             "/ˈombɾe/",
             "[ˈõm.bɾe]"
@@ -41750,21 +40167,6 @@
             "[ˈmɛə̯n]",
             "[ˈmeə̯n]",
             "/ˈman/"
-        ],
-        "en:anthropology": [
-            "/ˌænθɹəˈpɒləd͡ʒi/",
-            "/ˌænθɹəˈpɑləd͡ʒi/"
-        ],
-        "en:archaeology": [
-            "/ˌɑː.kiˈɒl.ə.d͡ʒi/",
-            "/ˌɑɹ.kiˈɑ.lə.d͡ʒi/",
-            "/ˌɑɹ.kiˈɒl.ə.d͡ʒi/",
-            "/ˌɐː.kiˈɔl.ə.d͡ʒi/"
-        ],
-        "en:paleontology": [
-            "/ˌpeɪli.ənˈtɒləd͡ʒi/",
-            "/ˌpæli.ənˈtɒləd͡ʒi/",
-            "/ˌpeɪli.ənˈtɑləd͡ʒi/"
         ],
         "en:husband": [
             "/ˈhʌzbənd/",
@@ -41776,6 +40178,15 @@
         "en:ombre": [
             "/ˈɒm.bə/",
             "/ˈɒm.bɹeɪ/"
+        ],
+        "en:hey": [
+            "/heɪ/"
+        ],
+        "en:come on": [
+            "/ˌkʌm ˈɒn/",
+            "/ˌkʌm ˈɔn/",
+            "/ˌkʊm ˈɒn/",
+            "/ˌkʌm ˈɑn/"
         ],
         "es:buena": [
             "/ˈbwena/",
@@ -41813,18 +40224,6 @@
             "/ˈkæ.ɹɪk.tə/",
             "/ˈkæɹ(ə)ktɚ/",
             "/ˈkɛɹ(ə)ktɚ/"
-        ],
-        "en:se": [
-            "/sɛ/"
-        ],
-        "en:persona": [
-            "/pɝˈsoʊnə/",
-            "/pɜːˈsəʊnə/",
-            "/pəˈsəʊnə/"
-        ],
-        "en:te": [
-            "/tiː/",
-            "/teɪ/"
         ],
         "es:sistema": [
             "/sisˈtema/",
@@ -42048,6 +40447,12 @@
             "/poˈlitika/",
             "[poˈli.t̪i.ka]"
         ],
+        "en:politics": [
+            "/ˈpɒl.ɪ.tɪks/",
+            "/ˈpɒl.ə.tɪks/",
+            "/ˈpɑ.lɪ.tɪks/",
+            "/ˈpɑ.lə.tɪks/"
+        ],
         "en:policy": [
             "/ˈpɒl.ə.si/",
             "/ˈpɒl.ɪ.si/",
@@ -42214,12 +40619,6 @@
         "es:vamos": [
             "/ˈbamos/",
             "[ˈba.mos]"
-        ],
-        "en:come on": [
-            "/ˌkʌm ˈɒn/",
-            "/ˌkʌm ˈɔn/",
-            "/ˌkʊm ˈɒn/",
-            "/ˌkʌm ˈɑn/"
         ],
         "en:basically": [
             "/ˈbeɪ.sɪk.(ə.)li/",
@@ -42497,10 +40896,6 @@
             "/ˈmað.ə/",
             "/ˈmɒθə(ɹ)/"
         ],
-        "en:christianity": [
-            "/ˌkɹɪstiˈænɪti/",
-            "/ˌkɹɪst͡ʃiˈænɪti/"
-        ],
         "en:riverbed": [
             "/ˈɹɪv.əˌbɛd/",
             "/ˈɹɪv.ɚˌbɛd/",
@@ -42564,12 +40959,6 @@
             "[ˈsɛn.tʰəː]",
             "/ˈsɛn.tɚ/",
             "[ˈsɛ̟n.tʰɚ] ~ [ˈsɛ̟n.tʰɹ̩]"
-        ],
-        "en:geometry": [
-            "/d͡ʒiːˈɒm.ɪ.tɹi/",
-            "/ˈd͡ʒɒm.ɪ.tɹi/",
-            "/d͡ʒiˈɑ.mə.tɹi/",
-            "/d͡ʒiːˈɔm.ə.tɹi/"
         ],
         "en:moderate": [
             "/ˈmɒdəɹət/",
@@ -42650,6 +41039,10 @@
             "[mɪˈsteɪk]",
             "[mɪˈstɛjk]",
             "[mɪˈsteːk]"
+        ],
+        "en:foul": [
+            "/faʊl/",
+            "/ˈfaʊ.əl/"
         ],
         "es:cambio": [
             "/ˈkambjo/",
@@ -42819,12 +41212,6 @@
             "/ˈfɾente/",
             "[ˈfɾẽn̪.t̪e]"
         ],
-        "en:anatomy": [
-            "/əˈnætəmi/",
-            "/əˈnatəmɪj/",
-            "/əˈnatəme/",
-            "/-mɪ/"
-        ],
         "en:forehead": [
             "/ˈfɔːhɛd/",
             "/ˈfɔːɹɛd/",
@@ -42838,12 +41225,6 @@
             "/fɹʌnt/",
             "/fɹɐnt/",
             "/fɹʊnt/"
-        ],
-        "en:architecture": [
-            "/ˈɑː.kɪˌtɛk.t͡ʃə/",
-            "/ˈɑɹ.kɪˌtɛk.t͡ʃɚ/",
-            "/ˈɐː.kɪˌtek.t͡ʃə/",
-            "/ˈɐː.kəˌtek.t͡ʃə/"
         ],
         "es:incluso": [
             "/inˈkluso/",
@@ -43076,12 +41457,6 @@
             "/pleɪ̯/ [pɫ̥eɪ̯ ~ pʰɫeɪ̯]",
             "/ple(j)/"
         ],
-        "en:game": [
-            "/ɡeɪm/",
-            "[ɡeɪ̯m]",
-            "[ɡɛi̯m]",
-            "/ɡæɪm/"
-        ],
         "en:sport": [
             "/spɔːt/",
             "/spoːt/",
@@ -43098,10 +41473,6 @@
         "en:gambling": [
             "/ˈɡæm.bl̩.ɪŋ/",
             "/ˈɡæm.blɪŋ/"
-        ],
-        "en:bdsm": [
-            "/ˌbiːˌdiːˌɛsˈɛm/",
-            "/ˌbiˌdiˌɛsˈɛm/"
         ],
         "es:llegar": [
             "/ʝeˈɡaɾ/",
@@ -43127,6 +41498,12 @@
             "/i-/",
             "/ə-/",
             "/əˈnɐf/"
+        ],
+        "en:manage": [
+            "/ˈmæn.ɪd͡ʒ/",
+            "/ˈmɛən.ɪd͡ʒ/",
+            "/ˈmæn.əd͡ʒ/",
+            "/ˈmɛən.əd͡ʒ/"
         ],
         "es:mano": [
             "/ˈmano/",
@@ -43185,16 +41562,6 @@
         "es:artículo": [
             "/aɾˈtikulo/",
             "[aɾˈt̪i.ku.lo]"
-        ],
-        "en:journalism": [
-            "/ˈd͡ʒɜːn(ə)lɪzəm/",
-            "/ˈd͡ʒɝnl̩ˌɪzəm/"
-        ],
-        "en:zoology": [
-            "/zəʊˈɒlədʒi/",
-            "/zuːˈɒləd͡ʒi/",
-            "/zəwˈɔlədʒɪj/",
-            "/zʉwˈɔlədʒɪj/"
         ],
         "es:cerca": [
             "/ˈθeɾka/",
@@ -43361,10 +41728,6 @@
             "/ˈpæɹənt/",
             "/ˈpɛɹənt/"
         ],
-        "en:soccer": [
-            "/ˈsɒk.ə/",
-            "/ˈsɑk.ɚ/"
-        ],
         "en:internet": [
             "/ˈɪn.təˌnɛt/",
             "/ˈɪn.(t)ɚˌnɛt/",
@@ -43392,6 +41755,18 @@
             "[ˈɪi̯zɪi̯]",
             "/ˈi.ze/",
             "/ˈiː.ze/"
+        ],
+        "en:enormous": [
+            "/ɪˈnɔː.məs/",
+            "/ɪˈnoɹ.məs/",
+            "/iˈnoɹ.məs/",
+            "/ɪˈnoː.məs/"
+        ],
+        "en:huge": [
+            "/hjuːd͡ʒ/",
+            "[ç(j)u̟ːd͡ʒ]",
+            "/hjʉwd͡ʒ/",
+            "[ç(j)ʉwd͡ʒ]"
         ],
         "es:salir": [
             "/saˈliɾ/",
@@ -43431,20 +41806,9 @@
             "/ˈtjera/",
             "[ˈt̪je.ra]"
         ],
-        "en:geography": [
-            "/dʒiˈɒɡɹəfi/",
-            "/ˈdʒɒɡɹəfi/",
-            "/d͡ʒiˈɑɡɹəfi/"
-        ],
         "en:ground": [
             "/ɡɹaʊnd/",
             "/ɡɹʊnd/"
-        ],
-        "en:geology": [
-            "/d͡ʒiˈɒləd͡ʒi/",
-            "/d͡ʒɪjɔləd͡ʒɪj/",
-            "/d͡ʒiˈɑləd͡ʒi/",
-            "/d͡ʒiˈɔləd͡ʒi/"
         ],
         "en:soil": [
             "/sɔɪl/",
@@ -43456,11 +41820,10 @@
             "/təˈɹeɪn/",
             "/təˈɹæɪn/"
         ],
-        "en:agriculture": [
-            "/ˈæɡ.ɹɪˌkʌl.t͡ʃə/",
-            "/ˈæɡ.ɹɪˌkʌl.t͡ʃɚ/",
-            "/ˈæɡ.ɹəˌkʌl.t͡ʃɚ/",
-            "/ˈeɪ̯ɡ.ɹɪˌkʌl.t͡ʃɚ/"
+        "en:homeland": [
+            "/ˈhəʊmˌlænd/",
+            "/ˈhoʊmˌlænd/",
+            "/ˈhoʊmˌlənd/"
         ],
         "es:visto": [
             "/ˈbisto/",
@@ -43863,6 +42226,12 @@
             "[e.ð̞u.kaˈθjõn]",
             "/edukaˈsjon/"
         ],
+        "en:education": [
+            "/ˌɛd͡ʒ.ʊˈkeɪ.ʃən/",
+            "[ˌɛd͡ʒ.ʊˈkeɪ.ʃn̩]",
+            "/ˌɛd.jʊˈkeɪ.ʃən/",
+            "[ˌɛd.jʊˈkeɪ.ʃn̩]"
+        ],
         "en:upbringing": [
             "/ˈʌpˌbrɪŋɪŋ/"
         ],
@@ -43957,12 +42326,6 @@
             "/soːt/",
             "/sɔɹt/"
         ],
-        "en:taxonomy": [
-            "/tækˈsɒnəmi/",
-            "/takˈsɔnəmɪj/",
-            "/takˈsɒnəmi/",
-            "/takˈsɔnəme/"
-        ],
         "es:cuanto": [
             "/ˈkwanto/",
             "[ˈkwãn̪.t̪o]"
@@ -44015,11 +42378,8 @@
             "/pɹoʊˈlɔŋd/",
             "/pɹoʊˈlɑŋd/"
         ],
-        "en:ball": [
-            "/bɔːl/",
-            "/boːl/",
-            "/bɔl/",
-            "/baːl/"
+        "en:pitch": [
+            "/pɪt͡ʃ/"
         ],
         "es:orden": [
             "/ˈoɾden/",
@@ -44030,10 +42390,6 @@
             "/ˈoɹ.dɚ/",
             "[ˈoɹ.ɾɚ]",
             "/ˈoː.də/"
-        ],
-        "en:religion": [
-            "/ɹɪˈlɪd͡ʒ.ən/",
-            "/ɹəˈləd͡ʒ.ən/"
         ],
         "en:orderliness": [
             "/ˈɔːdəlɪnəs/"
@@ -44204,9 +42560,6 @@
         "en:twins": [
             "/twɪnz/"
         ],
-        "en:bullfighting": [
-            "/ˈbʊlˌfaɪ.tɪŋ/"
-        ],
         "es:personal": [
             "/peɾsoˈnal/",
             "[peɾ.soˈnal]"
@@ -44335,12 +42688,6 @@
             "[ˈspɛʃ.ɫ̩]",
             "/ˈspeʃ.əl/",
             "[ˈspeʃ.ɫ̩]"
-        ],
-        "en:television": [
-            "/ˈtɛlɪˌvɪʒən/",
-            "/ˈtɛləˌvɪʒən/",
-            "/ˌtɛlɪˈvɪʒən/",
-            "/ˌtɛləˈvɪʒən/"
         ],
         "es:hola": [
             "/ˈola/",
@@ -44596,9 +42943,6 @@
             "/skul/",
             "[skuɫ]"
         ],
-        "en:climbing": [
-            "/ˈklaɪ̯mɪŋ/"
-        ],
         "en:crag": [
             "/ˈkɹæɡ/",
             "[ˈkʰɹ̠ʷæɡ]",
@@ -44681,11 +43025,6 @@
             "[ˈkʰæpɪtʰəl] ~ [ˈkʰæpɪtʰl̩]",
             "/ˈkapɪtəl/",
             "[ˈkʰapɪtʰəl] ~ [ˈkʰapɪtʰl̩]"
-        ],
-        "en:finance": [
-            "/fɪˈnæns/",
-            "/ˈfaɪnæns/",
-            "/faɪˈnæns/"
         ],
         "es:libre": [
             "/ˈlibɾe/",
@@ -44920,6 +43259,12 @@
             "/ˈkɹɛd͡ʒələs/",
             "/ˈkɹɛdjələs/"
         ],
+        "en:easily": [
+            "/ˈiː.zɪ.li/",
+            "/ˈiːz.li/",
+            "/ˈi.zɪ.li/",
+            "/ˈi.zə.li/"
+        ],
         "es:habla": [
             "/ˈabla/",
             "[ˈa.β̞la]"
@@ -44946,6 +43291,12 @@
         "es:música": [
             "/ˈmusika/",
             "[ˈmu.si.ka]"
+        ],
+        "en:music": [
+            "/ˈmjuːzɪk/",
+            "/ˈmjʉwzɪk/",
+            "/ˈmju.zɪk/",
+            "/ˈmjʉːzɪk/"
         ],
         "en:song": [
             "/sɒŋ/",
@@ -45200,12 +43551,6 @@
             "[kənˈsɪɾ.ɚ]",
             "[kn̩ˈsɪɾ.ɚ]"
         ],
-        "en:manage": [
-            "/ˈmæn.ɪd͡ʒ/",
-            "/ˈmɛən.ɪd͡ʒ/",
-            "/ˈmæn.əd͡ʒ/",
-            "/ˈmɛən.əd͡ʒ/"
-        ],
         "es:inglés": [
             "/inˈɡles/",
             "[ĩŋˈɡles]"
@@ -45242,15 +43587,6 @@
             "/ˈsɪɹ.iz/",
             "/ˈsiɹ.iz/"
         ],
-        "en:exercise": [
-            "/ˈɛk.sə.saɪz/",
-            "/ˈɛk.sɚ.saɪz/",
-            "/ˈek.sə.sɑez/",
-            "/ˈek.sə.saɪz/"
-        ],
-        "en:weightlifting": [
-            "/ˈweɪtˌlɪftɪŋ/"
-        ],
         "es:sur": [
             "/ˈsuɾ/",
             "[ˈsuɾ]"
@@ -45269,15 +43605,6 @@
             "/ˈwɜːk.ʃɒp/",
             "/ˈwɝk.ʃɑp/",
             "/ˈwɜːk.ʃɔp/"
-        ],
-        "en:en": [
-            "/ɛn/",
-            "/ɪn/",
-            "[ɑ̃]",
-            "[õ]",
-            "/ɒn/",
-            "/ɑn/",
-            "/ən/"
         ],
         "en:suffer": [
             "/ˈsʌfə/",
@@ -45423,6 +43750,10 @@
             "/ˈspɪɹɪt/",
             "/ˈspiɹɪt/",
             "/ˈspɪɾɪt/"
+        ],
+        "en:artichoke": [
+            "/ˈɑɹ.tɪˌtʃoʊk/",
+            "/ˈɑː.tɪˌtʃəʊk/"
         ],
         "es:diciembre": [
             "/diˈθjembɾe/",
@@ -45613,18 +43944,11 @@
             "/ˈfæk.tj(ʊ)əl/",
             "/ˈfɛk.(t)ʃ(ʉː)əl/"
         ],
-        "en:philosophy": [
-            "/fɪˈlɒs.ə.fi/",
-            "/fɪˈlɑ.sə.fi/"
-        ],
         "en:actual": [
             "/ˈækʃuəl/",
             "/ˈækʃəl/",
             "/ˈæktʃuəl/",
             "/ˈæktʃəl/"
-        ],
-        "en:del": [
-            "/dɛl/"
         ],
         "es:ambos": [
             "/ˈambos/",
@@ -45661,6 +43985,11 @@
             "/sɒk/",
             "/sɑk/"
         ],
+        "en:mean": [
+            "/miːn/",
+            "/mijən/",
+            "/min/"
+        ],
         "es:modo": [
             "/ˈmodo/",
             "[ˈmo.ð̞o]"
@@ -45696,15 +44025,6 @@
             "[ˈfɪi̯ɫd]",
             "/ˈfi(ː)ʊ̯d/",
             "[ˈfɪi̯ʊd]"
-        ],
-        "en:pitch": [
-            "/pɪt͡ʃ/"
-        ],
-        "en:golf": [
-            "/ɡɒlf/",
-            "/ɡɒf/",
-            "/ɡɑlf/",
-            "/ɡɔlf/"
         ],
         "en:course": [
             "/kɔːs/",
@@ -45786,12 +44106,6 @@
             "/mæːˈneːdʒ.menʈ/",
             "/ˈmæː.ne(ː)dʒ.menʈ/"
         ],
-        "en:film": [
-            "/fɪlm/",
-            "[fɪɫm]",
-            "[ˈfɪlm̩]",
-            "[ˈfɪləm]"
-        ],
         "en:director": [
             "/dɪˈɹɛk.tə(ɹ)/",
             "/daɪˈɹɛk.tə(ɹ)/",
@@ -45835,6 +44149,12 @@
         "es:película": [
             "/peˈlikula/",
             "[peˈli.ku.la]"
+        ],
+        "en:film": [
+            "/fɪlm/",
+            "[fɪɫm]",
+            "[ˈfɪlm̩]",
+            "[ˈfɪləm]"
         ],
         "en:movie": [
             "/ˈmuːvi/"
@@ -45950,11 +44270,6 @@
         ],
         "en:movement": [
             "/ˈmuːv.mənt/"
-        ],
-        "en:banking": [
-            "/ˈbæŋkɪŋ/",
-            "/ˈbeɪ̯ŋkɪŋ/",
-            "/ˈbɛ̃ŋkɪŋ/"
         ],
         "en:transaction": [
             "/tɹænˈzækʃən/",
@@ -46315,10 +44630,6 @@
         "en:space": [
             "/speɪs/"
         ],
-        "en:typography": [
-            "/taɪˈpɒɡɹəfi/",
-            "/taɪˈpɑɡɹəfi/"
-        ],
         "es:febrero": [
             "/feˈbɾeɾo/",
             "[feˈβ̞ɾe.ɾo]"
@@ -46424,6 +44735,14 @@
             "/ˈaɾte/",
             "[ˈaɾ.t̪e]"
         ],
+        "en:art": [
+            "/ɑːt/",
+            "/ɑɹt/",
+            "[ɑːʔ]",
+            "[äˑɹt]",
+            "/ət/",
+            "/əɹt/"
+        ],
         "es:conocer": [
             "/konoˈθeɾ/",
             "[ko.noˈθeɾ]",
@@ -46463,13 +44782,10 @@
             "/siːt/",
             "/ˈseɪæt/"
         ],
-        "en:commerce": [
-            "/ˈkɒ.mɜːs/",
-            "/ˈkɑ.mɚs/",
-            "/ˈkɒm.ɚs/",
-            "/ˈkɔm.əs/",
-            "/kəˈmɜːs/",
-            "/kəˈmɝs/"
+        "en:mall": [
+            "/mɔːl/",
+            "/mæl/",
+            "/mɑl/"
         ],
         "es:septiembre": [
             "/sebˈtjembɾe/",
@@ -46817,11 +45133,6 @@
             "/ɹʊn/",
             "/ɾʌn/"
         ],
-        "en:baseball": [
-            "/ˈbeɪs.bɔːl/",
-            "/ˈbeɪs.bɔl/",
-            "/ˈbeɪs.bɑl/"
-        ],
         "en:degree": [
             "/dɪˈɡɹiː/"
         ],
@@ -46830,6 +45141,12 @@
             "/kəˈɹɪɹ/",
             "/kəˈɹɪ.ɚ/",
             "/kəˈrɪjə(r)/"
+        ],
+        "en:fare": [
+            "/ˈfɛə/",
+            "[ˈfɛə̯]",
+            "[ˈfɛː]",
+            "/ˈfɛː/"
         ],
         "es:ejército": [
             "/eˈxeɾθito/",
@@ -47078,14 +45395,17 @@
             "[kəˈɹoʊ̯d]",
             "[kɚˈ(ɹ)oʊ̯d]"
         ],
-        "en:chess": [
-            "/t͡ʃɛs/"
-        ],
         "en:capture": [
             "/ˈkæp.(t)ʃəː/",
             "[ˈkʰæp.(t)ʃəː]",
             "/ˈkɛp.(t)ʃɘː/",
             "[ˈkʰɛp.(t)ʃɘː]"
+        ],
+        "en:care": [
+            "/kɛə/",
+            "/kɛɚ/",
+            "[kʰe(ə̯)ɹ]",
+            "[kʰɛ(ə̯)ɹ]"
         ],
         "es:compañía": [
             "/kompaˈɲia/",
@@ -47457,11 +45777,6 @@
             "/ˈdɪf.(ə.)ɹəns/",
             "/ˈdəf.(ə.)ɹəns/"
         ],
-        "en:arithmetic": [
-            "[əˈɹɪθmətɪk]",
-            "/ˌɛɹɪθˈmɛtɪk/",
-            "/æɹɪθˈmɛtɪk/"
-        ],
         "es:entrar": [
             "/enˈtɾaɾ/",
             "[ẽn̪ˈt̪ɾaɾ]"
@@ -47477,12 +45792,6 @@
         "es:estilo": [
             "/esˈtilo/",
             "[esˈt̪i.lo]"
-        ],
-        "en:botany": [
-            "/ˈbɒt.ə.ni/",
-            "/ˈbɒt.ni/",
-            "/-nɪ/",
-            "/ˈbɑ.tə.ni/"
         ],
         "en:stylus": [
             "/ˈstaɪ.ləs/"
@@ -47524,6 +45833,12 @@
         "es:militar": [
             "/miliˈtaɾ/",
             "[mi.liˈt̪aɾ]"
+        ],
+        "en:military": [
+            "/ˈmɪlɪt(ə)ɹi/",
+            "/ˈmɪlɪtɛɹi/",
+            "/ˈmɪləˌtɛɹi/",
+            "/ˈmɪlɪtɹi/"
         ],
         "en:participate": [
             "/pɑːˈtɪs.ɪ.peɪt/",
@@ -47684,12 +45999,6 @@
             "/dɪˈfɛns/",
             "/ˈdiːˌfɛns/"
         ],
-        "en:automotive": [
-            "/ˌɔːtəˈməʊtɪv/",
-            "/ˌɔtəˈmoʊtɪv/",
-            "[ˌɔɾəˈmoʊɾɪv]",
-            "/ˌɑtəˈmoʊtɪv/"
-        ],
         "en:bumper": [
             "/ˈbʌmpə/",
             "/ˈbʌmpəɹ/"
@@ -47808,12 +46117,6 @@
             "/ˈpæsəd͡ʒ/",
             "/ˈpɛsəd͡ʒ/",
             "/ˈpasɑːʒ/"
-        ],
-        "en:medicine": [
-            "/ˈmɛd.ɪ.s(ɪ)n/",
-            "/ˈmɛd.s(ɪ)n/",
-            "/ˈmɛd.ɪ.sɪn/",
-            "/ˈmɛd.ə.sən/"
         ],
         "en:attack": [
             "/əˈtæk/",
@@ -48341,9 +46644,6 @@
             "/ɪkˈspɛkt/",
             "/ɛkˈspɛkt/"
         ],
-        "en:que": [
-            "/ˈkjuː/"
-        ],
         "en:expected": [
             "/ɪkˈspɛk.tɪd/"
         ],
@@ -48440,20 +46740,12 @@
             "/ˈradjo/",
             "[ˈra.ð̞jo]"
         ],
-        "en:electronics": [
-            "/ˌɛl.ɛkˈtɹɒn.ɪks/",
-            "/ɪˌlɛkˈtɹɒn.ɪks/",
-            "/ɪˌlɛkˈtɹɑ.nɪks/"
-        ],
         "en:radio": [
             "/ˈɹeɪ.diˌəʊ/",
             "/ˈɹeɪ.diˌoʊ/"
         ],
         "en:radius": [
             "/ˈɹeɪ.di.əs/"
-        ],
-        "en:chemistry": [
-            "/ˈkɛm.ɪ.stɹi/"
         ],
         "en:radium": [
             "/ˈɹeɪ.dɪ.əm/",
@@ -48567,14 +46859,11 @@
             "/ˈlɛd͡ʒɪslət͡ʃə/",
             "/ˈlɛd͡ʒɪˌsleɪt͡ʃɚ/"
         ],
-        "en:nautical": [
-            "/ˈnɔːtɪ.kəl/",
-            "[ˈnɔ̝ːtɪ.kl̩] ~ [ˈno̞ːtɪ.kl̩]",
-            "/ˈnoː.tɪ.kəl/",
-            "[ˈnoː.tɪ.kl̩]"
-        ],
         "en:cabin": [
             "/ˈkæbɪn/"
+        ],
+        "en:cameraman": [
+            "/ˈkæm(ə)ɹəˌmæn/"
         ],
         "es:diario": [
             "/ˈdjaɾjo/",
@@ -48990,8 +47279,12 @@
             "/ɾou/",
             "/ɹaʊ/"
         ],
-        "en:match": [
-            "/mæt͡ʃ/"
+        "en:crash": [
+            "/ˈkɹæʃ/",
+            "[ˈkʰɹʷæʃ]"
+        ],
+        "en:collision": [
+            "/kəˈlɪʒn̩/"
         ],
         "es:entrada": [
             "/enˈtɾada/",
@@ -49057,6 +47350,12 @@
         "es:televisión": [
             "/telebiˈsjon/",
             "[t̪e.le.β̞iˈsjõn]"
+        ],
+        "en:television": [
+            "/ˈtɛlɪˌvɪʒən/",
+            "/ˈtɛləˌvɪʒən/",
+            "/ˌtɛlɪˈvɪʒən/",
+            "/ˌtɛləˈvɪʒən/"
         ],
         "es:unión": [
             "/uˈnjon/",
@@ -49230,6 +47529,12 @@
             "/bəˈkʌm.ɪŋ/",
             "/ˈbɪ.kə.mɪŋɡ/"
         ],
+        "en:teacher": [
+            "/ˈtiː.t͡ʃəː/",
+            "[ˈtʰɪi̯.t͡ʃəː]",
+            "/ˈti.t͡ʃɚ/",
+            "[ˈtʰɪi̯.t͡ʃɚ] ~ [ˈtʰɪi̯.t͡ʃɹ̩]"
+        ],
         "es:sexo": [
             "/ˈseɡso/",
             "[ˈseɣ̞.so]"
@@ -49251,12 +47556,6 @@
         "en:butthole": [
             "/ˈbʌtˌhoʊl/"
         ],
-        "en:clothing": [
-            "/ˈkləʊðɪŋ/",
-            "/ˈkloʊðɪŋ/",
-            "/ˈkloðɪŋ/",
-            "/ˈkloːðɪŋ/"
-        ],
         "en:tear": [
             "/tɛə/",
             "/tɛː/",
@@ -49277,15 +47576,17 @@
             "/ˈteɡsto/",
             "[ˈt̪eɣ̞s.t̪o]"
         ],
-        "en:printing": [
-            "/ˈpɹɪntɪŋ/",
-            "[ˈpʰɹ̥ɪɾ̃ɪŋ]"
-        ],
         "en:medium": [
             "/ˈmiː.di.əm/"
         ],
         "en:size": [
             "/saɪz/"
+        ],
+        "en:standardize": [
+            "/ˈstæn.də.daɪz/",
+            "/ˈstæn.dɚˌdaɪz/",
+            "[ˈstɛən.dɚˌdaɪz]",
+            "/ˈstæn.də.dɑez/"
         ],
         "es:análisis": [
             "/aˈnalisis/",
@@ -49483,12 +47784,6 @@
         ],
         "en:faculty": [
             "/ˈfæk.əl.ti/"
-        ],
-        "en:teacher": [
-            "/ˈtiː.t͡ʃəː/",
-            "[ˈtʰɪi̯.t͡ʃəː]",
-            "/ˈti.t͡ʃɚ/",
-            "[ˈtʰɪi̯.t͡ʃɚ] ~ [ˈtʰɪi̯.t͡ʃɹ̩]"
         ],
         "es:respeto": [
             "/resˈpeto/",
@@ -49781,6 +48076,12 @@
             "/ˈd͡ʒʌd͡ʒ.mənt/",
             "/ˈd͡ʒʌd͡ʒ.mɪnt/"
         ],
+        "en:verdict": [
+            "/ˈvɜː.dɪkt/",
+            "/ˈvɝ.dɪkt/",
+            "/ˈvøː.dəkt/",
+            "/ˈvɜɹ.dɪt/"
+        ],
         "es:miles": [
             "/ˈmiles/",
             "[ˈmi.les]"
@@ -50058,6 +48359,9 @@
             "[ɡɹɛjd]",
             "[ɡɹeːd]"
         ],
+        "en:diarrhea": [
+            "/ˌdaɪ.əˈɹiː.ə/"
+        ],
         "es:democracia": [
             "/demoˈkɾaθja/",
             "[d̪e.moˈkɾa.θja]",
@@ -50099,22 +48403,44 @@
             "/ˈxeneɾo/",
             "[ˈxe.ne.ɾo]"
         ],
-        "en:theater": [
-            "/ˈθi(ə)tɚ/",
-            "/ˈθɪə.tɚ/",
-            "/ˈθi.eɪ.tɚ/",
-            "/ˈθiː.ə.tə/"
+        "en:genre": [
+            "/ˈ(d)ʒɑnɹə/",
+            "/ˈ(d)ʒɒnɹə/",
+            "/ˈd͡ʒɑnɚ/"
         ],
         "en:genus": [
             "/ˈdʒiːnəs/",
             "/ˈdʒɛnəs/",
             "/ˈd͡ʒiːnəs/"
         ],
-        "en:biology": [
-            "/baɪˈɒl.ə.d͡ʒi/",
-            "/baɪˈɑ.lə.d͡ʒi/",
-            "/baɪˌɑl(ə)ˈd͡ʒi/",
-            "/baj(ɵ)ˈlɔdʒi/"
+        "en:gender": [
+            "/ˈd͡ʒɛndə/",
+            "/ˈd͡ʒɛndɚ/",
+            "/ˈd͡ʒendə/",
+            "/ˈd͡ʒɛndəɾ/",
+            "/ɡənˈdɛː(r)/"
+        ],
+        "en:produce": [
+            "/pɹəˈd͡ʒuːs/",
+            "/pɹəˈdjuːs/",
+            "/pɹəˈdus/",
+            "/ˈpɹɒd͡ʒuːs/",
+            "/ˈpɹɒdjuːs/",
+            "/ˈpɹoʊ.dus/",
+            "/ˈpɹɑ.dus/"
+        ],
+        "en:merchandise": [
+            "/ˈmɜː.t͡ʃənˌdaɪs/",
+            "/-daɪz/",
+            "/ˈmɝ.t͡ʃənˌdaɪs/",
+            "/ˈmɜːt͡ʃəndaɪz/",
+            "/ˈmɝt͡ʃəndaɪz/"
+        ],
+        "en:cloth": [
+            "/klɒθ/",
+            "/klɔːθ/",
+            "/klɔθ/",
+            "/klɑθ/"
         ],
         "es:muerto": [
             "/ˈmweɾto/",
@@ -50289,12 +48615,6 @@
             "/amˈbjente/",
             "[ãmˈbjẽn̪.t̪e]"
         ],
-        "en:atmosphere": [
-            "/ˈætməsˌfɪə/",
-            "/ˈatməsˌfɪː/",
-            "/ˈatməsˌfɪj.ə/",
-            "/ˈætməsˌfɪɹ/"
-        ],
         "en:environment": [
             "/ɪnˈvaɪ.ɹə.mənt/",
             "/ɪnˈvaɪ.ɹən.mənt/",
@@ -50310,15 +48630,6 @@
             "/əˈfɪ̟nsɪv/",
             "/ˈɔˌfɛnsɪv/",
             "/ˈɑˌfɛnsɪv/"
-        ],
-        "en:pathology": [
-            "/pəˈθɒləd͡ʒi/"
-        ],
-        "en:phonology": [
-            "/fəˈnɒləd͡ʒi/",
-            "/fəˈnɑləd͡ʒi/",
-            "/foʊ-/",
-            "/fəˈnɔləd͡ʒi/"
         ],
         "en:onset": [
             "/ˈɒnˌsɛt/",
@@ -50377,6 +48688,12 @@
             "/ˈlaŋ.ɡwɪd͡ʒ/",
             "/ˈleɪŋ-/",
             "[ˈlæŋ.ɡwɪd͡ʒ]"
+        ],
+        "en:grammar": [
+            "/ˈɡɹæm.ə(ɹ)/",
+            "/ˈɡɹæm.ɚ/",
+            "[ˈɡɹɛəm.ɚ]",
+            "[ˈɡɹæːm.ɚ]"
         ],
         "es:mesa": [
             "/ˈmesa/",
@@ -50545,12 +48862,6 @@
             "/bɪˈwɛɚ/",
             "/bəˈwɛɚ/"
         ],
-        "en:care": [
-            "/kɛə/",
-            "/kɛɚ/",
-            "[kʰe(ə̯)ɹ]",
-            "[kʰɛ(ə̯)ɹ]"
-        ],
         "en:answerable": [
             "/ˈɑːnsəɹəb(ə)l/",
             "/ˈɑːnsɹəb(ə)l/",
@@ -50646,12 +48957,6 @@
         "es:informe": [
             "/inˈfoɾme/",
             "[ĩɱˈfoɾ.me]"
-        ],
-        "en:report": [
-            "/ɹɪˈpɔːt/",
-            "/ɹɪˈpoɹt/",
-            "/ɹəˈpoɹt/",
-            "/ɹɪˈpoːt/"
         ],
         "en:formless": [
             "/ˈfɔːmləs/",
@@ -50957,11 +49262,6 @@
             "/-.di/",
             "/ˈfɹaɪ.də/"
         ],
-        "es:vídeo": [
-            "/ˈbidjo/",
-            "[ˈbi.ð̞jo]",
-            "/ˈbideo/"
-        ],
         "es:aplicación": [
             "/aplikaˈθjon/",
             "[a.pli.kaˈθjõn]",
@@ -51038,10 +49338,6 @@
             "/ˈtʉːfəʉld/",
             "/ˈtʉːfɐʉld/"
         ],
-        "en:folklore": [
-            "/ˈfəʊk.lɔː/",
-            "/ˈfoʊk.lɔːɹ/"
-        ],
         "es:marca": [
             "/ˈmaɾka/",
             "[ˈmaɾ.ka]"
@@ -51080,6 +49376,16 @@
             "/ˈboj/",
             "/ˈboɪ/",
             "/ˈbu.i/"
+        ],
+        "en:whore": [
+            "/hɔː/",
+            "/hɔɚ/",
+            "/ho(ː)ɚ/",
+            "/hoə/"
+        ],
+        "en:harlot": [
+            "/ˈhɑːlət/",
+            "/ˈhɑɹlət/"
         ],
         "es:memoria": [
             "/meˈmoɾja/",
@@ -51342,15 +49648,6 @@
             "[ˈaɪ̯.ɾm̩]",
             "/ˈɑe.təm/"
         ],
-        "en:produce": [
-            "/pɹəˈd͡ʒuːs/",
-            "/pɹəˈdjuːs/",
-            "/pɹəˈdus/",
-            "/ˈpɹɒd͡ʒuːs/",
-            "/ˈpɹɒdjuːs/",
-            "/ˈpɹoʊ.dus/",
-            "/ˈpɹɑ.dus/"
-        ],
         "en:proceeds": [
             "/ˈpɹəʊsiːdz/",
             "/ˈpɹoʊsidz/",
@@ -51388,6 +49685,11 @@
             "[t͡ʃoɪ̯s]",
             "[t͡ʃɒɪ̯s]",
             "/t͡ʃäɪ̯s/"
+        ],
+        "en:sports": [
+            "/spɔːɹts/",
+            "/spoɹts/",
+            "/spoəts/"
         ],
         "es:vieja": [
             "/ˈbjexa/",
@@ -51477,6 +49779,12 @@
             "/ˈfʌŋkʃn̩/",
             "/ˈfʊŋ(k)ʃən/",
             "/ˈfʊŋkʃn̩/"
+        ],
+        "en:procedure": [
+            "/pɹəˈsiː.d͡ʒə/",
+            "/pɹəˈsi.d͡ʒɚ/",
+            "[pɹəˈsɪi.d͡ʒə]",
+            "[pɹəˈsɪ̈i.d͡ʒə]"
         ],
         "es:independencia": [
             "/indepenˈdenθja/",
@@ -51631,6 +49939,12 @@
             "[dɑj]",
             "[dɑe̯]"
         ],
+        "en:anesthetize": [
+            "/əˈniːs.θə.taɪz/",
+            "/æˈniːs.θə.taɪz/",
+            "/əˈnɛs.θə.taɪz/",
+            "/əˈnɛs.θɪ.taɪz/"
+        ],
         "es:esperanza": [
             "/espeˈɾanθa/",
             "[es.peˈɾãn̟.θa]",
@@ -51733,6 +50047,11 @@
             "/læd/",
             "/laːd/",
             "/ləd/"
+        ],
+        "en:raccoon": [
+            "/ɹəˈkuːn/",
+            "/ɹæˈkun/",
+            "/ɹəˈkun/"
         ],
         "es:ciento": [
             "/ˈθjento/",
@@ -51996,11 +50315,6 @@
             "[hoːm]",
             "/hom/",
             "/ˈhjuːm/"
-        ],
-        "en:homeland": [
-            "/ˈhəʊmˌlænd/",
-            "/ˈhoʊmˌlænd/",
-            "/ˈhoʊmˌlənd/"
         ],
         "en:hearth": [
             "/ˈhɑːθ/",
@@ -52343,6 +50657,12 @@
             "/teˈatɾo/",
             "[t̪eˈa.t̪ɾo]"
         ],
+        "en:theater": [
+            "/ˈθi(ə)tɚ/",
+            "/ˈθɪə.tɚ/",
+            "/ˈθi.eɪ.tɚ/",
+            "/ˈθiː.ə.tə/"
+        ],
         "en:stage": [
             "/steɪd͡ʒ/",
             "/stɑːʒ/"
@@ -52459,6 +50779,12 @@
             "/ˌæl.kəˈhɒl.ɪk/",
             "/ˌæl.kəˈhɔ.lɪk/",
             "/ˌæl.kəˈhɑ.lɪk/"
+        ],
+        "en:beverage": [
+            "/ˈbɛv(ə)ɹɪd͡ʒ/",
+            "/ˈbɛvəɹɪd͡ʒ/",
+            "/ˈbɛvɹɪd͡ʒ/",
+            "/ˈbev(ə)ɹɪd͡ʒ/"
         ],
         "es:lleno": [
             "/ˈʝeno/",
@@ -52616,9 +50942,6 @@
             "/ˈe/",
             "[ˈe]"
         ],
-        "en:hey": [
-            "/heɪ/"
-        ],
         "es:estación": [
             "/estaˈθjon/",
             "[es.t̪aˈθjõn]",
@@ -52771,15 +51094,18 @@
             "/ˈɔː.ɡə.nɪ.zəm/",
             "/ˈɔɹ.ɡəˌnɪz.əm/"
         ],
+        "en:eukaryote": [
+            "/juːˈkæɹi.əʊt/",
+            "/juˈkæɹi.ɒt/",
+            "/juˈkæɹi.oʊt/",
+            "/juˈkæɹi.ət/"
+        ],
+        "en:footwear": [
+            "/ˈfʊtwɛə(ɹ)/"
+        ],
         "es:tantos": [
             "/ˈtantos/",
             "[ˈt̪ãn̪.t̪os]"
-        ],
-        "en:score": [
-            "/skɔː/",
-            "/skoɹ/",
-            "/sko(ː)ɹ/",
-            "/skoə/"
         ],
         "es:teoría": [
             "/teoˈɾia/",
@@ -52837,12 +51163,6 @@
             "/ˈkɔn.sept/",
             "[ˈkɔ̟n.sept]"
         ],
-        "en:literature": [
-            "/ˈlɪt.(ə.)ɹə.t͡ʃə(ɹ)/",
-            "/ˈlɪt.ɚ.ə.t͡ʃɚ/",
-            "[ˈlɪɾ.ɚ.ə.t͡ʃɚ]",
-            "/ˈlɪ.tɹə.t͡ʃɚ/"
-        ],
         "en:conceit": [
             "/kənˈsiːt/"
         ],
@@ -52870,25 +51190,18 @@
             "/blʌnt/",
             "/blʊnt/"
         ],
-        "en:broadcasting": [
-            "/ˈbɹɔdkæstɪŋ/",
-            "/ˈbɹɑdkæstɪŋ/"
+        "en:live stream": [
+            "/ˈlaɪv ˈstɹiːm/"
+        ],
+        "en:stream": [
+            "/ˈstɹiːm/",
+            "[ˈstɹ̝̊ʷɪi̯m] ~ [ˈst̠ɹ̠̊˔ʷɪi̯m]",
+            "/ˈstɾim/",
+            "[ˈstɾim]"
         ],
         "es:enorme": [
             "/eˈnoɾme/",
             "[eˈnoɾ.me]"
-        ],
-        "en:enormous": [
-            "/ɪˈnɔː.məs/",
-            "/ɪˈnoɹ.məs/",
-            "/iˈnoɹ.məs/",
-            "/ɪˈnoː.məs/"
-        ],
-        "en:huge": [
-            "/hjuːd͡ʒ/",
-            "[ç(j)u̟ːd͡ʒ]",
-            "/hjʉwd͡ʒ/",
-            "[ç(j)ʉwd͡ʒ]"
         ],
         "es:exactamente": [
             "/eɡˌsaɡtaˈmente/",
@@ -53023,11 +51336,6 @@
             "[ˈkʰæn.dɪd]",
             "/ˈkeə̯n.dɪd/",
             "[ˈkeə̯n.dɪd]"
-        ],
-        "en:phonetics": [
-            "/fəˈnɛt.ɪks/",
-            "[fəˈnɛʔəks]",
-            "[fəˈnɛhəks]"
         ],
         "es:afuera": [
             "/aˈfweɾa/",
@@ -53380,12 +51688,6 @@
         "en:insignificant": [
             "/ˌɪnsɪɡˈnɪfɪkənt/"
         ],
-        "en:cooking": [
-            "/ˈkʊkɪŋ/",
-            "/ˈkɵkɪŋ/",
-            "/ˈkuːkɪŋ/",
-            "/ˈkʉkɪŋ/"
-        ],
         "en:soup": [
             "/suːp/",
             "/sup/"
@@ -53567,6 +51869,12 @@
             "[e.xeɾˈθi.θjo]",
             "/exeɾˈsisjo/"
         ],
+        "en:exercise": [
+            "/ˈɛk.sə.saɪz/",
+            "/ˈɛk.sɚ.saɪz/",
+            "/ˈek.sə.sɑez/",
+            "/ˈek.sə.saɪz/"
+        ],
         "es:elegir": [
             "/eleˈxiɾ/",
             "[e.leˈxiɾ]"
@@ -53585,6 +51893,11 @@
             "[ˈæk.tʰəː]",
             "/ˈæk.tɚ/",
             "[ˈæk.tʰɚ] ~ [ˈæk.tʰɹ̩]"
+        ],
+        "en:show-off": [
+            "/ˈʃəʊ ˌɒf/",
+            "/ˈʃoʊ ˌɔf/",
+            "/ˈʃoʊ ˌɑf/"
         ],
         "es:genial": [
             "/xeˈnjal/",
@@ -53903,6 +52216,9 @@
         "en:excited": [
             "/ɪkˈsaɪ.tɪd/"
         ],
+        "en:ecstatic": [
+            "/ɛkˈstætɪk/"
+        ],
         "es:propósito": [
             "/pɾoˈposito/",
             "[pɾoˈpo.si.t̪o]"
@@ -53999,6 +52315,9 @@
             "/ˈnɛklɪs/",
             "/ˈnɛklæɪs/"
         ],
+        "en:string": [
+            "/stɹɪŋ/"
+        ],
         "es:capitán": [
             "/kapiˈtan/",
             "[ka.piˈt̪ãn]"
@@ -54077,6 +52396,12 @@
             "/liteɾaˈtuɾa/",
             "[li.t̪e.ɾaˈt̪u.ɾa]"
         ],
+        "en:literature": [
+            "/ˈlɪt.(ə.)ɹə.t͡ʃə(ɹ)/",
+            "/ˈlɪt.ɚ.ə.t͡ʃɚ/",
+            "[ˈlɪɾ.ɚ.ə.t͡ʃɚ]",
+            "/ˈlɪ.tɹə.t͡ʃɚ/"
+        ],
         "es:mexicano": [
             "/mexiˈkano/",
             "[me.xiˈka.no]",
@@ -54105,11 +52430,6 @@
             "/əd/",
             "/(w)ʊ(l)d/",
             "/wʊd/"
-        ],
-        "en:mean": [
-            "/miːn/",
-            "/mijən/",
-            "/min/"
         ],
         "es:actitud": [
             "/aɡtiˈtud/",
@@ -54944,6 +53264,9 @@
             "/ˈfisika/",
             "[ˈfi.si.ka]"
         ],
+        "en:physics": [
+            "/ˈfɪz.ɪks/"
+        ],
         "es:inmediatamente": [
             "/immeˌdjataˈmente/",
             "[ĩm.meˌð̞ja.t̪aˈmẽn̪.t̪e]"
@@ -54976,6 +53299,12 @@
             "/mediˈθina/",
             "[me.ð̞iˈθi.na]",
             "/mediˈsina/"
+        ],
+        "en:medicine": [
+            "/ˈmɛd.ɪ.s(ɪ)n/",
+            "/ˈmɛd.s(ɪ)n/",
+            "/ˈmɛd.ɪ.sɪn/",
+            "/ˈmɛd.ə.sən/"
         ],
         "es:mío": [
             "/ˈmio/",
@@ -55078,8 +53407,10 @@
             "/ɑɹk/",
             "/ɑːk/"
         ],
-        "en:dentistry": [
-            "/ˈdɛntɪstɹi/"
+        "en:denture": [
+            "/ˈdɛntjə(ɹ)/",
+            "/ˈdɛntʃə(ɹ)/",
+            "/ˈdɛnt͡ʃə(ɹ)/"
         ],
         "es:reconocimiento": [
             "/rekonoθiˈmjento/",
@@ -55487,6 +53818,9 @@
             "[ˈæɫb̚m̩]",
             "[ˈaɫb̚m̩]",
             "/ˈɛlbəm/"
+        ],
+        "en:discus": [
+            "/ˈdɪs.kəs/"
         ],
         "es:entrega": [
             "/enˈtɾeɡa/",
@@ -56224,11 +54558,6 @@
             "/ˈnotas/",
             "[ˈno.t̪as]"
         ],
-        "en:show-off": [
-            "/ˈʃəʊ ˌɒf/",
-            "/ˈʃoʊ ˌɔf/",
-            "/ˈʃoʊ ˌɑf/"
-        ],
         "es:palacio": [
             "/paˈlaθjo/",
             "[paˈla.θjo]",
@@ -56260,6 +54589,10 @@
         "es:religión": [
             "/reliˈxjon/",
             "[re.liˈxjõn]"
+        ],
+        "en:religion": [
+            "/ɹɪˈlɪd͡ʒ.ən/",
+            "/ɹəˈləd͡ʒ.ən/"
         ],
         "es:rápidamente": [
             "/ˌrapidaˈmente/",
@@ -56318,6 +54651,10 @@
             "/ˈtjuːnə/",
             "/ˈtuːnə/",
             "/ˈtʉ.nɐ/"
+        ],
+        "en:bonito": [
+            "/bəˈniːtoʊ/",
+            "/bəˈniːtə/"
         ],
         "es:breve": [
             "/ˈbɾebe/",
@@ -56431,6 +54768,9 @@
             "/ˈdu.ti/",
             "/ˈdu.ɾi/"
         ],
+        "en:custody": [
+            "/ˈkʌstədiː/"
+        ],
         "es:juventud": [
             "/xubenˈtud/",
             "[xu.β̞ẽn̪ˈt̪uð̞]"
@@ -56460,10 +54800,6 @@
             "[ˈmiɾɚ]",
             "/ˈmiːtə/",
             "/ˈmiːʈəʳ/"
-        ],
-        "en:poetry": [
-            "/ˈpəʊ.ɪ.tɹi/",
-            "/ˈpoʊ.ə.tɹi/"
         ],
         "en:metre": [
             "/ˈmiːtə/",
@@ -56867,6 +55203,9 @@
             "/ˈpɑ.kət/",
             "/ˈpɔk.ɪt/"
         ],
+        "en:testicle": [
+            "/ˈtɛstɪkəl/"
+        ],
         "es:cerebro": [
             "/θeˈɾebɾo/",
             "[θeˈɾe.β̞ɾo]",
@@ -56891,12 +55230,6 @@
         "en:climate": [
             "/ˈklaɪ.mɪt/",
             "/ˈklaɪ.mət/"
-        ],
-        "en:weather": [
-            "/ˈwɛðə/",
-            "/ˈwɛðɚ/",
-            "/ˈweðə/",
-            "/ˈwɛðəɾ/"
         ],
         "es:comportamiento": [
             "/kompoɾtaˈmjento/",
@@ -56997,10 +55330,6 @@
         "es:espalda": [
             "/esˈpalda/",
             "[esˈpal̪.d̪a]"
-        ],
-        "en:swimming": [
-            "/ˈswɪmɪŋ/",
-            "/ˈswɪmiŋ/"
         ],
         "en:backstroke": [
             "/ˈbækˌstɹoʊk/"
@@ -57367,9 +55696,6 @@
             "/pliːz/",
             "/pliz/"
         ],
-        "en:mining": [
-            "/ˈmaɪnɪŋ/"
-        ],
         "en:placer": [
             "/ˈpleɪsə(ɹ)/",
             "/ˈplæsə(ɹ)/"
@@ -57709,6 +56035,9 @@
             "[ˈɹiɾiŋ]",
             "/ˈɹɛdɪŋ/"
         ],
+        "en:equate": [
+            "/ɪˈkweɪt/"
+        ],
         "es:martín": [
             "/maɾˈtin/",
             "[maɾˈt̪ĩn]"
@@ -57781,10 +56110,6 @@
         "es:caída": [
             "/kaˈida/",
             "[kaˈi.ð̞a]"
-        ],
-        "en:crash": [
-            "/ˈkɹæʃ/",
-            "[ˈkʰɹʷæʃ]"
         ],
         "en:downfall": [
             "/ˈdaʊnfɔːl/",
@@ -58205,9 +56530,6 @@
             "[ˈmoʊɾɚ]",
             "/ˈməʉtə/"
         ],
-        "en:mechanics": [
-            "/məˈkænɪks/"
-        ],
         "en:engine": [
             "/ˈɛnd͡ʒɪn/",
             "/ˈɪnd͡ʒɪn/",
@@ -58323,12 +56645,6 @@
         "es:caliente": [
             "/kaˈljente/",
             "[kaˈljẽn̪.t̪e]"
-        ],
-        "en:hot": [
-            "/hɒt/",
-            "/hɔt/",
-            "/hɑt/",
-            "[hɔ̟t] ~ [hɞ̠t]"
         ],
         "en:warm": [
             "/wɔːm/",
@@ -58503,11 +56819,9 @@
             "/filosoˈfia/",
             "[fi.lo.soˈfi.a]"
         ],
-        "en:standardize": [
-            "/ˈstæn.də.daɪz/",
-            "/ˈstæn.dɚˌdaɪz/",
-            "[ˈstɛən.dɚˌdaɪz]",
-            "/ˈstæn.də.dɑez/"
+        "en:philosophy": [
+            "/fɪˈlɒs.ə.fi/",
+            "/fɪˈlɑ.sə.fi/"
         ],
         "es:licencia": [
             "/liˈθenθja/",
@@ -58569,10 +56883,6 @@
             "/ˈkwɒɹ(ə)l/",
             "/ˈkwɔɹəl/",
             "/ˈkwɑɹəl/"
-        ],
-        "en:boxing": [
-            "/ˈbɒksɪŋ/",
-            "/ˈbɑːksɪŋ/"
         ],
         "en:bout": [
             "/ˈbaʊt/",
@@ -58701,8 +57011,19 @@
             "/kəʊ.əˈlɪʃ.ən/",
             "/koʊ.əˈlɪʃ.ən/"
         ],
-        "en:biblical": [
-            "/ˈbɪblɪkəl/"
+        "en:judaism": [
+            "/ˈd͡ʒuːˌdeɪ.ɪz.əm/",
+            "/ˈd͡ʒuː.deɪˌɪz.əm/",
+            "/ˈd͡ʒuː.diˌɪz.əm/",
+            "/ˈd͡ʒuː.dəˌɪz.əm/"
+        ],
+        "en:covenant": [
+            "/ˈkʌv.ən.ənt/",
+            "/ˈkʌv.nənt/"
+        ],
+        "en:ark": [
+            "/ɑːk/",
+            "/ɑɹk/"
         ],
         "es:amenaza": [
             "/ameˈnaθa/",
@@ -58775,11 +57096,6 @@
             "/ˈkɑm.plɪˌkeɪ.tɪd/",
             "[ˈkɑm.plɪˌkeɪ.ɾɪd]",
             "/ˈkɒm.plɪˌkeɪ.tɪd/"
-        ],
-        "en:psychology": [
-            "/saɪˈkɒl.ə.d͡ʒɪ/",
-            "/saɪˈkɑ.lə.d͡ʒi/",
-            "/sɑɪˈkɔl.ə.d͡ʒɪ/"
         ],
         "en:compound": [
             "/ˈkɒmpaʊnd/",
@@ -58902,6 +57218,10 @@
         "es:poesía": [
             "/poeˈsia/",
             "[po.eˈsi.a]"
+        ],
+        "en:poetry": [
+            "/ˈpəʊ.ɪ.tɹi/",
+            "/ˈpoʊ.ə.tɹi/"
         ],
         "en:poem": [
             "/ˈpəʊ.ɪm/",
@@ -59099,11 +57419,6 @@
             "/patɾiˈmonjo/",
             "[pa.t̪ɾiˈmo.njo]"
         ],
-        "en:asset": [
-            "/ˈæsɛt/",
-            "/ˈæsət/",
-            "/ˈæset/"
-        ],
         "en:heritage": [
             "/ˈhɛɹ.ɪ.tɪd͡ʒ/",
             "/ˈhɛɹ.ə.tɪd͡ʒ/",
@@ -59175,11 +57490,6 @@
             "[ˈɹʷʌ̹pt͡ʃəː]",
             "/ˈɹʌpt͡ʃɚ/",
             "[ˈɹʷʌ̈pt͡ʃɚ] ~ [ˈɹʷʌ̈pt͡ʃɹ̩]"
-        ],
-        "en:la": [
-            "/ˌɛl ˈeɪ/",
-            "/lɑː/",
-            "/lɑː˥/"
         ],
         "es:rostro": [
             "/ˈrostɾo/",
@@ -59295,19 +57605,8 @@
             "/ˈæl.kə.hɑl/",
             "/ˈɑl.kə.hɔl/"
         ],
-        "en:mineralogy": [
-            "/ˌmɪnəˈralədʒi/",
-            "/ˌmɪnəˈɹɑləd͡ʒi/",
-            "/ˌmɪnəˈɹæləd͡ʒi/"
-        ],
         "en:galena": [
             "/ɡəˈliː.nə/"
-        ],
-        "en:cosmetics": [
-            "/kɒzˈmɛt.ɪks/",
-            "/kɑzˈmɛt.ɪks/",
-            "[kɑzˈmɛɾ.ɪks]",
-            "/kɔzˈmet.ɪks/"
         ],
         "en:kohl": [
             "/kəʊl/",
@@ -59328,10 +57627,6 @@
         "es:apertura": [
             "/apeɾˈtuɾa/",
             "[a.peɾˈt̪u.ɾa]"
-        ],
-        "en:optics": [
-            "/ˈɒptɪks/",
-            "/ˈɑptɪks/"
         ],
         "en:ceremony": [
             "/ˈsɛɹ.ɪ.mə.ni/",
@@ -59527,6 +57822,12 @@
         "en:linkage": [
             "/ˈlɪŋkɪdʒ/"
         ],
+        "en:liaison": [
+            "/liˈeɪˌzɒ̃/",
+            "/-ˌzɒn/",
+            "/-z(ə)n/",
+            "/laɪˈeɪˌzɒn/"
+        ],
         "es:felicidad": [
             "/feliθiˈdad/",
             "[fe.li.θiˈð̞að̞]",
@@ -59562,12 +57863,6 @@
             "/ˌfaθilˈmente/",
             "[ˌfa.θilˈmẽn̪.t̪e]",
             "/ˌfasilˈmente/"
-        ],
-        "en:easily": [
-            "/ˈiː.zɪ.li/",
-            "/ˈiːz.li/",
-            "/ˈi.zɪ.li/",
-            "/ˈi.zə.li/"
         ],
         "es:guía": [
             "/ˈɡia/",
@@ -59698,6 +57993,12 @@
             "/aɡɾikulˈtuɾa/",
             "[a.ɣ̞ɾi.kul̪ˈt̪u.ɾa]"
         ],
+        "en:agriculture": [
+            "/ˈæɡ.ɹɪˌkʌl.t͡ʃə/",
+            "/ˈæɡ.ɹɪˌkʌl.t͡ʃɚ/",
+            "/ˈæɡ.ɹəˌkʌl.t͡ʃɚ/",
+            "/ˈeɪ̯ɡ.ɹɪˌkʌl.t͡ʃɚ/"
+        ],
         "en:farming": [
             "/ˈfɑːmɪŋ/",
             "/ˈfɑɹmɪŋ/",
@@ -59729,10 +58030,6 @@
             "/ˈɒl.tə(ɹ)ˌneɪ.ʃən/",
             "/ˈɔl.tɚˌneɪ.ʃən/",
             "/ˈɑl.tɚˌneɪ.ʃən/"
-        ],
-        "en:matador": [
-            "/ˈma.tə.dɔː/",
-            "/ˈmæ.tə.dɔɹ/"
         ],
         "es:amplio": [
             "/ˈampljo/",
@@ -59782,6 +58079,10 @@
             "[ˈɡɹævl̩]",
             "/ˈɡɹævəɯ/",
             "[ˈɡɹævɯ]"
+        ],
+        "en:boxing": [
+            "/ˈbɒksɪŋ/",
+            "/ˈbɑːksɪŋ/"
         ],
         "es:argumento": [
             "/aɾɡuˈmento/",
@@ -60040,21 +58341,17 @@
         "en:trail": [
             "/tɹeɪl/"
         ],
-        "en:aviation": [
-            "/ˌeɪ̯.viːˈeɪ̯.ʃən/",
-            "/ˌav.iː-/",
-            "/ˌæv.iː-/",
-            "/ˌeɪ̯.viˈeɪ̯.ʃən/"
-        ],
         "en:runway": [
             "/ˈɹʌnweɪ/",
             "/ˈɹʌnˌweɪ/",
             "/ˈɹən-/"
         ],
-        "en:bowling": [
-            "/ˈbəʊlɪŋ/",
-            "[ˈbɒʊɫɪŋ]",
-            "/ˈboʊlɪŋ/"
+        "en:clue": [
+            "/kluː/",
+            "/kljuː/"
+        ],
+        "en:fingerprint": [
+            "/ˈfɪŋɡɚˌpɹɪnt/"
         ],
         "es:positivo": [
             "/posiˈtibo/",
@@ -60128,6 +58425,10 @@
             "/ˈsæŋktjʊəɹi/",
             "/ˈsæŋkt͡ʃʊəɹi/",
             "/ˈsæŋkt͡ʃuˌɛɹi/"
+        ],
+        "en:stockpile": [
+            "/ˈstɒkpaɪl/",
+            "/ˈstɑkˌpaɪl/"
         ],
         "es:ritmo": [
             "/ˈridmo/",
@@ -60214,9 +58515,6 @@
         "en:active": [
             "/ˈæk.tɪv/"
         ],
-        "en:accounting": [
-            "/əˈkaʊn.tɪŋ/"
-        ],
         "es:agente": [
             "/aˈxente/",
             "[aˈxẽn̪.t̪e]"
@@ -60286,10 +58584,6 @@
         ],
         "en:stadium": [
             "/ˈsteɪ.di.əm/"
-        ],
-        "en:gules": [
-            "/ˈɡjuːlz/",
-            "/ˈɡjulz/"
         ],
         "es:inicial": [
             "/iniˈθjal/",
@@ -60366,9 +58660,6 @@
         "es:plano": [
             "/ˈplano/",
             "[ˈpla.no]"
-        ],
-        "en:cinematography": [
-            "/ˌsɪn.ə.məˈtɒɡ.ɹə.fiː/"
         ],
         "es:pongo": [
             "/ˈponɡo/",
@@ -60758,12 +59049,6 @@
             "/pɾoθediˈmjento/",
             "[pɾo.θe.ð̞iˈmjẽn̪.t̪o]",
             "/pɾosediˈmjento/"
-        ],
-        "en:procedure": [
-            "/pɹəˈsiː.d͡ʒə/",
-            "/pɹəˈsi.d͡ʒɚ/",
-            "[pɹəˈsɪi.d͡ʒə]",
-            "[pɹəˈsɪ̈i.d͡ʒə]"
         ],
         "en:proceedings": [
             "/pɹəˈsiːd.ɪŋz/",
@@ -61366,6 +59651,12 @@
             "[däns ~ dans]",
             "/dæns/"
         ],
+        "en:ball": [
+            "/bɔːl/",
+            "/boːl/",
+            "/bɔl/",
+            "/baːl/"
+        ],
         "es:ciudadanía": [
             "/θjudadaˈnia/",
             "[θju.ð̞a.ð̞aˈni.a]",
@@ -61496,9 +59787,6 @@
             "/spɔn/",
             "/spɑn/"
         ],
-        "en:testicle": [
-            "/ˈtɛstɪkəl/"
-        ],
         "en:gut": [
             "/ɡʌt/",
             "/ɡʊt/"
@@ -61506,6 +59794,9 @@
         "en:zygote": [
             "/ˈzaɪɡəʊt/",
             "/ˈzaɪˌɡoʊt/"
+        ],
+        "en:ovule": [
+            "/ˈɒvjuːl/"
         ],
         "es:incluido": [
             "/inˈklwido/",
@@ -62490,11 +60781,20 @@
         "en:grid": [
             "/ɡɹɪd/"
         ],
+        "en:matrix": [
+            "/ˈmeɪ.tɹɪks/",
+            "/ˈmæt.ɹɪks/",
+            "/ˈmæɪ.tɹɪks/",
+            "/mæːʈ.rɪks/"
+        ],
         "en:skirt": [
             "/skɜːt/",
             "/skɚt/",
             "/skɪɾt/",
             "/skøːt/"
+        ],
+        "en:pleat": [
+            "/pliːt/"
         ],
         "es:bienestar": [
             "/bjenesˈtaɾ/",
@@ -62569,11 +60869,6 @@
             "/kɹaːn/",
             "/kɹoʊn/"
         ],
-        "en:astronomy": [
-            "/əˈstɹɒn.ə.mi/",
-            "/əˈstɹɑ.nə.mi/",
-            "/æsˈtɹɑ.nə.mi/"
-        ],
         "en:corona": [
             "/kəˈɹəʊ.nə/",
             "/kəˈɹoʊ.nə/",
@@ -62587,6 +60882,15 @@
         ],
         "en:sprocket": [
             "/ˈspɹɒkɪt/"
+        ],
+        "en:cassette": [
+            "/kəˈsɛt/",
+            "/kæˈsɛt/",
+            "/ˈkæː.seʈ/"
+        ],
+        "en:gear wheel": [
+            "/ɡɪə(ɹ)ʍiːl/",
+            "/ɡɪɚ ʍil/"
         ],
         "es:crítico": [
             "/ˈkɾitiko/",
@@ -63508,10 +61812,6 @@
         "en:liberation": [
             "/ˌlɪbəˈɹeɪʃən/"
         ],
-        "en:physiology": [
-            "/ˌfɪziˈɒləd͡ʒi/",
-            "/ˌfɪziˈɑ.lə.d͡ʒi/"
-        ],
         "es:localidad": [
             "/lokaliˈdad/",
             "[lo.ka.liˈð̞að̞]"
@@ -63638,12 +61938,6 @@
         "es:rivera": [
             "/riˈbeɾa/",
             "[riˈβ̞e.ɾa]"
-        ],
-        "en:stream": [
-            "/ˈstɹiːm/",
-            "[ˈstɹ̝̊ʷɪi̯m] ~ [ˈst̠ɹ̠̊˔ʷɪi̯m]",
-            "/ˈstɾim/",
-            "[ˈstɾim]"
         ],
         "es:senador": [
             "/senaˈdoɾ/",
@@ -63838,10 +62132,6 @@
             "/ˈkwaɾta/",
             "[ˈkwaɾ.t̪a]"
         ],
-        "en:catholicism": [
-            "/kəˈθɒlɪsɪzəm/",
-            "/kəˈθɔləsɪzm/"
-        ],
         "en:battalion": [
             "/bəˈtæl.i.ən/",
             "/bəˈtæl.jən/"
@@ -63987,9 +62277,6 @@
             "[pe.t̪iˈθjõn]",
             "/petiˈsjon/"
         ],
-        "en:networking": [
-            "/ˈnɛtˌwɜː(r)kɪŋ/"
-        ],
         "es:plena": [
             "/ˈplena/",
             "[ˈple.na]"
@@ -64128,6 +62415,12 @@
             "/aɾkiteɡˈtuɾa/",
             "[aɾ.ki.t̪eɣ̞ˈt̪u.ɾa]"
         ],
+        "en:architecture": [
+            "/ˈɑː.kɪˌtɛk.t͡ʃə/",
+            "/ˈɑɹ.kɪˌtɛk.t͡ʃɚ/",
+            "/ˈɐː.kɪˌtek.t͡ʃə/",
+            "/ˈɐː.kəˌtek.t͡ʃə/"
+        ],
         "es:batería": [
             "/bateˈɾia/",
             "[ba.t̪eˈɾi.a]"
@@ -64244,9 +62537,6 @@
             "/enˈfeɾmo/",
             "[ẽɱˈfeɾ.mo]"
         ],
-        "en:sick": [
-            "/ˈsɪk/"
-        ],
         "en:ill": [
             "/ɪl/"
         ],
@@ -64257,6 +62547,11 @@
         "es:existir": [
             "/eɡsisˈtiɾ/",
             "[eɣ̞.sisˈt̪iɾ]"
+        ],
+        "en:finance": [
+            "/fɪˈnæns/",
+            "/ˈfaɪnæns/",
+            "/faɪˈnæns/"
         ],
         "en:financier": [
             "/f(a)ɪˈnæn.sɪ.ə/",
@@ -64397,6 +62692,11 @@
         "en:stick": [
             "/stɪk/"
         ],
+        "en:shove": [
+            "/ʃʌv/",
+            "/ʃʊv/",
+            "/ʃəʊv/"
+        ],
         "es:obispo": [
             "/oˈbispo/",
             "[oˈβ̞is.po]"
@@ -64418,6 +62718,10 @@
             "/fɔːst/",
             "/fo(ː)ɹst/",
             "/foəst/"
+        ],
+        "en:journalism": [
+            "/ˈd͡ʒɜːn(ə)lɪzəm/",
+            "/ˈd͡ʒɝnl̩ˌɪzəm/"
         ],
         "es:portal": [
             "/poɾˈtal/",
@@ -64746,9 +63050,6 @@
             "/pɹəsˈtiːd͡ʒ/",
             "/pɹəsˈtiːʒ/"
         ],
-        "en:statistics": [
-            "/stəˈtɪs.tɪks/"
-        ],
         "es:retiro": [
             "/reˈtiɾo/",
             "[reˈt̪i.ɾo]"
@@ -64798,6 +63099,10 @@
         ],
         "en:musician": [
             "/mjuˈzɪʃən/"
+        ],
+        "en:patrol": [
+            "/pəˈtɹəʊl/",
+            "/pəˈtɹoʊl/"
         ],
         "es:rumbo": [
             "/ˈrumbo/",
@@ -64875,9 +63180,6 @@
             "/ˈbæt(ə)n/",
             "/bəˈtɑn/"
         ],
-        "en:sciences": [
-            "/ˈsaɪənsɪz/"
-        ],
         "es:vigilancia": [
             "/bixiˈlanθja/",
             "[bi.xiˈlãn̟.θja]",
@@ -64904,10 +63206,6 @@
         ],
         "en:planner": [
             "/ˈplænɚ/"
-        ],
-        "es:americana": [
-            "/ameɾiˈkana/",
-            "[a.me.ɾiˈka.na]"
         ],
         "es:asesinado": [
             "/asesiˈnado/",
@@ -65252,9 +63550,6 @@
             "/ˈboʊ.nəs/",
             "/ˈbəʉ.nəs/",
             "/ˈbɐʉ.nəs/"
-        ],
-        "en:string": [
-            "/stɹɪŋ/"
         ],
         "es:recurso": [
             "/reˈkuɾso/",
@@ -65972,11 +64267,11 @@
             "[ˈfa.ʝo]",
             "/ˈfaʎo/"
         ],
-        "en:verdict": [
-            "/ˈvɜː.dɪkt/",
-            "/ˈvɝ.dɪkt/",
-            "/ˈvøː.dəkt/",
-            "/ˈvɜɹ.dɪt/"
+        "en:hole": [
+            "/həʊl/",
+            "[hɔʊɫ]",
+            "/hɒl/",
+            "/hɐʉl/"
         ],
         "es:funcionar": [
             "/funθjoˈnaɾ/",
@@ -66180,6 +64475,12 @@
             "/daɪv/",
             "/ˈdiːveɪ/"
         ],
+        "en:vault": [
+            "/vɒlt/",
+            "/vɔːlt/",
+            "/vɑlt/",
+            "/vɔlt/"
+        ],
         "es:soldado": [
             "/solˈdado/",
             "[sol̪ˈd̪a.ð̞o]"
@@ -66364,6 +64665,9 @@
             "/ɪkˈsɛl/",
             "/ɛkˈsɛl/"
         ],
+        "en:shine": [
+            "/ʃaɪn/"
+        ],
         "es:dieta": [
             "/ˈdjeta/",
             "[ˈd̪je.t̪a]"
@@ -66544,9 +64848,6 @@
             "/ˈpleɪ̯t/",
             "[ˈpʰl̥eɪ̯t]",
             "/ˈplæ̝ɪ̯t/"
-        ],
-        "en:cycling": [
-            "/ˈsaɪk(ə)lɪŋ/"
         ],
         "en:chainring": [
             "/ˈt͡ʃeɪnɹɪŋ/"
@@ -66988,18 +65289,12 @@
             "/ˈtɛmpə/",
             "/ˈtɛmpɚ/"
         ],
-        "en:mythology": [
-            "/mɪˈθɒl.ə.d͡ʒi/",
-            "/mɪˈθɑ.lə.d͡ʒi/"
-        ],
-        "en:fantasy": [
-            "/ˈfæntəsi/",
-            "/ˈfæntəzi/",
-            "[ˈfæ̃ɾ̃əsi]",
-            "[ˈfænəsi]"
-        ],
         "en:jinn": [
             "/d͡ʒɪn/"
+        ],
+        "en:genie": [
+            "/ˈd͡ʒiː.ni/",
+            "/ˈd͡ʒiːni/"
         ],
         "es:hoja": [
             "/ˈoxa/",
@@ -67073,14 +65368,6 @@
         "en:sleeve": [
             "/sliːv/",
             "/sliv/"
-        ],
-        "en:tennis": [
-            "/ˈtɛnɪs/",
-            "/ˈtenɪs/"
-        ],
-        "en:comics": [
-            "/ˈkɑmɪks/",
-            "/ˈkɒmɪks/"
         ],
         "en:manga": [
             "/ˈmæŋɡə/",
@@ -67238,9 +65525,6 @@
             "/ɹɔd/",
             "/ɾɔd/",
             "/ɾɒd/"
-        ],
-        "en:weaponry": [
-            "/ˈwɛp.ən.ɹi/"
         ],
         "en:bow": [
             "/ˈbəʊ̯/",
@@ -67696,6 +65980,10 @@
             "/ˈbʊl.əʔ.n̩/",
             "/ˈbʊl.ɪ.tɪn/",
             "/ˈbʊl.ə.tɪn/"
+        ],
+        "en:cactus": [
+            "/ˈkæktəs/",
+            "/ˈkæktʌs/"
         ],
         "es:arreglar": [
             "/areˈɡlaɾ/",
@@ -68315,6 +66603,9 @@
         "en:ritual": [
             "/ˈɹɪt͡ʃ.u.əl/"
         ],
+        "en:rite": [
+            "/ɹaɪt/"
+        ],
         "es:dato": [
             "/ˈdato/",
             "[ˈd̪a.t̪o]"
@@ -68343,6 +66634,11 @@
         "es:electrónica": [
             "/eleɡˈtɾonika/",
             "[e.leɣ̞ˈt̪ɾo.ni.ka]"
+        ],
+        "en:electronics": [
+            "/ˌɛl.ɛkˈtɹɒn.ɪks/",
+            "/ɪˌlɛkˈtɹɒn.ɪks/",
+            "/ɪˌlɛkˈtɹɑ.nɪks/"
         ],
         "es:emoción": [
             "/emoˈθjon/",
@@ -68389,6 +66685,10 @@
         ],
         "en:fencing": [
             "/ˈfɛnsɪŋ/"
+        ],
+        "en:matador": [
+            "/ˈma.tə.dɔː/",
+            "/ˈmæ.tə.dɔɹ/"
         ],
         "es:expresar": [
             "/eɡspɾeˈsaɾ/",
@@ -68518,6 +66818,9 @@
         "es:química": [
             "/ˈkimika/",
             "[ˈki.mi.ka]"
+        ],
+        "en:chemistry": [
+            "/ˈkɛm.ɪ.stɹi/"
         ],
         "es:sufrido": [
             "/suˈfɾido/",
@@ -68769,6 +67072,12 @@
             "/mateˈmatikas/",
             "[ma.t̪eˈma.t̪i.kas]"
         ],
+        "en:mathematics": [
+            "/mæθ(.ə)ˈmæt.ɪks/",
+            "[mæθ(.ə)ˈmæɾ.ɪks]",
+            "/mæθ(.ə)ˈmæt.əks/",
+            "[mæθ(.ə)ˈmæɾ.əks]"
+        ],
         "es:moto": [
             "/ˈmoto/",
             "[ˈmo.t̪o]"
@@ -68964,6 +67273,15 @@
         "en:backslash": [
             "/ˈbækˌslæʃ/"
         ],
+        "en:barbell": [
+            "/ˈbɑɹˌbɛl/"
+        ],
+        "en:fan": [
+            "/fæn/",
+            "/fan/",
+            "/faːn/",
+            "/fæːn/"
+        ],
         "es:bicicleta": [
             "/biθiˈkleta/",
             "[bi.θiˈkle.t̪a]",
@@ -68977,9 +67295,6 @@
         "en:pushbike": [
             "/ˈpʊʃbaɪk/",
             "/ˈpʊʃˌbaɪk/"
-        ],
-        "en:diarrhea": [
-            "/ˌdaɪ.əˈɹiː.ə/"
         ],
         "es:bolsillo": [
             "/bolˈsiʝo/",
@@ -70063,11 +68378,6 @@
             "/ˈklinika/",
             "[ˈkli.ni.ka]"
         ],
-        "en:healthcare": [
-            "/ˈhɛlθkɛɚ/",
-            "/ˈhɛltkɛɐ/",
-            "/ˈhɛltkɛɚ/"
-        ],
         "en:clinic": [
             "/ˈklɪn.ɪk/"
         ],
@@ -70089,16 +68399,6 @@
         "es:convenio": [
             "/komˈbenjo/",
             "[kõmˈbe.njo]"
-        ],
-        "en:covenant": [
-            "/ˈkʌv.ən.ənt/",
-            "/ˈkʌv.nənt/"
-        ],
-        "en:diplomacy": [
-            "/dɪˈpləʊməsi/",
-            "/dɪˈploʊməsi/",
-            "/dɪˈpləʉməsi/",
-            "/dəˈplɐʉməsi/"
         ],
         "en:convention": [
             "/kənˈvɛn.ʃən/",
@@ -70316,6 +68616,16 @@
             "/ˈtɑɹ.tɚ/",
             "/ˈtɑː.tə/",
             "/ˈtɑː(ɹ)tə(ɹ)/"
+        ],
+        "en:dominican republic": [
+            "/dəmˌɪn.ɪ.kən ɹɪˈpʌb.lɪk/",
+            "/doʊˌmɪn.ɪ.kən ɹəˈpʌb.lɪk/"
+        ],
+        "en:cricket": [
+            "/ˈkɹɪkɪt/",
+            "/ˈkɾɪkɪt/",
+            "/ˈkɹək.kət/",
+            "/ˈkrɪ(k).keʈ/"
         ],
         "es:recepción": [
             "/reθebˈθjon/",
@@ -71071,6 +69381,12 @@
         "en:shed": [
             "/ʃɛd/"
         ],
+        "en:popcorn": [
+            "/ˈpɒp.kɔːn/",
+            "/ˈpɑp.kɔɹn/",
+            "/ˈpʌp.kɔɹn/",
+            "[ˈpʌp.kɒːn]"
+        ],
         "es:catedral": [
             "/kateˈdɾal/",
             "[ka.t̪eˈð̞ɾal]"
@@ -71253,16 +69569,15 @@
             "/enfɾenˈtaɾ/",
             "[ẽɱ.fɾẽn̪ˈt̪aɾ]"
         ],
-        "en:ante": [
-            "/ˈænti/",
-            "[ˈɛənti]",
-            "/ˈɛnti/"
-        ],
         "en:confront": [
             "/kənˈfɹʌnt/",
             "/kənˈfɹɐnt/",
             "/kənˈfɹʊnt/",
             "/kɒnˈfɹɒnt/"
+        ],
+        "en:tackle": [
+            "/ˈtækəl/",
+            "[ˈtʰækɫ̩]"
         ],
         "en:pit": [
             "/pɪt/",
@@ -71628,6 +69943,11 @@
             "/ˈeko/",
             "[ˈe.ko]"
         ],
+        "en:echo": [
+            "/ˈɛk.əʊ/",
+            "/ˈɛk.oʊ/",
+            "/ˈɛkoʊ/"
+        ],
         "es:eliminación": [
             "/eliminaˈθjon/",
             "[e.li.mi.naˈθjõn]",
@@ -71818,6 +70138,11 @@
             "/sikoloˈxia/",
             "[si.ko.loˈxi.a]",
             "/psikoloˈxia/"
+        ],
+        "en:psychology": [
+            "/saɪˈkɒl.ə.d͡ʒɪ/",
+            "/saɪˈkɑ.lə.d͡ʒi/",
+            "/sɑɪˈkɔl.ə.d͡ʒɪ/"
         ],
         "es:récord": [
             "/ˈrekoɾd/",
@@ -72326,10 +70651,6 @@
             "[aˈni.ʝo]",
             "/aˈniʎo/"
         ],
-        "en:mycology": [
-            "/maɪˈkɒ.lə.d͡ʒi/",
-            "/maɪˈkɑ.lə.d͡ʒi/"
-        ],
         "en:annulus": [
             "/ˈænjʊləs/",
             "/ˈænjələs/",
@@ -72458,18 +70779,15 @@
             "/estaˈdistika/",
             "[es.t̪aˈð̞is.t̪i.ka]"
         ],
+        "en:statistics": [
+            "/stəˈtɪs.tɪks/"
+        ],
         "en:statistic": [
             "/stəˈtɪs.tɪk/"
         ],
         "es:fan": [
             "/ˈfan/",
             "[ˈfãn]"
-        ],
-        "en:fan": [
-            "/fæn/",
-            "/fan/",
-            "/faːn/",
-            "/fæːn/"
         ],
         "es:fiebre": [
             "/ˈfjebɾe/",
@@ -72622,14 +70940,14 @@
         "en:setback": [
             "/ˈsɛtbæk/"
         ],
-        "en:knitting": [
-            "/ˈnɪtɪŋ/"
-        ],
         "en:purl": [
             "/pɜːl/",
             "[pʰəːɫ]",
             "/pɝl/",
             "[pʰɝɫ]"
+        ],
+        "en:backhand": [
+            "/ˈbækhænd/"
         ],
         "es:sacrificio": [
             "/sakɾiˈfiθjo/",
@@ -72664,8 +70982,9 @@
             "/ˈtenis/",
             "[ˈt̪e.nis]"
         ],
-        "en:footwear": [
-            "/ˈfʊtwɛə(ɹ)/"
+        "en:tennis": [
+            "/ˈtɛnɪs/",
+            "/ˈtenɪs/"
         ],
         "en:sneaker": [
             "/ˈsnikɚ/"
@@ -72859,6 +71178,12 @@
         "es:fantasía": [
             "/fantaˈsia/",
             "[fãn̪.t̪aˈsi.a]"
+        ],
+        "en:fantasy": [
+            "/ˈfæntəsi/",
+            "/ˈfæntəzi/",
+            "[ˈfæ̃ɾ̃əsi]",
+            "[ˈfænəsi]"
         ],
         "en:make-believe": [
             "/ˈmeɪk bəˌliːv/",
@@ -73683,6 +72008,10 @@
             "/ɛn-/",
             "/ɪnˈtʃɑːnt.mənt/"
         ],
+        "en:sweetie": [
+            "/ˈswiːti/",
+            "/ˈswi.ti/"
+        ],
         "es:escudo": [
             "/esˈkudo/",
             "[esˈku.ð̞o]"
@@ -73697,12 +72026,6 @@
         ],
         "en:escutcheon": [
             "/ɪˈskʌt͡ʃən/"
-        ],
-        "en:numismatics": [
-            "/ˌn(j)uːmɪzˈmatɪks/",
-            "[ˌn(j)ʊu̯mɪzˈmætʰɪks]",
-            "/ˌn(j)uːmɪzˈmaɾɪks/",
-            "[ˌn(j)ʊu̯mɪzˈmaɾɪks]"
         ],
         "en:escudo": [
             "/ɪˈskuːdəʊ/",
@@ -74072,12 +72395,6 @@
         "en:fabric": [
             "/ˈfæb.ɹɪk/"
         ],
-        "en:cloth": [
-            "/klɒθ/",
-            "/klɔːθ/",
-            "/klɔθ/",
-            "/klɑθ/"
-        ],
         "es:utilidad": [
             "/utiliˈdad/",
             "[u.t̪i.liˈð̞að̞]"
@@ -74325,6 +72642,9 @@
             "/mineˈɾia/",
             "[mi.neˈɾi.a]"
         ],
+        "en:mining": [
+            "/ˈmaɪnɪŋ/"
+        ],
         "es:mérito": [
             "/ˈmeɾito/",
             "[ˈme.ɾi.t̪o]"
@@ -74348,12 +72668,6 @@
         "es:pasaje": [
             "/paˈsaxe/",
             "[paˈsa.xe]"
-        ],
-        "en:fare": [
-            "/ˈfɛə/",
-            "[ˈfɛə̯]",
-            "[ˈfɛː]",
-            "/ˈfɛː/"
         ],
         "en:passenger": [
             "/ˈpæs.ɪn.d͡ʒə/",
@@ -74503,11 +72817,6 @@
             "/ˈtɹɪp.əl/",
             "[ˈtɹɪp.l̩]",
             "[ˈt̠͡ɹ̠̊ɪp.l̩]"
-        ],
-        "en:basketball": [
-            "/ˈbɑːs.kɪt.bɔːl/",
-            "/ˈbæs.kɪt.bɔl/",
-            "/ˈbæs.kɪt.bɑl/"
         ],
         "es:vela": [
             "/ˈbela/",
@@ -74819,6 +73128,11 @@
             "/xeoɡɾaˈfia/",
             "[xe.o.ɣ̞ɾaˈfi.a]"
         ],
+        "en:geography": [
+            "/dʒiˈɒɡɹəfi/",
+            "/ˈdʒɒɡɹəfi/",
+            "/d͡ʒiˈɑɡɹəfi/"
+        ],
         "es:golfo": [
             "/ˈɡolfo/",
             "[ˈɡol.fo]"
@@ -74951,12 +73265,6 @@
             "[ˈpɹɒstɪtʰjuːt]",
             "/ˈpɹɒstɪˌt͡ʃuːt/",
             "[ˈpɹɒstɪˌt͡ʃuːt]"
-        ],
-        "en:whore": [
-            "/hɔː/",
-            "/hɔɚ/",
-            "/ho(ː)ɚ/",
-            "/hoə/"
         ],
         "en:slut": [
             "/slʌt/",
@@ -75207,15 +73515,13 @@
             "/ɹəʉp/",
             "/ɹɐʉp/"
         ],
-        "en:aeronautics": [
-            "/ˌɛə.ɹəʊˈnɔː.tɪks/",
-            "/ˌɛɚ.oʊˈnɔ.tɪks/",
-            "[ˌɛɚ.oʊˈnɔ.ɾɪks]",
-            "/ˌɛɚ.oʊˈnɑ.tɪks/"
-        ],
         "en:chord": [
             "/kɔːd/",
             "/kɔɹd/"
+        ],
+        "en:clockwork": [
+            "/ˈklɑkwɝk/",
+            "/ˈklɒkwɜːk/"
         ],
         "es:cálculo": [
             "/ˈkalkulo/",
@@ -75230,6 +73536,11 @@
             "/ˌɛs.tɪˈmeɪ.ʃən/",
             "/ˌɛs.təˈmeɪ.ʃən/",
             "/ˌes.tɪˈmæɪ.ʃən/"
+        ],
+        "en:arithmetic": [
+            "[əˈɹɪθmətɪk]",
+            "/ˌɛɹɪθˈmɛtɪk/",
+            "/æɹɪθˈmɛtɪk/"
         ],
         "en:calculus": [
             "/ˈkæl.kjʊ.ləs/",
@@ -75632,12 +73943,6 @@
             "/beˈbida/",
             "[beˈβ̞i.ð̞a]"
         ],
-        "en:beverage": [
-            "/ˈbɛv(ə)ɹɪd͡ʒ/",
-            "/ˈbɛvəɹɪd͡ʒ/",
-            "/ˈbɛvɹɪd͡ʒ/",
-            "/ˈbev(ə)ɹɪd͡ʒ/"
-        ],
         "es:citado": [
             "/θiˈtado/",
             "[θiˈt̪a.ð̞o]",
@@ -75755,6 +74060,13 @@
             "/boʊn/",
             "/bəʉn/",
             "/bɐʉn/"
+        ],
+        "en:seed": [
+            "/siːd/"
+        ],
+        "en:corny": [
+            "/ˈkɔːni/",
+            "/ˈkɔɹni/"
         ],
         "es:humedad": [
             "/umeˈdad/",
@@ -75908,12 +74220,6 @@
         ],
         "en:mainstay": [
             "/ˈmeɪn.steɪ/"
-        ],
-        "en:rugby": [
-            "/ˈɹʌɡbi/",
-            "/ˈɹʊɡbi/",
-            "/ˈɾʌɡbe/",
-            "/-bɪ/"
         ],
         "en:prop": [
             "/pɹɒp/",
@@ -76092,9 +74398,6 @@
             "/ˈt͡ʃoke/",
             "[ˈt͡ʃo.ke]"
         ],
-        "en:collision": [
-            "/kəˈlɪʒn̩/"
-        ],
         "es:circo": [
             "/ˈθiɾko/",
             "[ˈθiɾ.ko]",
@@ -76211,13 +74514,6 @@
             "/ˈbɹʌðəˌhʊd/",
             "/ˈbɹʌðəˌhɵd/",
             "/ˈbɹʊðəˌhʊd/"
-        ],
-        "en:os": [
-            "/ˌoʊ ˈɛs/",
-            "/ɒs/",
-            "/ɑs/",
-            "/əʊz/",
-            "/oʊz/"
         ],
         "es:jurisdicción": [
             "/xuɾisdiɡˈθjon/",
@@ -76778,12 +75074,6 @@
             "/ˈstɜː(ɹ)weː/",
             "/ˈsteɾwe/"
         ],
-        "en:poker": [
-            "/ˈpoʊkɚ/",
-            "/ˈpəʊkə/",
-            "/ˈpəʉkə/",
-            "/ˈpɐʉkə/"
-        ],
         "es:escasez": [
             "/eskaˈseθ/",
             "[es.kaˈseθ]",
@@ -76827,6 +75117,80 @@
         ],
         "en:stuntman": [
             "/ˈstʌnt.mæn/"
+        ],
+        "es:eterno": [
+            "/eˈteɾno/",
+            "[eˈt̪eɾ.no]"
+        ],
+        "en:eternal": [
+            "/ɪˈtɜː.nl̩/",
+            "/ɪˈtɝ.nl̩/",
+            "/iˈtɝ.nl̩/"
+        ],
+        "es:extraordinario": [
+            "/eɡstɾaoɾdiˈnaɾjo/",
+            "[eɣ̞s.t̪ɾa.oɾ.ð̞iˈna.ɾjo]"
+        ],
+        "es:fallecido": [
+            "/faʝeˈθido/",
+            "[fa.ʝeˈθi.ð̞o]",
+            "/faʎeˈθido/"
+        ],
+        "es:grabado": [
+            "/ɡɾaˈbado/",
+            "[ɡɾaˈβ̞a.ð̞o]"
+        ],
+        "en:recorded": [
+            "/ɹɪˈkɔːdɪd/",
+            "/ɹə-/",
+            "/ɹəˈkɔɹdɪd/",
+            "/-əd/"
+        ],
+        "en:engraved": [
+            "/ɪnˈɡɹeɪvd/"
+        ],
+        "es:harto": [
+            "/ˈaɾto/",
+            "[ˈaɾ.t̪o]"
+        ],
+        "en:stuffed": [
+            "/stʌft/",
+            "/stʊft/",
+            "/stəft/",
+            "/stɐft/"
+        ],
+        "en:sated": [
+            "/ˈseɪtɪd/"
+        ],
+        "en:aplenty": [
+            "/əˈplɛnti/"
+        ],
+        "es:implementación": [
+            "/implementaˈθjon/",
+            "[ĩm.ple.mẽn̪.t̪aˈθjõn]",
+            "/implementaˈsjon/"
+        ],
+        "es:impunidad": [
+            "/impuniˈdad/",
+            "[ĩm.pu.niˈð̞að̞]"
+        ],
+        "en:impunity": [
+            "/ɪmˈpjuːnɪti/"
+        ],
+        "es:laguna": [
+            "/laˈɡuna/",
+            "[laˈɣ̞u.na]"
+        ],
+        "en:lagoon": [
+            "/ləˈɡuːn/"
+        ],
+        "en:pond": [
+            "/pɒnd/",
+            "/pɑnd/",
+            "/pʌnd/"
+        ],
+        "en:lacuna": [
+            "/ləˈk(j)uː.nə/"
         ]
     }
 }
