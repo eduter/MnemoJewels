@@ -9,6 +9,32 @@ Vocabulary matching game. Vite + TypeScript, no framework; DOM rendering in `src
 - Tests live in `tests/*.spec.ts`. Data/triage tooling lives in `tools/` (see `tools/russian/README.md`,
   `tools/jev/README.md`) and runs with `node --experimental-strip-types`.
 
+## PWA / offline
+
+`vite-plugin-pwa` (Workbox, `registerType: 'autoUpdate'`) emits `manifest.webmanifest`, `sw.js` and
+`registerSW.js` at build time from `vite.config.ts`. The precache globs `js/css/html/ico/png/svg/jpg/
+woff/woff2/ttf`, so the app shell, background, jewel and fonts are available offline; `public/decks/
+*.json` is deliberately *not* precached (each is >1 MB, and the imported cards already live in
+localStorage under `mj.deck.<id>`). Deck JSON is cached at runtime instead, `CacheFirst` in
+`mnemojewels-decks` — so a deck downloaded while online can be re-imported offline. Once a deck is
+selected, a mismatch-free game is fully playable offline.
+
+Icons live in `public/` and are generated from a single source SVG with `@vite-pwa/assets-generator`
+(dev dependency, config in `pwa-assets.config.mjs`):
+
+```
+cp assets/icons/<chosen>.svg public/icon.svg
+npx pwa-assets-generator --config pwa-assets.config.mjs public/icon.svg
+```
+
+That writes `favicon.ico`, `pwa-{64,192,512}.png`, `maskable-icon-512x512.png` and
+`apple-touch-icon-180x180.png`. The maskable/Apple variants pad onto the app's dark navy (`#0c0f18`)
+rather than the generator's default white. Icon candidates and a comparison gallery live in
+`assets/icons/` (`node assets/icons/render-preview.mjs` regenerates `preview.html` + `contact-sheet.png`).
+
+`src/install.ts` handles `beforeinstallprompt`/`appinstalled` and unhides the main-menu "Install app"
+button (`button.install`, hidden by default) on Chromium; other browsers just don't show it.
+
 ## Performance: alternative selection (the hot path)
 
 `cards.createNewGroup` → `chooseAlternatives` ranks deck cards by `cardDistance` against the group's

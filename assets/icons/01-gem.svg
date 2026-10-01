@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Emerald-cut jewel">
+  <defs>
+    <linearGradient id="a-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#232a40"/>
+      <stop offset="100%" stop-color="#0c0f18"/>
+    </linearGradient>
+    <radialGradient id="a-outer" cx="34%" cy="22%" r="95%">
+      <stop offset="0%" stop-color="#ff9a9a"/>
+      <stop offset="42%" stop-color="#e0202d"/>
+      <stop offset="100%" stop-color="#7d0008"/>
+    </radialGradient>
+    <linearGradient id="a-table" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#ffe0e0"/>
+      <stop offset="52%" stop-color="#ff6a6a"/>
+      <stop offset="100%" stop-color="#c1121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#a-bg)"/>
+  <polygon points="170,151 342,151 406,215 406,297 342,361 170,361 106,297 106,215" fill="url(#a-outer)"/>
+  <polygon points="188,177 324,177 380,233 380,279 324,335 188,335 132,279 132,233" fill="url(#a-table)"/>
+  <path d="M 404 96 Q 412 122 438 130 Q 412 138 404 164 Q 396 138 370 130 Q 396 122 404 96 Z" fill="#ffffff" opacity="0.95"/>
+</svg>

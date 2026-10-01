@@ -1,5 +1,10 @@
 import '../stylesheet/initial.css';
+import install from './install';
 import spinner from './spinner';
+
+// Attached immediately (not on `load`) so the `beforeinstallprompt` event is
+// not missed while the splash screen is still up.
+install.setup();
 
 window.addEventListener('load', function () {
   spinner.start();
