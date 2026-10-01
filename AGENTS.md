@@ -1,0 +1,46 @@
+# MnemoJewels
+
+Vocabulary matching game. Vite + TypeScript, no framework; DOM rendering in `src/display.ts`.
+
+## Commands
+
+- `npm run check` — typecheck (`tsc --noEmit`) then `vitest run`. Run this before claiming a change works.
+- `npm start` — dev server. `npm run build` / `npm run preview`.
+- Tests live in `tests/*.spec.ts`. Data/triage tooling lives in `tools/` (see `tools/russian/README.md`,
+  `tools/jev/README.md`) and runs with `node --experimental-strip-types`.
+
+## Performance: alternative selection (the hot path)
+
+`cards.createNewGroup` → `chooseAlternatives` ranks deck cards by `cardDistance` against the group's
+first card. `game.getScopeSize()` only grows: `startGame` seeds `ffScopeSize = saturate(30, 0.1 * deckSize, 100)`
+(so 100 for any large deck) and `onMatch` adds `increment` (capped at 10) per matched card; only
+`onMismatch` reduces it (10%). So a mismatch-free game climbs steadily — measured: a no-mismatch game
+on the Russian deck (`top-ru-en`, 6243 cards) reaches scope ~2500 before the board overflows at level 10,
+and the scan runs synchronously inside each spawn, blocking the tile-drop animation. Before the
+optimizations below, `createNewGroup` cost ~97 ms p50 / ~398 ms max at that scope; after, ~6 ms p50 /
+~20 ms max.
+
+Cost is dominated by `phonetics.ipaSequenceDistance` (a graded Needleman–Wunsch over interned IPA
+segments), not by the Levenshtein on normalized words. The fix is memoization entirely inside
+`src/phonetics.ts`:
+
+- `ipaSegments` caches the segmentation per string (97%+ hit rate).
+- `segmentDistance` interns segments and caches the `id x id` substitution cost in a lazily-filled
+  flat matrix.
+- `ipaSequenceDistance` caches the distance per transcription-array pair, keyed by identity; the
+  arrays are owned by the loaded deck. This is where most of the win comes from (~60-70% hit rate).
+- `segmentSequenceDistance` uses interned ids and a reused flat `Float64Array`, so the DP allocates
+  nothing per call.
+
+Do **not** bother caching `cards.cardDistance` (the per-pair distance): measured over a full game the
+`(firstCard, candidate)` pair essentially never repeats — a `Map` keyed by the pair had a **0% hit
+rate** and no speedup over the original. The redundancy that matters is the *intermediate* stages
+above, which recur constantly across different pairs. That is why the earlier per-first-card row cache
+(`pairDistanceRows`) was removed as dead weight.
+
+When touching this path, benchmark `cards.createNewGroup` at realistic scopes (a few hundred to a few
+thousand) rather than microbenchmarking `cardDistance` in isolation. The phonetics caches are keyed by
+value (segmentation) and object identity (transcription arrays), so they need no per-deck invalidation:
+the identity-keyed `WeakMap` is collected with the deck, and the bounded value-keyed cache is
+deck-independent. A worker would not help here: `createNewGroup` moves cards between the live indexes
+and `cardsInGame`, so it is stateful and must stay on the main thread.
