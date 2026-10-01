@@ -16,7 +16,14 @@ export interface DistanceContext {
 const NORMALIZATION_FUNCTIONS: Record<string, (word: string) => string> = {
   no: word => word.toLowerCase().replace(/å/g, 'a').replace(/ø/g, 'o'),
   sv: word => word.toLowerCase().replace(/[äå]/g, 'a').replace(/ö/g, 'o'),
+  es: word => foldDiacritics(word).replace(/ñ/g, 'n'),
+  fr: word => foldDiacritics(word).replace(/œ/g, 'oe').replace(/æ/g, 'ae'),
 };
+
+/** Lower-cases and strips combining accents, so `café`/`cafe` compare equal. */
+function foldDiacritics(word: string): string {
+  return word.toLowerCase().normalize('NFD').replace(/\p{M}/gu, '').normalize('NFC');
+}
 
 /** Strips parenthesised/bracketed qualifiers and applies language normalization. */
 export function normalizeWord(word: string, language?: string): string {
