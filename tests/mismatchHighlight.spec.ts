@@ -55,9 +55,9 @@ function seedStorage(): void {
     id: 1,
     displayName: 'Test deck',
     size: CARD_COUNT,
-    uid: 'top-no-en',
+    uid: 'top-sv-en',
     version: 1,
-    languageFront: 'no',
+    languageFront: 'sv',
     languageBack: 'en',
   };
   localStorage.setItem('mj.decks', JSON.stringify([deck]));
