@@ -88,10 +88,10 @@ diacritics before orthographic comparison.
 
 ## Known limitations
 
-- Wiktionary coverage and sense-link quality vary by lemma. Some longer lemmas
-  carry topic-label backs (`point` → `sports`, `match` → `games`) or rare senses
-  that the short-word curation does not reach; the same trait exists in the
-  Russian deck.
+- Wiktionary coverage and sense-link quality vary by lemma. Cross-language and
+  topic-label links are now filtered out (`tools/decks/translationQuality.ts`),
+  but some longer lemmas still carry a rare or archaic sense that the short-word
+  curation does not reach; the same trait exists in the Russian deck.
 - English IPA may include multiple dialects without selecting a learner's
   preferred dialect.
 - Updating source snapshots can change coverage and therefore must be reviewed
