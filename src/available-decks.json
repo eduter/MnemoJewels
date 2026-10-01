@@ -1,5 +1,15 @@
 [
   {
+    "uid": "top-es-en",
+    "displayName": "Spanish / English",
+    "version": 1
+  },
+  {
+    "uid": "top-fr-en",
+    "displayName": "French / English",
+    "version": 1
+  },
+  {
     "uid": "top-ru-en",
     "displayName": "Russian / English",
     "version": 4
