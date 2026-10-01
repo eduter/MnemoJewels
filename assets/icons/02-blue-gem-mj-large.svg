@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Blue jewel with large gold MJ monogram">
+  <defs>
+    <linearGradient id="b-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#232a40"/>
+      <stop offset="100%" stop-color="#0c0f18"/>
+    </linearGradient>
+    <radialGradient id="b-outer" cx="34%" cy="22%" r="95%">
+      <stop offset="0%" stop-color="#9cc4ff"/>
+      <stop offset="42%" stop-color="#2f6fe0"/>
+      <stop offset="100%" stop-color="#123a86"/>
+    </radialGradient>
+    <linearGradient id="b-table" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#eaf2ff"/>
+      <stop offset="52%" stop-color="#7fb2ff"/>
+      <stop offset="100%" stop-color="#3a7ae0"/>
+    </linearGradient>
+    <linearGradient id="b-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe98a"/>
+      <stop offset="55%" stop-color="#f1c101"/>
+      <stop offset="100%" stop-color="#b69202"/>
+    </linearGradient>
+    <clipPath id="b-clip"><polygon points="188,177 324,177 380,233 380,279 324,335 188,335 132,279 132,233"/></clipPath>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#b-bg)"/>
+  <polygon points="170,151 342,151 406,215 406,297 342,361 170,361 106,297 106,215" fill="url(#b-outer)"/>
+  <polygon points="188,177 324,177 380,233 380,279 324,335 188,335 132,279 132,233" fill="url(#b-table)"/>
+  <g clip-path="url(#b-clip)">
+    <ellipse cx="196" cy="176" rx="160" ry="44" fill="#ffffff" opacity="0.16"/>
+  </g>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1300-180Q1300-82 1254-36Q1208 10 1112.50 10Q1017 10 910 0L910-135Q988-130 1070-130Q1093-130 1106.50-143.50Q1120-157 1120-180L1120-560L990-560L990-700L1300-700" transform="translate(256 258) scale(0.1968) translate(-680 345) translate(4 5)" fill="#0b2a63" opacity="0.45"/>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1300-180Q1300-82 1254-36Q1208 10 1112.50 10Q1017 10 910 0L910-135Q988-130 1070-130Q1093-130 1106.50-143.50Q1120-157 1120-180L1120-560L990-560L990-700L1300-700" transform="translate(256 258) scale(0.1968) translate(-680 345)" fill="url(#b-gold)"/>
+<path d="M 410 90 Q 413.3 109.2 440 120 Q 413.3 130.8 410 150 Q 406.7 130.8 380 120 Q 406.7 109.2 410 90 Z" fill="#ffffff"/>
+</svg>
