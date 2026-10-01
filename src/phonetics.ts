@@ -40,6 +40,8 @@ interface SegmentFeatures {
   voice: number;
   /** Sibilant friction, 0 non-sibilant, 1 sibilant. */
   sibilant: number;
+  /** Nasal airflow, 1 for nasal vowels and nasal consonants. */
+  nasal: 0 | 1;
 }
 
 const FEATURE_WEIGHTS = {
@@ -51,6 +53,7 @@ const FEATURE_WEIGHTS = {
   manner: 0.5,
   voice: 0.45,
   sibilant: 0.3,
+  nasal: 0.3,
 } as const;
 
 const PLACE: Record<string, number> = {
@@ -64,8 +67,8 @@ const MANNER: Record<string, number> = {
   trill: 0.8, tap: 0.85, approximant: 0.9, lateral: 0.9,
 };
 
-function vowel(height: number, backness: number, rounding: number): SegmentFeatures {
-  return { syllabic: 1, height, backness, rounding, place: 0, manner: 0, voice: 1, sibilant: 0 };
+function vowel(height: number, backness: number, rounding: number, nasal: 0 | 1 = 0): SegmentFeatures {
+  return { syllabic: 1, height, backness, rounding, place: 0, manner: 0, voice: 1, sibilant: 0, nasal };
 }
 
 function consonant(
@@ -73,8 +76,9 @@ function consonant(
   manner: keyof typeof MANNER,
   voice: 0 | 1,
   sibilant = 0,
+  nasal: 0 | 1 = 0,
 ): SegmentFeatures {
-  return { syllabic: 0, height: 0, backness: 0, rounding: 0, place: PLACE[place], manner: MANNER[manner], voice, sibilant };
+  return { syllabic: 0, height: 0, backness: 0, rounding: 0, place: PLACE[place], manner: MANNER[manner], voice, sibilant, nasal };
 }
 
 /** Base-symbol → articulatory features for the segments that occur in the
@@ -98,29 +102,42 @@ const SEGMENTS: Record<string, SegmentFeatures> = {
   ʈ: consonant('retroflex', 'stop', 0), ɖ: consonant('retroflex', 'stop', 1),
   k: consonant('velar', 'stop', 0), ɡ: consonant('velar', 'stop', 1),
   g: consonant('velar', 'stop', 1), c: consonant('palatal', 'stop', 0),
+  ɟ: consonant('palatal', 'stop', 1),
   ʔ: consonant('glottal', 'stop', 0),
   // Fricatives
   f: consonant('labiodental', 'fricative', 0), v: consonant('labiodental', 'fricative', 1),
+  ɸ: consonant('bilabial', 'fricative', 0), β: consonant('bilabial', 'fricative', 1),
   θ: consonant('dental', 'fricative', 0), ð: consonant('dental', 'fricative', 1),
   s: consonant('alveolar', 'fricative', 0, 1), z: consonant('alveolar', 'fricative', 1, 1),
   ʃ: consonant('postalveolar', 'fricative', 0, 1), ʒ: consonant('postalveolar', 'fricative', 1, 1),
   ʂ: consonant('retroflex', 'fricative', 0, 1), ʐ: consonant('retroflex', 'fricative', 1, 1),
   ɕ: consonant('alveolopalatal', 'fricative', 0, 1), ʑ: consonant('alveolopalatal', 'fricative', 1, 1),
   x: consonant('velar', 'fricative', 0), ɣ: consonant('velar', 'fricative', 1),
-  χ: consonant('uvular', 'fricative', 0), ç: consonant('palatal', 'fricative', 0),
+  χ: consonant('uvular', 'fricative', 0), ʁ: consonant('uvular', 'fricative', 1),
+  ç: consonant('palatal', 'fricative', 0), ʝ: consonant('palatal', 'fricative', 1),
   h: consonant('glottal', 'fricative', 0), ɦ: consonant('glottal', 'fricative', 1),
   ʍ: consonant('velar', 'fricative', 0),
   // Nasals
-  m: consonant('bilabial', 'nasal', 1), ɱ: consonant('labiodental', 'nasal', 1),
-  n: consonant('alveolar', 'nasal', 1), ɳ: consonant('retroflex', 'nasal', 1),
-  ɲ: consonant('palatal', 'nasal', 1), ŋ: consonant('velar', 'nasal', 1),
+  m: consonant('bilabial', 'nasal', 1, 0, 1), ɱ: consonant('labiodental', 'nasal', 1, 0, 1),
+  n: consonant('alveolar', 'nasal', 1, 0, 1), ɳ: consonant('retroflex', 'nasal', 1, 0, 1),
+  ɲ: consonant('palatal', 'nasal', 1, 0, 1), ŋ: consonant('velar', 'nasal', 1, 0, 1),
+  ᵑ: consonant('velar', 'nasal', 1, 0, 1),
   // Liquids, glides, trills and taps
   r: consonant('alveolar', 'trill', 1), ʙ: consonant('bilabial', 'trill', 1),
+  ʀ: consonant('uvular', 'trill', 1),
   ɾ: consonant('alveolar', 'tap', 1),
   ɹ: consonant('alveolar', 'approximant', 1), ɻ: consonant('retroflex', 'approximant', 1),
   l: consonant('alveolar', 'lateral', 1), ɫ: consonant('alveolar', 'lateral', 1),
-  j: consonant('palatal', 'approximant', 1), w: consonant('velar', 'approximant', 1),
-  ʋ: consonant('labiodental', 'approximant', 1),
+  ʎ: consonant('palatal', 'lateral', 1),
+  j: consonant('palatal', 'approximant', 1), ɥ: consonant('alveolopalatal', 'approximant', 1),
+  w: consonant('velar', 'approximant', 1), ʋ: consonant('labiodental', 'approximant', 1),
+  // Precomposed nasalized and centralized vowels, which NFC keeps as one code
+  // point and which are common in Spanish and French transcriptions.
+  ã: vowel(0.0, 0.3, 0, 1), ẽ: vowel(0.5, 0.4, 0, 1), ĩ: vowel(1.0, 0.0, 0, 1),
+  õ: vowel(0.6, 1.0, 1, 1), ũ: vowel(1.0, 1.0, 1, 1),
+  ä: vowel(0.15, 0.5, 0), ö: vowel(0.6, 0.5, 1), ë: vowel(0.45, 0.5, 0),
+  ĭ: vowel(0.8, 0.2, 0),
+  ʏ: vowel(0.8, 0.0, 1), ɶ: vowel(0.0, 0.25, 1), ᵿ: vowel(0.8, 0.5, 1),
 };
 
 /** Diacritics that modify a base symbol rather than being a segment of their own. */
@@ -133,7 +150,7 @@ const DIACRITIC_COSTS: Record<string, number> = {
   '˞': 0.25, // rhoticity
   'ː': 0.15, // length
   'ˑ': 0.1, // half length
-  '̃': 0.2, // nasalization
+  '̃': 0, // nasalization is carried by the `nasal` feature, not a diacritic cost
   'ˀ': 0.3, // glottalization
   '̥': 0.15, // devoicing
   '̊': 0.15,
@@ -260,6 +277,7 @@ function diacritics(segment: string): string[] {
 function featureDistance(left: SegmentFeatures, right: SegmentFeatures): number {
   let sum = 0;
   sum += FEATURE_WEIGHTS.syllabic * (left.syllabic - right.syllabic) ** 2;
+  sum += FEATURE_WEIGHTS.nasal * (left.nasal - right.nasal) ** 2;
   if (left.syllabic === 1 && right.syllabic === 1) {
     sum += FEATURE_WEIGHTS.height * (left.height - right.height) ** 2
       + FEATURE_WEIGHTS.backness * (left.backness - right.backness) ** 2
@@ -300,13 +318,18 @@ function computeSegmentDistance(left: string, right: string): number {
 
   const leftBase = baseSymbol(left);
   const rightBase = baseSymbol(right);
-  if (leftBase === rightBase) return Math.min(1, diacriticCost);
-
-  const leftFeatures = SEGMENTS[leftBase];
-  const rightFeatures = SEGMENTS[rightBase];
+  const leftFeatures = featuresFor(leftBase, leftDiacritics);
+  const rightFeatures = featuresFor(rightBase, rightDiacritics);
   if (!leftFeatures || !rightFeatures) return 1;
 
   return Math.min(1, featureDistance(leftFeatures, rightFeatures) + diacriticCost);
+}
+
+/** Base-symbol features, with a combining nasalization mark applied on top. */
+function featuresFor(base: string, marks: string[]): SegmentFeatures | undefined {
+  const features = SEGMENTS[base];
+  if (!features) return undefined;
+  return marks.includes('\u0303') ? { ...features, nasal: 1 } : features;
 }
 
 // Reused across calls: sequence lengths here are single digits, and this is the
