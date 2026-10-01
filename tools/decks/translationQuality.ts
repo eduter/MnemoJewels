@@ -26,7 +26,7 @@ export interface SenseTranslation {
 }
 
 export interface TranslationsForSenseOptions {
-  russianLemma?: string;
+  frontLemma?: string;
   englishHeadwords?: Set<string>;
   allowGlossFallback?: boolean;
 }
@@ -53,12 +53,12 @@ export function englishFromSenseLink(link: unknown): string | null {
   return normalizeTranslation(display);
 }
 
-export function shouldRejectHeuristicGloss(russianLemma: string, englishLemma: string): boolean {
+export function shouldRejectHeuristicGloss(frontLemma: string, englishLemma: string): boolean {
   const english = englishLemma.toLowerCase();
-  const allowedPos = VOCABULARY_POS_TRANSLATIONS.get(russianLemma.toLowerCase());
+  const allowedPos = VOCABULARY_POS_TRANSLATIONS.get(frontLemma.toLowerCase());
   if (allowedPos === english) return false;
 
-  if (russianLemma.length === 1 && (english === 'letter' || english === 'alphabet')) {
+  if (frontLemma.length === 1 && (english === 'letter' || english === 'alphabet')) {
     return true;
   }
   if (/^demonstrative\b/.test(english) || english === 'personal pronoun') {
@@ -82,13 +82,13 @@ export function shouldRejectHeuristicGloss(russianLemma: string, englishLemma: s
   return false;
 }
 
-export function shouldRejectTranslation(russianLemma: string, englishLemma: string): boolean {
-  return shouldRejectHeuristicGloss(russianLemma, englishLemma);
+export function shouldRejectTranslation(frontLemma: string, englishLemma: string): boolean {
+  return shouldRejectHeuristicGloss(frontLemma, englishLemma);
 }
 
 export function translationsForSense(
   sense: KaikkiSense,
-  { russianLemma = '', englishHeadwords, allowGlossFallback = true }: TranslationsForSenseOptions = {},
+  { frontLemma = '', englishHeadwords, allowGlossFallback = true }: TranslationsForSenseOptions = {},
 ): SenseTranslation[] {
   const byValue = new Map<string, SenseTranslation>();
 
@@ -96,7 +96,7 @@ export function translationsForSense(
     const normalized = englishFromSenseLink(link);
     if (!normalized) continue;
     if (englishHeadwords && !englishHeadwords.has(normalized)) continue;
-    if (shouldRejectHeuristicGloss(russianLemma, normalized)) continue;
+    if (shouldRejectHeuristicGloss(frontLemma, normalized)) continue;
     const record = byValue.get(normalized) ?? { value: normalized, sources: new Set<TranslationSource>() };
     record.sources.add('link');
     byValue.set(normalized, record);
@@ -108,7 +108,7 @@ export function translationsForSense(
       const normalized = normalizeTranslation(fallback);
       if (
         (!englishHeadwords || englishHeadwords.has(normalized))
-        && !shouldRejectHeuristicGloss(russianLemma, normalized)
+        && !shouldRejectHeuristicGloss(frontLemma, normalized)
       ) {
         const record = byValue.get(normalized) ?? { value: normalized, sources: new Set<TranslationSource>() };
         record.sources.add('gloss');

@@ -3,7 +3,7 @@ import {
   englishFromSenseLink,
   shouldRejectHeuristicGloss,
   translationsForSense,
-} from '../tools/russian/translationQuality.ts';
+} from '../tools/decks/translationQuality.ts';
 
 describe('translationQuality', () => {
   const englishHeadwords = new Set([
@@ -41,7 +41,7 @@ describe('translationQuality', () => {
   it('keeps grammar-term lemmas on their POS translations', () => {
     const sense = { links: [['verb', 'verb']], glosses: ['verb'] };
     expect(translationsForSense(sense, {
-      russianLemma: 'глагол',
+      frontLemma: 'глагол',
       englishHeadwords: new Set(['verb']),
     })).toEqual([{ value: 'verb', sources: new Set(['link']) }]);
   });
