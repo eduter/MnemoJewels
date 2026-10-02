@@ -13,17 +13,8 @@
          url("../../public/fonts/russo_one.ttf") format("truetype");
   }
 
-  /* ---- tweak these ---- *
-   * The icon is a 512x512 design space. Every length below is in those units;
-   * --u converts them to pixels, so changing --icon scales the whole thing. */
   :root {
     --icon: 512px;    /* canvas size */
-    --cap: 123;       /* letter cap height, units */
-    --m-left: 141;    /* M's left edge, units */
-    --m-drop: 0;      /* M's baseline drop, units (positive = lower) */
-    --j-left: 289;    /* J's left edge, units */
-    --j-drop: 4;      /* J's baseline drop, units */
-    --gold: #f1c101;
   }
 
   html, body {
@@ -46,12 +37,11 @@
 
   /* The letters: styling copied from .logo in stylesheet/logo.css. */
   .letter {
-    position: absolute;
+    position: relative;
     line-height: 1;
     font-weight: normal;
     /* Russo One's cap height is 0.7em, so --cap / 0.7 gives the font size. */
-    font-size: calc(var(--cap) / 0.7 * var(--u));
-    color: var(--gold);
+    color: #f1c101;
     text-shadow: -0.02em -0.02em 0.02em #b69202,
                   0.01em  0.01em 0.02em #b69202,
                  -0.05em -0.05em 0 #000,
@@ -62,16 +52,19 @@
                  -0.05em  0.07em 0.06em #000;
   }
 
+  .letters {
+    position: absolute;
+    top: 93px;
+    left: 104px;
+    font-size: 231px;
+  }
   .letter.m {
-    left: calc(var(--m-left) * var(--u));
-    top: calc(50% + var(--m-drop) * var(--u));
-    transform: translateY(-50%);
+    top: 0;
+    left: 0;
   }
   .letter.j {
-    left: calc(var(--j-left) * var(--u));
-    top: calc(50% + var(--j-drop) * var(--u));
-    transform: translateY(-50%);
-  }
+    top: 56px;
+    left: -79px;  }
 
   /* Optional guide: click the jewel to toggle a crosshair + cap lines. */
   .icon.guides::before,
@@ -598,8 +591,10 @@
   </g>
   <g transform="translate(393.14 16) scale(3.42857) translate(-580 -912.36217)"><path d="m 340.11842,1029.906 0.66224,10.9531 8.11089,-7.221 -7.27668,8.2132 10.84127,0.6293 -10.95303,0.6622 7.22098,8.1109 -8.21324,-7.2767 -0.62927,10.8413 -0.66224,-10.953 -8.11089,7.221 7.27668,-8.2133 -10.84127,-0.6292 10.95303,-0.6623 -7.22098,-8.1109 8.21324,7.2767 z" transform="translate(594.76 1022.68) scale(1.6) translate(-594.76 -1022.68) matrix(1.3240152,0,0,1.3240152,144.59788,-357.42777)" fill="url(#j-spark)" filter="url(#j-blur)"/></g>
 </svg>
-    <span class="letter m">M</span>
-    <span class="letter j">J</span>
+    <div class="letters">
+      <span class="letter m">M</span>
+      <span class="letter j">J</span>
+    </div>
   </div>
   <script>
     // Click the icon to toggle centre guides.
