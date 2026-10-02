@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Blue jewel with large gold MJ monogram">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Blue octagonal jewel with gold MJ monogram">
   <defs>
-    <linearGradient id="b-bg" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="c-bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#232a40"/>
       <stop offset="100%" stop-color="#0c0f18"/>
     </linearGradient>
-    <linearGradient id="b-blue" x1="0" y1="0" x2="0.15" y2="1">
+    <linearGradient id="c-blue" x1="0" y1="0" x2="0.15" y2="1">
       <stop offset="0%" stop-color="#5b93ef"/>
       <stop offset="55%" stop-color="#2f6fe0"/>
       <stop offset="100%" stop-color="#1c4aa8"/>
     </linearGradient>
-    <linearGradient id="b-gold" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="c-gold" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffe98a"/>
       <stop offset="55%" stop-color="#f1c101"/>
       <stop offset="100%" stop-color="#b69202"/>
     </linearGradient>
-    <clipPath id="b-clip"><rect x="96" y="96" width="320" height="320" rx="64"/></clipPath>
+    <clipPath id="c-clip"><polygon points="170,151 342,151 406,215 406,297 342,361 170,361 106,297 106,215"/></clipPath>
 
     <linearGradient
-       id="b-w1"
+       id="c-w1"
       >
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
@@ -25,7 +25,7 @@
          id="stop5936" />
     </linearGradient>
     <linearGradient
-       id="b-w2">
+       id="c-w2">
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
          offset="0"
@@ -36,7 +36,7 @@
          id="stop5898" />
     </linearGradient>
     <linearGradient
-       id="b-w3"
+       id="c-w3"
       >
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
@@ -45,8 +45,8 @@
     </linearGradient>
     <radialGradient
       
-       href="#b-w2"
-       id="b-spark"
+       href="#c-w2"
+       id="c-spark"
        cx="340"
        cy="1042.3622"
        fx="340"
@@ -55,17 +55,17 @@
        gradientUnits="userSpaceOnUse" />
     <filter
       
-       id="b-blur"
+       id="c-blur"
        color-interpolation-filters="sRGB">
       <feGaussianBlur
         
          stdDeviation="0.43596484"
-         id="b-blurfe" />
+         id="c-blurfe" />
     </filter>
     <radialGradient
       
-       href="#b-w1"
-       id="b-gloss"
+       href="#c-w1"
+       id="c-gloss"
        cx="212.5"
        cy="982.36218"
        fx="212.5"
@@ -75,9 +75,9 @@
        gradientUnits="userSpaceOnUse" />
   
   </defs>
-  <rect width="512" height="512" rx="112" fill="url(#b-bg)"/>
-  <rect x="96" y="96" width="320" height="320" rx="64" fill="url(#b-blue)"/>
-  <g clip-path="url(#b-clip)">
+  <rect width="512" height="512" rx="112" fill="url(#c-bg)"/>
+  <polygon points="170,151 342,151 406,215 406,297 342,361 170,361 106,297 106,215" fill="url(#c-blue)"/>
+  <g clip-path="url(#c-clip)">
     <g transform="translate(96 96) scale(0.52459 2.28571)">
       <g transform="translate(0,-912.36217)">
     <path
@@ -85,7 +85,7 @@
       
        id="path5470"
        d="m 30,942.36218 550,0 0,80.00002 -550,0 z"
-       style="opacity:0.5;fill:url(#b-gloss);fill-opacity:1;stroke:none" />
+       style="opacity:0.5;fill:url(#c-gloss);fill-opacity:1;stroke:none" />
     <path
       
       
@@ -226,7 +226,7 @@
        style="opacity:0.1;fill:#2f6fe0;fill-opacity:1;stroke:none" />
     <path
       
-       style="fill:url(#b-spark);fill-opacity:1;fill-rule:nonzero;stroke:none;filter:url(#b-blur)"
+       style="fill:url(#c-spark);fill-opacity:1;fill-rule:nonzero;stroke:none;filter:url(#c-blur)"
        id="path5836"
       
       
@@ -243,7 +243,7 @@
       </g>
     </g>
   </g>
-
-  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1200-60Q1200 38 1154 84Q1108 130 1012.50 130Q917 130 810 120L810-15Q888-10 970-10Q993-10 1006.50-23.50Q1020-37 1020-60L1020-440L890-440L890-580L1200-580" transform="translate(256 258) scale(0.2193) translate(-630 285) translate(0 41.03967168262654)" fill="none" stroke="#000000" stroke-width="355.67715458276336" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1200-60Q1200 38 1154 84Q1108 130 1012.50 130Q917 130 810 120L810-15Q888-10 970-10Q993-10 1006.50-23.50Q1020-37 1020-60L1020-440L890-440L890-580L1200-580" transform="translate(256 258) scale(0.2193) translate(-630 285)" fill="url(#b-gold)"/>
+  <polygon points="170,151 342,151 406,215 406,297 342,361 170,361 106,297 106,215" fill="none" stroke="#0c0f18" stroke-width="10"/>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1200-60Q1200 38 1154 84Q1108 130 1012.50 130Q917 130 810 120L810-15Q888-10 970-10Q993-10 1006.50-23.50Q1020-37 1020-60L1020-440L890-440L890-580L1200-580" transform="translate(256 258) scale(0.1754) translate(-630 285) translate(0 51.31128848346636)" fill="none" stroke="#000000" stroke-width="444.69783352337515" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1200-60Q1200 38 1154 84Q1108 130 1012.50 130Q917 130 810 120L810-15Q888-10 970-10Q993-10 1006.50-23.50Q1020-37 1020-60L1020-440L890-440L890-580L1200-580" transform="translate(256 258) scale(0.1754) translate(-630 285)" fill="url(#c-gold)"/>
 </svg>
