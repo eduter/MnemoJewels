@@ -32,9 +32,11 @@ That writes `favicon.ico`, `pwa-{64,192,512}.png`, `maskable-icon-512x512.png` a
 rather than the generator's default white. Icon candidates and a comparison gallery live in
 `assets/icons/` (`node assets/icons/render-preview.mjs` regenerates `preview.html` + `contact-sheet.png`).
 Candidates are blue-jewel + gold **MJ** marks built from `public/images/jewel.svg` and the Russo One logo
-font; the jewel is drawn **9-slice** (square end-caps, only the middle stretches) over the game's tile
-blue `#0000ff`, and the monogram carries the logo's own `0.05em` black rim. The MJ is emitted as vector
-outlines, not `<text>`, so standalone SVGs keep the font.
+font. `jewel.svg` is authored wide (610x140, ~4.36:1), so the icon keeps that true aspect and scales the
+whole jewel uniformly — the game's own `background-size: 100% 100%` stretch would squash the end facets
+on a square icon, so it is deliberately not reproduced. The jewel sits on the game's tile blue `#0000ff`,
+and the monogram carries the logo's own `0.05em` black rim. The MJ is emitted as vector outlines, not
+`<text>`, so standalone SVGs keep the font.
 
 `src/install.ts` handles `beforeinstallprompt`/`appinstalled` and unhides the main-menu "Install app"
 button (`button.install`, hidden by default) on Chromium; other browsers just don't show it.
