@@ -5,7 +5,7 @@
       <stop offset="100%" stop-color="#0c0f18"/>
     </linearGradient>
     <clipPath id="b-frame"><rect width="512" height="512" rx="112"/></clipPath>
-  <clipPath id="b-oct"><path d="M98 16 H414 L496 98 V414 L414 496 H98 L16 414 V98 Z"/></clipPath>
+    <clipPath id="b-oct"><path d="M102 16 H410 L496 102 V410 L410 496 H102 L16 410 V102 Z"/></clipPath>
 
     <linearGradient
        id="b-w1"
