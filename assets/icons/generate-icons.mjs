@@ -3,9 +3,9 @@
 // Everything is matched to the game rather than invented:
 //   * the jewel is public/images/jewel.svg, the same overlay the game paints over
 //     a coloured tile. The tile colour is CSS `blue` (#0000ff), used verbatim.
-//   * the jewel is drawn with 9-slice: the game stretches it over the whole tile
-//     (`background-size:100% 100%`), but for an icon that squashes the 30px end
-//     facets, so the caps stay square and only the middle stretches.
+//   * the jewel is kept at its true 610:140 aspect and scaled uniformly. The game
+//     stretches it over the whole tile (`background-size:100% 100%`), which would
+//     squash the end facets on a square icon; that stretch is not reproduced here.
 //   * the monogram is the app's logo font (Russo One) with the logo's own shadow:
 //     a black rim of ~0.05em (the four hard corner offsets in stylesheet/logo.css)
 //     plus a soft lower shadow. The rim is stroked in path space so it scales with
@@ -58,45 +58,50 @@ function gameJewel(prefix) {
   return { defs: scrub(JEWEL_DEFS), body: scrub(JEWEL_BODY) };
 }
 
-// jewel.svg is authored on 610x140 with 30px end-caps and a 550px middle. The
-// caps hold the facet geometry and must stay square; the middle is a repeating
-// gloss band and may stretch. `squareCap` renders it to an aspect-true bitmap
-// (also handy for previews); `nineSlice` emits it as SVG clipped to three panels.
+// jewel.svg is authored on 610x140 (a wide gem, ~4.36:1) and the game stretches
+// it to the tile. The icon keeps that true aspect: the whole jewel is scaled
+// uniformly, never distorted, so the end facets and the gloss band keep their
+// real proportions.
 const JEWEL_W = 610;
 const JEWEL_H = 140;
-const CAP = 30;
 const LAYER_Y = 912.36217;
 
-function jewelPanel(body, clipId, clipX, clipW, x, w, h) {
-  const sx = w / clipW;
-  const sy = h / JEWEL_H;
-  return `    <clipPath id="${clipId}"><rect x="${clipX}" y="0" width="${clipW}" height="${JEWEL_H}"/></clipPath>
-    <g clip-path="url(#${clipId})"><g transform="translate(${x} 0) scale(${sx.toFixed(5)} ${sy.toFixed(5)}) translate(${-clipX} -${LAYER_Y})">
-${body}
-    </g></g>`;
-}
-
-function nineSlice(prefix, x, y, w, h, body) {
-  const midW = JEWEL_W - 2 * CAP;
-  const capW = CAP * (h / JEWEL_H);
-  const mid = w - 2 * capW;
+function wideJewel(prefix, body, { cx, cy, w }) {
+  const h = (w * JEWEL_H) / JEWEL_W;
+  const s = w / JEWEL_W;
+  const x = cx - w / 2;
+  const y = cy - h / 2;
   return `  <g>
-    <rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${TILE_BLUE}"/>
-${jewelPanel(body, `${prefix}-capL`, 0, CAP, x, capW, h)}
-${jewelPanel(body, `${prefix}-mid`, CAP, midW, x + capW, mid, h)}
-${jewelPanel(body, `${prefix}-capR`, JEWEL_W - CAP, CAP, x + w - capW, capW, h)}
+    <rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" rx="${(h * 0.14).toFixed(1)}" fill="${TILE_BLUE}"/>
+    <clipPath id="${prefix}-jclip"><rect x="0" y="${LAYER_Y}" width="${JEWEL_W}" height="${JEWEL_H}"/></clipPath>
+    <g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${s.toFixed(5)}) translate(0 ${-LAYER_Y})">
+      <g clip-path="url(#${prefix}-jclip)">
+${body}
+      </g>
+    </g>
   </g>`;
 }
 
 // --- the MJ monogram --------------------------------------------------------
-// Letter-spacing and cap height are quoted as fractions of the cap height (em)
-// so the settings read the same way the CSS does.
-function monogram({ cap = 0.72, track = 0.035, jDrop = 0, cx, cy }) {
+// Letter-spacing and cap height are quoted as fractions of the em (the font
+// size) so the settings read the same way the CSS does. `layout` decides how the
+// J sits against the M: `row` puts it beside the M, `tuck` pulls it in so it
+// overlaps the M's right leg, and `stack` drops it below the M.
+function monogram({ cap = 0.72, track = 0.035, jDrop = 0, cx, cy, layout = 'row' }) {
   const glyphs = font.getPath('M', 0, 0, EM).getBoundingBox();
   const advM = font.getAdvanceWidth('M', EM);
-  const advJ = font.getAdvanceWidth('J', EM);
-  const jx = advM + track * EM;
-  const jy = -jDrop * EM;
+  const jBox = font.getPath('J', 0, 0, EM).getBoundingBox();
+  const jCenter = (jBox.x1 + jBox.x2) / 2;
+  const mCenter = (glyphs.x1 + glyphs.x2) / 2;
+  // Font y grows downward, so a positive drop lowers the J.
+  let jx = advM + track * EM;
+  let jy = jDrop * EM;
+  if (layout === 'tuck') {
+    jx = advM - 0.25 * EM;
+  } else if (layout === 'stack') {
+    jx = mCenter - jCenter;
+    jy = glyphs.y2 - glyphs.y1 + 0.16 * EM + jDrop * EM;
+  }
   const combined = new opentype.Path();
   combined.extend(font.getPath('M', 0, 0, EM));
   combined.extend(font.getPath('J', jx, jy, EM));
@@ -110,23 +115,28 @@ function monogram({ cap = 0.72, track = 0.035, jDrop = 0, cx, cy }) {
     s,
     w,
     h,
+    // One em in output pixels. The cap is 0.7em, so this must not be derived
+    // from the M+J bounding box: the J's drop would inflate it.
+    em: EM * s,
   };
 }
 
-// The logo's rim is 0.05em around the glyph; a stroke of half that sits centred
-// on the outline, so 0.05em of black lands outside the letter. The soft lower
-// shadow is the 0.05/0.07em 0.06em pair in logo.css.
-function mj(prefix, opts, { rim = 0.10, soft = true } = {}) {
+// The logo's rim is a 0.05em black text-shadow on the four diagonals (logo.css).
+// A stroke of twice that, centred on the outline, leaves 0.05em of black outside
+// the gold. The two extra shadows are the soft lower pair, 0.05/0.07em by 0.06em.
+// All offsets are quoted in em (the font size), not cap height: em = cap/0.7.
+function mj(prefix, opts, { rim = 0.05, soft = true } = {}) {
   const m = monogram(opts);
-  const capPx = m.h; // cap height is the scale reference for the em fractions
-  const stroke = (rim * capPx) / m.s;
-  const softStroke = stroke * 1.4;
-  const dy = (0.07 * capPx) / m.s;
+  const emPx = m.em;
+  const stroke = (2 * rim * emPx) / m.s;
+  const softStroke = (2 * 0.03 * emPx) / m.s;
+  const dx = (0.05 * emPx) / m.s;
+  const dy = (0.07 * emPx) / m.s;
   const parts = [];
   if (soft) {
     parts.push(
-      `  <path d="${m.d}" transform="${m.transform} translate(${(0.05 * capPx) / m.s} ${dy})" fill="none" stroke="#000000" stroke-width="${softStroke.toFixed(1)}" stroke-linejoin="round" opacity="0.35"/>`,
-      `  <path d="${m.d}" transform="${m.transform} translate(${(-0.05 * capPx) / m.s} ${dy})" fill="none" stroke="#000000" stroke-width="${softStroke.toFixed(1)}" stroke-linejoin="round" opacity="0.35"/>`,
+      `  <path d="${m.d}" transform="${m.transform} translate(${dx.toFixed(1)} ${dy.toFixed(1)})" fill="none" stroke="#000000" stroke-width="${softStroke.toFixed(1)}" stroke-linejoin="round"/>`,
+      `  <path d="${m.d}" transform="${m.transform} translate(${(-dx).toFixed(1)} ${dy.toFixed(1)})" fill="none" stroke="#000000" stroke-width="${softStroke.toFixed(1)}" stroke-linejoin="round"/>`,
     );
   }
   parts.push(
@@ -152,22 +162,8 @@ function sparkle(prefix, x, y, r, { bloom = 1.9, opacity = 1 } = {}) {
   </g>`;
 }
 
-function svg(label, prefix, body, { octagon = false } = {}) {
+function svg(label, prefix, body, { jewelW = 480 } = {}) {
   const jewel = gameJewel(prefix);
-  // The jewel fills most of the tile; the narrow margin is where the sparkle
-  // overflows into, so it does not read as dead space.
-  const tile = octagon
-    ? { x: 48, y: 48, w: 416, h: 416 }
-    : { x: 40, y: 40, w: 432, h: 432 };
-  const cut = tile.w * 0.3;
-  const octPoints = octagon
-    ? [
-        [tile.x + cut, tile.y], [tile.x + tile.w - cut, tile.y],
-        [tile.x + tile.w, tile.y + cut], [tile.x + tile.w, tile.y + tile.h - cut],
-        [tile.x + tile.w - cut, tile.y + tile.h], [tile.x + cut, tile.y + tile.h],
-        [tile.x, tile.y + tile.h - cut], [tile.x, tile.y + cut],
-      ].map((p) => p.join(',')).join(' ')
-    : null;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="${label}">
   <defs>
     <linearGradient id="${prefix}-bg" x1="0" y1="0" x2="0" y2="1">
@@ -188,14 +184,11 @@ function svg(label, prefix, body, { octagon = false } = {}) {
       <feGaussianBlur stdDeviation="3"/>
     </filter>
     <clipPath id="${prefix}-frame"><rect width="512" height="512" rx="112"/></clipPath>
-    ${octPoints ? `<clipPath id="${prefix}-oct"><polygon points="${octPoints}"/></clipPath>` : ''}
 ${jewel.defs}
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#${prefix}-bg)"/>
   <g clip-path="url(#${prefix}-frame)">
-    <g${octagon ? ` clip-path="url(#${prefix}-oct)"` : ''}>
-${nineSlice(prefix, tile.x, tile.y, tile.w, tile.h, jewel.body)}
-    </g>
+${wideJewel(prefix, jewel.body, { cx: 256, cy: 256, w: jewelW })}
 ${body}
   </g>
 </svg>
@@ -203,36 +196,39 @@ ${body}
 }
 
 // --- candidates -------------------------------------------------------------
-// Cap heights are fractions of the 512 tile; the jewel face inside the tile is
-// about 0.78 of its height, so 0.30 reads as a large but not crowded monogram.
-const SMALL = { cap: 0.30 * 512, track: 0.035, cx: 256, cy: 256 };
+// The wide jewel's face is only ~110px tall (140/610 * 480), so the monogram is
+// sized to it. `jDrop` is a fraction of the em; the J sits slightly lower than
+// the M in every layout, matching the logo's baseline feel.
+const CAP = 0.19 * 512;
+const BASE = { cap: CAP, cx: 256, cy: 256 };
+const SPARK = [478, 196, 48];
 
 writeFileSync(join(here, '01-blue-gem-mj.svg'), svg(
   'Blue jewel with gold MJ monogram',
   'a',
-  `${mj('a', SMALL)}
-${sparkle('a', 430, 430, 74)}`,
+  `${mj('a', { ...BASE, track: 0.03, jDrop: 0.02 })}
+${sparkle('a', ...SPARK)}`,
 ));
 
 writeFileSync(join(here, '02-blue-gem-mj-lower-j.svg'), svg(
   'Blue jewel with gold MJ monogram, J dropped',
   'b',
-  `${mj('b', { ...SMALL, jDrop: 0.02 })}
-${sparkle('b', 430, 430, 74)}`,
+  `${mj('b', { ...BASE, track: 0.03, jDrop: 0.07 })}
+${sparkle('b', ...SPARK)}`,
 ));
 
-writeFileSync(join(here, '03-blue-gem-mj-octagon.svg'), svg(
-  'Blue octagonal jewel with gold MJ monogram',
+writeFileSync(join(here, '03-blue-gem-mj-tuck.svg'), svg(
+  'Blue jewel with gold MJ monogram, J tucked under the M leg',
   'c',
-  `${mj('c', SMALL)}
-${sparkle('c', 420, 420, 68)}`,
-  { octagon: true },
+  `${mj('c', { ...BASE, layout: 'tuck', jDrop: 0.04 })}
+${sparkle('c', ...SPARK)}`,
 ));
 
-writeFileSync(join(here, '04-blue-gem-mj-plain.svg'), svg(
-  'Blue jewel with gold MJ monogram, no sparkle',
+writeFileSync(join(here, '04-blue-gem-mj-stack.svg'), svg(
+  'Blue jewel with gold M over J monogram',
   'd',
-  mj('d', SMALL),
+  `${mj('d', { cap: 0.12 * 512, cx: 256, cy: 256, layout: 'stack', jDrop: 0 })}
+${sparkle('d', ...SPARK)}`,
 ));
 
 console.log('Wrote 4 blue-jewel MJ candidates.');

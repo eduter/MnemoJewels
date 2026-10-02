@@ -3,6 +3,12 @@
 <style>
   body { margin: 0; padding: 32px; background: #15161a; color: #e8e8e8; font-family: sans-serif; }
   h1 { color: #f1c101; }
+  .tile { width: 480px; height: 138px; background-color: blue;
+          background-image: url("../../public/images/jewel.svg");
+          background-size: 100% 100%; background-repeat: no-repeat;
+          border: 0.1em solid rgba(0,0,0,0.5); border-radius: 0.5em; }
+  .ref { border-top: 1px solid #333; padding: 16px 0; }
+  .ref p { color: #999; margin: 8px 0 0; }
   section { border-top: 1px solid #333; padding: 16px 0; }
   h2 { font-size: 16px; color: #c8c864; font-weight: normal; }
   .row { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
@@ -12,6 +18,13 @@
 </style></head>
 <body>
   <h1>MnemoJewels icon candidates</h1>
+  <div class="ref">
+    <h2>reference: in-game tile</h2>
+    <div class="tile"></div>
+    <p>CSS <code>blue</code> + <code>public/images/jewel.svg</code> stretched
+       (<code>background-size: 100% 100%</code>), as <code>stylesheet/game.css</code> paints it.
+       The jewel is wide (~610:140); the icons keep that true aspect rather than squaring it.</p>
+  </div>
 
     <section>
       <h2>01-blue-gem-mj.svg</h2>
@@ -44,31 +57,31 @@
     </section>
 
     <section>
-      <h2>03-blue-gem-mj-octagon.svg</h2>
+      <h2>03-blue-gem-mj-tuck.svg</h2>
       <div class="row">
-        <img src="03-blue-gem-mj-octagon.svg" width="48" height="48" alt="">
-        <img src="03-blue-gem-mj-octagon.svg" width="64" height="64" alt="">
-        <img src="03-blue-gem-mj-octagon.svg" width="96" height="96" alt="">
-        <img src="03-blue-gem-mj-octagon.svg" width="192" height="192" alt="">
-        <img src="03-blue-gem-mj-octagon.svg" width="512" height="512" alt="">
+        <img src="03-blue-gem-mj-tuck.svg" width="48" height="48" alt="">
+        <img src="03-blue-gem-mj-tuck.svg" width="64" height="64" alt="">
+        <img src="03-blue-gem-mj-tuck.svg" width="96" height="96" alt="">
+        <img src="03-blue-gem-mj-tuck.svg" width="192" height="192" alt="">
+        <img src="03-blue-gem-mj-tuck.svg" width="512" height="512" alt="">
       </div>
       <div class="row maskable">
-        <div class="mask"><img src="03-blue-gem-mj-octagon.svg" alt=""></div>
+        <div class="mask"><img src="03-blue-gem-mj-tuck.svg" alt=""></div>
         <span>maskable / circular crop</span>
       </div>
     </section>
 
     <section>
-      <h2>04-blue-gem-mj-plain.svg</h2>
+      <h2>04-blue-gem-mj-stack.svg</h2>
       <div class="row">
-        <img src="04-blue-gem-mj-plain.svg" width="48" height="48" alt="">
-        <img src="04-blue-gem-mj-plain.svg" width="64" height="64" alt="">
-        <img src="04-blue-gem-mj-plain.svg" width="96" height="96" alt="">
-        <img src="04-blue-gem-mj-plain.svg" width="192" height="192" alt="">
-        <img src="04-blue-gem-mj-plain.svg" width="512" height="512" alt="">
+        <img src="04-blue-gem-mj-stack.svg" width="48" height="48" alt="">
+        <img src="04-blue-gem-mj-stack.svg" width="64" height="64" alt="">
+        <img src="04-blue-gem-mj-stack.svg" width="96" height="96" alt="">
+        <img src="04-blue-gem-mj-stack.svg" width="192" height="192" alt="">
+        <img src="04-blue-gem-mj-stack.svg" width="512" height="512" alt="">
       </div>
       <div class="row maskable">
-        <div class="mask"><img src="04-blue-gem-mj-plain.svg" alt=""></div>
+        <div class="mask"><img src="04-blue-gem-mj-stack.svg" alt=""></div>
         <span>maskable / circular crop</span>
       </div>
     </section>

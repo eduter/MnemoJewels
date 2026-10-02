@@ -1,26 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Blue jewel with gold MJ monogram">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Blue jewel with gold M over J monogram">
   <defs>
-    <linearGradient id="a-bg" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="d-bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#171c2b"/>
       <stop offset="100%" stop-color="#0c0f18"/>
     </linearGradient>
-    <linearGradient id="a-gold" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="d-gold" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffe98a"/>
       <stop offset="55%" stop-color="#f1c101"/>
       <stop offset="100%" stop-color="#b69202"/>
     </linearGradient>
-    <radialGradient id="a-sparkle" cx="0.5" cy="0.5" r="0.5">
+    <radialGradient id="d-sparkle" cx="0.5" cy="0.5" r="0.5">
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="45%" stop-color="#fff7d6"/>
       <stop offset="100%" stop-color="#fff7d6" stop-opacity="0"/>
     </radialGradient>
-    <filter id="a-sparkblur" x="-80%" y="-80%" width="260%" height="260%">
+    <filter id="d-sparkblur" x="-80%" y="-80%" width="260%" height="260%">
       <feGaussianBlur stdDeviation="3"/>
     </filter>
-    <clipPath id="a-frame"><rect width="512" height="512" rx="112"/></clipPath>
+    <clipPath id="d-frame"><rect width="512" height="512" rx="112"/></clipPath>
 
     <linearGradient
-       id="a-w1"
+       id="d-w1"
       >
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
@@ -28,7 +28,7 @@
          id="stop5936" />
     </linearGradient>
     <linearGradient
-       id="a-w2">
+       id="d-w2">
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
          offset="0"
@@ -39,7 +39,7 @@
          id="stop5898" />
     </linearGradient>
     <linearGradient
-       id="a-w3"
+       id="d-w3"
       >
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
@@ -48,8 +48,8 @@
     </linearGradient>
     <radialGradient
       
-       href="#a-w2"
-       id="a-spark"
+       href="#d-w2"
+       id="d-spark"
        cx="340"
        cy="1042.3622"
        fx="340"
@@ -58,17 +58,17 @@
        gradientUnits="userSpaceOnUse" />
     <filter
       
-       id="a-blur"
+       id="d-blur"
        color-interpolation-filters="sRGB">
       <feGaussianBlur
         
          stdDeviation="0.43596484"
-         id="a-blurfe" />
+         id="d-blurfe" />
     </filter>
     <radialGradient
       
-       href="#a-w1"
-       id="a-gloss"
+       href="#d-w1"
+       id="d-gloss"
        cx="212.5"
        cy="982.36218"
        fx="212.5"
@@ -78,19 +78,19 @@
        gradientUnits="userSpaceOnUse" />
   
   </defs>
-  <rect width="512" height="512" rx="112" fill="url(#a-bg)"/>
-  <g clip-path="url(#a-frame)">
+  <rect width="512" height="512" rx="112" fill="url(#d-bg)"/>
+  <g clip-path="url(#d-frame)">
   <g>
     <rect x="16.0" y="200.9" width="480.0" height="110.2" rx="15.4" fill="#0000ff"/>
-    <clipPath id="a-jclip"><rect x="0" y="912.36217" width="610" height="140"/></clipPath>
+    <clipPath id="d-jclip"><rect x="0" y="912.36217" width="610" height="140"/></clipPath>
     <g transform="translate(16.0 200.9) scale(0.78689) translate(0 -912.36217)">
-      <g clip-path="url(#a-jclip)">
+      <g clip-path="url(#d-jclip)">
     <path
       
       
        id="path5470"
        d="m 30,942.36218 550,0 0,80.00002 -550,0 z"
-       style="opacity:0.5;fill:url(#a-gloss);fill-opacity:1;stroke:none" />
+       style="opacity:0.5;fill:url(#d-gloss);fill-opacity:1;stroke:none" />
     <path
       
       
@@ -231,7 +231,7 @@
        style="opacity:0.1;fill:#ffffff;fill-opacity:1;stroke:none" />
     <path
       
-       style="fill:url(#a-spark);fill-opacity:1;fill-rule:nonzero;stroke:none;filter:url(#a-blur)"
+       style="fill:url(#d-spark);fill-opacity:1;fill-rule:nonzero;stroke:none;filter:url(#d-blur)"
        id="path5836"
       
       
@@ -248,12 +248,12 @@
       </g>
     </g>
   </g>
-  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1330-160Q1330-62 1284-16Q1238 30 1142.50 30Q1047 30 940 20L940-115Q1018-110 1100-110Q1123-110 1136.50-123.50Q1150-137 1150-160L1150-540L1020-540L1020-680L1330-680" transform="translate(256 256) scale(0.13897) translate(-695 335) translate(50.0 70.0)" fill="none" stroke="#000000" stroke-width="60.0" stroke-linejoin="round"/>
-  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1330-160Q1330-62 1284-16Q1238 30 1142.50 30Q1047 30 940 20L940-115Q1018-110 1100-110Q1123-110 1136.50-123.50Q1150-137 1150-160L1150-540L1020-540L1020-680L1330-680" transform="translate(256 256) scale(0.13897) translate(-695 335) translate(-50.0 70.0)" fill="none" stroke="#000000" stroke-width="60.0" stroke-linejoin="round"/>
-  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1330-160Q1330-62 1284-16Q1238 30 1142.50 30Q1047 30 940 20L940-115Q1018-110 1100-110Q1123-110 1136.50-123.50Q1150-137 1150-160L1150-540L1020-540L1020-680L1330-680" transform="translate(256 256) scale(0.13897) translate(-695 335)" fill="none" stroke="#000000" stroke-width="100.0" stroke-linejoin="round"/>
-  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1330-160Q1330-62 1284-16Q1238 30 1142.50 30Q1047 30 940 20L940-115Q1018-110 1100-110Q1123-110 1136.50-123.50Q1150-137 1150-160L1150-540L1020-540L1020-680L1330-680" transform="translate(256 256) scale(0.13897) translate(-695 335)" fill="url(#a-gold)"/>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M645 680Q645 778 599 824Q553 870 457.50 870Q362 870 255 860L255 725Q333 730 415 730Q438 730 451.50 716.50Q465 703 465 680L465 300L335 300L335 160L645 160" transform="translate(256 256) scale(0.08777) translate(-450 -85) translate(50.0 70.0)" fill="none" stroke="#000000" stroke-width="60.0" stroke-linejoin="round"/>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M645 680Q645 778 599 824Q553 870 457.50 870Q362 870 255 860L255 725Q333 730 415 730Q438 730 451.50 716.50Q465 703 465 680L465 300L335 300L335 160L645 160" transform="translate(256 256) scale(0.08777) translate(-450 -85) translate(-50.0 70.0)" fill="none" stroke="#000000" stroke-width="60.0" stroke-linejoin="round"/>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M645 680Q645 778 599 824Q553 870 457.50 870Q362 870 255 860L255 725Q333 730 415 730Q438 730 451.50 716.50Q465 703 465 680L465 300L335 300L335 160L645 160" transform="translate(256 256) scale(0.08777) translate(-450 -85)" fill="none" stroke="#000000" stroke-width="100.0" stroke-linejoin="round"/>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M645 680Q645 778 599 824Q553 870 457.50 870Q362 870 255 860L255 725Q333 730 415 730Q438 730 451.50 716.50Q465 703 465 680L465 300L335 300L335 160L645 160" transform="translate(256 256) scale(0.08777) translate(-450 -85)" fill="url(#d-gold)"/>
   <g transform="translate(478 196)" opacity="1">
-    <path d="M 0 -91.19999999999999 C 8.207999999999998 -8.207999999999998 8.207999999999998 -8.207999999999998 91.19999999999999 0 C 8.207999999999998 8.207999999999998 8.207999999999998 8.207999999999998 0 91.19999999999999 C -8.207999999999998 8.207999999999998 -8.207999999999998 8.207999999999998 -91.19999999999999 0 C -8.207999999999998 -8.207999999999998 -8.207999999999998 -8.207999999999998 0 -91.19999999999999 Z" fill="url(#a-sparkle)" filter="url(#a-sparkblur)" opacity="0.7"/>
+    <path d="M 0 -91.19999999999999 C 8.207999999999998 -8.207999999999998 8.207999999999998 -8.207999999999998 91.19999999999999 0 C 8.207999999999998 8.207999999999998 8.207999999999998 8.207999999999998 0 91.19999999999999 C -8.207999999999998 8.207999999999998 -8.207999999999998 8.207999999999998 -91.19999999999999 0 C -8.207999999999998 -8.207999999999998 -8.207999999999998 -8.207999999999998 0 -91.19999999999999 Z" fill="url(#d-sparkle)" filter="url(#d-sparkblur)" opacity="0.7"/>
     <path d="M 0 -48 C 4.32 -4.32 4.32 -4.32 48 0 C 4.32 4.32 4.32 4.32 0 48 C -4.32 4.32 -4.32 4.32 -48 0 C -4.32 -4.32 -4.32 -4.32 0 -48 Z" fill="#ffffff"/>
     <path d="M 0 -20.16 C 1.8144 -1.8144 1.8144 -1.8144 20.16 0 C 1.8144 1.8144 1.8144 1.8144 0 20.16 C -1.8144 1.8144 -1.8144 1.8144 -20.16 0 C -1.8144 -1.8144 -1.8144 -1.8144 0 -20.16 Z" fill="#fff7d6"/>
   </g>
