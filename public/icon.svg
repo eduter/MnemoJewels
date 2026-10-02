@@ -4,31 +4,245 @@
       <stop offset="0%" stop-color="#232a40"/>
       <stop offset="100%" stop-color="#0c0f18"/>
     </linearGradient>
-    <radialGradient id="a-outer" cx="34%" cy="22%" r="95%">
-      <stop offset="0%" stop-color="#9cc4ff"/>
-      <stop offset="42%" stop-color="#2f6fe0"/>
-      <stop offset="100%" stop-color="#123a86"/>
-    </radialGradient>
-    <linearGradient id="a-table" x1="0" y1="0" x2="0.15" y2="1">
-      <stop offset="0%" stop-color="#eaf2ff"/>
-      <stop offset="52%" stop-color="#7fb2ff"/>
-      <stop offset="100%" stop-color="#3a7ae0"/>
+    <linearGradient id="a-blue" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#5b93ef"/>
+      <stop offset="55%" stop-color="#2f6fe0"/>
+      <stop offset="100%" stop-color="#1c4aa8"/>
     </linearGradient>
     <linearGradient id="a-gold" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffe98a"/>
       <stop offset="55%" stop-color="#f1c101"/>
       <stop offset="100%" stop-color="#b69202"/>
     </linearGradient>
-    <clipPath id="a-clip"><polygon points="188,177 324,177 380,233 380,279 324,335 188,335 132,279 132,233"/></clipPath>
+    <clipPath id="a-clip"><rect x="96" y="96" width="320" height="320" rx="64"/></clipPath>
+
+    <linearGradient
+       id="a-w1"
+      >
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop5936" />
+    </linearGradient>
+    <linearGradient
+       id="a-w2">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop5896" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.96525097;"
+         offset="1"
+         id="stop5898" />
+    </linearGradient>
+    <linearGradient
+       id="a-w3"
+      >
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop5203" />
+    </linearGradient>
+    <radialGradient
+      
+       href="#a-w2"
+       id="a-spark"
+       cx="340"
+       cy="1042.3622"
+       fx="340"
+       fy="1042.3622"
+       r="13.845875"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+      
+       id="a-blur"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+        
+         stdDeviation="0.43596484"
+         id="a-blurfe" />
+    </filter>
+    <radialGradient
+      
+       href="#a-w1"
+       id="a-gloss"
+       cx="212.5"
+       cy="982.36218"
+       fx="212.5"
+       fy="982.36218"
+       r="182.5"
+       gradientTransform="matrix(1.5068493,0,0,0.21917814,-15.205479,767.04988)"
+       gradientUnits="userSpaceOnUse" />
+  
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#a-bg)"/>
-  <polygon points="170,151 342,151 406,215 406,297 342,361 170,361 106,297 106,215" fill="url(#a-outer)"/>
-  <polygon points="188,177 324,177 380,233 380,279 324,335 188,335 132,279 132,233" fill="url(#a-table)"/>
+  <rect x="96" y="96" width="320" height="320" rx="64" fill="url(#a-blue)"/>
   <g clip-path="url(#a-clip)">
-    <ellipse cx="200" cy="180" rx="150" ry="46" fill="#ffffff" opacity="0.18"/>
+    <g transform="translate(96 96) scale(0.52459 2.28571)">
+      <g transform="translate(0,-912.36217)">
+    <path
+      
+      
+       id="path5470"
+       d="m 30,942.36218 550,0 0,80.00002 -550,0 z"
+       style="opacity:0.5;fill:url(#a-gloss);fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1"
+       d="m 0,932.36218 25,-20 5,15 -15,15 z"
+       style="opacity:0.4;fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-6"
+       d="m 0,1032.3622 15,-10 15,15 -5,15 z"
+       style="opacity:0.1;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-6-8"
+       d="m 580,927.36218 5,-15 25,20 -15,10 z"
+       style="opacity:0.1;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-8"
+       d="m 580,1037.3622 15,-15 15,10 -25,20 z"
+       style="opacity:0.2;fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-8-2"
+       d="m 30,1037.3622 550,0 5,15 -560,0 z"
+       style="opacity:0.35;fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-8-2-7"
+       d="m 610,932.36218 0,100.00002 -15,-10 0,-80.00002 z"
+       style="opacity:0.4;fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-6-7"
+       d="m 15,1022.3622 15,0 0,15 z"
+       style="opacity:0;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1"
+       d="m 15,1022.3622 15,0 0,15 z"
+       style="opacity:0.7;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2"
+       d="m 30,1037.3622 0,-15 70,0 z"
+       style="opacity:0.25;fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2-6"
+       d="m 30,1022.3622 -15,0 15,-40.00002 z"
+       style="opacity:0.15;fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2-6-0"
+       d="m 15,942.36218 15,40 0,-40 z"
+       style="opacity:0.25;fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2-6-4"
+       d="m 30,982.36218 -15,40.00002 0,-80.00002 z"
+       style="opacity:0.05;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2-6-9"
+       d="m 580,1022.3622 15,0 -15,-40.00002 z"
+       style="opacity:0.1;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2-6-0-4"
+       d="m 595,942.36216 -15,40.00002 0,-40 z"
+       style="opacity:0.25;fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2-6-4-6"
+       d="m 580,982.36218 15,40.00002 0,-80.00004 z"
+       style="opacity:0.1;fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-0"
+       d="m 15,942.36218 15,0 0,-15 z"
+       style="opacity:0.7;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2-3"
+       d="m 30,927.36218 0,15 70,0 z"
+       style="opacity:0.2;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-6"
+       d="m 595,1022.3622 -15,0 0,15 z"
+       style="opacity:0.7;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2-2"
+       d="m 580,1037.3622 0,-15 -70,0 z"
+       style="opacity:0.25;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-6-4"
+       d="m 595,942.36218 -15,0 0,-15 z"
+       style="opacity:0.7;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-1-2-2-5"
+       d="m 580,927.36218 0,15 -70,0 z"
+       style="opacity:0.15;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-6-88"
+       d="m 30,1037.3622 70,-15 410,0 70,15 z"
+       style="opacity:0.1;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+      
+       id="path5470-1-6-88-1"
+       d="m 30,927.36218 70,15 410,0 70,-15 z"
+       style="opacity:0.1;fill:#2f6fe0;fill-opacity:1;stroke:none" />
+    <path
+      
+       style="fill:url(#a-spark);fill-opacity:1;fill-rule:nonzero;stroke:none;filter:url(#a-blur)"
+       id="path5836"
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+       d="m 340.11842,1029.906 0.66224,10.9531 8.11089,-7.221 -7.27668,8.2132 10.84127,0.6293 -10.95303,0.6622 7.22098,8.1109 -8.21324,-7.2767 -0.62927,10.8413 -0.66224,-10.953 -8.11089,7.221 7.27668,-8.2133 -10.84127,-0.6292 10.95303,-0.6623 -7.22098,-8.1109 8.21324,7.2767 z"
+       transform="matrix(1.3240152,0,0,1.3240152,144.59788,-357.42777)" />
+      </g>
+    </g>
   </g>
-  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1300-180Q1300-82 1254-36Q1208 10 1112.50 10Q1017 10 910 0L910-135Q988-130 1070-130Q1093-130 1106.50-143.50Q1120-157 1120-180L1120-560L990-560L990-700L1300-700" transform="translate(256 258) scale(0.1613) translate(-680 345) translate(4 5)" fill="#0b2a63" opacity="0.45"/>
-  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1300-180Q1300-82 1254-36Q1208 10 1112.50 10Q1017 10 910 0L910-135Q988-130 1070-130Q1093-130 1106.50-143.50Q1120-157 1120-180L1120-560L990-560L990-700L1300-700" transform="translate(256 258) scale(0.1613) translate(-680 345)" fill="url(#a-gold)"/>
-<path d="M 404 94 Q 407.74 115.76 438 128 Q 407.74 140.24 404 162 Q 400.26 140.24 370 128 Q 400.26 115.76 404 94 Z" fill="#ffffff"/>
-<path d="M 352 154 Q 353.54 162.96 366 168 Q 353.54 173.04 352 182 Q 350.46 173.04 338 168 Q 350.46 162.96 352 154 Z" fill="#ffffff"/>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1200-60Q1200 38 1154 84Q1108 130 1012.50 130Q917 130 810 120L810-15Q888-10 970-10Q993-10 1006.50-23.50Q1020-37 1020-60L1020-440L890-440L890-580L1200-580" transform="translate(256 258) scale(0.1842) translate(-630 285) translate(0 48.85993485342019)" fill="none" stroke="#000000" stroke-width="423.45276872964166" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M660 0L660-390L520-140L380-140L240-390L240 0L60 0L60-700L250-700L450-330L650-700L840-700L840 0L660 0M1200-60Q1200 38 1154 84Q1108 130 1012.50 130Q917 130 810 120L810-15Q888-10 970-10Q993-10 1006.50-23.50Q1020-37 1020-60L1020-440L890-440L890-580L1200-580" transform="translate(256 258) scale(0.1842) translate(-630 285)" fill="url(#a-gold)"/>
 </svg>
