@@ -23,7 +23,7 @@ export default defineConfig({
     },
     maskable: {
       sizes: [512],
-      padding: 0.1,
+      padding: 0.2,
       resizeOptions: { fit: 'contain', background: DARK },
     },
     apple: {

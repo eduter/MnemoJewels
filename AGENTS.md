@@ -32,10 +32,13 @@ That writes `favicon.ico`, `pwa-{64,192,512}.png`, `maskable-icon-512x512.png` a
 rather than the generator's default white. Icon candidates and a comparison gallery live in
 `assets/icons/` (`node assets/icons/render-preview.mjs` regenerates `preview.html` + `contact-sheet.png`).
 Candidates are blue-jewel + gold **MJ** marks built from `public/images/jewel.svg` and the Russo One logo
-font. `jewel.svg` is authored wide (610x140, ~4.36:1), so the icon keeps that true aspect and scales the
-whole jewel uniformly — the game's own `background-size: 100% 100%` stretch would squash the end facets
-on a square icon, so it is deliberately not reproduced. The jewel sits on the game's tile blue `#0000ff`,
-and the monogram carries the logo's own `0.05em` black rim. The MJ is emitted as vector outlines, not
+font. `jewel.svg` is authored wide (610x140, 30px end-caps), so the icon **nine-slices** it to a square:
+the caps keep the bevel/facet geometry (scaled uniformly) and only the repeating gloss band between them
+stretches — the game's own `background-size: 100% 100%` stretch would squash the caps, so that is not
+reproduced. The jewel's own sparkle (an 8-point star near its bottom-right) is scaled up about its centre
+rather than replaced by a second star. The jewel sits on the game's tile blue `#0000ff`, and the monogram
+carries the logo's own `0.05em` black rim, drawn as a dilated copy of the glyph so it wraps the whole
+outline (a centred stroke leaves the J's right side bare). The MJ is emitted as vector outlines, not
 `<text>`, so standalone SVGs keep the font.
 
 `src/install.ts` handles `beforeinstallprompt`/`appinstalled` and unhides the main-menu "Install app"
