@@ -16,12 +16,14 @@ export default defineConfig({
     transparent: {
       sizes: [64, 192, 512],
       favicons: [[48, 'favicon.ico']],
-      padding: 0.05,
+      // The icon already carries its own margin (the jewel fills ~85% of the
+      // canvas), so no extra padding here.
+      padding: 0,
       resizeOptions: { fit: 'contain', background: 'transparent' },
     },
     maskable: {
       sizes: [512],
-      padding: 0.22,
+      padding: 0.1,
       resizeOptions: { fit: 'contain', background: DARK },
     },
     apple: {

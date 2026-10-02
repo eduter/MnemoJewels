@@ -1,19 +1,24 @@
 # Icon candidates
 
-A blue jewel with a gold **MJ** monogram, reusing two things straight from the game:
+Four takes on an app icon for MnemoJewels, each a blue jewel with a gold **MJ**
+monogram. They reuse the game rather than inventing a style:
 
-- **the jewel face is `public/images/jewel.svg`** — the same bevel/gloss/facet overlay
-  the game paints over a coloured button or tile, here tinted blue;
+- **the jewel is `public/images/jewel.svg`** — the exact bevel/gloss/facet overlay the
+  game paints over a coloured tile, drawn over the game's tile colour, CSS `blue`
+  (`#0000ff`). Nothing is re-tinted or re-shaded.
+- **the jewel is drawn 9-slice.** The game stretches the overlay over a whole tile
+  (`background-size: 100% 100%`), which squashes the 30px end facets on a square icon.
+  Here the end-caps stay square and only the repeating middle stretches, so the facets
+  keep their true shape.
 - **the monogram is the app's logo font (Russo One)**, cut to outlines and given the
-  same thick black shadow the on-screen logo uses (`text-shadow` in `stylesheet/logo.css`).
+  logo's own black rim — a hard `0.05em` shadow on the four diagonals, plus the soft
+  lower shadow, straight from `stylesheet/logo.css`.
 
 The monogram is emitted as **vector outlines** rather than `<text>` with a `@font-face`:
 standalone SVGs (launcher icons, `raw.githubusercontent.com` images in a README or PR,
 and `@vite-pwa/assets-generator`) don't fetch webfonts, so `<text>` would silently fall
 back to a default face. `generate-icons.mjs` regenerates the outlines from the font, so
 they still track the logo.
-
-Each option is shown at 48 / 96 / 192 px, then a circular crop to check maskable behaviour.
 
 ---
 
@@ -23,38 +28,39 @@ Each option is shown at 48 / 96 / 192 px, then a circular crop to check maskable
 
 <img src="01-blue-gem-mj.svg" width="192" alt="" style="border-radius:50%">
 
-The J sits down and left of the M so its hook tucks under the M's right leg. Thick black
-shadow behind the gold, per the game logo.
+The jewel fills the frame, with a four-point shine overflowing its bottom-right corner.
 
 ---
 
-## 02 — larger monogram
+## 02 — J dropped
 
-<img src="02-blue-gem-mj-large.svg" width="48" alt=""> <img src="02-blue-gem-mj-large.svg" width="96" alt=""> <img src="02-blue-gem-mj-large.svg" width="192" alt="">
+<img src="02-blue-gem-mj-lower-j.svg" width="48" alt=""> <img src="02-blue-gem-mj-lower-j.svg" width="96" alt=""> <img src="02-blue-gem-mj-lower-j.svg" width="192" alt="">
 
-<img src="02-blue-gem-mj-large.svg" width="192" alt="" style="border-radius:50%">
+<img src="02-blue-gem-mj-lower-j.svg" width="192" alt="" style="border-radius:50%">
 
-Same as 01 but the MJ fills more of the jewel.
+Same as 01, but the J is nudged down (a touch more than the logo's own baseline) so its
+hook reads more clearly at small sizes.
 
 ---
 
-## 03 — octagonal face
+## 03 — octagonal jewel
 
 <img src="03-blue-gem-mj-octagon.svg" width="48" alt=""> <img src="03-blue-gem-mj-octagon.svg" width="96" alt=""> <img src="03-blue-gem-mj-octagon.svg" width="192" alt="">
 
 <img src="03-blue-gem-mj-octagon.svg" width="192" alt="" style="border-radius:50%">
 
-Clips the same jewel overlay to the emerald-cut octagon, so the "jewel" silhouette reads.
+The same jewel clipped to an emerald-cut octagon, so the "jewel" silhouette reads even
+where the launcher shows the icon on its own.
 
 ---
 
-## 04 — tighter set
+## 04 — plain (no shine)
 
-<img src="04-blue-gem-mj-tight.svg" width="48" alt=""> <img src="04-blue-gem-mj-tight.svg" width="96" alt=""> <img src="04-blue-gem-mj-tight.svg" width="192" alt="">
+<img src="04-blue-gem-mj-plain.svg" width="48" alt=""> <img src="04-blue-gem-mj-plain.svg" width="96" alt=""> <img src="04-blue-gem-mj-plain.svg" width="192" alt="">
 
-<img src="04-blue-gem-mj-tight.svg" width="192" alt="" style="border-radius:50%">
+<img src="04-blue-gem-mj-plain.svg" width="192" alt="" style="border-radius:50%">
 
-J tucked further under the M for a narrower, squarer mark.
+01 without the corner shine, for a quieter mark.
 
 ---
 
