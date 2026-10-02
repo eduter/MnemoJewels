@@ -205,6 +205,128 @@ ${body}
 `;
 }
 
+// A jewel-only SVG (no monogram, no background) for the standalone HTML scratch
+// pad: the same square nine-slice, so the letters can be positioned over it in CSS.
+function standaloneJewel() {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Square blue jewel">
+  <defs>
+${scrub(JEWEL_DEFS, 'j')}
+  </defs>
+${nineSlice('j', JEWEL_X, JEWEL_Y, JEWEL_SIZE, JEWEL_SIZE)}
+${sparkle('j', 1.6)}
+</svg>
+`;
+}
+writeFileSync(join(here, 'jewel-square.svg'), standaloneJewel());
+
+// A standalone tuner: the square jewel as inline SVG with the M and J as
+// absolutely-positioned spans on top, so the monogram can be placed in CSS
+// instead of path math. The letter styling is copied verbatim from the logo
+// (stylesheet/logo.css): same colour, same text-shadow, same font.
+const labJewel = standaloneJewel().trim().replace('<svg ', '<svg class="jewel" ');
+writeFileSync(join(here, 'jewel-mj.html'), `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MnemoJewels icon — jewel + CSS letters</title>
+<style>
+  @font-face {
+    font-family: logo-font;
+    font-weight: normal;
+    font-style: normal;
+    src: url("../../public/fonts/russo_one.woff") format("woff"),
+         url("../../public/fonts/russo_one.ttf") format("truetype");
+  }
+
+  /* ---- tweak these ---- *
+   * The icon is a 512x512 design space. Every length below is in those units;
+   * --u converts them to pixels, so changing --icon scales the whole thing. */
+  :root {
+    --icon: 512px;    /* canvas size */
+    --cap: 123;       /* letter cap height, units */
+    --m-left: 141;    /* M's left edge, units */
+    --m-drop: 0;      /* M's baseline drop, units (positive = lower) */
+    --j-left: 289;    /* J's left edge, units */
+    --j-drop: 4;      /* J's baseline drop, units */
+    --gold: #f1c101;
+  }
+
+  html, body {
+    margin: 0;
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+    background: #15161a;
+  }
+
+  .icon {
+    --u: calc(var(--icon) / 512);
+    position: relative;
+    width: var(--icon);
+    height: var(--icon);
+    font-family: logo-font, sans-serif;
+  }
+
+  .jewel { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  /* The letters: styling copied from .logo in stylesheet/logo.css. */
+  .letter {
+    position: absolute;
+    line-height: 1;
+    font-weight: normal;
+    /* Russo One's cap height is 0.7em, so --cap / 0.7 gives the font size. */
+    font-size: calc(var(--cap) / 0.7 * var(--u));
+    color: var(--gold);
+    text-shadow: -0.02em -0.02em 0.02em #b69202,
+                  0.01em  0.01em 0.02em #b69202,
+                 -0.05em -0.05em 0 #000,
+                 -0.05em  0.05em 0 #000,
+                  0.05em -0.05em 0 #000,
+                  0.05em  0.05em 0 #000,
+                  0.05em  0.07em 0.06em #000,
+                 -0.05em  0.07em 0.06em #000;
+  }
+
+  .letter.m {
+    left: calc(var(--m-left) * var(--u));
+    top: calc(50% + var(--m-drop) * var(--u));
+    transform: translateY(-50%);
+  }
+  .letter.j {
+    left: calc(var(--j-left) * var(--u));
+    top: calc(50% + var(--j-drop) * var(--u));
+    transform: translateY(-50%);
+  }
+
+  /* Optional guide: click the jewel to toggle a crosshair + cap lines. */
+  .icon.guides::before,
+  .icon.guides::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 0, 128, 0.6);
+    pointer-events: none;
+  }
+  .icon.guides::before { left: 50%; top: 0; width: 1px; height: 100%; }
+  .icon.guides::after { top: 50%; left: 0; height: 1px; width: 100%; }
+</style>
+</head>
+<body>
+  <div class="icon" id="icon">
+${labJewel}
+    <span class="letter m">M</span>
+    <span class="letter j">J</span>
+  </div>
+  <script>
+    // Click the icon to toggle centre guides.
+    document.getElementById('icon').addEventListener('click', (e) => {
+      e.currentTarget.classList.toggle('guides');
+    });
+  </script>
+</body>
+</html>
+`);
+
 // --- candidates -------------------------------------------------------------
 // The square jewel gives the monogram a tall face to sit on. `jDrop` is a
 // fraction of the em; the J sits slightly lower than the M in every layout,
