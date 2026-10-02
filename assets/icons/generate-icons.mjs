@@ -68,7 +68,7 @@ const SPARK_CX = 594.76;
 const SPARK_CY = 1022.68;
 
 // --- faithful monogram placement --------------------------------------------
-// Taken straight from the tuned reference (assets/icons/jewel-mj.html):
+// Tuned to reproduce the rendered logo (stylesheet/logo.css) at icon scale:
 //   .letters { top: 93px; left: 104px; font-size: 231px }
 //   .letter.j { top: 56px; left: -79px }
 // The letter box is placed at (left, top) with line-height:1; Russo One's
@@ -89,8 +89,9 @@ const J_ORIGIN = {
 // from (24,0) to (0,24). The nine-slice scales the caps uniformly (480/140), so
 // on the icon that bevel sits at 24 * 480/140 = ~82px. Cutting the blue on that
 // same line is what makes the corner read as the jewel's own facet rather than a
-// second, shallower edge floating over it.
-const CORNER = Math.round(24 * (JEWEL_SIZE / JEWEL_H));
+// second, shallower edge floating over it. Hand-tuned on top of the exact line to
+// 86 units so the cut sits fully on the facet.
+const CORNER = 86;
 const JEWEL_MIN = JEWEL_X;
 const JEWEL_MAX = JEWEL_X + JEWEL_SIZE;
 
@@ -190,27 +191,15 @@ function octagon(id) {
   const a = JEWEL_MIN;
   const b = JEWEL_MAX;
   const c = CORNER;
-  return `  <clipPath id="${id}"><path d="M${a + c} ${a} H${b - c} L${b} ${a + c} V${b - c} L${b - c} ${b} H${a + c} L${a} ${b - c} V${a + c} Z"/></clipPath>`;
+  return `    <clipPath id="${id}"><path d="M${a + c} ${a} H${b - c} L${b} ${a + c} V${b - c} L${b - c} ${b} H${a + c} L${a} ${b - c} V${a + c} Z"/></clipPath>`;
 }
 
-// A jewel-only SVG (no monogram, no background) for the standalone HTML scratch
-// pad: the same square nine-slice, so the letters can be positioned over it in CSS.
-function standaloneJewel() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Square blue jewel">
-  <defs>
-${scrub(JEWEL_DEFS, 'j')}
-${octagon('j-oct')}
-  </defs>
-  <g clip-path="url(#j-oct)">
-${nineSlice('j', JEWEL_X, JEWEL_Y, JEWEL_SIZE, JEWEL_SIZE)}
-${sparkle('j', 1.6)}
-  </g>
-</svg>
-`;
-}
-
-function svg(label, prefix, { sparkleOnTop = false }) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="${label}">
+// The chosen app icon: a square blue jewel (the game's own gem, nine-sliced and
+// clipped on its bevel) with the gold MJ monogram, the jewel's sparkle floating
+// over everything. Copy it to public/icon.svg and run the PWA asset generator.
+function icon() {
+  const prefix = 'i';
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Blue jewel with gold MJ monogram">
   <defs>
     <linearGradient id="${prefix}-bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#171c2b"/>
@@ -224,29 +213,14 @@ ${scrub(JEWEL_DEFS, prefix)}
   <g clip-path="url(#${prefix}-frame)">
     <g clip-path="url(#${prefix}-oct)">
 ${nineSlice(prefix, JEWEL_X, JEWEL_Y, JEWEL_SIZE, JEWEL_SIZE)}
-${sparkleOnTop ? '' : `${sparkle(prefix, 1.6)}\n`}    </g>
+    </g>
 ${monogram()}
-${sparkleOnTop ? `${sparkle(prefix, 1.6)}\n` : ''}  </g>
+${sparkle(prefix, 1.6)}
+  </g>
 </svg>
 `;
 }
-// jewel-square.svg backs the hand-tuned reference in jewel-mj.html, which is
-// edited by hand — the generator never writes that HTML.
-writeFileSync(join(here, 'jewel-square.svg'), standaloneJewel());
 
-// --- the two faithful versions ----------------------------------------------
-// Identical except for the sparkle's layer: `01` leaves the jewel's own shine
-// where it sits in the gem; `02` floats it over everything, monogram included.
-writeFileSync(join(here, '01-blue-gem-mj.svg'), svg(
-  'Blue jewel with gold MJ monogram',
-  'a',
-  { sparkleOnTop: false },
-));
+writeFileSync(join(here, 'jewel-mj.svg'), icon());
 
-writeFileSync(join(here, '02-blue-gem-mj-sparkle-top.svg'), svg(
-  'Blue jewel with gold MJ monogram, sparkle on top',
-  'b',
-  { sparkleOnTop: true },
-));
-
-console.log('Wrote the two blue-jewel MJ versions.');
+console.log('Wrote jewel-mj.svg.');
