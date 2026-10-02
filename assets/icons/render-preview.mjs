@@ -52,6 +52,7 @@ const parts = [
   `<svg xmlns="http://www.w3.org/2000/svg" width="${sheetW}" height="${sheetH}" viewBox="0 0 ${sheetW} ${sheetH}">`,
   `<rect width="${sheetW}" height="${sheetH}" fill="#15161a"/>`,
   `<text x="${PAD}" y="${PAD + 20}" fill="#f1c101" font-family="sans-serif" font-size="20" font-weight="bold">reference: in-game tile (blue + jewel.svg stretched)</text>`,
+  `<text x="${PAD}" y="${PAD + TILE_BLOCK - 6}" fill="#8a8a8a" font-family="sans-serif" font-size="14">the icon nine-slices this gem to a square (end facets held, gloss band stretched)</text>`,
   `<image x="${PAD}" y="${PAD + 32}" width="${TILE_W}" height="${TILE_H}" href="data:image/png;base64,${(await realTile(TILE_W, TILE_H)).toString('base64')}"/>`,
 ];
 const TOP = PAD + TILE_BLOCK;
@@ -108,7 +109,8 @@ await writeFile(join(here, 'preview.html'), `<!DOCTYPE html>
     <div class="tile"></div>
     <p>CSS <code>blue</code> + <code>public/images/jewel.svg</code> stretched
        (<code>background-size: 100% 100%</code>), as <code>stylesheet/game.css</code> paints it.
-       The jewel is wide (~610:140); the icons keep that true aspect rather than squaring it.</p>
+       The gem is wide (~610:140); the icons nine-slice it to a square — the 30px end
+       facets are held and only the gloss band between them stretches.</p>
   </div>
 ${sections}
 </body></html>
