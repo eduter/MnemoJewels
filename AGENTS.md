@@ -35,11 +35,16 @@ Candidates are blue-jewel + gold **MJ** marks built from `public/images/jewel.sv
 font. `jewel.svg` is authored wide (610x140, 30px end-caps), so the icon **nine-slices** it to a square:
 the caps keep the bevel/facet geometry (scaled uniformly) and only the repeating gloss band between them
 stretches — the game's own `background-size: 100% 100%` stretch would squash the caps, so that is not
-reproduced. The jewel's own sparkle (an 8-point star near its bottom-right) is scaled up about its centre
-rather than replaced by a second star. The jewel sits on the game's tile blue `#0000ff`, and the monogram
-carries the logo's own `0.05em` black rim, drawn as a dilated copy of the glyph so it wraps the whole
-outline (a centred stroke leaves the J's right side bare). The MJ is emitted as vector outlines, not
-`<text>`, so standalone SVGs keep the font.
+reproduced. The square's four corners are **clipped on the diagonal** (40 units) so the blue reads as the
+game's faceted gem rather than a flat square. The jewel's own sparkle (an 8-point star near its bottom-right)
+is scaled up about its centre rather than replaced by a second star; the two candidates differ only in
+whether that sparkle is clipped inside the jewel or floats on top. The jewel sits on the game's tile blue
+`#0000ff`, and the monogram reproduces the logo's **full eight-layer `text-shadow`** (`stylesheet/logo.css`)
+— each layer a `drop-shadow()` filter on its own copy of the glyphs, so the two dark-gold layers between the
+black rim and the gold fill survive. The M and J stay separate paths (merging them would overpaint the gold
+shadow between the letters), placed at the reference's own size/position. The MJ is emitted as vector
+outlines, not `<text>`, so standalone SVGs keep the font. Reference measurements, the hand-tunable CSS lab
+(`assets/icons/jewel-mj.html`) and the full rationale live in `assets/icons/README.md`.
 
 `src/install.ts` handles `beforeinstallprompt`/`appinstalled` and unhides the main-menu "Install app"
 button (`button.install`, hidden by default) on Chromium; other browsers just don't show it.
