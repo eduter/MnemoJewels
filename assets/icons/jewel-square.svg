@@ -59,7 +59,9 @@
        gradientTransform="matrix(1.5068493,0,0,0.21917814,-15.205479,767.04988)"
        gradientUnits="userSpaceOnUse" />
   
+  <clipPath id="j-oct"><path d="M56 16 H456 L496 56 V456 L456 496 H56 L16 456 V56 Z"/></clipPath>
   </defs>
+  <g clip-path="url(#j-oct)">
   <g>
     <rect x="16" y="16" width="480" height="480" fill="#0000ff"/>
     <clipPath id="j-capL"><rect x="16" y="16" width="102.85714285714285" height="480"/></clipPath>
@@ -508,4 +510,5 @@
     </g></g>
   </g>
   <g transform="translate(393.14 16) scale(3.42857) translate(-580 -912.36217)"><path d="m 340.11842,1029.906 0.66224,10.9531 8.11089,-7.221 -7.27668,8.2132 10.84127,0.6293 -10.95303,0.6622 7.22098,8.1109 -8.21324,-7.2767 -0.62927,10.8413 -0.66224,-10.953 -8.11089,7.221 7.27668,-8.2133 -10.84127,-0.6292 10.95303,-0.6623 -7.22098,-8.1109 8.21324,7.2767 z" transform="translate(594.76 1022.68) scale(1.6) translate(-594.76 -1022.68) matrix(1.3240152,0,0,1.3240152,144.59788,-357.42777)" fill="url(#j-spark)" filter="url(#j-blur)"/></g>
+  </g>
 </svg>

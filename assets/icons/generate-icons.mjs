@@ -67,6 +67,28 @@ const JEWEL_Y = (512 - JEWEL_SIZE) / 2;
 const SPARK_CX = 594.76;
 const SPARK_CY = 1022.68;
 
+// --- faithful monogram placement --------------------------------------------
+// Taken straight from the tuned reference (assets/icons/jewel-mj.html):
+//   .letters { top: 93px; left: 104px; font-size: 231px }
+//   .letter.j { top: 56px; left: -79px }
+// The letter box is placed at (left, top) with line-height:1; Russo One's
+// ascender is 0.926em, so the baseline sits that far below the box top.
+const FONT_SIZE = 231;
+const ASCENT = font.ascender / font.unitsPerEm;
+const M_ORIGIN = { x: 104, y: 93 + ASCENT * FONT_SIZE };
+// The J is the next inline run, so its natural x is the M's origin plus the M's
+// advance; the reference then shifts it left 79px and down 56px.
+const J_ORIGIN = {
+  x: M_ORIGIN.x + font.getAdvanceWidth('M', FONT_SIZE) - 79,
+  y: M_ORIGIN.y + 56,
+};
+
+// The jewel is a 480px square at 16..496. Clip its four corners on the diagonal
+// so the blue reads as an octagon instead of a square.
+const CORNER = 40;
+const JEWEL_MIN = JEWEL_X;
+const JEWEL_MAX = JEWEL_X + JEWEL_SIZE;
+
 // Strip Inkscape/Sodipodi attributes and give every id and reference a unique
 // per-icon prefix (the preview inlines several SVGs in one document).
 function scrub(s, prefix) {
@@ -121,88 +143,49 @@ function sparkle(prefix, scale) {
 }
 
 // --- the MJ monogram --------------------------------------------------------
-// Letter-spacing and cap height are fractions of the em (the font size) so the
-// settings read the same way the CSS does. `layout` decides how the J sits
-// against the M: `row` puts it beside the M, `tuck` pulls it in over the M's
-// right leg, `stack` drops it below the M.
-function monogram({ cap = 0.72, track = 0.035, jDrop = 0, cx, cy, layout = 'row' }) {
-  const glyphs = font.getPath('M', 0, 0, EM).getBoundingBox();
-  const advM = font.getAdvanceWidth('M', EM);
-  const jBox = font.getPath('J', 0, 0, EM).getBoundingBox();
-  const jCenter = (jBox.x1 + jBox.x2) / 2;
-  const mCenter = (glyphs.x1 + glyphs.x2) / 2;
-  // Font y grows downward, so a positive drop lowers the J.
-  let jx = advM + track * EM;
-  let jy = jDrop * EM;
-  if (layout === 'tuck') {
-    jx = advM - 0.25 * EM;
-  } else if (layout === 'stack') {
-    jx = mCenter - jCenter;
-    jy = glyphs.y2 - glyphs.y1 + 0.16 * EM + jDrop * EM;
+// Two separate glyph paths at the font's own size, placed exactly where the
+// reference CSS puts them: the M at M_ORIGIN, the J offset by J_OFFSET. Keeping
+// them apart (rather than unioning) is what lets the SVG reproduce all eight
+// logo shadows: the two gold-coloured ones fall between the letters and would be
+// overpainted if the two fills were merged into one path.
+// The logo's text-shadow stack (stylesheet/logo.css), in declaration order.
+// CSS paints the first shadow on top, so the SVG draws them reversed (later
+// siblings paint on top) using each entry's own drop-shadow filter, which
+// reproduces CSS's per-shadow blur exactly. The two entries between the glyph
+// and its gold are kept in place rather than merged away.
+const LOGO_SHADOWS = [
+  [-0.02, -0.02, 0.02, '#b69202'],
+  [0.01, 0.01, 0.02, '#b69202'],
+  [-0.05, -0.05, 0, '#000'],
+  [-0.05, 0.05, 0, '#000'],
+  [0.05, -0.05, 0, '#000'],
+  [0.05, 0.05, 0, '#000'],
+  [0.05, 0.07, 0.06, '#000'],
+  [-0.05, 0.07, 0.06, '#000'],
+];
+
+function monogram() {
+  const m = font.getPath('M', M_ORIGIN.x, M_ORIGIN.y, FONT_SIZE).toPathData(2);
+  const j = font.getPath('J', J_ORIGIN.x, J_ORIGIN.y, FONT_SIZE).toPathData(2);
+  const em = FONT_SIZE;
+  const glyphs = `    <path d="${m}" fill="#f1c101"/>\n    <path d="${j}" fill="#f1c101"/>`;
+  const layers = [];
+  for (const [dx, dy, blur, color] of [...LOGO_SHADOWS].reverse()) {
+    const style = `filter:drop-shadow(${(dx * em).toFixed(2)}px ${(dy * em).toFixed(2)}px ${(blur * em).toFixed(2)}px ${color})`;
+    layers.push(`  <g style="${style}">\n${glyphs}\n  </g>`);
   }
-  const combined = new opentype.Path();
-  combined.extend(font.getPath('M', 0, 0, EM));
-  combined.extend(font.getPath('J', jx, jy, EM));
-  const bb = combined.getBoundingBox();
-  const s = cap / (glyphs.y2 - glyphs.y1);
-  return {
-    d: combined.toPathData(2),
-    transform: `translate(${cx} ${cy}) scale(${s.toFixed(5)}) translate(${-((bb.x1 + bb.x2) / 2).toFixed(2)} ${-((bb.y1 + bb.y2) / 2).toFixed(2)})`,
-    s,
-    // One em in output pixels. The cap is 0.7em, so this must not be derived
-    // from the M+J bounding box: the J's drop would inflate it.
-    em: EM * s,
-  };
+  // The gold fill goes on top of everything shadowed.
+  layers.push(`  <path d="${m}" fill="#f1c101"/>\n  <path d="${j}" fill="#f1c101"/>`);
+  return layers.join('\n');
 }
 
-// The logo's rim is a 0.05em black text-shadow on the four diagonals (logo.css).
-// A dilated black copy of the glyph, merged under the gold, leaves ~0.05em of
-// black all round — including the J's right side, which a centred stroke misses
-// because the glyph's outline has an open end there. The two soft shadows are
-// the logo's lower pair, 0.05/0.07em by 0.06em.
-function mj(prefix, opts) {
-  const m = monogram(opts);
-  const emPx = m.em;
-  const dx = (0.05 * emPx) / m.s;
-  const dy = (0.07 * emPx) / m.s;
-  return [
-    `  <path d="${m.d}" transform="${m.transform} translate(${dx.toFixed(1)} ${dy.toFixed(1)})" fill="#000000" filter="url(#${prefix}-soft)" opacity="0.9"/>`,
-    `  <path d="${m.d}" transform="${m.transform} translate(${(-dx).toFixed(1)} ${dy.toFixed(1)})" fill="#000000" filter="url(#${prefix}-soft)" opacity="0.9"/>`,
-    `  <path d="${m.d}" transform="${m.transform}" fill="url(#${prefix}-gold)" filter="url(#${prefix}-rim)"/>`,
-  ].join('\n');
-}
-
-function svg(label, prefix, body, { emPx }) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="${label}">
-  <defs>
-    <linearGradient id="${prefix}-bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#171c2b"/>
-      <stop offset="100%" stop-color="#0c0f18"/>
-    </linearGradient>
-    <linearGradient id="${prefix}-gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffe98a"/>
-      <stop offset="55%" stop-color="#f1c101"/>
-      <stop offset="100%" stop-color="#b69202"/>
-    </linearGradient>
-    <filter id="${prefix}-rim" x="-25%" y="-25%" width="150%" height="150%">
-      <feMorphology operator="dilate" radius="${(0.05 * emPx).toFixed(2)}" in="SourceAlpha" result="d"/>
-      <feFlood flood-color="#000000" result="black"/>
-      <feComposite in="black" in2="d" operator="in" result="rim"/>
-      <feMerge><feMergeNode in="rim"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="${prefix}-soft" x="-25%" y="-25%" width="150%" height="150%">
-      <feGaussianBlur stdDeviation="${(0.02 * emPx).toFixed(2)}"/>
-    </filter>
-    <clipPath id="${prefix}-frame"><rect width="512" height="512" rx="112"/></clipPath>
-${scrub(JEWEL_DEFS, prefix)}
-  </defs>
-  <rect width="512" height="512" rx="112" fill="url(#${prefix}-bg)"/>
-  <g clip-path="url(#${prefix}-frame)">
-${nineSlice(prefix, JEWEL_X, JEWEL_Y, JEWEL_SIZE, JEWEL_SIZE)}
-${body}
-  </g>
-</svg>
-`;
+// The blue jewel's octagon outline: a 480px square with each corner cut by
+// CORNER on the diagonal.
+function octagon(id) {
+  const a = JEWEL_MIN;
+  const b = JEWEL_MAX;
+  const c = CORNER;
+  return `  <clipPath id="${id}"><path d="M${a + c} ${a} H${b - c} L${b} ${a + c} V${b - c} L${b - c} ${b} H${a + c} L${a} ${b - c} V${a + c} Z"/></clipPath>`;
 }
 
 // A jewel-only SVG (no monogram, no background) for the standalone HTML scratch
@@ -211,152 +194,54 @@ function standaloneJewel() {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Square blue jewel">
   <defs>
 ${scrub(JEWEL_DEFS, 'j')}
+${octagon('j-oct')}
   </defs>
+  <g clip-path="url(#j-oct)">
 ${nineSlice('j', JEWEL_X, JEWEL_Y, JEWEL_SIZE, JEWEL_SIZE)}
 ${sparkle('j', 1.6)}
+  </g>
 </svg>
 `;
 }
+
+function svg(label, prefix, { sparkleOnTop = false }) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="${label}">
+  <defs>
+    <linearGradient id="${prefix}-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171c2b"/>
+      <stop offset="100%" stop-color="#0c0f18"/>
+    </linearGradient>
+    <clipPath id="${prefix}-frame"><rect width="512" height="512" rx="112"/></clipPath>
+${octagon(`${prefix}-oct`)}
+${scrub(JEWEL_DEFS, prefix)}
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#${prefix}-bg)"/>
+  <g clip-path="url(#${prefix}-frame)">
+    <g clip-path="url(#${prefix}-oct)">
+${nineSlice(prefix, JEWEL_X, JEWEL_Y, JEWEL_SIZE, JEWEL_SIZE)}
+${sparkleOnTop ? '' : `${sparkle(prefix, 1.6)}\n`}    </g>
+${monogram()}
+${sparkleOnTop ? `${sparkle(prefix, 1.6)}\n` : ''}  </g>
+</svg>
+`;
+}
+// jewel-square.svg backs the hand-tuned reference in jewel-mj.html, which is
+// edited by hand — the generator never writes that HTML.
 writeFileSync(join(here, 'jewel-square.svg'), standaloneJewel());
 
-// A standalone tuner: the square jewel as inline SVG with the M and J as
-// absolutely-positioned spans on top, so the monogram can be placed in CSS
-// instead of path math. The letter styling is copied verbatim from the logo
-// (stylesheet/logo.css): same colour, same text-shadow, same font.
-const labJewel = standaloneJewel().trim().replace('<svg ', '<svg class="jewel" ');
-writeFileSync(join(here, 'jewel-mj.html'), `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MnemoJewels icon — jewel + CSS letters</title>
-<style>
-  @font-face {
-    font-family: logo-font;
-    font-weight: normal;
-    font-style: normal;
-    src: url("../../public/fonts/russo_one.woff") format("woff"),
-         url("../../public/fonts/russo_one.ttf") format("truetype");
-  }
-
-  /* ---- tweak these ---- *
-   * The icon is a 512x512 design space. Every length below is in those units;
-   * --u converts them to pixels, so changing --icon scales the whole thing. */
-  :root {
-    --icon: 512px;    /* canvas size */
-    --cap: 123;       /* letter cap height, units */
-    --m-left: 141;    /* M's left edge, units */
-    --m-drop: 0;      /* M's baseline drop, units (positive = lower) */
-    --j-left: 289;    /* J's left edge, units */
-    --j-drop: 4;      /* J's baseline drop, units */
-    --gold: #f1c101;
-  }
-
-  html, body {
-    margin: 0;
-    min-height: 100%;
-    display: grid;
-    place-items: center;
-    background: #15161a;
-  }
-
-  .icon {
-    --u: calc(var(--icon) / 512);
-    position: relative;
-    width: var(--icon);
-    height: var(--icon);
-    font-family: logo-font, sans-serif;
-  }
-
-  .jewel { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-
-  /* The letters: styling copied from .logo in stylesheet/logo.css. */
-  .letter {
-    position: absolute;
-    line-height: 1;
-    font-weight: normal;
-    /* Russo One's cap height is 0.7em, so --cap / 0.7 gives the font size. */
-    font-size: calc(var(--cap) / 0.7 * var(--u));
-    color: var(--gold);
-    text-shadow: -0.02em -0.02em 0.02em #b69202,
-                  0.01em  0.01em 0.02em #b69202,
-                 -0.05em -0.05em 0 #000,
-                 -0.05em  0.05em 0 #000,
-                  0.05em -0.05em 0 #000,
-                  0.05em  0.05em 0 #000,
-                  0.05em  0.07em 0.06em #000,
-                 -0.05em  0.07em 0.06em #000;
-  }
-
-  .letter.m {
-    left: calc(var(--m-left) * var(--u));
-    top: calc(50% + var(--m-drop) * var(--u));
-    transform: translateY(-50%);
-  }
-  .letter.j {
-    left: calc(var(--j-left) * var(--u));
-    top: calc(50% + var(--j-drop) * var(--u));
-    transform: translateY(-50%);
-  }
-
-  /* Optional guide: click the jewel to toggle a crosshair + cap lines. */
-  .icon.guides::before,
-  .icon.guides::after {
-    content: "";
-    position: absolute;
-    background: rgba(255, 0, 128, 0.6);
-    pointer-events: none;
-  }
-  .icon.guides::before { left: 50%; top: 0; width: 1px; height: 100%; }
-  .icon.guides::after { top: 50%; left: 0; height: 1px; width: 100%; }
-</style>
-</head>
-<body>
-  <div class="icon" id="icon">
-${labJewel}
-    <span class="letter m">M</span>
-    <span class="letter j">J</span>
-  </div>
-  <script>
-    // Click the icon to toggle centre guides.
-    document.getElementById('icon').addEventListener('click', (e) => {
-      e.currentTarget.classList.toggle('guides');
-    });
-  </script>
-</body>
-</html>
-`);
-
-// --- candidates -------------------------------------------------------------
-// The square jewel gives the monogram a tall face to sit on. `jDrop` is a
-// fraction of the em; the J sits slightly lower than the M in every layout,
-// matching the logo's baseline feel.
-const CAP = 0.24 * 512;
-const EM_PX = CAP / 0.7;
-const BASE = { cap: CAP, cx: 256, cy: 256 };
-
+// --- the two faithful versions ----------------------------------------------
+// Identical except for the sparkle's layer: `01` leaves the jewel's own shine
+// where it sits in the gem; `02` floats it over everything, monogram included.
 writeFileSync(join(here, '01-blue-gem-mj.svg'), svg(
   'Blue jewel with gold MJ monogram',
   'a',
-  `${mj('a', { ...BASE, track: 0.03, jDrop: 0.02 })}
-${sparkle('a', 1.6)}`,
-  { emPx: EM_PX },
+  { sparkleOnTop: false },
 ));
 
-writeFileSync(join(here, '02-blue-gem-mj-lower-j.svg'), svg(
-  'Blue jewel with gold MJ monogram, J dropped',
+writeFileSync(join(here, '02-blue-gem-mj-sparkle-top.svg'), svg(
+  'Blue jewel with gold MJ monogram, sparkle on top',
   'b',
-  `${mj('b', { ...BASE, track: 0.03, jDrop: 0.1 })}
-${sparkle('b', 1.6)}`,
-  { emPx: EM_PX },
+  { sparkleOnTop: true },
 ));
 
-writeFileSync(join(here, '03-blue-gem-mj-tuck.svg'), svg(
-  'Blue jewel with gold MJ monogram, J tucked under the M leg',
-  'c',
-  `${mj('c', { ...BASE, layout: 'tuck', jDrop: 0.03 })}
-${sparkle('c', 1.6)}`,
-  { emPx: EM_PX },
-));
-
-console.log('Wrote 3 blue-jewel MJ candidates.');
+console.log('Wrote the two blue-jewel MJ versions.');
