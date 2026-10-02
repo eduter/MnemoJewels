@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Blue jewel with gold MJ monogram">
   <defs>
-    <linearGradient id="a-bg" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="i-bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#171c2b"/>
       <stop offset="100%" stop-color="#0c0f18"/>
     </linearGradient>
-    <clipPath id="a-frame"><rect width="512" height="512" rx="112"/></clipPath>
-  <clipPath id="a-oct"><path d="M98 16 H414 L496 98 V414 L414 496 H98 L16 414 V98 Z"/></clipPath>
+    <clipPath id="i-frame"><rect width="512" height="512" rx="112"/></clipPath>
+    <clipPath id="i-oct"><path d="M102 16 H410 L496 102 V410 L410 496 H102 L16 410 V102 Z"/></clipPath>
 
     <linearGradient
-       id="a-w1"
+       id="i-w1"
       >
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
@@ -16,7 +16,7 @@
          id="stop5936" />
     </linearGradient>
     <linearGradient
-       id="a-w2">
+       id="i-w2">
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
          offset="0"
@@ -27,7 +27,7 @@
          id="stop5898" />
     </linearGradient>
     <linearGradient
-       id="a-w3"
+       id="i-w3"
       >
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
@@ -36,8 +36,8 @@
     </linearGradient>
     <radialGradient
       
-       href="#a-w2"
-       id="a-spark"
+       href="#i-w2"
+       id="i-spark"
        cx="340"
        cy="1042.3622"
        fx="340"
@@ -46,17 +46,17 @@
        gradientUnits="userSpaceOnUse" />
     <filter
       
-       id="a-blur"
+       id="i-blur"
        color-interpolation-filters="sRGB">
       <feGaussianBlur
         
          stdDeviation="0.43596484"
-         id="a-blurfe" />
+         id="i-blurfe" />
     </filter>
     <radialGradient
       
-       href="#a-w1"
-       id="a-gloss"
+       href="#i-w1"
+       id="i-gloss"
        cx="212.5"
        cy="982.36218"
        fx="212.5"
@@ -66,19 +66,19 @@
        gradientUnits="userSpaceOnUse" />
   
   </defs>
-  <rect width="512" height="512" rx="112" fill="url(#a-bg)"/>
-  <g clip-path="url(#a-frame)">
-    <g clip-path="url(#a-oct)">
+  <rect width="512" height="512" rx="112" fill="url(#i-bg)"/>
+  <g clip-path="url(#i-frame)">
+    <g clip-path="url(#i-oct)">
   <g>
     <rect x="16" y="16" width="480" height="480" fill="#0000ff"/>
-    <clipPath id="a-capL"><rect x="16" y="16" width="102.85714285714285" height="480"/></clipPath>
-    <g clip-path="url(#a-capL)"><g transform="translate(16 16) scale(3.42857 3.42857) translate(0 -912.36217)">
+    <clipPath id="i-capL"><rect x="16" y="16" width="102.85714285714285" height="480"/></clipPath>
+    <g clip-path="url(#i-capL)"><g transform="translate(16 16) scale(3.42857 3.42857) translate(0 -912.36217)">
     <path
       
       
        id="path5470"
        d="m 30,942.36218 550,0 0,80.00002 -550,0 z"
-       style="opacity:0.5;fill:url(#a-gloss);fill-opacity:1;stroke:none" />
+       style="opacity:0.5;fill:url(#i-gloss);fill-opacity:1;stroke:none" />
     <path
       
       
@@ -219,14 +219,14 @@
        style="opacity:0.1;fill:#ffffff;fill-opacity:1;stroke:none" />
     
     </g></g>
-    <clipPath id="a-mid"><rect x="118.85714285714285" y="16" width="274.28571428571433" height="480"/></clipPath>
-    <g clip-path="url(#a-mid)"><g transform="translate(118.85714285714285 16) scale(0.49870 3.42857) translate(-30 -912.36217)">
+    <clipPath id="i-mid"><rect x="118.85714285714285" y="16" width="274.28571428571433" height="480"/></clipPath>
+    <g clip-path="url(#i-mid)"><g transform="translate(118.85714285714285 16) scale(0.49870 3.42857) translate(-30 -912.36217)">
     <path
       
       
        id="path5470"
        d="m 30,942.36218 550,0 0,80.00002 -550,0 z"
-       style="opacity:0.5;fill:url(#a-gloss);fill-opacity:1;stroke:none" />
+       style="opacity:0.5;fill:url(#i-gloss);fill-opacity:1;stroke:none" />
     <path
       
       
@@ -367,14 +367,14 @@
        style="opacity:0.1;fill:#ffffff;fill-opacity:1;stroke:none" />
     
     </g></g>
-    <clipPath id="a-capR"><rect x="393.14285714285717" y="16" width="102.85714285714285" height="480"/></clipPath>
-    <g clip-path="url(#a-capR)"><g transform="translate(393.14285714285717 16) scale(3.42857 3.42857) translate(-580 -912.36217)">
+    <clipPath id="i-capR"><rect x="393.14285714285717" y="16" width="102.85714285714285" height="480"/></clipPath>
+    <g clip-path="url(#i-capR)"><g transform="translate(393.14285714285717 16) scale(3.42857 3.42857) translate(-580 -912.36217)">
     <path
       
       
        id="path5470"
        d="m 30,942.36218 550,0 0,80.00002 -550,0 z"
-       style="opacity:0.5;fill:url(#a-gloss);fill-opacity:1;stroke:none" />
+       style="opacity:0.5;fill:url(#i-gloss);fill-opacity:1;stroke:none" />
     <path
       
       
@@ -516,7 +516,6 @@
     
     </g></g>
   </g>
-  <g transform="translate(393.14 16) scale(3.42857) translate(-580 -912.36217)"><path d="m 340.11842,1029.906 0.66224,10.9531 8.11089,-7.221 -7.27668,8.2132 10.84127,0.6293 -10.95303,0.6622 7.22098,8.1109 -8.21324,-7.2767 -0.62927,10.8413 -0.66224,-10.953 -8.11089,7.221 7.27668,-8.2133 -10.84127,-0.6292 10.95303,-0.6623 -7.22098,-8.1109 8.21324,7.2767 z" transform="translate(594.76 1022.68) scale(1.6) translate(-594.76 -1022.68) matrix(1.3240152,0,0,1.3240152,144.59788,-357.42777)" fill="url(#a-spark)" filter="url(#a-blur)"/></g>
     </g>
   <g style="filter:drop-shadow(-11.55px 16.17px 13.86px #000)">
     <path d="M256.46 306.91L256.46 216.82L224.12 274.57L191.78 274.57L159.44 216.82L159.44 306.91L117.86 306.91L117.86 145.21L161.75 145.21L207.95 230.68L254.15 145.21L298.04 145.21L298.04 306.91" fill="#f1c101"/>
@@ -552,5 +551,6 @@
   </g>
   <path d="M256.46 306.91L256.46 216.82L224.12 274.57L191.78 274.57L159.44 216.82L159.44 306.91L117.86 306.91L117.86 145.21L161.75 145.21L207.95 230.68L254.15 145.21L298.04 145.21L298.04 306.91" fill="#f1c101"/>
   <path d="M394.60 321.33Q394.60 343.96 383.97 354.59Q373.35 365.22 351.29 365.22Q329.23 365.22 304.51 362.91L304.51 331.72Q322.53 332.88 341.47 332.88Q346.78 332.88 349.90 329.76Q353.02 326.64 353.02 321.33L353.02 233.55L322.99 233.55L322.99 201.21L394.60 201.21" fill="#f1c101"/>
+  <g transform="translate(393.14 16) scale(3.42857) translate(-580 -912.36217)"><path d="m 340.11842,1029.906 0.66224,10.9531 8.11089,-7.221 -7.27668,8.2132 10.84127,0.6293 -10.95303,0.6622 7.22098,8.1109 -8.21324,-7.2767 -0.62927,10.8413 -0.66224,-10.953 -8.11089,7.221 7.27668,-8.2133 -10.84127,-0.6292 10.95303,-0.6623 -7.22098,-8.1109 8.21324,7.2767 z" transform="translate(594.76 1022.68) scale(1.6) translate(-594.76 -1022.68) matrix(1.3240152,0,0,1.3240152,144.59788,-357.42777)" fill="url(#i-spark)" filter="url(#i-blur)"/></g>
   </g>
 </svg>

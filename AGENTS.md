@@ -19,33 +19,32 @@ localStorage under `mj.deck.<id>`). Deck JSON is cached at runtime instead, `Cac
 `mnemojewels-decks` — so a deck downloaded while online can be re-imported offline. Once a deck is
 selected, a mismatch-free game is fully playable offline.
 
-Icons live in `public/` and are generated from a single source SVG with `@vite-pwa/assets-generator`
-(dev dependency, config in `pwa-assets.config.mjs`):
+The app icon is `assets/icons/jewel-mj.svg`, regenerated with `node assets/icons/generate-icons.mjs` and shipped
+to `public/` with `@vite-pwa/assets-generator` (dev dependency, config in `pwa-assets.config.mjs`):
 
 ```
-cp assets/icons/<chosen>.svg public/icon.svg
+cp assets/icons/jewel-mj.svg public/icon.svg
 npx pwa-assets-generator --config pwa-assets.config.mjs public/icon.svg
 ```
 
 That writes `favicon.ico`, `pwa-{64,192,512}.png`, `maskable-icon-512x512.png` and
 `apple-touch-icon-180x180.png`. The maskable/Apple variants pad onto the app's dark navy (`#0c0f18`)
-rather than the generator's default white. Icon candidates and a comparison gallery live in
-`assets/icons/` (`node assets/icons/render-preview.mjs` regenerates `preview.html` + `contact-sheet.png`).
-Candidates are blue-jewel + gold **MJ** marks built from `public/images/jewel.svg` and the Russo One logo
-font. `jewel.svg` is authored wide (610x140, 30px end-caps), so the icon **nine-slices** it to a square:
-the caps keep the bevel/facet geometry (scaled uniformly) and only the repeating gloss band between them
-stretches — the game's own `background-size: 100% 100%` stretch would squash the caps, so that is not
-reproduced. The square's four corners are **clipped on the jewel's own bevel line** (the gem chamfers (24,0)→(0,24)
-in its 610x140 space; the caps scale uniformly by 480/140, so the icon cuts 82 units) — the blue edge lands on the
-jewel's existing facet rather than a shallower angle that reads as a second edge. The jewel's own sparkle (an 8-point star near its bottom-right)
-is scaled up about its centre rather than replaced by a second star; the two candidates differ only in
-whether that sparkle is clipped inside the jewel or floats on top. The jewel sits on the game's tile blue
-`#0000ff`, and the monogram reproduces the logo's **full eight-layer `text-shadow`** (`stylesheet/logo.css`)
-— each layer a `drop-shadow()` filter on its own copy of the glyphs, so the two dark-gold layers between the
-black rim and the gold fill survive. The M and J stay separate paths (merging them would overpaint the gold
-shadow between the letters), placed at the reference's own size/position. The MJ is emitted as vector
-outlines, not `<text>`, so standalone SVGs keep the font. Reference measurements, the hand-tunable CSS lab
-(`assets/icons/jewel-mj.html`) and the full rationale live in `assets/icons/README.md`.
+rather than the generator's default white. The icon is a blue jewel + gold **MJ** mark built from
+`public/images/jewel.svg` and the Russo One logo font. `jewel.svg` is authored wide (610x140, 30px end-caps),
+so the icon **nine-slices** it to a square: the caps keep the bevel/facet geometry (scaled uniformly) and only
+the repeating gloss band between them stretches — the game's own `background-size: 100% 100%` stretch would
+squash the caps, so that is not reproduced. The square's four corners are **clipped on the jewel's own bevel
+line** (the gem chamfers (24,0)→(0,24) in its 610x140 space; the caps scale uniformly by 480/140, so the line
+sits at ~82 units and the cut is placed at 86 to sit fully on the facet) — the blue edge lands on the jewel's
+existing facet rather than a shallower angle that reads as a second edge. The jewel's own sparkle (an 8-point
+star near its bottom-right) is scaled up about its centre rather than replaced by a second star, and floats
+over the monogram. The jewel sits on the game's tile blue `#0000ff`, and the monogram reproduces the logo's
+**full eight-layer `text-shadow`** (`stylesheet/logo.css`) — each layer a `drop-shadow()` filter on its own copy
+of the glyphs, so the two dark-gold layers between the black rim and the gold fill survive. The M and J stay
+separate paths (merging them would overpaint the gold shadow between the letters), placed at the logo's own
+size/position; the J's x is `M advance + space − 79`, because the markup puts the two spans on separate lines
+and the newline collapses to a space. The MJ is emitted as vector outlines, not `<text>`, so standalone SVGs
+keep the font. The full rationale lives in `assets/icons/README.md`.
 
 `src/install.ts` handles `beforeinstallprompt`/`appinstalled` and unhides the main-menu "Install app"
 button (`button.install`, hidden by default) on Chromium; other browsers just don't show it.
