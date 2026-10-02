@@ -8,7 +8,7 @@ import sharp from 'sharp';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
-const names = (await readdir(here)).filter(f => f.endsWith('.svg')).sort();
+const names = (await readdir(here)).filter(f => /^0\d.*\.svg$/.test(f)).sort();
 const jewelSvg = await readFile(join(root, 'public', 'images', 'jewel.svg'));
 
 async function raster(svg, size) {
