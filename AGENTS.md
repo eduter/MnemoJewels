@@ -35,8 +35,9 @@ Candidates are blue-jewel + gold **MJ** marks built from `public/images/jewel.sv
 font. `jewel.svg` is authored wide (610x140, 30px end-caps), so the icon **nine-slices** it to a square:
 the caps keep the bevel/facet geometry (scaled uniformly) and only the repeating gloss band between them
 stretches — the game's own `background-size: 100% 100%` stretch would squash the caps, so that is not
-reproduced. The square's four corners are **clipped on the diagonal** (40 units) so the blue reads as the
-game's faceted gem rather than a flat square. The jewel's own sparkle (an 8-point star near its bottom-right)
+reproduced. The square's four corners are **clipped on the jewel's own bevel line** (the gem chamfers (24,0)→(0,24)
+in its 610x140 space; the caps scale uniformly by 480/140, so the icon cuts 82 units) — the blue edge lands on the
+jewel's existing facet rather than a shallower angle that reads as a second edge. The jewel's own sparkle (an 8-point star near its bottom-right)
 is scaled up about its centre rather than replaced by a second star; the two candidates differ only in
 whether that sparkle is clipped inside the jewel or floats on top. The jewel sits on the game's tile blue
 `#0000ff`, and the monogram reproduces the logo's **full eight-layer `text-shadow`** (`stylesheet/logo.css`)
