@@ -76,16 +76,21 @@ const SPARK_CY = 1022.68;
 const FONT_SIZE = 231;
 const ASCENT = font.ascender / font.unitsPerEm;
 const M_ORIGIN = { x: 104, y: 93 + ASCENT * FONT_SIZE };
-// The J is the next inline run, so its natural x is the M's origin plus the M's
-// advance; the reference then shifts it left 79px and down 56px.
+// The two spans in the reference are separated by a newline, which collapses to a
+// single space — so the J's natural x is the M's origin plus the M's advance plus
+// one space. Missing that space is a ~69px error. The reference then shifts the J
+// left 79px and down 56px.
 const J_ORIGIN = {
-  x: M_ORIGIN.x + font.getAdvanceWidth('M', FONT_SIZE) - 79,
+  x: M_ORIGIN.x + font.getAdvanceWidth('M', FONT_SIZE) + font.getAdvanceWidth(' ', FONT_SIZE) - 79,
   y: M_ORIGIN.y + 56,
 };
 
-// The jewel is a 480px square at 16..496. Clip its four corners on the diagonal
-// so the blue reads as an octagon instead of a square.
-const CORNER = 40;
+// jewel.svg already chamfers its own corners: in the 610x140 gem the bevel runs
+// from (24,0) to (0,24). The nine-slice scales the caps uniformly (480/140), so
+// on the icon that bevel sits at 24 * 480/140 = ~82px. Cutting the blue on that
+// same line is what makes the corner read as the jewel's own facet rather than a
+// second, shallower edge floating over it.
+const CORNER = Math.round(24 * (JEWEL_SIZE / JEWEL_H));
 const JEWEL_MIN = JEWEL_X;
 const JEWEL_MAX = JEWEL_X + JEWEL_SIZE;
 

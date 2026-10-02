@@ -11,9 +11,11 @@ Two takes on an app icon for MnemoJewels, each a square blue jewel with a gold
   keep their shape; only the repeating gloss band between them stretches. The game
   stretches the whole gem over a tile (`background-size: 100% 100%`), which would squash
   the caps on a square icon — this keeps them.
-- **the square is cut to an octagon.** A plain square leaves four solid-blue corners where
-  the wide gem has bevels; clipping each corner on the diagonal (40 units) makes the blue
-  read as the game's faceted gem instead of a flat square.
+- **the square is cut to an octagon along the jewel's own bevel.** `jewel.svg` already
+  chamfers its corners: in the 610×140 gem the bevel runs from (24,0) to (0,24). The
+  nine-slice scales the caps uniformly (480/140), so the icon clips each corner on that
+  same line (82 units) — the blue edge lands on the jewel's existing facet instead of
+  sitting at a shallower angle and reading as a second, floating edge.
 - **the sparkle is the jewel's own.** `jewel.svg` already carries an 8-point shine near its
   bottom-right; it is scaled up about its centre, not replaced by a new star elsewhere.
 - **the monogram is the app's logo font (Russo One)** at the reference's own size and
@@ -75,8 +77,10 @@ the whole thing):
 
 Click the icon to toggle centre guides. These numbers are the source of truth: they are
 baked into `generate-icons.mjs` (`M_ORIGIN`, `J_ORIGIN`, `FONT_SIZE`) so the candidates
-match the lab exactly. Note `.letter.j { left }` is relative to the J's inline position
-after the M, so the generator computes its origin as the M advance minus 79.
+match the lab exactly. Note `.letter.j { left }` is relative to the J's inline position,
+so the generator computes its origin as the M advance **plus the space between the two
+spans** (the markup puts them on separate lines, and the newline collapses to a space)
+minus 79 — dropping that space shifts the J left by ~69px.
 
 Open it via a local server so the webfont loads, e.g.:
 

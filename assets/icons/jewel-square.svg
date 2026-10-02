@@ -59,7 +59,7 @@
        gradientTransform="matrix(1.5068493,0,0,0.21917814,-15.205479,767.04988)"
        gradientUnits="userSpaceOnUse" />
   
-  <clipPath id="j-oct"><path d="M56 16 H456 L496 56 V456 L456 496 H56 L16 456 V56 Z"/></clipPath>
+  <clipPath id="j-oct"><path d="M98 16 H414 L496 98 V414 L414 496 H98 L16 414 V98 Z"/></clipPath>
   </defs>
   <g clip-path="url(#j-oct)">
   <g>
