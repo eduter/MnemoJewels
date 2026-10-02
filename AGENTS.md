@@ -44,3 +44,26 @@ value (segmentation) and object identity (transcription arrays), so they need no
 the identity-keyed `WeakMap` is collected with the deck, and the bounded value-keyed cache is
 deck-independent. A worker would not help here: `createNewGroup` moves cards between the live indexes
 and `cardsInGame`, so it is stateful and must stay on the main thread.
+
+## Jev deck triage: do NOT hoist `learnerContext` into `state`
+
+`tools/jev/prompts.ts` repeats the ~542-char `learnerContext()` inside every question's `instructions`,
+which is ~59% of a full-deck request's input characters. Hoisting it once into `state` and having each
+question say "Given the learner context in state, ..." cuts input tokens **-31.8%** (measured on a
+200-lemma `top-es-en` sample: 294,397 → 200,707 tokens; ~$0.178 → ~$0.121 projected for the full deck).
+It is a real cost win and tempting — **do not adopt it.** It materially degrades the classifier:
+
+- Pure run-to-run noise (same old-shape request run twice) is 8 flips / 654 verdicts (1.2%), max
+  `misleading` delta 0.07, 0 decisive flips.
+- The hoisted-context shape produced 46 flips (7.0%), 39 of them keep→drop, one decisive flip
+  (`partido→party` 0.38→0.80), 5 exact-cognate false drops (`general`, `final`, `embargo`, `favor`,
+  `social`), 14 lemmas whose baseline *best* candidate got dropped, and 10 emptied lemmas vs 6.
+  `favor` lost both spellings.
+- The mechanism is content loss, not noise: the context paragraph is what tells Jev that an exact
+  cognate / the obvious everyday translation is NOT misleading. Referencing it from `state` weakens
+  that signal, so the per-candidate `misleading` Noul drifts toward drop.
+
+Both arms billed the official endpoint (`https://api.typesafe.ai/v1/systemone`, $0.042/Mtok input,
+output free). Never set `TYPESAFE_API_BASE` — it defaults to the official URL in `client.ts`, and
+pointing it at the `jevtypesafeai.com` reseller is the 10x-markup mistake. When evaluating any prompt
+change here, always run an old-shape control on the same slice to separate signal from run-to-run noise.

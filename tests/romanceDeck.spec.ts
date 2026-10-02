@@ -21,13 +21,16 @@ describe.each(decks)('%s deck', (uid, languageFront, sampleLemma) => {
     expect(deck.lexicon).toBeUndefined();
   });
 
-  it('covers about 3,000 lemmas with high IPA coverage', () => {
+  it('covers most of the generated lemmas with high IPA coverage', () => {
     const lemmas = new Set(deck.cards.map(card => card[0]));
 
-    expect(lemmas.size).toBe(3000);
+    // Jev triage removes whole lemmas when every candidate is noise, so the
+    // deck starts from 3,000 lemmas and settles somewhat below that.
+    expect(lemmas.size).toBeGreaterThan(2700);
+    expect(lemmas.size).toBeLessThanOrEqual(3000);
     expect(
       [...lemmas].filter(lemma => deck.pronunciations![`${languageFront}:${lemma}`]?.length).length,
-    ).toBeGreaterThan(2800);
+    ).toBeGreaterThan(2700);
   });
 
   it('includes English IPA for many card backs', () => {
