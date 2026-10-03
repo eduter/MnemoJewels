@@ -1,4 +1,4 @@
-// Generates the blue-jewel + gold "MJ" icon candidates.
+// Generates the blue-jewel + gold "MJ" app icon.
 //
 // Everything is matched to the game rather than invented:
 //   * the jewel is public/images/jewel.svg, the same overlay the game paints over
@@ -19,8 +19,10 @@
 // SVGs (launcher icons, raw.githubusercontent.com, the asset generator) do not
 // fetch webfonts and would fall back to a default face.
 //
-// Run with: node assets/icons/generate-icons.mjs
-import { readFileSync, writeFileSync } from 'node:fs';
+// Run with: npm run icons:generate
+import { copyFileSync, readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import opentype from 'opentype.js';
@@ -95,8 +97,10 @@ const CORNER = 86;
 const JEWEL_MIN = JEWEL_X;
 const JEWEL_MAX = JEWEL_X + JEWEL_SIZE;
 
-// Strip Inkscape/Sodipodi attributes and give every id and reference a unique
-// per-icon prefix (the preview inlines several SVGs in one document).
+// Strip Inkscape/Sodipodi attributes and rename every id that is actually
+// referenced, so each icon's ids stay unique when several are inlined in one
+// document. The source jewel's path ids are unreferenced (they exist only
+// because Inkscape assigned them), so they are dropped instead of renamed.
 function scrub(s, prefix) {
   const rename = {
     radialGradient5940: `${prefix}-gloss`,
@@ -110,6 +114,7 @@ function scrub(s, prefix) {
   return Object.entries(rename)
     .reduce((acc, [from, to]) => acc.replaceAll(from, to), s)
     .replace(/\s(?:inkscape|sodipodi|osb):[a-zA-Z0-9-]+="[^"]*"/g, '')
+    .replace(/\s+id="path[^"]*"/g, '')
     .replaceAll('xlink:href', 'href');
 }
 
@@ -150,7 +155,7 @@ function sparkle(prefix, scale) {
 
 // --- the MJ monogram --------------------------------------------------------
 // Two separate glyph paths at the font's own size, placed exactly where the
-// reference CSS puts them: the M at M_ORIGIN, the J offset by J_OFFSET. Keeping
+// reference CSS puts them: the M at M_ORIGIN, the J at J_ORIGIN. Keeping
 // them apart (rather than unioning) is what lets the SVG reproduce all eight
 // logo shadows: the two gold-coloured ones fall between the letters and would be
 // overpainted if the two fills were merged into one path.
@@ -221,6 +226,29 @@ ${sparkle(prefix, 1.6)}
 `;
 }
 
-writeFileSync(join(here, 'jewel-mj.svg'), icon());
+// Ship the SVG and the raster sizes in one go: copy it to public/ (where the
+// app and the PWA manifest serve it from) and run the asset generator, which
+// writes favicon.ico, pwa-{64,192,512}.png, maskable-icon-512x512.png and
+// apple-touch-icon-180x180.png next to it. The generator is invoked through
+// node rather than `npx` so the script needs no shell or PATH setup.
+const require = createRequire(import.meta.url);
+const generatorBin = join(
+  dirname(require.resolve('@vite-pwa/assets-generator/package.json')),
+  'bin',
+  'pwa-assets-generator.mjs',
+);
 
+const svgPath = join(here, 'jewel-mj.svg');
+writeFileSync(svgPath, icon());
 console.log('Wrote jewel-mj.svg.');
+
+const publicIcon = join(root, 'public', 'icon.svg');
+copyFileSync(svgPath, publicIcon);
+console.log('Copied to public/icon.svg.');
+
+execFileSync(
+  process.execPath,
+  [generatorBin, '--config', join(root, 'pwa-assets.config.mjs'), publicIcon],
+  { cwd: root, stdio: 'inherit' },
+);
+console.log('Generated PWA raster icons in public/.');

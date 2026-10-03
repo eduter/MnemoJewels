@@ -44,13 +44,16 @@ const pwa = VitePWA({
     maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
     runtimeCaching: [
       {
-        // A deck is fetched once, when it is picked in Settings. Cache it so it
-        // can be re-imported (or its cards rebuilt) without a network, and so
-        // revisiting a deck you already downloaded is instant.
+        // A deck is fetched once, when it is picked in Settings. Network-first
+        // so a version bump on the server is picked up on the next update
+        // (downloadDeck sends `cache: 'no-store'`, which only bypasses the HTTP
+        // cache, not the service worker), while a cached copy still lets the
+        // deck be re-imported or its cards rebuilt offline.
         urlPattern: ({ url }) => url.pathname.startsWith(`${BASE}decks/`),
-        handler: 'CacheFirst',
+        handler: 'NetworkFirst',
         options: {
           cacheName: 'mnemojewels-decks',
+          networkTimeoutSeconds: 5,
           expiration: {
             maxEntries: 20,
             maxAgeSeconds: 60 * 60 * 24 * 365,

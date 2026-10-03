@@ -41,16 +41,12 @@ left by ~69px.
 ## Regenerating
 
 ```sh
-node assets/icons/generate-icons.mjs   # rewrites jewel-mj.svg (MJ outlines from the logo font)
+npm run icons:generate
 ```
 
-## Shipping
-
-```sh
-cp assets/icons/jewel-mj.svg public/icon.svg
-npx pwa-assets-generator --config pwa-assets.config.mjs public/icon.svg
-```
-
-That rewrites `favicon.ico`, `pwa-{64,192,512}.png`, `maskable-icon-512x512.png` and
+That one command rewrites `assets/icons/jewel-mj.svg` (MJ outlines from the logo font),
+copies it to `public/icon.svg`, and runs `@vite-pwa/assets-generator` to rewrite
+`favicon.ico`, `pwa-{64,192,512}.png`, `maskable-icon-512x512.png` and
 `apple-touch-icon-180x180.png` in `public/`. `pwa-assets.config.mjs` pads the maskable and
-Apple icons onto the app's near-black navy (`#0c0f18`) rather than white.
+Apple icons onto the app's near-black navy (`#0c0f18`) rather than white. The generator is
+invoked through `node` (not `npx`), so the script is cross-platform and needs no shell.

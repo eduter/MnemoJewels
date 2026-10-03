@@ -15,16 +15,16 @@ Vocabulary matching game. Vite + TypeScript, no framework; DOM rendering in `src
 `registerSW.js` at build time from `vite.config.ts`. The precache globs `js/css/html/ico/png/svg/jpg/
 woff/woff2/ttf`, so the app shell, background, jewel and fonts are available offline; `public/decks/
 *.json` is deliberately *not* precached (each is >1 MB, and the imported cards already live in
-localStorage under `mj.deck.<id>`). Deck JSON is cached at runtime instead, `CacheFirst` in
-`mnemojewels-decks` — so a deck downloaded while online can be re-imported offline. Once a deck is
-selected, a mismatch-free game is fully playable offline.
+localStorage under `mj.deck.<id>`). Deck JSON is cached at runtime instead, `NetworkFirst` in
+`mnemojewels-decks` — so a version bump is picked up on the next update while a deck downloaded while
+online can still be re-imported offline. Once a deck is selected, a mismatch-free game is fully
+playable offline.
 
-The app icon is `assets/icons/jewel-mj.svg`, regenerated with `node assets/icons/generate-icons.mjs` and shipped
-to `public/` with `@vite-pwa/assets-generator` (dev dependency, config in `pwa-assets.config.mjs`):
+The app icon is `assets/icons/jewel-mj.svg`, regenerated and shipped in one step with
+`npm run icons:generate` (dev dependency `@vite-pwa/assets-generator`, config in `pwa-assets.config.mjs`):
 
 ```
-cp assets/icons/jewel-mj.svg public/icon.svg
-npx pwa-assets-generator --config pwa-assets.config.mjs public/icon.svg
+npm run icons:generate
 ```
 
 That writes `favicon.ico`, `pwa-{64,192,512}.png`, `maskable-icon-512x512.png` and
