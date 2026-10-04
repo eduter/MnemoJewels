@@ -20,6 +20,15 @@ localStorage under `mj.deck.<id>`). Deck JSON is cached at runtime instead, `Net
 online can still be re-imported offline. Once a deck is selected, a mismatch-free game is fully
 playable offline.
 
+Deck updates never block startup: `storageReady` loads the stored decks and kicks `updateDecks()` off
+in the background, so the app opens and plays immediately and the version check simply finds nothing
+to do when offline. A background update is only applied when it is safe — an updated *non-selected*
+deck is written straight away, while an updated *selected* deck is deferred (not persisted) if a run
+is in progress or the app is shutting down, because the live cards are held in memory by `cards.ts`
+and persisting new storage under them would desync storage from memory. The `version` lives in the
+bundled `available-decks.json`, so the "is there a newer deck?" check costs no network and ships with
+the app build rather than being fetched at runtime.
+
 The app icon is `assets/icons/jewel-mj.svg`, regenerated and shipped in one step with
 `npm run icons:generate` (dev dependency `@vite-pwa/assets-generator`, config in `pwa-assets.config.mjs`):
 
