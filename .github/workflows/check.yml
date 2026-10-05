@@ -17,3 +17,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      # The PWA service worker and manifest are build-generated, so typecheck +
+      # unit tests alone would not catch a broken production build.
+      - run: npm run build

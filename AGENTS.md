@@ -9,6 +9,55 @@ Vocabulary matching game. Vite + TypeScript, no framework; DOM rendering in `src
 - Tests live in `tests/*.spec.ts`. Data/triage tooling lives in `tools/` (see `tools/russian/README.md`,
   `tools/jev/README.md`) and runs with `node --experimental-strip-types`.
 
+## PWA / offline
+
+`vite-plugin-pwa` (Workbox, `registerType: 'autoUpdate'`) emits `manifest.webmanifest`, `sw.js` and
+`registerSW.js` at build time from `vite.config.ts`. The precache globs `js/css/html/ico/png/svg/jpg/
+woff/woff2/ttf`, so the app shell, background, jewel and fonts are available offline; `public/decks/
+*.json` is deliberately *not* precached (each is >1 MB, and the imported cards already live in
+localStorage under `mj.deck.<id>`). Deck JSON is cached at runtime instead, `NetworkFirst` in
+`mnemojewels-decks` — so a version bump is picked up on the next update while a deck downloaded while
+online can still be re-imported offline. Once a deck is selected, a mismatch-free game is fully
+playable offline.
+
+Deck updates never block startup: `storageReady` loads the stored decks and kicks `updateDecks()` off
+in the background, so the app opens and plays immediately and the version check simply finds nothing
+to do when offline. A background update is only applied when it is safe — an updated *non-selected*
+deck is written straight away, while an updated *selected* deck is deferred (not persisted) if a run
+is in progress or the app is shutting down, because the live cards are held in memory by `cards.ts`
+and persisting new storage under them would desync storage from memory. The `version` lives in the
+bundled `available-decks.json`, so the "is there a newer deck?" check costs no network and ships with
+the app build rather than being fetched at runtime.
+
+The app icon is `assets/icons/jewel-mj.svg`, regenerated and shipped in one step with
+`npm run icons:generate` (dev dependency `@vite-pwa/assets-generator`, config in `pwa-assets.config.mjs`):
+
+```
+npm run icons:generate
+```
+
+That writes `favicon.ico`, `pwa-{64,192,512}.png`, `maskable-icon-512x512.png` and
+`apple-touch-icon-180x180.png`. The maskable/Apple variants pad onto the app's dark navy (`#0c0f18`)
+rather than the generator's default white. The icon is a blue jewel + gold **MJ** mark built from
+`public/images/jewel.svg` and the Russo One logo font. `jewel.svg` is authored wide (610x140, 30px end-caps),
+so the icon **nine-slices** it to a square: the caps keep the bevel/facet geometry (scaled uniformly) and only
+the repeating gloss band between them stretches — the game's own `background-size: 100% 100%` stretch would
+squash the caps, so that is not reproduced. The square's four corners are **clipped on the jewel's own bevel
+line** (the gem chamfers (24,0)→(0,24) in its 610x140 space; the caps scale uniformly by 480/140, so the line
+sits at ~82 units and the cut is placed at 86 to sit fully on the facet) — the blue edge lands on the jewel's
+existing facet rather than a shallower angle that reads as a second edge. The jewel's own sparkle (an 8-point
+star near its bottom-right) is scaled up about its centre rather than replaced by a second star, and floats
+over the monogram. The jewel sits on the game's tile blue `#0000ff`, and the monogram reproduces the logo's
+**full eight-layer `text-shadow`** (`stylesheet/logo.css`) — each layer a `drop-shadow()` filter on its own copy
+of the glyphs, so the two dark-gold layers between the black rim and the gold fill survive. The M and J stay
+separate paths (merging them would overpaint the gold shadow between the letters), placed at the logo's own
+size/position; the J's x is `M advance + space − 79`, because the markup puts the two spans on separate lines
+and the newline collapses to a space. The MJ is emitted as vector outlines, not `<text>`, so standalone SVGs
+keep the font. The full rationale lives in `assets/icons/README.md`.
+
+`src/install.ts` handles `beforeinstallprompt`/`appinstalled` and unhides the main-menu "Install app"
+button (`button.install`, hidden by default) on Chromium; other browsers just don't show it.
+
 ## Performance: alternative selection (the hot path)
 
 `cards.createNewGroup` → `chooseAlternatives` ranks deck cards by `cardDistance` against the group's

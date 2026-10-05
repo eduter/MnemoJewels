@@ -15,21 +15,30 @@ let decks: Deck[] = [];
 const availableDecks: AvailableDeckMeta[] = availableDecksMeta.slice();
 let selectedDeck: number | null = null;
 let upToDate = false;
+// A run in progress holds live card state in memory (cards.ts), so applying an
+// update to the selected deck mid-run would leave storage and memory disagreeing.
+let runInProgress = false;
 
 (function setup() {
   availableDecks.sort(function (deckData1, deckData2) {
     return (deckData1.displayName < deckData2.displayName ? -1 : 1);
   });
 
+  events.bind('gameStart', function () { runInProgress = true; });
+  events.bind('gameOver', function () { runInProgress = false; });
+
   events.bind('storageReady', function () {
     decks = storage.load<Deck[]>(StorageKeys.DECKS) || [];
-    return updateDecks().then(function () {
-      upToDate = true;
-      const preselectedDeck = storage.load<number>(StorageKeys.SELECTED_DECK);
-      if (preselectedDeck !== null) {
-        selectDeck(preselectedDeck);
-      }
-    }).catch(e => console.error(e));
+    // Updating is kicked off in the background: the app must be usable
+    // immediately with the decks already stored, without waiting for the
+    // network. `upToDate` only gates *selecting* a deck, which the startup flow
+    // does synchronously right here.
+    updateDecks().catch(e => console.error(e));
+    upToDate = true;
+    const preselectedDeck = storage.load<number>(StorageKeys.SELECTED_DECK);
+    if (preselectedDeck !== null) {
+      selectDeck(preselectedDeck);
+    }
   });
 })();
 
@@ -47,7 +56,7 @@ function updateDecks(): Promise<void> {
     console.log('Updating decks...');
     return Promise.all(outdated.map(function (deck) {
       return downloadDeck(deck.uid!).then(function (deckData) {
-        updateDeck(deck, deckData);
+        applyDeckUpdate(deck, deckData);
         console.log(`Deck "${deck.displayName}" up-to-date`);
       }).catch(() => console.error(`Failed to update deck "${deck.displayName}"`));
     })).then(function () {
@@ -55,6 +64,20 @@ function updateDecks(): Promise<void> {
     });
   }
   return Promise.resolve();
+}
+
+// Persists a downloaded update. If the updated deck is the one being played, the
+// in-memory cards are only reloaded when no run is in progress and the app is not
+// shutting down; otherwise the update is left for the next app load. A
+// non-selected deck has no in-memory card state, so it is always safe to store.
+function applyDeckUpdate(deck: Deck, deckData: DeckData): void {
+  const isSelected = deck.id === selectedDeck;
+  const defer = isSelected && (runInProgress || events.hasTriggered('exitApp'));
+  const updated = updateDeck(deck, deckData, !defer);
+
+  if (updated && isSelected && !defer) {
+    events.trigger('deckSelected', { deck: updated });
+  }
 }
 
 function selectDeck(deckId: number): void {
@@ -147,13 +170,24 @@ function loadCards(deckId: number): Card[] {
   });
 }
 
-function updateDeck(deck: Deck, deckData: DeckData): void {
+// Rewrites a stored deck with `deckData`, preserving the scheduling of cards
+// whose content is unchanged. Returns the updated deck, or null when `persist` is
+// false (the update is left for the next load because a run holds the deck's
+// cards in memory).
+function updateDeck(deck: Deck, deckData: DeckData, persist = true): Deck | null {
+  if (!persist) {
+    console.log(`Deferring update of "${deck.displayName}" until the next load`);
+    return null;
+  }
+
+  let updated: Deck | null = null;
   storage.transaction(function () {
     const index = indexCardsByContent(deck);
 
     decks = decks.map(function (d) {
       if (d.id === deck.id) {
-        return createDeck(deck.id, deckData);
+        updated = createDeck(deck.id, deckData);
+        return updated;
       }
       return d;
     });
@@ -171,6 +205,7 @@ function updateDeck(deck: Deck, deckData: DeckData): void {
     });
     storeCards(cards, deck.id);
   });
+  return updated;
 }
 
 function createDeck(deckId: number, deckData: DeckData): Deck {
