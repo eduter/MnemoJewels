@@ -61,8 +61,15 @@ function serializeEventData(eventData: unknown): string {
   return eventData === undefined ? 'null' : JSON.stringify(eventData);
 }
 
+// Whether a one-time event has already fired. Lets background work tell that the
+// app is shutting down (`exitApp`) and stop touching storage.
+function hasTriggered(eventName: string): boolean {
+  return eventName in oneTimeEvents;
+}
+
 export default {
   bind,
   trigger,
   waitFor,
+  hasTriggered,
 };
