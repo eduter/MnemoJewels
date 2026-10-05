@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test-watch": "vitest",
     "check": "npm run typecheck && npm run test",
+    "icons:generate": "node assets/icons/generate-icons.mjs",
     "data:russian": "node --experimental-strip-types tools/russian/generate.ts",
     "data:russian:sanitize": "node --experimental-strip-types tools/russian/generate.ts --sanitize",
     "data:russian:download": "node --experimental-strip-types tools/russian/generate.ts --download",
@@ -31,9 +32,12 @@
   },
   "devDependencies": {
     "@types/node": "^24.13.4",
+    "@vite-pwa/assets-generator": "^1.0.4",
     "jsdom": "^30.1.1",
+    "opentype.js": "^2.0.0",
     "typescript": "^7.0.2",
     "vite": "^8.3.0",
+    "vite-plugin-pwa": "^1.3.0",
     "vitest": "^5.0.0"
   },
   "allowScripts": {
