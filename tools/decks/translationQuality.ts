@@ -1,4 +1,4 @@
-import type { KaikkiSense } from './kaikki.ts';
+import type { KaikkiSense, KaikkiTranslation } from './kaikki.ts';
 
 export const VOCABULARY_POS_TRANSLATIONS = new Map<string, string>([
   ['глагол', 'verb'],
@@ -114,6 +114,39 @@ export function shouldRejectHeuristicGloss(frontLemma: string, englishLemma: str
 
 export function shouldRejectTranslation(frontLemma: string, englishLemma: string): boolean {
   return shouldRejectHeuristicGloss(frontLemma, englishLemma);
+}
+
+/** True when `value` looks like a single translated word rather than a usage
+ *  note, definition or cross-reference. Unlike `isTranslationShape` this accepts
+ *  non-Latin scripts and target-language punctuation, because the extracted
+ *  translations are now language-agnostic (the card back may be Portuguese, not
+ *  only English). */
+export function isTargetWordShape(value: unknown): value is string {
+  return typeof value === 'string'
+    && value.length <= 45
+    && /^[\p{L}][\p{L}\p{M}'’ -]*$/u.test(value)
+    && !/^(Appendix|Category|Thesaurus|Wiktionary)$/i.test(value);
+}
+
+/**
+ * The target-language words recorded on an entry's top-level `translations`
+ * array, filtered to a single language. English Wiktionary entries carry this
+ * field, so it is the bridge that lets a deck be generated in either direction:
+ * an English-front deck reads Portuguese renderings straight from the English
+ * entry instead of from sense links (which only point at English).
+ */
+export function translationsForEntry(
+  entry: { translations?: KaikkiTranslation[] },
+  language: string,
+): string[] {
+  const values: string[] = [];
+  for (const translation of entry.translations ?? []) {
+    if (translation.lang_code !== language) continue;
+    const value = translation.word?.trim();
+    if (!value || !isTargetWordShape(value)) continue;
+    if (!values.includes(value)) values.push(value);
+  }
+  return values;
 }
 
 export function translationsForSense(

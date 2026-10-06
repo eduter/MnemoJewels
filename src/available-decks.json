@@ -10,6 +10,16 @@
     "version": 2
   },
   {
+    "uid": "top-pt-en",
+    "displayName": "Portuguese / English",
+    "version": 1
+  },
+  {
+    "uid": "top-en-pt",
+    "displayName": "English / Portuguese",
+    "version": 1
+  },
+  {
     "uid": "top-ru-en",
     "displayName": "Russian / English",
     "version": 4

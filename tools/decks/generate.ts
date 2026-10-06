@@ -24,7 +24,7 @@ import type { KaikkiEntry, KellyFile } from './kaikki.ts';
 import { ipaFromSounds, isInflectionSense } from './kaikki.ts';
 import { forEachJsonLine } from './jsonl.ts';
 import { countDuplicateRows, selectCandidateLemmas } from './frequency.ts';
-import { shouldRejectTranslation, translationsForSense } from './translationQuality.ts';
+import { shouldRejectTranslation, translationsForEntry, translationsForSense } from './translationQuality.ts';
 import { curateCards, missingCuratedLemmas } from './curation.ts';
 
 export interface DeckGenerationOptions {
@@ -36,6 +36,10 @@ export interface DeckGenerationOptions {
   version: number;
   kelly: string;
   frontKaikki: string;
+  /** Back-language Wiktionary dump. Defaults to `englishKaikki` for the
+   *  language-to-English decks; an English-front deck points it at the
+   *  target language instead. */
+  backKaikki?: string;
   englishKaikki: string;
   output: string;
   report: string;
@@ -43,8 +47,18 @@ export interface DeckGenerationOptions {
   candidateLimit: number;
   /** How many usable lemmas to keep in the deck. */
   lemmaTarget: number;
+  /** True when the front-language Wiktionary entries record their translations
+   *  as sense links that point at the back language (the language-to-English
+   *  case). When false the front entries carry no usable cross-reference and the
+   *  back words are read from the back-language Wiktionary instead. */
+  translationsFromFrontSenses?: boolean;
   /** Extra characters allowed inside a lemma (apostrophes, hyphens, …). */
   extraCharacters?: string;
+  /** A language-to-`languageBack` deck whose cards are inverted to widen the
+   *  back-word set. The English Wiktionary records few translations for a given
+   *  language, so an English-front deck also reads the reverse of the forward
+   *  deck's own cards. */
+  augmentFrom?: string;
   shortWordMaxLength?: number;
   shortWordGlosses?: ReadonlyMap<string, readonly string[]>;
   /** A card the pipeline must produce, used as an end-to-end smoke test. */
@@ -58,9 +72,9 @@ export interface GenerationReport {
   cards: number;
   frontWithIpa: number;
   frontWithoutIpa: number;
-  englishLemmas: number;
-  englishWithIpa: number;
-  englishWithoutIpa: number;
+  backLemmas: number;
+  backWithIpa: number;
+  backWithoutIpa: number;
   pronunciationEntries: number;
   frequencyDuplicateRows: number;
   duplicateCards: number;
@@ -95,6 +109,8 @@ function hasUsableCard(lemma: string, data: LemmaData | undefined, options: Deck
 
 export async function generateDeck(options: DeckGenerationOptions): Promise<GenerationResult> {
   const { languageFront, languageBack } = options;
+  const translationsFromFrontSenses = options.translationsFromFrontSenses ?? languageBack === 'en';
+  const backKaikki = options.backKaikki ?? options.englishKaikki;
   const frequency = JSON.parse(await readFile(options.kelly, 'utf8')) as KellyFile;
   const frequencyDuplicateRows = countDuplicateRows(frequency);
 
@@ -105,7 +121,7 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
   const candidateSet = new Set(candidates);
 
   let malformedEntries = 0;
-  const englishHeadwords = await loadEnglishHeadwords(options.englishKaikki, languageBack, () => malformedEntries++);
+  const backHeadwords = await loadHeadwords(backKaikki, languageBack, () => malformedEntries++);
 
   const wiktionaryByWord = new Map<string, LemmaData>();
   await forEachJsonLine<KaikkiEntry>(options.frontKaikki, entry => {
@@ -114,17 +130,37 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     for (const ipa of ipaFromSounds(entry)) {
       if (!current.ipa.includes(ipa)) current.ipa.push(ipa);
     }
-    for (const sense of entry.senses ?? []) {
-      if (isInflectionSense(sense)) continue;
-      for (const record of translationsForSense(sense, {
-        frontLemma: entry.word,
-        englishHeadwords,
-      })) {
-        if (!current.translations.includes(record.value)) current.translations.push(record.value);
+    if (translationsFromFrontSenses) {
+      for (const sense of entry.senses ?? []) {
+        if (isInflectionSense(sense)) continue;
+        for (const record of translationsForSense(sense, {
+          frontLemma: entry.word,
+          englishHeadwords: backHeadwords,
+        })) {
+          if (!current.translations.includes(record.value)) current.translations.push(record.value);
+        }
+      }
+    } else {
+      for (const value of translationsForEntry(entry, languageBack)) {
+        if (!current.translations.includes(value)) current.translations.push(value);
       }
     }
     wiktionaryByWord.set(entry.word, current);
   }, () => malformedEntries++);
+
+  // The English Wiktionary records translations for only a fraction of English
+  // words, so a reverse deck also reads the inverted forward deck. Entry
+  // translations stay first because they are sense-aligned; inverted cards only
+  // widen the back-word set, which the coverage checks then re-filter.
+  if (options.augmentFrom) {
+    const forward = JSON.parse(await readFile(options.augmentFrom, 'utf8')) as DeckData;
+    for (const [front, back] of forward.cards) {
+      if (!candidateSet.has(back)) continue;
+      const current = wiktionaryByWord.get(back) ?? { ipa: [], translations: [] };
+      if (!current.translations.includes(front)) current.translations.push(front);
+      wiktionaryByWord.set(back, current);
+    }
+  }
 
   const selected = candidates
     .filter(entry => wiktionaryByWord.get(entry)?.translations.length)
@@ -136,23 +172,23 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     throw new Error(`Only ${selected.length} usable ${languageFront} lemmas were found; expected at least ${minimum}.`);
   }
 
-  const englishWords = new Set<string>();
+  const backWords = new Set<string>();
   for (const lemma of selected) {
-    for (const translation of wiktionaryByWord.get(lemma)?.translations ?? []) englishWords.add(translation);
+    for (const translation of wiktionaryByWord.get(lemma)?.translations ?? []) backWords.add(translation);
   }
   for (const glosses of options.shortWordGlosses?.values() ?? []) {
-    for (const gloss of glosses) englishWords.add(gloss);
+    for (const gloss of glosses) backWords.add(gloss);
   }
 
-  const englishIpa = new Map<string, string[]>();
-  await forEachJsonLine<KaikkiEntry>(options.englishKaikki, entry => {
+  const backIpa = new Map<string, string[]>();
+  await forEachJsonLine<KaikkiEntry>(backKaikki, entry => {
     const word = typeof entry.word === 'string' ? entry.word.toLowerCase() : '';
-    if (entry.lang_code !== languageBack || !englishWords.has(word)) return;
-    const pronunciations = englishIpa.get(word) ?? [];
+    if (entry.lang_code !== languageBack || !backWords.has(word)) return;
+    const pronunciations = backIpa.get(word) ?? [];
     for (const ipa of ipaFromSounds(entry, 4)) {
       if (!pronunciations.includes(ipa)) pronunciations.push(ipa);
     }
-    englishIpa.set(word, pronunciations);
+    backIpa.set(word, pronunciations);
   }, () => malformedEntries++);
 
   const pronunciations: Record<string, string[]> = {};
@@ -164,14 +200,14 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     const frontKey = `${languageFront}:${lemma}`;
     if (data.ipa.length && !pronunciations[frontKey]) pronunciations[frontKey] = data.ipa.slice(0, 3);
 
-    for (const englishLemma of data.translations.slice(0, 8)) {
-      if (shouldRejectTranslation(lemma, englishLemma)) continue;
-      cards.push([lemma, englishLemma]);
+    for (const backLemma of data.translations.slice(0, 8)) {
+      if (shouldRejectTranslation(lemma, backLemma)) continue;
+      cards.push([lemma, backLemma]);
 
-      const englishKey = `${languageBack}:${englishLemma}`;
-      if (!pronunciations[englishKey]) {
-        const ipa = englishIpa.get(englishLemma);
-        if (ipa?.length) pronunciations[englishKey] = ipa;
+      const backKey = `${languageBack}:${backLemma}`;
+      if (!pronunciations[backKey]) {
+        const ipa = backIpa.get(backLemma);
+        if (ipa?.length) pronunciations[backKey] = ipa;
       }
     }
   }
@@ -196,15 +232,15 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
   validate(deck, languageFront, languageBack, options.requiredCard);
 
   const frontLemmas = new Set(curatedCards.map(card => card[0]));
-  const englishLemmas = new Set(curatedCards.map(card => card[1]));
+  const backLemmas = new Set(curatedCards.map(card => card[1]));
   const report: GenerationReport = {
     frontLemmas: frontLemmas.size,
     cards: curatedCards.length,
     frontWithIpa: [...frontLemmas].filter(lemma => deck.pronunciations?.[`${languageFront}:${lemma}`]?.length).length,
     frontWithoutIpa: [...frontLemmas].filter(lemma => !deck.pronunciations?.[`${languageFront}:${lemma}`]?.length).length,
-    englishLemmas: englishLemmas.size,
-    englishWithIpa: [...englishLemmas].filter(lemma => deck.pronunciations?.[`${languageBack}:${lemma}`]?.length).length,
-    englishWithoutIpa: [...englishLemmas].filter(lemma => !deck.pronunciations?.[`${languageBack}:${lemma}`]?.length).length,
+    backLemmas: backLemmas.size,
+    backWithIpa: [...backLemmas].filter(lemma => deck.pronunciations?.[`${languageBack}:${lemma}`]?.length).length,
+    backWithoutIpa: [...backLemmas].filter(lemma => !deck.pronunciations?.[`${languageBack}:${lemma}`]?.length).length,
     pronunciationEntries: Object.keys(deck.pronunciations ?? {}).length,
     frequencyDuplicateRows,
     duplicateCards: curatedCards.length - new Set(curatedCards.map(card => JSON.stringify(card))).size,
@@ -282,15 +318,16 @@ export async function download(url: string, destination: string): Promise<void> 
   );
 }
 
-/** All lowercase English headwords, used to keep only real translation targets. */
-async function loadEnglishHeadwords(
+/** All lowercase headwords of a Wiktionary dump for one language, used to keep
+ *  only real translation targets. */
+async function loadHeadwords(
   path: string,
-  languageBack: string,
+  language: string,
   onMalformed: () => void,
 ): Promise<Set<string>> {
   const headwords = new Set<string>();
   await forEachJsonLine<KaikkiEntry>(path, entry => {
-    if (entry.lang_code !== languageBack || typeof entry.word !== 'string') return;
+    if (entry.lang_code !== language || typeof entry.word !== 'string') return;
     headwords.add(entry.word.toLowerCase());
   }, onMalformed);
   return headwords;
