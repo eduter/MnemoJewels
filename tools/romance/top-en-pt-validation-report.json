@@ -1,0 +1,14 @@
+{
+  "frontLemmas": 3000,
+  "cards": 6556,
+  "frontWithIpa": 2989,
+  "frontWithoutIpa": 11,
+  "backLemmas": 3544,
+  "backWithIpa": 3350,
+  "backWithoutIpa": 194,
+  "pronunciationEntries": 6339,
+  "frequencyDuplicateRows": 761,
+  "duplicateCards": 0,
+  "malformedEntries": 3,
+  "missingCurated": []
+}

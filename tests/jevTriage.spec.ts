@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi, afterEach } from 'vitest';
 import { JevClient, type JevAnswer, type JevResponse } from '../tools/jev/client.ts';
 import { buildLemmaRequest } from '../tools/jev/prompts.ts';
 import { decideCandidates, groupCardsByLemma, triageDeck } from '../tools/jev/triage.ts';
@@ -117,5 +117,48 @@ describe('Jev triage harness', () => {
     expect(metrics.dropRecall).toBe(1);
     expect(metrics.keepRecall).toBe(0.5);
     expect(metrics.confusion).toEqual({ trueKeep: 1, falseDrop: 1, falseKeep: 0, trueDrop: 1 });
+  });
+});
+
+describe('JevClient transient-failure retry', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('retries a transient 529 and returns the eventual success', async () => {
+    const ok: JevResponse = {
+      model: 'fake',
+      answers: { misleading_0: { type: 'noul', noul: 0.1 } },
+      usage: { input_tokens: 1, output_tokens: 0 },
+    };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response('overloaded', { status: 529 }))
+      .mockResolvedValueOnce(new Response('overloaded', { status: 503 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(ok), { status: 200 }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const client = new JevClient({ apiKey: 'test', retryBaseDelayMs: 0 });
+    const result = await client.ask({ word: 'casa' }, {
+      misleading_0: { type: 'noul', instructions: 'q' },
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(result.answers.misleading_0).toEqual({ type: 'noul', noul: 0.1 });
+  });
+
+  it('does not retry a non-transient 401', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response('unauthorized', { status: 401 }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const client = new JevClient({ apiKey: 'test', retryBaseDelayMs: 0 });
+    await expect(client.ask({}, {})).rejects.toThrow(/401/);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('gives up after the configured attempt count', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response('overloaded', { status: 529 }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const client = new JevClient({ apiKey: 'test', maxAttempts: 3, retryBaseDelayMs: 0 });
+    await expect(client.ask({}, {})).rejects.toThrow(/529/);
+    expect(fetchMock).toHaveBeenCalledTimes(3);
   });
 });

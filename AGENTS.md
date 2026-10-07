@@ -116,3 +116,35 @@ Both arms billed the official endpoint (`https://api.typesafe.ai/v1/systemone`, 
 output free). Never set `TYPESAFE_API_BASE` — it defaults to the official URL in `client.ts`, and
 pointing it at the `jevtypesafeai.com` reseller is the 10x-markup mistake. When evaluating any prompt
 change here, always run an old-shape control on the same slice to separate signal from run-to-run noise.
+
+## Jev triage policy: `--protect-best` + `--min-lemma-length`, not the raw 0.5 default
+
+The first Portuguese pass used the bare default (`misleading >= 0.5`, `protectBest` off), the same
+policy the Spanish/French decks shipped with. That was wrong: it emptied 246 / 405 lemmas on
+`top-pt-en` / `top-en-pt`, including words whose translation is hand-curated as correct in
+`tools/romance/englishCuration.ts` and `portugueseCuration.ts` (`me -> me`, `on -> em`,
+`her -> dela`, `will -> vontade`, `give`, `must`, `away`, `stand`, `draw`). The cause is that Jev's
+per-candidate `misleading` Noul conflates two things: "this is not the *primary* translation" and
+"this is a false association". A word's one obvious gloss can therefore score 0.5–0.9 and be dropped.
+
+The fix is to let the hand curation own the short, high-frequency words and have Jev curate only the
+long tail. The policy that does this, and the one the Portuguese decks now ship with:
+
+- `--protect-best` (guard): never drop a lemma's own top-ranked candidate, so every lemma keeps at
+  least one card. The `best` pick has median `misleading` 0.12 and p90 0.42 — it is the one Jev is
+  confident about, so the guard has a sound basis. With it on, all 3,000 lemmas survive on both decks.
+- `--min-lemma-length 5` for `top-pt-en`, `4` for `top-en-pt`. Below that the pipeline's short-word
+  curation (`ENGLISH_SHORT_WORD_GLOSSES`, `PORTUGUESE_SHORT_WORD_GLOSSES`) is authoritative and is not
+  second-guessed. Russian uses the same split at `5`; English-front lemmas run shorter, so `4` keeps
+  the same idea without leaving real words (`open`, `give`, `will`) to Jev.
+- `--misleading-threshold 0.8` (up from 0.5). The noise rate per score band, read off stratified
+  samples of the secondary candidates, is roughly 7% at 0.5–0.7, 12% at 0.7–0.8, 45% at 0.8–0.9 and
+  75% at 0.9–1.0 — the kept tail flips from majority-genuine to majority-noise at 0.8. Both decks'
+  histograms are flat to 0.7 and rise sharply only above 0.85, so 0.8 sits on the knee.
+
+Net effect versus the default: `top-pt-en` 4,711 → 7,266 cards and `top-en-pt` 3,614 → 5,165, both
+back to the full 3,000 lemmas, with all 1,431 / 229 curated glosses preserved. Re-deciding is free —
+the raw probabilities are in `.cache/jev/<deck>/triage-report.json`, so `data:jev:policy` re-applies a
+new threshold offline without re-billing. When changing the threshold, restore the pre-triage deck
+(`git checkout HEAD~1 -- public/decks/<deck>.json`) before re-applying, because `apply.ts` mutates the
+deck in place.

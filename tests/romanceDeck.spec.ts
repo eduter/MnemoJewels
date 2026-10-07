@@ -2,26 +2,28 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { DeckData } from '../src/types';
 
-const decks: Array<[string, string, string]> = [
-  ['top-es-en', 'es', 'problema'],
-  ['top-fr-en', 'fr', 'problème'],
+const decks: Array<[string, string, string, string, string]> = [
+  ['top-es-en', 'es', 'en', 'problema', 'problem'],
+  ['top-fr-en', 'fr', 'en', 'problème', 'problem'],
+  ['top-pt-en', 'pt', 'en', 'problema', 'problem'],
+  ['top-en-pt', 'en', 'pt', 'problem', 'problema'],
 ];
 
-describe.each(decks)('%s deck', (uid, languageFront, sampleLemma) => {
+describe.each(decks)('%s deck', (uid, languageFront, languageBack, frontSample, backSample) => {
   const deck = JSON.parse(
     readFileSync(resolve(`public/decks/${uid}.json`), 'utf8'),
   ) as DeckData;
 
-  it('loads as a front-to-English deck with IPA pronunciations only', () => {
+  it('loads with the declared front and back languages and IPA only', () => {
     expect(deck.uid).toBe(uid);
     expect(deck.languageFront).toBe(languageFront);
-    expect(deck.languageBack).toBe('en');
+    expect(deck.languageBack).toBe(languageBack);
     expect(deck.cards.length).toBeGreaterThan(3000);
     expect(deck.pronunciations).toBeDefined();
     expect(deck.lexicon).toBeUndefined();
   });
 
-  it('covers most of the generated lemmas with high IPA coverage', () => {
+  it('covers most of the generated front lemmas with high IPA coverage', () => {
     const lemmas = new Set(deck.cards.map(card => card[0]));
 
     // Jev triage removes whole lemmas when every candidate is noise, so the
@@ -33,12 +35,12 @@ describe.each(decks)('%s deck', (uid, languageFront, sampleLemma) => {
     ).toBeGreaterThan(2700);
   });
 
-  it('includes English IPA for many card backs', () => {
-    const englishLemmas = new Set(deck.cards.map(card => card[1]));
+  it('includes back-language IPA for many card backs', () => {
+    const backLemmas = new Set(deck.cards.map(card => card[1]));
 
-    expect(englishLemmas.size).toBeGreaterThan(2000);
+    expect(backLemmas.size).toBeGreaterThan(2000);
     expect(
-      [...englishLemmas].filter(lemma => deck.pronunciations![`en:${lemma}`]?.length).length,
+      [...backLemmas].filter(lemma => deck.pronunciations![`${languageBack}:${lemma}`]?.length).length,
     ).toBeGreaterThan(1500);
   });
 
@@ -46,7 +48,7 @@ describe.each(decks)('%s deck', (uid, languageFront, sampleLemma) => {
     const allowed = new Set<string>();
     for (const [front, back] of deck.cards) {
       allowed.add(`${languageFront}:${front}`);
-      allowed.add(`en:${back}`);
+      allowed.add(`${languageBack}:${back}`);
     }
     for (const key of Object.keys(deck.pronunciations!)) {
       expect(allowed.has(key)).toBe(true);
@@ -62,9 +64,9 @@ describe.each(decks)('%s deck', (uid, languageFront, sampleLemma) => {
   });
 
   it('includes a well-known example card with IPA', () => {
-    expect(deck.cards).toContainEqual([sampleLemma, 'problem']);
-    expect(deck.pronunciations![`${languageFront}:${sampleLemma}`]?.length).toBeGreaterThan(0);
-    expect(deck.pronunciations!['en:problem']?.length).toBeGreaterThan(0);
+    expect(deck.cards).toContainEqual([frontSample, backSample]);
+    expect(deck.pronunciations![`${languageFront}:${frontSample}`]?.length).toBeGreaterThan(0);
+    expect(deck.pronunciations![`${languageBack}:${backSample}`]?.length).toBeGreaterThan(0);
   });
 });
 

@@ -2,6 +2,13 @@ export interface KaikkiSound {
   ipa?: string;
 }
 
+export interface KaikkiTranslation {
+  lang_code?: string;
+  word?: string;
+  sense?: string;
+  tags?: string[];
+}
+
 export interface KaikkiSense {
   links?: unknown[];
   glosses?: string[];
@@ -16,6 +23,10 @@ export interface KaikkiEntry {
   pos?: string;
   senses?: KaikkiSense[];
   sounds?: KaikkiSound[];
+  /** Target-language renderings recorded on an English entry. Only English
+   *  Wiktionary entries carry this; other languages express translations as
+   *  sense links instead. */
+  translations?: KaikkiTranslation[];
 }
 
 /** True when a sense only records an inflected form of another lemma. */

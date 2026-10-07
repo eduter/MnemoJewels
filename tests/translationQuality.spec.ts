@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   englishFromSenseLink,
+  isTargetWordShape,
   shouldRejectHeuristicGloss,
+  translationsForEntry,
   translationsForSense,
 } from '../tools/decks/translationQuality.ts';
 
@@ -79,5 +81,33 @@ describe('translationQuality', () => {
       frontLemma: 'глагол',
       englishHeadwords: new Set(['verb']),
     })).toEqual([{ value: 'verb', sources: new Set(['link']) }]);
+  });
+
+  describe('entry translations (English-front decks)', () => {
+    it('reads the target-language words off the entry', () => {
+      const entry = {
+        translations: [
+          { lang_code: 'pt', word: 'casa' },
+          { lang_code: 'es', word: 'casa' },
+          { lang_code: 'pt', word: 'moradia' },
+          { lang_code: 'pt', word: 'casa' },
+        ],
+      };
+      expect(translationsForEntry(entry, 'pt')).toEqual(['casa', 'moradia']);
+    });
+
+    it('accepts target words in any script but rejects notes and definitions', () => {
+      const entry = {
+        translations: [
+          { lang_code: 'pt', word: 'água' },
+          { lang_code: 'pt', word: 'water, in the sense of a body of water' },
+          { lang_code: 'pt', word: 'Appendix:Portuguese' },
+          { lang_code: 'pt', word: '' },
+        ],
+      };
+      expect(translationsForEntry(entry, 'pt')).toEqual(['água']);
+      expect(isTargetWordShape('água')).toBe(true);
+      expect(isTargetWordShape('water, in the sense of a body of water')).toBe(false);
+    });
   });
 });

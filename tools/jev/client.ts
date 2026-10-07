@@ -60,9 +60,22 @@ export interface JevClientOptions {
   apiKey: string;
   baseURL?: string;
   model?: string;
+  /** Attempts per request, including the first; retries cover transient 5xx/429. */
+  maxAttempts?: number;
+  /** Base of the exponential backoff between retries, in milliseconds. */
+  retryBaseDelayMs?: number;
 }
 
 export const DEFAULT_JE_BASE_URL = 'https://api.typesafe.ai/v1/systemone';
+
+/**
+ * Statuses the endpoint returns when it is momentarily overloaded rather than
+ * rejecting the request. A full deck is thousands of sequential calls, so a
+ * single transient 529 partway through would otherwise discard the whole run.
+ */
+const RETRYABLE_STATUSES = new Set([429, 500, 502, 503, 504, 529]);
+const DEFAULT_MAX_ATTEMPTS = 6;
+const DEFAULT_RETRY_BASE_DELAY_MS = 1000;
 /**
  * Independent hosted Jev proxy with the same request/response contract. Keys
  * minted on jevtypesafeai.com (prefix `jv_live_`) authenticate here, not at the
@@ -74,6 +87,8 @@ export const DEFAULT_JE_MODEL = 'jev-latest';
 export class JevClient {
   private readonly apiKey: string;
   private readonly baseURL: string;
+  private readonly maxAttempts: number;
+  private readonly retryBaseDelayMs: number;
   readonly model: string;
 
   constructor(options: JevClientOptions) {
@@ -81,6 +96,8 @@ export class JevClient {
     this.apiKey = options.apiKey;
     this.baseURL = options.baseURL ?? DEFAULT_JE_BASE_URL;
     this.model = options.model ?? DEFAULT_JE_MODEL;
+    this.maxAttempts = options.maxAttempts ?? DEFAULT_MAX_ATTEMPTS;
+    this.retryBaseDelayMs = options.retryBaseDelayMs ?? DEFAULT_RETRY_BASE_DELAY_MS;
   }
 
   get endpoint(): string {
@@ -88,19 +105,27 @@ export class JevClient {
   }
 
   async ask(state: unknown, questions: Record<string, JevQuestion>): Promise<JevResponse> {
-    const response = await fetch(this.baseURL, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${this.apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ model: this.model, state, questions }),
-    });
-    if (!response.ok) {
+    let lastError: unknown;
+    for (let attempt = 1; attempt <= this.maxAttempts; attempt++) {
+      const response = await fetch(this.baseURL, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${this.apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ model: this.model, state, questions }),
+      });
+      if (response.ok) return await response.json() as JevResponse;
       const body = await response.text().catch(() => '');
-      throw new Error(`Jev request failed (${response.status}): ${body.slice(0, 500)}`);
+      lastError = new Error(`Jev request failed (${response.status}): ${body.slice(0, 500)}`);
+      if (!RETRYABLE_STATUSES.has(response.status) || attempt === this.maxAttempts) throw lastError;
+      // Exponential backoff with jitter; the endpoint asks callers to retry
+      // later on these statuses, and sequential deck runs are cheap to pace.
+      const backoffMs = Math.min(this.retryBaseDelayMs * 2 ** (attempt - 1), 15000)
+        + Math.random() * 250;
+      await new Promise(resolve => setTimeout(resolve, backoffMs));
     }
-    return await response.json() as JevResponse;
+    throw lastError;
   }
 }
 
