@@ -58,6 +58,25 @@ keep the font. The full rationale lives in `assets/icons/README.md`.
 `src/install.ts` handles `beforeinstallprompt`/`appinstalled` and unhides the main-menu "Install app"
 button (`button.install`, hidden by default) on Chromium; other browsers just don't show it.
 
+## Tap input: pointer events, not `click`
+
+`src/input.ts` resolves board taps from `pointerdown`/`pointerup`, not `click`, because of
+`additional.ts`'s global `document.addEventListener('touchmove', e => e.preventDefault(), {passive:false})`
+(kept to stop iOS overscroll). A hurried tap drifts a few pixels, which fires `touchmove`; that
+`preventDefault()` suppresses the browser's synthesized `click`, so a click-only board silently missed
+those taps — exactly the "I tapped but it didn't select, then the next tap selected" report. Pointer
+events still fire through the gesture, and the down→up displacement (`TAP_SLOP`, 16px) separates a tap
+from a deliberate drag/scroll. Verified in mobile-emulated Chromium: a 12px-drift tap registers, a
+45px drag does not, `pointercancel` does not.
+
+Two details matter when editing this: the `click` handler is kept but **only for `event.detail === 0`**
+(keyboard Enter/Space and screen-reader activation produce a click with no pointer origin; real pointer
+taps arrive with `detail >= 1`), so keyboard support survives without double-selecting. And
+`pointerdown` clears any pending tap before arming a new one, because a gesture that ends off-board may
+never deliver `pointerup`/`pointercancel` inside `#board-area`. `tests/selection.spec.ts` simulates the
+pointer stream directly (jsdom: `new PointerEvent(...)`); note jsdom defaults `isPrimary` to false, so
+the test helper must set it explicitly.
+
 ## Performance: alternative selection (the hot path)
 
 `cards.createNewGroup` → `chooseAlternatives` ranks deck cards by `cardDistance` against the group's

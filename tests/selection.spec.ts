@@ -112,6 +112,23 @@ function selectedTiles(): HTMLButtonElement[] {
   return Array.from(document.querySelectorAll<HTMLButtonElement>('.tile.selected'));
 }
 
+// A pointer tap like a real finger: down, then up a few pixels away. The drift
+// is what fires `touchmove` on a device, which suppresses the synthesized click.
+function tap(tile: HTMLButtonElement, drift = 0): void {
+  const init: PointerEventInit = {
+    bubbles: true,
+    cancelable: true,
+    isPrimary: true,
+    button: 0,
+    pointerId: 1,
+    pointerType: 'touch',
+    clientX: 40,
+    clientY: 40,
+  };
+  tile.dispatchEvent(new PointerEvent('pointerdown', init));
+  tile.dispatchEvent(new PointerEvent('pointerup', { ...init, clientX: 40 + drift, clientY: 40 }));
+}
+
 describe('tile selection', () => {
   it('does not leave a selection border on an unrelated tile after a match', () => {
     const { first, second } = findMatchingPair(board.getJewels());
@@ -240,7 +257,7 @@ describe('tile selection', () => {
       '.tile:not(.is-matched):not(.is-leaving)[data-row="0"][data-col="0"]',
     );
     expect(falling).not.toBeNull();
-    falling!.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    tap(falling!);
 
     expect(board.getSelectedJewel()).toEqual({ row: 0, col: 0 });
     vi.useRealTimers();
@@ -272,9 +289,45 @@ describe('tile selection', () => {
       '.tile:not(.is-new)[data-row="0"][data-col="0"]',
     );
     expect(existing).not.toBeNull();
-    existing!.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    tap(existing!);
 
     expect(board.getSelectedJewel()).toEqual({ row: 0, col: 0 });
     vi.useRealTimers();
+  });
+
+  it('registers a tap that drifts, even though the drift suppresses the click', () => {
+    vi.useFakeTimers();
+    reducedMotion = false;
+    game.startGame();
+    vi.advanceTimersByTime(INITIAL_INTERVAL);
+
+    const existing = document.querySelector<HTMLButtonElement>(
+      '.tile:not(.is-new)[data-row="0"][data-col="0"]',
+    );
+    expect(existing).not.toBeNull();
+    // A 12px drift is enough for `touchmove` to fire and eat the click on a
+    // device; the pointer stream must still select the tile.
+    tap(existing!, 12);
+
+    expect(board.getSelectedJewel()).toEqual({ row: 0, col: 0 });
+    vi.useRealTimers();
+  });
+
+  it('treats a long drag as a scroll, not a selection', () => {
+    reducedMotion = false;
+    const tile = document.querySelector<HTMLButtonElement>('.tile[data-row="0"][data-col="0"]')!;
+
+    tap(tile, 40);
+
+    expect(board.getSelectedJewel()).toBeNull();
+  });
+
+  it('does not select on keyboard-origin clicks twice via the pointer path', () => {
+    const tile = document.querySelector<HTMLButtonElement>('.tile[data-row="0"][data-col="0"]')!;
+
+    // A keyboard activation is a click with detail 0 and no pointer events.
+    tile.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 0 }));
+
+    expect(board.getSelectedJewel()).toEqual({ row: 0, col: 0 });
   });
 });
