@@ -11,8 +11,9 @@
 //   # generate the deck from already downloaded files
 //   node --experimental-strip-types tools/german/generate.ts
 //
-// Only the German-to-English direction ships. German is not in scope for the
-// Jev triage pass yet: this generator produces the full, unfiltered deck.
+// Only the German-to-English direction ships. The Jev triage pass runs as a
+// separate step on the generated deck (see the README); this generator produces
+// the full deck that the pass then filters.
 
 import { resolve } from 'node:path';
 import { generateDeck, download, writeGeneration, type DeckGenerationOptions } from '../decks/generate.ts';

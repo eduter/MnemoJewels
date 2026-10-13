@@ -116,10 +116,31 @@ before orthographic comparison.
 
 ## Jev triage
 
-German has not been run through the Jev triage harness yet: this pipeline
-produces the full, unfiltered deck. The harness is deck- and language-agnostic
-and `de` is already a known language name in `tools/jev/languages.ts`, so the
-pass can be added later without changing the generator.
+German has been run through the Jev triage harness with the same guarded policy
+as the Portuguese decks:
+
+```sh
+TYPESAFE_API_KEY=... npm run data:jev -- \
+  --input public/decks/top-de-en.json \
+  --out .cache/jev/top-de-en
+
+npm run data:jev:policy -- \
+  --report .cache/jev/top-de-en/triage-report.json \
+  --out .cache/jev/top-de-en/drop.json \
+  --misleading-threshold 0.8 --protect-best --min-lemma-length 5
+
+npm run data:jev:apply -- \
+  --input public/decks/top-de-en.json \
+  --drops .cache/jev/top-de-en/drop.json --version 2
+```
+
+The bare 0.5 default over-drops: it would empty 376 lemmas and remove 211 senses
+the short-word curation keeps (`der -> who`, `er -> it`, `a -> an`). `0.8` sits on
+the noise knee (the long-lemma histogram is flat to 0.80, then rises sharply),
+`--protect-best` keeps every lemma's own top-ranked candidate, and
+`--min-lemma-length 5` leaves the ≤4-character lemmas to `germanCuration.ts`. At
+0.8 all 3,000 lemmas survive and all 756 curated senses are preserved:
+9,947 → 7,367 cards.
 
 ## Known limitations
 

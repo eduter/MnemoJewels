@@ -10,7 +10,7 @@ const deck = JSON.parse(
 describe('German deck', () => {
   it('loads as a German-to-English deck with IPA pronunciations only', () => {
     expect(deck.uid).toBe('top-de-en');
-    expect(deck.version).toBe(1);
+    expect(deck.version).toBe(2);
     expect(deck.languageFront).toBe('de');
     expect(deck.languageBack).toBe('en');
     expect(deck.cards.length).toBeGreaterThan(3000);
@@ -21,7 +21,8 @@ describe('German deck', () => {
   it('covers 3,000 German lemmas with high IPA coverage', () => {
     const lemmas = new Set(deck.cards.map(card => card[0].toLowerCase()));
 
-    // German ships unfiltered (no Jev pass yet), so the full 3,000 remain.
+    // The Jev triage drops misleading candidate pairs, not lemmas, so the full
+    // 3,000 remain after the pass.
     expect(lemmas.size).toBe(3000);
     expect(
       deck.cards.filter(card => deck.pronunciations![`de:${card[0]}`]?.length).length,
