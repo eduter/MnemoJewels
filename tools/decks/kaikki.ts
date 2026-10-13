@@ -34,6 +34,33 @@ export function isInflectionSense(sense: KaikkiSense): boolean {
   return (sense.tags ?? []).includes('form-of') || (sense.form_of?.length ?? 0) > 0;
 }
 
+/** True when a sense is a redirect to another spelling or lemma ("standard
+ *  spelling of …", "alternative form of …"). Such a sense carries no translation
+ *  of its own: its links are region labels (`Switzerland`) and cross-references
+ *  to the target spelling, so using either would put `switzerland` on a card for
+ *  `gross`.
+ *
+ *  Only the gloss phrase is a reliable signal: `alt-of` also tags contractions
+ *  (`im`), clippings (`Ost`) and abbreviations (`Mio`), which do carry their own
+ *  translation, and "alternative form of" tags live colloquial words (`nö`,
+ *  `grad`) whose links are as usable as any other sense's. */
+export function isRedirectSense(sense: KaikkiSense): boolean {
+  const gloss = sense.glosses?.[0] ?? '';
+  return /\b(?:standard|obsolete|former(?:ly standard)?|nonstandard|misspelling|alternative|letter-case)\s+spelling of\b/i.test(gloss)
+    || /\bletter-case\s+form of\b/i.test(gloss);
+}
+
+/** True when a sense is a cross-reference to another spelling or form rather
+ *  than a meaning of its own ("standard spelling of Straße", "alternative form
+ *  of schloss"). Such a sense must not compete when choosing a lemma's canonical
+ *  spelling: `schloß`/`Schloß` are the pre-reform spellings of `Schloss`, and
+ *  the archaic `schloß` must not override the modern `Schloss`. */
+export function isVariantSense(sense: KaikkiSense): boolean {
+  if (isInflectionSense(sense)) return true;
+  const gloss = sense.glosses?.[0] ?? '';
+  return /\b(?:spelling|form)\s+of\b/i.test(gloss);
+}
+
 // Register tags marking a sense as not part of current standard usage. Such a
 // sense should not, on its own, keep a spelling lowercase: `Frau` is a noun even
 // though a rare slang pronoun `frau` also exists, whereas a plain `super`
@@ -50,7 +77,7 @@ const NONCURRENT_TAGS = new Set([
  *  vs `Arm` "arm"). */
 export function hasCompetingWordSense(entry: KaikkiEntry): boolean {
   return (entry.senses ?? []).some(sense =>
-    !isInflectionSense(sense)
+    !isVariantSense(sense)
     && (sense.glosses?.length ?? 0) > 0
     && !(sense.tags ?? []).some(tag => NONCURRENT_TAGS.has(tag)),
   );

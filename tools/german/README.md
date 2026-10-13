@@ -38,6 +38,30 @@ spelling rather than risk a merge, which is why a few nouns (`Zeit`, `Kraft`)
 still appear lowercase because Wiktionary also records a distinct lowercase
 preposition for them.
 
+## `ß` spelling
+
+The frequency list spells `ß` as `ss` (`strasse`, `gross`), while German
+Wiktionary keeps `ß` as the standard spelling and records the `ss` form only as a
+Switzerland/Liechtenstein variant. `foldFrontEszett` folds `ß -> ss` in the front
+key so the standard entry matches, and the card then shows the canonical `ß`
+spelling (`Straße`, `groß`, `heiß`). The folding must not let a regional `ss`
+spelling override a genuine `ss` word: `ssRealSense` tracks lemmas whose `ss`
+spelling is itself a real word, so `Masse` "mass" stays `Masse` rather than
+becoming `Maße`.
+
+## Proper nouns
+
+`separateProperNounEntries` keeps `pos: "name"` entries in a separate map. A name
+entry's translations and capitalization are a fallback, used only when the lemma
+has no usable common-word entry, so a place name never pollutes its homograph
+(`Essen` the city vs `essen` "to eat"; `Seine` the river vs `seine` "his"). The
+fallback needs both that the lemma has no non-noun entry and that its common
+entries carry no translation: a non-noun entry blocks it even without
+translations (`seine` is an inflection of `sein`; `kamen` is a preterite of
+`kommen`), and a translated noun blocks it (`hütte` "hut" must not become the
+`Eisenhüttenstadt` synonym). A name-only lemma (`berlin` -> "berlin") still falls
+back and keeps its capitalization.
+
 ## Short-word curation
 
 `germanCuration.ts` holds the hand-curated gloss list for every lemma of four
@@ -139,8 +163,8 @@ the short-word curation keeps (`der -> who`, `er -> it`, `a -> an`). `0.8` sits 
 the noise knee (the long-lemma histogram is flat to 0.80, then rises sharply),
 `--protect-best` keeps every lemma's own top-ranked candidate, and
 `--min-lemma-length 5` leaves the ≤4-character lemmas to `germanCuration.ts`. At
-0.8 all 3,000 lemmas survive and all 756 curated senses are preserved:
-9,947 → 7,367 cards.
+0.8 all 3,000 lemmas survive and every curated sense is preserved:
+9,852 → 7,430 cards.
 
 ## Known limitations
 

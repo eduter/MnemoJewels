@@ -84,6 +84,15 @@ describe('German deck', () => {
     expect(cards.get('sie')).toContain('she');
   });
 
+  it('does not replace a common word with a proper-noun homograph', () => {
+    // `seine` is an inflection of `sein` (possessive), not the river `Seine`.
+    // Its Wiktionary entry carries no translation of its own, but the name
+    // homograph must not fill the gap.
+    const cards = cardsByFront(deck);
+    expect(cards.has('Seine')).toBe(false);
+    expect(cards.get('seine') ?? []).not.toContain('river');
+  });
+
   it('applies the curated short-word glosses instead of the raw links', () => {
     const cards = cardsByFront(deck);
     // Raw sense links gave `das` -> "who", `sie` -> "pedantic", `h` -> "hour".

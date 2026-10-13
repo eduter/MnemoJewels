@@ -75,6 +75,8 @@ const options: DeckGenerationOptions = {
   // carries a few accented loanwords (à, é).
   extraCharacters: 'äöüßàé',
   matchFrontCaseInsensitively: true,
+  foldFrontEszett: true,
+  separateProperNounEntries: true,
   capitalizeFrontLemmas: true,
   shortWordMaxLength: GERMAN_SHORT_WORD_MAX_LENGTH,
   shortWordGlosses: GERMAN_SHORT_WORD_GLOSSES,

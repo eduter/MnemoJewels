@@ -84,4 +84,17 @@ describe('Jev vs hand curation', () => {
     expect(result.evaluated).toBe(2);
     expect(result.jevDropsCurated.map(r => r.back)).toEqual(['the']);
   });
+
+  it('folds the front `ß` so the standard spelling matches the `ss` curation key', () => {
+    const german: Curation = {
+      maxLength: 5,
+      glosses: new Map([['heiss', ['hot', 'spicy']]]),
+    };
+    const result = compare(report([
+      // Card front is the canonical `heiß`, the curation key is `heiss`.
+      lemma('heiß', [['hot', 0.1], ['spicy', 0.9]]),
+    ]), german);
+    expect(result.evaluated).toBe(2);
+    expect(result.jevDropsCurated.map(r => r.back)).toEqual(['spicy']);
+  });
 });

@@ -71,9 +71,10 @@ export const DEFAULT_JE_BASE_URL = 'https://api.typesafe.ai/v1/systemone';
 /**
  * Statuses the endpoint returns when it is momentarily overloaded rather than
  * rejecting the request. A full deck is thousands of sequential calls, so a
- * single transient 529 partway through would otherwise discard the whole run.
+ * single transient 499/529 partway through would otherwise discard the whole
+ * run.
  */
-const RETRYABLE_STATUSES = new Set([429, 500, 502, 503, 504, 529]);
+const RETRYABLE_STATUSES = new Set([429, 499, 500, 502, 503, 504, 529]);
 const DEFAULT_MAX_ATTEMPTS = 6;
 const DEFAULT_RETRY_BASE_DELAY_MS = 1000;
 /**

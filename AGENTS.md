@@ -176,7 +176,7 @@ French and Portuguese decks). `de` is already a known language name in
 `tools/jev/languages.ts`, so the Jev triage pass needs no generator change; it
 runs the same harness as the other decks.
 
-Two generator knobs are German-specific, and they work as a pair.
+Four generator knobs are German-specific.
 `matchFrontCaseInsensitively` keys every front entry by its lowercase form: the
 wordfreq top-100k list is lowercase throughout (`haus`, `problem`, `frau`) while
 German Wiktionary capitalizes nouns (`Haus`, `Problem`, `Frau`), so matching on
@@ -186,6 +186,25 @@ restores the canonical Wiktionary spelling for the card front, so nouns read
 key and the `frontLemma` passed to `translationsForSense` together; do not
 lowercase only one of them or the sense-link rejection (`shouldRejectHeuristicGloss`
 is keyed on the front lemma) and the curation coverage check silently disagree.
+
+`foldFrontEszett` adds `ß -> ss` to that key, because the frequency list spells
+`ß` as `ss` (`strasse`, `gross`) while Wiktionary keeps `ß` as the standard
+spelling and records the `ss` form only as a Switzerland/Liechtenstein variant.
+Folding lets the standard entry match, so the card shows `Straße`/`groß` with the
+real translation instead of the regional variant. The `ss` spelling must not
+override a genuine `ss` word: `ssRealSense` tracks lemmas whose `ss` spelling is
+itself a real word, so `Masse` "mass" stays `Masse` rather than becoming `Maße`.
+
+`separateProperNounEntries` collects `pos: "name"` entries in their own map. A
+name entry's translations and capitalization are a fallback, used only when the
+lemma has no usable common-word entry, so a place name never pollutes its
+homograph (`Essen` the city vs `essen` "to eat"). The fallback requires *both*
+that the lemma has no non-noun entry and that its common entries carry no
+translation: a non-noun entry blocks it even without translations (`seine`, an
+inflection of `sein`, must not become the river `Seine`; `kamen`, a preterite of
+`kommen`), and a translated noun blocks it (`hütte` "hut" must not become the
+`Eisenhüttenstadt` synonym). A name-only lemma (`berlin` -> "berlin") still
+falls back and keeps its capitalization.
 
 Capitalization is deliberately conservative. A lemma is left lowercase when the
 lowercase spelling is itself a *current, real* word (`hasCompetingWordSense`: a
@@ -199,11 +218,12 @@ prepositions in Wiktionary) stay lowercase.
 The 563 short lemmas (≤4 characters) are hand-curated in
 `tools/german/germanCuration.ts`, which fully replaces the raw glosses; the
 generator's `missingCurated` report is empty for the shipped deck. Curation keys
-the lowercase lemma and the lookup folds case, so it applies whether or not the
-front was capitalized. Adding or removing an entry shifts which lemmas reach 3,000, so curation and regeneration
-iterate to a fixed point (an empty list drops a lemma, pulling in a new one that
-may itself be short) — always regenerate and re-check `missingCurated` until it is
-empty before committing.
+the lowercase lemma and the lookup folds case **and** `ß -> ss`, so a curated
+`heiss` entry matches the `heiß` card the folding produces. Adding or removing an
+entry shifts which lemmas reach 3,000, so curation and regeneration iterate to a
+fixed point (an empty list drops a lemma, pulling in a new one that may itself be
+short) — always regenerate and re-check `missingCurated` until it is empty before
+committing.
 
 The Jev pass uses the same guarded policy as the Portuguese decks —
 `--misleading-threshold 0.8 --protect-best --min-lemma-length 5` — for the same
@@ -214,12 +234,12 @@ candidate Jev is most confident about. The `≤4`-character lemmas stay with
 `germanCuration.ts` (the curation covers exactly the same length), and 0.8 sits
 on the noise knee: the long-lemma secondary-candidate histogram is flat to 0.80
 (≈250–300 per 0.05 bin) and rises sharply only above it (0.90–0.95: 646,
-0.95–1.00: 1,043). At 0.8 all 3,000 lemmas survive and all 756 curated senses are
-preserved. Net: `top-de-en` 9,947 → 7,367 cards, deck version 2. The run billed
-the official endpoint (~$0.19); re-deciding is free from
-`.cache/jev/top-de-en/triage-report.json`.
+0.95–1.00: 1,043). At 0.8 all 3,000 lemmas survive and every curated sense is
+preserved. Net: `top-de-en` 9,852 → 7,430 cards, deck version 2. The run billed
+the official endpoint; re-deciding is free from
+`.cache/jev/top-de-en-v5/triage-report.json`.
 
 Note the capitalized short fronts: the front is the canonical Wiktionary spelling
 (`Des`, `I`, `Muss`), so a policy that keys lemmas by `front.length` still applies
-to the right cards, and `compare.ts` reads the curation with `front.toLowerCase()`
-when scoring Jev against the hand list.
+to the right cards, and `compare.ts` reads the curation with a case- and
+`ß`-folded key when scoring Jev against the hand list.

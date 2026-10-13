@@ -21,7 +21,7 @@ import { pipeline } from 'node:stream/promises';
 import { Readable } from 'node:stream';
 import type { DeckData } from '../../src/types.ts';
 import type { KaikkiEntry, KellyFile } from './kaikki.ts';
-import { ipaFromSounds, isInflectionSense, hasCompetingWordSense } from './kaikki.ts';
+import { ipaFromSounds, isInflectionSense, isRedirectSense, hasCompetingWordSense } from './kaikki.ts';
 import { forEachJsonLine } from './jsonl.ts';
 import { countDuplicateRows, selectCandidateLemmas } from './frequency.ts';
 import { shouldRejectTranslation, translationsForEntry, translationsForSense } from './translationQuality.ts';
@@ -60,6 +60,20 @@ export interface DeckGenerationOptions {
    *  (`Haus`, `Problem`); lowercasing keeps `haus`/`Haus` on one card and lets a
    *  lowercase noun form still match. */
   matchFrontCaseInsensitively?: boolean;
+  /** Fold `ß` to `ss` when keying front entries, in addition to lowercasing.
+   *  The German frequency list spells `ß` as `ss` (`strasse`, `gross`), while
+   *  Wiktionary records the standard spelling with `ß` (`Straße`, `groß`) and
+   *  keeps the `ss` spelling only as a Switzerland/Liechtenstein regional
+   *  variant. Folding lets the standard entry match, so the card gets the real
+   *  translation and the canonical `ß` spelling. */
+  foldFrontEszett?: boolean;
+  /** Collect proper-noun (`pos: "name"`) translations and IPA in a separate map
+   *  that is only used for a lemma with no common-word entry. A geographic name
+   *  or surname that shares a spelling with a common word is a different lemma
+   *  (`Essen` the city vs `essen` "to eat"), so its links ("city", "surname")
+   *  must not become glosses for the common word; a name-only lemma
+   *  (`München` -> "munich") keeps them. */
+  separateProperNounEntries?: boolean;
   /** Restore each front lemma's canonical Wiktionary capitalization (German
    *  nouns are capitalized, so the card front should read `Haus`, not `haus`).
    *  Only applies with `matchFrontCaseInsensitively`. A lemma is left lowercase
@@ -133,7 +147,9 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     extraCharacters: options.extraCharacters,
   });
   const frontKeyOf = options.matchFrontCaseInsensitively
-    ? (word: string) => word.toLowerCase()
+    ? (word: string) => options.foldFrontEszett
+      ? word.toLowerCase().replace(/ß/g, 'ss')
+      : word.toLowerCase()
     : (word: string) => word;
   const candidateSet = new Set(candidates.map(frontKeyOf));
 
@@ -146,21 +162,26 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
   // the lowercase frequency spelling into the Wiktionary spelling.
   const canonicalForms = new Map<string, string>();
   const lowercaseWordLemmas = new Set<string>();
-  await forEachJsonLine<KaikkiEntry>(options.frontKaikki, entry => {
-    if (entry.lang_code !== languageFront || !entry.word) return;
-    const key = frontKeyOf(entry.word);
-    if (!candidateSet.has(key)) return;
-    if (options.capitalizeFrontLemmas) {
-      if (entry.word === key) {
-        // A lowercase entry that is a real word blocks capitalization; an
-        // inflected-only one (imperative/preterite) does not.
-        if (hasCompetingWordSense(entry)) lowercaseWordLemmas.add(key);
-      } else if (hasCompetingWordSense(entry)) {
-        const current = canonicalForms.get(key);
-        if (!current || entry.word.length < current.length) canonicalForms.set(key, entry.word);
-      }
-    }
-    const current = wiktionaryByWord.get(key) ?? { ipa: [], translations: [] };
+  // `ß`-less regional spellings (`Strasse`) redirect to the standard spelling
+  // (`Straße`); such a lemma must show the `ß` form, and must not borrow the
+  // `ss` spelling's display when the `ss` spelling is itself a real word
+  // (`Masse` "mass" must stay `Masse`, not become `Maße`).
+  const ssRealSense = new Set<string>();
+  // Capitalized proper-noun spellings, applied only to a lemma with no
+  // common-word entry. A frequent common word must not be capitalized onto a
+  // name homograph: `seine` (possessive) must stay `seine`, not become `Seine`
+  // (the river), whereas a name-only lemma (`berlin`) does capitalize.
+  const nameCanonical = new Map<string, string>();
+  // Proper-noun entries are collected here and only consulted for a lemma with
+  // no *non-noun* common-word entry, so a place name never pollutes its
+  // homograph. A non-noun entry (`seine`, an inflection of `sein`; `kamen`, a
+  // preterite of `kommen`) blocks the fallback even when it yields no
+  // translation, because the name homograph (`Seine` the river) is a different
+  // word. A noun-only homograph (`Bayern` the state next to the inflected
+  // `Bayern` of `Bayer`) still falls back to the name, so real toponyms survive.
+  const properNounByWord = new Map<string, LemmaData>();
+  const nonNounWordByWord = new Set<string>();
+  const collectTranslations = (entry: KaikkiEntry, current: LemmaData, key: string): void => {
     for (const ipa of ipaFromSounds(entry)) {
       if (!current.ipa.includes(ipa)) current.ipa.push(ipa);
     }
@@ -179,8 +200,58 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
         if (!current.translations.includes(value)) current.translations.push(value);
       }
     }
-    wiktionaryByWord.set(key, current);
+  };
+  await forEachJsonLine<KaikkiEntry>(options.frontKaikki, entry => {
+    if (entry.lang_code !== languageFront || !entry.word) return;
+    const key = frontKeyOf(entry.word);
+    if (!candidateSet.has(key)) return;
+    const isProperNoun = options.separateProperNounEntries && entry.pos === 'name';
+    const isLetterCaseRedirect = isProperNoun
+      && (entry.senses ?? []).some(sense => isRedirectSense(sense));
+    if (isLetterCaseRedirect) return;
+    if (isProperNoun) {
+      // A name entry's capitalization is a fallback: it must not capitalize a
+      // common word onto a name homograph, but it should capitalize a name-only
+      // lemma. Deferred to the post-scan resolution below.
+      if (options.capitalizeFrontLemmas && entry.word !== key) nameCanonical.set(key, entry.word);
+    } else if (options.capitalizeFrontLemmas) {
+      if (entry.word === key) {
+        // A lowercase entry that is a real word blocks capitalization; an
+        // inflected-only one (imperative/preterite) does not.
+        if (hasCompetingWordSense(entry)) lowercaseWordLemmas.add(key);
+      } else if (hasCompetingWordSense(entry)) {
+        const current = canonicalForms.get(key);
+        if (!current || entry.word.length < current.length) canonicalForms.set(key, entry.word);
+      }
+    }
+    if (!isProperNoun && options.foldFrontEszett && !entry.word.includes('ß') && hasCompetingWordSense(entry)) {
+      ssRealSense.add(key);
+    }
+    if (isProperNoun) {
+      const current = properNounByWord.get(key) ?? { ipa: [], translations: [] };
+      collectTranslations(entry, current, key);
+      properNounByWord.set(key, current);
+    } else {
+      if (entry.pos !== 'noun') nonNounWordByWord.add(key);
+      const current = wiktionaryByWord.get(key) ?? { ipa: [], translations: [] };
+      collectTranslations(entry, current, key);
+      wiktionaryByWord.set(key, current);
+    }
   }, () => malformedEntries++);
+
+  // A lemma falls back to its name entry only when it has no usable common-word
+  // entry: no non-noun entry (`seine`, an inflection of `sein`; `kamen`, a
+  // preterite of `kommen`) and no translated common entry (`hütte` "hut" must
+  // stay the noun, not become the Eisenhüttenstadt synonym). The fallback then
+  // lets real toponyms survive (`bayern`, `schweden`) and adopts the name's
+  // capitalization only for such a lemma.
+  for (const [key, data] of properNounByWord) {
+    if (nonNounWordByWord.has(key)) continue;
+    if (wiktionaryByWord.get(key)?.translations.length) continue;
+    wiktionaryByWord.set(key, data);
+    const name = nameCanonical.get(key);
+    if (name && !canonicalForms.has(key)) canonicalForms.set(key, name);
+  }
 
   // The English Wiktionary records translations for only a fraction of English
   // words, so a reverse deck also reads the inverted forward deck. Entry
@@ -233,7 +304,9 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     if (!data) continue;
     // `lemma` is the lowercase frequency spelling; `display` is the canonical
     // Wiktionary spelling shown on the card (`Haus`, not `haus`). They differ
-    // only when capitalization is on and the lemma is safe to capitalize.
+    // only when capitalization is on and the lemma is safe to capitalize. With
+    // `foldFrontEszett`, the same lookup also yields the standard `ß` spelling
+    // (`Straße` for `strasse`), since the `ß` entry is the one that competes.
     const display = options.capitalizeFrontLemmas && !lowercaseWordLemmas.has(lemma)
       ? canonicalForms.get(lemma) ?? lemma
       : lemma;
