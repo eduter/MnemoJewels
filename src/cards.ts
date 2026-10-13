@@ -404,8 +404,12 @@ function rescheduleMatch(eventData: unknown): void {
 
   const card = allCards[data.cardId];
   const now = time.now();
+  // A match made right after a mismatch revealed the answer is done by sight,
+  // not recall: it scores and clears the tiles, but must not update learning
+  // (same as the last pair of a group, matched by elimination).
+  const corrected = data.correctedCards?.includes(data.cardId) ?? false;
 
-  if (groupSize > 1) {
+  if (groupSize > 1 && !corrected) {
     const minInterval = groupSize * 1000 / data.thinkingTime * TimeUnits.DAY;
 
     if (card.lastRep) {
@@ -460,10 +464,11 @@ function rescheduleMismatch(eventData: unknown): void {
     card.setSchedule(now, nextRep);
     card.mismatch();
   }
+  // The group stays on the board so the player can match the answer they just
+  // saw, so its cards must stay in cardsInGame; suspend them only so they are not
+  // re-picked into a new group while they are still visible.
   for (let i = 0; i < cardsInGroup.length; i++) {
-    card = cardsInGroup[i];
-    card.suspend(now + 15 * TimeUnits.SECOND);
-    moveToIndex(card);
+    cardsInGroup[i].suspend(now + 15 * TimeUnits.SECOND);
   }
   console.groupEnd();
 }

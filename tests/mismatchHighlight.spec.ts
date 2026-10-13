@@ -8,6 +8,7 @@ const CARD_COUNT = 300;
 
 let board: typeof import('../src/board').default;
 let game: typeof import('../src/game').default;
+let cards: typeof import('../src/cards').default;
 let reducedMotion = true;
 
 beforeAll(async () => {
@@ -28,6 +29,7 @@ beforeAll(async () => {
 
   board = (await import('../src/board')).default;
   game = (await import('../src/game')).default;
+  cards = (await import('../src/cards')).default;
   const input = (await import('../src/input')).default;
   const storage = (await import('../src/storage')).default;
   await storage.setup();
@@ -105,6 +107,21 @@ function highlighted(kind: 'is-wrong' | 'is-right'): HTMLButtonElement[] {
   return Array.from(document.querySelectorAll<HTMLButtonElement>(`#board .tile.${kind}`));
 }
 
+function statCount(state: string): number {
+  return cards.getStatesStats().find(s => s.state === state)?.count ?? 0;
+}
+
+function findMatchablePair(jewels: Jewel[][]): { front: JewelSelection; back: JewelSelection } {
+  for (let row = 0; row < jewels[0].length; row++) {
+    for (let otherRow = 0; otherRow < jewels[1].length; otherRow++) {
+      if (jewels[0][row].card.id === jewels[1][otherRow].card.id) {
+        return { front: { row, col: 0 }, back: { row: otherRow, col: 1 } };
+      }
+    }
+  }
+  throw new Error('No matchable pair on the board');
+}
+
 describe('mismatch feedback', () => {
   it('spotlights exactly the two wrong tiles and the one correct translation', () => {
     const jewels = board.getJewels();
@@ -146,11 +163,12 @@ describe('mismatch feedback', () => {
     expect(highlighted('is-right')[0].querySelector('.tile-verdict.correct')?.textContent).toBe('\u2713');
   });
 
-  it('clears the spotlight and replaces the group when the penalty ends', () => {
+  it('clears the spotlight and keeps the group when the penalty ends', () => {
     vi.useFakeTimers();
     game.startGame();
     const jewels = board.getJewels();
     const { first, second } = findMismatchingPair(jewels);
+    const rowsBefore = board.getJewels()[0].length;
 
     board.selectJewel(first.row, first.col);
     board.selectJewel(second.row, second.col);
@@ -160,6 +178,8 @@ describe('mismatch feedback', () => {
 
     expect(document.querySelectorAll('.tile.is-wrong, .tile.is-right')).toHaveLength(0);
     expect(document.getElementById('board')!.classList.contains('is-mismatch-highlight')).toBe(false);
+    // The group stays put so the player can match the answer they just saw.
+    expect(board.getJewels()[0].length).toBe(rowsBefore);
     vi.useRealTimers();
   });
 
@@ -180,5 +200,53 @@ describe('mismatch feedback', () => {
     board.selectJewel(first.row, first.col);
     expect(board.getSelectedJewel()).toEqual({ row: first.row, col: first.col });
     vi.useRealTimers();
+  });
+
+  it('does not count a match made after seeing the correction as learning', () => {
+    vi.useFakeTimers();
+    game.startGame();
+    const jewels = board.getJewels();
+    const { first, second } = findMismatchingPair(jewels);
+    const wordCardId = jewels[first.col][first.row].card.id;
+
+    const knownBefore = statCount('KNOWN');
+    const learningBefore = statCount('LEARNING');
+
+    board.selectJewel(first.row, first.col);
+    board.selectJewel(second.row, second.col);
+    vi.advanceTimersByTime(MAX_MISMATCH_FREEZE + 1);
+
+    // The revealed answer is now matchable. Match it by sight.
+    const wordRow = board.getJewels()[0].findIndex(jewel => jewel.card.id === wordCardId);
+    const backRow = board.getJewels()[1].findIndex(jewel => jewel.card.id === wordCardId);
+    expect(wordRow).toBeGreaterThanOrEqual(0);
+    expect(backRow).toBeGreaterThanOrEqual(0);
+
+    const scoreBefore = document.getElementById('score-value')!.textContent;
+    board.selectJewel(wordRow, 0);
+    board.selectJewel(backRow, 1);
+
+    // It clears the tiles...
+    expect(board.getJewels()[0].some(jewel => jewel.card.id === wordCardId)).toBe(false);
+    // ...but neither promotes the card (KNOWN) nor restarts its learning (LEARNING).
+    expect(statCount('KNOWN')).toBe(knownBefore);
+    expect(statCount('LEARNING')).toBe(learningBefore);
+    // It still scores, like any other match.
+    expect(document.getElementById('score-value')!.textContent).not.toBe(scoreBefore);
+    vi.useRealTimers();
+  });
+
+  it('still counts an ordinary match as learning', () => {
+    game.startGame();
+    const jewels = board.getJewels();
+    const { front, back } = findMatchablePair(jewels);
+
+    const knownBefore = statCount('KNOWN');
+    const learningBefore = statCount('LEARNING');
+
+    board.selectJewel(front.row, front.col);
+    board.selectJewel(back.row, back.col);
+
+    expect(statCount('KNOWN') + statCount('LEARNING')).toBe(knownBefore + learningBefore + 1);
   });
 });
