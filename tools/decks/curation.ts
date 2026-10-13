@@ -13,6 +13,9 @@
  * empty gloss list removes the lemma from the deck entirely, which is how the
  * generators drop short items that are not real vocabulary (stray letters,
  * abbreviations, proper nouns).
+ *
+ * The curated map is keyed by the lowercase lemma, while a card front may carry
+ * canonical capitalization (`Haus`); the lookup folds case so both match.
  */
 export function curateCards(
   cards: [string, string][],
@@ -26,7 +29,7 @@ export function curateCards(
       curated.push([front, back]);
       continue;
     }
-    const replacements = glosses.get(front);
+    const replacements = glosses.get(front.toLowerCase());
     if (replacements === undefined) {
       curated.push([front, back]);
       continue;
@@ -46,7 +49,7 @@ export function missingCuratedLemmas(
 ): string[] {
   const missing = new Set<string>();
   for (const [front] of cards) {
-    if ([...front].length <= maxLength && !glosses.has(front)) missing.add(front);
+    if ([...front].length <= maxLength && !glosses.has(front.toLowerCase())) missing.add(front);
   }
   return [...missing];
 }

@@ -21,7 +21,7 @@ import { pipeline } from 'node:stream/promises';
 import { Readable } from 'node:stream';
 import type { DeckData } from '../../src/types.ts';
 import type { KaikkiEntry, KellyFile } from './kaikki.ts';
-import { ipaFromSounds, isInflectionSense } from './kaikki.ts';
+import { ipaFromSounds, isInflectionSense, hasCompetingWordSense } from './kaikki.ts';
 import { forEachJsonLine } from './jsonl.ts';
 import { countDuplicateRows, selectCandidateLemmas } from './frequency.ts';
 import { shouldRejectTranslation, translationsForEntry, translationsForSense } from './translationQuality.ts';
@@ -60,6 +60,14 @@ export interface DeckGenerationOptions {
    *  (`Haus`, `Problem`); lowercasing keeps `haus`/`Haus` on one card and lets a
    *  lowercase noun form still match. */
   matchFrontCaseInsensitively?: boolean;
+  /** Restore each front lemma's canonical Wiktionary capitalization (German
+   *  nouns are capitalized, so the card front should read `Haus`, not `haus`).
+   *  Only applies with `matchFrontCaseInsensitively`. A lemma is left lowercase
+   *  when a lowercase Wiktionary entry for the same spelling is itself a current
+   *  real word, because capitalizing then would merge two distinct words (`arm`
+   *  "poor" vs `Arm` "arm"). Inflected-only lowercase entries (imperatives,
+   *  preterites) and obsolete/rare variants do not block capitalization. */
+  capitalizeFrontLemmas?: boolean;
   /** A language-to-`languageBack` deck whose cards are inverted to widen the
    *  back-word set. The English Wiktionary records few translations for a given
    *  language, so an English-front deck also reads the reverse of the forward
@@ -133,10 +141,25 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
   const backHeadwords = await loadHeadwords(backKaikki, languageBack, () => malformedEntries++);
 
   const wiktionaryByWord = new Map<string, LemmaData>();
+  // Canonical capitalization per lemma (the surface form to show on a card).
+  // Only meaningful with `capitalizeFrontLemmas`; the two flags together turn
+  // the lowercase frequency spelling into the Wiktionary spelling.
+  const canonicalForms = new Map<string, string>();
+  const lowercaseWordLemmas = new Set<string>();
   await forEachJsonLine<KaikkiEntry>(options.frontKaikki, entry => {
     if (entry.lang_code !== languageFront || !entry.word) return;
     const key = frontKeyOf(entry.word);
     if (!candidateSet.has(key)) return;
+    if (options.capitalizeFrontLemmas) {
+      if (entry.word === key) {
+        // A lowercase entry that is a real word blocks capitalization; an
+        // inflected-only one (imperative/preterite) does not.
+        if (hasCompetingWordSense(entry)) lowercaseWordLemmas.add(key);
+      } else if (hasCompetingWordSense(entry)) {
+        const current = canonicalForms.get(key);
+        if (!current || entry.word.length < current.length) canonicalForms.set(key, entry.word);
+      }
+    }
     const current = wiktionaryByWord.get(key) ?? { ipa: [], translations: [] };
     for (const ipa of ipaFromSounds(entry)) {
       if (!current.ipa.includes(ipa)) current.ipa.push(ipa);
@@ -208,12 +231,18 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
   for (const lemma of selected) {
     const data = wiktionaryByWord.get(lemma);
     if (!data) continue;
-    const frontKey = `${languageFront}:${lemma}`;
+    // `lemma` is the lowercase frequency spelling; `display` is the canonical
+    // Wiktionary spelling shown on the card (`Haus`, not `haus`). They differ
+    // only when capitalization is on and the lemma is safe to capitalize.
+    const display = options.capitalizeFrontLemmas && !lowercaseWordLemmas.has(lemma)
+      ? canonicalForms.get(lemma) ?? lemma
+      : lemma;
+    const frontKey = `${languageFront}:${display}`;
     if (data.ipa.length && !pronunciations[frontKey]) pronunciations[frontKey] = data.ipa.slice(0, 3);
 
     for (const backLemma of data.translations.slice(0, 8)) {
       if (shouldRejectTranslation(lemma, backLemma)) continue;
-      cards.push([lemma, backLemma]);
+      cards.push([display, backLemma]);
 
       const backKey = `${languageBack}:${backLemma}`;
       if (!pronunciations[backKey]) {

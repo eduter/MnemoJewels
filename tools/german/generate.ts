@@ -74,9 +74,10 @@ const options: DeckGenerationOptions = {
   // carries a few accented loanwords (à, é).
   extraCharacters: 'äöüßàé',
   matchFrontCaseInsensitively: true,
+  capitalizeFrontLemmas: true,
   shortWordMaxLength: GERMAN_SHORT_WORD_MAX_LENGTH,
   shortWordGlosses: GERMAN_SHORT_WORD_GLOSSES,
-  requiredCard: ['problem', 'problem'],
+  requiredCard: ['Problem', 'problem'],
 };
 
 const result = await generateDeck(options);

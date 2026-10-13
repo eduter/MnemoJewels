@@ -17,13 +17,26 @@ regeneration steps are the same. Only the German-to-English direction ships.
 No `lexicon` or precomputed similarity edges are shipped; IPA ranking is computed
 at runtime from the pronunciation map.
 
-## German is lowercase
+## German capitalization
 
 The frequency list is lowercase throughout (`haus`, `problem`, `frau`), while
-German Wiktionary capitalizes nouns (`Haus`, `Problem`, `Frau`). The generator is
-run with `matchFrontCaseInsensitively`, which keys every front-language entry by
-its lowercase form, so `haus` and `Haus` land on one card. As a result the deck's
-German fronts are all lowercase, including nouns.
+German Wiktionary capitalizes nouns (`Haus`, `Problem`, `Frau`). The generator
+matches front entries case-insensitively, so `haus` and `Haus` land on one card,
+and then restores each lemma's canonical Wiktionary spelling for the card front
+(`capitalizeFrontLemmas`), so nouns read `Haus`, not `haus`. The two flags are
+applied together: `matchFrontCaseInsensitively` finds the entry, the second flag
+decides the spelling to show.
+
+A lemma stays lowercase when the lowercase spelling is itself a current, real
+word, because capitalizing then would merge two distinct words — `arm` "poor"
+(the adjective) versus `Arm` "arm" (the noun). Inflected-only lowercase entries
+(imperatives such as `haus` "haus[e]!", preterites such as `stand`) and
+obsolete/rare variants do not block capitalization, so the rule recovers `Haus`,
+`Frau` and `Abend` while keeping `arm`, `sie` and `mal` lowercase. The trade-off
+is deliberate: when the lowercase spelling is a live word the lemma keeps that
+spelling rather than risk a merge, which is why a few nouns (`Zeit`, `Kraft`)
+still appear lowercase because Wiktionary also records a distinct lowercase
+preposition for them.
 
 ## Short-word curation
 
