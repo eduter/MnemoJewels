@@ -110,12 +110,20 @@ export interface MatchEventData {
   cardId: number;
   cardsInGroup: CardRef[];
   thinkingTime: number;
+  /**
+   * The word card was revealed as the right answer by a mismatch the player is
+   * now matching back. The pairing proves nothing about recall, so the match
+   * still clears the tiles and scores, but must not update the card's learning.
+   */
+  correctedCards?: number[];
 }
 
 export interface MismatchEventData {
   mismatchedCards: number[];
   cardsInGroup: CardRef[];
   thinkingTime: number;
+  /** The word cards whose correct answer is being shown while the board freezes. */
+  correctedCards?: number[];
 }
 
 export type BoardChangeReason =

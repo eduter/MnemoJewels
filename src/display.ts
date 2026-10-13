@@ -1,4 +1,4 @@
-import { MATCH_FADE_TIME, MISMATCH_PENALTY_TIME, TILE_DROP_TIME } from './constants';
+import { MATCH_FADE_TIME, TILE_DROP_TIME } from './constants';
 import animationState from './animationState';
 import events from './events';
 import board from './board';

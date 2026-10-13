@@ -8,6 +8,7 @@ import {
   createPacingState,
   getAverageThinkingTime,
   getDifficulty,
+  getMismatchFreezeDuration,
   getSpawnDelay,
   recordMatch,
   recordMismatch,
@@ -99,6 +100,10 @@ function getIntervalBetweenGroups(numCards: number): number {
   return intervalBetweenGroups;
 }
 
+function getMismatchFreeze(): number {
+  return getMismatchFreezeDuration(pacingState, board.getNumCards(), level);
+}
+
 export default {
   startGame,
   gameOver,
@@ -107,4 +112,5 @@ export default {
   getLevel: function () { return level; },
   getDifficulty: function () { return getDifficulty(level); },
   getIntervalBetweenGroups,
+  getMismatchFreeze,
 };

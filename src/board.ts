@@ -1,4 +1,4 @@
-import { NUM_ROWS, DEFAULT_GROUP_SIZE, MISMATCH_PENALTY_TIME } from './constants';
+import { NUM_ROWS, DEFAULT_GROUP_SIZE } from './constants';
 import events from './events';
 import cards from './cards';
 import game from './game';
@@ -26,6 +26,10 @@ let pendingMismatch: (() => void) | null = null;
 let mismatchFrozen = false;
 let paused = false;
 let resumeFromSpawnSchedule: { delay: number; remaining: number } | null = null;
+// Word cards whose correct answer a mismatch has revealed and the player has not
+// yet matched back. Such a match proves nothing about recall, so it clears the
+// tiles and scores but must not update learning.
+let correctedWords = new Set<number>();
 
 function getOverlay(): HTMLElement {
   return document.getElementById('overlay')!;
@@ -37,6 +41,7 @@ function initialize(): void {
   pendingMismatch = null;
   mismatchFrozen = false;
   paused = false;
+  correctedWords = new Set();
   faJewels = [[], []];
   faAvailableGroupIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   Object.keys(fmGroupCreationTime).forEach(key => {
@@ -100,6 +105,7 @@ function abandon(): void {
   getOverlay().style.display = 'none';
   mismatchFrozen = false;
   paused = false;
+  correctedWords = new Set();
   faJewels = [[], []];
   fmSelectedJewel = null;
   // End the run through the normal path so cards and scores see the same
@@ -197,12 +203,18 @@ function match(cardId: number, selectionTime: number): void {
   const cardsInGroup = getCardsInGroup(groupId);
   const thinkingTime = selectionTime - Math.max(fiLastSelectionTime!, fmGroupCreationTime[groupId]);
 
+  // A word whose answer a mismatch just revealed is matched back by sight, not
+  // recall; flag it so the learning update is skipped (it still scores).
+  const wasCorrected = correctedWords.has(cardId);
+  correctedWords.delete(cardId);
+
   removeCard(cardId);
   fiLastSelectionTime = selectionTime;
   events.trigger('match', {
     cardId,
     cardsInGroup,
     thinkingTime,
+    ...(wasCorrected ? { correctedCards: [cardId] } : {}),
   } satisfies MatchEventData);
   if (cardsInGroup.length === 1) {
     faAvailableGroupIds.push(groupId);
@@ -250,25 +262,28 @@ function mismatch(
     mismatchedCards: [cardId1, cardId2],
     cardsInGroup,
     thinkingTime,
+    ...(correctTranslation ? { correctedCards: [cardId1] } : {}),
   } satisfies MismatchEventData);
 
-  // Freeze: dim the board and spotlight the right answer with the group still in
-  // place, then swap the group out once the penalty is over. The board refuses
-  // input until then, so a highlighted tile cannot be tapped for a free match.
+  // Freeze: dim the board and spotlight the right answer, but keep the group in
+  // place and let the spawn countdown keep running. Once it lifts the player can
+  // match the answer they just saw; that clears the tiles and scores, but the
+  // word does not count as learned.
   mismatchFrozen = true;
   const overlay = getOverlay();
   overlay.style.display = 'block';
-  stopAddingGroups();
   notifyBoardChanged(highlight ? { reason: 'mismatch', highlight } : { reason: 'mismatch' });
 
   const finishMismatch = () => {
     mismatchTimeout = null;
     overlay.style.display = 'none';
-    removeGroup(groupId);
-    addNewGroup(cardsInGroup.length);
     mismatchFrozen = false;
+    // From here the revealed answer may be matched back, but that pairing proves
+    // nothing about recall, so it must not update learning.
+    if (correctTranslation) {
+      correctedWords.add(cardId1);
+    }
     notifyBoardChanged({ reason: 'mismatch' });
-    startAddingGroups();
   };
 
   if (paused) {
@@ -276,7 +291,9 @@ function mismatch(
     // paused mid-mismatch cannot leave the board stuck behind the overlay.
     pendingMismatch = finishMismatch;
   } else {
-    mismatchTimeout = setTimeout(finishMismatch, MISMATCH_PENALTY_TIME);
+    // The freeze length tracks the player's current pace, so a fast player is
+    // released sooner and a struggling one gets longer to read the answer.
+    mismatchTimeout = setTimeout(finishMismatch, game.getMismatchFreeze());
   }
 }
 
@@ -342,14 +359,6 @@ function removeCard(cardId: number): void {
   }
 }
 
-function removeGroup(groupId: number): void {
-  const groupCards = getCardsInGroup(groupId);
-  for (let i = 0; i < groupCards.length; i++) {
-    removeCard(groupCards[i].id);
-  }
-  faAvailableGroupIds.push(groupId);
-}
-
 function getJewels(): Jewel[][] {
   return faJewels;
 }
@@ -369,5 +378,6 @@ export default {
   resumeGame,
   selectJewel,
   getJewels,
+  getNumCards,
   getSelectedJewel,
 };
