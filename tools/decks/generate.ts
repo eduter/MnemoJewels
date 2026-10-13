@@ -54,6 +54,12 @@ export interface DeckGenerationOptions {
   translationsFromFrontSenses?: boolean;
   /** Extra characters allowed inside a lemma (apostrophes, hyphens, …). */
   extraCharacters?: string;
+  /** Match front-language Wiktionary entries case-insensitively, keying every
+   *  lemma by its lowercase form. Needed for German, whose frequency lists are
+   *  lowercase (`haus`, `problem`) while the nouns are capitalized in Wiktionary
+   *  (`Haus`, `Problem`); lowercasing keeps `haus`/`Haus` on one card and lets a
+   *  lowercase noun form still match. */
+  matchFrontCaseInsensitively?: boolean;
   /** A language-to-`languageBack` deck whose cards are inverted to widen the
    *  back-word set. The English Wiktionary records few translations for a given
    *  language, so an English-front deck also reads the reverse of the forward
@@ -118,15 +124,20 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     limit: options.candidateLimit,
     extraCharacters: options.extraCharacters,
   });
-  const candidateSet = new Set(candidates);
+  const frontKeyOf = options.matchFrontCaseInsensitively
+    ? (word: string) => word.toLowerCase()
+    : (word: string) => word;
+  const candidateSet = new Set(candidates.map(frontKeyOf));
 
   let malformedEntries = 0;
   const backHeadwords = await loadHeadwords(backKaikki, languageBack, () => malformedEntries++);
 
   const wiktionaryByWord = new Map<string, LemmaData>();
   await forEachJsonLine<KaikkiEntry>(options.frontKaikki, entry => {
-    if (entry.lang_code !== languageFront || !entry.word || !candidateSet.has(entry.word)) return;
-    const current = wiktionaryByWord.get(entry.word) ?? { ipa: [], translations: [] };
+    if (entry.lang_code !== languageFront || !entry.word) return;
+    const key = frontKeyOf(entry.word);
+    if (!candidateSet.has(key)) return;
+    const current = wiktionaryByWord.get(key) ?? { ipa: [], translations: [] };
     for (const ipa of ipaFromSounds(entry)) {
       if (!current.ipa.includes(ipa)) current.ipa.push(ipa);
     }
@@ -134,7 +145,7 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
       for (const sense of entry.senses ?? []) {
         if (isInflectionSense(sense)) continue;
         for (const record of translationsForSense(sense, {
-          frontLemma: entry.word,
+          frontLemma: key,
           englishHeadwords: backHeadwords,
         })) {
           if (!current.translations.includes(record.value)) current.translations.push(record.value);
@@ -145,7 +156,7 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
         if (!current.translations.includes(value)) current.translations.push(value);
       }
     }
-    wiktionaryByWord.set(entry.word, current);
+    wiktionaryByWord.set(key, current);
   }, () => malformedEntries++);
 
   // The English Wiktionary records translations for only a fraction of English

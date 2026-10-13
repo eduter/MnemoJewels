@@ -1,0 +1,121 @@
+# German deck data
+
+`top-de-en.json` is generated data. Normal gameplay is entirely offline; the
+large source files are needed only when regenerating.
+
+It reuses the language-agnostic pipeline in `tools/decks/` that also drives the
+Russian, Spanish, French and Portuguese decks, so the shipped shape and the
+regeneration steps are the same. Only the German-to-English direction ships.
+
+## Shipped deck shape
+
+- `cards` — `[german, english]` pairs used for gameplay and import.
+- `pronunciations` — `language:lemma` → IPA string arrays (e.g. `de:problem`,
+  `en:problem`). On import this is copied onto the user's deck for mnemonic
+  distance in `cardDistance()`.
+
+No `lexicon` or precomputed similarity edges are shipped; IPA ranking is computed
+at runtime from the pronunciation map.
+
+## German is lowercase
+
+The frequency list is lowercase throughout (`haus`, `problem`, `frau`), while
+German Wiktionary capitalizes nouns (`Haus`, `Problem`, `Frau`). The generator is
+run with `matchFrontCaseInsensitively`, which keys every front-language entry by
+its lowercase form, so `haus` and `Haus` land on one card. As a result the deck's
+German fronts are all lowercase, including nouns.
+
+## Short-word curation
+
+`germanCuration.ts` holds the hand-curated gloss list for every lemma of four
+characters or fewer — 563 lemmas in the shipped deck, covering both the
+`missingCurated` report and the lemmas the raw links handled badly. Raw sense
+links there drag in grammatical labels and stray senses (`das` → "who", `sie` →
+"pedantic", `h` → "hour", `wo` → "whom"), proper nouns and given names
+(`wien`, `jörg`), abbreviations (`dvd`, `cd`, `npd`) and internet slang (`web`,
+`live`). Each curated entry replaces the Wiktionary glosses outright, and an
+empty gloss list drops the lemma.
+
+Coverage is enforced by the generator's `missingCurated` report: after curation
+it is empty, so the tables cover every short lemma in the deck.
+
+## Sources and licensing
+
+Frequency comes from the wordfreq top-100k list (the same source the Spanish,
+French and Portuguese decks use):
+
+- wordfreq (`de.json`), MIT; underlying corpora CC BY-SA
+- https://github.com/rspeer/wordfreq
+- Machine-readable mirror: https://github.com/kotoshu/frequency-list-kelly
+
+Lexical data and IPA come from Kaikki's Wiktextract output for English Wiktionary:
+
+- https://kaikki.org/dictionary/German/
+- https://kaikki.org/dictionary/English/
+- CC BY-SA 4.0; Wiktextract itself is MIT-licensed
+
+Attribution and license terms apply to the underlying sources; the generated
+deck is not relicensed by the application's ISC code license.
+
+## Regeneration
+
+Node.js is the only tooling dependency. To download current source snapshots and
+regenerate the deck:
+
+```sh
+npm run data:german:download
+npm run data:german
+```
+
+The download is about 4.4 GB (German 1.0 GB, English 3.3 GB) into
+`.cache/german-deck/`. To use already downloaded files:
+
+```sh
+node --experimental-strip-types tools/german/generate.ts \
+  --kelly /path/to/kelly-de.json \
+  --german /path/to/kaikki-german.jsonl \
+  --english /path/to/kaikki-english.jsonl
+```
+
+The pipeline (shared with the other decks, see `tools/decks/generate.ts`):
+
+1. de-duplicates and validates the ranked frequency rows;
+2. filters punctuation, malformed tokens, and non-standalone entries;
+3. joins the most frequent 3,000 usable lemmas to the German Wiktionary entries
+   (case-insensitively), collecting IPA and the English sense-link targets;
+4. keeps English backs only when Kaikki metadata supports them, then applies the
+   curated short-word table;
+5. emits `cards` and card-scoped `pronunciations` (German and English IPA);
+6. validates duplicate cards, curation coverage, and the `problem`/`problem`
+   example.
+
+`top-de-en-validation-report.json` records coverage and anomalies. Serious
+structural errors make generation fail. Missing IPA is retained as missing and
+reported.
+
+## Runtime behavior
+
+`src/phonetics.ts` already carries articulatory features for every IPA symbol the
+German deck uses (the uvular `ʁ`/`ʀ`, the vocalic `ɐ`, front rounded `ø`/`œ`/`ʏ`,
+`ç`, `ŋ`, …), so mnemonic distance reflects real confusability rather than raw
+character edits. `src/alternativeSelection.ts` folds German umlauts and `ß`
+before orthographic comparison.
+
+## Jev triage
+
+German has not been run through the Jev triage harness yet: this pipeline
+produces the full, unfiltered deck. The harness is deck- and language-agnostic
+and `de` is already a known language name in `tools/jev/languages.ts`, so the
+pass can be added later without changing the generator.
+
+## Known limitations
+
+- Wiktionary coverage and sense-link quality vary by lemma; some longer lemmas
+  still carry a rare or archaic sense that the short-word curation does not
+  reach.
+- English IPA may include multiple dialects without selecting a learner's
+  preferred dialect.
+- Some short lemmas whose sense links were unusable were dropped rather than
+  curated with an invented gloss.
+- Updating source snapshots can change coverage and therefore must be reviewed
+  together with the validation report.

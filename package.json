@@ -21,6 +21,8 @@
     "data:portuguese": "node --experimental-strip-types tools/romance/generate.ts --language pt",
     "data:portuguese:reverse": "node --experimental-strip-types tools/romance/generate.ts --language pt --reverse",
     "data:portuguese:download": "node --experimental-strip-types tools/romance/generate.ts --language pt --reverse --download",
+    "data:german": "node --experimental-strip-types tools/german/generate.ts",
+    "data:german:download": "node --experimental-strip-types tools/german/generate.ts --download",
     "data:jev": "node --experimental-strip-types tools/jev/cli.ts",
     "data:jev:analyze": "node --experimental-strip-types tools/jev/analyze.ts",
     "data:jev:policy": "node --experimental-strip-types tools/jev/policy.ts",
