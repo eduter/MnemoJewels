@@ -25,5 +25,4 @@ export const MIN_MISMATCH_FREEZE = 1500;
 export const MAX_MISMATCH_FREEZE = 5000;
 export const TILE_DROP_TIME = 340;
 export const MATCH_FADE_TIME = 180;
-export const INTERVAL_REDUCTION_FACTOR = 0.9;
 export const MAX_LEARNING = 20;
