@@ -14,7 +14,15 @@ export const MAX_INTERVAL = 18000;
 // so the board creeps up on them.
 export const EXPERT_MAX_INTERVAL = 7500;
 export const LAST_LEVEL = 10;
-export const MISMATCH_PENALTY_TIME = 1500;
+// The mismatch freeze dims the board and spotlights the correct answer. Its
+// length is a fraction of the interval the player is currently on, so the pause
+// tracks their pace: a fast player is held only briefly, while a struggling one
+// gets longer to read the words. Bounded below by the time it has always been
+// (so the feedback never becomes harder to read) and above so the freeze never
+// turns into a punishment of its own.
+export const MISMATCH_FREEZE_FRACTION = 0.5;
+export const MIN_MISMATCH_FREEZE = 1500;
+export const MAX_MISMATCH_FREEZE = 5000;
 export const TILE_DROP_TIME = 340;
 export const MATCH_FADE_TIME = 180;
 export const INTERVAL_REDUCTION_FACTOR = 0.9;

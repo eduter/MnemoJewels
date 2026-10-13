@@ -4,7 +4,10 @@ import {
   INITIAL_INTERVAL,
   LAST_LEVEL,
   MAX_INTERVAL,
+  MAX_MISMATCH_FREEZE,
   MIN_INTERVAL,
+  MIN_MISMATCH_FREEZE,
+  MISMATCH_FREEZE_FRACTION,
 } from './constants';
 
 // How quickly the per-pair speed estimate follows the player. Slower on a
@@ -79,6 +82,20 @@ export function getSpawnDelay(state: PacingState, rowsAfterSpawn: number, level:
     Math.max(0, rowsAfterSpawn + DEFAULT_GROUP_SIZE - target) * secondsPerPair;
 
   return Math.round(clamp(MIN_INTERVAL, requestedDelay, levelMaximum));
+}
+
+/**
+ * How long to hold the board frozen while the correct answer is shown after a
+ * mismatch. A fraction of the interval the player is currently on, so the pause
+ * tracks their pace: a fast player is released quickly, a struggling one gets
+ * longer to read. Floored at the fixed value it always was and capped so it
+ * cannot become a punishment in its own right.
+ */
+export function getMismatchFreezeDuration(state: PacingState, rowsAfterSpawn: number, level: number): number {
+  const interval = getSpawnDelay(state, rowsAfterSpawn, level);
+  return Math.round(
+    clamp(MIN_MISMATCH_FREEZE, interval * MISMATCH_FREEZE_FRACTION, MAX_MISMATCH_FREEZE),
+  );
 }
 
 function hasObservations(state: PacingState): boolean {

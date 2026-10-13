@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { beforeAll, beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
-import { MISMATCH_PENALTY_TIME } from '../src/constants';
+import { MAX_MISMATCH_FREEZE } from '../src/constants';
 import type { CardDto, Deck, JewelSelection } from '../src/types';
 import type Jewel from '../src/Jewel';
 
@@ -156,7 +156,7 @@ describe('mismatch feedback', () => {
     board.selectJewel(second.row, second.col);
     expect(highlighted('is-wrong')).toHaveLength(2);
 
-    vi.advanceTimersByTime(MISMATCH_PENALTY_TIME + 1);
+    vi.advanceTimersByTime(MAX_MISMATCH_FREEZE + 1);
 
     expect(document.querySelectorAll('.tile.is-wrong, .tile.is-right')).toHaveLength(0);
     expect(document.getElementById('board')!.classList.contains('is-mismatch-highlight')).toBe(false);
@@ -176,7 +176,7 @@ describe('mismatch feedback', () => {
     board.selectJewel(first.row, first.col);
     expect(board.getSelectedJewel()).toBeNull();
 
-    vi.advanceTimersByTime(MISMATCH_PENALTY_TIME + 1);
+    vi.advanceTimersByTime(MAX_MISMATCH_FREEZE + 1);
     board.selectJewel(first.row, first.col);
     expect(board.getSelectedJewel()).toEqual({ row: first.row, col: first.col });
     vi.useRealTimers();

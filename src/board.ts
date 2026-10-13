@@ -1,4 +1,4 @@
-import { NUM_ROWS, DEFAULT_GROUP_SIZE, MISMATCH_PENALTY_TIME } from './constants';
+import { NUM_ROWS, DEFAULT_GROUP_SIZE } from './constants';
 import events from './events';
 import cards from './cards';
 import game from './game';
@@ -276,7 +276,9 @@ function mismatch(
     // paused mid-mismatch cannot leave the board stuck behind the overlay.
     pendingMismatch = finishMismatch;
   } else {
-    mismatchTimeout = setTimeout(finishMismatch, MISMATCH_PENALTY_TIME);
+    // The freeze length tracks the player's current pace, so a fast player is
+    // released sooner and a struggling one gets longer to read the answer.
+    mismatchTimeout = setTimeout(finishMismatch, game.getMismatchFreeze());
   }
 }
 
@@ -369,5 +371,6 @@ export default {
   resumeGame,
   selectJewel,
   getJewels,
+  getNumCards,
   getSelectedJewel,
 };
