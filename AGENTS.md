@@ -243,3 +243,12 @@ Note the capitalized short fronts: the front is the canonical Wiktionary spellin
 (`Des`, `I`, `Muss`), so a policy that keys lemmas by `front.length` still applies
 to the right cards, and `compare.ts` reads the curation with a case- and
 `ß`-folded key when scoring Jev against the hand list.
+
+A lemma whose only Wiktionary entry is an inflection is absent from the deck
+unless the short-word curation supplies it, because the generator skips
+inflection senses with no translation. German `die` (the most frequent German
+word) is the clearest case: Wiktionary records it only as "inflection of `der`",
+so it never reaches a card. This is shared pipeline behavior, not a German bug —
+Spanish `los`/`es`/`esta`/`ha` and French `les`/`est`/`des` are equally absent.
+Fixing it means curating those function words (as `germanCuration.ts` does for
+`der`/`das`/`den`/`des`), not changing the generator.
