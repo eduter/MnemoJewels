@@ -19,6 +19,7 @@ import { resolve, isAbsolute } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import type { TriageReport } from './types.ts';
+import { curationKey } from '../decks/curation.ts';
 
 export interface Curation {
   maxLength: number;
@@ -62,7 +63,10 @@ export function compare(report: TriageReport, curation: Curation): CompareResult
 
   for (const lemma of report.byLemma) {
     if (lemma.front.length > curation.maxLength) continue;
-    const glosses = curation.glosses.get(lemma.front);
+    // The curation is keyed by the lowercase lemma, but a card front may carry
+    // canonical capitalization (`Haus`, `Des`) or the standard `ß` spelling
+    // (`Straße`) in German; fold case and `ß` so both match.
+    const glosses = curation.glosses.get(curationKey(lemma.front));
     if (!glosses) continue;
     for (const candidate of lemma.candidates ?? []) {
       const curated = curates(glosses, candidate.back);

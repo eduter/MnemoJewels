@@ -71,4 +71,30 @@ describe('Jev vs hand curation', () => {
     ]), curation);
     expect(result.evaluated).toBe(0);
   });
+
+  it('folds the front case so capitalized fronts match the lowercase curation key', () => {
+    const german: Curation = {
+      maxLength: 4,
+      glosses: new Map([['des', ['the', 'of the']]]),
+    };
+    const result = compare(report([
+      // Card front is the canonical `Des`, the curation key is `des`.
+      lemma('Des', [['of the', 0.1], ['the', 0.9]]),
+    ]), german);
+    expect(result.evaluated).toBe(2);
+    expect(result.jevDropsCurated.map(r => r.back)).toEqual(['the']);
+  });
+
+  it('folds the front `ß` so the standard spelling matches the `ss` curation key', () => {
+    const german: Curation = {
+      maxLength: 5,
+      glosses: new Map([['heiss', ['hot', 'spicy']]]),
+    };
+    const result = compare(report([
+      // Card front is the canonical `heiß`, the curation key is `heiss`.
+      lemma('heiß', [['hot', 0.1], ['spicy', 0.9]]),
+    ]), german);
+    expect(result.evaluated).toBe(2);
+    expect(result.jevDropsCurated.map(r => r.back)).toEqual(['spicy']);
+  });
 });

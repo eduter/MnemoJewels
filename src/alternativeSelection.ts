@@ -18,6 +18,7 @@ const NORMALIZATION_FUNCTIONS: Record<string, (word: string) => string> = {
   sv: word => word.toLowerCase().replace(/[äå]/g, 'a').replace(/ö/g, 'o'),
   es: word => foldDiacritics(word).replace(/ñ/g, 'n'),
   fr: word => foldDiacritics(word).replace(/œ/g, 'oe').replace(/æ/g, 'ae'),
+  de: word => word.toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss'),
 };
 
 /** Lower-cases and strips combining accents, so `café`/`cafe` compare equal. */

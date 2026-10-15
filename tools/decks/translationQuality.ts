@@ -1,4 +1,5 @@
 import type { KaikkiSense, KaikkiTranslation } from './kaikki.ts';
+import { isRedirectSense } from './kaikki.ts';
 
 export const VOCABULARY_POS_TRANSLATIONS = new Map<string, string>([
   ['глагол', 'verb'],
@@ -153,6 +154,7 @@ export function translationsForSense(
   sense: KaikkiSense,
   { frontLemma = '', englishHeadwords, allowGlossFallback = true }: TranslationsForSenseOptions = {},
 ): SenseTranslation[] {
+  if (isRedirectSense(sense)) return [];
   const byValue = new Map<string, SenseTranslation>();
   const topics = new Set((sense.topics ?? []).map(topic => topic.toLowerCase()));
   const glossWords = new Set(
