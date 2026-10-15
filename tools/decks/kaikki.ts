@@ -83,6 +83,39 @@ export function hasCompetingWordSense(entry: KaikkiEntry): boolean {
   );
 }
 
+// Tags marking a noun entry as a nominalization or abbreviation rather than a
+// word with a meaning of its own. `gerund` is the nominalized-infinitive tag
+// (`Essen` "eating" < `essen`), which a beginner does not meet as a separate
+// noun.
+const NOUN_FORM_TAGS = new Set(['gerund', 'abbreviation', 'initialism', 'acronym']);
+
+// Glosses that describe the form rather than a meaning. `letter-case form of`
+// is the capitalization-redirect family (`Du` "letter-case form of du").
+const NOUN_FORM_GLOSS = /^(?:abbreviation|initialism|acronym|contraction|short for|ellipsis|letter-case form)\b/i;
+
+// Register tags marking a use-mention sense: `Du` "the thou, the you (singular)"
+// records the pronoun quoted as a word, not a noun with its own meaning.
+const NOUN_MENTION_TAGS = new Set(['literally']);
+
+/** True when a noun entry carries a sense that is its own meaning, rather than a
+ *  nominalized verb (`Essen` "eating"), a capitalized abbreviation (`AM`), a
+ *  redirect to another spelling (`Du` "letter-case form of du") or the word
+ *  quoted as a noun (`Hin` "hin"). Used to decide whether a capitalized spelling
+ *  is a distinct noun that deserves its own card next to a lowercase word of the
+ *  same spelling (`morgen` "tomorrow" vs `Morgen` "morning"). */
+export function hasRealNounSense(entry: KaikkiEntry): boolean {
+  const word = (entry.word ?? '').toLowerCase();
+  return (entry.senses ?? []).some(sense => {
+    if (isVariantSense(sense)) return false;
+    const tags = sense.tags ?? [];
+    if (tags.some(tag => NOUN_FORM_TAGS.has(tag) || NOUN_MENTION_TAGS.has(tag))) return false;
+    const gloss = sense.glosses?.[0] ?? '';
+    if (!gloss || NOUN_FORM_GLOSS.test(gloss)) return false;
+    // A gloss that only restates the headword ("Hin" -> "hin") is a mention.
+    return gloss.trim().toLowerCase() !== word;
+  });
+}
+
 /** IPA transcriptions carried by a Wiktionary entry's `sounds` array. */
 export function ipaFromSounds(entry: KaikkiEntry, max = 3): string[] {
   const ipa: string[] = [];

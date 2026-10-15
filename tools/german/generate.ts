@@ -78,6 +78,7 @@ const options: DeckGenerationOptions = {
   foldFrontEszett: true,
   separateProperNounEntries: true,
   capitalizeFrontLemmas: true,
+  splitCapitalizedHomographs: true,
   shortWordMaxLength: GERMAN_SHORT_WORD_MAX_LENGTH,
   shortWordGlosses: GERMAN_SHORT_WORD_GLOSSES,
   requiredCard: ['Problem', 'problem'],

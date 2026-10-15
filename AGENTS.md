@@ -211,11 +211,25 @@ lowercase spelling is itself a *current, real* word (`hasCompetingWordSense`: a
 non-inflection sense with a gloss and no obsolete/rare register tag), because
 capitalizing would merge two distinct words (`arm` "poor" vs `Arm` "arm").
 Inflected-only lowercase entries (imperatives, preterites) and obsolete/rare
-variants do not block capitalization. The rule errs toward never merging, so a
-few nouns whose lowercase spelling is also a live word (`Zeit`, `Kraft`, both
-prepositions in Wiktionary) stay lowercase.
+variants do not block capitalization.
 
-The 563 short lemmas (≤4 characters) are hand-curated in
+`splitCapitalizedHomographs` is the other half: rather than fold the capitalized
+noun onto the lowercase card, it emits the noun as its own card beside the
+lowercase word (`arm` "poor" + `Arm` "arm", `morgen` "tomorrow" + `Morgen`
+"morning", `weise` "wise" + `Weise` "way"). The split is decided on the *merged*
+sense sets — both spellings need a usable translation and their glosses must
+differ — so a capitalization redirect (`Du` "letter-case form of du") or a
+nominalization (`Essen` "eating" from `essen`) never splits, and a single letter
+is excluded (`A` is the letter's own name, not a distinct word from `a`). Short
+lemmas split only when the capitalized partner has its own curated entry, since
+the raw noun links there are mostly rare or figurative (`All` "cosmos", `Wohl`
+"wealthy"). Curation lookup is exact-key-first, then case/`ß`-folded, so
+`['arm', ['poor']]` and `['Arm', ['arm']]` coexist without collapsing. The partner
+cards join the list *before* `curateCards`, so a capitalized curated entry applies
+to them. 145 case pairs ship; a lemma whose lowercase spelling is a live word now
+keeps that spelling *and* gains the capitalized noun as a second card.
+
+The 486 short lemmas (≤4 characters) are hand-curated in
 `tools/german/germanCuration.ts`, which fully replaces the raw glosses; the
 generator's `missingCurated` report is empty for the shipped deck. Curation keys
 the lowercase lemma and the lookup folds case **and** `ß -> ss`, so a curated
@@ -235,9 +249,11 @@ candidate Jev is most confident about. The `≤4`-character lemmas stay with
 on the noise knee: the long-lemma secondary-candidate histogram is flat to 0.80
 (≈250–300 per 0.05 bin) and rises sharply only above it (0.90–0.95: 646,
 0.95–1.00: 1,043). At 0.8 all 3,000 lemmas survive and every curated sense is
-preserved. Net: `top-de-en` 9,852 → 7,430 cards, deck version 2. The run billed
+preserved. Net: `top-de-en` 10,044 → 7,618 cards, deck version 3 (the split
+pass added 210 cards over the previous 7,430; the guard keeps all 3,000 lemmas
+plus the 145 capitalized case-homograph partners). The run billed
 the official endpoint; re-deciding is free from
-`.cache/jev/top-de-en-v5/triage-report.json`.
+`.cache/jev/top-de-en/triage-report.json`.
 
 Note the capitalized short fronts: the front is the canonical Wiktionary spelling
 (`Des`, `I`, `Muss`), so a policy that keys lemmas by `front.length` still applies

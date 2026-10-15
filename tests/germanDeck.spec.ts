@@ -10,7 +10,7 @@ const deck = JSON.parse(
 describe('German deck', () => {
   it('loads as a German-to-English deck with IPA pronunciations only', () => {
     expect(deck.uid).toBe('top-de-en');
-    expect(deck.version).toBe(2);
+    expect(deck.version).toBe(3);
     expect(deck.languageFront).toBe('de');
     expect(deck.languageBack).toBe('en');
     expect(deck.cards.length).toBeGreaterThan(3000);
@@ -75,13 +75,25 @@ describe('German deck', () => {
     expect(cards.get('Wasser')).toContain('water');
   });
 
-  it('leaves a lemma lowercase when the lowercase spelling is a distinct word', () => {
-    // `arm` (poor) and `Arm` (arm) are different words, so capitalizing would
-    // merge them; the lowercase adjective keeps its own card.
+  it('splits a case-homograph into a lowercase word and a capitalized noun', () => {
+    // `arm` (poor) and `Arm` (arm) are different words, so the deck carries both
+    // as separate cards rather than folding the noun onto the lowercase lemma.
     const cards = cardsByFront(deck);
-    expect(cards.get('arm')).toContain('poor');
-    expect(cards.has('Arm')).toBe(false);
+    expect(cards.get('arm')).toEqual(['poor']);
+    expect(cards.get('Arm')).toContain('arm');
+    // The split covers the everyday pairs, including ones whose noun meaning was
+    // previously dropped altogether (`Fest`, `Gut`).
+    expect(cards.get('morgen')).toEqual(['tomorrow']);
+    expect(cards.get('Morgen')).toContain('morning');
+    expect(cards.get('weise')).toEqual(['wise']);
+    expect(cards.get('Weise')).toContain('way');
+    expect(cards.get('fest')).toContain('firm');
+    expect(cards.get('Fest')).toContain('festival');
+    expect(cards.get('gut')).toContain('good');
+    expect(cards.get('Gut')).toContain('estate');
+    // A lowercase lemma with no capitalized noun homograph stays a single card.
     expect(cards.get('sie')).toContain('she');
+    expect(cards.has('Sie')).toBe(false);
   });
 
   it('does not replace a common word with a proper-noun homograph', () => {

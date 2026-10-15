@@ -1,6 +1,6 @@
 {
   "uid": "top-de-en",
-  "version": 2,
+  "version": 3,
   "displayName": "German / English",
   "languageFront": "de",
   "languageBack": "en",
@@ -671,7 +671,7 @@
     ],
     [
       "zeit",
-      "time"
+      "during"
     ],
     [
       "ab",
@@ -806,10 +806,6 @@
       "bit"
     ],
     [
-      "etwas",
-      "thing"
-    ],
-    [
       "zwei",
       "two"
     ],
@@ -854,10 +850,6 @@
       "even"
     ],
     [
-      "selbst",
-      "self"
-    ],
-    [
       "wo",
       "where"
     ],
@@ -872,14 +864,6 @@
     [
       "nichts",
       "nothing"
-    ],
-    [
-      "nichts",
-      "nothingness"
-    ],
-    [
-      "nichts",
-      "void"
     ],
     [
       "nun",
@@ -1230,10 +1214,6 @@
       "get"
     ],
     [
-      "kommen",
-      "make it"
-    ],
-    [
       "wollen",
       "want"
     ],
@@ -1338,6 +1318,10 @@
       "at the time"
     ],
     [
+      "während",
+      "of"
+    ],
+    [
       "bereits",
       "already"
     ],
@@ -1366,10 +1350,6 @@
       "gone"
     ],
     [
-      "weg",
-      "way"
-    ],
-    [
       "wegen",
       "for"
     ],
@@ -1391,15 +1371,15 @@
     ],
     [
       "einmal",
-      "one"
-    ],
-    [
-      "einmal",
       "sometime"
     ],
     [
       "einmal",
       "first of all"
+    ],
+    [
+      "einmal",
+      "for starters"
     ],
     [
       "einmal",
@@ -1584,6 +1564,10 @@
     [
       "geben",
       "present"
+    ],
+    [
+      "geben",
+      "put"
     ],
     [
       "m",
@@ -1802,10 +1786,6 @@
       "get back"
     ],
     [
-      "zurück",
-      "going back"
-    ],
-    [
       "jedoch",
       "however"
     ],
@@ -1830,14 +1810,6 @@
       "a few"
     ],
     [
-      "paar",
-      "pair"
-    ],
-    [
-      "paar",
-      "couple"
-    ],
-    [
       "welche",
       "some"
     ],
@@ -1848,10 +1820,6 @@
     [
       "wissen",
       "aware"
-    ],
-    [
-      "wissen",
-      "knowledge"
     ],
     [
       "zusammen",
@@ -2294,10 +2262,6 @@
       "capture"
     ],
     [
-      "nehmen",
-      "ingest"
-    ],
-    [
       "darüber",
       "above"
     ],
@@ -2328,10 +2292,6 @@
     [
       "kurz",
       "briefly"
-    ],
-    [
-      "morgen",
-      "morning"
     ],
     [
       "morgen",
@@ -2555,26 +2515,6 @@
     ],
     [
       "unternehmen",
-      "business"
-    ],
-    [
-      "unternehmen",
-      "enterprise"
-    ],
-    [
-      "unternehmen",
-      "company"
-    ],
-    [
-      "unternehmen",
-      "undertaking"
-    ],
-    [
-      "unternehmen",
-      "operation"
-    ],
-    [
-      "unternehmen",
       "undertake"
     ],
     [
@@ -2694,10 +2634,6 @@
       "night"
     ],
     [
-      "Nacht",
-      "darkness"
-    ],
-    [
       "neu",
       "new"
     ],
@@ -2720,6 +2656,10 @@
     [
       "Stand",
       "class"
+    ],
+    [
+      "Stand",
+      "stratum"
     ],
     [
       "Stand",
@@ -2915,11 +2855,7 @@
     ],
     [
       "dank",
-      "thanks"
-    ],
-    [
-      "dank",
-      "gratitude"
+      "thanks to"
     ],
     [
       "ebenfalls",
@@ -2952,10 +2888,6 @@
     [
       "hinter",
       "after"
-    ],
-    [
-      "hinter",
-      "beyond"
     ],
     [
       "Musik",
@@ -3060,10 +2992,6 @@
     [
       "danach",
       "behind"
-    ],
-    [
-      "danach",
-      "accordingly"
     ],
     [
       "deutlich",
@@ -3270,6 +3198,10 @@
       "skilled"
     ],
     [
+      "stark",
+      "brilliant"
+    ],
+    [
       "Alter",
       "age"
     ],
@@ -3296,6 +3228,10 @@
     [
       "Alter",
       "mate"
+    ],
+    [
+      "Alter",
+      "bloke"
     ],
     [
       "Anfang",
@@ -3332,10 +3268,6 @@
     [
       "gegenüber",
       "opposite side"
-    ],
-    [
-      "gegenüber",
-      "counterpart"
     ],
     [
       "Kind",
@@ -3467,15 +3399,7 @@
     ],
     [
       "schreiben",
-      "spell"
-    ],
-    [
-      "schreiben",
       "text"
-    ],
-    [
-      "schreiben",
-      "writing"
     ],
     [
       "treffen",
@@ -3492,6 +3416,10 @@
     [
       "treffen",
       "strike"
+    ],
+    [
+      "treffen",
+      "affect"
     ],
     [
       "treffen",
@@ -3750,6 +3678,10 @@
       "believe"
     ],
     [
+      "denken",
+      "assume"
+    ],
+    [
       "Film",
       "film"
     ],
@@ -3788,6 +3720,10 @@
     [
       "Richtung",
       "direction"
+    ],
+    [
+      "Richtung",
+      "school of thought"
     ],
     [
       "schließlich",
@@ -3944,14 +3880,6 @@
     [
       "ernst",
       "grave"
-    ],
-    [
-      "ernst",
-      "earnestness"
-    ],
-    [
-      "ernst",
-      "seriousness"
     ],
     [
       "groß",
@@ -4150,10 +4078,6 @@
       "awesome"
     ],
     [
-      "super",
-      "petrol"
-    ],
-    [
       "t",
       "t"
     ],
@@ -4168,10 +4092,6 @@
     [
       "wert",
       "worth"
-    ],
-    [
-      "wert",
-      "value"
     ],
     [
       "Entwicklung",
@@ -4224,10 +4144,6 @@
     [
       "kosten",
       "try"
-    ],
-    [
-      "kosten",
-      "costs"
     ],
     [
       "obwohl",
@@ -4347,6 +4263,10 @@
     ],
     [
       "verstehen",
+      "hear"
+    ],
+    [
+      "verstehen",
       "interpret"
     ],
     [
@@ -4416,22 +4336,6 @@
     [
       "klasse",
       "awesome"
-    ],
-    [
-      "klasse",
-      "class"
-    ],
-    [
-      "klasse",
-      "grouping"
-    ],
-    [
-      "klasse",
-      "grade"
-    ],
-    [
-      "klasse",
-      "excellence"
     ],
     [
       "Preis",
@@ -4615,10 +4519,6 @@
     ],
     [
       "vergessen",
-      "overlook"
-    ],
-    [
-      "vergessen",
       "miss"
     ],
     [
@@ -4760,6 +4660,10 @@
     [
       "reden",
       "speak"
+    ],
+    [
+      "reden",
+      "orate"
     ],
     [
       "reden",
@@ -4967,11 +4871,7 @@
     ],
     [
       "raum",
-      "room"
-    ],
-    [
-      "raum",
-      "space"
+      "wide open"
     ],
     [
       "System",
@@ -5206,10 +5106,6 @@
       "frame"
     ],
     [
-      "rahmen",
-      "scope"
-    ],
-    [
       "rechts",
       "right"
     ],
@@ -5412,18 +5308,6 @@
     [
       "verloren",
       "forlorn"
-    ],
-    [
-      "weise",
-      "way"
-    ],
-    [
-      "weise",
-      "manner"
-    ],
-    [
-      "weise",
-      "mode"
     ],
     [
       "weise",
@@ -5635,6 +5519,10 @@
     ],
     [
       "laufen",
+      "flow"
+    ],
+    [
+      "laufen",
       "go on"
     ],
     [
@@ -5782,10 +5670,6 @@
       "comparison"
     ],
     [
-      "Vergleich",
-      "settlement"
-    ],
-    [
       "versuchen",
       "try"
     ],
@@ -5894,10 +5778,6 @@
       "stuttgart"
     ],
     [
-      "Stuttgart",
-      "city"
-    ],
-    [
       "Sucht",
       "addiction"
     ],
@@ -5930,16 +5810,12 @@
       "who"
     ],
     [
-      "welcher",
-      "whom"
-    ],
-    [
       "bereit",
       "ready"
     ],
     [
       "daten",
-      "data"
+      "date"
     ],
     [
       "falsch",
@@ -6068,10 +5944,6 @@
     [
       "Stimme",
       "voice"
-    ],
-    [
-      "Stimme",
-      "call"
     ],
     [
       "Stimme",
@@ -6222,16 +6094,16 @@
       "wait"
     ],
     [
-      "warten",
-      "waiting"
-    ],
-    [
       "Wirtschaft",
       "economy"
     ],
     [
       "Wirtschaft",
       "inn"
+    ],
+    [
+      "Wirtschaft",
+      "pub"
     ],
     [
       "Wirtschaft",
@@ -6300,10 +6172,6 @@
     [
       "gewinnen",
       "extract"
-    ],
-    [
-      "Kleiner",
-      "boy"
     ],
     [
       "Kleiner",
@@ -6443,10 +6311,6 @@
     ],
     [
       "Ergebnis",
-      "earnings"
-    ],
-    [
-      "Ergebnis",
       "output"
     ],
     [
@@ -6479,11 +6343,19 @@
     ],
     [
       "licht",
+      "bright"
+    ],
+    [
+      "licht",
       "light"
     ],
     [
       "licht",
-      "bright"
+      "airy"
+    ],
+    [
+      "licht",
+      "clear"
     ],
     [
       "Markt",
@@ -6568,10 +6440,6 @@
     [
       "teilweise",
       "partially"
-    ],
-    [
-      "teilweise",
-      "sometimes"
     ],
     [
       "teilweise",
@@ -6723,6 +6591,10 @@
     ],
     [
       "unbedingt",
+      "absolute"
+    ],
+    [
+      "unbedingt",
       "unconditional"
     ],
     [
@@ -6850,10 +6722,6 @@
       "explain"
     ],
     [
-      "erklären",
-      "declare"
-    ],
-    [
       "Grad",
       "degree"
     ],
@@ -6880,18 +6748,6 @@
     [
       "Kampf",
       "fight"
-    ],
-    [
-      "kraft",
-      "power"
-    ],
-    [
-      "kraft",
-      "force"
-    ],
-    [
-      "kraft",
-      "strength"
     ],
     [
       "kraft",
@@ -6940,14 +6796,6 @@
     [
       "Sport",
       "exercise"
-    ],
-    [
-      "Sport",
-      "physical education"
-    ],
-    [
-      "Sport",
-      "phys ed"
     ],
     [
       "Tat",
@@ -7058,10 +6906,6 @@
       "tune"
     ],
     [
-      "stimmen",
-      "make"
-    ],
-    [
       "Wochenende",
       "weekend"
     ],
@@ -7116,6 +6960,10 @@
     [
       "fallen",
       "overthrown"
+    ],
+    [
+      "fallen",
+      "decrease"
     ],
     [
       "fallen",
@@ -7262,6 +7110,10 @@
       "bargain"
     ],
     [
+      "Angebot",
+      "range"
+    ],
+    [
       "Bett",
       "bed"
     ],
@@ -7324,10 +7176,6 @@
     [
       "klein",
       "wee"
-    ],
-    [
-      "klein",
-      "young"
     ],
     [
       "klein",
@@ -7435,6 +7283,10 @@
     ],
     [
       "knapp",
+      "narrow escape"
+    ],
+    [
+      "knapp",
       "narrowly"
     ],
     [
@@ -7482,28 +7334,12 @@
       "paris"
     ],
     [
-      "Paris",
-      "city"
-    ],
-    [
       "reich",
       "rich"
     ],
     [
       "reich",
       "wealthy"
-    ],
-    [
-      "reich",
-      "empire"
-    ],
-    [
-      "reich",
-      "state"
-    ],
-    [
-      "reich",
-      "realm"
     ],
     [
       "rot",
@@ -7946,8 +7782,8 @@
       "china"
     ],
     [
-      "ehe",
-      "marriage"
+      "China",
+      "country"
     ],
     [
       "ehe",
@@ -8120,10 +7956,6 @@
     [
       "verdient",
       "meritorious"
-    ],
-    [
-      "verhalten",
-      "behaviour"
     ],
     [
       "verhalten",
@@ -8315,6 +8147,10 @@
     ],
     [
       "Begriff",
+      "perception"
+    ],
+    [
+      "Begriff",
       "understanding"
     ],
     [
@@ -8383,7 +8219,7 @@
     ],
     [
       "schönen",
-      "manipulate"
+      "massage"
     ],
     [
       "stolz",
@@ -8392,22 +8228,6 @@
     [
       "stolz",
       "haughty"
-    ],
-    [
-      "stolz",
-      "pride"
-    ],
-    [
-      "verfahren",
-      "procedure"
-    ],
-    [
-      "verfahren",
-      "process"
-    ],
-    [
-      "verfahren",
-      "proceedings"
     ],
     [
       "verfahren",
@@ -8420,6 +8240,14 @@
     [
       "verfahren",
       "lose"
+    ],
+    [
+      "verfahren",
+      "get lost"
+    ],
+    [
+      "verfahren",
+      "muddled"
     ],
     [
       "verkauft",
@@ -9114,14 +8942,6 @@
       "charge"
     ],
     [
-      "laden",
-      "shop"
-    ],
-    [
-      "laden",
-      "store"
-    ],
-    [
       "lustig",
       "funny"
     ],
@@ -9143,27 +8963,15 @@
     ],
     [
       "mittel",
-      "agent"
+      "middle"
     ],
     [
       "mittel",
-      "means"
+      "average"
     ],
     [
       "mittel",
-      "medicament"
-    ],
-    [
-      "mittel",
-      "remedy"
-    ],
-    [
-      "mittel",
-      "funds"
-    ],
-    [
-      "mittel",
-      "capital"
+      "mid"
     ],
     [
       "perfekt",
@@ -9210,10 +9018,6 @@
       "studies"
     ],
     [
-      "Studium",
-      "university"
-    ],
-    [
       "ständig",
       "permanent"
     ],
@@ -9239,31 +9043,15 @@
     ],
     [
       "wagen",
-      "car"
-    ],
-    [
-      "wagen",
-      "automobile"
-    ],
-    [
-      "wagen",
-      "vehicle"
-    ],
-    [
-      "wagen",
-      "railroad car"
-    ],
-    [
-      "wagen",
-      "wagon"
-    ],
-    [
-      "wagen",
-      "cart"
-    ],
-    [
-      "wagen",
       "dare"
+    ],
+    [
+      "wagen",
+      "venture"
+    ],
+    [
+      "wagen",
+      "risk"
     ],
     [
       "Winter",
@@ -9363,11 +9151,11 @@
     ],
     [
       "leid",
-      "sorrow"
+      "distressing"
     ],
     [
       "leid",
-      "woe"
+      "uncomfortable"
     ],
     [
       "London",
@@ -9420,10 +9208,6 @@
     [
       "Tisch",
       "dinner table"
-    ],
-    [
-      "Tisch",
-      "desk"
     ],
     [
       "Tisch",
@@ -9784,10 +9568,6 @@
     [
       "Tolle",
       "tuft"
-    ],
-    [
-      "Tolle",
-      "quiff"
     ],
     [
       "Trainer",
@@ -10198,16 +9978,8 @@
       "afford"
     ],
     [
-      "leisten",
-      "last"
-    ],
-    [
       "Minute",
       "minute"
-    ],
-    [
-      "rücken",
-      "back"
     ],
     [
       "rücken",
@@ -10244,10 +10016,6 @@
     [
       "aussehen",
       "look"
-    ],
-    [
-      "aussehen",
-      "appearance"
     ],
     [
       "aussehen",
@@ -10370,10 +10138,6 @@
       "each other"
     ],
     [
-      "miteinander",
-      "togetherness"
-    ],
-    [
       "Organisation",
       "organisation"
     ],
@@ -10404,10 +10168,6 @@
     [
       "rennen",
       "sprint"
-    ],
-    [
-      "rennen",
-      "running"
     ],
     [
       "Sage",
@@ -10539,7 +10299,19 @@
     ],
     [
       "grundsätzlich",
+      "principle"
+    ],
+    [
+      "grundsätzlich",
       "fundamental"
+    ],
+    [
+      "grundsätzlich",
+      "elementary"
+    ],
+    [
+      "grundsätzlich",
+      "principial"
     ],
     [
       "grundsätzlich",
@@ -10584,10 +10356,6 @@
     [
       "normal",
       "ordinarily"
-    ],
-    [
-      "normal",
-      "usually"
     ],
     [
       "Prozess",
@@ -10787,6 +10555,10 @@
     ],
     [
       "Praxis",
+      "doctor"
+    ],
+    [
+      "Praxis",
       "office"
     ],
     [
@@ -10828,10 +10600,6 @@
     [
       "trinken",
       "imbibe"
-    ],
-    [
-      "trinken",
-      "drinking"
     ],
     [
       "unterstützen",
@@ -10968,10 +10736,6 @@
     [
       "extrem",
       "extremely"
-    ],
-    [
-      "extrem",
-      "extremity"
     ],
     [
       "Flughafen",
@@ -11138,10 +10902,6 @@
       "poor"
     ],
     [
-      "arm",
-      "arm"
-    ],
-    [
       "Armee",
       "army"
     ],
@@ -11204,6 +10964,10 @@
     [
       "Dorf",
       "village"
+    ],
+    [
+      "gelernt",
+      "skilled"
     ],
     [
       "gelernt",
@@ -11302,14 +11066,6 @@
       "further"
     ],
     [
-      "näher",
-      "precise"
-    ],
-    [
-      "näher",
-      "detailed"
-    ],
-    [
       "plus",
       "plus"
     ],
@@ -11359,35 +11115,11 @@
     ],
     [
       "spitze",
-      "cusp"
+      "great"
     ],
     [
       "spitze",
-      "point"
-    ],
-    [
-      "spitze",
-      "tip"
-    ],
-    [
-      "spitze",
-      "peak"
-    ],
-    [
-      "spitze",
-      "top"
-    ],
-    [
-      "spitze",
-      "front"
-    ],
-    [
-      "spitze",
-      "lead"
-    ],
-    [
-      "spitze",
-      "spike"
+      "awesome"
     ],
     [
       "Star",
@@ -11594,6 +11326,10 @@
       "majority"
     ],
     [
+      "Mehrheit",
+      "bulk"
+    ],
+    [
       "offensichtlich",
       "obvious"
     ],
@@ -11687,18 +11423,6 @@
     ],
     [
       "befinden",
-      "condition"
-    ],
-    [
-      "befinden",
-      "state"
-    ],
-    [
-      "befinden",
-      "health"
-    ],
-    [
-      "befinden",
       "located"
     ],
     [
@@ -11716,14 +11440,6 @@
     [
       "Bezug",
       "cover"
-    ],
-    [
-      "Bezug",
-      "cushion"
-    ],
-    [
-      "Bezug",
-      "salary"
     ],
     [
       "Bezug",
@@ -11828,10 +11544,6 @@
     [
       "Leiter",
       "conductor"
-    ],
-    [
-      "Leiter",
-      "lead"
     ],
     [
       "Meer",
@@ -12842,10 +12554,6 @@
       "broadcasting"
     ],
     [
-      "Sendung",
-      "mission"
-    ],
-    [
       "sicherlich",
       "certainly"
     ],
@@ -12896,10 +12604,6 @@
     [
       "Wissenschaft",
       "scholarship"
-    ],
-    [
-      "Wissenschaft",
-      "academic"
     ],
     [
       "Wissenschaft",
@@ -13567,6 +13271,10 @@
     ],
     [
       "Aufmerksamkeit",
+      "care"
+    ],
+    [
+      "Aufmerksamkeit",
       "regard"
     ],
     [
@@ -13879,6 +13587,10 @@
     ],
     [
       "bewegen",
+      "make"
+    ],
+    [
+      "bewegen",
       "move"
     ],
     [
@@ -14030,10 +13742,6 @@
       "original"
     ],
     [
-      "original",
-      "character"
-    ],
-    [
       "Pause",
       "pause"
     ],
@@ -14067,7 +13775,7 @@
     ],
     [
       "regen",
-      "rain"
+      "move"
     ],
     [
       "Schwere",
@@ -14383,10 +14091,6 @@
     ],
     [
       "Hessen",
-      "hesse"
-    ],
-    [
-      "Hessen",
       "state"
     ],
     [
@@ -14514,10 +14218,6 @@
       "twelve"
     ],
     [
-      "zwölf",
-      "dozen"
-    ],
-    [
       "Analyse",
       "analysis"
     ],
@@ -14636,6 +14336,10 @@
     [
       "Förderung",
       "extraction"
+    ],
+    [
+      "Förderung",
+      "transport"
     ],
     [
       "Förderung",
@@ -14998,10 +14702,6 @@
       "rhine"
     ],
     [
-      "Rhein",
-      "river"
-    ],
-    [
       "Schmidt",
       "smith"
     ],
@@ -15316,18 +15016,6 @@
     [
       "posten",
       "post"
-    ],
-    [
-      "posten",
-      "station"
-    ],
-    [
-      "posten",
-      "job"
-    ],
-    [
-      "posten",
-      "position"
     ],
     [
       "Richard",
@@ -15827,10 +15515,6 @@
     ],
     [
       "rechnen",
-      "count on"
-    ],
-    [
-      "rechnen",
       "expect"
     ],
     [
@@ -15894,36 +15578,12 @@
       "traced"
     ],
     [
-      "verfolgt",
-      "haunted"
-    ],
-    [
       "verlangen",
-      "desire"
-    ],
-    [
-      "verlangen",
-      "yearning"
-    ],
-    [
-      "verlangen",
-      "longing"
-    ],
-    [
-      "verlangen",
-      "request"
-    ],
-    [
-      "verlangen",
-      "wish"
+      "ask for"
     ],
     [
       "verlangen",
       "demand"
-    ],
-    [
-      "verlangen",
-      "ask for"
     ],
     [
       "Vorschlag",
@@ -16118,10 +15778,6 @@
       "evangelization"
     ],
     [
-      "Mission",
-      "proselytism"
-    ],
-    [
       "Nachmittag",
       "afternoon"
     ],
@@ -16192,14 +15848,6 @@
     [
       "anscheinend",
       "apparently"
-    ],
-    [
-      "bar",
-      "bar"
-    ],
-    [
-      "bar",
-      "cash"
     ],
     [
       "bar",
@@ -16276,6 +15924,10 @@
     [
       "Kommunikation",
       "exchange"
+    ],
+    [
+      "Kommunikation",
+      "sharing"
     ],
     [
       "Mainz",
@@ -16735,6 +16387,10 @@
     ],
     [
       "beweisen",
+      "display"
+    ],
+    [
+      "beweisen",
       "show"
     ],
     [
@@ -16820,6 +16476,10 @@
     [
       "Forum",
       "forum"
+    ],
+    [
+      "Forum",
+      "legal"
     ],
     [
       "Forum",
@@ -17294,14 +16954,6 @@
       "boil"
     ],
     [
-      "kochen",
-      "cooking"
-    ],
-    [
-      "Marke",
-      "mark"
-    ],
-    [
       "Marke",
       "brand"
     ],
@@ -17328,10 +16980,6 @@
     [
       "rufen",
       "call for"
-    ],
-    [
-      "rufen",
-      "request"
     ],
     [
       "rufen",
@@ -17618,6 +17266,10 @@
       "island"
     ],
     [
+      "Island",
+      "country"
+    ],
+    [
       "Krise",
       "crisis"
     ],
@@ -17683,19 +17335,7 @@
     ],
     [
       "sturm",
-      "gale"
-    ],
-    [
-      "sturm",
-      "storm"
-    ],
-    [
-      "sturm",
-      "tempest"
-    ],
-    [
-      "sturm",
-      "attack"
+      "dizzy"
     ],
     [
       "Tipp",
@@ -17720,10 +17360,6 @@
     [
       "Verlust",
       "defeat"
-    ],
-    [
-      "versehen",
-      "with"
     ],
     [
       "versehen",
@@ -18738,10 +18374,6 @@
       "washington state"
     ],
     [
-      "Washington",
-      "state"
-    ],
-    [
       "Zeitschrift",
       "magazine"
     ],
@@ -18760,10 +18392,6 @@
     [
       "Augenblick",
       "blink of an eye"
-    ],
-    [
-      "Augenblick",
-      "second"
     ],
     [
       "belegt",
@@ -18914,10 +18542,6 @@
       "meet"
     ],
     [
-      "sammeln",
-      "collecting"
-    ],
-    [
       "Server",
       "server"
     ],
@@ -18928,10 +18552,6 @@
     [
       "Stadion",
       "stadion"
-    ],
-    [
-      "Station",
-      "stop"
     ],
     [
       "Station",
@@ -19191,6 +18811,10 @@
     ],
     [
       "Eintritt",
+      "enlistment"
+    ],
+    [
+      "Eintritt",
       "entrance"
     ],
     [
@@ -19208,10 +18832,6 @@
     [
       "ermöglichen",
       "possible"
-    ],
-    [
-      "ermöglichen",
-      "enablement"
     ],
     [
       "Flugzeug",
@@ -19518,10 +19138,6 @@
       "think"
     ],
     [
-      "bedenken",
-      "concern"
-    ],
-    [
       "Bescheid",
       "notification"
     ],
@@ -19590,10 +19206,6 @@
       "take"
     ],
     [
-      "dauern",
-      "time"
-    ],
-    [
       "Dieter",
       "given name"
     ],
@@ -19619,7 +19231,7 @@
     ],
     [
       "drücken",
-      "hug"
+      "lower"
     ],
     [
       "drücken",
@@ -19740,6 +19352,10 @@
     [
       "locker",
       "relaxed"
+    ],
+    [
+      "locker",
+      "loosely"
     ],
     [
       "locker",
@@ -19920,6 +19536,10 @@
     [
       "anbieten",
       "provide"
+    ],
+    [
+      "anbieten",
+      "lend"
     ],
     [
       "anschauen",
@@ -20290,6 +19910,10 @@
       "rank"
     ],
     [
+      "Stufe",
+      "year"
+    ],
+    [
       "Stärke",
       "strength"
     ],
@@ -20318,18 +19942,6 @@
       "may"
     ],
     [
-      "vermögen",
-      "ability"
-    ],
-    [
-      "vermögen",
-      "capacity"
-    ],
-    [
-      "vermögen",
-      "fortune"
-    ],
-    [
       "vorgehen",
       "go on"
     ],
@@ -20344,6 +19956,10 @@
     [
       "vorn",
       "in front"
+    ],
+    [
+      "vorsichtig",
+      "deliberate"
     ],
     [
       "vorsichtig",
@@ -20475,11 +20091,7 @@
     ],
     [
       "dicke",
-      "thickness"
-    ],
-    [
-      "dicke",
-      "fat"
+      "amply"
     ],
     [
       "dunkel",
@@ -20488,10 +20100,6 @@
     [
       "dunkel",
       "deep"
-    ],
-    [
-      "dunkel",
-      "darkness"
     ],
     [
       "fett",
@@ -20778,10 +20386,6 @@
       "shut up"
     ],
     [
-      "schweigen",
-      "silence"
-    ],
-    [
       "spannend",
       "thrilling"
     ],
@@ -20962,10 +20566,6 @@
       "hey"
     ],
     [
-      "ei",
-      "egg"
-    ],
-    [
       "erledigt",
       "completed"
     ],
@@ -20976,6 +20576,10 @@
     [
       "ermittelt",
       "determined"
+    ],
+    [
+      "fassen",
+      "gird"
     ],
     [
       "fassen",
@@ -21004,10 +20608,6 @@
     [
       "fassen",
       "capture"
-    ],
-    [
-      "Gabriel",
-      "given name"
     ],
     [
       "Gabriel",
@@ -21203,15 +20803,11 @@
     ],
     [
       "schulden",
-      "debt"
-    ],
-    [
-      "schulden",
-      "faults"
-    ],
-    [
-      "schulden",
       "owe"
+    ],
+    [
+      "schulden",
+      "due"
     ],
     [
       "Schuss",
@@ -21248,6 +20844,10 @@
     [
       "spenden",
       "spend"
+    ],
+    [
+      "spenden",
+      "treat"
     ],
     [
       "Steuer",
@@ -21951,11 +21551,7 @@
     ],
     [
       "hammer",
-      "hammer"
-    ],
-    [
-      "hammer",
-      "mallet"
+      "regional"
     ],
     [
       "Harry",
@@ -22110,6 +21706,10 @@
       "given name"
     ],
     [
+      "Angela",
+      "angela"
+    ],
+    [
       "annehmen",
       "assume"
     ],
@@ -22138,6 +21738,10 @@
       "run out"
     ],
     [
+      "ausgehen",
+      "begin"
+    ],
+    [
       "Bernd",
       "anon"
     ],
@@ -22160,6 +21764,10 @@
     [
       "Datum",
       "date"
+    ],
+    [
+      "Datum",
+      "datum"
     ],
     [
       "Deal",
@@ -22415,6 +22023,10 @@
     ],
     [
       "akzeptieren",
+      "take"
+    ],
+    [
+      "akzeptieren",
       "agree"
     ],
     [
@@ -22571,6 +22183,10 @@
     ],
     [
       "Feste",
+      "fortified"
+    ],
+    [
+      "Feste",
       "castle"
     ],
     [
@@ -22620,10 +22236,6 @@
     [
       "gelöst",
       "disengaged"
-    ],
-    [
-      "gelöst",
-      "undone"
     ],
     [
       "Innenstadt",
@@ -22854,6 +22466,10 @@
       "rather"
     ],
     [
+      "beziehungsweise",
+      "actually"
+    ],
+    [
       "Bleibe",
       "residence"
     ],
@@ -23019,6 +22635,10 @@
     ],
     [
       "Hauptsache",
+      "issue"
+    ],
+    [
+      "Hauptsache",
       "as long as"
     ],
     [
@@ -23068,10 +22688,6 @@
     [
       "hinweg",
       "across"
-    ],
-    [
-      "hinweg",
-      "there"
     ],
     [
       "höchstens",
@@ -23210,16 +22826,20 @@
       "pain"
     ],
     [
-      "Schmerz",
-      "sorrow"
-    ],
-    [
       "schätzen",
       "estimate"
     ],
     [
       "schätzen",
       "guess"
+    ],
+    [
+      "schätzen",
+      "suppose"
+    ],
+    [
+      "schätzen",
+      "assume"
     ],
     [
       "schätzen",
@@ -23404,10 +23024,6 @@
     [
       "entfernen",
       "move"
-    ],
-    [
-      "entfernen",
-      "recede"
     ],
     [
       "Existenz",
@@ -23658,6 +23274,10 @@
       "given name"
     ],
     [
+      "Barbara",
+      "barbara"
+    ],
+    [
       "bedroht",
       "threatened"
     ],
@@ -23792,10 +23412,6 @@
     [
       "feind",
       "enemy"
-    ],
-    [
-      "feind",
-      "foe"
     ],
     [
       "Flügel",
@@ -24092,10 +23708,6 @@
     [
       "vorkommen",
       "seem"
-    ],
-    [
-      "vorkommen",
-      "occurrence"
     ],
     [
       "Zitat",
@@ -24416,14 +24028,6 @@
     [
       "tränen",
       "water"
-    ],
-    [
-      "unrecht",
-      "injustice"
-    ],
-    [
-      "unrecht",
-      "wrongdoing"
     ],
     [
       "unrecht",
@@ -24791,14 +24395,6 @@
     ],
     [
       "reifen",
-      "tyre"
-    ],
-    [
-      "reifen",
-      "tire"
-    ],
-    [
-      "reifen",
       "ripen"
     ],
     [
@@ -24876,6 +24472,10 @@
     [
       "streng",
       "strong"
+    ],
+    [
+      "streng",
+      "strictly"
     ],
     [
       "trennen",
@@ -25144,10 +24744,6 @@
     [
       "intensiv",
       "intense"
-    ],
-    [
-      "intensiv",
-      "acute"
     ],
     [
       "intensiv",
@@ -25491,10 +25087,6 @@
     ],
     [
       "brechen",
-      "refract"
-    ],
-    [
-      "brechen",
       "vomit"
     ],
     [
@@ -25524,6 +25116,10 @@
     [
       "empfangen",
       "greet"
+    ],
+    [
+      "empfangen",
+      "conceive"
     ],
     [
       "Entstehung",
@@ -25910,10 +25506,6 @@
       "induced"
     ],
     [
-      "bedingt",
-      "probation"
-    ],
-    [
       "Belgien",
       "belgium"
     ],
@@ -26094,14 +25686,6 @@
       "beyond"
     ],
     [
-      "jenseits",
-      "hereafter"
-    ],
-    [
-      "jenseits",
-      "afterlife"
-    ],
-    [
       "Kabel",
       "cable"
     ],
@@ -26116,6 +25700,10 @@
     [
       "Kleid",
       "garment"
+    ],
+    [
+      "Kleid",
+      "clothes"
     ],
     [
       "Küste",
@@ -26466,6 +26054,10 @@
       "daybed"
     ],
     [
+      "Liege",
+      "chaise lounge"
+    ],
+    [
       "Mittag",
       "noon"
     ],
@@ -26775,7 +26367,7 @@
     ],
     [
       "bestanden",
-      "advance"
+      "overgrown"
     ],
     [
       "bestens",
@@ -27007,6 +26599,10 @@
     ],
     [
       "Mittelalter",
+      "era"
+    ],
+    [
+      "Mittelalter",
       "middle age"
     ],
     [
@@ -27067,11 +26663,7 @@
     ],
     [
       "samt",
-      "velvet"
-    ],
-    [
-      "samt",
-      "along with"
+      "together with"
     ],
     [
       "Sarah",
@@ -27095,27 +26687,15 @@
     ],
     [
       "streifen",
-      "stripe"
+      "brush"
     ],
     [
       "streifen",
-      "strip"
+      "graze"
     ],
     [
       "streifen",
-      "band"
-    ],
-    [
-      "streifen",
-      "film"
-    ],
-    [
-      "streifen",
-      "streak"
-    ],
-    [
-      "streifen",
-      "tape"
+      "stroke"
     ],
     [
       "Stuhl",
@@ -27160,10 +26740,6 @@
     [
       "wetten",
       "bet"
-    ],
-    [
-      "wetten",
-      "guess"
     ],
     [
       "wonach",
@@ -27415,15 +26991,7 @@
     ],
     [
       "power",
-      "strength"
-    ],
-    [
-      "power",
-      "energy"
-    ],
-    [
-      "power",
-      "power"
+      "poor"
     ],
     [
       "Reform",
@@ -27436,18 +27004,6 @@
     [
       "scheitern",
       "flounder"
-    ],
-    [
-      "scheitern",
-      "collapse"
-    ],
-    [
-      "scheitern",
-      "breakup"
-    ],
-    [
-      "scheitern",
-      "failure"
     ],
     [
       "Spieltag",
@@ -27560,6 +27116,10 @@
     [
       "Bonus",
       "bonus"
+    ],
+    [
+      "Bonus",
+      "rebate"
     ],
     [
       "Content",
@@ -27959,10 +27519,6 @@
     ],
     [
       "Schild",
-      "tag"
-    ],
-    [
-      "Schild",
       "shield"
     ],
     [
@@ -27992,6 +27548,10 @@
     [
       "springen",
       "jump"
+    ],
+    [
+      "springen",
+      "vault"
     ],
     [
       "Stille",
@@ -28100,6 +27660,10 @@
     [
       "Altstadt",
       "old town"
+    ],
+    [
+      "Argument",
+      "proof"
     ],
     [
       "Argument",
@@ -28216,6 +27780,10 @@
     [
       "Erhöhung",
       "enhancement"
+    ],
+    [
+      "Erhöhung",
+      "hill"
     ],
     [
       "Erkenntnis",
@@ -28623,10 +28191,6 @@
     ],
     [
       "engen",
-      "limit"
-    ],
-    [
-      "engen",
       "restrict"
     ],
     [
@@ -28652,6 +28216,10 @@
     [
       "erfunden",
       "imaginary"
+    ],
+    [
+      "erfunden",
+      "bogus"
     ],
     [
       "ermordet",
@@ -28955,6 +28523,10 @@
     ],
     [
       "Bayer",
+      "native"
+    ],
+    [
+      "Bayer",
       "inhabitant"
     ],
     [
@@ -29091,11 +28663,11 @@
     ],
     [
       "kapital",
-      "important"
+      "significant"
     ],
     [
       "kapital",
-      "capital"
+      "important"
     ],
     [
       "kennenlernen",
@@ -29176,10 +28748,6 @@
     [
       "packen",
       "pack"
-    ],
-    [
-      "packen",
-      "packed"
     ],
     [
       "packen",
@@ -29342,18 +28910,6 @@
       "intend"
     ],
     [
-      "vorhaben",
-      "intention"
-    ],
-    [
-      "vorhaben",
-      "project"
-    ],
-    [
-      "vorhaben",
-      "plan"
-    ],
-    [
       "vorhin",
       "earlier"
     ],
@@ -29368,10 +28924,6 @@
     [
       "weiten",
       "dilate"
-    ],
-    [
-      "zugunsten",
-      "support"
     ],
     [
       "zugunsten",
@@ -29439,15 +28991,7 @@
     ],
     [
       "anliegen",
-      "request"
-    ],
-    [
-      "anliegen",
-      "concern"
-    ],
-    [
-      "anliegen",
-      "application"
+      "abut"
     ],
     [
       "aufgeführt",
@@ -29504,10 +29048,6 @@
     [
       "bequem",
       "suitable"
-    ],
-    [
-      "bequem",
-      "fit"
     ],
     [
       "Borussia",
@@ -29572,10 +29112,6 @@
     [
       "Gesang",
       "canto"
-    ],
-    [
-      "Halbzeit",
-      "half"
     ],
     [
       "Halbzeit",
@@ -29694,10 +29230,6 @@
       "dressy"
     ],
     [
-      "schick",
-      "chic"
-    ],
-    [
       "schrecklich",
       "awful"
     ],
@@ -29724,6 +29256,1226 @@
     [
       "seither",
       "then"
+    ],
+    [
+      "Aber",
+      "objection"
+    ],
+    [
+      "Aus",
+      "end"
+    ],
+    [
+      "Aus",
+      "failure"
+    ],
+    [
+      "Haben",
+      "credit"
+    ],
+    [
+      "Einer",
+      "one"
+    ],
+    [
+      "Einer",
+      "single scull"
+    ],
+    [
+      "Mehr",
+      "increase"
+    ],
+    [
+      "Mehr",
+      "majority"
+    ],
+    [
+      "Sein",
+      "existence"
+    ],
+    [
+      "Sein",
+      "being"
+    ],
+    [
+      "Mal",
+      "time"
+    ],
+    [
+      "Mal",
+      "occasion"
+    ],
+    [
+      "Mal",
+      "mark"
+    ],
+    [
+      "Jetzt",
+      "now"
+    ],
+    [
+      "Unter",
+      "jack"
+    ],
+    [
+      "Gut",
+      "estate"
+    ],
+    [
+      "Gut",
+      "property"
+    ],
+    [
+      "Gut",
+      "goods"
+    ],
+    [
+      "Zeit",
+      "time"
+    ],
+    [
+      "Zeit",
+      "period"
+    ],
+    [
+      "Zeit",
+      "era"
+    ],
+    [
+      "Etwas",
+      "thing"
+    ],
+    [
+      "Selbst",
+      "self"
+    ],
+    [
+      "Nichts",
+      "nothingness"
+    ],
+    [
+      "Nichts",
+      "void"
+    ],
+    [
+      "Leben",
+      "life"
+    ],
+    [
+      "Gerade",
+      "line"
+    ],
+    [
+      "Gerade",
+      "straightaway"
+    ],
+    [
+      "Wohl",
+      "good"
+    ],
+    [
+      "Wohl",
+      "welfare"
+    ],
+    [
+      "Bitte",
+      "request"
+    ],
+    [
+      "Bitte",
+      "plea"
+    ],
+    [
+      "Weg",
+      "path"
+    ],
+    [
+      "Weg",
+      "way"
+    ],
+    [
+      "Recht",
+      "right"
+    ],
+    [
+      "Recht",
+      "privilege"
+    ],
+    [
+      "Recht",
+      "claim"
+    ],
+    [
+      "Recht",
+      "law"
+    ],
+    [
+      "Zurück",
+      "going back"
+    ],
+    [
+      "Paar",
+      "pair"
+    ],
+    [
+      "Paar",
+      "couple"
+    ],
+    [
+      "Wissen",
+      "knowledge"
+    ],
+    [
+      "Morgen",
+      "morning"
+    ],
+    [
+      "Morgen",
+      "tomorrow"
+    ],
+    [
+      "Leider",
+      "sufferer"
+    ],
+    [
+      "Unternehmen",
+      "business"
+    ],
+    [
+      "Unternehmen",
+      "enterprise"
+    ],
+    [
+      "Unternehmen",
+      "company"
+    ],
+    [
+      "Unternehmen",
+      "undertaking"
+    ],
+    [
+      "Unternehmen",
+      "operation"
+    ],
+    [
+      "Halt",
+      "hold"
+    ],
+    [
+      "Halt",
+      "stop"
+    ],
+    [
+      "Essen",
+      "meal"
+    ],
+    [
+      "Essen",
+      "food"
+    ],
+    [
+      "Dank",
+      "thanks"
+    ],
+    [
+      "Dank",
+      "gratitude"
+    ],
+    [
+      "Hoch",
+      "high"
+    ],
+    [
+      "Hoch",
+      "anticyclone"
+    ],
+    [
+      "Gegenüber",
+      "counterpart"
+    ],
+    [
+      "Gegenüber",
+      "opponent"
+    ],
+    [
+      "Gegenüber",
+      "other"
+    ],
+    [
+      "Los",
+      "lot"
+    ],
+    [
+      "Los",
+      "fate"
+    ],
+    [
+      "Schreiben",
+      "writing"
+    ],
+    [
+      "Schreiben",
+      "letter"
+    ],
+    [
+      "Treffen",
+      "meeting"
+    ],
+    [
+      "Laut",
+      "sound"
+    ],
+    [
+      "Ernst",
+      "earnestness"
+    ],
+    [
+      "Ernst",
+      "seriousness"
+    ],
+    [
+      "Ernst",
+      "serious"
+    ],
+    [
+      "Fest",
+      "festival"
+    ],
+    [
+      "Fest",
+      "celebration"
+    ],
+    [
+      "Super",
+      "petrol"
+    ],
+    [
+      "Wert",
+      "value"
+    ],
+    [
+      "Wert",
+      "worth"
+    ],
+    [
+      "Kosten",
+      "costs"
+    ],
+    [
+      "Klasse",
+      "class"
+    ],
+    [
+      "Klasse",
+      "grouping"
+    ],
+    [
+      "Klasse",
+      "form"
+    ],
+    [
+      "Klasse",
+      "grade"
+    ],
+    [
+      "Trotz",
+      "defiance"
+    ],
+    [
+      "Raum",
+      "room"
+    ],
+    [
+      "Raum",
+      "space"
+    ],
+    [
+      "Hören",
+      "hearing"
+    ],
+    [
+      "Rahmen",
+      "frame"
+    ],
+    [
+      "Rahmen",
+      "scope"
+    ],
+    [
+      "Weise",
+      "way"
+    ],
+    [
+      "Weise",
+      "manner"
+    ],
+    [
+      "Weise",
+      "tune"
+    ],
+    [
+      "Weise",
+      "mode"
+    ],
+    [
+      "Weise",
+      "song"
+    ],
+    [
+      "Hallo",
+      "cheering"
+    ],
+    [
+      "Somit",
+      "somite"
+    ],
+    [
+      "Daten",
+      "data"
+    ],
+    [
+      "Schwarz",
+      "black"
+    ],
+    [
+      "Schwarz",
+      "sable"
+    ],
+    [
+      "Warten",
+      "waiting"
+    ],
+    [
+      "Licht",
+      "light"
+    ],
+    [
+      "Gefallen",
+      "favor"
+    ],
+    [
+      "Gefallen",
+      "favour"
+    ],
+    [
+      "Kraft",
+      "power"
+    ],
+    [
+      "Kraft",
+      "force"
+    ],
+    [
+      "Kraft",
+      "strength"
+    ],
+    [
+      "Reich",
+      "empire"
+    ],
+    [
+      "Reich",
+      "state"
+    ],
+    [
+      "Reich",
+      "realm"
+    ],
+    [
+      "Ehe",
+      "marriage"
+    ],
+    [
+      "Verhalten",
+      "behaviour"
+    ],
+    [
+      "Aktiv",
+      "active"
+    ],
+    [
+      "Stolz",
+      "pride"
+    ],
+    [
+      "Verfahren",
+      "procedure"
+    ],
+    [
+      "Verfahren",
+      "process"
+    ],
+    [
+      "Verfahren",
+      "proceedings"
+    ],
+    [
+      "Plan",
+      "plan"
+    ],
+    [
+      "Plan",
+      "project"
+    ],
+    [
+      "Plan",
+      "map"
+    ],
+    [
+      "Laden",
+      "shop"
+    ],
+    [
+      "Laden",
+      "store"
+    ],
+    [
+      "Laden",
+      "establishment"
+    ],
+    [
+      "Laden",
+      "bar"
+    ],
+    [
+      "Mittel",
+      "means"
+    ],
+    [
+      "Mittel",
+      "medicament"
+    ],
+    [
+      "Mittel",
+      "remedy"
+    ],
+    [
+      "Mittel",
+      "funds"
+    ],
+    [
+      "Mittel",
+      "capital"
+    ],
+    [
+      "Mittel",
+      "median"
+    ],
+    [
+      "Perfekt",
+      "perfect"
+    ],
+    [
+      "Wagen",
+      "car"
+    ],
+    [
+      "Wagen",
+      "automobile"
+    ],
+    [
+      "Wagen",
+      "vehicle"
+    ],
+    [
+      "Wagen",
+      "railroad car"
+    ],
+    [
+      "Wagen",
+      "wagon"
+    ],
+    [
+      "Wagen",
+      "cart"
+    ],
+    [
+      "Leid",
+      "sorrow"
+    ],
+    [
+      "Leid",
+      "woe"
+    ],
+    [
+      "Tief",
+      "depression"
+    ],
+    [
+      "Tief",
+      "low"
+    ],
+    [
+      "Schaden",
+      "damage"
+    ],
+    [
+      "Schaden",
+      "harm"
+    ],
+    [
+      "Schaden",
+      "problem"
+    ],
+    [
+      "Leisten",
+      "last"
+    ],
+    [
+      "Rücken",
+      "back"
+    ],
+    [
+      "Aussehen",
+      "look"
+    ],
+    [
+      "Aussehen",
+      "appearance"
+    ],
+    [
+      "Fehlen",
+      "absence"
+    ],
+    [
+      "Fehlen",
+      "dearth"
+    ],
+    [
+      "Fehlen",
+      "absenteeism"
+    ],
+    [
+      "Fort",
+      "fort"
+    ],
+    [
+      "Miteinander",
+      "togetherness"
+    ],
+    [
+      "Miteinander",
+      "cooperation"
+    ],
+    [
+      "Rennen",
+      "race"
+    ],
+    [
+      "Rennen",
+      "running"
+    ],
+    [
+      "Normal",
+      "standard"
+    ],
+    [
+      "Normal",
+      "normal"
+    ],
+    [
+      "Geschehen",
+      "happening"
+    ],
+    [
+      "Geschehen",
+      "events"
+    ],
+    [
+      "Geschehen",
+      "happenings"
+    ],
+    [
+      "Trinken",
+      "drinking"
+    ],
+    [
+      "Trinken",
+      "drink"
+    ],
+    [
+      "Extrem",
+      "extreme"
+    ],
+    [
+      "Extrem",
+      "extremity"
+    ],
+    [
+      "Link",
+      "hyperlink"
+    ],
+    [
+      "Link",
+      "link"
+    ],
+    [
+      "Positiv",
+      "positive degree"
+    ],
+    [
+      "Arm",
+      "arm"
+    ],
+    [
+      "Näher",
+      "seamster"
+    ],
+    [
+      "Spitze",
+      "cusp"
+    ],
+    [
+      "Spitze",
+      "point"
+    ],
+    [
+      "Spitze",
+      "tip"
+    ],
+    [
+      "Spitze",
+      "peak"
+    ],
+    [
+      "Spitze",
+      "top"
+    ],
+    [
+      "Spitze",
+      "front"
+    ],
+    [
+      "Spitze",
+      "lead"
+    ],
+    [
+      "Spitze",
+      "spike"
+    ],
+    [
+      "Befinden",
+      "condition"
+    ],
+    [
+      "Befinden",
+      "state"
+    ],
+    [
+      "Befinden",
+      "health"
+    ],
+    [
+      "Ansehen",
+      "prestige"
+    ],
+    [
+      "Ansehen",
+      "authoritativeness"
+    ],
+    [
+      "Ansehen",
+      "renown"
+    ],
+    [
+      "Leiden",
+      "suffering"
+    ],
+    [
+      "Leiden",
+      "pain"
+    ],
+    [
+      "Leiden",
+      "grief"
+    ],
+    [
+      "Original",
+      "original"
+    ],
+    [
+      "Original",
+      "character"
+    ],
+    [
+      "Regen",
+      "rain"
+    ],
+    [
+      "Zwölf",
+      "twelve"
+    ],
+    [
+      "Zwölf",
+      "dozen"
+    ],
+    [
+      "Posten",
+      "post"
+    ],
+    [
+      "Posten",
+      "station"
+    ],
+    [
+      "Posten",
+      "job"
+    ],
+    [
+      "Posten",
+      "position"
+    ],
+    [
+      "Posten",
+      "lot"
+    ],
+    [
+      "Verlangen",
+      "desire"
+    ],
+    [
+      "Verlangen",
+      "yearning"
+    ],
+    [
+      "Verlangen",
+      "longing"
+    ],
+    [
+      "Verlangen",
+      "request"
+    ],
+    [
+      "Verlangen",
+      "wish"
+    ],
+    [
+      "Verlangen",
+      "demand"
+    ],
+    [
+      "Bar",
+      "bar"
+    ],
+    [
+      "Bar",
+      "night club"
+    ],
+    [
+      "Bar",
+      "cash"
+    ],
+    [
+      "Uni",
+      "uni"
+    ],
+    [
+      "Uni",
+      "university"
+    ],
+    [
+      "Voraus",
+      "legacy"
+    ],
+    [
+      "Hundert",
+      "hundred"
+    ],
+    [
+      "Personal",
+      "staff"
+    ],
+    [
+      "Personal",
+      "personnel"
+    ],
+    [
+      "Personal",
+      "employees"
+    ],
+    [
+      "Auftreten",
+      "behavior"
+    ],
+    [
+      "Auftreten",
+      "conduct"
+    ],
+    [
+      "Auftreten",
+      "demeanor"
+    ],
+    [
+      "Auftreten",
+      "manner"
+    ],
+    [
+      "Auftreten",
+      "occurrence"
+    ],
+    [
+      "Auftreten",
+      "incidence"
+    ],
+    [
+      "Auftreten",
+      "outbreak"
+    ],
+    [
+      "Auftreten",
+      "appearance"
+    ],
+    [
+      "Kochen",
+      "cooking"
+    ],
+    [
+      "Kochen",
+      "cookery"
+    ],
+    [
+      "Sturm",
+      "gale"
+    ],
+    [
+      "Sturm",
+      "storm"
+    ],
+    [
+      "Sturm",
+      "tempest"
+    ],
+    [
+      "Sturm",
+      "attack"
+    ],
+    [
+      "Versehen",
+      "mistake"
+    ],
+    [
+      "Versehen",
+      "oversight"
+    ],
+    [
+      "Rollen",
+      "scroll lock"
+    ],
+    [
+      "Wild",
+      "game"
+    ],
+    [
+      "Wild",
+      "game meat"
+    ],
+    [
+      "Tausend",
+      "thousand"
+    ],
+    [
+      "Sammeln",
+      "collecting"
+    ],
+    [
+      "Ermöglichen",
+      "enablement"
+    ],
+    [
+      "Verschwinden",
+      "disappearance"
+    ],
+    [
+      "Bedenken",
+      "concern"
+    ],
+    [
+      "Bedenken",
+      "objection"
+    ],
+    [
+      "Lügen",
+      "bullshit"
+    ],
+    [
+      "Vermögen",
+      "ability"
+    ],
+    [
+      "Vermögen",
+      "capacity"
+    ],
+    [
+      "Vermögen",
+      "fortune"
+    ],
+    [
+      "Vermögen",
+      "wealth"
+    ],
+    [
+      "Vorgehen",
+      "proceeding"
+    ],
+    [
+      "Vorgehen",
+      "procedure"
+    ],
+    [
+      "Dicke",
+      "thickness"
+    ],
+    [
+      "Dicke",
+      "fat"
+    ],
+    [
+      "Dunkel",
+      "dark"
+    ],
+    [
+      "Dunkel",
+      "darkness"
+    ],
+    [
+      "Fett",
+      "fat"
+    ],
+    [
+      "Fett",
+      "grease"
+    ],
+    [
+      "Schweigen",
+      "silence"
+    ],
+    [
+      "Ei",
+      "egg"
+    ],
+    [
+      "Schulden",
+      "debt"
+    ],
+    [
+      "Ferner",
+      "glacier"
+    ],
+    [
+      "Übel",
+      "problem"
+    ],
+    [
+      "Übel",
+      "evil"
+    ],
+    [
+      "Übel",
+      "illness"
+    ],
+    [
+      "Hammer",
+      "hammer"
+    ],
+    [
+      "Hammer",
+      "mallet"
+    ],
+    [
+      "Französisch",
+      "french"
+    ],
+    [
+      "Hinweg",
+      "way"
+    ],
+    [
+      "Hinweg",
+      "there"
+    ],
+    [
+      "Entfernen",
+      "removal"
+    ],
+    [
+      "Entfernen",
+      "detachment"
+    ],
+    [
+      "Entfernen",
+      "delete"
+    ],
+    [
+      "Feind",
+      "enemy"
+    ],
+    [
+      "Feind",
+      "foe"
+    ],
+    [
+      "Vorkommen",
+      "occurrence"
+    ],
+    [
+      "Unrecht",
+      "injustice"
+    ],
+    [
+      "Unrecht",
+      "wrongdoing"
+    ],
+    [
+      "Reifen",
+      "tyre"
+    ],
+    [
+      "Reifen",
+      "tire"
+    ],
+    [
+      "Lecker",
+      "licker"
+    ],
+    [
+      "Massiv",
+      "massif"
+    ],
+    [
+      "Türken",
+      "regional"
+    ],
+    [
+      "Jenseits",
+      "beyond"
+    ],
+    [
+      "Jenseits",
+      "hereafter"
+    ],
+    [
+      "Jenseits",
+      "afterlife"
+    ],
+    [
+      "Samt",
+      "velvet"
+    ],
+    [
+      "Streifen",
+      "stripe"
+    ],
+    [
+      "Streifen",
+      "strip"
+    ],
+    [
+      "Streifen",
+      "band"
+    ],
+    [
+      "Streifen",
+      "film"
+    ],
+    [
+      "Streifen",
+      "streak"
+    ],
+    [
+      "Streifen",
+      "tape"
+    ],
+    [
+      "Heil",
+      "health"
+    ],
+    [
+      "Heil",
+      "salvation"
+    ],
+    [
+      "Power",
+      "strength"
+    ],
+    [
+      "Power",
+      "energy"
+    ],
+    [
+      "Power",
+      "power"
+    ],
+    [
+      "Scheitern",
+      "collapse"
+    ],
+    [
+      "Scheitern",
+      "breakup"
+    ],
+    [
+      "Scheitern",
+      "failure"
+    ],
+    [
+      "Abkommen",
+      "accord"
+    ],
+    [
+      "Abkommen",
+      "agreement"
+    ],
+    [
+      "Eingehen",
+      "shrinkage"
+    ],
+    [
+      "Fangen",
+      "tag"
+    ],
+    [
+      "Kapital",
+      "capital"
+    ],
+    [
+      "Packen",
+      "pack"
+    ],
+    [
+      "Packen",
+      "bundle"
+    ],
+    [
+      "Verstecken",
+      "hide and seek"
+    ],
+    [
+      "Vorhaben",
+      "intention"
+    ],
+    [
+      "Vorhaben",
+      "project"
+    ],
+    [
+      "Vorhaben",
+      "plan"
+    ],
+    [
+      "Anliegen",
+      "request"
+    ],
+    [
+      "Anliegen",
+      "concern"
+    ],
+    [
+      "Anliegen",
+      "application"
+    ],
+    [
+      "Schick",
+      "chic"
     ]
   ],
   "pronunciations": {
@@ -30351,16 +31103,6 @@
       "/ˈɑb.d͡ʒɛkt/",
       "/əbˈd͡ʒɛkt/"
     ],
-    "en:unit": [
-      "/ˈjuː.nɪt/",
-      "/ˈ(j)ɪu̯.nɪt/"
-    ],
-    "en:place": [
-      "/ˈpleɪ̯s/",
-      "[ˈpʰl̥eɪ̯s]",
-      "/ˈpleːs/",
-      "[ˈpʰl̥eːs]"
-    ],
     "de:über": [
       "/ˈyːbɐ/",
       "/ˈʏbɐ/"
@@ -30594,14 +31336,6 @@
       "/næʊ/",
       "/nɛʊ/"
     ],
-    "en:present": [
-      "/ˈpɹɛz.ənt/",
-      "/ˈpɹez.ənt/",
-      "/pɹɪˈzɛnt/",
-      "/pɹiˈzɛnt/",
-      "/pɹəˈzɛnt/",
-      "/pɹɪˈzent/"
-    ],
     "de:wieder": [
       "/ˈviːdɐ/",
       "/ˈvɪdɐ/"
@@ -30698,12 +31432,6 @@
     "de:unter": [
       "/ˈʊntɐ/"
     ],
-    "en:under": [
-      "/ˈʌndə/",
-      "/ˈʊndə/",
-      "/ˈʊndɐ/",
-      "/ˈʌndəɾ/"
-    ],
     "en:below": [
       "/bɪˈləʊ/",
       "/bɪˈlaː/",
@@ -30727,6 +31455,12 @@
       "/əˈlæŋ/",
       "/əˈlɑŋ/",
       "/əˈlɔŋ/"
+    ],
+    "en:regional": [
+      "/ˈɹiː.d͡ʒə.nəl/",
+      "/ˈɹiːd͡ʒ.nəl/",
+      "/ˈɹi.d͡ʒə.nəl/",
+      "/ˈɹid͡ʒ.nəl/"
     ],
     "de:gut": [
       "/ɡuːt/",
@@ -30804,14 +31538,7 @@
       "/ə ˈlɑt/"
     ],
     "de:zeit": [
-      "[t͡saɪ̯t]",
       "/t͡saɪ̯t/"
-    ],
-    "en:time": [
-      "/taɪm/",
-      "[tʰaɪ̯m]",
-      "/təɪm/",
-      "/tʌɪm/"
     ],
     "de:ab": [
       "/ap/",
@@ -30978,12 +31705,6 @@
       "/ˈbɪ̝t/",
       "/ˈbət/"
     ],
-    "en:thing": [
-      "/θɪŋ/",
-      "/θiŋ/ [θiŋ ~ θɪ̝ŋ]",
-      "/fɪŋ/",
-      "/θɪŋɡ/"
-    ],
     "de:zwei": [
       "/t͡svaɪ̯/",
       "[t͡sʋaɪ̯]",
@@ -31039,11 +31760,6 @@
       "/ˈpɜː.sən.li/",
       "/ˈpɝ.sə.nə.li/"
     ],
-    "en:self": [
-      "/ˈsɛlf/",
-      "/ˈsɛf/",
-      "/ˈsɛl/"
-    ],
     "de:wo": [
       "/voː/"
     ],
@@ -31073,9 +31789,6 @@
       "/ˈnʌtɪŋ/",
       "/ˈnʌʔn̩/",
       "/ˈnʌfɪŋ/"
-    ],
-    "en:void": [
-      "/vɔɪd/"
     ],
     "de:nun": [
       "/nuːn/"
@@ -31118,9 +31831,6 @@
       "[ɪɡˈzɪst]",
       "/əɡˈzɪst/",
       "[əɡˈzɪst]"
-    ],
-    "en:subsist": [
-      "/səbˈsɪst/"
     ],
     "en:survive": [
       "/səˈvaɪv/",
@@ -31270,11 +31980,7 @@
     ],
     "de:gerade": [
       "/ɡəˈraːdə/",
-      "/ˈɡra(ː)d(ə)/",
-      "/ɡəˈʁaːdə/"
-    ],
-    "en:mal": [
-      "/mæl/"
+      "/ˈɡra(ː)d(ə)/"
     ],
     "en:barely": [
       "/ˈbɛə.li/",
@@ -31558,10 +32264,6 @@
     "de:bitte": [
       "/ˈbɪtə/"
     ],
-    "en:please": [
-      "/pliːz/",
-      "/pliz/"
-    ],
     "en:excuse me": [
       "/ɛksˈkjuːz mi/",
       "/ɪksˈkjuːz mi/"
@@ -31744,20 +32446,13 @@
     ],
     "de:weg": [
       "/vɛk/",
-      "/vɛç/",
-      "[veːk]"
+      "/vɛç/"
     ],
     "en:gone": [
       "/ɡɒn/",
       "/ɡɔːn/",
       "/ɡɔn/",
       "/ɡɑn/"
-    ],
-    "en:way": [
-      "/weɪ/",
-      "/wɛj/",
-      "[weː]",
-      "[wɛj]"
     ],
     "de:wegen": [
       "/ˈveːɡən/",
@@ -31988,12 +32683,6 @@
       "/tɹjuː/",
       "/tɹɪʊ̯/"
     ],
-    "en:lawful": [
-      "/ˈlɔːfl̩/",
-      "/ˈlɔfl̩/",
-      "/ˈlɑfl̩/",
-      "/ˈloːfl̩/"
-    ],
     "de:finden": [
       "[ˈfɪndn̩]",
       "[ˈfɪndən]"
@@ -32051,6 +32740,14 @@
     ],
     "en:signal": [
       "/ˈsɪɡnəl/"
+    ],
+    "en:present": [
+      "/ˈpɹɛz.ənt/",
+      "/ˈpɹez.ənt/",
+      "/pɹɪˈzɛnt/",
+      "/pɹiˈzɛnt/",
+      "/pɹəˈzɛnt/",
+      "/pɹɪˈzent/"
     ],
     "de:m": [
       "/ʔɛm/"
@@ -32113,6 +32810,12 @@
       "/laŋ/",
       "/ˈlɒŋ/",
       "/ˈlʊŋ/"
+    ],
+    "en:time": [
+      "/taɪm/",
+      "[tʰaɪ̯m]",
+      "/təɪm/",
+      "/tʌɪm/"
     ],
     "de:Teil": [
       "/taɪ̯l/",
@@ -32276,14 +32979,6 @@
     "de:zurück": [
       "/t͡suˈʁʏk/"
     ],
-    "en:backward": [
-      "/ˈbæk.wə(ɹ)d/",
-      "/ˈbækwɚd/"
-    ],
-    "en:backwards": [
-      "/ˈbækwɜːdz/",
-      "/ˈbækwɜɹdz/"
-    ],
     "de:jedoch": [
       "/jeːˈdɔx/"
     ],
@@ -32310,18 +33005,6 @@
     "en:a few": [
       "/ə ˈfjuː/"
     ],
-    "en:pair": [
-      "/pɛə/",
-      "/pɛɹ/",
-      "/peː/",
-      "/ˈpeə/"
-    ],
-    "en:couple": [
-      "/ˈkʌp.əl/",
-      "[ˈkʌp.ɫ̩]",
-      "/ˈkə.pᵻl/",
-      "[kɐ.pɘl]"
-    ],
     "de:welche": [
       "/ˈvɛl.çə/",
       "/ˈvɛiʲ.çə/"
@@ -32341,12 +33024,6 @@
       "/ɹɪˈmɛm.bɚ/",
       "/ɹəˈmɛm.bɚ/",
       "/ˈmɛm.bɚ/"
-    ],
-    "en:knowledge": [
-      "/ˈnɒl.ɪdʒ/",
-      "/ˈnɑ.lɪdʒ/",
-      "/ˈnoʊ.lɪdʒ/",
-      "/nɔː.leːdʒ/"
     ],
     "de:zusammen": [
       "/tsuˈzamən/",
@@ -32542,6 +33219,12 @@
     ],
     "en:type": [
       "/taɪp/"
+    ],
+    "en:way": [
+      "/weɪ/",
+      "/wɛj/",
+      "[weː]",
+      "[wɛj]"
     ],
     "de:schnell": [
       "/ʃnɛl/"
@@ -32812,6 +33495,12 @@
       "/əˈboʊd/",
       "[ʔəˈboʊːd̥̚]"
     ],
+    "en:place": [
+      "/ˈpleɪ̯s/",
+      "[ˈpʰl̥eɪ̯s]",
+      "/ˈpleːs/",
+      "[ˈpʰl̥eːs]"
+    ],
     "de:dein": [
       "/daɪ̯n/"
     ],
@@ -32915,9 +33604,6 @@
       "/ˈkɛp.(t)ʃɘː/",
       "[ˈkʰɛp.(t)ʃɘː]"
     ],
-    "en:ingest": [
-      "/ɪnˈd͡ʒɛst/"
-    ],
     "en:sit": [
       "/sɪt/"
     ],
@@ -32956,33 +33642,11 @@
       "[ˈmɔʁ-]",
       "[ˈmɔɐ̯-]"
     ],
-    "en:morning": [
-      "/ˈmɔːnɪŋ/",
-      "/ˈmoːnɪŋ/",
-      "/ˈmoɹnɪŋ/",
-      "/ˈmɔːnɪŋɡ/"
-    ],
-    "en:quarter": [
-      "/ˈk(w)ɔːtə/",
-      "/ˈk(w)oːtə/",
-      "/ˈk(w)ɔɹ.tɚ/",
-      "[ˈk(w)ɔɹ.ɾɚ]"
-    ],
-    "en:east": [
-      "/iːst/",
-      "/ɪjst/"
-    ],
     "en:tomorrow": [
       "/təˈmɒɹəʊ/",
       "/təˈmɔɹəw/",
       "/ðəˈmɒɹæ/",
       "/təˈmɔɹo/"
-    ],
-    "en:future": [
-      "/ˈfjuː.t͡ʃəː/",
-      "[ˈfjʊu̯.t͡ʃəː]",
-      "/ˈfju.t͡ʃɚ/",
-      "[ˈfjʊu̯.t͡ʃɚ] ~ [ˈfjʊu̯.t͡ʃɹ̩]"
     ],
     "de:sonst": [
       "/zɔnst/",
@@ -33270,12 +33934,6 @@
     "de:leider": [
       "/ˈlaɪ̯dɐ/"
     ],
-    "en:unfortunately": [
-      "/ʌnˈfɔː.tjʊ.nət.li/",
-      "/ʌnˈfɔː.t͡ʃə.nət.li/",
-      "/ʌnˈfɔɹ.t͡ʃə.nɪt.li/",
-      "/ʌnˈfɔɹt͡ʃ.nɪt.li/"
-    ],
     "de:online": [
       "/ˈɔnlaɪ̯n/"
     ],
@@ -33307,37 +33965,6 @@
     ],
     "de:unternehmen": [
       "/ˌʊntɐˈneːmən/"
-    ],
-    "en:business": [
-      "/ˈbɪz.nɪs/",
-      "/ˈbɪz.nɪz/",
-      "/ˈbɪz.nəs/",
-      "/ˈbɪz.nəz/"
-    ],
-    "en:enterprise": [
-      "/ˈɛntəˌpɹaɪz/",
-      "/ˈɛntɚˌpɹaɪz/",
-      "/ˈen.təˌpɹɑez/",
-      "[ˈen.təˌpɹɑe̯z]"
-    ],
-    "en:company": [
-      "/ˈkʌmp(ə)ni/",
-      "/ˈkɒmp(ə)ni/",
-      "/ˈkʌmpəni/"
-    ],
-    "en:undertaking": [
-      "/ˈʌndə(ɹ)ˌteɪkɪŋ/"
-    ],
-    "en:operation": [
-      "/ˌɒp.əˈɹeɪ.ʃən/",
-      "/ˌɑ.pəˈɹeɪ.ʃən/",
-      "/ˌɑ.pɚˈeɪ.ʃən/",
-      "/ˌɔp.əˈɹæɪ.ʃən/"
-    ],
-    "en:undertake": [
-      "/ˌʌndəˈteɪk/",
-      "/ˌʌndɚˈteɪk/",
-      "/ˌɐndəˈtæɪk/"
     ],
     "de:Woche": [
       "/ˈvɔxə/"
@@ -33496,6 +34123,12 @@
       "/klæs/",
       "/klas/",
       "/kleəs/"
+    ],
+    "en:stratum": [
+      "/ˈstɹɑː.təm/",
+      "/ˈstɹeɪ.təm/",
+      "[ˈstɹeɪ.ɾəm]",
+      "/ˈstɹæt.əm/"
     ],
     "en:estate": [
       "/ɪˈsteɪt/"
@@ -33671,26 +34304,11 @@
     ],
     "de:essen": [
       "/ˈɛsən/",
-      "[ˈʔɛ.sn̩]",
-      "[ˈʔɛsn̩]"
+      "[ˈʔɛ.sn̩]"
     ],
     "en:eat": [
       "/iːt/",
       "/it/"
-    ],
-    "en:dine": [
-      "/daɪn/"
-    ],
-    "en:food": [
-      "/fuːd/",
-      "[fuːd]",
-      "[fʊwd]",
-      "[fu̟(ː)d]"
-    ],
-    "en:groceries": [
-      "/ˈɡɹəʊ.s(ə.)ɹiz/",
-      "/ˈɡɹəʊ.s(ə.)ɹɪz/",
-      "/ˈɡɹoʊ.s(ə.)ɹiz/"
     ],
     "de:lang": [
       "/laŋ(k)/",
@@ -33712,15 +34330,6 @@
     ],
     "en:west": [
       "/wɛst/"
-    ],
-    "de:dank": [
-      "/daŋk/"
-    ],
-    "en:gratitude": [
-      "/ˈɡɹæ.tɪ.tjuːd/",
-      "/ˈɡɹa.tɪ.tʃʉwd/",
-      "/ˈɡɹæ.tɪ.tud/",
-      "[ˈɡɹʷæɾɪtʰud]"
     ],
     "de:ebenfalls": [
       "/ˈeːbn̩fals/"
@@ -33851,6 +34460,10 @@
       "/boj/",
       "/boɪ/",
       "/bɔːə/"
+    ],
+    "en:jack": [
+      "/ˈd͡ʒæk/",
+      "[ˈd͡ʒæk]"
     ],
     "de:Lieber": [
       "/ˈliːbɐ/"
@@ -34035,6 +34648,11 @@
       "/ɪndɪˈvɪdjʊəl/",
       "/ɪndɪˈvɪdjʊl/"
     ],
+    "en:company": [
+      "/ˈkʌmp(ə)ni/",
+      "/ˈkɒmp(ə)ni/",
+      "/ˈkʌmpəni/"
+    ],
     "de:schwer": [
       "/ʃveːr/",
       "[ʃveːɐ̯]",
@@ -34149,8 +34767,7 @@
       "/ˌkɔɹ.pɚˈeɪ.ʃən/"
     ],
     "de:hoch": [
-      "/hoːx/",
-      "[hoːx]"
+      "/hoːx/"
     ],
     "en:high": [
       "/haɪ/",
@@ -34202,6 +34819,11 @@
     "en:skilled": [
       "/skɪld/"
     ],
+    "en:brilliant": [
+      "/ˈbɹɪl.jənt/",
+      "/ˈbɹɪ.li.ənt/",
+      "/ˈbɹɪ(l)jənt/"
+    ],
     "de:Alter": [
       "/ˈʔaltɐ/",
       "/ˈaltər/",
@@ -34232,6 +34854,10 @@
       "[mɛjt]",
       "[meːt]"
     ],
+    "en:bloke": [
+      "/bləʊk/",
+      "/bloʊk/"
+    ],
     "de:Anfang": [
       "/ˈʔanfaŋ/"
     ],
@@ -34252,8 +34878,7 @@
       "/ˈoɹ.ə.d͡ʒɪn/"
     ],
     "de:gegenüber": [
-      "[ɡeːɡŋ̍ˈʔyːbɐ]",
-      "/ɡeːɡn̩ˈʔyːbɐ/"
+      "[ɡeːɡŋ̍ˈʔyːbɐ]"
     ],
     "en:opposite": [
       "/ˈɒp.ə.zɪt/",
@@ -34266,16 +34891,6 @@
       "[tʰə̥ˈwɔːdz]",
       "/ˈtɔːdz/",
       "/tʊˈwɔɹdz/"
-    ],
-    "en:compared": [
-      "/kəmˈpɛɹd/",
-      "/kəmˈpɛəd/",
-      "/kəmˈpeːd/",
-      "/kəmˈpeəd/"
-    ],
-    "en:counterpart": [
-      "/ˈkaʊntəˌpɑːt/",
-      "/ˈkaʊntɚˌpɑɹt/"
     ],
     "de:Kind": [
       "/kɪnt/"
@@ -34381,6 +34996,11 @@
       "/ɛfrɨkə/",
       "/ˈɑːfrɪkɑː/"
     ],
+    "en:legal": [
+      "/ˈliː.ɡəl/",
+      "/ˈli.ɡəl/",
+      "/lɪˈɡæl/"
+    ],
     "en:characterized": [
       "/ˈkɛɹəktəɹaɪzd/",
       "/ˈkæɹəktəɹaɪzd/"
@@ -34453,22 +35073,15 @@
       "/ɹəɪt/",
       "[ɹəɪʔ]"
     ],
-    "en:spell": [
-      "/spɛl/"
-    ],
     "en:date": [
       "/deɪt/"
     ],
     "en:text": [
       "/tɛkst/"
     ],
-    "en:writing": [
-      "/ˈɹaɪtɪŋ/"
-    ],
     "de:treffen": [
       "/ˈtʁɛfən/",
-      "[ˈtʰʁ̥ɛfɱ̩]",
-      "/ˈtʁɛfn̩/"
+      "[ˈtʰʁ̥ɛfɱ̩]"
     ],
     "en:encounter": [
       "/ɪnˈkaʊntə/",
@@ -34715,6 +35328,12 @@
       "/əˈfɛɹ/",
       "/əˈfɛɚ/",
       "/əˈfeː/"
+    ],
+    "en:thing": [
+      "/θɪŋ/",
+      "/θiŋ/ [θiŋ ~ θɪ̝ŋ]",
+      "/fɪŋ/",
+      "/θɪŋɡ/"
     ],
     "en:property": [
       "/ˈpɹɒp.ə.ti/",
@@ -35035,24 +35654,6 @@
     "de:ernst": [
       "/ɛʁnst/"
     ],
-    "en:earnestness": [
-      "/ˈɝnɪstnəs/",
-      "/ˈɜːnɪstnəs/"
-    ],
-    "en:seriousness": [
-      "/ˈsɪɹiəsnəs/",
-      "/ˈsɪəɹiəsnəs/"
-    ],
-    "en:statement": [
-      "/ˈsteɪtm(ə)nt/",
-      "/ˈsteɪtmənt/"
-    ],
-    "en:action": [
-      "/ˈækʃən̩/",
-      "[ˈækʃn̩]",
-      "/ˈakʃən̩/",
-      "[ˈakʃn̩]"
-    ],
     "de:groß": [
       "/ɡʁoːs/",
       "/ɡroːs/"
@@ -35113,6 +35714,12 @@
     "de:Zukunft": [
       "/ˈtsuːˌkʊnft/",
       "/ˈtsuːˌkʊmft/"
+    ],
+    "en:future": [
+      "/ˈfjuː.t͡ʃəː/",
+      "[ˈfjʊu̯.t͡ʃəː]",
+      "/ˈfju.t͡ʃɚ/",
+      "[ˈfjʊu̯.t͡ʃɚ] ~ [ˈfjʊu̯.t͡ʃɹ̩]"
     ],
     "de:all": [
       "/al/",
@@ -35277,20 +35884,11 @@
       "/ˈzuːpɐ/",
       "/ˈsu(ː)pɐ/"
     ],
-    "en:super": [
-      "/ˈsuːpə/",
-      "/ˈsʉwpə/",
-      "[ˈsypɑ]",
-      "[ˈsup̚ʔɐː]"
-    ],
     "en:awesome": [
       "/ˈɔːsəm/",
       "/ˈoːsəm/",
       "/ˈɔ.səm/",
       "/ˈɑ.səm/"
-    ],
-    "en:petrol": [
-      "/ˈpɛt.ɹəl/"
     ],
     "de:t": [
       "/teː/"
@@ -35324,12 +35922,6 @@
       "/wɝθ/",
       "/ˈwəːθ/",
       "/ˈwøːθ/"
-    ],
-    "en:value": [
-      "/ˈvæl.juː/",
-      "/ˈval.jʉw/",
-      "/ˈvæl.ju/",
-      "/ˈvæl.jʉː/"
     ],
     "de:Entwicklung": [
       "/ɛntˈvɪklʊŋ/"
@@ -35387,8 +35979,7 @@
     ],
     "de:kosten": [
       "/ˈkɔstən/",
-      "/ˈkoːstən/",
-      "/ˈkɔstn̩/"
+      "/ˈkoːstən/"
     ],
     "en:cost": [
       "/kɒst/",
@@ -35404,11 +35995,6 @@
       "[t͡ʃɹaɪ̯]",
       "[tɹ̝̊aɪ̯]",
       "[t̠͡ɹ̠̊˔aɪ̯]"
-    ],
-    "en:costs": [
-      "/ˈkɔsts/",
-      "/ˈkɒsts/",
-      "/ˈkɑsts/"
     ],
     "de:obwohl": [
       "/ɔpˈvoːl/"
@@ -35615,18 +36201,6 @@
     ],
     "de:klasse": [
       "/ˈklasə/"
-    ],
-    "en:grouping": [
-      "/ˈɡɹuːpɪŋ/"
-    ],
-    "en:grade": [
-      "/ɡɹeɪd/",
-      "[ɡɹeɪd]",
-      "[ɡɹɛjd]",
-      "[ɡɹeːd]"
-    ],
-    "en:excellence": [
-      "/ˈɛksələns/"
     ],
     "de:Preis": [
       "/pʁaɪ̯s/"
@@ -35841,9 +36415,6 @@
       "[ˈtʰʁ̞̊ɔt͡sʰ]",
       "[ˈtrots]"
     ],
-    "en:despite": [
-      "/dɪˈspaɪt/"
-    ],
     "de:vergessen": [
       "/fɛɐ̯ˈɡɛsən/"
     ],
@@ -35954,6 +36525,12 @@
       "/əˈkwaɪɚ/",
       "/əˈkwaɪə/"
     ],
+    "en:knowledge": [
+      "/ˈnɒl.ɪdʒ/",
+      "/ˈnɑ.lɪdʒ/",
+      "/ˈnoʊ.lɪdʒ/",
+      "/nɔː.leːdʒ/"
+    ],
     "en:study": [
       "/ˈstʌd.i/",
       "[ˈstʌɾ.i]",
@@ -36005,6 +36582,12 @@
     "en:speak": [
       "/spiːk/",
       "/spik/"
+    ],
+    "en:orate": [
+      "/ɔːˈɹeɪt/",
+      "/ɒɹˈeɪt/",
+      "/əˈɹeɪt/",
+      "/ˈɔɹ.eɪt/"
     ],
     "en:reveal": [
       "/ɹɪˈviːl/",
@@ -36286,9 +36869,6 @@
     ],
     "en:given name": [
       "/ˈɡɪvən ˌneɪm/"
-    ],
-    "de:raum": [
-      "/ʁaʊ̯m/"
     ],
     "de:System": [
       "/zɪsˈteːm/",
@@ -36785,36 +37365,7 @@
       "/fɔɹˈlɔɹn/"
     ],
     "de:weise": [
-      "/ˈvaɪ̯zə/",
-      "/ˈvaɛ̯.sɛ/"
-    ],
-    "en:manner": [
-      "/ˈmænə/",
-      "/ˈmænɚ/"
-    ],
-    "en:tune": [
-      "/tjuːn/",
-      "/tʃuːn/",
-      "/tuːn/",
-      "/tɪu̯n/"
-    ],
-    "en:mode": [
-      "/moʊd/",
-      "/məʊd/",
-      "/mod/"
-    ],
-    "en:mood": [
-      "/muːd/",
-      "/mʉd/"
-    ],
-    "en:song": [
-      "/sɒŋ/",
-      "/sɔŋ/",
-      "/sɑŋ/",
-      "[sɔ̟ŋ]"
-    ],
-    "en:wise": [
-      "/waɪz/"
+      "/ˈvaɪ̯zə/"
     ],
     "de:zumindest": [
       "/t͡suˈmɪndəst/"
@@ -36988,6 +37539,11 @@
       "/ˈzɛlbər/",
       "[ˈzɛl.bɐ]",
       "[s-]"
+    ],
+    "en:self": [
+      "/ˈsɛlf/",
+      "/ˈsɛf/",
+      "/ˈsɛl/"
     ],
     "en:myself": [
       "/maɪˈsɛlf/",
@@ -37265,11 +37821,6 @@
       "/kəmˈpæɹ.ɪ.ʃən/",
       "/kəmˈpɛɹ.ə.sən/"
     ],
-    "en:settlement": [
-      "/ˈsɛ.təl.mənt/",
-      "[ˈsɛtəɫmənt]",
-      "[ˈsɛtɫ̩mn̩t]"
-    ],
     "de:versuchen": [
       "/fɛɐ̯ˈzuːxən/"
     ],
@@ -37457,15 +38008,7 @@
       "/ˈrɛɖi/"
     ],
     "de:daten": [
-      "[ˈdaːtn̩]",
-      "/ˈdaːt(ə)n/",
       "[deːtn̩]"
-    ],
-    "en:data": [
-      "/ˈdɑːtə/",
-      "/ɖɑʈɑ/",
-      "[ˈdäːɾə]",
-      "/ˈdeɪtə/"
     ],
     "de:falsch": [
       "/falʃ/",
@@ -37823,10 +38366,6 @@
       "/wɛjʈ/",
       "/weʈ/"
     ],
-    "en:waiting": [
-      "/ˈweɪtɪŋ/",
-      "[ˈweɪ̯ɾɪŋ]"
-    ],
     "de:Wirtschaft": [
       "/ˈvɪʁtʃaft/"
     ],
@@ -37838,6 +38377,10 @@
     ],
     "en:inn": [
       "/ɪn/"
+    ],
+    "en:pub": [
+      "/pʌb/",
+      "/pʊb/"
     ],
     "en:economics": [
       "/ˌiːkəˈnɒmɪks/",
@@ -37882,6 +38425,12 @@
       "/fɪrma/",
       "[ˈfɪʁ.mä]",
       "[ˈfɪɐ̯.mä]"
+    ],
+    "en:business": [
+      "/ˈbɪz.nɪs/",
+      "/ˈbɪz.nɪz/",
+      "/ˈbɪz.nəs/",
+      "/ˈbɪz.nəz/"
     ],
     "de:gewinnen": [
       "/ɡəˈvɪnən/",
@@ -38069,13 +38618,6 @@
     ],
     "de:licht": [
       "/lɪçt/"
-    ],
-    "en:eye": [
-      "/ˈaɪ̯/",
-      "[ˈaɪ̯]",
-      "/ˈɑɪ̯/",
-      "[ˈɑ̟ɪ̯]",
-      "/ˈaɪ/"
     ],
     "en:bright": [
       "/ˈbɹaɪ̯t/",
@@ -38375,10 +38917,6 @@
     "en:unconditional": [
       "/ˌʌnkənˈdɪʃənəl/"
     ],
-    "en:probation": [
-      "/ˌpɹə(ʊ)ˈbeɪʃən/",
-      "/ˌpɹoʊˈbeɪʃən/"
-    ],
     "en:absolutely": [
       "/ˈæb.səˌl(j)uːt.li/",
       "/ˌæb.səˈl(j)uːt.li/",
@@ -38566,24 +39104,6 @@
       "[fəɪʔ]",
       "[fʌɪt]"
     ],
-    "de:kraft": [
-      "/kʁaft/"
-    ],
-    "en:force": [
-      "/fɔːs/",
-      "/foːs/",
-      "/foɹs/",
-      "[fo̞ɹs]"
-    ],
-    "en:worker": [
-      "/ˈwɜː.kə/",
-      "/ˈwɝ.kɚ/"
-    ],
-    "en:by virtue of": [
-      "/baɪ ˈvɜːtʃuː ɒv/",
-      "/-tjuː-/",
-      "/baɪ ˈvɝtʃu ʌv/"
-    ],
     "en:by means of": [
       "/baɪ miːnz əv/"
     ],
@@ -38645,12 +39165,6 @@
       "/ˈɛk.sɚ.saɪz/",
       "/ˈek.sə.sɑez/",
       "/ˈek.sə.saɪz/"
-    ],
-    "en:physical education": [
-      "/ˈfɪ.zɪ.kl̩ ˌɛd͡ʒ.əˈkeɪʃn̩/"
-    ],
-    "en:phys ed": [
-      "/fɪz ˈɛd/"
     ],
     "de:Tat": [
       "[taːt]",
@@ -38730,6 +39244,12 @@
       "/ˈʃtɪmən/",
       "[ˈʃtimɛn]",
       "[ˈʃtɪmn̩]"
+    ],
+    "en:tune": [
+      "/tjuːn/",
+      "/tʃuːn/",
+      "/tuːn/",
+      "/tɪu̯n/"
     ],
     "de:Wochenende": [
       "/ˈvɔxənˌɛndə/",
@@ -39143,6 +39663,11 @@
     "en:close call": [
       "/kləʊs ˈkɔːl/"
     ],
+    "en:narrow escape": [
+      "/ˌnæɹəʊ ɪˈskeɪp/",
+      "/ˌnæɹoʊ əˈskeɪp/",
+      "/-ɛˈskeɪp/"
+    ],
     "en:narrowly": [
       "/ˈnæɹəʊli/",
       "/ˈnaɹəwlɪj/",
@@ -39205,24 +39730,11 @@
     "de:reich": [
       "/ʁaɪ̯ç/"
     ],
-    "en:rich": [
-      "/ˈɹɪt͡ʃ/",
-      "[ˈɹʷɪt͡ʃ]",
-      "/ɹɪt͡ʃ/"
-    ],
     "en:wealthy": [
       "/ˈwɛl.θi/",
       "/ˈʋɛːl.d̪iː/",
       "/ˈʋɛːl.t̪hiː/",
       "/ˈʋel.d̪iː/"
-    ],
-    "en:empire": [
-      "/ˈɛm.paɪ̯ə̯/",
-      "/ˈɛm.paɪ̯.ə/",
-      "/ˈɛmˌpaɪ̯ɹ/",
-      "/ˈɛmˌpaɪ̯ɚ/",
-      "/ˈɛmpaɪə/",
-      "/ˈɛmpaɪɚ/"
     ],
     "de:rot": [
       "/roːt/",
@@ -39687,14 +40199,7 @@
       "[ˈt͡ʃʰɑ̈ɪ̯nə]"
     ],
     "de:ehe": [
-      "/ˈeːə/",
-      "[ˈʔeː.ə]",
       "/ˈʔeːə/"
-    ],
-    "en:marriage": [
-      "/ˈmæɹɪd͡ʒ/",
-      "/ˈmɛɹɪd͡ʒ/",
-      "/ˈmaɾɪd͡ʒ/"
     ],
     "de:ehrlich": [
       "/ˈeːrlɪç/",
@@ -39740,6 +40245,12 @@
       "[ɡəˈvalt]",
       "[-ˈʋalt]"
     ],
+    "en:force": [
+      "/fɔːs/",
+      "/foːs/",
+      "/foɹs/",
+      "[fo̞ɹs]"
+    ],
     "en:violence": [
       "/ˈvaɪ(ə)lən(t)s/",
       "/ˈvaɪ.(ə)ˌlɛns/"
@@ -39780,6 +40291,12 @@
     ],
     "en:size": [
       "/saɪz/"
+    ],
+    "en:song": [
+      "/sɒŋ/",
+      "/sɔŋ/",
+      "/sɑŋ/",
+      "[sɔ̟ŋ]"
     ],
     "en:composition": [
       "/ˌkɒmpəˈzɪʃən/",
@@ -39871,9 +40388,11 @@
       "/ɪkˈspɹɛs/",
       "/ɛkˈspɹɛs/"
     ],
+    "en:assessment": [
+      "/əˈsɛsmənt/"
+    ],
     "de:aktiv": [
-      "[akˈtiːf]",
-      "/ˈaktiːf/"
+      "[akˈtiːf]"
     ],
     "en:active": [
       "/ˈæk.tɪv/"
@@ -40173,55 +40692,16 @@
     "de:schönen": [
       "/ˈʃøːnən/"
     ],
-    "en:manipulate": [
-      "/məˈnɪp.jʊ.leɪt/",
-      "/məˈnɪp.jə.leɪt/"
+    "en:massage": [
+      "/ˈmæsɑː(d)ʒ/",
+      "/məˈsɑː(d)ʒ/",
+      "/məˈsɑ(d)ʒ/"
     ],
     "de:stolz": [
       "/ʃtɔlt͡s/"
     ],
-    "en:proud": [
-      "/ˈpɹaʊ̯d/",
-      "/ˈpɹæʊ̯d/",
-      "/ˈpɹaːd/"
-    ],
-    "en:haughty": [
-      "/ˈhɔːti/",
-      "/ˈhoːtɪj/",
-      "/ˈhɔti/",
-      "/ˈhɑti/"
-    ],
-    "en:pride": [
-      "/pɹaɪd/",
-      "[ˈpɹ̥ʷaɪ̯d]",
-      "/pɾʌɪd/",
-      "/ˈpɹɛɪd/"
-    ],
     "de:verfahren": [
       "[fɛɐ̯ˈfaːʁən]"
-    ],
-    "en:procedure": [
-      "/pɹəˈsiː.d͡ʒə/",
-      "/pɹəˈsi.d͡ʒɚ/",
-      "[pɹəˈsɪi.d͡ʒə]",
-      "[pɹəˈsɪ̈i.d͡ʒə]"
-    ],
-    "en:process": [
-      "/ˈpɹəʊ.sɛs/",
-      "/ˈpɹɑ.sɛs/",
-      "/-əs/",
-      "/ˈpɹoʊ.sɛs/",
-      "/pɹəˈsɛs/",
-      "/pɹəˈses/"
-    ],
-    "en:proceedings": [
-      "/pɹəˈsiːd.ɪŋz/",
-      "/ˈpɹəʊˌsiːd.ɪŋz/"
-    ],
-    "en:proceed": [
-      "/pɹəˈsiːd/",
-      "/pɹəˈsid/",
-      "/ˈpɹoʊsid/"
     ],
     "en:lose": [
       "/luːz/",
@@ -40885,11 +41365,6 @@
       "/loʊd/",
       "/ləʊd/"
     ],
-    "en:download": [
-      "/ˈdaʊnˌləʊd/",
-      "/ˈdaʊnˌloʊd/",
-      "/ˌdaʊnˈləʊd/"
-    ],
     "en:charge": [
       "/ˈt͡ʃɑːd͡ʒ/",
       "[ˈt͡ʃʰɑːd͡ʒ]",
@@ -40898,12 +41373,6 @@
     ],
     "en:summon": [
       "/ˈsʌmən/"
-    ],
-    "en:store": [
-      "/stɔː/",
-      "/stɔɹ/",
-      "/sto(ː)ɹ/",
-      "/stoə/"
     ],
     "de:lustig": [
       "/ˈlʊstɪç/",
@@ -40938,34 +41407,16 @@
     ],
     "de:mittel": [
       "/ˈmɪtəl/",
-      "[ˈmɪtl̩]",
-      "[ˈmɪtəl]"
+      "[ˈmɪtəl]",
+      "[ˈmɪtl̩]"
     ],
-    "en:agent": [
-      "/ˈeɪ̯d͡ʒənt/",
-      "[ˈeɪ̯d͡ʒənt] ~ [ˈeɪ̯d͡ʒn̩t]"
-    ],
-    "en:appliance": [
-      "/əˈplaɪ.əns/"
-    ],
-    "en:means": [
-      "/miːnz/",
-      "/minz/"
-    ],
-    "en:medicament": [
-      "/ˈmɛdɪkəmənt/",
-      "/məˈdɪkəmənt/"
-    ],
-    "en:remedy": [
-      "/ˈɹɛmədi/"
-    ],
-    "en:funds": [
-      "/fʌndz/",
-      "[fəndz]"
+    "en:average": [
+      "/ˈæv.(ə.)ɹɪd͡ʒ/",
+      "/ˈæv.ɚ.ɪd͡ʒ/",
+      "/ˈæv.ɹɪd͡ʒ/"
     ],
     "de:perfekt": [
-      "/pɛɐ̯ˈfɛkt/",
-      "/ˈpɛɐ̯.fɛkt/"
+      "/pɛɐ̯ˈfɛkt/"
     ],
     "de:Position": [
       "/poziˈt͡si̯oːn/",
@@ -41050,34 +41501,7 @@
     ],
     "de:wagen": [
       "/ˈvaːɡən/",
-      "[ˈvaːɡŋ̍]",
-      "[ˈʋaː-]"
-    ],
-    "en:automobile": [
-      "/ˈɔː.tə.məˌbiːl/",
-      "/ˈɔː.tə.məˌbil/",
-      "/ˌɔː.tə.məˈbil/",
-      "/ˌɔː.təˈmoʊ.bil/"
-    ],
-    "en:vehicle": [
-      "/ˈviː.ɪ.kəl/",
-      "/ˈvɪə̯.kəl/",
-      "/ˈvɪjɪk(ə)l/",
-      "/ˈvɪjək(ə)l/"
-    ],
-    "en:wagon": [
-      "/ˈwæɡən/",
-      "[ˈwæɡən] ~ [ˈwæɡn̩]",
-      "/ˈwaɡən/",
-      "[ˈwaɡən] ~ [ˈwaɡn̩]"
-    ],
-    "en:cart": [
-      "/kɑːt/",
-      "/kɑɹt/"
-    ],
-    "en:dare": [
-      "/dɛə/",
-      "/dɛ(ə)ɹ/"
+      "[ˈvaːɡŋ̩]"
     ],
     "de:Winter": [
       "/ˈvɪntɐ/"
@@ -41180,15 +41604,14 @@
     "de:leid": [
       "/laɪ̯t/"
     ],
-    "en:sorrow": [
-      "/ˈsɒɹəʊ/",
-      "/ˈsɑɹoʊ/",
-      "/ˈsɔɹoʊ/",
-      "/ˈsɔɾo/"
+    "en:distressing": [
+      "/dɪˈstɹɛsɪŋ/"
     ],
-    "en:woe": [
-      "/wəʊ/",
-      "/woʊ/"
+    "en:uncomfortable": [
+      "/ʌnˈkʌmf.tə.bl̩/",
+      "/ʌnˈkʌm.fə.tə.bl̩/",
+      "/ʌnˈkʌm.fɚ.tə.bl̩/",
+      "/ʌnˈkʌmf.tɚ.bl̩/"
     ],
     "de:London": [
       "/ˈlɔndɔn/",
@@ -41261,11 +41684,12 @@
       "[ˈtʰeɪb(ə)ɫ]",
       "[ˈtʰæɪbəɫ]"
     ],
-    "en:desk": [
-      "/dɛsk/"
-    ],
     "en:workbench": [
       "/ˈwɝk.bɛnt͡ʃ/"
+    ],
+    "en:meal": [
+      "/ˈmiːl/",
+      "[ˈmɪi̯l]"
     ],
     "de:Union": [
       "[ʔuˈn̪joːn̪]"
@@ -41341,6 +41765,13 @@
     "de:Auge": [
       "/ˈaʊ̯ɡə/"
     ],
+    "en:eye": [
+      "/ˈaɪ̯/",
+      "[ˈaɪ̯]",
+      "/ˈɑɪ̯/",
+      "[ˈɑ̟ɪ̯]",
+      "/ˈaɪ/"
+    ],
     "de:Betrieb": [
       "/bəˈtʁiːp/"
     ],
@@ -41363,6 +41794,10 @@
       "[dɪˈvʌɪs]",
       "/dəˈvaɪs/",
       "/dɪˈvɑɪs/"
+    ],
+    "en:unit": [
+      "/ˈjuː.nɪt/",
+      "/ˈ(j)ɪu̯.nɪt/"
     ],
     "en:entrepreneur": [
       "/ˌɒn.tɹə.pɹəˈnɜː/",
@@ -41516,8 +41951,7 @@
       "[slɪjp]"
     ],
     "de:tief": [
-      "/tiːf/",
-      "/ˈtiːf/"
+      "/tiːf/"
     ],
     "en:deep": [
       "/diːp/"
@@ -41699,10 +42133,6 @@
     "en:tuft": [
       "/tʌft/",
       "/tɐft/"
-    ],
-    "en:quiff": [
-      "/kwɪf/",
-      "[kʰw̥ɪf]"
     ],
     "de:Trainer": [
       "/ˈtʁɛːnɐ/",
@@ -41973,9 +42403,7 @@
       "/d͡ʒʌd͡ʒ/"
     ],
     "de:schaden": [
-      "/ˈʃaːdn̩/",
-      "/ˈʃaː.dən/",
-      "/ˈʃaː.dn̩/"
+      "/ˈʃaːdn̩/"
     ],
     "en:damage": [
       "/ˈdæmɪd͡ʒ/"
@@ -42035,6 +42463,12 @@
       "/akˈtsi̯oːn/",
       "[ʔakˈt͡sjoːn]"
     ],
+    "en:operation": [
+      "/ˌɒp.əˈɹeɪ.ʃən/",
+      "/ˌɑ.pəˈɹeɪ.ʃən/",
+      "/ˌɑ.pɚˈeɪ.ʃən/",
+      "/ˌɔp.əˈɹæɪ.ʃən/"
+    ],
     "en:measure": [
       "/ˈmɛʒ.ə/",
       "/ˈmɛʒ.ɚ/",
@@ -42043,6 +42477,12 @@
     ],
     "en:sales": [
       "/seɪlz/"
+    ],
+    "en:action": [
+      "/ˈækʃən̩/",
+      "[ˈækʃn̩]",
+      "/ˈakʃən̩/",
+      "[ˈakʃn̩]"
     ],
     "de:Anteil": [
       "/ˈʔantaɪ̯l/"
@@ -42140,8 +42580,7 @@
     ],
     "de:leisten": [
       "/ˈlaɪ̯stn̩/",
-      "[ˈlaɪ̯stən]",
-      "/ˈlaɪ̯stən/"
+      "[ˈlaɪ̯stən]"
     ],
     "en:achieve": [
       "/əˈt͡ʃiːv/",
@@ -42149,12 +42588,6 @@
     ],
     "en:provide": [
       "/pɹəˈvaɪd/"
-    ],
-    "en:afford": [
-      "/əˈfoɹd/",
-      "[əˈfo̞ɹd]",
-      "/əˈfɔːd/",
-      "/əˈfo(ː)ɹd/"
     ],
     "de:Minute": [
       "/miˈnuːtə/"
@@ -42167,9 +42600,8 @@
       "[mɐ̟ɪ̯ˈn(j)u̟(ː)t]"
     ],
     "de:rücken": [
-      "/ˈʁʏkn̩/",
-      "/ˈʁʏkŋ̩/",
-      "/ˈʁʏkən/"
+      "/ˈʁʏkən/",
+      "[ˈʁʏkŋ̍]"
     ],
     "en:push": [
       "/pʊʃ/",
@@ -42197,13 +42629,9 @@
       "/kənˈdɪʃ(ə)n/"
     ],
     "de:aussehen": [
-      "/ˈaʊ̯sˌzeːən/",
       "/ˈaʊ̯sˌzeː.ən/",
-      "[ˈʔaʊ̯sˌzeːən]"
-    ],
-    "en:appearance": [
-      "/əˈpɪə.ɹəns/",
-      "/əˈpiɹ.əns/"
+      "[ˈʔaʊ̯sˌzeːən]",
+      "[ˈʔaʊ̯sˌzeːn̩]"
     ],
     "en:seem": [
       "/ˈsiːm/",
@@ -42278,16 +42706,8 @@
     "en:lack": [
       "/læk/"
     ],
-    "en:absent": [
-      "/ˈæb.sn̩t/",
-      "/æbˈsɛnt/"
-    ],
-    "en:missed": [
-      "/mɪst/"
-    ],
     "de:fort": [
-      "[fɔɐ̯t]",
-      "[foːɐ̯]"
+      "[fɔɐ̯t]"
     ],
     "de:Franz": [
       "/fʁant͡s/"
@@ -42349,12 +42769,6 @@
       "/ˌmɪ.təˈnan.dɐ/",
       "/ˌmɪ.dəˈnan.dɐ/"
     ],
-    "en:cooperation": [
-      "/kəʊˌɒp.əˈɹeɪ.ʃən/",
-      "/kəˌwɔpəˈɹɛjʃ(ə)n/",
-      "/koʊˌɑ.pəˈɹeɪ.ʃən/",
-      "/koʊˌɑ.pɚˈeɪ.ʃən/"
-    ],
     "de:Organisation": [
       "[ʔɔɐ̯ɡanizaˈtsi̯oːn]",
       "[ʔɔʁɡanizaˈtsi̯oːn]"
@@ -42375,9 +42789,6 @@
     ],
     "en:race": [
       "/ɹeɪs/"
-    ],
-    "en:sprint": [
-      "/spɹɪnt/"
     ],
     "de:Sage": [
       "/ˈzaːɡə/",
@@ -42489,6 +42900,12 @@
       "/kəˌlæbəˈɹæɪʃən/",
       "[kʰəˌlæbəˈɹæɪ̯ʃən]"
     ],
+    "en:cooperation": [
+      "/kəʊˌɒp.əˈɹeɪ.ʃən/",
+      "/kəˌwɔpəˈɹɛjʃ(ə)n/",
+      "/koʊˌɑ.pəˈɹeɪ.ʃən/",
+      "/koʊˌɑ.pɚˈeɪ.ʃən/"
+    ],
     "de:Düsseldorf": [
       "/ˈdʏsəlˌdɔrf/",
       "[ˈdʏsəlˌdɔʁf]",
@@ -42540,6 +42957,12 @@
       "/ˌfɐn.dəˈmen.təl/",
       "[fɐn.dəˈmen.tɫ̩]"
     ],
+    "en:elementary": [
+      "/ˌɛlɪˈmɛntəɹi/",
+      "/ˌɛlɪˈmɛntɹi/",
+      "/ˌɛləˈmɛntəɹi/",
+      "/ˌɛləˈmɛntɹi/"
+    ],
     "en:generally": [
       "/ˈd͡ʒɛn.ɹə.li/",
       "/ˈd͡ʒɛn.ə.ɹə.li/",
@@ -42582,10 +43005,6 @@
       "/ˈɔɹdɪnɛɹi/",
       "/ˈɔɹdɪnɛ(ə)ɹi/"
     ],
-    "en:ordinarily": [
-      "/ɔːdɪˈnæɹɪli/",
-      "/ɔɹdɪˈnɛɹɪli/"
-    ],
     "de:Prozess": [
       "/pʁoˈt͡sɛs/"
     ],
@@ -42593,6 +43012,20 @@
       "/ˈlɔːˌs(j)uːt/",
       "/ˈlɔˌs(j)ut/",
       "/ˈlɑˌs(j)ut/"
+    ],
+    "en:process": [
+      "/ˈpɹəʊ.sɛs/",
+      "/ˈpɹɑ.sɛs/",
+      "/-əs/",
+      "/ˈpɹoʊ.sɛs/",
+      "/pɹəˈsɛs/",
+      "/pɹəˈses/"
+    ],
+    "en:procedure": [
+      "/pɹəˈsiː.d͡ʒə/",
+      "/pɹəˈsi.d͡ʒɚ/",
+      "[pɹəˈsɪi.d͡ʒə]",
+      "[pɹəˈsɪ̈i.d͡ʒə]"
     ],
     "de:Schwester": [
       "/ˈʃvɛstɐ/",
@@ -42732,6 +43165,10 @@
       "[ˈfaː(ə)]",
       "[ˈfɑː(ə)]"
     ],
+    "en:means": [
+      "/miːnz/",
+      "/minz/"
+    ],
     "en:lighter": [
       "/ˈlaɪtɚ/",
       "[ˈlaɪɾɚ]",
@@ -42857,15 +43294,6 @@
       "[ˈd͡ɹ̝ʷɪŋk] ~ [ˈd̠͡ɹ̠˔ʷɪŋk]",
       "/ˈdɹiŋk/",
       "[d͡ɹ̝ʷiŋk] ~ [ˈd̠͡ɹ̠˔ʷiŋk]"
-    ],
-    "en:imbibe": [
-      "/ɪmˈbaɪb/"
-    ],
-    "en:drinking": [
-      "/ˈdɹɪŋk.ɪŋ/",
-      "/ˈd͡ʒɹɪŋk.ɪŋ/",
-      "/ˈdɹɪnk.ɪnɡ/",
-      "[ˈdɹɪŋk.ɪŋɡ]"
     ],
     "de:unterstützen": [
       "/ʊntɐˈʃtʏt͡sən/"
@@ -42999,12 +43427,6 @@
       "/ɪksˈtɹimli/",
       "/ɪksˈtɹiːmli/"
     ],
-    "en:extremity": [
-      "/ɪkˈstɹɛmɪti/",
-      "/ɛk-/",
-      "/ɪkˈstɹɛməti/",
-      "/-ɾi/"
-    ],
     "de:Flughafen": [
       "/ˈfluːkˌhaːfɱ̩/",
       "/ˈfluːkˌhaːfən/"
@@ -43038,8 +43460,7 @@
       "/ˈhɑs.pɪ.ɾl̩/"
     ],
     "de:link": [
-      "/lɪŋk/",
-      "/ˈliŋk/"
+      "/lɪŋk/"
     ],
     "en:sly": [
       "/slaɪ/"
@@ -43061,10 +43482,13 @@
       "/ˈɔstən/",
       "/ˈɔstn̩/"
     ],
+    "en:east": [
+      "/iːst/",
+      "/ɪjst/"
+    ],
     "de:positiv": [
       "/ˈpoːziˌtiːf/",
-      "/ˈpɔzɪˌtiːf/",
-      "/ˈpoːzitiːf/"
+      "/ˈpɔzɪˌtiːf/"
     ],
     "en:positive": [
       "/ˈpɑzɪtɪv/",
@@ -43166,14 +43590,7 @@
       "/ɹeɪz/"
     ],
     "de:arm": [
-      "[aʁm]",
-      "/arm/",
-      "[ʔaʁm]"
-    ],
-    "en:arm": [
-      "/ɑːm/",
-      "/ɑɹm/",
-      "/ɐːm/"
+      "[aʁm]"
     ],
     "de:Armee": [
       "/arˈmeː/",
@@ -43307,13 +43724,6 @@
       "[ˈnɛː.ɐ]",
       "[ˈneː.ɐ]"
     ],
-    "en:precise": [
-      "/pɹɪˈsaɪs/"
-    ],
-    "en:detailed": [
-      "/dɪˈteɪld/",
-      "/ˈdiːteɪld/"
-    ],
     "de:plus": [
       "/plʊs/",
       "[plʊs]"
@@ -43370,21 +43780,7 @@
       "/ˈoʊ.vɚˌvjuː/"
     ],
     "de:spitze": [
-      "/ˈʃpɪt͡sə/",
       "/ˈʃpɪtsə/"
-    ],
-    "en:cusp": [
-      "/kʌsp/",
-      "/kʊsp/"
-    ],
-    "en:tip": [
-      "/tɪp/"
-    ],
-    "en:peak": [
-      "/piːk/"
-    ],
-    "en:spike": [
-      "/spaɪk/"
     ],
     "de:Star": [
       "/ʃtaːr/",
@@ -43613,6 +44009,10 @@
       "/məˈd͡ʒɑ.ɹɪti/",
       "/məˈd͡ʒɔɹ.ɪti/"
     ],
+    "en:bulk": [
+      "/bʌlk/",
+      "/bʊlk/"
+    ],
     "de:offensichtlich": [
       "/ˈʔɔfənzɪçtlɪç/",
       "/ʔɔfənˈzɪçtlɪç/"
@@ -43687,12 +44087,8 @@
       "/ˈvoːnən/"
     ],
     "de:befinden": [
-      "/bəˈfɪndən/",
-      "/bəˈfɪndn̩/"
-    ],
-    "en:health": [
-      "/ˈhɛlθ/",
-      "/ˈhelθ/"
+      "/bəˈfɪndn̩/",
+      "/bəˈfɪndən/"
     ],
     "en:situated": [
       "/ˈsɪt͡ʃueɪtɪd/"
@@ -43707,11 +44103,6 @@
       "[ˈɹɛf.ɹn̩s]",
       "/ˈɹɛf.ə.ɹɛns/",
       "/ˈɹef.(ə.)ɹəns/"
-    ],
-    "en:cushion": [
-      "/ˈkʊʃən/",
-      "/ˈkɵʃən/",
-      "/ˈkʉʃən/"
     ],
     "en:couch": [
       "/ˈkaʊ̯t͡ʃ/",
@@ -44120,6 +44511,10 @@
     "en:representative": [
       "/ˌɹɛpɹɪˈzɛnt(ət)ɪv/"
     ],
+    "en:agent": [
+      "/ˈeɪ̯d͡ʒənt/",
+      "[ˈeɪ̯d͡ʒənt] ~ [ˈeɪ̯d͡ʒn̩t]"
+    ],
     "de:Verwaltung": [
       "/fɛʁˈvaltʊŋ/",
       "[fɛɐ̯ˈvaltʰʊŋ]"
@@ -44453,6 +44848,10 @@
       "/ˌdɛk.ləˈɹeɪ.ʃən/",
       "/ˌdek.ləˈɹæɪ.ʃən/"
     ],
+    "en:statement": [
+      "/ˈsteɪtm(ə)nt/",
+      "/ˈsteɪtmənt/"
+    ],
     "de:Falle": [
       "/ˈfalə/"
     ],
@@ -44493,6 +44892,12 @@
       "/ɡəˈʃɛft/",
       "[ɡəˈʃɛːft]",
       "[ɡəˈʃeːft]"
+    ],
+    "en:store": [
+      "/stɔː/",
+      "/stɔɹ/",
+      "/sto(ː)ɹ/",
+      "/stoə/"
     ],
     "en:activity": [
       "/ækˈtɪv.ɪ.ti/",
@@ -44707,6 +45112,10 @@
       "[ɡəˈzʊnt.haɪ̯t]",
       "[ɡəˈzʊn.taɪ̯t]"
     ],
+    "en:health": [
+      "/ˈhɛlθ/",
+      "/ˈhelθ/"
+    ],
     "en:bless you": [
       "/ˈblɛs juː/",
       "/ˈblɛʃ(j)uː/"
@@ -44742,15 +45151,17 @@
       "/ˈlaɪ̯dən/",
       "[ˈlaɪ̯dn̩]"
     ],
-    "en:suffer": [
-      "/ˈsʌfə/",
-      "/ˈsʌfɚ/"
-    ],
     "en:pain": [
       "/ˈpeɪ̯n/",
       "[ˈpʰeɪ̯n]",
       "/ˈpæɪ̯n/",
       "[ˈpʰæ̝ɪ̯n]"
+    ],
+    "en:sorrow": [
+      "/ˈsɒɹəʊ/",
+      "/ˈsɑɹoʊ/",
+      "/ˈsɔɹoʊ/",
+      "/ˈsɔɾo/"
     ],
     "en:endure": [
       "/ɪnˈd͡ʒʊə(ɹ)/",
@@ -45773,6 +46184,10 @@
       "/staɪl/",
       "/staɪ.əl/"
     ],
+    "en:mood": [
+      "/muːd/",
+      "/mʉd/"
+    ],
     "en:atmosphere": [
       "/ˈætməsˌfɪə/",
       "/ˈatməsˌfɪː/",
@@ -46073,8 +46488,7 @@
       "/ˈn(j)ʊɹəmbɚɡ/"
     ],
     "de:original": [
-      "/oʁiɡiˈnaːl/",
-      "/ɔʁɡiˈnaːl/"
+      "/oʁiɡiˈnaːl/"
     ],
     "en:original": [
       "/əˈɹɪd͡ʒ.ɪ.nəl/",
@@ -46111,17 +46525,6 @@
     ],
     "en:verification": [
       "/ˌvɛ.ɹə.fɪˈkeɪ.ʃən/"
-    ],
-    "de:regen": [
-      "/ˈʁeːɡən/",
-      "[ˈʁeː.ɡŋ̍]",
-      "[-ɡən]"
-    ],
-    "en:rain": [
-      "/ɹeɪn/",
-      "/ɹæɪn/",
-      "/ɾen/",
-      "/ɾei̯n/"
     ],
     "de:Schwere": [
       "/ˈʃveːʁə/"
@@ -46315,6 +46718,11 @@
       "/pɹəˈpoʊzəl/",
       "/pɹəˈpəʊzəl/"
     ],
+    "en:marriage": [
+      "/ˈmæɹɪd͡ʒ/",
+      "/ˈmɛɹɪd͡ʒ/",
+      "/ˈmaɾɪd͡ʒ/"
+    ],
     "de:Anwendung": [
       "/ˈʔanvɛndʊŋ/"
     ],
@@ -46385,11 +46793,6 @@
     "de:Hessen": [
       "[ˈhɛsən]",
       "[ˈhɛsn̩]"
-    ],
-    "en:hesse": [
-      "/ˈhɛs/",
-      "/ˈhɛsə/",
-      "/ˈhɛsi/"
     ],
     "de:komisch": [
       "/ˈkoːmɪʃ/"
@@ -46511,10 +46914,6 @@
       "/twɜːlv/ [tʰw̥əːɫv]",
       "/twəlv/ [tʰw̥əɫv]"
     ],
-    "en:dozen": [
-      "/ˈdʌzən/",
-      "/ˈdɐzən/"
-    ],
     "de:Analyse": [
       "[ʔanaˈlyːzə]"
     ],
@@ -46546,6 +46945,10 @@
     ],
     "de:Auftritt": [
       "/ˈaʊftʁɪt/"
+    ],
+    "en:appearance": [
+      "/əˈpɪə.ɹəns/",
+      "/əˈpiɹ.əns/"
     ],
     "en:comportment": [
       "/kəmˈpɔɹt.mənt/"
@@ -46947,6 +47350,9 @@
       "/tʉːl/",
       "/tʉl/"
     ],
+    "en:appliance": [
+      "/əˈplaɪ.əns/"
+    ],
     "en:machine": [
       "/məˈʃiːn/",
       "/məˈʃin/"
@@ -47332,6 +47738,12 @@
     "de:morgens": [
       "/ˈmɔʁɡəns/"
     ],
+    "en:morning": [
+      "/ˈmɔːnɪŋ/",
+      "/ˈmoːnɪŋ/",
+      "/ˈmoɹnɪŋ/",
+      "/ˈmɔːnɪŋɡ/"
+    ],
     "de:nachts": [
       "[naχts]"
     ],
@@ -47373,13 +47785,7 @@
     ],
     "de:posten": [
       "/ˈpoːstn̩/",
-      "/ˈpoːstən/",
-      "/ˈpɔstn̩/"
-    ],
-    "en:station": [
-      "/ˈsteɪʃən/",
-      "/(ɪ)ʂʈeːʃən/",
-      "/(sə)ʈeːʃən/"
+      "/ˈpoːstən/"
     ],
     "de:Richard": [
       "/ˈʁɪçaɐ̯t/",
@@ -47660,6 +48066,12 @@
     "en:follower": [
       "/ˈfɒləʊə(ɹ)/"
     ],
+    "en:vehicle": [
+      "/ˈviː.ɪ.kəl/",
+      "/ˈvɪə̯.kəl/",
+      "/ˈvɪjɪk(ə)l/",
+      "/ˈvɪjək(ə)l/"
+    ],
     "en:trailer": [
       "/ˈtɹeɪlə(ɹ)/",
       "/ˈtɹeɪlɚ/"
@@ -47816,10 +48228,6 @@
       "/kəmˈpjʉːt/",
       "/kəmˈpjʉt/"
     ],
-    "en:count on": [
-      "/kaʊntʌn/",
-      "/kaʊnʌn/"
-    ],
     "de:schweren": [
       "/ˈʃveːrən/",
       "[ˈʃʋeː.ʁən]",
@@ -47872,22 +48280,8 @@
     "en:traced": [
       "/ˈtɹeɪst/"
     ],
-    "en:haunted": [
-      "/ˈhɔːntɪd/",
-      "/ˈhɑntɪd/"
-    ],
     "de:verlangen": [
-      "/fɛɐˈlaŋən/",
       "/fɛʁˈlaŋən/"
-    ],
-    "en:yearning": [
-      "/ˈjɝnɪŋ/",
-      "/ˈjɜːnɪŋ/"
-    ],
-    "en:longing": [
-      "/ˈlɒŋɪŋ/",
-      "/ˈlɔːŋɪŋ/",
-      "/lɑŋɪŋ/"
     ],
     "de:Vorschlag": [
       "[ˈfoːɐ̯ʃlaːk]",
@@ -48045,9 +48439,6 @@
     "de:Mission": [
       "/mɪˈsjoːn/"
     ],
-    "en:proselytism": [
-      "/ˈpɹɑsəlɪˌtɪzm/"
-    ],
     "de:Nachmittag": [
       "/ˈnaːx.mɪˌtaːk/",
       "/ˈna(x).mɪˌtax/"
@@ -48139,21 +48530,6 @@
     "de:anscheinend": [
       "/ˈanˌʃaɪnənt/"
     ],
-    "de:bar": [
-      "[baːɐ]"
-    ],
-    "en:bar": [
-      "/bɑː/",
-      "/bɑɹ/",
-      "[bɑɹ]",
-      "[bɑ˞]"
-    ],
-    "en:cash": [
-      "/ˈkæʃ/",
-      "[ˈkʰæʃ]",
-      "/ˈkaʃ/",
-      "/ˈkɛʃ/"
-    ],
     "de:Beweis": [
       "/bəˈvaɪ̯s/",
       "/beˈvaɛs/"
@@ -48218,6 +48594,10 @@
       "/ɛksˈt͡ʃeɪnd͡ʒ/",
       "[ɛkˈst͡ʃeɪnd͡ʒ]",
       "/ɪksˈt͡ʃeɪnd͡ʒ/"
+    ],
+    "en:sharing": [
+      "/ˈʃɛə.ɹɪŋ/",
+      "/ˈʃɛɚ.ɪŋ/"
     ],
     "en:christ": [
       "/kɹaɪst/"
@@ -48599,6 +48979,10 @@
       "/ˌmænɪfɛˈsteɪʃən/",
       "/ˌmænɪfəˈsteɪʃən/"
     ],
+    "en:manner": [
+      "/ˈmænə/",
+      "/ˈmænɚ/"
+    ],
     "en:printout": [
       "/ˈpɹɪntˌaʊt/"
     ],
@@ -48736,9 +49120,7 @@
       "/ˈhɝmən/"
     ],
     "de:hundert": [
-      "/ˈhʊndɐt/",
-      "/ˈhʊndərt/",
-      "[ˈhʊn.dɐt]"
+      "/ˈhʊndɐt/"
     ],
     "en:hundred": [
       "/ˈhʌn.dɹəd/",
@@ -48864,6 +49246,10 @@
       "/so(ː)ɹ/",
       "/soə/"
     ],
+    "en:woe": [
+      "/wəʊ/",
+      "/woʊ/"
+    ],
     "de:witzig": [
       "/ˈvɪtsɪç/",
       "/ˈvɪtsɪk/"
@@ -48956,9 +49342,7 @@
       "/ˈmaɪnd.fl̩/"
     ],
     "de:auftreten": [
-      "[ˈʔaʊ̯ftʁeːtn̩]",
-      "[ˈʔaʊ̯fˌtʁeːtn̩]",
-      "[ˈʔaʊ̯fˌtʁeːtən]"
+      "[ˈʔaʊ̯ftʁeːtn̩]"
     ],
     "de:bedeuten": [
       "/bəˈdɔɪ̯tn̩/",
@@ -49033,6 +49417,12 @@
       "[ˈfaːɐ̯tsɔʏ̯k]",
       "[ˈfaːtsɔʏ̯k]"
     ],
+    "en:automobile": [
+      "/ˈɔː.tə.məˌbiːl/",
+      "/ˈɔː.tə.məˌbil/",
+      "/ˌɔː.tə.məˈbil/",
+      "/ˌɔː.təˈmoʊ.bil/"
+    ],
     "de:Gemeinschaft": [
       "/ɡəˈmaɪ̯nʃaft/",
       "/ɡ̊eˈmaɪ̯nʃaft/",
@@ -49072,20 +49462,11 @@
       "/lʌnʃ/",
       "[lʌ̃nt͡ʃ]"
     ],
-    "en:boil": [
-      "/bɔɪ(ə)l/"
-    ],
     "en:anger": [
       "/ˈæŋɡə/",
       "[ˈæŋɡə] ~ [ˈaŋɡə]",
       "/ˈaŋɡə/",
       "[ˈaŋɡə]"
-    ],
-    "en:cooking": [
-      "/ˈkʊkɪŋ/",
-      "/ˈkɵkɪŋ/",
-      "/ˈkuːkɪŋ/",
-      "/ˈkʉkɪŋ/"
     ],
     "de:Marke": [
       "/ˈmaʁkə/"
@@ -49484,19 +49865,14 @@
       "/ˈpɛn.əl.ti/"
     ],
     "de:sturm": [
-      "/ʃtʊrm/",
-      "[ʃtʊʁm]",
-      "[ʃtʊɐ̯m]"
-    ],
-    "en:gale": [
-      "/ɡeɪl/"
-    ],
-    "en:tempest": [
-      "/ˈtɛm.pəst/"
+      "/ʃtʊʁm/"
     ],
     "de:Tipp": [
       "/tɪp/",
       "[tʰɪpʰ]"
+    ],
+    "en:tip": [
+      "/tɪp/"
     ],
     "de:Ukraine": [
       "[ˌukʁaˈʔiːnə]",
@@ -49626,6 +50002,12 @@
     "de:ausreichend": [
       "/ˈʔaʊ̯sˌʁaɪ̯çənt/",
       "[ˈʔaʊ̯sˌʁaɪ̯çn̩t]"
+    ],
+    "en:grade": [
+      "/ɡɹeɪd/",
+      "[ɡɹeɪd]",
+      "[ɡɹɛjd]",
+      "[ɡɹeːd]"
     ],
     "de:beobachten": [
       "/bəˈoːbaxtən/",
@@ -50120,7 +50502,7 @@
     ],
     "de:tausend": [
       "/ˈtaʊ̯zənt/",
-      "[ˈtaʊ̯.zn̩t]",
+      "[ˈtʰaʊ̯zn̩t]",
       "/ˈtaʊ̯sɛnt/"
     ],
     "en:thousand": [
@@ -50164,6 +50546,10 @@
       "/ˈɪntəlɛkt/",
       "/ˈɪntəˌlɛkt/",
       "/ˈɪntəlekt/"
+    ],
+    "en:accord": [
+      "/əˈkɔːd/",
+      "/əˈkɔɹd/"
     ],
     "de:Weltkrieg": [
       "/ˈvɛltˌkʁiːk/"
@@ -50602,22 +50988,12 @@
       "/ˈzaməln/",
       "/ˈsɑml̩n/"
     ],
-    "en:assemble": [
-      "/əˈsɛm.bəl/"
-    ],
     "en:collect": [
       "/kəˈlɛkt/",
       "/ˈkɑlɪkt/",
       "/ˈkɑlɛkt/",
       "/ˈkɒlɪkt/",
       "/ˈkɒlɛkt/"
-    ],
-    "en:congregate": [
-      "/ˈkɒŋɡɹəɡeɪt/",
-      "/ˈkɒŋɡɹəɡət/"
-    ],
-    "en:collecting": [
-      "/kəˈlɛktɪŋ/"
     ],
     "de:Server": [
       "[ˈsœːvə(r)]",
@@ -50635,6 +51011,11 @@
     ],
     "de:Station": [
       "/ʃtaˈt͡si̯oːn/"
+    ],
+    "en:station": [
+      "/ˈsteɪʃən/",
+      "/(ɪ)ʂʈeːʃən/",
+      "/(sə)ʈeːʃən/"
     ],
     "en:prohibition": [
       "/ˌpɹəʊ(h)ɪˈbɪʃən/",
@@ -50819,9 +51200,6 @@
     "de:ermöglichen": [
       "[ɛɐ̯ˈmøːklɪçn̩]"
     ],
-    "en:enablement": [
-      "/ɛnˈeɪ.bəl.mənt/"
-    ],
     "de:Flugzeug": [
       "/ˈfluːkt͡sɔʏ̯k/",
       "[ˈfluːxt͡sɔɪ̯ç]"
@@ -51004,6 +51382,9 @@
     "de:Verfassung": [
       "/fɛɐ̯ˈfasʊŋ/"
     ],
+    "en:writing": [
+      "/ˈɹaɪtɪŋ/"
+    ],
     "de:verschwinden": [
       "/fɛɐ̯ˈʃvɪndn̩/",
       "/fɛɐ̯ˈʃvɪndən/"
@@ -51013,13 +51394,16 @@
       "/dɪsəˈpɪɹ/",
       "/dɪsəˈpiːɹ/"
     ],
-    "en:vanish": [
-      "/ˈvænɪʃ/"
-    ],
     "de:viertel": [
       "/ˈfɪʁtəl/",
       "[ˈfɪʁtl̩]",
       "[ˈfɪɐ̯tl̩]"
+    ],
+    "en:quarter": [
+      "/ˈk(w)ɔːtə/",
+      "/ˈk(w)oːtə/",
+      "/ˈk(w)ɔɹ.tɚ/",
+      "[ˈk(w)ɔɹ.ɾɚ]"
     ],
     "en:fourth": [
       "/fɔːθ/",
@@ -51084,11 +51468,7 @@
     ],
     "de:bedenken": [
       "/bəˈdɛŋkŋ̍/",
-      "/bəˈdɛŋkən/",
-      "/bəˈdɛŋkn̩/"
-    ],
-    "en:bethink": [
-      "/bɪˈθɪŋk/"
+      "/bəˈdɛŋkən/"
     ],
     "en:treat": [
       "/tɹiːt/",
@@ -51157,6 +51537,16 @@
     ],
     "en:squeeze": [
       "/skwiːz/"
+    ],
+    "en:lower": [
+      "/ˈləʊ.ə/",
+      "/ˈloʊ.ɚ/",
+      "/ˈloʊ(ə)ɹ/",
+      "[ˈloː.(ə)ɹ]",
+      "/ˈlaʊə/",
+      "/ˈlaʊ.ə/",
+      "/ˈlaʊɚ/",
+      "/ˈlaʊ.ɚ/"
     ],
     "en:depress": [
       "/dɪˈpɹɛs/"
@@ -51253,6 +51643,9 @@
     ],
     "en:relaxed": [
       "/ɹɪˈlækst/"
+    ],
+    "en:loosely": [
+      "/ˈluːsli/"
     ],
     "en:casually": [
       "/ˈkæʒuəli/",
@@ -51454,6 +51847,11 @@
       "/ˈʔanbiːtn̩/",
       "/ˈʔanbiːtən/",
       "[ˈʔanbiːtn̩]"
+    ],
+    "en:lend": [
+      "/ˈlɛnd/",
+      "/ˈlɪ̟nd/",
+      "/ˈlend/ ~ /ˈlɛ̝nd/"
     ],
     "de:anschauen": [
       "/ˈʔanʃaʊ̯ən/"
@@ -51791,26 +52189,10 @@
     ],
     "de:vermögen": [
       "[fɛəˈmøːɡŋ̩]",
-      "[fɛɐ̯ˈmøːɡən]",
-      "/fɛʁˈmøːɡn̩/"
-    ],
-    "en:capacity": [
-      "/kəˈpæsɪti/",
-      "/kəˈpasɪtɪj/",
-      "/kəˈpasɪte/",
-      "/-tɪ/"
-    ],
-    "en:fortune": [
-      "/ˈfɔːtjuːn/",
-      "/-t͡ʃuːn/",
-      "/-tjən/",
-      "/-t͡ʃən/",
-      "/ˈfɔː.t͡ʃuːn/",
-      "/ˈfɔɹ.t͡ʃən/"
+      "[fɛɐ̯ˈmøːɡən]"
     ],
     "de:vorgehen": [
-      "[ˈfoːɐ̯ˌɡeː.ən]",
-      "/ˈfoːɐ̯ɡeːən/"
+      "[ˈfoːɐ̯ˌɡeː.ən]"
     ],
     "de:vorn": [
       "/fɔʁn/",
@@ -51946,11 +52328,6 @@
     "de:dicke": [
       "/ˈdɪkə/"
     ],
-    "en:fat": [
-      "/ˈfæt/",
-      "/ˈfɛt/",
-      "/fæt/"
-    ],
     "de:dunkel": [
       "/ˈdʊŋkəl/",
       "[ˈdʊŋkəl]",
@@ -51962,6 +52339,11 @@
     ],
     "de:fett": [
       "/fɛt/"
+    ],
+    "en:fat": [
+      "/ˈfæt/",
+      "/ˈfɛt/",
+      "/fæt/"
     ],
     "en:grease": [
       "/ɡɹis/",
@@ -52153,16 +52535,6 @@
       "[ˈʃʋaɪ̯ɡən]",
       "[ˈʃʋaɪ̯ɡŋ̍]"
     ],
-    "en:shut up": [
-      "/ʃʌt ʌp/",
-      "[ʃʌt ʌp]",
-      "[ʃʌt̚ ʌp]",
-      "[ʃʌɾʌp]"
-    ],
-    "en:silence": [
-      "/ˈsaɪlən(t)s/",
-      "[ˈsaɪ̯ləns] ~ [ˈsaɪ̯ln̩s]"
-    ],
     "de:spannend": [
       "/ˈʃpanənt/"
     ],
@@ -52315,15 +52687,7 @@
       "[ʔe-]"
     ],
     "de:ei": [
-      "/aɪ̯/",
-      "[ʔäɪ̯]",
-      "[ʔäe̠̯]"
-    ],
-    "en:egg": [
-      "/ɛɡ/",
-      "[ɛɡ]",
-      "/(j)ɛɡ/",
-      "/eɪ̯ɡ/"
+      "/aɪ̯/"
     ],
     "de:erledigt": [
       "[ɛɐ̯ˈleːdɪçt]",
@@ -52333,6 +52697,10 @@
       "/ˈfasn̩/",
       "/ˈfasən/",
       "[ˈfasn̩]"
+    ],
+    "en:gird": [
+      "/ɡɜːd/",
+      "/ɡɝd/"
     ],
     "en:surround": [
       "/səˈɹaʊnd/"
@@ -52526,18 +52894,7 @@
       "/ki/"
     ],
     "de:schulden": [
-      "/ˈʃʊldn̩/",
       "[ˈʃʊldn̩]"
-    ],
-    "en:faults": [
-      "/fɔːlts/",
-      "/fɒlts/",
-      "/fɔlts/",
-      "/fɑlts/"
-    ],
-    "en:owe": [
-      "/əʊ/",
-      "/oʊ/"
     ],
     "en:due": [
       "/djuː/",
@@ -52911,10 +53268,14 @@
       "/ˈwep.ən/",
       "/ˈwiːp.ən/"
     ],
+    "en:arm": [
+      "/ɑːm/",
+      "/ɑɹm/",
+      "/ɐːm/"
+    ],
     "de:übel": [
       "/ˈyːbəl/",
-      "[ˈʔyː.bl̩]",
-      "/ˈʔyːbl̩/"
+      "[ˈʔyː.bl̩]"
     ],
     "de:Absatz": [
       "/ˈapzat͡s/"
@@ -53146,16 +53507,6 @@
     "de:hammer": [
       "/ˈhamɐ/"
     ],
-    "en:hammer": [
-      "/ˈhæmə/",
-      "/ˈhamə/",
-      "/ˈhæmɚ/",
-      "/ˈhaməɾ/"
-    ],
-    "en:mallet": [
-      "/ˈmælɪt/",
-      "/ˈmæleɪ/"
-    ],
     "de:Indien": [
       "/ˈɪndi̯ən/"
     ],
@@ -53313,6 +53664,9 @@
       "/aŋˈɡeːla/",
       "/ˈaŋəla/"
     ],
+    "en:angela": [
+      "/ˈænd͡ʒələ/"
+    ],
     "de:annehmen": [
       "/ˈa(n)ˌneːmən/"
     ],
@@ -53333,6 +53687,11 @@
     ],
     "de:Datum": [
       "/ˈdaːtʊm/"
+    ],
+    "en:datum": [
+      "/ˈdeɪtəm/",
+      "/ˈdætəm/",
+      "/ˈdɑːtəm/"
     ],
     "de:Deal": [
       "/diːl/"
@@ -53681,9 +54040,12 @@
       "/ˈfɔː.tɹəs/",
       "/ˈfɔ(ː)ɹ.tɹəs/"
     ],
+    "en:fortified": [
+      "/ˈfɔɹtɪfaɪd/",
+      "/ˈfɔːtɪfaɪd/"
+    ],
     "de:französisch": [
-      "/fʁanˈt͡søːzɪʃ/",
-      "/fʁanˈtsøːzɪʃ/"
+      "/fʁanˈt͡søːzɪʃ/"
     ],
     "en:french": [
       "/fɹɛnt͡ʃ/",
@@ -53724,9 +54086,6 @@
     ],
     "en:disengaged": [
       "/dɪsɪnˈɡeɪdʒd/"
-    ],
-    "en:undone": [
-      "/ʌnˈdʌn/"
     ],
     "de:Innenstadt": [
       "/ˈɪnənˌʃtat/"
@@ -54068,8 +54427,7 @@
       "/ˈvjuː.pɔɪnt/"
     ],
     "de:hinweg": [
-      "/hɪnˈvɛk/",
-      "/ˈhɪnˌveːk/"
+      "/hɪnˈvɛk/"
     ],
     "en:across": [
       "/əˈkɹɒs/",
@@ -54342,9 +54700,6 @@
       "[ʔɛntˈfɛɐ̯nən]",
       "[-ˈfɛʁnən]"
     ],
-    "en:recede": [
-      "/ɹɪˈsiːd/"
-    ],
     "de:Existenz": [
       "/ɛksɪsˈtɛnt͡s/"
     ],
@@ -54559,6 +54914,10 @@
       "[ˈbaʁ.bɐ.ʁa]",
       "[ˈbaɐ̯-]"
     ],
+    "en:barbara": [
+      "/ˈbɑɹb(ə)ɹə/",
+      "/ˈbɑːb(ə)ɹə/"
+    ],
     "en:threatened": [
       "/ˈθɹɛt.n̩d/",
       "[ˈθɹɛʔ.n̩d]"
@@ -54581,9 +54940,6 @@
     ],
     "en:evaluation": [
       "/ɪˌvæljuˈeɪʃn̩/"
-    ],
-    "en:assessment": [
-      "/əˈsɛsmənt/"
     ],
     "en:judging": [
       "/ˈd͡ʒʌd͡ʒɪŋ/"
@@ -54647,13 +55003,6 @@
     ],
     "de:existieren": [
       "/ˌɛksɪsˈtiːʁən/"
-    ],
-    "de:feind": [
-      "/faɪ̯nt/"
-    ],
-    "en:foe": [
-      "/fəʊ/",
-      "/foʊ/"
     ],
     "de:Flügel": [
       "/ˈflyːɡəl/",
@@ -55120,6 +55469,11 @@
       "[ˈleːbənsˌmɪtəl]",
       "[ˈleːbn̩sˌmɪtl̩]"
     ],
+    "en:groceries": [
+      "/ˈɡɹəʊ.s(ə.)ɹiz/",
+      "/ˈɡɹəʊ.s(ə.)ɹɪz/",
+      "/ˈɡɹoʊ.s(ə.)ɹiz/"
+    ],
     "de:Level": [
       "/ˈlɛvl̩/"
     ],
@@ -55215,17 +55569,7 @@
       "/ˈtʁɛːnən/"
     ],
     "de:unrecht": [
-      "/ˈʊnʁɛçt/",
       "/ˈʔʊnʁɛçt/"
-    ],
-    "en:injustice": [
-      "/ɪnˈd͡ʒʌs.tɪs/"
-    ],
-    "en:wrongdoing": [
-      "/ˈɹɒŋˌduːɪŋ/"
-    ],
-    "en:unethical": [
-      "/ʌnˈɛθɪkəl/"
     ],
     "de:vierte": [
       "/ˈfiːɐ̯tə/",
@@ -55264,6 +55608,10 @@
     "de:Arbeitnehmer": [
       "/ˈaʁbaɪ̯tˌneːmɐ/",
       "/ˌaʁbaɪ̯tˈneːmɐ/"
+    ],
+    "en:worker": [
+      "/ˈwɜː.kə/",
+      "/ˈwɝ.kɚ/"
     ],
     "de:Architektur": [
       "/aʁçitɛkˈtuːɐ̯/"
@@ -55503,28 +55851,8 @@
       "/pʁofiˈtiːʁən/"
     ],
     "de:reifen": [
-      "/ˈraɪ̯fən/",
-      "[ˈʁaɪ̯fn̩]",
-      "[-fən]"
-    ],
-    "en:tyre": [
-      "/taɪə(ɹ)/",
-      "/ˈtaɪə(ɹ)/"
-    ],
-    "en:tire": [
-      "/ˈtaɪ̯ə(ɹ)/",
-      "/ˈtaɪ̯ɚ/",
-      "[ˈtʰaɪ̯ɚ]",
-      "/ˈtɑːɚ/"
-    ],
-    "en:ripen": [
-      "/ˈɹaɪpən/"
-    ],
-    "en:mature": [
-      "/məˈtjʊə/",
-      "/mət͡ʃoː/",
-      "/mət͡ʃɵː/",
-      "/məˈt͡ʃʊ(ə)ɹ/"
+      "/ˈʁaɪ̯fn̩/",
+      "/ˈʁaɪ̯fən/"
     ],
     "de:Rudolf": [
       "[ˈʁuːdɔlf]"
@@ -55589,6 +55917,9 @@
     ],
     "en:rigorous": [
       "/ˈɹɪɡəɹəs/"
+    ],
+    "en:strictly": [
+      "/ˈstɹɪktli/"
     ],
     "de:trennen": [
       "/ˈtʁɛnən/",
@@ -55739,11 +56070,6 @@
       "/ˈdʊɐ̯çʃnɪt/",
       "/ˈdʊɪ̯çʃnɪt/"
     ],
-    "en:average": [
-      "/ˈæv.(ə.)ɹɪd͡ʒ/",
-      "/ˈæv.ɚ.ɪd͡ʒ/",
-      "/ˈæv.ɹɪd͡ʒ/"
-    ],
     "de:Ehefrau": [
       "/ˈeːəˌfʁaʊ̯/"
     ],
@@ -55767,6 +56093,9 @@
     "de:Gipfel": [
       "/ˈɡɪp͡fl̩/"
     ],
+    "en:peak": [
+      "/piːk/"
+    ],
     "en:pinnacle": [
       "/ˈpɪnəkəl/"
     ],
@@ -55777,10 +56106,6 @@
     ],
     "de:intensiv": [
       "/ɪntɛnˈziːf/"
-    ],
-    "en:acute": [
-      "/əˈkjuːt/",
-      "/əˈkjut/"
     ],
     "en:intensive": [
       "/ɪnˈtɛnsɪv/"
@@ -55793,12 +56118,6 @@
     ],
     "de:lecker": [
       "/ˈlɛkɐ/"
-    ],
-    "en:yummy": [
-      "/ˈjʌm.i/"
-    ],
-    "en:tasty": [
-      "/ˈteɪsti/"
     ],
     "de:Löwen": [
       "/ˈløːvn/"
@@ -55984,6 +56303,12 @@
       "/ˈkwaɪn/",
       "/ˈkɒɪ̯n/"
     ],
+    "en:pair": [
+      "/pɛə/",
+      "/pɛɹ/",
+      "/peː/",
+      "/ˈpeə/"
+    ],
     "de:Afghanistan": [
       "/afˈɡaːnɪstaːn/"
     ],
@@ -56082,6 +56407,9 @@
     ],
     "en:greet": [
       "/ɡɹiːt/"
+    ],
+    "en:conceive": [
+      "/kənˈsiːv/"
     ],
     "de:Entstehung": [
       "[ʔɛntˈʃteːʊŋ]"
@@ -56233,9 +56561,6 @@
     ],
     "de:massiv": [
       "/maˈsiːf/"
-    ],
-    "en:massive": [
-      "/ˈmæs.ɪv/"
     ],
     "de:Mexiko": [
       "/ˈmɛksikoː/"
@@ -56467,16 +56792,7 @@
     ],
     "de:jenseits": [
       "/ˈjeːnzaɪ̯t͡s/",
-      "/ˈjɛnzaɪ̯t͡s/",
-      "/ˈjeːnzaɪ̯ts/"
-    ],
-    "en:hereafter": [
-      "/hɪɹˈæftɚ/",
-      "/hɪəˈɹɑːftə/"
-    ],
-    "en:afterlife": [
-      "/ˈɑːftəˌlaɪf/",
-      "/ˈæftɚˌlaɪf/"
+      "/ˈjɛnzaɪ̯t͡s/"
     ],
     "de:Kabel": [
       "/ˈkaːbəl/",
@@ -56808,6 +57124,9 @@
     ],
     "en:daybed": [
       "/ˈdeɪˌbɛd/"
+    ],
+    "en:chaise lounge": [
+      "/ˌʃeɪz ˈlaʊndʒ/"
     ],
     "de:Mittag": [
       "/ˈmɪtaːk/",
@@ -57290,8 +57609,9 @@
       "/zamt/",
       "/sɑmt/"
     ],
-    "en:velvet": [
-      "/ˈvɛlvɪt/"
+    "en:together with": [
+      "/tʊˈɡɛð.ə(ɹ)wɪð/",
+      "/tʊˈɡɛðɚ wɪθ/"
     ],
     "de:Sarah": [
       "[ˈzaːʁa]"
@@ -57313,20 +57633,14 @@
       "[ˈzɛndn̩]"
     ],
     "de:streifen": [
-      "/ˈʃtʁaɪ̯fn̩/",
       "/ˈʃtʁaɪ̯fən/",
       "[ˈʃtʁaɪ̯fn̩]"
     ],
-    "en:stripe": [
-      "/stɹaɪp/"
-    ],
-    "en:strip": [
-      "/ˈstɹɪp/",
-      "[ˈstɹ̝̊ʷɪp]",
-      "[ˈst̠ɹ̠̊˔ʷɪp]"
-    ],
-    "en:streak": [
-      "/stɹiːk/"
+    "en:stroke": [
+      "/stɹəʊk/",
+      "/stɹoʊk/",
+      "/stɹʌok/",
+      "/stɾʌok/"
     ],
     "de:Stuhl": [
       "/ʃtuːl/"
@@ -57543,19 +57857,6 @@
     "de:scheitern": [
       "/ˈʃaɪ̯tɐn/"
     ],
-    "en:fail": [
-      "/feɪl/"
-    ],
-    "en:flounder": [
-      "/ˈflaʊ̯ndəː/",
-      "/ˈflæʊ̯ndəː/",
-      "/ˈflaːndəː/",
-      "/ˈflaʊ̯ndɚ/"
-    ],
-    "en:failure": [
-      "/ˈfeɪ.ljə/",
-      "/ˈfeɪ.ljəɹ/"
-    ],
     "de:träumen": [
       "/ˈtʁɔɪ̯mən/"
     ],
@@ -57583,8 +57884,7 @@
       "/ˈɡɔɾd͡ʒəs/"
     ],
     "de:abkommen": [
-      "/ˈapˌkɔmən/",
-      "/ˈʔapˌkɔmən/"
+      "/ˈapˌkɔmən/"
     ],
     "de:Agentur": [
       "/aɡɛnˈtuːɐ̯/"
@@ -57623,6 +57923,10 @@
       "/ˈboʊ.nəs/",
       "/ˈbəʉ.nəs/",
       "/ˈbɐʉ.nəs/"
+    ],
+    "en:rebate": [
+      "/ˈɹiːbeɪt/",
+      "/ɹəˈbeɪt/"
     ],
     "de:Content": [
       "/ˈkɔntɛnt/"
@@ -57670,13 +57974,6 @@
       "/ˈaɪ̯nˌɡeːən/",
       "[ˈʔaɪ̯nˌɡeː.ən]",
       "[ˈʔaɪ̯ŋ-]"
-    ],
-    "en:shrivel": [
-      "/ˈʃɹɪvəl/"
-    ],
-    "en:shrink": [
-      "/ˈʃɹɪŋk/",
-      "[ˈʃʰɹʷɪŋk]"
     ],
     "de:Empfang": [
       "/ɛmˈpfaŋ/",
@@ -57811,6 +58108,9 @@
     ],
     "de:Leere": [
       "/ˈleːʁə/"
+    ],
+    "en:void": [
+      "/vɔɪd/"
     ],
     "de:Legende": [
       "/leˈɡɛndə/",
@@ -57967,11 +58267,21 @@
       "/d͡ʒʌmp/",
       "/d͡ʒʊmp/"
     ],
+    "en:vault": [
+      "/vɒlt/",
+      "/vɔːlt/",
+      "/vɑlt/",
+      "/vɔlt/"
+    ],
     "de:Stille": [
       "/ˈʃtɪlə/"
     ],
     "en:stillness": [
       "/ˈstɪlnəs/"
+    ],
+    "en:silence": [
+      "/ˈsaɪlən(t)s/",
+      "[ˈsaɪ̯ləns] ~ [ˈsaɪ̯ln̩s]"
     ],
     "de:Umsatz": [
       "[ˈʔʊmzats]"
@@ -58121,6 +58431,12 @@
       "/ɪnˈhɑːns.mənt/",
       "/ɪnˈhæns.mənt/",
       "/ɛnˈhæns.mənt/"
+    ],
+    "en:hill": [
+      "/hɪl/",
+      "[hɪɫ]",
+      "[hɪo̯]",
+      "[hɪʊ̯]"
     ],
     "de:Erkenntnis": [
       "/ɛɐ̯ˈkɛntnɪs/",
@@ -58485,6 +58801,12 @@
       "/ɪˈmæd͡ʒɪnɹi/",
       "/ɪˈmæd͡ʒɪˌn(ɛ)ɹi/"
     ],
+    "en:bogus": [
+      "/ˈbəʊ̯ɡəs/",
+      "[ˈbəʊ̯ɡəs]",
+      "/ˈbɵʊ̯ɡəs/",
+      "[ˈbɵʊ̯ɡəs]"
+    ],
     "en:murdered": [
       "/ˈmɝ.dɚd/",
       "/ˈmɜːdəd/"
@@ -58572,6 +58894,11 @@
     "de:Modus": [
       "/ˈmoːdʊs/",
       "/ˈmɔdʊs/"
+    ],
+    "en:mode": [
+      "/moʊd/",
+      "/məʊd/",
+      "/mod/"
     ],
     "de:Märchen": [
       "/ˈmɛːɐ̯çn̩/",
@@ -58886,6 +59213,12 @@
       "/ˈnɝɪʃmənt/",
       "/ˈnʊɹɪʃmənt/"
     ],
+    "en:food": [
+      "/fuːd/",
+      "[fuːd]",
+      "[fʊwd]",
+      "[fu̟(ː)d]"
+    ],
     "de:Nationalmannschaft": [
       "[nat͡si̯oˈnaːlˌmanʃaft]"
     ],
@@ -58912,18 +59245,11 @@
       "/pæk/",
       "[pʰæk]"
     ],
-    "en:packed": [
-      "/pækt/"
-    ],
     "en:manage": [
       "/ˈmæn.ɪd͡ʒ/",
       "/ˈmɛən.ɪd͡ʒ/",
       "/ˈmæn.əd͡ʒ/",
       "/ˈmɛən.əd͡ʒ/"
-    ],
-    "en:cope": [
-      "/ˈkəʊp/",
-      "/ˈkoʊp/"
     ],
     "de:Pech": [
       "/pɛç/"
@@ -59055,9 +59381,7 @@
       "/ˈoʊ.vɚˌtaɪm/"
     ],
     "de:verstecken": [
-      "/fɛɐ̯ˈʃtɛkən/",
-      "/fərˈʃtɛkən/",
-      "/fɛr-/"
+      "/fɛɐ̯ˈʃtɛkən/"
     ],
     "en:hide": [
       "/haɪd/",
@@ -59142,9 +59466,9 @@
       "/ˌel.ə.d͡ʒəˈbɪl.ə.ti/"
     ],
     "de:anliegen": [
-      "/ˈanˌliːɡn̩/",
       "/ˈanˌliːɡən/",
-      "[ˈʔanˌliː.ɡŋ̍]"
+      "[ˈʔanˌliː.ɡŋ̍]",
+      "[-ɡ(ə)n]"
     ],
     "en:listed": [
       "/ˈlɪst.ɪd/"
@@ -59363,13 +59687,6 @@
     "de:schick": [
       "/ʃɪk/"
     ],
-    "en:dressy": [
-      "/ˈdɹɛsi/"
-    ],
-    "en:chic": [
-      "/ʃiːk/",
-      "/ʃik/"
-    ],
     "de:schrecklich": [
       "/ˈʃʁɛklɪç/"
     ],
@@ -59396,6 +59713,877 @@
     ],
     "de:seither": [
       "/ˌzaɪ̯tˈheːɐ̯/"
+    ],
+    "de:Aber": [
+      "/ˈaːbɐ/"
+    ],
+    "en:failure": [
+      "/ˈfeɪ.ljə/",
+      "/ˈfeɪ.ljəɹ/"
+    ],
+    "de:Haben": [
+      "[ˈhaːbn̩]",
+      "/ˈhaːbən/",
+      "[ˈhaːbən]"
+    ],
+    "en:credit": [
+      "/ˈkɹɛdɪt/"
+    ],
+    "de:Einer": [
+      "/ˈaɪ̯nɐ/"
+    ],
+    "de:Sein": [
+      "/zaɪ̯n/",
+      "/saɪ̯n/",
+      "[saɛ̯n]"
+    ],
+    "de:Mal": [
+      "/maːl/"
+    ],
+    "de:Gut": [
+      "/ɡuːt/"
+    ],
+    "de:Zeit": [
+      "[t͡saɪ̯t]"
+    ],
+    "de:Etwas": [
+      "/ˈɛtvas/"
+    ],
+    "de:Leben": [
+      "/ˈleːbən/",
+      "[ˈleːbm̩]",
+      "[ˈleːb(ə)n]"
+    ],
+    "en:life": [
+      "/ˈlaɪ̯f/",
+      "[ˈlaɪ̯f]",
+      "/ˈlɐɪ̯f/",
+      "[ˈlɐɪ̯f]"
+    ],
+    "de:Gerade": [
+      "/ɡəˈʁaːdə/",
+      "/ˈɡʁaːdə/"
+    ],
+    "en:straightaway": [
+      "/ˈstɹeɪtəˌweɪ/",
+      "/ˌstɹeɪtəˈweɪ/"
+    ],
+    "en:welfare": [
+      "/ˈwɛlˌfɛə/",
+      "/ˈwɛlˌfɛɚ/"
+    ],
+    "de:Bitte": [
+      "/ˈbɪtə/"
+    ],
+    "en:plea": [
+      "/pliː/"
+    ],
+    "de:Weg": [
+      "[veːk]",
+      "[veːç]"
+    ],
+    "en:path": [
+      "/pɑːθ/",
+      "[pʰɑːθ]",
+      "[pʰäːθ]",
+      "[pʰɐːθ]"
+    ],
+    "de:Recht": [
+      "/ʁɛçt/"
+    ],
+    "en:privilege": [
+      "/ˈpɹɪv.(ɪ.)lɪd͡ʒ/",
+      "/ˈpɹɪv.ɪ.lɪd͡ʒ/",
+      "/ˈpɹɪv.ə.lɪd͡ʒ/",
+      "/ˈpɹɪv.lɪd͡ʒ/"
+    ],
+    "de:Zurück": [
+      "/t͡suˈʁʏk/"
+    ],
+    "de:Paar": [
+      "/paːr/",
+      "[pʰaː(ɐ̯)]",
+      "[pʰaːʁ]"
+    ],
+    "en:couple": [
+      "/ˈkʌp.əl/",
+      "[ˈkʌp.ɫ̩]",
+      "/ˈkə.pᵻl/",
+      "[kɐ.pɘl]"
+    ],
+    "de:Wissen": [
+      "/ˈvɪsən/"
+    ],
+    "de:Morgen": [
+      "/ˈmɔrɡən/",
+      "[ˈmɔʁ-]",
+      "[ˈmɔɐ̯-]"
+    ],
+    "de:Leider": [
+      "/ˈlaɪ̯dɐ/"
+    ],
+    "de:Unternehmen": [
+      "/ˌʊntɐˈneːmən/"
+    ],
+    "en:enterprise": [
+      "/ˈɛntəˌpɹaɪz/",
+      "/ˈɛntɚˌpɹaɪz/",
+      "/ˈen.təˌpɹɑez/",
+      "[ˈen.təˌpɹɑe̯z]"
+    ],
+    "en:undertaking": [
+      "/ˈʌndə(ɹ)ˌteɪkɪŋ/"
+    ],
+    "de:Halt": [
+      "/halt/"
+    ],
+    "de:Essen": [
+      "[ˈʔɛsn̩]",
+      "/ˈɛsən/"
+    ],
+    "de:Dank": [
+      "/daŋk/"
+    ],
+    "en:gratitude": [
+      "/ˈɡɹæ.tɪ.tjuːd/",
+      "/ˈɡɹa.tɪ.tʃʉwd/",
+      "/ˈɡɹæ.tɪ.tud/",
+      "[ˈɡɹʷæɾɪtʰud]"
+    ],
+    "de:Hoch": [
+      "[hoːx]"
+    ],
+    "de:Gegenüber": [
+      "/ɡeːɡn̩ˈʔyːbɐ/"
+    ],
+    "en:counterpart": [
+      "/ˈkaʊntəˌpɑːt/",
+      "/ˈkaʊntɚˌpɑɹt/"
+    ],
+    "de:Los": [
+      "/loːs/"
+    ],
+    "de:Schreiben": [
+      "/ˈʃʁaɪ̯bm̩/",
+      "/ˈʃʁaɪ̯bən/"
+    ],
+    "de:Treffen": [
+      "/ˈtʁɛfn̩/"
+    ],
+    "de:Laut": [
+      "/laʊ̯t/"
+    ],
+    "de:Ernst": [
+      "/ɛʁnst/"
+    ],
+    "en:earnestness": [
+      "/ˈɝnɪstnəs/",
+      "/ˈɜːnɪstnəs/"
+    ],
+    "en:seriousness": [
+      "/ˈsɪɹiəsnəs/",
+      "/ˈsɪəɹiəsnəs/"
+    ],
+    "de:Fest": [
+      "/fɛst/"
+    ],
+    "de:Super": [
+      "/ˈzuːpɐ/"
+    ],
+    "en:petrol": [
+      "/ˈpɛt.ɹəl/"
+    ],
+    "de:Wert": [
+      "/veːrt/",
+      "[veːɐ̯t]",
+      "[vɛɐ̯t]"
+    ],
+    "en:value": [
+      "/ˈvæl.juː/",
+      "/ˈval.jʉw/",
+      "/ˈvæl.ju/",
+      "/ˈvæl.jʉː/"
+    ],
+    "de:Kosten": [
+      "/ˈkɔstn̩/"
+    ],
+    "en:costs": [
+      "/ˈkɔsts/",
+      "/ˈkɒsts/",
+      "/ˈkɑsts/"
+    ],
+    "de:Klasse": [
+      "/ˈklasə/"
+    ],
+    "en:grouping": [
+      "/ˈɡɹuːpɪŋ/"
+    ],
+    "de:Trotz": [
+      "/tʁɔt͡s/"
+    ],
+    "en:defiance": [
+      "/dɪˈfaɪ(j)əns/"
+    ],
+    "de:Raum": [
+      "/ʁaʊ̯m/"
+    ],
+    "de:Hören": [
+      "/ˈhøːʁən/"
+    ],
+    "de:Rahmen": [
+      "/ˈʁaːmən/"
+    ],
+    "de:Weise": [
+      "/ˈvaɪ̯zə/",
+      "/ˈvaɛ̯.sɛ/"
+    ],
+    "de:Hallo": [
+      "/haˈloː/"
+    ],
+    "en:cheering": [
+      "/ˈt͡ʃɪɹɪŋ/",
+      "/ˈt͡ʃɪəɹɪŋ/"
+    ],
+    "en:somite": [
+      "/ˈsoʊmaɪt/"
+    ],
+    "de:Daten": [
+      "[ˈdaːtn̩]",
+      "/ˈdaːt(ə)n/"
+    ],
+    "en:data": [
+      "/ˈdɑːtə/",
+      "/ɖɑʈɑ/",
+      "[ˈdäːɾə]",
+      "/ˈdeɪtə/"
+    ],
+    "de:Schwarz": [
+      "/ʃvaʁt͡s/"
+    ],
+    "en:sable": [
+      "/ˈseɪbəl/",
+      "/ˈseɪbɫ/"
+    ],
+    "de:Warten": [
+      "/ˈvaʁtən/",
+      "[ˈvaʁtn̩]"
+    ],
+    "en:waiting": [
+      "/ˈweɪtɪŋ/",
+      "[ˈweɪ̯ɾɪŋ]"
+    ],
+    "de:Licht": [
+      "/lɪçt/"
+    ],
+    "de:Gefallen": [
+      "/ɡəˈfalən/"
+    ],
+    "en:favor": [
+      "/ˈfeɪ.və/",
+      "/ˈfeɪ.vɚ/"
+    ],
+    "de:Kraft": [
+      "/kʁaft/"
+    ],
+    "de:Reich": [
+      "/ʁaɪ̯ç/"
+    ],
+    "en:empire": [
+      "/ˈɛm.paɪ̯ə̯/",
+      "/ˈɛm.paɪ̯.ə/",
+      "/ˈɛmˌpaɪ̯ɹ/",
+      "/ˈɛmˌpaɪ̯ɚ/",
+      "/ˈɛmpaɪə/",
+      "/ˈɛmpaɪɚ/"
+    ],
+    "de:Ehe": [
+      "/ˈeːə/",
+      "[ˈʔeː.ə]"
+    ],
+    "de:Verhalten": [
+      "/fɛɐ̯ˈhaltn̩/",
+      "/fɛɐ̯ˈhaltən/"
+    ],
+    "de:Aktiv": [
+      "/ˈaktiːf/"
+    ],
+    "de:Stolz": [
+      "/ʃtɔlt͡s/"
+    ],
+    "en:pride": [
+      "/pɹaɪd/",
+      "[ˈpɹ̥ʷaɪ̯d]",
+      "/pɾʌɪd/",
+      "/ˈpɹɛɪd/"
+    ],
+    "de:Verfahren": [
+      "[fɛɐ̯ˈfaːʁən]"
+    ],
+    "en:proceedings": [
+      "/pɹəˈsiːd.ɪŋz/",
+      "/ˈpɹəʊˌsiːd.ɪŋz/"
+    ],
+    "de:Plan": [
+      "/plaːn/"
+    ],
+    "de:Laden": [
+      "/ˈlaːdən/",
+      "[ˈläːdən]",
+      "[ˈläːdn̩]"
+    ],
+    "en:bar": [
+      "/bɑː/",
+      "/bɑɹ/",
+      "[bɑɹ]",
+      "[bɑ˞]"
+    ],
+    "de:Mittel": [
+      "/ˈmɪtəl/",
+      "[ˈmɪtl̩]"
+    ],
+    "en:medicament": [
+      "/ˈmɛdɪkəmənt/",
+      "/məˈdɪkəmənt/"
+    ],
+    "en:remedy": [
+      "/ˈɹɛmədi/"
+    ],
+    "en:funds": [
+      "/fʌndz/",
+      "[fəndz]"
+    ],
+    "en:median": [
+      "/ˈmiː.di.ən/",
+      "/ˈmi.di.ən/",
+      "[ˈmɪi.di.ən]",
+      "/ˈmiːdɪən/"
+    ],
+    "de:Perfekt": [
+      "/ˈpɛɐ̯.fɛkt/"
+    ],
+    "de:Wagen": [
+      "/ˈvaːɡən/",
+      "[ˈvaːɡŋ̍]",
+      "[ˈʋaː-]"
+    ],
+    "en:wagon": [
+      "/ˈwæɡən/",
+      "[ˈwæɡən] ~ [ˈwæɡn̩]",
+      "/ˈwaɡən/",
+      "[ˈwaɡən] ~ [ˈwaɡn̩]"
+    ],
+    "en:cart": [
+      "/kɑːt/",
+      "/kɑɹt/"
+    ],
+    "de:Leid": [
+      "/laɪ̯t/"
+    ],
+    "de:Tief": [
+      "/ˈtiːf/"
+    ],
+    "en:depression": [
+      "/dɪˈpɹɛʃən/",
+      "[dɪˈpʰɹʷɛʃən] ~ [dɪˈpʰɹʷɛʃn̩]",
+      "/dəˈpɹɛʃən/",
+      "[dəˈpʰɹʷɛʃən] ~ [dəˈpʰɹʷɛʃn̩]"
+    ],
+    "de:Schaden": [
+      "/ˈʃaː.dən/",
+      "/ˈʃaː.dn̩/",
+      "/ˈʃaː.dɛn/"
+    ],
+    "de:Leisten": [
+      "/ˈlaɪ̯stən/",
+      "[ˈlaɪ̯s.tn̩]"
+    ],
+    "de:Rücken": [
+      "/ˈʁʏkn̩/",
+      "/ˈʁʏkŋ̩/"
+    ],
+    "de:Aussehen": [
+      "/ˈaʊ̯sˌzeːən/"
+    ],
+    "en:absence": [
+      "/ˈæb.s(ə)n̩s/",
+      "/ˈæb.s(ə)n̩ts/",
+      "/ˈæb.sn̩ts/",
+      "/ˈæbsɒns/"
+    ],
+    "en:dearth": [
+      "/dɜːθ/",
+      "/dɝθ/",
+      "/dɜːf/"
+    ],
+    "en:absenteeism": [
+      "/æb.sənˈtiːˌɪz.m̩/",
+      "/ˌæb.sənˈtiˌɪz.m̩/"
+    ],
+    "de:Fort": [
+      "[foːɐ̯]"
+    ],
+    "en:fort": [
+      "/fɔɹt/",
+      "/fɔːt/",
+      "/fo(ː)ɹt/",
+      "/foət/"
+    ],
+    "de:Rennen": [
+      "[ˈʁɛnən]"
+    ],
+    "de:Geschehen": [
+      "/ɡəˈʃeːən/"
+    ],
+    "en:happening": [
+      "/ˈhæpɪnɪŋ/",
+      "/ˈhæpənɪŋ/",
+      "[ˈhæpnɪŋ]",
+      "[ˈhæpnɪn]"
+    ],
+    "en:events": [
+      "/ɪˈvɛnts/",
+      "/i-/",
+      "/əˈvɛnts/",
+      "/əˈvents/"
+    ],
+    "de:Trinken": [
+      "/ˈtʁɪŋkən/"
+    ],
+    "en:drinking": [
+      "/ˈdɹɪŋk.ɪŋ/",
+      "/ˈd͡ʒɹɪŋk.ɪŋ/",
+      "/ˈdɹɪnk.ɪnɡ/",
+      "[ˈdɹɪŋk.ɪŋɡ]"
+    ],
+    "en:extremity": [
+      "/ɪkˈstɹɛmɪti/",
+      "/ɛk-/",
+      "/ɪkˈstɹɛməti/",
+      "/-ɾi/"
+    ],
+    "de:Link": [
+      "/ˈliŋk/"
+    ],
+    "en:hyperlink": [
+      "/ˈhaɪpə(ɹ)ˌlɪŋk/"
+    ],
+    "en:link": [
+      "/ˈlɪŋk/",
+      "[ˈlɪŋk]",
+      "/ˈliŋk/",
+      "[ˈliŋk] ~ [ˈlɪ̝ŋk]",
+      "/lɪŋk/"
+    ],
+    "de:Positiv": [
+      "/ˈpoːzitiːf/"
+    ],
+    "de:Arm": [
+      "/arm/",
+      "[ʔaʁm]",
+      "[ʔaɐ̯m]"
+    ],
+    "de:Näher": [
+      "/ˈnɛːər/",
+      "[ˈnɛː.ɐ]",
+      "[ˈneː.ɐ]"
+    ],
+    "en:seamster": [
+      "/ˈsiːm.stə(ɹ)/"
+    ],
+    "de:Spitze": [
+      "/ˈʃpɪt͡sə/"
+    ],
+    "en:cusp": [
+      "/kʌsp/",
+      "/kʊsp/"
+    ],
+    "en:spike": [
+      "/spaɪk/"
+    ],
+    "de:Befinden": [
+      "/bəˈfɪndən/"
+    ],
+    "de:Ansehen": [
+      "/ˈanˌzeːən/",
+      "[ˈanˌzeːn]",
+      "/ˈanˌseːɛn/"
+    ],
+    "en:prestige": [
+      "/pɹɛsˈtiːd͡ʒ/",
+      "/pɹɛsˈtiːʒ/",
+      "/pɹəsˈtiːd͡ʒ/",
+      "/pɹəsˈtiːʒ/"
+    ],
+    "en:renown": [
+      "/ɹɪˈnaʊn/"
+    ],
+    "de:Leiden": [
+      "/ˈlaɪ̯dən/",
+      "[ˈlaɪ̯dn̩]"
+    ],
+    "en:suffering": [
+      "/ˈsʌfəɹɪŋ/",
+      "/ˈsʌfɹɪŋ/"
+    ],
+    "en:grief": [
+      "/ɡɹiːf/"
+    ],
+    "de:Original": [
+      "/oʁiɡiˈnaːl/",
+      "/ɔʁɡiˈnaːl/"
+    ],
+    "de:Regen": [
+      "/ˈʁeːɡən/",
+      "[ˈʁeː.ɡŋ̍]",
+      "[-ɡən]"
+    ],
+    "en:rain": [
+      "/ɹeɪn/",
+      "/ɹæɪn/",
+      "/ɾen/",
+      "/ɾei̯n/"
+    ],
+    "en:dozen": [
+      "/ˈdʌzən/",
+      "/ˈdɐzən/"
+    ],
+    "de:Posten": [
+      "/ˈpɔstn̩/"
+    ],
+    "de:Verlangen": [
+      "/fɛɐˈlaŋən/"
+    ],
+    "en:yearning": [
+      "/ˈjɝnɪŋ/",
+      "/ˈjɜːnɪŋ/"
+    ],
+    "en:longing": [
+      "/ˈlɒŋɪŋ/",
+      "/ˈlɔːŋɪŋ/",
+      "/lɑŋɪŋ/"
+    ],
+    "de:Bar": [
+      "[baːɐ]"
+    ],
+    "en:cash": [
+      "/ˈkæʃ/",
+      "[ˈkʰæʃ]",
+      "/ˈkaʃ/",
+      "/ˈkɛʃ/"
+    ],
+    "de:Uni": [
+      "/ˈʊni/"
+    ],
+    "en:uni": [
+      "/ˈjuː.ni/",
+      "/ˈuː.niː/",
+      "/ˈjuːnaɪ/"
+    ],
+    "en:legacy": [
+      "/ˈlɛɡəsi/",
+      "/ˈleɪɡəsi/",
+      "/ˈleɡəsi/"
+    ],
+    "de:Hundert": [
+      "/ˈhʊndərt/",
+      "[ˈhʊn.dɐt]"
+    ],
+    "en:personnel": [
+      "/pɝ.səˈnɛl/",
+      "/pɝsˈnɛl/",
+      "/pɜː.səˈnɛl/",
+      "/pɜːsˈnɛl/"
+    ],
+    "en:employees": [
+      "/ˌɛmplɔɪˈiːz/",
+      "/ˌɛmˈplɔɪiːz/",
+      "/ɪm-/"
+    ],
+    "de:Auftreten": [
+      "[ˈʔaʊ̯fˌtʁeːtn̩]",
+      "[ˈʔaʊ̯fˌtʁeːtən]"
+    ],
+    "en:demeanor": [
+      "/dɪˈmiːnə(ɹ)/",
+      "/dɪˈminɚ/"
+    ],
+    "en:incidence": [
+      "/ˈɪn.sɪ.dəns/"
+    ],
+    "en:outbreak": [
+      "/ˈaʊtbɹeɪk/"
+    ],
+    "en:cooking": [
+      "/ˈkʊkɪŋ/",
+      "/ˈkɵkɪŋ/",
+      "/ˈkuːkɪŋ/",
+      "/ˈkʉkɪŋ/"
+    ],
+    "en:cookery": [
+      "/ˈkʊk(ə)ɹi/"
+    ],
+    "de:Sturm": [
+      "/ʃtʊrm/",
+      "[ʃtʊʁm]",
+      "[ʃtʊɐ̯m]"
+    ],
+    "en:gale": [
+      "/ɡeɪl/"
+    ],
+    "en:tempest": [
+      "/ˈtɛm.pəst/"
+    ],
+    "en:oversight": [
+      "/ˈəʊvəˌsaɪt/",
+      "/ˈoʊvɚˌsaɪt/",
+      "[ˈoʊvɚˌsʌɪt]",
+      "/ˈəʉvəˌsɑet/"
+    ],
+    "de:Rollen": [
+      "/ˈʁɔlən/"
+    ],
+    "de:Wild": [
+      "/vɪlt/"
+    ],
+    "de:Tausend": [
+      "/ˈtaʊ̯zənt/",
+      "[ˈtaʊ̯.zn̩t]",
+      "/ˈtaʊ̯sɛnt/"
+    ],
+    "de:Sammeln": [
+      "/ˈzaml̩n/"
+    ],
+    "en:collecting": [
+      "/kəˈlɛktɪŋ/"
+    ],
+    "de:Ermöglichen": [
+      "[ɛɐ̯ˈmøːklɪçn̩]"
+    ],
+    "en:enablement": [
+      "/ɛnˈeɪ.bəl.mənt/"
+    ],
+    "en:disappearance": [
+      "/dɪsəˈpɪəɹəns/"
+    ],
+    "de:Bedenken": [
+      "/bəˈdɛŋkn̩/"
+    ],
+    "de:Lügen": [
+      "/ˈlyːɡən/",
+      "[ˈlyːɡŋ̍]"
+    ],
+    "de:Vermögen": [
+      "/fɛʁˈmøːɡn̩/",
+      "/fɛɐ̯ˈmøːɡŋ̩/"
+    ],
+    "en:capacity": [
+      "/kəˈpæsɪti/",
+      "/kəˈpasɪtɪj/",
+      "/kəˈpasɪte/",
+      "/-tɪ/"
+    ],
+    "en:fortune": [
+      "/ˈfɔːtjuːn/",
+      "/-t͡ʃuːn/",
+      "/-tjən/",
+      "/-t͡ʃən/",
+      "/ˈfɔː.t͡ʃuːn/",
+      "/ˈfɔɹ.t͡ʃən/"
+    ],
+    "en:wealth": [
+      "/wɛlθ/",
+      "[wɛl̪θ]"
+    ],
+    "de:Vorgehen": [
+      "/ˈfoːɐ̯ɡeːən/"
+    ],
+    "en:proceeding": [
+      "/pɹəˈsiːdɪŋ/"
+    ],
+    "de:Dicke": [
+      "/ˈdɪkə/"
+    ],
+    "de:Dunkel": [
+      "/ˈdʊŋkl̩/"
+    ],
+    "de:Fett": [
+      "/fɛt/"
+    ],
+    "de:Schweigen": [
+      "/ˈʃvaɪɡən/"
+    ],
+    "de:Ei": [
+      "/aɪ̯/",
+      "[ʔäɪ̯]",
+      "[ʔäe̠̯]"
+    ],
+    "en:egg": [
+      "/ɛɡ/",
+      "[ɛɡ]",
+      "/(j)ɛɡ/",
+      "/eɪ̯ɡ/"
+    ],
+    "de:Schulden": [
+      "/ˈʃʊldn̩/"
+    ],
+    "en:glacier": [
+      "/ˈɡlæs.jə/",
+      "/ˈɡleɪs.jə/",
+      "/ˈɡleɪ.ʃɚ/",
+      "/ˈɡleɪs.jɚ/"
+    ],
+    "de:Übel": [
+      "/ˈʔyːbl̩/",
+      "/ˈʔyːbəl/"
+    ],
+    "de:Hammer": [
+      "/ˈhamɐ/"
+    ],
+    "en:hammer": [
+      "/ˈhæmə/",
+      "/ˈhamə/",
+      "/ˈhæmɚ/",
+      "/ˈhaməɾ/"
+    ],
+    "en:mallet": [
+      "/ˈmælɪt/",
+      "/ˈmæleɪ/"
+    ],
+    "de:Französisch": [
+      "/fʁanˈtsøːzɪʃ/"
+    ],
+    "de:Hinweg": [
+      "/ˈhɪnˌveːk/"
+    ],
+    "de:Entfernen": [
+      "/ɛntˈfɛrnən/",
+      "[ɛntˈfɛɐ̯nən]",
+      "[-ˈfɛʁnən]"
+    ],
+    "de:Feind": [
+      "/faɪ̯nt/"
+    ],
+    "en:foe": [
+      "/fəʊ/",
+      "/foʊ/"
+    ],
+    "de:Vorkommen": [
+      "[ˈfoːɐ̯ˌkɔmən]"
+    ],
+    "de:Unrecht": [
+      "/ˈʊnʁɛçt/"
+    ],
+    "en:injustice": [
+      "/ɪnˈd͡ʒʌs.tɪs/"
+    ],
+    "en:wrongdoing": [
+      "/ˈɹɒŋˌduːɪŋ/"
+    ],
+    "de:Reifen": [
+      "/ˈraɪ̯fən/",
+      "[ˈʁaɪ̯fn̩]",
+      "[-fən]"
+    ],
+    "en:tyre": [
+      "/taɪə(ɹ)/",
+      "/ˈtaɪə(ɹ)/"
+    ],
+    "en:tire": [
+      "/ˈtaɪ̯ə(ɹ)/",
+      "/ˈtaɪ̯ɚ/",
+      "[ˈtʰaɪ̯ɚ]",
+      "/ˈtɑːɚ/"
+    ],
+    "en:licker": [
+      "/ˈlɪkɚ/"
+    ],
+    "en:massif": [
+      "/mæˈsiːf/",
+      "/ˈmæsɪf/"
+    ],
+    "de:Jenseits": [
+      "/ˈjeːnzaɪ̯ts/",
+      "/ˈjɛnzaɪ̯ts/"
+    ],
+    "en:hereafter": [
+      "/hɪɹˈæftɚ/",
+      "/hɪəˈɹɑːftə/"
+    ],
+    "en:afterlife": [
+      "/ˈɑːftəˌlaɪf/",
+      "/ˈæftɚˌlaɪf/"
+    ],
+    "de:Samt": [
+      "/zamt/",
+      "/sɑmt/"
+    ],
+    "en:velvet": [
+      "/ˈvɛlvɪt/"
+    ],
+    "de:Streifen": [
+      "/ˈʃtʁaɪ̯fn̩/"
+    ],
+    "en:stripe": [
+      "/stɹaɪp/"
+    ],
+    "en:strip": [
+      "/ˈstɹɪp/",
+      "[ˈstɹ̝̊ʷɪp]",
+      "[ˈst̠ɹ̠̊˔ʷɪp]"
+    ],
+    "en:streak": [
+      "/stɹiːk/"
+    ],
+    "de:Heil": [
+      "/haɪ̯l/"
+    ],
+    "en:salvation": [
+      "/sælˈveɪ.ʃn̩/"
+    ],
+    "de:Power": [
+      "/ˈpaʊ̯ər/",
+      "[ˈpaʊ̯ɐ]"
+    ],
+    "de:Scheitern": [
+      "/ˈʃaɪ̯tɐn/"
+    ],
+    "de:Abkommen": [
+      "/ˈʔapˌkɔmən/"
+    ],
+    "de:Fangen": [
+      "/ˈfaŋən/",
+      "[ˈfa.ŋən]",
+      "[ˈfa.ŋŋ̍]"
+    ],
+    "de:Kapital": [
+      "/kapiˈtaːl/"
+    ],
+    "de:Packen": [
+      "/ˈpakən/",
+      "[ˈpʰakən]",
+      "[ˈpʰakŋ̩]"
+    ],
+    "de:Verstecken": [
+      "/fərˈʃtɛkən/",
+      "/fɛr-/",
+      "[fɐˈʃtɛ.kŋ̍]"
+    ],
+    "en:hide and seek": [
+      "/ˌhaɪd ən ˈsik/"
+    ],
+    "de:Vorhaben": [
+      "/ˈfoːʁˌhaːbən/",
+      "[ˈfoːɐ̯ˌhaːbm̩]"
+    ],
+    "de:Anliegen": [
+      "/ˈanˌliːɡn̩/"
+    ],
+    "de:Schick": [
+      "/ʃɪk/"
+    ],
+    "en:chic": [
+      "/ʃiːk/",
+      "/ʃik/"
     ]
   }
 }

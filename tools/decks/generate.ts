@@ -21,7 +21,7 @@ import { pipeline } from 'node:stream/promises';
 import { Readable } from 'node:stream';
 import type { DeckData } from '../../src/types.ts';
 import type { KaikkiEntry, KellyFile } from './kaikki.ts';
-import { ipaFromSounds, isInflectionSense, isRedirectSense, hasCompetingWordSense } from './kaikki.ts';
+import { ipaFromSounds, isInflectionSense, isRedirectSense, hasCompetingWordSense, hasRealNounSense } from './kaikki.ts';
 import { forEachJsonLine } from './jsonl.ts';
 import { countDuplicateRows, selectCandidateLemmas } from './frequency.ts';
 import { shouldRejectTranslation, translationsForEntry, translationsForSense } from './translationQuality.ts';
@@ -82,6 +82,19 @@ export interface DeckGenerationOptions {
    *  "poor" vs `Arm` "arm"). Inflected-only lowercase entries (imperatives,
    *  preterites) and obsolete/rare variants do not block capitalization. */
   capitalizeFrontLemmas?: boolean;
+  /** Give a case-homograph its own capitalized card instead of folding both
+   *  words onto one lowercase card. German nouns are capitalized, so a lowercase
+   *  lemma and its capitalized spelling can be two different words: the adjective
+   *  `arm` "poor" versus the noun `Arm` "arm", the adverb `morgen` "tomorrow"
+   *  versus the noun `Morgen` "morning". Without this the pipeline keys both
+   *  spellings by the lowercase form and merges their glosses onto one card,
+   *  hiding the contrast the learner needs. Only applies with
+   *  `capitalizeFrontLemmas`. A partner is emitted only when the lowercase
+   *  spelling is a current non-noun word and the capitalized spelling is a real
+   *  noun of its own (`hasRealNounSense`), so nominalized infinitives (`essen` ->
+   *  `Essen` "eating"), capitalized abbreviations (`AM`) and capitalization
+   *  redirects (`Du` "letter-case form of du") stay merged. */
+  splitCapitalizedHomographs?: boolean;
   /** A language-to-`languageBack` deck whose cards are inverted to widen the
    *  back-word set. The English Wiktionary records few translations for a given
    *  language, so an English-front deck also reads the reverse of the forward
@@ -135,6 +148,15 @@ function hasUsableCard(lemma: string, data: LemmaData | undefined, options: Deck
   return data.translations.some(english => !shouldRejectTranslation(lemma, english));
 }
 
+/** True when two gloss lists name at least one different thing, so the
+ *  capitalized noun is a distinct word rather than a nominalized repeat of the
+ *  lowercase one (`Ja` "a yes" repeats `ja` "yes"; `Gut` "estate, property"
+ *  does not repeat `gut` "good"). */
+function hasDistinctGloss(lowerGlosses: readonly string[], upperGlosses: readonly string[]): boolean {
+  const lower = new Set(lowerGlosses.map(gloss => gloss.toLowerCase()));
+  return upperGlosses.some(gloss => !lower.has(gloss.toLowerCase()));
+}
+
 export async function generateDeck(options: DeckGenerationOptions): Promise<GenerationResult> {
   const { languageFront, languageBack } = options;
   const translationsFromFrontSenses = options.translationsFromFrontSenses ?? languageBack === 'en';
@@ -181,6 +203,16 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
   // `Bayern` of `Bayer`) still falls back to the name, so real toponyms survive.
   const properNounByWord = new Map<string, LemmaData>();
   const nonNounWordByWord = new Set<string>();
+  // A capitalized spelling that is a real noun of its own (`Morgen` "morning")
+  // and the lowercase spelling it shares its form with, which is a current
+  // non-noun word (`morgen` "tomorrow"). The pair is emitted as a separate
+  // capitalized card; see `splitCapitalizedHomographs`.
+  const capitalizedNounWords = new Map<string, LemmaData>();
+  const lowercaseNonNounLemmas = new Set<string>();
+  // The lowercase-only data for a lemma, used for the lowercase card of a split
+  // case-homograph so it does not inherit the capitalized noun's glosses. For
+  // every other lemma `wiktionaryByWord` (which merges both spellings) is used.
+  const lowercaseOnlyByWord = new Map<string, LemmaData>();
   const collectTranslations = (entry: KaikkiEntry, current: LemmaData, key: string): void => {
     for (const ipa of ipaFromSounds(entry)) {
       if (!current.ipa.includes(ipa)) current.ipa.push(ipa);
@@ -227,6 +259,35 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     if (!isProperNoun && options.foldFrontEszett && !entry.word.includes('ß') && hasCompetingWordSense(entry)) {
       ssRealSense.add(key);
     }
+    if (
+      !isProperNoun
+      && options.capitalizeFrontLemmas
+      && options.splitCapitalizedHomographs
+      && entry.word === key
+      && entry.pos !== 'noun'
+      && hasCompetingWordSense(entry)
+    ) {
+      // The lowercase spelling is a current word that is not a noun, so a
+      // capitalized noun of the same spelling is a distinct word rather than its
+      // capitalized form (`morgen` "tomorrow" vs `Morgen` "morning").
+      lowercaseNonNounLemmas.add(key);
+    }
+    if (
+      !isProperNoun
+      && options.capitalizeFrontLemmas
+      && options.splitCapitalizedHomographs
+      && entry.word !== key
+      && entry.pos === 'noun'
+      && hasCompetingWordSense(entry)
+      && hasRealNounSense(entry)
+    ) {
+      // Collect the capitalized noun's own glosses and IPA separately: the
+      // lowercase card must not inherit them, and this map is only merged into
+      // the card list for a lemma whose lowercase spelling is a real non-noun.
+      const current = capitalizedNounWords.get(key) ?? { ipa: [], translations: [] };
+      collectTranslations(entry, current, key);
+      capitalizedNounWords.set(key, current);
+    }
     if (isProperNoun) {
       const current = properNounByWord.get(key) ?? { ipa: [], translations: [] };
       collectTranslations(entry, current, key);
@@ -236,8 +297,44 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
       const current = wiktionaryByWord.get(key) ?? { ipa: [], translations: [] };
       collectTranslations(entry, current, key);
       wiktionaryByWord.set(key, current);
+      if (entry.word === key) {
+        const lower = lowercaseOnlyByWord.get(key) ?? { ipa: [], translations: [] };
+        collectTranslations(entry, lower, key);
+        lowercaseOnlyByWord.set(key, lower);
+      }
     }
   }, () => malformedEntries++);
+
+  // A lemma whose lowercase spelling is a current non-noun word and whose
+  // capitalized spelling is a real noun is two words, not one. Its lowercase
+  // card uses the lowercase-only data, and the capitalized noun is emitted as a
+  // separate card, so neither card carries the other's glosses. `wiktionaryByWord`
+  // keeps both spellings merged for lemma selection, so the split does not move
+  // the 3,000-lemma boundary. A single letter is excluded: `A` is the letter's
+  // own name, not a distinct word from the interjection `a`. A short lemma (one
+  // the short-word curation covers) splits only when its capitalized partner has
+  // its own curated entry, because the raw noun links there are mostly rare or
+  // figurative senses a beginner should not meet (`All` "cosmos", `Wohl`
+  // "wealthy"); the curation is what makes the extra card worth showing.
+  const splitLemmas = new Set<string>();
+  if (options.capitalizeFrontLemmas && options.splitCapitalizedHomographs) {
+    const { shortWordGlosses, shortWordMaxLength } = options;
+    for (const key of lowercaseNonNounLemmas) {
+      if ([...key].length < 2) continue;
+      const upper = capitalizedNounWords.get(key);
+      const lower = lowercaseOnlyByWord.get(key);
+      // Both spellings need their own entry with a usable translation: a lemma
+      // with no lowercase entry (`Uni`) is only the noun and does not split, and
+      // one whose lowercase entry has no usable translation keeps the merged card.
+      if (!upper || !lower || !lower.translations.length || !upper.translations.length) continue;
+      if (!hasDistinctGloss(lower.translations, upper.translations)) continue;
+      if (shortWordGlosses && shortWordMaxLength !== undefined && [...key].length <= shortWordMaxLength) {
+        const display = key[0].toUpperCase() + key.slice(1);
+        if (!shortWordGlosses.has(display)) continue;
+      }
+      splitLemmas.add(key);
+    }
+  }
 
   // A lemma falls back to its name entry only when it has no usable common-word
   // entry: no non-noun entry (`seine`, an inflection of `sein`; `kamen`, a
@@ -277,9 +374,22 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     throw new Error(`Only ${selected.length} usable ${languageFront} lemmas were found; expected at least ${minimum}.`);
   }
 
-  const backWords = new Set<string>();
+  // A split lemma's capitalized noun becomes its own card. A lemma the
+  // short-word curation drops (an empty gloss list) stays dropped, so its
+  // lowercase card is removed while the capitalized partner still ships.
+  const partnerLemmas: string[] = [];
   for (const lemma of selected) {
-    for (const translation of wiktionaryByWord.get(lemma)?.translations ?? []) backWords.add(translation);
+    if (!splitLemmas.has(lemma)) continue;
+    if (isDropped(lemma, options)) continue;
+    partnerLemmas.push(lemma);
+  }
+  const partnerSet = new Set(partnerLemmas);
+  const buildLemmas = [...selected, ...partnerLemmas];
+
+  const backWords = new Set<string>();
+  for (const lemma of buildLemmas) {
+    const data = partnerSet.has(lemma) ? capitalizedNounWords.get(lemma) : wiktionaryByWord.get(lemma);
+    for (const translation of data?.translations ?? []) backWords.add(translation);
   }
   for (const glosses of options.shortWordGlosses?.values() ?? []) {
     for (const gloss of glosses) backWords.add(gloss);
@@ -300,7 +410,15 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
   const cards: [string, string][] = [];
 
   for (const lemma of selected) {
-    const data = wiktionaryByWord.get(lemma);
+    // A split lemma's lowercase card uses its lowercase-only data so it does not
+    // repeat the capitalized noun's glosses. When the lowercase word has no
+    // usable translation of its own (an obscure pronoun or numeral entry), the
+    // merged data is kept, so the lemma still produces a card and the curation
+    // below still applies to it.
+    const lowerOnly = splitLemmas.has(lemma) ? lowercaseOnlyByWord.get(lemma) : undefined;
+    const data = lowerOnly?.translations.some(back => !shouldRejectTranslation(lemma, back))
+      ? lowerOnly
+      : wiktionaryByWord.get(lemma);
     if (!data) continue;
     // `lemma` is the lowercase frequency spelling; `display` is the canonical
     // Wiktionary spelling shown on the card (`Haus`, not `haus`). They differ
@@ -325,11 +443,45 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     }
   }
 
+  // The capitalized half of each split case-homograph. Its front is the
+  // capitalized spelling; its glosses and IPA come from the noun entry, not from
+  // the lowercase word. It joins the card list before curation so a hand-curated
+  // entry for the capitalized spelling (keyed exactly, `Ei` not `ei`) applies to
+  // it.
+  const partnerCards: [string, string][] = [];
+  for (const lemma of partnerLemmas) {
+    const data = capitalizedNounWords.get(lemma);
+    if (!data) continue;
+    const display = lemma[0].toUpperCase() + lemma.slice(1);
+    const frontKey = `${languageFront}:${display}`;
+    if (data.ipa.length && !pronunciations[frontKey]) pronunciations[frontKey] = data.ipa.slice(0, 3);
+
+    for (const backLemma of data.translations.slice(0, 8)) {
+      if (shouldRejectTranslation(lemma, backLemma)) continue;
+      partnerCards.push([display, backLemma]);
+
+      const backKey = `${languageBack}:${backLemma}`;
+      if (!pronunciations[backKey]) {
+        const ipa = backIpa.get(backLemma);
+        if (ipa?.length) pronunciations[backKey] = ipa;
+      }
+    }
+  }
+
   const curatedCards = options.shortWordGlosses && options.shortWordMaxLength !== undefined
-    ? curateCards(cards, options.shortWordGlosses, options.shortWordMaxLength)
-    : cards;
+    ? curateCards([...cards, ...partnerCards], options.shortWordGlosses, options.shortWordMaxLength)
+    : [...cards, ...partnerCards];
+
+  // A split lemma whose lowercase spelling the curation drops (an empty gloss
+  // list) keeps only its capitalized noun, so the stray lowercase card is
+  // removed while the partner card survives.
+  const droppedSplits = new Set([...splitLemmas].filter(lemma => isDropped(lemma, options)));
+  const finalCards = droppedSplits.size
+    ? curatedCards.filter(([front]) => !droppedSplits.has(front))
+    : curatedCards;
+
   const missingCurated = options.shortWordGlosses && options.shortWordMaxLength !== undefined
-    ? missingCuratedLemmas(curatedCards, options.shortWordGlosses, options.shortWordMaxLength)
+    ? missingCuratedLemmas(finalCards, options.shortWordGlosses, options.shortWordMaxLength)
     : [];
 
   const deck: DeckData = {
@@ -338,17 +490,17 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     displayName: options.displayName,
     languageFront,
     languageBack,
-    cards: curatedCards,
-    pronunciations: trimPronunciationsForCards(curatedCards, pronunciations, languageFront, languageBack),
+    cards: finalCards,
+    pronunciations: trimPronunciationsForCards(finalCards, pronunciations, languageFront, languageBack),
   };
 
   validate(deck, languageFront, languageBack, options.requiredCard);
 
-  const frontLemmas = new Set(curatedCards.map(card => card[0]));
-  const backLemmas = new Set(curatedCards.map(card => card[1]));
+  const frontLemmas = new Set(finalCards.map(card => card[0]));
+  const backLemmas = new Set(finalCards.map(card => card[1]));
   const report: GenerationReport = {
     frontLemmas: frontLemmas.size,
-    cards: curatedCards.length,
+    cards: finalCards.length,
     frontWithIpa: [...frontLemmas].filter(lemma => deck.pronunciations?.[`${languageFront}:${lemma}`]?.length).length,
     frontWithoutIpa: [...frontLemmas].filter(lemma => !deck.pronunciations?.[`${languageFront}:${lemma}`]?.length).length,
     backLemmas: backLemmas.size,

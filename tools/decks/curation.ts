@@ -16,7 +16,9 @@
  *
  * The curated map is keyed by the lowercase lemma, while a card front may carry
  * canonical capitalization (`Haus`) or the standard `ß` spelling (`Straße`); the
- * lookup folds case and `ß` so every spelling variant matches.
+ * lookup folds case and `ß` so every spelling variant matches. An exact key wins
+ * first, which lets a capitalized case-homograph carry its own entry (`Arm` "arm"
+ * beside `arm` "poor") without the folded lookup collapsing the two.
  */
 export function curationKey(word: string): string {
   return word.toLowerCase().replace(/ß/g, 'ss');
@@ -34,7 +36,7 @@ export function curateCards(
       curated.push([front, back]);
       continue;
     }
-    const replacements = glosses.get(curationKey(front));
+    const replacements = glosses.get(front) ?? glosses.get(curationKey(front));
     if (replacements === undefined) {
       curated.push([front, back]);
       continue;
@@ -54,7 +56,7 @@ export function missingCuratedLemmas(
 ): string[] {
   const missing = new Set<string>();
   for (const [front] of cards) {
-    if ([...front].length <= maxLength && !glosses.has(curationKey(front))) missing.add(front);
+    if ([...front].length <= maxLength && !glosses.has(front) && !glosses.has(curationKey(front))) missing.add(front);
   }
   return [...missing];
 }

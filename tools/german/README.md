@@ -32,11 +32,33 @@ word, because capitalizing then would merge two distinct words — `arm` "poor"
 (the adjective) versus `Arm` "arm" (the noun). Inflected-only lowercase entries
 (imperatives such as `haus` "haus[e]!", preterites such as `stand`) and
 obsolete/rare variants do not block capitalization, so the rule recovers `Haus`,
-`Frau` and `Abend` while keeping `arm`, `sie` and `mal` lowercase. The trade-off
-is deliberate: when the lowercase spelling is a live word the lemma keeps that
-spelling rather than risk a merge, which is why a few nouns (`Zeit`, `Kraft`)
-still appear lowercase because Wiktionary also records a distinct lowercase
-preposition for them.
+`Frau` and `Abend`.
+
+## Case homographs
+
+Keeping such a lemma lowercase is only half the fix: folding the capitalized noun
+onto the lowercase card (`arm` → "poor, arm") hides the contrast the deck exists
+to teach. `splitCapitalizedHomographs` therefore emits the capitalized noun as
+its own card next to the lowercase word, so `arm` "poor" and `Arm` "arm" are two
+cards, `morgen` "tomorrow" and `Morgen` "morning", `weise` "wise" and `Weise`
+"way". The split is decided on the *merged* sense sets: the two spellings must
+each carry a usable translation and their glosses must differ, so a pure
+capitalization redirect (`Du` "letter-case form of du") or a nominalization
+(`Essen` "eating" from `essen`) never splits. A single-letter lemma is excluded
+because `A` is the letter's own name, not a separate word from `a`.
+
+Short lemmas (the ones the short-word curation covers) split only when the
+capitalized partner has its own curated entry, because the raw noun links there
+are mostly rare or figurative senses a beginner should not meet (`All` "cosmos",
+`Wohl` "wealthy"). The curated map is keyed by the lowercase lemma and the lookup
+folds case, but an exact key wins first, so a capitalized entry can sit beside its
+lowercase twin (`['arm', ['poor']]` and `['Arm', ['arm']]`) without the folded
+lookup collapsing them. 145 case pairs ship in the deck.
+
+The trade-off is deliberate: when the lowercase spelling is a live word the lemma
+keeps that spelling *and* gains the capitalized noun as a second card, which is
+why a few nouns (`Zeit`, `Kraft`) that Wiktionary also records as lowercase
+prepositions appear both ways.
 
 ## `ß` spelling
 
@@ -65,7 +87,7 @@ back and keeps its capitalization.
 ## Short-word curation
 
 `germanCuration.ts` holds the hand-curated gloss list for every lemma of four
-characters or fewer — 563 lemmas in the shipped deck, covering both the
+characters or fewer — 486 lemmas in the shipped deck, covering both the
 `missingCurated` report and the lemmas the raw links handled badly. Raw sense
 links there drag in grammatical labels and stray senses (`das` → "who", `sie` →
 "pedantic", `h` → "hour", `wo` → "whom"), proper nouns and given names
