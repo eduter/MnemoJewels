@@ -1,6 +1,6 @@
 {
   "uid": "top-pt-en",
-  "version": 2,
+  "version": 3,
   "displayName": "Portuguese / English",
   "languageFront": "pt",
   "languageBack": "en",
@@ -558,10 +558,6 @@
       "where"
     ],
     [
-      "brasil",
-      "brazilian"
-    ],
-    [
       "mundo",
       "world"
     ],
@@ -1010,10 +1006,6 @@
       "someone"
     ],
     [
-      "alguém",
-      "person"
-    ],
-    [
       "antes",
       "before"
     ],
@@ -1148,10 +1140,6 @@
     [
       "pouco",
       "few"
-    ],
-    [
-      "pouco",
-      "small"
     ],
     [
       "rio",
@@ -1378,10 +1366,6 @@
       "whereas"
     ],
     [
-      "fez",
-      "faeces"
-    ],
-    [
       "ninguém",
       "no one"
     ],
@@ -1416,14 +1400,6 @@
     [
       "verdade",
       "fact"
-    ],
-    [
-      "verdade",
-      "truthfulness"
-    ],
-    [
-      "verdade",
-      "honesty"
     ],
     [
       "vocês",
@@ -3078,10 +3054,6 @@
       "vegetable"
     ],
     [
-      "olha",
-      "earthenware"
-    ],
-    [
       "pensar",
       "think"
     ],
@@ -3846,14 +3818,6 @@
       "establishment"
     ],
     [
-      "x",
-      "internet"
-    ],
-    [
-      "x",
-      "text messaging"
-    ],
-    [
       "agosto",
       "august"
     ],
@@ -4336,10 +4300,6 @@
     [
       "teu",
       "thine"
-    ],
-    [
-      "teu",
-      "thy"
     ],
     [
       "teu",
@@ -5990,10 +5950,6 @@
       "both"
     ],
     [
-      "aquilo",
-      "word"
-    ],
-    [
       "banco",
       "bank"
     ],
@@ -6112,14 +6068,6 @@
     [
       "silva",
       "bramble"
-    ],
-    [
-      "tais",
-      "tais"
-    ],
-    [
-      "tais",
-      "east timor"
     ],
     [
       "tema",
@@ -6528,10 +6476,6 @@
     [
       "fonte",
       "font"
-    ],
-    [
-      "graças",
-      "thank you"
     ],
     [
       "instituto",
@@ -7218,22 +7162,6 @@
       "quality"
     ],
     [
-      "al",
-      "everything"
-    ],
-    [
-      "al",
-      "rest"
-    ],
-    [
-      "al",
-      "other"
-    ],
-    [
-      "al",
-      "another"
-    ],
-    [
       "aniversário",
       "anniversary"
     ],
@@ -7292,10 +7220,6 @@
     [
       "escrever",
       "write"
-    ],
-    [
-      "esposa",
-      "bride"
     ],
     [
       "ilha",
@@ -7640,10 +7564,6 @@
     [
       "matar",
       "quench"
-    ],
-    [
-      "meia",
-      "pint"
     ],
     [
       "meia",
@@ -8124,14 +8044,6 @@
     [
       "porra",
       "cum"
-    ],
-    [
-      "porra",
-      "dick"
-    ],
-    [
-      "porra",
-      "cock"
     ],
     [
       "prática",
@@ -9442,10 +9354,6 @@
       "kingdom"
     ],
     [
-      "vendo",
-      "wend"
-    ],
-    [
       "ato",
       "act"
     ],
@@ -10263,10 +10171,6 @@
     ],
     [
       "mestre",
-      "schoolteacher"
-    ],
-    [
-      "mestre",
       "game master"
     ],
     [
@@ -10924,10 +10828,6 @@
     [
       "máximo",
       "maximum"
-    ],
-    [
-      "nele",
-      "paddy"
     ],
     [
       "padre",
@@ -12022,10 +11922,6 @@
       "stadium"
     ],
     [
-      "estádio",
-      "stade"
-    ],
-    [
       "facto",
       "fact"
     ],
@@ -12500,10 +12396,6 @@
     [
       "sentimento",
       "sentiment"
-    ],
-    [
-      "á",
-      "wing"
     ],
     [
       "avenida",
@@ -14102,22 +13994,6 @@
       "fabric"
     ],
     [
-      "rs",
-      "internet"
-    ],
-    [
-      "rs",
-      "text messaging"
-    ],
-    [
-      "rs",
-      "lol"
-    ],
-    [
-      "rs",
-      "haha"
-    ],
-    [
       "saco",
       "bag"
     ],
@@ -14700,10 +14576,6 @@
     [
       "trem",
       "thingummy"
-    ],
-    [
-      "trem",
-      "bus"
     ],
     [
       "vinte",
@@ -15734,10 +15606,6 @@
       "apex"
     ],
     [
-      "topo",
-      "collision"
-    ],
-    [
       "turma",
       "group"
     ],
@@ -15748,10 +15616,6 @@
     [
       "turma",
       "class"
-    ],
-    [
-      "vaga",
-      "wave"
     ],
     [
       "vaga",
@@ -16168,10 +16032,6 @@
     [
       "piscina",
       "swimming pool"
-    ],
-    [
-      "piscina",
-      "fishpond"
     ],
     [
       "preocupação",
@@ -16716,10 +16576,6 @@
     [
       "trânsito",
       "transit"
-    ],
-    [
-      "trânsito",
-      "passing"
     ],
     [
       "órgão",
@@ -17272,10 +17128,6 @@
     [
       "dedo",
       "finger"
-    ],
-    [
-      "dedo",
-      "dedo"
     ],
     [
       "dificuldade",
@@ -17856,10 +17708,6 @@
     [
       "papo",
       "chat"
-    ],
-    [
-      "pernambuco",
-      "pernambuco"
     ],
     [
       "pescoço",
@@ -18598,10 +18446,6 @@
       "duty"
     ],
     [
-      "dever",
-      "homework"
-    ],
-    [
       "duro",
       "hard"
     ],
@@ -19152,10 +18996,6 @@
     [
       "sal",
       "engaging"
-    ],
-    [
-      "sal",
-      "sal"
     ],
     [
       "transição",
@@ -21343,10 +21183,6 @@
     ],
     [
       "roda",
-      "foundling wheel"
-    ],
-    [
-      "roda",
       "circle"
     ],
     [
@@ -22214,10 +22050,6 @@
       "mail"
     ],
     [
-      "posta",
-      "inn"
-    ],
-    [
       "primeiramente",
       "firstly"
     ],
@@ -22628,10 +22460,6 @@
     [
       "assinar",
       "subscribe"
-    ],
-    [
-      "assinar",
-      "mark"
     ],
     [
       "auxílio",
@@ -23084,10 +22912,6 @@
     [
       "anel",
       "annulus"
-    ],
-    [
-      "are",
-      "are"
     ],
     [
       "autonomia",
@@ -23640,10 +23464,6 @@
     [
       "procurador",
       "prosecutor"
-    ],
-    [
-      "procurador",
-      "procurator"
     ],
     [
       "profundamente",
@@ -24664,10 +24484,6 @@
     [
       "cola",
       "adhesive"
-    ],
-    [
-      "cola",
-      "tail"
     ],
     [
       "cola",
@@ -27386,10 +27202,6 @@
       "rigged"
     ],
     [
-      "armado",
-      "armored"
-    ],
-    [
       "artístico",
       "artistic"
     ],
@@ -27404,10 +27216,6 @@
     [
       "atualizado",
       "updated"
-    ],
-    [
-      "ca",
-      "because"
     ],
     [
       "concordar",
@@ -28180,10 +27988,6 @@
     [
       "apelido",
       "nickname"
-    ],
-    [
-      "apelido",
-      "name"
     ],
     [
       "aprendizado",
@@ -29992,11 +29796,6 @@
       "/ˈʍɛə/",
       "[ˈʍɛə]"
     ],
-    "pt:brasil": [
-      "/bɾaˈziw/",
-      "[bɾaˈziʊ̯]",
-      "/bɾɐˈzil/"
-    ],
     "en:brazilian": [
       "/bɹəˈzɪ.lɪ.ən/",
       "/bɹəˈzɪl.jən/"
@@ -31261,11 +31060,6 @@
       "/ẽˈkwɐ̃.tu/",
       "/ĩˈkwɐ̃.tu/"
     ],
-    "pt:fez": [
-      "/ˈfe(j)s/",
-      "[ˈfe(ɪ̯)s]",
-      "/ˈfe(j)ʃ/"
-    ],
     "pt:ninguém": [
       "/nĩˈɡẽj̃/",
       "[nĩˈɡẽɪ̯̃]",
@@ -31326,15 +31120,6 @@
     ],
     "en:fact": [
       "/fækt/"
-    ],
-    "en:truthfulness": [
-      "/ˈtɹuθfəlnəs/"
-    ],
-    "en:honesty": [
-      "/ˈɒn.ɪ.sti/",
-      "/ˈɒn.ə.sti/",
-      "/ˈɒn.ə.stɪ/",
-      "/ˈɔː.nɪstɪ/"
     ],
     "pt:vocês": [
       "/voˈse(j)s/",
@@ -33821,9 +33606,6 @@
     "en:pea": [
       "/piː/"
     ],
-    "en:earthenware": [
-      "/ˈəːθ(ə)nwɛː/"
-    ],
     "pt:pensar": [
       "/pẽˈsa(ʁ)/",
       "[pẽˈsa(h)]",
@@ -34930,11 +34712,6 @@
       "/ɪˈstab.lɪʃ.mənt/",
       "/əˈstɛb.ləʃ.mənt/",
       "/ɪˈstab.lɪʃ.mʌnt/"
-    ],
-    "pt:x": [
-      "/ʃ/",
-      "/ks/",
-      "/s/"
     ],
     "pt:agosto": [
       "/aˈɡos.tu/",
@@ -37834,10 +37611,6 @@
       "[bəʊθ]",
       "/bəwθ/"
     ],
-    "pt:aquilo": [
-      "/aˈki.lu/",
-      "/ɐˈki.lu/"
-    ],
     "en:sentence": [
       "/ˈsɛn.təns/",
       "[ˈsɛn.tn̩(t)s]",
@@ -38043,14 +37816,6 @@
       "/ˈbɹæm.bəl/",
       "[ˈbɹɛəm.bəl]",
       "[ˈbɹɛəm.bl̩]"
-    ],
-    "pt:tais": [
-      "/ˈtajs/",
-      "[ˈtaɪ̯s]",
-      "/ˈtajʃ/"
-    ],
-    "en:east timor": [
-      "/iːst tiːmɔː/"
     ],
     "pt:tema": [
       "/ˈtẽ.mɐ/",
@@ -38553,10 +38318,6 @@
     "en:font": [
       "/fɒnt/",
       "/fɑnt/"
-    ],
-    "pt:graças": [
-      "/ˈɡɾa.sɐs/",
-      "/ˈɡɾa.sɐʃ/"
     ],
     "pt:instituto": [
       "/ĩs.t͡ʃiˈtu.tu/",
@@ -39443,11 +39204,6 @@
       "/ˈkwɑləti/",
       "[ˈkʰwɑləɾi]"
     ],
-    "pt:al": [
-      "/ˈaw/",
-      "[ˈaʊ̯]",
-      "/ˈal/"
-    ],
     "pt:aniversário": [
       "/a.ni.veʁˈsa.ɾju/",
       "[a.ni.vehˈsa.ɾju]",
@@ -39561,11 +39317,6 @@
       "[ɹaɪt]",
       "/ɹəɪt/",
       "[ɹəɪʔ]"
-    ],
-    "pt:esposa": [
-      "/isˈpo.zɐ/",
-      "/esˈpo.zɐ/",
-      "/iʃˈpo.zɐ/"
     ],
     "en:bride": [
       "/bɹaɪd/",
@@ -39979,9 +39730,6 @@
       "/ˈmej.ɐ/",
       "[ˈmeɪ̯.ɐ]",
       "/ˈmɐj.ɐ/"
-    ],
-    "en:pint": [
-      "/paɪnt/"
     ],
     "en:sock": [
       "/sɒk/",
@@ -42153,14 +41901,6 @@
       "/ˈkəŋdəm/",
       "/ˈkɪŋɡdəm/"
     ],
-    "pt:vendo": [
-      "/ˈvẽ.du/",
-      "/ˈbẽ.du/"
-    ],
-    "en:wend": [
-      "/wɛnd/",
-      "/wɪ̟nd/"
-    ],
     "pt:ato": [
       "/ˈa.tu/"
     ],
@@ -42904,11 +42644,6 @@
     "en:seek": [
       "/ˈsiːk/",
       "[ˈsɪi̯k]"
-    ],
-    "en:procurator": [
-      "/ˈpɹɒkjʊˌɹeɪtə/",
-      "/ˈpɹɑkjəˌɹeɪtɚ/",
-      "/ˌpɹɒkjʊˈɹeɪtə(ɹ)/"
     ],
     "pt:proteger": [
       "/pɾo.teˈʒe(ʁ)/",
@@ -43883,15 +43618,6 @@
     ],
     "en:maximum": [
       "/ˈmæksɪməm/"
-    ],
-    "pt:nele": [
-      "/ˈne.li/",
-      "/ˈne.lɨ/",
-      "/ˈnɛ.li/"
-    ],
-    "en:paddy": [
-      "/ˈpædi/",
-      "[ˈpʰæɾi]"
     ],
     "pt:padre": [
       "/ˈpa.dɾi/",
@@ -45200,10 +44926,6 @@
     "en:stadium": [
       "/ˈsteɪ.di.əm/"
     ],
-    "en:stade": [
-      "/steɪd/",
-      "/sted/"
-    ],
     "pt:facto": [
       "/ˈfak.tu/"
     ],
@@ -45729,13 +45451,6 @@
     ],
     "en:sentiment": [
       "/ˈsɛn.tɪ.mənt/"
-    ],
-    "pt:á": [
-      "/ˈa/"
-    ],
-    "en:wing": [
-      "/wɪŋ/",
-      "/ˈwɪŋɡ/"
     ],
     "pt:avenida": [
       "/a.veˈni.dɐ/",
@@ -47575,12 +47290,6 @@
     ],
     "en:fabric": [
       "/ˈfæb.ɹɪk/"
-    ],
-    "en:lol": [
-      "/ɛl.əʊˈɛl/",
-      "/lɔːl/",
-      "/lɒl/",
-      "/ɛl.oʊˈɛl/"
     ],
     "pt:saco": [
       "/ˈsa.ku/"
@@ -50568,9 +50277,6 @@
       "/ˈtɹæn.zət/",
       "/ˈtɹæn.sət/"
     ],
-    "en:passing": [
-      "/ˈpɑːsɪŋ/"
-    ],
     "pt:órgão": [
       "/ˈɔʁ.ɡɐ̃w̃/",
       "[ˈɔɦ.ɡɐ̃ʊ̯̃]",
@@ -52700,10 +52406,6 @@
       "/ˈdu.ti/",
       "/ˈdu.ɾi/"
     ],
-    "en:homework": [
-      "/ˈhəʊmˌwɜːk/",
-      "/ˈhoʊmˌwɝk/"
-    ],
     "pt:duro": [
       "/ˈdu.ɾu/"
     ],
@@ -53288,10 +52990,6 @@
     "en:engaging": [
       "/ɪnˈɡeɪd͡ʒɪŋ/",
       "/ɪŋˈɡeɪd͡ʒɪŋ/"
-    ],
-    "en:sal": [
-      "/sæl/",
-      "/sɑːl/"
     ],
     "pt:transição": [
       "/tɾɐ̃.ziˈsɐ̃w̃/",
@@ -56592,9 +56290,6 @@
     "en:slice": [
       "/slaɪs/"
     ],
-    "en:inn": [
-      "/ɪn/"
-    ],
     "pt:primeiramente": [
       "/pɾiˌme(j).ɾaˈmẽ.t͡ʃi/",
       "[pɾiˌme(ɪ̯).ɾaˈmẽ.t͡ʃi]",
@@ -57383,10 +57078,6 @@
       "/ˈænjələs/",
       "/ˈænjʊlaɪ/",
       "/-li/"
-    ],
-    "pt:are": [
-      "/ˈa.ɾi/",
-      "/ˈa.ɾɨ/"
     ],
     "pt:autonomia": [
       "/aw.to.noˈmi.ɐ/",
@@ -61891,10 +61582,6 @@
     "en:rigged": [
       "/ɹɪɡd/"
     ],
-    "en:armored": [
-      "/ˈɑːməd/",
-      "/ˈɑɹmɚd/"
-    ],
     "pt:artístico": [
       "/aʁˈt͡ʃis.t͡ʃi.ku/",
       "[ahˈt͡ʃis.t͡ʃi.ku]",
@@ -61919,10 +61606,6 @@
     ],
     "en:updated": [
       "/ʌpˈdeɪtɪd/"
-    ],
-    "pt:ca": [
-      "/ka/",
-      "/kɐ/"
     ],
     "pt:concordar": [
       "/kõ.koʁˈda(ʁ)/",

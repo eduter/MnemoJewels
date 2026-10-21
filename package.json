@@ -21,6 +21,8 @@
     "data:portuguese": "node --experimental-strip-types tools/romance/generate.ts --language pt",
     "data:portuguese:reverse": "node --experimental-strip-types tools/romance/generate.ts --language pt --reverse",
     "data:portuguese:download": "node --experimental-strip-types tools/romance/generate.ts --language pt --reverse --download",
+    "data:portuguese:obsolete": "node --experimental-strip-types tools/decks/obsolete.ts --input public/decks/top-pt-en.json --kaikki .cache/romance-deck/kaikki-portuguese.jsonl --language pt --side front",
+    "data:portuguese:obsolete:reverse": "node --experimental-strip-types tools/decks/obsolete.ts --input public/decks/top-en-pt.json --kaikki .cache/romance-deck/kaikki-portuguese.jsonl --language pt --side back",
     "data:german": "node --experimental-strip-types tools/german/generate.ts",
     "data:german:download": "node --experimental-strip-types tools/german/generate.ts --download",
     "data:jev": "node --experimental-strip-types tools/jev/cli.ts",

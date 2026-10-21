@@ -7,6 +7,7 @@ import type { DeckData, DeckLexicon } from '../../src/types.ts';
 import type { KaikkiEntry, KellyFile } from '../decks/kaikki.ts';
 import { forEachJsonLine } from '../decks/jsonl.ts';
 import { shouldRejectTranslation, translationsForSense } from '../decks/translationQuality.ts';
+import { isObsoleteSense } from '../decks/kaikki.ts';
 import { SHORT_WORD_GLOSSES, curateCards } from './shortWordCuration.ts';
 
 const KELLY_URL = 'https://raw.githubusercontent.com/kotoshu/frequency-list-kelly/main/data/ru.json';
@@ -70,6 +71,7 @@ await forEachJsonLine<KaikkiEntry>(options.russian, entry => {
     if (typeof sound.ipa === 'string') current.ipa.add(sound.ipa);
   }
   for (const sense of entry.senses ?? []) {
+    if (isObsoleteSense(sense)) continue;
     for (const record of translationsForSense(sense, { frontLemma: entry.word, englishHeadwords })) {
       current.translations.set(record.value, true);
     }

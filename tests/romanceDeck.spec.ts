@@ -70,6 +70,28 @@ describe.each(decks)('%s deck', (uid, languageFront, languageBack, frontSample, 
   });
 });
 
+// The generator drops senses Wiktionary marks obsolete/archaic/dated/rare/
+// historical, but these decks were generated before that rule, so the shipped
+// files were filtered retroactively. Guard against a regression that lets the
+// stale senses back in, while keeping words whose *head template* is tagged
+// noncurrent (`mapa` "map", `juiz` "judge") — those are current words.
+describe('Portuguese decks exclude obsolete senses', () => {
+  it('drops the obsolete-only cards', () => {
+    const forward = JSON.parse(readFileSync(resolve('public/decks/top-pt-en.json'), 'utf8')) as DeckData;
+    const reverse = JSON.parse(readFileSync(resolve('public/decks/top-en-pt.json'), 'utf8')) as DeckData;
+
+    expect(forward.cards).not.toContainEqual(['al', 'other']);
+    expect(forward.cards).not.toContainEqual(['esposa', 'bride']);
+    expect(reverse.cards).not.toContainEqual(['other', 'al']);
+  });
+
+  it('keeps current words whose head template is tagged noncurrent', () => {
+    const forward = JSON.parse(readFileSync(resolve('public/decks/top-pt-en.json'), 'utf8')) as DeckData;
+    expect(forward.cards).toContainEqual(['mapa', 'map']);
+    expect(forward.cards).toContainEqual(['juiz', 'judge']);
+  });
+});
+
 function groupBy<T>(
   values: T[],
   key: (value: T) => string,
