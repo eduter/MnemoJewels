@@ -21,7 +21,7 @@ import { pipeline } from 'node:stream/promises';
 import { Readable } from 'node:stream';
 import type { DeckData } from '../../src/types.ts';
 import type { KaikkiEntry, KellyFile } from './kaikki.ts';
-import { ipaFromSounds, isInflectionSense, isRedirectSense, hasCompetingWordSense, hasRealNounSense } from './kaikki.ts';
+import { ipaFromSounds, isInflectionSense, isObsoleteSense, isRedirectSense, isWhollyObsolete, hasCompetingWordSense, hasRealNounSense } from './kaikki.ts';
 import { forEachJsonLine } from './jsonl.ts';
 import { countDuplicateRows, selectCandidateLemmas } from './frequency.ts';
 import { shouldRejectTranslation, translationsForEntry, translationsForSense } from './translationQuality.ts';
@@ -220,6 +220,10 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
     if (translationsFromFrontSenses) {
       for (const sense of entry.senses ?? []) {
         if (isInflectionSense(sense)) continue;
+        // A sense Wiktionary marks obsolete/archaic/dated/rare/historical must
+        // not become a card: the deck teaches frequent *current* words, and a
+        // stale sense only drags in noise (`al` -> "other" is obsolete only).
+        if (isObsoleteSense(sense)) continue;
         for (const record of translationsForSense(sense, {
           frontLemma: key,
           englishHeadwords: backHeadwords,
@@ -396,9 +400,15 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
   }
 
   const backIpa = new Map<string, string[]>();
+  // A back word whose every sense is obsolete (`vero`, `légua`) must not become a
+  // card even when an English entry lists it as a translation. Track current vs
+  // obsolete so a word with any current entry survives.
+  const currentBacks = new Set<string>();
+  const obsoleteBacks = new Set<string>();
   await forEachJsonLine<KaikkiEntry>(backKaikki, entry => {
     const word = typeof entry.word === 'string' ? entry.word.toLowerCase() : '';
     if (entry.lang_code !== languageBack || !backWords.has(word)) return;
+    (isWhollyObsolete(entry) ? obsoleteBacks : currentBacks).add(word);
     const pronunciations = backIpa.get(word) ?? [];
     for (const ipa of ipaFromSounds(entry, 4)) {
       if (!pronunciations.includes(ipa)) pronunciations.push(ipa);
@@ -433,6 +443,10 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
 
     for (const backLemma of data.translations.slice(0, 8)) {
       if (shouldRejectTranslation(lemma, backLemma)) continue;
+      // A back word with no current sense (`vero`, `légua`) is only reachable
+      // through an obsolete sense, so it must not become a card.
+      const backWord = backLemma.toLowerCase();
+      if (obsoleteBacks.has(backWord) && !currentBacks.has(backWord)) continue;
       cards.push([display, backLemma]);
 
       const backKey = `${languageBack}:${backLemma}`;
@@ -458,6 +472,8 @@ export async function generateDeck(options: DeckGenerationOptions): Promise<Gene
 
     for (const backLemma of data.translations.slice(0, 8)) {
       if (shouldRejectTranslation(lemma, backLemma)) continue;
+      const backWord = backLemma.toLowerCase();
+      if (obsoleteBacks.has(backWord) && !currentBacks.has(backWord)) continue;
       partnerCards.push([display, backLemma]);
 
       const backKey = `${languageBack}:${backLemma}`;

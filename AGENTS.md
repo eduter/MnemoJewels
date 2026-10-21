@@ -268,3 +268,49 @@ so it never reaches a card. This is shared pipeline behavior, not a German bug �
 Spanish `los`/`es`/`esta`/`ha` and French `les`/`est`/`des` are equally absent.
 Fixing it means curating those function words (as `germanCuration.ts` does for
 `der`/`das`/`den`/`des`), not changing the generator.
+
+## Obsolete senses: filter on the raw-gloss label, never on `sense.tags`
+
+The deck is a *frequency* list, so a sense Wiktionary marks obsolete/archaic/
+dated/rare/historical must not become a card — the Portuguese decks shipped
+`al → other` (obsolete only), `esposa → bride`, `armado → armored`,
+`auto → act`, `vero`, `légua`. `tools/decks/generate.ts` (and
+`tools/russian/generate.ts`) now skip such senses via
+`isObsoleteSense` in `tools/decks/kaikki.ts`.
+
+The signal is the register label in `raw_glosses`, **not** `sense.tags`. Kaikki
+copies labels from the head template onto every sense, so `mapa` "map" is tagged
+`obsolete` (the *feminine* is obsolete: `{{pt-noun|m,f<l:obsolete>}}`) and `juiz`
+"judge" is tagged `dated` (`mfbysense<ll:dated>`), while both words are perfectly
+current. A tags-based filter would delete them. The raw label is the sense's own
+`(obsolete) …` parenthetical and is absent when the tag came from the head.
+
+Label parsing: Wiktionary separates labels with commas for conjunction and `or`
+for alternatives. A comma-part is non-current when every content word is a
+non-current register or a transparent qualifier (`archaic`, `now dated`,
+`obsolete or dialectal` — both readings are non-current). A part that names a
+region, a field, or a *current* register keeps the sense (`dated in Brazil`,
+`historical, measure` is historical *and* a unit, `dated or informal`). Bare
+`dialectal` is current usage and is kept, but `obsolete or dialectal` /
+`dated or dialectal` drop, because the non-current reading suffices. Era names
+are treated like `historical` — `(Early Modern, India) paddy`, `(historical,
+Ancient Rome) gens`, `(Ancient Rome) forum` are all non-current, so `nele →
+paddy` and `procurador → procurator` go. `historical` is included throughout:
+its only real casualties are archaic units and peoples (`are` the area unit,
+`légua`, `dedo` the unit, `estádio → stade`, `vendo → Wend`), not current
+vocabulary. `Shoá` (the Holocaust) is the one arguable casualty; it is tagged
+`historical` yet is a current word.
+
+The two Portuguese decks were generated before this rule, so
+`tools/decks/obsolete.ts` re-applies it in place (npm
+`data:portuguese:obsolete` / `:reverse`), reading the same front-language dump
+and bumping the version so clients refresh — no Jev re-triage, this pass is pure
+deterministic metadata. It drops 49 cards from `top-pt-en` (v2 → v3, 7266 →
+7217) and 6 from `top-en-pt` (5165 → 5159; the reverse deck inherits `al` etc.
+through `augmentFrom`, and its own `vero`/`légua`/`brasil`/`aquilo` backs
+vanish). Forward drops a card when its gloss comes only from stale senses;
+reverse drops when the front-language back word has no current sense at all. The
+rule is deliberately conservative — it does not touch cards whose back is only
+produced by a stale *tag* with no raw label (`alvo → white`), because that same
+signal is what would wrongly delete `mapa`/`juiz`; verify the exact delta with
+`--dry-run` before applying.

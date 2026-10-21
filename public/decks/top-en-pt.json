@@ -1,6 +1,6 @@
 {
   "uid": "top-en-pt",
-  "version": 2,
+  "version": 3,
   "displayName": "English / Portuguese",
   "languageFront": "en",
   "languageBack": "pt",
@@ -116,10 +116,6 @@
     [
       "that",
       "aquela"
-    ],
-    [
-      "that",
-      "aquilo"
     ],
     [
       "that",
@@ -284,10 +280,6 @@
     [
       "other",
       "outro"
-    ],
-    [
-      "other",
-      "al"
     ],
     [
       "take",
@@ -2144,10 +2136,6 @@
     [
       "Ireland",
       "Irlanda"
-    ],
-    [
-      "real",
-      "vero"
     ],
     [
       "real",
@@ -14919,10 +14907,6 @@
     ],
     [
       "league",
-      "légua"
-    ],
-    [
-      "league",
       "liga"
     ],
     [
@@ -18938,10 +18922,6 @@
       "arco"
     ],
     [
-      "coloured",
-      "brasil"
-    ],
-    [
       "dare",
       "tentar"
     ],
@@ -20202,10 +20182,6 @@
       "Holocausto"
     ],
     [
-      "Holocaust",
-      "Shoá"
-    ],
-    [
       "execution",
       "execução"
     ],
@@ -20871,10 +20847,6 @@
       "/aˈkɛ.lɐ/",
       "/ɐˈkɛ.lɐ/"
     ],
-    "pt:aquilo": [
-      "/aˈki.lu/",
-      "/ɐˈki.lu/"
-    ],
     "pt:qual": [
       "/ˈkwaw/",
       "[ˈkwaʊ̯]",
@@ -21218,14 +21190,6 @@
       "/siˈɡũ.du/",
       "/sɨˈɡũ.du/",
       "[sɨˈɣũ.du]"
-    ],
-    "pt:al": [
-      "/ˈa ˈɛ.li/",
-      "/ˈa ˈɛ.lɨ/",
-      "/ˈaw/",
-      "[ˈaʊ̯]",
-      "/ˈal/",
-      "[ˈaɫ]"
     ],
     "en:take": [
       "/ˈteɪ̯k/",
@@ -24493,10 +24457,6 @@
       "[χeˈaʊ̯]",
       "/ʁiˈal/",
       "/ˈʁjal/"
-    ],
-    "pt:vero": [
-      "/ˈvɛ.ɾu/",
-      "/ˈbɛ.ɾu/"
     ],
     "pt:verdadeiro": [
       "/veʁ.daˈde(j).ɾu/",
@@ -42734,10 +42694,6 @@
     "en:league": [
       "/liːɡ/"
     ],
-    "pt:légua": [
-      "/ˈlɛ.ɡwɐ/",
-      "[ˈlɛ.ɣwɐ]"
-    ],
     "en:lifestyle": [
       "/ˈlaɪfˌstaɪl/"
     ],
@@ -45920,12 +45876,6 @@
       "/ˈneɪtɪv/",
       "/ˈneɪtəv/"
     ],
-    "pt:brasil": [
-      "/bɾaˈziw/",
-      "[bɾaˈziʊ̯]",
-      "/bɾɐˈzil/",
-      "[bɾɐˈziɫ]"
-    ],
     "pt:natal": [
       "/naˈtaw/",
       "[naˈtaʊ̯]",
@@ -48172,9 +48122,6 @@
       "[ˈah.ku]",
       "/ˈaɾ.ku/",
       "[ˈaχ.ku]"
-    ],
-    "en:coloured": [
-      "/ˈkʌl.əd/"
     ],
     "en:dare": [
       "/dɛə/",
