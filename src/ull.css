@@ -1,0 +1,50 @@
+.ull-settings {
+  margin-top: 1.5rem;
+  border-top: 1px solid #ffffff30;
+  padding-top: 1rem;
+  color: #c9d3de;
+  font:
+    14px system-ui,
+    sans-serif;
+  text-align: left;
+}
+.ull-settings summary {
+  cursor: pointer;
+  color: #d8e6a3;
+  font-weight: 600;
+}
+.ull-settings p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.ull-settings label {
+  display: block;
+  font-size: 12px;
+  margin-top: 16px;
+}
+.ull-settings input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 7px 0;
+  padding: 9px;
+  border-radius: 5px;
+  border: 1px solid #53667a;
+  background: #162535;
+  color: #eef2f5;
+}
+.ull-settings button {
+  border: 1px solid #53667a;
+  background: #203c48;
+  border-radius: 5px;
+  padding: 9px 11px;
+  margin: 5px 6px 5px 0;
+  color: #eef2f5;
+  cursor: pointer;
+  font:
+    12px system-ui,
+    sans-serif;
+}
+.ull-settings input[type="file"] {
+  font-size: 11px;
+}
