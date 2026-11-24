@@ -1,0 +1,4 @@
+// Generated interface for the independently built ULL bridge.
+export interface PairSignal {knownSeed:string|null;againId:string|null;lastAgain:number;lastReview:number;due:number;priority:number}
+export interface MJBridge {initialize():Promise<void>;signal(front:string,back:string):PairSignal;recordMatch(front:string,back:string,qualified:boolean):Promise<void>;importFile(file:File):Promise<void>;connect(clientId:string):Promise<void>;finishCallback():Promise<void>;sync():Promise<{uploaded:number;downloaded:number}>;autoSync():Promise<{uploaded:number;downloaded:number}|null>;subscribe(fn:()=>void):()=>void;getRevision():number;getInfo():{words:number;events:number;connected:boolean};getAppKey():Promise<string>;exportJournal():void;disconnect():Promise<void>}
+export function createMJBridge():MJBridge;

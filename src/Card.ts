@@ -13,6 +13,7 @@ class Card {
   suspendedUntil: number | null;
   isMismatched: boolean;
   relativeScheduling: number | null;
+  ull: CardDto['ul'];
 
   constructor(
     id: number,
@@ -36,7 +37,7 @@ class Card {
   }
 
   static unserialize(id: number, cardDto: CardDto): Card {
-    return new Card(
+    const card = new Card(
       id,
       cardDto.ft,
       cardDto.bk,
@@ -46,6 +47,9 @@ class Card {
       cardDto.st,
       cardDto.ms,
     );
+    card.ull = cardDto.ul;
+    card.setSchedule(card.lastRep, card.nextRep);
+    return card;
   }
 
   serialize(): CardDto {
@@ -60,6 +64,7 @@ class Card {
     if (this.isMismatched !== defaultIsMismatchedValue(this.state)) {
       obj.ms = this.isMismatched;
     }
+    if (this.ull) obj.ul = this.ull;
     return obj;
   }
 
@@ -69,7 +74,10 @@ class Card {
     if (lastRep && nextRep) {
       this.relativeScheduling = (time.now() - nextRep) / (nextRep - lastRep);
     } else {
-      this.relativeScheduling = null;
+      const anchor = this.ull?.anchor;
+      this.relativeScheduling = anchor
+        ? (time.now() - (nextRep ?? anchor.next)) / Math.max(1000, anchor.next - anchor.last)
+        : null;
     }
   }
 

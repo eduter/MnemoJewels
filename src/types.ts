@@ -10,6 +10,13 @@ export interface CardDto {
   lr: number | null;
   nr: number | null;
   ms?: boolean;
+  ul?: {
+    knownSeed?: string;
+    againId?: string;
+    againAt?: number;
+    beforeAgain?: { state: State; mismatched: boolean; nextRep: number | null; lastRep: number | null };
+    anchor?: { last: number; next: number };
+  };
 }
 
 export interface Deck {

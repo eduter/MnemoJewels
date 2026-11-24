@@ -7,6 +7,7 @@ import utils from './utils';
 import Card from './Card';
 import States from './States';
 import TimeMeter from './TimeMeter';
+import { ull } from './ull';
 import { cardDistance as computeCardDistance, createDistanceContext, mappedCardsConflict } from './alternativeSelection';
 import type { DistanceContext } from './alternativeSelection';
 import type {
@@ -35,6 +36,8 @@ const indexes: Record<State, Card[]> = {
   4: [],
 };
 let mismatchCount = 0;
+let pendingULLUpdates = true;
+ull.subscribe(() => { pendingULLUpdates = true; });
 const cardsInGame: Card[] = [];
 
 const cmpFuncs: Record<State, (c1: Card, c2: Card) => number> = {
@@ -110,6 +113,7 @@ const iterators: Record<string, Iterator> = {
   events.bind('mismatch', rescheduleMismatch);
   events.bind('gameOver', reindexCardInGame);
   events.bind('gameOver', persistCards);
+  events.bind('gameOver',()=>{void ull.autoSync().catch(()=>{});});
   events.bind('exitApp', persistCards);
 })();
 
@@ -138,6 +142,8 @@ function loadDeck(deckToLoad: Deck): void {
   sortIndexes();
   updateWordMappings();
   updateNormalizations();
+  pendingULLUpdates = true;
+  applyULLUpdates();
 }
 
 function unloadDeck(): void {
@@ -257,6 +263,7 @@ function cardsConflict(card1: Card, card2: Card): boolean {
 }
 
 function createNewGroup(groupSize: number): Card[] {
+  applyULLUpdates();
   console.group('createNewGroup');
   const firstCard = chooseFirstCard();
   TimeMeter.start('CA');
@@ -273,6 +280,16 @@ function createNewGroup(groupSize: number): Card[] {
 }
 
 function chooseFirstCard(): Card {
+  // Reserve part of practice for external weak-word signals, retaining the normal
+  // game's selection for variety. Alternatives and phonetic similarity stay intact.
+  if (deck?.languageFront === 'ru' && Math.random() < 0.6) {
+    const targeted = allCards.filter(card => !cardsInGame.includes(card)
+      && !card.isSuspended() && !conflicts(card, cardsInGame)
+      && ull.signal(card.front, card.back).priority > 0)
+      .sort((a, b) => ull.signal(b.front, b.back).priority - ull.signal(a.front, a.back).priority)
+      .slice(0, 20);
+    if (targeted.length) return targeted[Math.floor(Math.random() * targeted.length)];
+  }
   const i = chooseFirstCardIterator();
   i.reset();
   while (i.hasNext()) {
@@ -422,9 +439,13 @@ function rescheduleMatch(eventData: unknown): void {
       card.setSchedule(now, Math.floor(now + minInterval));
     }
     card.match();
+    if (deck?.languageFront === 'ru') {
+      void ull.recordMatch(card.front, card.back, true).catch(error => console.warn('ULL match could not be saved', error));
+    }
   }
   card.suspend(now + groupSize * 30 * TimeUnits.SECOND);
   moveToIndex(card);
+  applyULLUpdates();
   console.groupEnd();
 }
 
@@ -474,6 +495,7 @@ function rescheduleMismatch(eventData: unknown): void {
 }
 
 function getStatesStats(): StateStat[] {
+  applyULLUpdates();
   const stats: StateStat[] = [];
   for (const stateName in States) {
     if (Object.prototype.hasOwnProperty.call(States, stateName)) {
@@ -482,6 +504,61 @@ function getStatesStats(): StateStat[] {
     }
   }
   return stats;
+}
+
+function applyULLUpdates(): void {
+  if (!pendingULLUpdates || deck?.languageFront !== 'ru') return;
+  pendingULLUpdates = false;
+  let changed = false;
+  for (const card of allCards) {
+    const signal = ull.signal(card.front, card.back);
+    const seed = signal.knownSeed && card.ull?.knownSeed !== signal.knownSeed;
+    const lapse = signal.againId && card.ull?.againId !== signal.againId;
+    const restore = !signal.againId && card.ull?.againId && card.ull.beforeAgain;
+    if (!seed && !lapse && !restore) continue;
+    if (cardsInGame.includes(card)) { pendingULLUpdates = true; continue; }
+    const oldState = card.state;
+    const position = indexes[oldState].indexOf(card);
+    if (position >= 0) indexes[oldState].splice(position, 1);
+    card.ull ??= {};
+    if (seed) {
+      card.ull.knownSeed = signal.knownSeed!;
+      if (card.state === States.NEW || card.state === States.LEARNING) {
+        card.state = States.KNOWN;
+        card.isMismatched = false;
+        if (!card.lastRep) {
+          card.ull.anchor = { last: signal.lastReview, next: signal.due };
+          card.setSchedule(null, signal.due);
+        }
+      }
+    }
+    if (lapse) {
+      card.ull.beforeAgain ??= { state: card.state, mismatched: card.isMismatched, nextRep: card.nextRep, lastRep: card.lastRep };
+      card.ull.againId = signal.againId!;
+      card.ull.againAt = signal.lastAgain;
+      card.state = States.LAPSE;
+      card.isMismatched = true;
+      card.setSchedule(card.lastRep, signal.lastAgain + 2 * TimeUnits.MINUTE);
+    } else if (restore) {
+      // Undo may retract an external lapse, but must not erase subsequent real MJ learning.
+      const previous = card.ull.beforeAgain!;
+      if (card.state === States.LAPSE && card.lastRep === previous.lastRep) {
+        card.state = previous.state;
+        card.isMismatched = previous.mismatched;
+        card.setSchedule(previous.lastRep, previous.nextRep);
+      }
+      delete card.ull.againId;
+      delete card.ull.againAt;
+      delete card.ull.beforeAgain;
+    }
+    indexes[card.state].push(card);
+    changed = true;
+  }
+  if (changed) {
+    mismatchCount = Object.values(indexes).flat().filter(card => card.isMismatched).length;
+    sortIndexes();
+    persistCards();
+  }
 }
 
 function getTotalCards(): number {
